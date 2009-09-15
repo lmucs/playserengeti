@@ -1,0 +1,12 @@
+The class will create a Serengeti server and at least two clients - a web client and a mobile client.  Serengeti is a multi-player social web app in which players join teams and mark off territories.
+
+
+  * The server must support the following
+    # For phase 1
+      # Produce a welcome page
+      # Produce a list of teams (from mock data) 
+    # For phase 2
+      # Associate users with teams
+    # For phase 3
+    # For phase 4
+    # For phase 5
