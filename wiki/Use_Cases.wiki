@@ -1,0 +1,338 @@
+Use cases are organized by primary actor.  Each use case has associated with it various information, including a URI under http://www.playserengeti.com/ which maps to a controller that implements that specific use case's functionality.
+
+=User=
+----
+
+===Sign Up===
+Description: Register a user.
+
+URI: /user/signup
+
+Users: User
+
+Security:
+
+Notes:
+
+===Delete User===
+
+Description: Delete a user.
+
+URI: /user/delete[?user=user_id] -- The GET parameter is optional, is only available to admins, and if it is not supplied then the controller knows to delete the currently logged in user.
+
+Users: Self, Admin
+
+Security:
+
+Notes:
+
+===Manage User===
+
+
+Description: Manage a user's data.  This data includes the user's password and associated teams, along with profile data, including name, email, etc.
+
+URI: /user/manage[?user=user_id] -- The GET parameter is optional, is only available to admins, and if it is not supplied then controller knows to manage the currently logged in user.
+
+Users: Self, Admin
+
+Security:
+
+Notes:
+
+===View User Profile===
+
+Description: Displays the profile of the specified user.
+
+URI: /user/viewprofile[?user=user_id] -- The GET parameter is optional, and if not supplied the controller displays the currently logged-in user's profile.
+
+Users: User, Admin
+
+Security:
+
+Notes:
+
+=Team=
+----
+===Create Team===
+
+Description: Create a team.
+
+URI: /team/create
+
+Users: User
+
+Security:
+
+Notes:
+
+===Delete Team=== 
+
+Description: Delete a team.
+
+URI: /team/delete?team=team_id
+
+Users: Team Lead, Admin
+
+Security:
+
+Notes: Where do we define Team Lead role?  It should be specified in the team's profile page.  Parameter?
+
+===Manage Team Hierarchy===
+
+DON'T KNOW IF THIS USE CASE REALLY BELONGS UNDER TEAM
+
+Description: Used to manage the hierarchy of created teams.
+
+URI: /team/manage
+
+Users: Admin
+
+Security:
+
+Notes: We need to determine what exactly will determine the hierarchy on a global scale. Suggestions for [[Team Hierarchy Rules & Definition]].
+
+===Get Team Profile===
+
+Description: Display a team's profile.
+
+URI: /team/getprofile?team=team_id
+
+Users: Anyone
+
+Security:
+
+Notes:
+
+=Business/Location=
+----
+
+Question: is a business different than a location? How do we define each? [[User:Gratrixl|Gratrixl]] 22:39, 8 September 2009 (UTC)
+
+Answer(somewhat)/Expanding on Question: They should probably be considered different entities.  That way, we can include things like a local park or monument that will not actually have business deals but still be a place to control.  Or we could just keep them the same and never allow those locations to have deals/offers.--[[User:Cmueller|Cmueller]] 00:00, 9 September 2009 (UTC)
+
+My vote is to separate them. Let locations be user-submitted content, but businesses by validated somehow. [[User:Gratrixl|Gratrixl]] 06:16, 9 September 2009 (UTC)
+
+===Create Location/Business===
+
+Description: Create a business profile.
+
+URI: /biz/create
+
+Users: User (business representative), Admin
+
+Security:
+
+Notes: Separate Location from Business?
+
+===Delete Location/Business===
+
+Description:
+
+URI: /biz/delete?biz=business_id
+
+Users: User (business representative), Admin
+
+Security:
+
+Notes: Separate Location from Business? If a location is different than a business, who is a location owner?[[User:Gratrixl|Gratrixl]] 23:04, 8 September 2009 (UTC)
+
+===Manage Location/Business===
+
+Description: Manage the business's profile.
+
+URI: /biz/manage
+
+Users: User (business representative), Admin
+
+Security:
+
+Notes: Separate Location from Business?
+
+===Add Location===
+
+Description: Add a location to a business.
+
+URI: /biz/loc/add?biz=business_id
+
+Users: User (business representative), Admin
+
+Security:
+
+Notes: Define how this differs from create business
+
+===Remove Location===
+
+Description: Remove a location of a business.
+
+URI: /biz/loc/remove?biz=business_id&loc=location_id
+
+Users: User (business representative), Admin
+
+Security:
+
+Notes:
+
+=Status=
+----
+
+===Ping===
+
+Description: Send notification of (lat/long) of a user to database.
+
+URI: /status/ping?lat=number&long=number
+
+Users: Self
+
+Security:
+
+Notes:Internal case not directly accessible by user (See show below)
+
+===Show===
+
+Description: Show yourself.  This action triggers a ping immediately, and then additional pings at specific time intervals.
+
+URI: /status/show
+
+Users: Self
+
+Security:
+
+Notes:
+
+===Hide===
+
+Description: Hide yourself.  This action disables the intermittent pings.
+
+URI: /status/hide
+
+Users: Self, Admin
+
+Security:
+
+Notes:
+
+===Get Team Status===
+
+Description:
+
+URL: /status/team[?team=team_id]
+
+Users: User
+
+Security:
+
+Notes:
+
+===Locate Person===
+
+Description: Show the location of a user
+
+URL: /status/user[?user=user_id]
+
+Users: User
+
+Security: Should be limited to only team members or friends of user.
+
+Notes:
+
+===Show Game Status===
+
+Description: Display the current status of the game. 
+
+URL: /status/game?league=league_id&rivalsOnly=showOnlyRivals
+
+Users: User
+
+Security: 
+
+Notes: Parameters for the game status should be defined once the team hierarchy issues have been hashed out, but should likely include which league/sub-league you want to show status for and if you want to show all teams in that league or just your team and their rivals.
+
+=Communication=
+----
+
+===Invite To Game===
+
+Description: Invite a person to Play Serengeti!!!!
+
+URL: /invite/game
+
+Users: User
+
+Security:
+
+Notes: How does this work? Does the form ask for an email address and send a link to that address?
+
+===Invite To Team===
+
+Description: Invite a user (or soon-to-be-user) to a team
+
+URL: /invite/team
+
+Users: Team Member
+
+Security:
+
+Notes: Does this assume a person is already signed up for the game? or is this a special version of invite to game? Or Both? If Both, do we need two versions?[[User:Gratrixl|Gratrixl]] 17:47, 10 September 2009 (UTC)
+
+===Invite To Location (subset of message user)===
+
+Description: Invite a person to a location
+
+URL: /message/location
+
+Users: User
+
+Security: Should be limited to users friends/team members
+
+Notes: could this be something like and "event" in facebook, where you can set it up in advance? If so, then this really isn't a subset of message user. Perhaps we add (eventually) an "event" function?[[User:Gratrixl|Gratrixl]] 17:47, 10 September 2009 (UTC)
+
+===Message User===
+
+Description: Send a user a message
+
+URL: /message/user
+
+Users: User
+
+Security: Should be limited to users friends/team members
+
+Notes:
+
+=Query=
+----
+
+===Find Locations of Businesses===
+
+Description: Find locations of businesses.
+
+URI: /find/biz?q=term[&lat=number&lon=number] -- The latitude and longitude GET parameters are optional.  If they're omitted then locations of businesses near the user's current position are returned.
+
+Users: User
+
+Security:
+
+Notes: Other parameters may be possible.  Including radius around lat/long that business can be located in, category of business, how many results to return, etc.
+
+===Find User===
+
+Description: Find a user.
+
+URI: /find/user?...
+
+Users: User
+
+Security:
+
+Notes: Parameters can allow users to be found by name, email address, screename, etc.
+
+===Find Team===
+
+Description: Find a team.
+
+URI: /search/team?...
+
+Users: User
+
+Security:
+
+Notes: Parameters can allow teams to be found by name, location, parent team, etc.
