@@ -1,0 +1,20 @@
+This is the main wiki page for the CMSI 401 Software Engineering Laboratory course for 2009.  Students should use the wiki for design notes, documents, reports, discussion, and other artifacts related to the course.
+
+The [http://www.cs.lmu.edu/~ray/classes/se course web page] has links to the syllabus and course notes.  This wiki is intended for your coursework, not for dissemination of course announcements and requirements.
+
+'''Quick links to project artifacts''':
+
+* [[Project Summary]]
+* [[Requirements]]
+* [[Project Use Cases]]
+* [[Project Architecture]]
+* [[Meeting Notes]]
+* [[Project Schedule and Milestones]]
+
+<div style="border: 1px solid black; background:linen; font-size:90%; width:80%; margin:3em 10%; padding:1em">'''If you are new to MediaWiki:
+
+* Consult the [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] for information on using the wiki software.
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
+* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]
+</div>
