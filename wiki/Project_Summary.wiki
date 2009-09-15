@@ -1,4 +1,4 @@
-* Project Name*:  Serengeti
+*Project Name*: Serengeti
 
 *Tagline*: Mark your territory
 
