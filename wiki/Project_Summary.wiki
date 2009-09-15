@@ -1,0 +1,7 @@
+* Project Name*:  Serengeti
+
+*Tagline*: Mark your territory
+
+*Description*: A physical location-aware, social networking application where participants organize into teams and claim territory.  Team members can move independently and can track each others' movements.  Claiming territory can be done for the purpose of
+  * Winning a challenge (e.g., between schools or organizations)
+  * Obtaining discounts at local businesses (in return for frequent visits)
