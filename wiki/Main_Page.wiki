@@ -12,6 +12,6 @@ The [http://www.cs.lmu.edu/~ray/classes/se course web page] has links to the syl
   * [http://code.google.com/p/playserengeti/wiki/Project_Summary?ts=1253056775&updated=Project_Summary Project Summary]
   * [Requirements]
   * [http://code.google.com/p/playserengeti/wiki/Project_Use_Cases Project Use Cases]
-  * [Project Architecture]
+  * [http://code.google.com/p/playserengeti/wiki/Project_Architecture Project Architecture]
   * [Meeting Notes]
   * [Project Schedule and Milestones]
