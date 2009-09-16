@@ -1,0 +1,7 @@
+High level deployment diagram
+
+http://commons.wikimedia.org/wiki/File:SerengetiAbstract_2009_09_08.PNG
+
+URL to controller mapping
+
+  *
