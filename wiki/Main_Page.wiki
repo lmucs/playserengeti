@@ -9,9 +9,9 @@ The [http://www.cs.lmu.edu/~ray/classes/se course web page] has links to the syl
 = Details =
 *Quick links to project artifacts*:
 
-  * [http://code.google.com/p/playserengeti/wiki/Project_Summary?ts=1253056775&updated=Project_Summary Project Summary]
+  * [http://code.google.com/p/playserengeti/wikiProject_Summary Project Summary]
   * [Requirements]
   * [http://code.google.com/p/playserengeti/wiki/Project_Use_Cases Project Use Cases]
   * [http://code.google.com/p/playserengeti/wiki/Project_Architecture Project Architecture]
-  * [http://code.google.com/p/playserengeti/wiki/Meeting_Notes?ts=1253059690&updated=Meeting_Notes Meeting Notes]
+  * [http://code.google.com/p/playserengeti/wiki/Meeting_Notes Meeting Notes]
   * [Project Schedule and Milestones]
