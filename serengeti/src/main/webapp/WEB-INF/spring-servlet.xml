@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+
+    <bean id="handlerMapping"
+        class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="order" value="0"/>
+        <property name="alwaysUseFullPath" value="true"/>
+        <property name="urlMap">
+            <map>
+                <entry key="/" value-ref="welcomeController" />
+                <entry key="/index.html" value-ref="welcomeController" />
+                <entry key="/user/signup" value-ref="signUpController" />
+                <!--
+                <entry key="/die" value-ref="dieController" />
+                <entry key="/login" value-ref="loginController" />
+                <entry key="/logout" value-ref="logoutController" />
+                <entry key="/error/*" value-ref="errorController" />
+                -->
+            </map>
+        </property>
+    </bean>
+
+    <!--
+        Resource Bundles
+    -->
+    <bean id="messageSource"
+        class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>serengeti</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--
+        Controllers
+    -->
+    <bean id="welcomeController"
+        class="com.playserengeti.controller.WelcomeController">
+    </bean>
+
+    <bean id="signUpController"
+        class="com.playserengeti.controller.SignUpController">
+        <property name="commandClass"
+            value="com.playserengeti.controller.SignUpCommand"
+        />
+        <property name="commandName" value="signUp"/>
+        <property name="validator" ref="signUpValidator"/>
+        <constructor-arg ref="signUpService"/>
+    </bean>
+
+    <bean id="signUpService"
+        class="com.playserengeti.service.SignUpService">
+    </bean>
+
+    <bean id="signUpValidator"
+        class="com.playserengeti.controller.SignUpValidator">
+    </bean>
+
+    <!--
+        View Resolvers
+    -->
+    <bean id="viewResolver"
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass"
+            value="org.springframework.web.servlet.view.JstlView"
+        />
+        <property name="prefix" value="/WEB-INF/tiles/"/>
+    </bean>
+</beans>
