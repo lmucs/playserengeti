@@ -1,0 +1,92 @@
+This page summarizes the activities for each class meeting, as well as informal meetings held outside class where problems were discussed or important architectural decisions were made.
+
+== September 1 (Class) ==
+
+  * Went over [http://www.cs.lmu.edu/~ray/classes/se/syllabus/ syllabus] in detail
+  * Talked a bit about craftsmanship vs. enginnering
+  * Mentioned Code Complete is an important book which needed to be read
+  * Mentioned Effective Java is also an important book to read
+  * Discussed some project ideas
+  * Want an app that runs on some server, with multiple interfaces (Web, JavaScript, Flash, iPhone, Java Mobile, thick client, ...)
+  * Possible idea: a [http://playfoursquare.com/ Foursqure]-like application, possbily restricted to LMU. Possible codename: Serengeti
+
+== September 3 (Class) ==
+
+  * Went over usefulness of McConell's text
+  * Looked at the requirements checklist
+  * Discussed waterfall vs. iterative
+  * Discussed ''staged delivery''
+  * Much brainstorming about the project
+  * Settled on name ''Serengeti''
+  * Discussed how to use the wiki
+  * Looked at augmented reality
+  * Came up with project summary
+  * Assigned readings from McConnell, Chapters 1, 33, 34, 2, 3, 4.
+  * Asked students to all get wiki accounts
+
+== September 8 (Class) ==
+  * Created the Use Cases
+  * Went over finer points of how the program will work (Check in/Check out as apposed to ping)
+  * Checked our progress against the Requirements Checklist in McConnell
+  * Decided we would connect to the server via html
+  * Started the creation of the architecture (found at: [[Media:https://www.cs.lmu.edu/cmsi401/2009/index.php/Project_Architecture]])
+  * Asked students to continue to update the wiki.
+
+== September 10 (Class) ==
+
+  * Lecture on Computing, Software Architecture and Development (with emphasis on the phases, workflows and iterations of modern software methods).
+  * Lecture on the history and use of UML.
+  * Lecture on the construction of large-scale Java applications, focusing both on project orientation and classpath/classloader issues.
+  * Demonstration of the construction, from scratch, of a Java application using Maven and Eclipse, and placing it into a new CVS module.  Unit testing was included in the demo as well.
+
+== September 15 (Class) ==
+
+== September 17 (Class) ==
+
+== September 22 (Class) ==
+
+== September 24 (Class) ==
+
+== September 29 (Class) ==
+
+== October 1 (Class) ==
+
+== October 1 (Class) ==
+
+== October 6 (Class) ==
+
+== October 8 (Class) ==
+
+== October 13 (Class) ==
+
+== October 15 (Class) ==
+
+== October 20 (Class) ==
+
+== October 22 (Class) ==
+
+== October 27 (Class) ==
+
+== October 29 (Class) ==
+
+== November 3 (Class) ==
+
+== November 5 (Class) ==
+
+== November 10 (Class) ==
+
+== November 12 (Class) ==
+
+== November 17 (Class) ==
+
+== November 19 (Class) ==
+
+== November 24 (Class) ==
+
+== December 1 (Class) ==
+
+== December 3 (Class) ==
+
+== December 8 (Class) ==
+
+== December 10 (Class) ==
