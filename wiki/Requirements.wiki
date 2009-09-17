@@ -1,12 +1,35 @@
 The class will create a Serengeti server and at least two clients - a web client and a mobile client.  Serengeti is a multi-player social web app in which players join teams and mark off territories.
 
 
-  * The server must support the following
-    # For phase 1
-      # Produce a welcome page
-      # Produce a list of teams (from mock data) 
-    # For phase 2
-      # Associate users with teams
-    # For phase 3
-    # For phase 4
-    # For phase 5
+  * User Interaction Requirements
+    * Requirements for the web application
+    * Requirements for iPhone application
+      ** When the user opens the application, they are presented with a screen containing several button options.  This approach is used to ease initial loading time and to better separate a user's actions.  
+      ** The options that will be provided to the user are as follows:
+        * Check In
+        * Find People
+        * Find Places
+        * View Territories
+        * Settings/Options
+      ** For the "Check In" option:
+        * When selected, the user will tell the server the latitude and longitude of their current location.
+        * The server will consult the database to determine where the user is and modify the database to show that the user is currently at said location.
+        * When consulting the database, if the server detects that any of the user's friends and/or group members are checked in to the same location, a message is displayed stating that those people are in the same location. 
+        * After the user has checked in, the user can select whether to automatically update their position or to check them out after a set period of time.
+      ** For the "Find People" option:
+        * When "Find People" is selected, the user is presented a new page with a search bar at the top, a map below it, and a text area underneath the map (this will initially be hidden). 
+        * The map shows an area of 10 miles in any direction centered around the current location of the user with the user represented as a blue dot.  
+        * On the map, any friends or group members of the user that have recently checked in and are within the view area are represented as green dots.
+        * Players can be searched for by first name and/or last name or by username.
+        * If a search is successful the text area below the map will display information about the person including:
+          * First and last name
+          * Username
+          * Group Affiliation
+          * Location
+          * An option to bring up their profile.
+       * If the person searched for is currently checked in to a location the map will update to show the location of that person.
+       * If a search is unsuccessful, a message will appear that states that the person cannot be found.
+      ** For the Find Places option:
+      ** For the View Territories option:
+      ** For the Settings/Options option:
+    
