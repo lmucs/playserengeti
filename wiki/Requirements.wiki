@@ -17,8 +17,8 @@ The class will create a Serengeti server and at least two clients - a web client
             * Username
             * Home location
             * Contact information
-          ** The user can add and remove friends.
-          ** The user can change preferences.
+            * Profile Picture
+          ** The user can add and remove friends by searching for users.
         * The "Delete Account" option will remove the user from the database.
       ** For the "Group Management" option:
         * The user will be presented with three options:
@@ -29,22 +29,27 @@ The class will create a Serengeti server and at least two clients - a web client
           ** The user will be able to select information about the group such as:
             * Group Name
             * Preferred Color (for the map overlay)
+            * Group Picture
+            * Group Home Location
           ** After the group is created, the user will be able to select people to invite to their group.
+          ** The creator of the group is automatically set as the group leader.
         * For the "Modify Group" option:
-          ** The user will be able to modify the group name and preferred color.
-          ** The user will be able to invite people to the group and remove people from the group.
-        * The "Delete Group" option will remove the group from the database.
+          ** If the user will be presented with a list of groups to which they are a member.
+          ** The user, if they are the group leader, will be able to modify the group name, preferred color, group picture, and group home location.
+          ** If the user is the group leader, they may appoint another user to be the leader.
+          ** The user will be able to invite people to the group and, if they are the leader, remove people from the group.
+        * The "Delete Group" option will remove the group from the database, as long as the user is the group leader.
       ** For the "View World Map" option:
-        * The user will be presented with a large map centered around their home location search bars for both locations and people, and a text area at the bottom (this will initially be hidden).
+        * The user will be presented with a large map centered around their home location, search bars for both locations and people, and a text area at the bottom (this will initially be hidden).
         * The map will contain mechanisms to zoom in/out and to move in all directions.
         * The map will show a colored overlay to show which groups own which areas.
-        * The map will contain any friends and group members that are currently checked in.
-        * The map will contain any locations that are controlled by the user and their groups and any under contention with another group.
+        * The map will show any friends and group members that are currently checked in as green circles.
+        * The map will contain any locations that are controlled by the user, their groups, and any locations under contention with another group as gray squares.
         * When a person or location is selected from the map, the text area will show information about that person/location.
         * The user may search for people and locations using the search bars.
-        * When a search for a person or location is successful, the map will update to be centered around that person or location. 
+        * When a search for a person or location is successful, the map will update to be centered around that person or location and the text area will show information about that person or location.
     * Requirements for iPhone application
-      ** When the user opens the application, they are presented with a screen containing several button options.  This approach is used to ease initial loading time and to better separate a user's actions.  
+      ** When the user opens the application they are presented with a screen containing several button options.  This approach is used to ease initial loading time and to better separate a user's actions.  
       ** The options that will be provided to the user are as follows:
         * Check In
         * Find People
@@ -52,44 +57,36 @@ The class will create a Serengeti server and at least two clients - a web client
         * View World Map
         * Settings/Options
       ** For the "Check In" option:
-        * When selected, the user will tell the server the latitude and longitude of their current location.
+        * When selected, the application will give the server the latitude and longitude of the user's current location.
         * The server will consult the database to determine where the user is and modify the database to show that the user is currently at said location.
         * When consulting the database, if the server detects that any of the user's friends and/or group members are checked in to the same location, a message is displayed stating that those people are in the same location. 
         * After the user has checked in, the user can select whether to automatically update their position or to check them out after a set period of time.
       ** For the "Find People" option:
-        * When "Find People" is selected, the user is presented with a new page that contains a search bar at the top, a map below it that includes a check box to "Show Territories", and a text area at the bottom (this will initially be hidden). 
+        * When selected, the user is presented with a new page that contains a search bar at the top, a map below it that includes a check box to "Show Territories (Regions?)", and a text area at the bottom (this will initially be hidden). 
         * The map will contain mechanisms to zoom in/out and to move in all directions.
-        * The map shows an area of 10 miles in any direction centered around the current location of the user with the user represented as a blue dot.  
-        * On the map, any friends or group members of the user that have recently checked in and are within the view area are represented as green dots.
-        * When the "Show Territories" option is enabled, the map will display a colored overlay to represent which groups own which areas.  A key will be provided to differentiate regions.
-        * Players can be searched for by first name and/or last name or by username.
-        * If a search is successful the text area below the map will display information about the person including:
-          * First and last name
-          * Username
-          * Group Affiliation
-          * Location
-          * An option to bring up their profile.
-        * If the person searched for is currently checked in to a location the map will update to show the location of that person.
+        * The map shows an area of 10 miles in any direction centered around the current location of the user with the user represented as a blue circle.  
+        * On the map, any friends or group members of the user that have recently checked in and are within the view area are represented as green circles.
+        * When the "Show Territories (Regions?)" option is enabled, the map will display a colored overlay to represent which groups own which areas.  A key will be provided to differentiate regions.
+        * Players can be searched for by first and/or last name or by username.
+        * If a search is successful, the resulting users will be displayed in a scrolling list.
+        * When the user selects one of the results the text area below the map will display that person's profile.
+        * If the person searched for is currently checked in to a location, the map will update to show the location of that person.
         * If a search is unsuccessful, a message will appear which states that the person cannot be found.
       ** For the Find Places option:
-        * When "Find Places" is selected, the user is presented with a new page that contains a search bar at the top, a map below it that includes a check box to "Show Territories", and a text area at the bottom (this will initially be hidden).
+        * When "Find Places" is selected, the user is presented with a new page that contains a search bar at the top, a map below it that includes a check box to "Show Territories (Regions?)", and a text area at the bottom (this will initially be hidden).
         * The map will contain mechanisms to zoom in/out and to move in all directions.
-        * The map shows an area of 10 miles in any direction centered around the current location of the user with the user represented as a blue dot. 
+        * The map shows an area of 10 miles in any direction centered around the current location of the user with the user represented as a blue circle. 
         * When the "Show Territories" option is enabled, the map will display a colored overlay to represent which groups own which areas.  A key will be provided to differentiate regions.
         * Locations can be searched by name.
-        * If the search is successful, the map is updated to show that location, represented as a gray square and the text area below the map will display information about the location including:
-          * Location name
-          * Address
-          * Phone number
-          * Location's controlling group
-          * Information about current offers
+        * If the search is successful, the results will be displayed in a scrolling list.
+        * When a location is selected, the map is updated to show that location, represented as a gray square and the text area below the map will display the location's profile.
       ** For the View World Map option:
         * The user will be presented a screen with a map and a text area below it (this will initially be hidden).
         * The map will contain mechanisms to zoom in/out and to move in all directions.
         * The map will be centered around the user's current location.
         * The map will show a colored overlay to show which groups own which areas.
         * The map will show the locations of all fiends and group members.
-        * The map will show locations of interest that are near to the user, locations owned by the user's groups, locations that are under contention.
-        * When people/locations are selected from the map, the text area below the map will display information (in the same form as mentioned above) about that person/location.
+        * The map will show locations of interest that are near to the user, locations owned by the user's groups, and locations that are under contention.
+        * When people/locations are selected from the map, the text area below the map will display that person or location's profile.
       ** For the Settings/Options option:
     
