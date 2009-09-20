@@ -85,7 +85,7 @@ The class will create a Serengeti server and at least two clients - a web client
         * The map will contain mechanisms to zoom in/out and to move in all directions.
         * The map will be centered around the user's current location.
         * The map will show a colored overlay to show which groups own which areas.
-        * The map will show the locations of all fiends and group members.
+        * The map will show the locations of all friends and group members.
         * The map will show locations of interest that are near to the user, locations owned by the user's groups, and locations that are under contention.
         * When people/locations are selected from the map, the text area below the map will display that person or location's profile.
       ** For the Settings/Options option:
