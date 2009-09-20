@@ -6,6 +6,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
+/**
+ * Controller for producing the welcome page for Serengeti.
+ */
 public class WelcomeController extends AbstractController {
 
     @Override
