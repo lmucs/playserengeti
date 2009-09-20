@@ -90,3 +90,17 @@ The class will create a Serengeti server and at least two clients - a web client
         * When people/locations are selected from the map, the text area below the map will display that person or location's profile.
       ** For the Settings/Options option:
     
+
+Questions from Kelly
+These are questions that shall be answered by the requirements.
+
+  * How often can a user "check in"?
+  * What is the minimum amount of information required to create a user? What is the optional information associated   with a user account?
+  * How does a person become the "owner" of a venue?
+  * How does a team become the "owner" of a venue?
+  * What formats will your server spit out (XML, JSON, YAML)? What will be the first format you implement?
+  * Will there be any limiting to the number of requests a client can make?
+  * Who can add a new venue?
+  * Who can change data about a venue?
+  *What will the database schema look like? (This is a design question.)
+  *What happens when the server receives a bad request?
