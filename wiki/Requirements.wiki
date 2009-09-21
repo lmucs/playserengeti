@@ -91,7 +91,7 @@ The class will create a Serengeti server and at least two clients - a web client
     
 
 
-The following questions are regarding the functionality requirements.  Above are the user interaction requirements (i.e. how it should function for the user, not how it accomplishes the tasks).  Functionality requirements are to be specified below.
+The following questions are regarding the technical requirements.  Above are the user interaction requirements (i.e. how it should function for the user, not how it accomplishes the tasks).  Technical requirements are to be specified below.
 
 Questions from Kelly
 These are questions that shall be answered by the requirements.
@@ -106,4 +106,4 @@ These are questions that shall be answered by the requirements.
   # What will the database schema look like? (This is a design question.)
   # What happens when the server receives a bad request?
 
-*Application Functionality Requirements*
+*Technical Requirements*
