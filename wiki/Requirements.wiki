@@ -49,8 +49,8 @@ The class will create a Serengeti server and at least two clients - a web client
         * When a person or location is selected from the map, the text area will show information about that person/location.
         * The user may search for people and locations using the search bars.
         * When a search for a person or location is successful, the map will update to be centered around that person or location and the text area will show information about that person or location.
-      **For the Location Management Option
-        *The user will be presented with options to
+      ** For the Location Management Option
+        * The user will be presented with options to
           **Add a location/business 
           **Manage a location/business
           **Delete a location/business  
@@ -96,6 +96,13 @@ The class will create a Serengeti server and at least two clients - a web client
         * The map will show locations of interest that are near to the user, locations owned by the user's groups, and locations that are under contention.
         * When people/locations are selected from the map, the text area below the map will display that person or location's profile.
       ** For the Settings/Options option:
+         *//TODO
+      ** For the Location Management Option
+        * The user will be presented with options to
+          **Add a location/business 
+          **Manage a location/business
+          **Delete a location/business  
+          **For the purposes of serengeti a business is a location that has additional information stored for it (i.e., proprietor) 
     
 
 
