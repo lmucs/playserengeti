@@ -1,3 +1,39 @@
-UML
+*UML Object Diagram*
 
 http://www.cs.lmu.edu/~cmuel/serengeti/images/serengeti_UML.PNG
+----
+
+*Database Table Mock-up*
+
+                     User Table
+|| user_id || first name || last name || admin || ... ||
+
+
+
+                     Team Table
+|| team_id || team name || leader_id || ...||
+
+
+
+                     Location table
+|| loc_id || location name || latitude || longitude || owner_team_id || ... ||
+
+
+
+                     Friends Table
+|| friend_id || person1_id || person2_id || ... ||
+
+
+
+                     Visits Table
+|| visit_id || loc_id || user_id || ... ||
+
+
+
+                    User Team Table
+|| user_team_id || user_id || team_id || ... ||
+
+
+
+                    Invitation Table
+|| invitation_id || user_id || accepted || ... ||
