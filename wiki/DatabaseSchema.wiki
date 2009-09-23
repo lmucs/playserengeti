@@ -4,14 +4,14 @@
 
 Locations Columns
  
-** Location ID
-** Name
-** Latitude
-** Longitude
-** User_Owner
-** Team_Owner
-** Proprietor 
-** City
-** Street
-** House_Number
-** Zip_Code
+ ** Location ID
+ ** Name
+ ** Latitude
+ ** Longitude
+ ** User_Owner
+ ** Team_Owner
+ ** Proprietor 
+ ** City
+ ** Street
+ ** House_Number
+ ** Zip_Code
