@@ -8,6 +8,7 @@ The class will create a Serengeti server and at least two clients - a web client
         * Account Management
         * Group Management
         * View World Map
+        * Location Management
       ** For the "Account Management" option:
         * The user will be presented with two options:
           ** Modify Account
@@ -48,7 +49,14 @@ The class will create a Serengeti server and at least two clients - a web client
         * When a person or location is selected from the map, the text area will show information about that person/location.
         * The user may search for people and locations using the search bars.
         * When a search for a person or location is successful, the map will update to be centered around that person or location and the text area will show information about that person or location.
-    * Requirements for iPhone application
+      **For the Location Management Option
+        *The user will be presented with options to
+          **Add a location/business 
+          **Manage a location/business
+          **Delete a location/business  
+          **For the purposes of serengeti a business is a location that has additional information stored for it (i.e., proprietor) 
+
+  * Requirements for iPhone application
       ** When the user opens the application they are presented with a screen containing several button options.  This approach is used to ease initial loading time and to better separate a user's actions.  
       ** The options that will be provided to the user are as follows:
         * Check In
