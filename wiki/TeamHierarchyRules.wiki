@@ -1,0 +1,16 @@
+#summary Team Hierarchy Rules and Definitions.
+
+= Introduction =
+
+Ideas for how to structure the team Hierarchy
+
+= Details =
+
+I have some ideas for Team Hierarchy Rules/Definition (please feel free to viciously savage, as these are merely passing thoughts):
+
+At the top level, there are "Leagues" (or "Biosphere" if we want to keep it all animal themed) that are managed by an Admin. These would be high level, like "Universities", "NFL Teams", "Political Parties", "Corporations" or what have you. Users could submit a request to have additional leagues added, but it would be at the discretion of the Admin.
+Within each League, there would be "Teams" (or "species" or whatnot) that are all rivals to each other. That is, all universities are playing against all other universities. A user can only be a member of one Team per League, but can be playing in multiple Leagues at the same time. That is, a user can be a member of team LMU and team Cardinals, but can't be a member of team LMU and team UCLA. I think some leagues would benefit from being Admin controlled (ie, NFL Teams are limited, so Admin control would make sense) but others can have users create their own teams (ie, corporations). In the Admin-limited Leagues, management and ownership of teams/team profile should be by Admin, while in the user-generated Leagues, the team leader would be the creator of the team and would have management/deletion rights.
+
+Within each Team, there can be sub-leagues and sub-teams (or "packs" or "herds") that can be user generated. For example, there could be a "Greek Org" sub-league with teams for each greek org. Again, each user could be a member of only one sub-group per sub-league, but could be a member of multiple sub-leagues. Joining a sub-team automatically makes you a member of the parent team. Owners of the parent Team should be able to specify if sub-leagues/sub-teams can be user generated or if they should be controlled. If controlled, the Team leader should have rights to create/manage sub-leagues/sub-teams.
+
+Within each league or sub-league, a particular team can declare another team a special "rival". Checking game status could then be done by league/sub-league, which would show all teams in the league, or by rivals only
