@@ -1,0 +1,17 @@
+#summary One- database schema of the user, location, team, and other tables.
+
+= Database Schema =
+
+Locations Columns
+ 
+** Location ID
+** Name
+** Latitude
+** Longitude
+** User_Owner
+** Team_Owner
+** Proprietor 
+** City
+** Street
+** House_Number
+** Zip_Code
