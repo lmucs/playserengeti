@@ -30,8 +30,8 @@ http://www.cs.lmu.edu/~cmuel/serengeti/images/serengeti_UML.PNG
 
 
 
-                    User Team Table
-|| user_team_id || user_id || team_id || ... ||
+                    Team Member Table
+|| member_id || user_id || team_id || ... ||
 
 
 
