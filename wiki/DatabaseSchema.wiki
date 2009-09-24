@@ -38,4 +38,11 @@ User Columns
   * profilePicLocation
   * visitHistory (1 to many made up of visitIDs)
   * visitCount
+
+Visits/History Columns
+  * UserID
+  * Teams
+  * visitCount
+  * visitHistory
+  * locationID
   
