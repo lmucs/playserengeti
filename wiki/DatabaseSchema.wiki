@@ -16,3 +16,26 @@ Locations Columns
  ** House_Number
  ** Zip_Code
  ** Details
+
+User Columns
+  * UserID
+  * Password
+  * FirstName (Required)
+  * LastName (Required)
+  * emailAddress (Required)
+  * Phone # (Required for mobile app)
+  * currentLocation (1 to 1 of locationIDs)
+  * homeLocation (1 to 1 of locationIDs)
+  * statusMessage
+  * loggedIn (pinging)
+  * Teams (1 to many made up of teamIDs)
+  * Friends (1 to many made up of userIDs)
+  * streetAddressLine1
+  * streetAddressLine2
+  * streetAddressCity
+  * streetAddressState
+  * streetAddressZip
+  * profilePicLocation
+  * visitHistory (1 to many made up of visitIDs)
+  * visitCount
+  
