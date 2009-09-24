@@ -1,4 +1,4 @@
-#summary One- database schema of the user, location, team, and other tables.
+#summary - Database schema of the user, location, team, and other tables.
 
 = Database Schema =
 
