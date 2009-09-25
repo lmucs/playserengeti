@@ -17,12 +17,14 @@
                 <entry key="/" value-ref="welcomeController" />
                 <entry key="/index.html" value-ref="welcomeController" />
                 <entry key="/user/signup" value-ref="signUpController" />
+                <entry key="/user/delete" value-ref="userDeleteController" />
+                <entry key="/user/manage" value-ref="userManageController" />
+                <entry key="/user/viewprofile" value-ref="userViewProfileController" />
                 
                 <entry key="/team/create" value-ref="teamCreateController" />
                 <entry key="/team/update" value-ref="teamUpdateController" />
                 <entry key="/team/delete" value-ref="teamDeleteController" />
                 <!--
-                <entry key="/die" value-ref="dieController" />
                 <entry key="/login" value-ref="loginController" />
                 <entry key="/logout" value-ref="logoutController" />
                 <entry key="/error/*" value-ref="errorController" />
@@ -108,6 +110,60 @@
     
     <bean id="signUpValidator"
         class="com.playserengeti.controller.SignUpValidator">
+    </bean>
+    
+    <bean id="userDeleteController"
+        class="com.playserengeti.controller.UserDeleteController">
+        <property name="commandClass"
+            value="com.playserengeti.controller.UserDeleteCommand"
+        />
+        <property name="commandName" value="userDelete"/>
+        <property name="validator" ref="userDeleteValidator"/>
+        <constructor-arg ref="userDeleteService"/>
+    </bean>
+
+    <bean id="userDeleteService"
+        class="com.playserengeti.service.UserDeleteService">
+    </bean>
+
+    <bean id="userDeleteValidator"
+        class="com.playserengeti.controller.UserDeleteValidator">
+    </bean>    
+
+    <bean id="userManageController"
+        class="com.playserengeti.controller.UserManageController">
+        <property name="commandClass"
+            value="com.playserengeti.controller.UserManageCommand"
+        />
+        <property name="commandName" value="userManage"/>
+        <property name="validator" ref="userManageValidator"/>
+        <constructor-arg ref="userManageService"/>
+    </bean>
+
+    <bean id="userManageService"
+        class="com.playserengeti.service.UserManageService">
+    </bean>
+
+    <bean id="userManageValidator"
+        class="com.playserengeti.controller.UserManageValidator">
+    </bean>
+    userViewProfileController
+    <bean id="userViewProfileController"
+        class="com.playserengeti.controller.UserViewProfileController">
+        <property name="commandClass"
+            value="com.playserengeti.controller.UserViewProfileCommand"
+        />
+        <property name="commandName" value="userViewProfile"/>
+        <property name="validator" ref="userViewProfileValidator"/>
+        <constructor-arg ref="userViewProfileService"/>
+    </bean>
+
+    <bean id="userViewProfileService"
+        class="com.playserengeti.service.UserViewProfileService">
+    </bean>
+
+    <bean id="userViewProfileValidator"
+        class="com.playserengeti.controller.UserViewProfileValidator">
     </bean>
     
     <bean id="teamCreateValidator"
