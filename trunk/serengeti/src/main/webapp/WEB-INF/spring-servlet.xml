@@ -17,6 +17,10 @@
                 <entry key="/" value-ref="welcomeController" />
                 <entry key="/index.html" value-ref="welcomeController" />
                 <entry key="/user/signup" value-ref="signUpController" />
+                
+                <entry key="/team/create" value-ref="teamCreateController" />
+                <entry key="/team/update" value-ref="teamUpdateController" />
+                <entry key="/team/delete" value-ref="teamDeleteController" />
                 <!--
                 <entry key="/die" value-ref="dieController" />
                 <entry key="/login" value-ref="loginController" />
@@ -56,14 +60,67 @@
         <constructor-arg ref="signUpService"/>
     </bean>
 
+    <bean id="teamCreateController"
+        class="com.playserengeti.controller.TeamCreateController">
+        <property name="commandClass"
+        	value="com.playserengeti.controller.TeamCreateCommand"
+        />
+        <property name="commandName" value="createTeam"/>
+        <property name="validator" ref="teamCreateValidator"/>
+        <constructor-arg ref="teamCreateService"/>
+    </bean>
+    
+        <bean id="teamUpdateController"
+        class="com.playserengeti.controller.TeamUpdateController">
+        <property name="commandClass"
+        	value="com.playserengeti.controller.TeamUpdateCommand"
+        />
+        <property name="commandName" value="updateTeam"/>
+        <property name="validator" ref="teamUpdateValidator"/>
+        <constructor-arg ref="teamUpdateService"/>
+    </bean>
+    
+        <bean id="teamDeleteController"
+        class="com.playserengeti.controller.TeamDeleteController">
+        <property name="commandClass"
+        	value="com.playserengeti.controller.TeamDeleteCommand"
+        />
+        <property name="commandName" value="deleteTeam"/>
+        <property name="validator" ref="teamDeleteValidator"/>
+        <constructor-arg ref="teamDeleteService"/>
+    </bean>
+    
     <bean id="signUpService"
         class="com.playserengeti.service.SignUpService">
     </bean>
 
+    <bean id="teamCreateService"
+        class="com.playserengeti.service.TeamCreateService">
+    </bean>
+    
+    <bean id="teamUpdateService"
+        class="com.playserengeti.service.TeamUpdateService">
+    </bean>
+    
+    <bean id="teamDeleteService"
+        class="com.playserengeti.service.TeamDeleteService">
+    </bean>
+    
     <bean id="signUpValidator"
         class="com.playserengeti.controller.SignUpValidator">
     </bean>
+    
+    <bean id="teamCreateValidator"
+        class="com.playserengeti.controller.TeamCreateValidator">
+    </bean>
 
+    <bean id="teamUpdateValidator"
+        class="com.playserengeti.controller.TeamUpdateValidator">
+    </bean>
+    
+    <bean id="teamDeleteValidator"
+        class="com.playserengeti.controller.TeamDeleteValidator">
+    </bean>
     <!--
         View Resolvers
     -->
