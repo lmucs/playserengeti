@@ -262,6 +262,28 @@ Security:
 
 Notes: How does this work? Does the form ask for an email address and send a link to that address?
 
+===Invite To be Friend===
+Description: Invite a person to be your friend
+
+URI: /invite/friend
+
+Users: User
+
+Security:
+
+Notes:
+
+===Accept Friend Request===
+Description: Accept a request to be a friend
+
+URI: /invite/accept
+
+Users: Users who have received a friend request
+
+Security:
+
+Notes:
+
 ===Invite To Team===
 
 Description: Invite a user (or soon-to-be-user) to a team
