@@ -16,6 +16,7 @@
             <map>
                 <entry key="/" value-ref="welcomeController" />
                 <entry key="/index.html" value-ref="welcomeController" />
+                
                 <entry key="/user/signup" value-ref="signUpController" />
                 <entry key="/user/delete" value-ref="userDeleteController" />
                 <entry key="/user/manage" value-ref="userManageController" />
@@ -24,6 +25,12 @@
                 <entry key="/team/create" value-ref="teamCreateController" />
                 <entry key="/team/update" value-ref="teamUpdateController" />
                 <entry key="/team/delete" value-ref="teamDeleteController" />
+                
+                <entry key="/status/ping" value-ref="pingController" />
+                <entry key="/status/show" value-ref="showController" />
+                <entry key="/status/hide" value-ref="hideController" />
+                <entry key="/status/game" value-ref="viewWorldMapController" />
+                
                 <!--
                 <entry key="/login" value-ref="loginController" />
                 <entry key="/logout" value-ref="logoutController" />
@@ -177,6 +184,80 @@
     <bean id="teamDeleteValidator"
         class="com.playserengeti.controller.TeamDeleteValidator">
     </bean>
+    
+    <bean id="pingController"
+        class="com.playserengeti.controller.PingController">
+        <property name="commandClass"
+            value="com.playserengeti.controller.PingCommand"
+        />
+        <property name="commandName" value="ping"/>
+        <property name="validator" ref="pingValidator"/>
+        <constructor-arg ref="pingService"/>
+    </bean>
+
+    <bean id="pingService"
+        class="com.playserengeti.service.PingService">
+    </bean>
+
+    <bean id="pingValidator"
+        class="com.playserengeti.controller.PingValidator">
+    </bean> 
+    
+    <bean id="showController"
+        class="com.playserengeti.controller.ShowController">
+        <property name="commandClass"
+            value="com.playserengeti.controller.ShowCommand"
+        />
+        <property name="commandName" value="show"/>
+        <property name="validator" ref="showValidator"/>
+        <constructor-arg ref="showService"/>
+    </bean>
+
+    <bean id="showService"
+        class="com.playserengeti.service.ShowService">
+    </bean>
+
+    <bean id="showValidator"
+        class="com.playserengeti.controller.ShowValidator">
+    </bean>     
+    
+    <bean id="hideController"
+        class="com.playserengeti.controller.HideController">
+        <property name="commandClass"
+            value="com.playserengeti.controller.HideCommand"
+        />
+        <property name="commandName" value="hide"/>
+        <property name="validator" ref="hideValidator"/>
+        <constructor-arg ref="hideService"/>
+    </bean>
+
+    <bean id="hideService"
+        class="com.playserengeti.service.HideService">
+    </bean>
+
+    <bean id="hideValidator"
+        class="com.playserengeti.controller.HideValidator">
+    </bean>     
+    
+    <bean id="viewWorldMapController"
+        class="com.playserengeti.controller.ViewWorldMapController">
+        <property name="commandClass"
+            value="com.playserengeti.controller.ViewWorldMapCommand"
+        />
+        <property name="commandName" value="viewWorldMap"/>
+        <property name="validator" ref="viewWorldMapValidator"/>
+        <constructor-arg ref="viewWorldMapService"/>
+    </bean>
+
+    <bean id="viewWorldMapService"
+        class="com.playserengeti.service.ViewWorldMapService">
+    </bean>
+
+    <bean id="viewWorldMapValidator"
+        class="com.playserengeti.controller.ViewWorldMapValidator">
+    </bean>     
+    
+    
     <!--
         View Resolvers
     -->
