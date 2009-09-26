@@ -211,19 +211,7 @@ Security:
 
 Notes:
 
-===Locate Person===
-
-Description: Show the location of a user
-
-URL: /status/user[?user=user_id]
-
-Users: User
-
-Security: Should be limited to only team members or friends of user.
-
-Notes:
-
-===Show Game Status===
+===View World Map===
 
 Description: Display the current status of the game. 
 
