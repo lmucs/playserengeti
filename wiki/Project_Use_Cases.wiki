@@ -211,18 +211,6 @@ Security:
 
 Notes:
 
-===Get Team Status===
-
-Description:
-
-URL: /status/team[?team=team_id]
-
-Users: User
-
-Security:
-
-Notes:
-
 ===Locate Person===
 
 Description: Show the location of a user
