@@ -9,6 +9,7 @@ The class will create a Serengeti server and at least two clients - a web client
         * Team Management
         * View World Map
         * Location Management
+        * Communitate
       ** For the "Account Management" option:
         * The user will be presented with two options:
           ** Modify Account
@@ -56,6 +57,13 @@ The class will create a Serengeti server and at least two clients - a web client
           **Manage a location/business
           **Delete a location/business  
           **For the purposes of serengeti a business is a location that has additional information stored for it (i.e., proprietor) 
+      **For the "Communicate" option
+        * The user will be presented with options to: 
+        * Invite to Game - a user can enter an email address and a message will be sent to that address inviting the recipient to sign up to Serengeti
+        * Send friend request - invite a user to be added to a users friends list, allowing them to see each other's location
+        * Accept a friend request - allows a user to accept a friend request that has been received
+        * Invite to team - allows a user to invite another user to join a team
+        * Invite to Location - allows a user to invite another user to meet them at their current location. 
 
   * Requirements for iPhone application
       ** When the user opens the application they are presented with a screen containing several button options.  This approach is used to ease initial loading time and to better separate a user's actions.  
