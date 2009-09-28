@@ -20,7 +20,7 @@
                 <entry key="/user/signup" value-ref="signUpController" />
                 <entry key="/user/delete" value-ref="userDeleteController" />
                 <entry key="/user/manage" value-ref="userManageController" />
-                <entry key="/user/viewprofile" value-ref="userViewProfileController" />
+                <entry key="/user/viewProfile" value-ref="userViewProfileController" />
                 
                 <entry key="/team/create" value-ref="teamCreateController" />
                 <entry key="/team/update" value-ref="teamUpdateController" />

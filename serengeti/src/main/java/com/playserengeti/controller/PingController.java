@@ -33,11 +33,13 @@ public class PingController extends AbstractCommandController {
     	}
     	
         PingCommand command = (PingCommand)commandObject;
+        
+        String userID = command.getUserID();
+        
+        //these values should eventually be provided by querying the userID
         double lat = command.getLat();
         double lon = command.getLon();
         
-        String userID = command.getUserID();
-
         String viewName = "ping.jsp";
         
         ModelAndView mav = new ModelAndView(viewName);

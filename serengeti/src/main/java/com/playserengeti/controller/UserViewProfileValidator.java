@@ -18,10 +18,11 @@ public class UserViewProfileValidator implements Validator {
 	public void validate(Object object, Errors errors) {
 		UserViewProfileCommand c = UserViewProfileCommand.class.cast(object);
 		
+		/* Should eventually validate that the userID is currently in the dB? 
 		if (c.getUserID() == null) {
 			errors.reject("error.missing.userID");
 		}
+		*/
 		
-		/* Should eventually validate that the userID is currently in the dB? */
 	}
 }

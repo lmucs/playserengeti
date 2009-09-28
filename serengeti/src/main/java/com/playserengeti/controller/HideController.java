@@ -33,8 +33,8 @@ public class HideController extends AbstractCommandController {
     	}
     	
         HideCommand command = (HideCommand)commandObject;
+        
         String userID = command.getUserID();
-  
         String viewName = "hide.jsp";
         
         ModelAndView mav = new ModelAndView(viewName);

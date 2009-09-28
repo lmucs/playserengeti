@@ -21,7 +21,6 @@ public class UserDeleteController extends AbstractCommandController {
 		this.service = service;
 	}
 	
-	
     @Override
     protected ModelAndView handle(HttpServletRequest request,
             HttpServletResponse response, Object commandObject,
@@ -32,10 +31,9 @@ public class UserDeleteController extends AbstractCommandController {
     	}
     	
         UserDeleteCommand command = (UserDeleteCommand)commandObject;
-        String userID = command.getUserID();
+    	String userID = command.getUserID();
+    	String viewName = "userDelete.jsp";    
 
-        String viewName = "userDelete.jsp";
-        
         ModelAndView mav = new ModelAndView(viewName);
         mav.addObject("userID", userID);
         return mav;

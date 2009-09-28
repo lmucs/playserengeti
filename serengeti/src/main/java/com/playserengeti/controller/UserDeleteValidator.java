@@ -17,11 +17,12 @@ public class UserDeleteValidator implements Validator {
 	@Override
 	public void validate(Object object, Errors errors) {
 		UserDeleteCommand c = UserDeleteCommand.class.cast(object);
-		
+
+		/* Should eventually validate that the userID is currently in the dB? 
 		if (c.getUserID() == null) {
-			errors.reject("error.missing.userID");
+			errors.reject("error.invalid.userID");
 		}
-		
-		/* Should eventually validate that the userID is currently in the dB? */
+		*/
+
 	}
 }
