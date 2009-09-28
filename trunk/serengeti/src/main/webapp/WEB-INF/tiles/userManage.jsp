@@ -12,6 +12,17 @@
       		<strong><c:out value="${userID}"/></strong>...</p>
     	</c:if>
         </p>
+        
+        <c:if test='${ empty userID }'>    
+    	<p>Which ID would you like to manage?</p>
+        <p>
+			<form method="get" action="manage">
+				<label for="userID"> User ID </label><input type="text" name="userID"/><br/>
+				<input type="submit" value="Manage ID"/>
+			</form>
+        </p>
+        </c:if>
+        
     </body>
 </html>
 

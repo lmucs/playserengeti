@@ -3,22 +3,22 @@
 
 <html>
     <head>
-        <title>View World Map</title>
+        <title>View User Profile</title>
     </head>
   
     <body>
-        Stub page to show world map for userID 
+        Stub page for viewing of profile for user ID
     	<c:if test='${ !empty userID }'>
-      		<strong><c:out value=" ${userID}"/></strong>...</p>
+      		<strong><c:out value="${userID}"/></strong>...</p>
     	</c:if>
         </p>
         
         <c:if test='${ empty userID }'>    
-    	<p>View World Map centered around which User ID?</p>
+    	<p>Which ID would you like to view?</p>
         <p>
-			<form method="get" action="game">
+			<form method="get" action="viewProfile">
 				<label for="userID"> User ID </label><input type="text" name="userID"/><br/>
-				<input type="submit" value="View World Map"/>
+				<input type="submit" value="View User Profile ID"/>
 			</form>
         </p>
         </c:if>

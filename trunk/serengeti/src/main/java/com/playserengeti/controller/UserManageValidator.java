@@ -17,11 +17,12 @@ public class UserManageValidator implements Validator {
 	@Override
 	public void validate(Object object, Errors errors) {
 		UserManageCommand c = UserManageCommand.class.cast(object);
-		
+
+		/* Should eventually validate that the userID is currently in the dB? 
 		if (c.getUserID() == null) {
 			errors.reject("error.missing.userID");
 		}
-		
-		/* Should eventually validate that the userID is currently in the dB? */
+		*/
+
 	}
 }

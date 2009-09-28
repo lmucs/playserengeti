@@ -17,10 +17,12 @@ public class PingValidator implements Validator {
 	@Override
 	public void validate(Object object, Errors errors) {
 		PingCommand c = PingCommand.class.cast(object);
-		
+
+		/* Should eventually validate that the locationID is currently in the dB? 
 		if (c.getUserID() == null) {
 			errors.reject("error.missing.userID");
 		}
-		/* Should eventually validate that the locationID is currently in the dB? */
+        */
+		
 	}
 }
