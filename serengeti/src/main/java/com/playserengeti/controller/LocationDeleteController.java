@@ -7,7 +7,7 @@ import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractCommandController;
 
-import com.playserengeti.service.LocationDeleteService;
+import com.playserengeti.service.LocationService;
 
 /*
  *The controller for deleting a location
@@ -15,9 +15,9 @@ import com.playserengeti.service.LocationDeleteService;
 
 public class LocationDeleteController extends AbstractCommandController {
 	
-	private LocationDeleteService service;
+	private LocationService service;
 	
-	public LocationDeleteController (LocationDeleteService service) {
+	public LocationDeleteController (LocationService service) {
 		this.service = service;
 	}
 	
