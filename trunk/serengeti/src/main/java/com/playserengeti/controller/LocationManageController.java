@@ -7,7 +7,7 @@ import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractCommandController;
 
-import com.playserengeti.service.LocationManageService;
+import com.playserengeti.service.LocationService;
 
 /*
  *The controller for managing a location
@@ -15,9 +15,9 @@ import com.playserengeti.service.LocationManageService;
 
 public class LocationManageController extends AbstractCommandController {
 
-	private LocationManageService service;
+	private LocationService service;
 	
-	public LocationManageController(LocationManageService service) {
+	public LocationManageController(LocationService service) {
 		this.service = service;
 	}
 	
