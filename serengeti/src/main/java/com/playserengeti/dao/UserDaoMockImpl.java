@@ -53,7 +53,7 @@ public class UserDaoMockImpl implements UserDao {
 
 	@Override
 	public User getUserById(Integer id) {
-		return storage.get(id);
+		return new User(storage.get(id));
 	}
 
 	@Override

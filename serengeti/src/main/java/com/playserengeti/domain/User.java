@@ -11,6 +11,10 @@ public class User {
     private String avatar;
     // TODO: private Team team;
 
+    public User(User b) {
+    	this(b.id, b.loginName, b.displayName);
+    }
+    
     public User(Integer id, String loginName, String displayName) {
         this.id = id;
         this.loginName = loginName;
