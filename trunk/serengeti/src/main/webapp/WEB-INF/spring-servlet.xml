@@ -26,6 +26,10 @@
                 <entry key="/team/update" value-ref="teamUpdateController" />
                 <entry key="/team/delete" value-ref="teamDeleteController" />
                 
+                <entry key="/location/create" value-ref="locationCreateController" />
+                <entry key="/location/update" value-ref="locationUpdateController" />
+                <entry key="/location/delete" value-ref="locationDeleteController" />
+                
                 <entry key="/status/ping" value-ref="pingController" />
                 <entry key="/status/show" value-ref="showController" />
                 <entry key="/status/hide" value-ref="hideController" />
@@ -97,6 +101,36 @@
         <property name="commandName" value="deleteTeam"/>
         <property name="validator" ref="teamDeleteValidator"/>
         <constructor-arg ref="teamDeleteService"/>
+    </bean>
+    
+        <bean id="locationCreateController"
+        class="com.playserengeti.controller.LocationCreateController">
+        <property name="commandClass"
+        	value="com.playserengeti.controller.LocationCreateCommand"
+        />
+        <property name="commandName" value="createLocation"/>
+        <property name="validator" ref="locationCreateValidator"/>
+        <constructor-arg ref="locationCreateService"/>
+    </bean>
+    
+        <bean id="locationManageController"
+        class="com.playserengeti.controller.LocationManageController">
+        <property name="commandClass"
+        	value="com.playserengeti.controller.LocationManageCommand"
+        />
+        <property name="commandName" value="manageLocation"/>
+        <property name="validator" ref="locationManageValidator"/>
+        <constructor-arg ref="locationManageService"/>
+    </bean>
+    
+        <bean id="locationDeleteController"
+        class="com.playserengeti.controller.LocationDeleteController">
+        <property name="commandClass"
+        	value="com.playserengeti.controller.LocationDeleteCommand"
+        />
+        <property name="commandName" value="deletelocation"/>
+        <property name="validator" ref="locationDeleteValidator"/>
+        <constructor-arg ref="locationDeleteService"/>
     </bean>
     
     <bean id="signUpService"
