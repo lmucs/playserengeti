@@ -1,7 +1,7 @@
 package com.playserengeti.service;
 
+import com.playserengeti.dao.UserDao;
 import com.playserengeti.domain.User;
-import com.serengeti.dao.UserDao;
 
 /**
  * Service for operations related to users.
