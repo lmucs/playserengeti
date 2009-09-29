@@ -1,6 +1,7 @@
 package com.playserengeti.dao;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,7 +28,7 @@ public class UserDaoMockImpl implements UserDao {
 	private int maxId;
 	
 	public UserDaoMockImpl() {
-		storage = new HashMap<Integer, User>();
+		storage = Collections.synchronizedMap(new HashMap<Integer, User>());
 		maxId = -1;
 		
 		// Insert the sample users into the database as this is a mock impl.
