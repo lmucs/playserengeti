@@ -24,7 +24,7 @@ public class UserDaoMockImpl implements UserDao {
 	};
 	
 	private Map<Integer, User> storage;
-	int maxId;
+	private int maxId;
 	
 	public UserDaoMockImpl() {
 		storage = new HashMap<Integer, User>();
