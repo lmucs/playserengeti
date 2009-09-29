@@ -36,8 +36,7 @@ public class TeamDeleteController extends AbstractCommandController {
         int leaderID = command.getLeaderID();
         Color color = command.getColor();
         Image image = command.getImage();
-        double homeLongitude = command.getHomeLongitude();
-        double homeLatitude = command.getHomeLatitude();
+        int homeLocation = command.getHomeLocation();
 
 
         String viewName = "teamDelete.jsp";
@@ -49,8 +48,7 @@ public class TeamDeleteController extends AbstractCommandController {
         mav.addObject("leaderID", leaderID);
         mav.addObject("color", color);
         mav.addObject("image", image);
-        mav.addObject("homeLongitude", homeLongitude);
-        mav.addObject("homeLatitude", homeLatitude);
+        mav.addObject("homeLocation", homeLocation);
 
         return mav;
     }
