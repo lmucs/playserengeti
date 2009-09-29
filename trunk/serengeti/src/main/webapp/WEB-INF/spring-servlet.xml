@@ -17,17 +17,17 @@
                 <entry key="/" value-ref="welcomeController" />
                 <entry key="/index.html" value-ref="welcomeController" />
                 
-                <entry key="/user/signup" value-ref="signUpController" />
+                <entry key="/user/create" value-ref="signUpController" />
                 <entry key="/user/delete" value-ref="userDeleteController" />
-                <entry key="/user/manage" value-ref="userManageController" />
-                <entry key="/user/viewProfile" value-ref="userViewProfileController" />
+                <entry key="/user/update" value-ref="userManageController" />
+                <entry key="/user/view" value-ref="userViewProfileController" />
                 
                 <entry key="/team/create" value-ref="teamCreateController" />
                 <entry key="/team/update" value-ref="teamUpdateController" />
                 <entry key="/team/delete" value-ref="teamDeleteController" />
                 
                 <entry key="/location/create" value-ref="locationCreateController" />
-                <entry key="/location/manage" value-ref="locationManageController" />
+                <entry key="/location/update" value-ref="locationManageController" />
                 <entry key="/location/delete" value-ref="locationDeleteController" />
                 
                 <entry key="/status/ping" value-ref="pingController" />
