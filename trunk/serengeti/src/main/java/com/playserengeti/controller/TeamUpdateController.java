@@ -10,25 +10,24 @@ import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractCommandController;
 
-import com.playserengeti.service.TeamUpdateService;
-
+import com.playserengeti.service.TeamService;
 public class TeamUpdateController extends AbstractCommandController {
-	
-	private TeamUpdateService service;
-	
-	public TeamUpdateController (TeamUpdateService service) {
-		this.service = service;
-	}
-	
+
+    private TeamService service;
+
+    public TeamUpdateController (TeamService service) {
+        this.service = service;
+    }
+
     @Override
     protected ModelAndView handle(HttpServletRequest request,
             HttpServletResponse response, Object commandObject,
             BindException errors) throws Exception {
 
-    	if (errors.hasErrors()) {
-    	    return new ModelAndView("errors.jspx", "errors", errors.getAllErrors());	
-    	}
-    	
+        if (errors.hasErrors()) {
+            return new ModelAndView("errors.jspx", "errors", errors.getAllErrors());
+        }
+
         TeamUpdateCommand command = (TeamUpdateCommand)commandObject;
         String name = command.getName();
         int teamID = command.getTeamID();
@@ -41,18 +40,18 @@ public class TeamUpdateController extends AbstractCommandController {
 
 
         String viewName = "teamUpdate.jsp";
-        
+
         ModelAndView mav = new ModelAndView(viewName);
         mav.addObject("name", name);
         mav.addObject("teamID", teamID);
         mav.addObject("teamTypeID", teamTypeID);
-        mav.addObject("leaderID", leaderID); 
-        mav.addObject("color", color);        
-        mav.addObject("image", image);        
-        mav.addObject("homeLongitude", homeLongitude);        
-        mav.addObject("homeLatitude", homeLatitude);        
+        mav.addObject("leaderID", leaderID);
+        mav.addObject("color", color);
+        mav.addObject("image", image);
+        mav.addObject("homeLongitude", homeLongitude);
+        mav.addObject("homeLatitude", homeLatitude);
 
         return mav;
     }
-    
+
 }

@@ -11,31 +11,31 @@ import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractCommandController;
 
-import com.playserengeti.service.UserManageService;
+import com.playserengeti.service.UserService;
 
 public class UserManageController extends AbstractCommandController {
 
-	private UserManageService service;
-	
-	public UserManageController(UserManageService service) {
-		this.service = service;
-	}
-	
-	
+    private UserService service;
+
+    public UserManageController(UserService service) {
+        this.service = service;
+    }
+
+
     @Override
     protected ModelAndView handle(HttpServletRequest request,
             HttpServletResponse response, Object commandObject,
             BindException errors) throws Exception {
 
-    	if (errors.hasErrors()) {
-    	    return new ModelAndView("errors.jspx", "errors", errors.getAllErrors());	
-    	}
-    	
+        if (errors.hasErrors()) {
+            return new ModelAndView("errors.jspx", "errors", errors.getAllErrors());
+        }
+
         UserManageCommand command = (UserManageCommand)commandObject;
         String userID = command.getUserID();
 
         String viewName = "userManage.jsp";
-        
+
         ModelAndView mav = new ModelAndView(viewName);
         mav.addObject("userID", userID);
         return mav;
