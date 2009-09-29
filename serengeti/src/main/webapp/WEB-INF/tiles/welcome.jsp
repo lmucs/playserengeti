@@ -21,6 +21,9 @@
         <a href="status/hide">Set a user ID to stop pinging</a><br/>
         <a href="status/game">View the World Map</a><br/>
         
+        <a href="location/create">create a location</a><br />
+        <a href="location/delete">create a location</a><br />
+        <a href="location/manage">create a location</a><br />                
         
     </body>
 </html>
