@@ -1,4 +1,4 @@
-package com.serengeti.dao;
+package com.playserengeti.dao;
 
 import java.util.List;
 

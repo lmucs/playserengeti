@@ -80,7 +80,7 @@
         />
         <property name="commandName" value="createTeam"/>
         <property name="validator" ref="teamCreateValidator"/>
-        <constructor-arg ref="teamCreateService"/>
+        <constructor-arg ref="teamService"/>
     </bean>
     
         <bean id="teamUpdateController"
@@ -90,7 +90,7 @@
         />
         <property name="commandName" value="updateTeam"/>
         <property name="validator" ref="teamUpdateValidator"/>
-        <constructor-arg ref="teamUpdateService"/>
+        <constructor-arg ref="teamService"/>
     </bean>
     
         <bean id="teamDeleteController"
@@ -100,7 +100,7 @@
         />
         <property name="commandName" value="deleteTeam"/>
         <property name="validator" ref="teamDeleteValidator"/>
-        <constructor-arg ref="teamDeleteService"/>
+        <constructor-arg ref="teamService"/>
     </bean>
     
         <bean id="locationCreateController"
@@ -137,16 +137,8 @@
         class="com.playserengeti.service.SignUpService">
     </bean>
 
-    <bean id="teamCreateService"
-        class="com.playserengeti.service.TeamCreateService">
-    </bean>
-    
-    <bean id="teamUpdateService"
-        class="com.playserengeti.service.TeamUpdateService">
-    </bean>
-    
-    <bean id="teamDeleteService"
-        class="com.playserengeti.service.TeamDeleteService">
+    <bean id="teamService"
+        class="com.playserengeti.service.TeamService">
     </bean>
     
     <bean id="signUpValidator"
@@ -172,13 +164,18 @@
         />
         <property name="commandName" value="userDelete"/>
         <property name="validator" ref="userDeleteValidator"/>
-        <constructor-arg ref="userDeleteService"/>
+        <constructor-arg ref="userService"/>
     </bean>
 
-    <bean id="userDeleteService"
-        class="com.playserengeti.service.UserDeleteService">
+    <bean id="userService"
+        class="com.playserengeti.service.UserService">
+        <constructor-arg ref="userDao"/>
     </bean>
 
+    <bean id="userDao"
+        class="com.playserengeti.dao.UserDaoMockImpl">
+    </bean>
+    
     <bean id="userDeleteValidator"
         class="com.playserengeti.controller.UserDeleteValidator">
     </bean>    
@@ -190,11 +187,7 @@
         />
         <property name="commandName" value="userManage"/>
         <property name="validator" ref="userManageValidator"/>
-        <constructor-arg ref="userManageService"/>
-    </bean>
-
-    <bean id="userManageService"
-        class="com.playserengeti.service.UserManageService">
+        <constructor-arg ref="userService"/>
     </bean>
 
     <bean id="userManageValidator"
