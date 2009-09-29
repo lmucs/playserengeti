@@ -10,7 +10,7 @@ import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractCommandController;
 
-import com.playserengeti.service.TeamCreateService;
+import com.playserengeti.service.TeamService;
 
 /**
  * The controller for creating a team.
@@ -18,22 +18,22 @@ import com.playserengeti.service.TeamCreateService;
  *
  */
 public class TeamCreateController extends AbstractCommandController {
-	
-	private TeamCreateService service;
-	
-	public TeamCreateController (TeamCreateService service) {
-		this.service = service;
-	}
-	
+
+    private TeamService service;
+
+    public TeamCreateController (TeamService service) {
+        this.service = service;
+    }
+
     @Override
     protected ModelAndView handle(HttpServletRequest request,
             HttpServletResponse response, Object commandObject,
             BindException errors) throws Exception {
 
-    	if (errors.hasErrors()) {
-    	    return new ModelAndView("errors.jspx", "errors", errors.getAllErrors());	
-    	}
-    	
+        if (errors.hasErrors()) {
+            return new ModelAndView("errors.jspx", "errors", errors.getAllErrors());
+        }
+
         TeamCreateCommand command = (TeamCreateCommand)commandObject;
         String name = command.getName();
         int teamID = command.getTeamID();
@@ -46,18 +46,18 @@ public class TeamCreateController extends AbstractCommandController {
 
 
         String viewName = "teamCreate.jsp";
-        
+
         ModelAndView mav = new ModelAndView(viewName);
         mav.addObject("name", name);
         mav.addObject("teamID", teamID);
         mav.addObject("teamTypeID", teamTypeID);
-        mav.addObject("leaderID", leaderID); 
-        mav.addObject("color", color);        
-        mav.addObject("image", image);        
-        mav.addObject("homeLongitude", homeLongitude);        
-        mav.addObject("homeLatitude", homeLatitude);        
+        mav.addObject("leaderID", leaderID);
+        mav.addObject("color", color);
+        mav.addObject("image", image);
+        mav.addObject("homeLongitude", homeLongitude);
+        mav.addObject("homeLatitude", homeLatitude);
 
         return mav;
     }
-    
+
 }
