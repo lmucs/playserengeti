@@ -1,15 +1,15 @@
 package com.serengeti.dao;
 
-import org.springframework.dao.DataAccessException;
+import java.util.List;
 
 import com.playserengeti.domain.User;
 
 public interface UserDao {
-	public void saveUser(User user) throws DataAccessException;
-	public void updateUser(User user) throws DataAccessException;
-	public void deleteUser(int id) throws DataAccessException;
-	public User[] getAllUsers() throws DataAccessException;
-	public User getUserById(int id) throws DataAccessException;
-	public User getUserByLoginName(String login) throws DataAccessException;
-	public User getUserByDisplayName(String display) throws DataAccessException;
+	public void saveUser(User user);
+	public void updateUser(User user);
+	public void deleteUser(int id);
+	public List<User> getAllUsers();
+	public User getUserById(int id);
+	public User getUserByLoginName(String login);
+	public User getUserByDisplayName(String display);
 }
