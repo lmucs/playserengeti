@@ -41,7 +41,7 @@ public class LocationManageCommand {
 		return locationLatitude;
 	}
 		
-	public void setLocationLatitude(double LocationLatitude) {
+	public void setLocationLatitude(double locationLatitude) {
 		this.locationLatitude = locationLatitude;
 	}
 
