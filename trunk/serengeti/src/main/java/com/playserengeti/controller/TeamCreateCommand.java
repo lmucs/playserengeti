@@ -11,8 +11,7 @@ public class TeamCreateCommand {
 		private int leaderID;
 		private Color color;
 		private Image image;
-		private double homeLongitude;
-		private double homeLatitude;
+		private int homeLocation;
 		//private User[] members;
 		
 		
@@ -64,20 +63,12 @@ public class TeamCreateCommand {
 			this.image = image;
 		}
 		
-		public double getHomeLongitude() {
-			return homeLongitude;
+		public int getHomeLocation() {
+			return homeLocation;
 		}
 		
-		public void setHomeLongitude(double homeLongitude) {
-			this.homeLongitude = homeLongitude;
-		}
-		
-		public double getHomeLatitude() {
-			return homeLatitude;
-		}
-		
-		public void setHomeLatitude(double homeLatitude) {
-			this.homeLatitude = homeLatitude;
+		public void setHomeLocation(int homeLocation) {
+			this.homeLocation = homeLocation;
 		}
 
 		
