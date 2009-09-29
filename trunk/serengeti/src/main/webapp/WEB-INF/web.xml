@@ -82,7 +82,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>spring</servlet-name>
-        <url-pattern>/biz/*</url-pattern>
+        <url-pattern>/location/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>spring</servlet-name>
