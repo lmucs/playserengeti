@@ -27,7 +27,7 @@
                 <entry key="/team/delete" value-ref="teamDeleteController" />
                 
                 <entry key="/location/create" value-ref="locationCreateController" />
-                <entry key="/location/update" value-ref="locationUpdateController" />
+                <entry key="/location/manage" value-ref="locationManageController" />
                 <entry key="/location/delete" value-ref="locationDeleteController" />
                 
                 <entry key="/status/ping" value-ref="pingController" />
@@ -128,7 +128,7 @@
         <property name="commandClass"
         	value="com.playserengeti.controller.LocationDeleteCommand"
         />
-        <property name="commandName" value="deletelocation"/>
+        <property name="commandName" value="deleteLocation"/>
         <property name="validator" ref="locationDeleteValidator"/>
         <constructor-arg ref="locationDeleteService"/>
     </bean>
@@ -154,15 +154,15 @@
     </bean>
     
     <bean id="locationCreateService"
-        class="com.playserengeti.controller.LocationCreateService">
+        class="com.playserengeti.service.LocationCreateService">
     </bean>
     
     <bean id="locationDeleteService"
-        class="com.playserengeti.controller.LocationDeleteService">
+        class="com.playserengeti.service.LocationDeleteService">
     </bean>
     
     <bean id="locationManageService"
-        class="com.playserengeti.controller.LocationManageService">
+        class="com.playserengeti.service.LocationManageService">
     </bean>
     
     <bean id="userDeleteController"
