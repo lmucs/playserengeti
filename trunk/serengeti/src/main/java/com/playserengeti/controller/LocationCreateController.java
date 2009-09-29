@@ -7,7 +7,9 @@ import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractCommandController;
 
-import com.playserengeti.service.LocationCreateService;
+import com.playserengeti.service.LocationService;
+
+
 
 /*
  *LocationCreateController. The controller for creating a Location.
@@ -15,9 +17,9 @@ import com.playserengeti.service.LocationCreateService;
 
 public class LocationCreateController extends AbstractCommandController {
     
-    private LocationCreateService service;
+    private LocationService service;
 
-    public LocationCreateController (LocationCreateService service) {
+    public LocationCreateController (LocationService service) {
         this.service = service;
     }
 
