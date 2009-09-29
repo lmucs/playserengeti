@@ -153,6 +153,18 @@
         class="com.playserengeti.controller.SignUpValidator">
     </bean>
     
+    <bean id="locationCreateService"
+        class="com.playserengeti.controller.LocationCreateService">
+    </bean>
+    
+    <bean id="locationDeleteService"
+        class="com.playserengeti.controller.LocationDeleteService">
+    </bean>
+    
+    <bean id="locationManageService"
+        class="com.playserengeti.controller.LocationManageService">
+    </bean>
+    
     <bean id="userDeleteController"
         class="com.playserengeti.controller.UserDeleteController">
         <property name="commandClass"
@@ -217,6 +229,18 @@
     
     <bean id="teamDeleteValidator"
         class="com.playserengeti.controller.TeamDeleteValidator">
+    </bean>
+    
+    <bean id="locationDeleteValidator"
+        class="com.playserengeti.controller.LocationDeleteValidator">
+    </bean>
+
+    <bean id="locationCreateValidator"
+        class="com.playserengeti.controller.LocationCreateValidator">
+    </bean>
+    
+    <bean id="locationManageValidator"
+        class="com.playserengeti.controller.LocationManageValidator">
     </bean>
     
     <bean id="pingController"
