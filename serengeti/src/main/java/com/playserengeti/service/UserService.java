@@ -1,5 +1,7 @@
 package com.playserengeti.service;
 
+import java.util.Collection;
+
 import com.playserengeti.dao.UserDao;
 import com.playserengeti.domain.User;
 
@@ -27,7 +29,11 @@ public class UserService {
 	 * id exists, then throws some kind of exception.  (TODO) 
 	 */
 	public void saveUser(User user) {
-		userDao.saveUser(user);
+		if (user.getId() == null) {
+			userDao.insertUser(user);
+		} else {
+			userDao.updateUser(user);
+		}
 	}
 	
 	/**
@@ -36,5 +42,12 @@ public class UserService {
 	 */
 	public void deleteUser(Integer id) {
 	    userDao.deleteUser(id);	
+	}
+	
+	/**
+	 * Fetches all the users from persistent storage.
+	 */
+	public Collection<User> getAllUsers() {
+		return userDao.getAllUsers();
 	}
 }
