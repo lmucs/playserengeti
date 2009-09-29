@@ -3,6 +3,7 @@ package com.playserengeti.dao;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 import com.playserengeti.domain.User;
@@ -42,7 +43,7 @@ public class UserDaoMockImpl implements UserDao {
 
 	@Override
 	public Collection<User> getAllUsers() {
-		return storage.values();
+		return new HashSet<User>(storage.values());
 	}
 
 	@Override
