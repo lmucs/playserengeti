@@ -16,25 +16,26 @@
             <map>
                 <entry key="/" value-ref="welcomeController" />
                 <entry key="/index.html" value-ref="welcomeController" />
-                
+
                 <entry key="/user/create" value-ref="signUpController" />
                 <entry key="/user/delete" value-ref="userDeleteController" />
                 <entry key="/user/update" value-ref="userManageController" />
                 <entry key="/user/view" value-ref="userViewProfileController" />
-                
+                <entry key="/user/list" value-ref="userListController" />
+
                 <entry key="/team/create" value-ref="teamCreateController" />
                 <entry key="/team/update" value-ref="teamUpdateController" />
                 <entry key="/team/delete" value-ref="teamDeleteController" />
-                
+
                 <entry key="/location/create" value-ref="locationCreateController" />
                 <entry key="/location/update" value-ref="locationManageController" />
                 <entry key="/location/delete" value-ref="locationDeleteController" />
-                
+
                 <entry key="/status/ping" value-ref="pingController" />
                 <entry key="/status/show" value-ref="showController" />
                 <entry key="/status/hide" value-ref="hideController" />
                 <entry key="/status/game" value-ref="viewWorldMapController" />
-                
+
                 <!--
                 <entry key="/login" value-ref="loginController" />
                 <entry key="/logout" value-ref="logoutController" />
@@ -76,63 +77,63 @@
     <bean id="teamCreateController"
         class="com.playserengeti.controller.TeamCreateController">
         <property name="commandClass"
-        	value="com.playserengeti.controller.TeamCreateCommand"
+          value="com.playserengeti.controller.TeamCreateCommand"
         />
         <property name="commandName" value="createTeam"/>
         <property name="validator" ref="teamCreateValidator"/>
         <constructor-arg ref="teamService"/>
     </bean>
-    
+
         <bean id="teamUpdateController"
         class="com.playserengeti.controller.TeamUpdateController">
         <property name="commandClass"
-        	value="com.playserengeti.controller.TeamUpdateCommand"
+          value="com.playserengeti.controller.TeamUpdateCommand"
         />
         <property name="commandName" value="updateTeam"/>
         <property name="validator" ref="teamUpdateValidator"/>
         <constructor-arg ref="teamService"/>
     </bean>
-    
+
         <bean id="teamDeleteController"
         class="com.playserengeti.controller.TeamDeleteController">
         <property name="commandClass"
-        	value="com.playserengeti.controller.TeamDeleteCommand"
+          value="com.playserengeti.controller.TeamDeleteCommand"
         />
         <property name="commandName" value="deleteTeam"/>
         <property name="validator" ref="teamDeleteValidator"/>
         <constructor-arg ref="teamService"/>
     </bean>
-    
+
         <bean id="locationCreateController"
         class="com.playserengeti.controller.LocationCreateController">
         <property name="commandClass"
-        	value="com.playserengeti.controller.LocationCreateCommand"
+          value="com.playserengeti.controller.LocationCreateCommand"
         />
         <property name="commandName" value="createLocation"/>
         <property name="validator" ref="locationCreateValidator"/>
         <constructor-arg ref="locationCreateService"/>
     </bean>
-    
+
         <bean id="locationManageController"
         class="com.playserengeti.controller.LocationManageController">
         <property name="commandClass"
-        	value="com.playserengeti.controller.LocationManageCommand"
+          value="com.playserengeti.controller.LocationManageCommand"
         />
         <property name="commandName" value="manageLocation"/>
         <property name="validator" ref="locationManageValidator"/>
         <constructor-arg ref="locationManageService"/>
     </bean>
-    
+
         <bean id="locationDeleteController"
         class="com.playserengeti.controller.LocationDeleteController">
         <property name="commandClass"
-        	value="com.playserengeti.controller.LocationDeleteCommand"
+          value="com.playserengeti.controller.LocationDeleteCommand"
         />
         <property name="commandName" value="deleteLocation"/>
         <property name="validator" ref="locationDeleteValidator"/>
         <constructor-arg ref="locationDeleteService"/>
     </bean>
-    
+
     <bean id="signUpService"
         class="com.playserengeti.service.SignUpService">
     </bean>
@@ -140,23 +141,23 @@
     <bean id="teamService"
         class="com.playserengeti.service.TeamService">
     </bean>
-    
+
     <bean id="signUpValidator"
         class="com.playserengeti.controller.SignUpValidator">
     </bean>
-    
+
     <bean id="locationCreateService"
         class="com.playserengeti.service.LocationCreateService">
     </bean>
-    
+
     <bean id="locationDeleteService"
         class="com.playserengeti.service.LocationDeleteService">
     </bean>
-    
+
     <bean id="locationManageService"
         class="com.playserengeti.service.LocationManageService">
     </bean>
-    
+
     <bean id="userDeleteController"
         class="com.playserengeti.controller.UserDeleteController">
         <property name="commandClass"
@@ -164,6 +165,11 @@
         />
         <property name="commandName" value="userDelete"/>
         <property name="validator" ref="userDeleteValidator"/>
+        <constructor-arg ref="userService"/>
+    </bean>
+
+    <bean id="userListController"
+        class="com.playserengeti.controller.UserListController">
         <constructor-arg ref="userService"/>
     </bean>
 
@@ -175,10 +181,10 @@
     <bean id="userDao"
         class="com.playserengeti.dao.UserDaoMockImpl">
     </bean>
-    
+
     <bean id="userDeleteValidator"
         class="com.playserengeti.controller.UserDeleteValidator">
-    </bean>    
+    </bean>
 
     <bean id="userManageController"
         class="com.playserengeti.controller.UserManageController">
@@ -211,7 +217,7 @@
     <bean id="userViewProfileValidator"
         class="com.playserengeti.controller.UserViewProfileValidator">
     </bean>
-    
+
     <bean id="teamCreateValidator"
         class="com.playserengeti.controller.TeamCreateValidator">
     </bean>
@@ -219,11 +225,11 @@
     <bean id="teamUpdateValidator"
         class="com.playserengeti.controller.TeamUpdateValidator">
     </bean>
-    
+
     <bean id="teamDeleteValidator"
         class="com.playserengeti.controller.TeamDeleteValidator">
     </bean>
-    
+
     <bean id="locationDeleteValidator"
         class="com.playserengeti.controller.LocationDeleteValidator">
     </bean>
@@ -231,11 +237,11 @@
     <bean id="locationCreateValidator"
         class="com.playserengeti.controller.LocationCreateValidator">
     </bean>
-    
+
     <bean id="locationManageValidator"
         class="com.playserengeti.controller.LocationManageValidator">
     </bean>
-    
+
     <bean id="pingController"
         class="com.playserengeti.controller.PingController">
         <property name="commandClass"
@@ -252,8 +258,8 @@
 
     <bean id="pingValidator"
         class="com.playserengeti.controller.PingValidator">
-    </bean> 
-    
+    </bean>
+
     <bean id="showController"
         class="com.playserengeti.controller.ShowController">
         <property name="commandClass"
@@ -270,8 +276,8 @@
 
     <bean id="showValidator"
         class="com.playserengeti.controller.ShowValidator">
-    </bean>     
-    
+    </bean>
+
     <bean id="hideController"
         class="com.playserengeti.controller.HideController">
         <property name="commandClass"
@@ -288,8 +294,8 @@
 
     <bean id="hideValidator"
         class="com.playserengeti.controller.HideValidator">
-    </bean>     
-    
+    </bean>
+
     <bean id="viewWorldMapController"
         class="com.playserengeti.controller.ViewWorldMapController">
         <property name="commandClass"
@@ -306,9 +312,9 @@
 
     <bean id="viewWorldMapValidator"
         class="com.playserengeti.controller.ViewWorldMapValidator">
-    </bean>     
-    
-    
+    </bean>
+
+
     <!--
         View Resolvers
     -->
