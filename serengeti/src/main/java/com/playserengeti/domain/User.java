@@ -15,6 +15,7 @@ public class User {
         this.id = id;
         this.loginName = loginName;
         this.displayName = displayName;
+        this.avatar = null;
     }
 
 	public Integer getId() {
