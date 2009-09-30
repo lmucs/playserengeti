@@ -111,7 +111,7 @@
         />
         <property name="commandName" value="createLocation"/>
         <property name="validator" ref="locationCreateValidator"/>
-        <constructor-arg ref="locationCreateService"/>
+        <constructor-arg ref="locationService"/>
     </bean>
 
         <bean id="locationManageController"
@@ -121,7 +121,7 @@
         />
         <property name="commandName" value="manageLocation"/>
         <property name="validator" ref="locationManageValidator"/>
-        <constructor-arg ref="locationManageService"/>
+        <constructor-arg ref="locationService"/>
     </bean>
 
         <bean id="locationDeleteController"
@@ -131,7 +131,7 @@
         />
         <property name="commandName" value="deleteLocation"/>
         <property name="validator" ref="locationDeleteValidator"/>
-        <constructor-arg ref="locationDeleteService"/>
+        <constructor-arg ref="locationService"/>
     </bean>
 
     <bean id="signUpService"
@@ -146,16 +146,8 @@
         class="com.playserengeti.controller.SignUpValidator">
     </bean>
 
-    <bean id="locationCreateService"
-        class="com.playserengeti.service.LocationCreateService">
-    </bean>
-
-    <bean id="locationDeleteService"
-        class="com.playserengeti.service.LocationDeleteService">
-    </bean>
-
-    <bean id="locationManageService"
-        class="com.playserengeti.service.LocationManageService">
+    <bean id="locationService"
+        class="com.playserengeti.service.LocationService">
     </bean>
 
     <bean id="userDeleteController"
