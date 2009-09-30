@@ -15,9 +15,17 @@ public class Team {
         this.logo = logo;
     }
 
+    public Team(Team b) {
+    	this(b.id, b.name, b.logo);
+	}
+
     public Integer getId() {
-        return id;
-    }
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
     public String getName() {
         return name;
