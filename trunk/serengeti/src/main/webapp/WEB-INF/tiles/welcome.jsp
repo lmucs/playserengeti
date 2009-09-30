@@ -5,7 +5,7 @@
     <body>
         <h1>Serengeti</h1>
         <p>Welcome to Serengeti's landing page.  Mark your territory and stuff.</p>
-        <p>Lame demo: <a href="user/signup">Sign up!</a></p> 
+        <p>Lame demo: <a href="user/create">Sign up!</a></p> 
         
         <a href="user/delete">Delete a user</a><br/>
         <a href="user/update">Manage a user</a><br/>
