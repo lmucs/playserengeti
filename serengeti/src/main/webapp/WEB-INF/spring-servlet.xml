@@ -17,7 +17,7 @@
                 <entry key="/" value-ref="welcomeController" />
                 <entry key="/index.html" value-ref="welcomeController" />
 
-                <entry key="/user/create" value-ref="signUpController" />
+                <entry key="/user/create" value-ref="userCreateController" />
                 <entry key="/user/delete" value-ref="userDeleteController" />
                 <entry key="/user/update" value-ref="userManageController" />
                 <entry key="/user/view" value-ref="userViewProfileController" />
@@ -64,14 +64,14 @@
         class="com.playserengeti.controller.WelcomeController">
     </bean>
 
-    <bean id="signUpController"
-        class="com.playserengeti.controller.SignUpController">
+    <bean id="userCreateController"
+        class="com.playserengeti.controller.UserCreateController">
         <property name="commandClass"
-            value="com.playserengeti.controller.SignUpCommand"
+            value="com.playserengeti.controller.UserCreateCommand"
         />
-        <property name="commandName" value="signUp"/>
-        <property name="validator" ref="signUpValidator"/>
-        <constructor-arg ref="signUpService"/>
+        <property name="commandName" value="userCreate"/>
+        <property name="validator" ref="userCreateValidator"/>
+        <constructor-arg ref="userService"/>
     </bean>
 
     <bean id="teamCreateController"
@@ -134,16 +134,12 @@
         <constructor-arg ref="locationService"/>
     </bean>
 
-    <bean id="signUpService"
-        class="com.playserengeti.service.SignUpService">
-    </bean>
-
     <bean id="teamService"
         class="com.playserengeti.service.TeamService">
     </bean>
 
-    <bean id="signUpValidator"
-        class="com.playserengeti.controller.SignUpValidator">
+    <bean id="userCreateValidator"
+        class="com.playserengeti.controller.UserCreateValidator">
     </bean>
 
     <bean id="locationService"
@@ -199,11 +195,7 @@
         />
         <property name="commandName" value="userViewProfile"/>
         <property name="validator" ref="userViewProfileValidator"/>
-        <constructor-arg ref="userViewProfileService"/>
-    </bean>
-
-    <bean id="userViewProfileService"
-        class="com.playserengeti.service.UserViewProfileService">
+        <constructor-arg ref="userService"/>
     </bean>
 
     <bean id="userViewProfileValidator"

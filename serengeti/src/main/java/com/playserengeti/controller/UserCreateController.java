@@ -7,17 +7,17 @@ import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractCommandController;
 
-import com.playserengeti.service.SignUpService;
+import com.playserengeti.service.UserService;
 
 
 /**
  * Main controller for the calculator webapp.
  */
-public class SignUpController extends AbstractCommandController {
+public class UserCreateController extends AbstractCommandController {
 
-	private SignUpService service;
+	private UserService service;
 	
-	public SignUpController(SignUpService service) {
+	public UserCreateController(UserService service) {
 		this.service = service;
 	}
 	
@@ -30,7 +30,7 @@ public class SignUpController extends AbstractCommandController {
     	    return new ModelAndView("errors.jspx", "errors", errors.getAllErrors());	
     	}
     	
-        SignUpCommand command = (SignUpCommand)commandObject;
+        UserCreateCommand command = (UserCreateCommand)commandObject;
         String login = command.getLogin();
         String password = command.getPassword();
 

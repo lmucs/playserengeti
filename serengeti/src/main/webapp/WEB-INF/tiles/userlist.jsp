@@ -18,7 +18,9 @@
             <c:forEach var="user" items="${allUsers}">
                 <tr>
                     <td>${user.id}</td>
-                    <td><c:out value="${user.loginName}"/></td>
+                    <td>
+                        <a href="view?userId=${user.id}"><c:out value="${user.loginName}"/></a>
+                    </td>
                     <td><c:out value="${user.displayName}"/></td>
                 </tr>
             </c:forEach>
