@@ -39,7 +39,7 @@ public class LocationManageController extends AbstractCommandController {
         int userOwnerID = command.getUserOwnerID();
         int teamOwnerID = command.getTeamOwnerID();
 
-        String viewName = "LocationManage.jsp";
+        String viewName = "locationManage.jsp";
         
         ModelAndView mav = new ModelAndView(viewName);
         mav.addObject("name", name);
