@@ -2,37 +2,34 @@
 
 = Database Schema =
 
-In most databases in production I've interacted with, the column and table names follow the C-style convention. I've changed them as such. Also, I've included types for you. --Kelly
-
-
-== `locations` Table ==
+== LOCATION ==
 
 || *Row name* || *Type* || *Notes*||  
-|| locations_id || (int, primary key) || ||
+|| id || (int, primary key) || ||
 || name || (string) || ||
 || latitude || (double) || ||
 || longitude || (double) || ||
-|| users_id_owner || int, foreign key => `users` || ||
-|| teams_id_owner || int, foreign key => `teams` || ||
-|| users_id_proprietor || int, foreign key => `users) || (assuming a proprietor is a user) ||
+|| owner_user_id || int, foreign key => `users` || ||
+|| owner_team_id || int, foreign key => `teams` || ||
+|| proprietor_user_id || int, foreign key => `users) || (what if proprietor is not a user?) ||
 || city || (string) || ||
 || street || (string) || ||
 || house_number || (string) || ||
-|| zip_code || (string) || (left as string for internationalization purposes) ||
-|| state || (string) || ||
+|| zip || (string) || postal code ||
+|| state || (string) || state, province, department, etc.||
 || details || (text) || (consider adding a `locations_attributes` table to identity different ad_hoc attributes of a location) ||
 
-== `users` Table ==
+== USER ==
 
 || *Row name* || *Type* || *Notes* ||  
-|| users_id || int, primary key || ||
-|| password || string || (note: look into password crypting and one-way hashes) ||
+|| id || int, primary key || ||
+|| passwordHash || string ||  ||
 || first_name || string, Required || ||
 || last_name || string, Required || ||
 || email_address || string, Required || ||
 || phone_number || int/string, Required for mobile app || ||
-|| locations_id_current_location || int, foreign key => `locations` ||  (1 to 1 of locations_id) ||
-|| locations_id_home_location || int, foreign key => `locations`) || (1 to 1 of locations_id) ||
+|| current_location_id || int, foreign key => `locations` ||  (1 to 1 of locations_id) ||
+|| home_location_id || int, foreign key => `locations`) || (1 to 1 of locations_id) ||
 || status_message || text ||  (should this be an attribute of a visit?) ||
 || logged_in || boolean || (pinging) (not sure what this is) ||
 || --Teams (1 to many made up of teamIDs)-- || ||  (contained in separate table) ||
@@ -46,23 +43,29 @@ In most databases in production I've interacted with, the column and table names
 || --visitHistory (1 to many made up of visitIDs)-- || || (contained in a separate table) ||
 || visit_count || int, sum of all `visits` where users_id == current_user) || ||
 
-== `users_teams` Table ==
+== TEAM ==
+
+Not done yet.
+
+== USER_TEAM ==
 || *Row name* || *Type* || *Notes* ||
 ||  id || int, primary key || ||
-||  users_id || int, foreign key => `users` || ||
-||  teams_id || int, foreign key => `teams` || || 
+||  user_id || int, foreign key => `users` || ||
+||  team_id || int, foreign key => `teams` || || 
 
-== `friends` Table ==
+== USER_LINK ==
 || *Row name* || *Type* || *Notes* ||
 || id || int, primary key || ||
-|| users_id1 || int, foreign key => `users` || ||
-|| users_id2 || int, foreign key => `users` || || 
+|| primary_user_id || int, foreign key => `users` || ||
+|| secondary_user_id || int, foreign key => `users` || || 
 || status || enum{'Pending', 'Accepted', 'Rejected'} || ||
 
-== `visits` Table ==
+== VISIT ==
 || id || int, primary key) || ||
-|| users_id || int, foreign key => `users` || ||
-|| locations_id  || int, foreign key => `locations` || || 
+|| user_id || int, foreign key => `users` || ||
+|| location_id  || int, foreign key => `locations` || || 
 || --Teams-- || || this information can be discovered from the `users_teams` table, unless you check in as a team) ||
 ||  --visitCount-- || || (can be computed by performing an SQL query (SELECT COUNT(*) FROM visits WHERE users_id=1)) ||
 || --visitHistory-- || || (again, can be computed by performing an SQL query (SELECT * FROM visits WHERE users_id=1 ORDER BY id DESC LIMIT 20)) ||
+
+Kelly left this note a while back: "In most databases in production I've interacted with, the column and table names follow the C-style convention. I've changed them as such. Also, I've included types for you. --Kelly"
