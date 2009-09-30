@@ -1,6 +1,6 @@
 package com.playserengeti.controller;
 
-public class SignUpCommand {
+public class UserCreateCommand {
 
 	private String login;
     private String password;

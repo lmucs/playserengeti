@@ -7,21 +7,24 @@
     </head>
   
     <body>
-        Stub page for viewing of profile for user ID
-    	<c:if test='${ !empty userID }'>
-      		<strong><c:out value="${userID}"/></strong>...</p>
-    	</c:if>
-        </p>
-        
-        <c:if test='${ empty userID }'>    
-    	<p>Which ID would you like to view?</p>
-        <p>
-			<form method="get" action="viewProfile">
-				<label for="userID"> User ID </label><input type="text" name="userID"/><br/>
-				<input type="submit" value="View User Profile ID"/>
-			</form>
-        </p>
-        </c:if>
+        <c:choose>
+            <c:when test='${ !empty user }'>
+                <p>Here's the user profile you requested</p>
+                <table>
+                    <tr>
+                        <td><strong>Login Name</strong></td>
+                        <td><c:out value="${user.loginName}"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Display Name</strong></td>
+                        <td><c:out value="${user.displayName}"/></td>
+                    </tr>
+                </table>
+            </c:when>
+            <c:otherwise>
+                <p>A user does not exist with that user ID.</p>
+            </c:otherwise>
+        </c:choose>
     </body>
 </html>
 

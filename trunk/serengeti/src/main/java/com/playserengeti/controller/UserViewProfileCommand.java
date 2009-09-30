@@ -6,13 +6,13 @@ package com.playserengeti.controller;
 
 public class UserViewProfileCommand {
 
-	private String userID;
+	private Integer userId;
 
-    public String getUserID() {
-		return userID;
+    public Integer getUserId() {
+		return userId;
 	}
 
-	public void setUserID(String userID) {
-		this.userID = userID;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 }

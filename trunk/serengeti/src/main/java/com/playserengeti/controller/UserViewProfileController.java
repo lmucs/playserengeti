@@ -11,13 +11,14 @@ import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractCommandController;
 
-import com.playserengeti.service.UserViewProfileService;
+import com.playserengeti.domain.User;
+import com.playserengeti.service.UserService;
 
 public class UserViewProfileController extends AbstractCommandController {
 	
-	private UserViewProfileService service;
+	private UserService service;
 	
-	public UserViewProfileController(UserViewProfileService service) {
+	public UserViewProfileController(UserService service) {
 		this.service = service;
 	}
 	
@@ -31,12 +32,17 @@ public class UserViewProfileController extends AbstractCommandController {
     	}
     	
         UserViewProfileCommand command = (UserViewProfileCommand)commandObject;
-        String userID = command.getUserID();
+        
+        Integer userId = command.getUserId();
+        User user = null;
+        if (userId != null) {
+        	user = service.getUserById(userId);
+        }
 
         String viewName = "userViewProfile.jsp";
         
         ModelAndView mav = new ModelAndView(viewName);
-        mav.addObject("userID", userID);
+        mav.addObject("user", user);
         return mav;
     }
 }
