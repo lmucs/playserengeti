@@ -2,47 +2,63 @@
 
 = Database Schema =
 
-Locations Columns
- 
- ** Location ID
- ** Name
- ** Latitude
- ** Longitude
- ** User_Owner
- ** Team_Owner
- ** Proprietor 
- ** City
- ** Street
- ** House_Number
- ** Zip_Code
- ** Details
+In most databases in production I've interacted with, the column and table names follow the C-style convention. I've changed them as such. Also, I've included types for you. --Kelly
 
-User Columns
-  * UserID
-  * Password
-  * FirstName (Required)
-  * LastName (Required)
-  * emailAddress (Required)
-  * Phone # (Required for mobile app)
-  * currentLocation (1 to 1 of locationIDs)
-  * homeLocation (1 to 1 of locationIDs)
-  * statusMessage
-  * loggedIn (pinging)
-  * Teams (1 to many made up of teamIDs)
-  * Friends (1 to many made up of userIDs)
-  * streetAddressLine1
-  * streetAddressLine2
-  * streetAddressCity
-  * streetAddressState
-  * streetAddressZip
-  * profilePicLocation
-  * visitHistory (1 to many made up of visitIDs)
-  * visitCount
 
-Visits/History Columns
-  * UserID
-  * Teams
-  * visitCount
-  * visitHistory
-  * locationID
-  
+`locations` Table 
+
+  * locations_id (int, primary key)
+  * name (string)
+  * latitude (double)
+  * longitude (double)
+  * users_id_owner (int, foreign key => `users`)
+  * teams_id_owner (int, foreign key => `teams`)
+  * users_id_proprietor (int, foreign key => `users) (assuming a proprietor is a user)
+  * city (string)
+  * street (string)
+  * house_number (string)
+  * zip_code (string) (left as string for internationalization purposes)
+  * state (string)
+  * details (text) (consider adding a `locations_attributes` table to identity different ad_hoc attributes of a location)
+
+`users` Table
+
+  * users_id (int, primary key)
+  * password (string) (note: look into password crypting and one-way hashes)
+  * first_name (string, Required)
+  * last_name (string, Required)
+  * email_address (string, Required)
+  * phone_number (int/string, Required for mobile app) 
+  * locations_id_current_location (int, foreign key => `locations`)(1 to 1 of locations_id)
+  * locations_id_home_location (int, foreign key => `locations`) (1 to 1 of locations_id)
+  * status_message (text) (should this be an attribute of a visit?)
+  * logged_in (boolean) (pinging) (not sure what this is)
+  * --Teams (1 to many made up of teamIDs)-- (contained in separate table)
+  * --Friends (1 to many made up of userIDs)-- (contained in separate table)
+  * --streetAddressLine1-- (all of this information should be contained in a `location` record)
+  * --streetAddressLine2--
+  * --streetAddressCity--
+  * --streetAddressState--
+  * --streetAddressZip--
+  * profile_pic_url (string)
+  * --visitHistory (1 to many made up of visitIDs)-- (contained in a separate table)
+  * visit_count (int, sum of all `visits` where users_id == current_user)
+
+`users_teams` Table
+  * id (int, primary key)
+  * users_id (int, foreign key => `users`)
+  * teams_id (int, foreign key => `teams`)
+
+`friends_users_id_users_id` Table
+  * id (int, primary key)
+  * users_id1 (int, foreign key => `users`)
+  * users_id2 (int, foreign key => `users`)
+  * status (enum{'Pending', 'Accepted', 'Rejected'})
+
+`visits` Table
+  * id (int, primary key)
+  * users_id (int, foreign key => `users`)
+  * locations_id  (int, foreign key => `locations`)
+  * --Teams-- (this information can be discovered from the `users_teams` table, unless you check in as a team)
+  * --visitCount-- (can be computed by performing an SQL query (SELECT COUNT(*) FROM visits WHERE users_id=1))
+  * --visitHistory-- (again, can be computed by performing an SQL query (SELECT * FROM visits WHERE users_id=1 ORDER BY id DESC LIMIT 20))
