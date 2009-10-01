@@ -14,6 +14,10 @@ public class Location {
         this.longitude = longitude;
         this.latitude = latitude;
     }
+    
+    public Location(Location b) {
+    	this(b.id, b.name,b.longitude,b.latitude);
+	}
 
 	public Integer getId() {
 		return id;
