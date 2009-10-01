@@ -61,7 +61,35 @@ This page summarizes the activities for each class meeting, as well as informal 
 
 == September 24 (Class) ==
 
+  * (Technical problems with the projection system shortened the class)
+  * Lecture and demo on JSTL and JSP
+    * Possibility of webapps with only JSP
+    * Tag libraries
+    * Demo using `core` and `functions` libraries 
+    * Motivation for `c:out`
+    * `c:choose`, `c:if`, `fn:length`
+  * Pointers to more information about JSP
+  
 == September 29 (Class) ==
+
+  * Announcement: Daily standups start next class
+  * Reminder: Don't worry about databases yet.... Use mock data
+  * Lecture on Spring
+    * How Spring kind of saved Java
+    * Dependency Injection, with motivating example
+    * Singletons
+    * Thread safety
+    * Where to get information
+  * Lecture on webapp architecture using Spring
+    * Controller, command, validator, service, dao
+    * In class demo of wiring
+    * Purpose of Controller-Service separation
+    * Purpose of Service-Dao separation
+    * Dao interfaces and multiple implementations
+  * How to write a good mock dao
+    * Defensive copies
+  * Demo of creating a new url, new controller, and new view
+  * Review of JSTL, with more examples
 
 == October 1 (Class) ==
 
