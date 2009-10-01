@@ -3,27 +3,31 @@
         <title>Serengeti</title>
     </head>
     <body>
+        <img src="images/logo-big.png" alt="logo" style="float:right" />
+
         <h1>Serengeti</h1>
-        <p>Welcome to Serengeti's landing page.  Mark your territory and stuff.</p>
-        <p>Lame demo: <a href="user/create">Sign up!</a></p> 
-        
-        <a href="user/delete">Delete a user</a><br/>
-        <a href="user/update">Manage a user</a><br/>
-        <a href="user/view">View a user's profile</a><br/>
-        
-        
-        <a href="team/create">Create a team</a><br/>
-        <a href="team/update">Manage your teams</a><br/>
-        <a href="team/delete">Delete your teams</a><br/>
-        
-        <a href="status/ping">send a ping</a><br/>
-        <a href="status/show">Set a user ID to start pinging</a><br/>
-        <a href="status/hide">Set a user ID to stop pinging</a><br/>
-        <a href="status/game">View the World Map</a><br/>
-        
-        <a href="location/create">Create a location</a><br />
-        <a href="location/delete">Delete a location</a><br />
-        <a href="location/update">Update a location</a><br />                
-        
+
+        <p>Welcome to Serengeti.  Someday we will have something cool
+        to say here.</p>
+
+        <p>For now, this page will be used for testing:</p>
+
+        <ul>
+        <li><a href="user/create">Sign up!</a></li>
+        <li><a href="user/delete">Delete a user</a></li>
+        <li><a href="user/update">Manage a user</a></li>
+        <li><a href="user/view">View a user's profile</a></li>
+        <li><a href="team/create">Create a team</a></li>
+        <li><a href="team/update">Manage your teams</a></li>
+        <li><a href="team/delete">Delete your teams</a></li>
+        <li><a href="status/ping">send a ping</a></li>
+        <li><a href="status/show">Set a user ID to start pinging</a></li>
+        <li><a href="status/hide">Set a user ID to stop pinging</a></li>
+        <li><a href="status/game">View the World Map</a></li>
+        <li><a href="location/create">Create a location</a></li>
+        <li><a href="location/delete">Delete a location</a></li>
+        <li><a href="location/update">Update a location</a></li>
+        </ul>
+
     </body>
 </html>
