@@ -39,13 +39,20 @@
 || --streetAddressCity-- || || ||
 || --streetAddressState-- || || ||
 || --streetAddressZip-- || || ||
-|| profile_pic_url || strin) || ||
+|| profile_pic_url || string || ||
 || --visitHistory (1 to many made up of visitIDs)-- || || (contained in a separate table) ||
 || visit_count || int, sum of all `visits` where users_id == current_user) || ||
 
 == TEAM ==
+|| *Row name* || *Type* || *Notes* ||
+|| id || int, primary key || ||
+|| team_name || string || ||
+|| team_leader_id || int, foreign key => 'users' || ||
+|| team_pic_url || string || (team logo/icon) ||
+|| base_location_id || int, foreign key => 'locations' || (home base for the team) ||
+|| --rival_team_id || int, ??? key => 'teams' || (can probably be a separate table) ||
 
-Not done yet.
+(Not done yet.)
 
 == USER_TEAM ==
 || *Row name* || *Type* || *Notes* ||
