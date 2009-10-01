@@ -15,27 +15,27 @@ public class UserDaoMockImpl implements UserDao {
 
 	// Sample users to insert into the database.
 	private static final User sampleUsers[] = {
-		new User(null, "Loren Abrams", "durnew"),
-		new User(null, "Ray Toal", "hihimanuhahalua"),
-		new User(null, "Christian Mueller", "mueller.chris0"),
-		new User(null, "Lita Gratrix", "lgratrix"),
-		new User(null, "James Coleman", "jcol88"),
-		new User(null, "Mark Miscavage", "mxchickmagnet86"),
-		new User(null, "Edgardo Ineguez", "malevolentman87"),
-		new User(null, "Don Murphy", "DJScythe15")
+		new User(0, "Loren Abrams", "durnew"),
+		new User(1, "Ray Toal", "hihimanuhahalua"),
+		new User(2, "Christian Mueller", "mueller.chris0"),
+		new User(3, "Lita Gratrix", "lgratrix"),
+		new User(4, "James Coleman", "jcol88"),
+		new User(5, "Mark Miscavage", "mxchickmagnet86"),
+		new User(6, "Edgardo Ineguez", "malevolentman87"),
+		new User(7, "Don Murphy", "DJScythe15")
 	};
-	
+
 	private Map<Integer, User> storage;
 	private int maxId;
-	
+
 	public UserDaoMockImpl() {
 		storage = Collections.synchronizedMap(new HashMap<Integer, User>());
 		maxId = -1;
-		
+
 		// Insert the sample users into the database as this is a mock impl.
 		insertUsers(sampleUsers);
 	}
-	
+
 	@Override
 	public void deleteUser(Integer id) {
 		storage.remove(id);
@@ -69,17 +69,17 @@ public class UserDaoMockImpl implements UserDao {
 			insertUser(user);
 		}
 	}
-	
+
 	@Override
 	public Integer insertUser(User user) {
 		Integer id = ++maxId;
-		
+
 		user.setId(id);
 		updateUser(user);
-		
+
 		return id;
 	}
-	
+
 	@Override
 	public void updateUser(User user) {
 		storage.put(user.getId(), user);

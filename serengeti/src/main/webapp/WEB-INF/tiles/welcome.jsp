@@ -27,6 +27,7 @@
         <li><a href="location/create">Create a location</a></li>
         <li><a href="location/delete">Delete a location</a></li>
         <li><a href="location/update">Update a location</a></li>
+        <li><a href="visit/create">Check In (aka create a Visit)</a></li>
         </ul>
 
     </body>

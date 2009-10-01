@@ -36,6 +36,8 @@
                 <entry key="/status/hide" value-ref="hideController" />
                 <entry key="/status/game" value-ref="viewWorldMapController" />
 
+                <entry key="/visit/create" value-ref="visitCreateController" />
+
                 <!--
                 <entry key="/login" value-ref="loginController" />
                 <entry key="/logout" value-ref="logoutController" />
@@ -84,7 +86,7 @@
         <constructor-arg ref="teamService"/>
     </bean>
 
-        <bean id="teamUpdateController"
+    <bean id="teamUpdateController"
         class="com.playserengeti.controller.TeamUpdateController">
         <property name="commandClass"
           value="com.playserengeti.controller.TeamUpdateCommand"
@@ -94,7 +96,7 @@
         <constructor-arg ref="teamService"/>
     </bean>
 
-        <bean id="teamDeleteController"
+    <bean id="teamDeleteController"
         class="com.playserengeti.controller.TeamDeleteController">
         <property name="commandClass"
           value="com.playserengeti.controller.TeamDeleteCommand"
@@ -114,7 +116,7 @@
         <constructor-arg ref="locationService"/>
     </bean>
 
-        <bean id="locationManageController"
+    <bean id="locationManageController"
         class="com.playserengeti.controller.LocationManageController">
         <property name="commandClass"
           value="com.playserengeti.controller.LocationManageCommand"
@@ -124,7 +126,7 @@
         <constructor-arg ref="locationService"/>
     </bean>
 
-        <bean id="locationDeleteController"
+    <bean id="locationDeleteController"
         class="com.playserengeti.controller.LocationDeleteController">
         <property name="commandClass"
           value="com.playserengeti.controller.LocationDeleteCommand"
@@ -298,6 +300,28 @@
         class="com.playserengeti.controller.ViewWorldMapValidator">
     </bean>
 
+    <bean id="visitCreateController"
+        class="com.playserengeti.controller.VisitCreateController">
+        <property name="commandClass"
+          value="com.playserengeti.controller.VisitCreateCommand"
+        />
+        <property name="commandName" value="visitCreate"/>
+        <property name="validator" ref="visitCreateValidator"/>
+        <constructor-arg ref="visitService"/>
+    </bean>
+
+    <bean id="visitCreateValidator"
+        class="com.playserengeti.controller.VisitCreateValidator">
+    </bean>
+
+    <bean id="visitService"
+        class="com.playserengeti.service.VisitService">
+        <constructor-arg ref="visitDao"/>
+    </bean>
+
+    <bean id="visitDao"
+        class="com.playserengeti.dao.VisitDaoMockImpl">
+    </bean>
 
     <!--
         View Resolvers
