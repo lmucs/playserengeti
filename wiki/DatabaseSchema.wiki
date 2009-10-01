@@ -51,6 +51,7 @@
 || color || (string, enum?) || (could be a string as name or hex code, or enum from set of colors) ||
 || team_pic_url || string || (team logo/icon) ||
 || base_location_id || int, foreign key => 'locations' || (home base for the team) ||
+|| parent_team || int || ||
 || --rival_team_id || int, ??? key => 'teams' || (can probably be a separate table) ||
 
 
