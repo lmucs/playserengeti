@@ -96,6 +96,10 @@
         <servlet-name>spring</servlet-name>
         <url-pattern>/find/*</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+    <url-pattern>/visit/*</url-pattern>
+    </servlet-mapping>
     <!--
     <servlet-mapping>
         <servlet-name>spring</servlet-name>
