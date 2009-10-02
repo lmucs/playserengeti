@@ -93,6 +93,18 @@ This page summarizes the activities for each class meeting, as well as informal 
 
 == October 1 (Class) ==
 
+  * Held first daily standup -- everyone was able to report on what they did, but no one really had a sense of the goals for the next meeting
+  * Reviewed project summary
+  * Reviewed project requirements
+  * Drew the object model on the board
+  * Discussed user-team relationships
+  * Introduced the issues tab on Google Code
+  * Talked a bit about daos again
+  * Discussed what exactly the next steps should be
+  * Students were able to assign tasks to themselves
+  * Created a Google Groups thread for questions-requiring-whole-team-discussion.
+    * Agreed that each class would begin with a discussion of questions on this thread.
+
 == October 1 (Class) ==
 
 == October 6 (Class) ==
