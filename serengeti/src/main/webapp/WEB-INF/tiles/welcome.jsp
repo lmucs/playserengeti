@@ -28,6 +28,7 @@
         <li><a href="location/delete">Delete a location</a></li>
         <li><a href="location/update">Update a location</a></li>
         <li><a href="visit/create">Check In (aka create a Visit)</a></li>
+        <li><a href="user/list">View all users in the system!</a></li>
         </ul>
 
     </body>

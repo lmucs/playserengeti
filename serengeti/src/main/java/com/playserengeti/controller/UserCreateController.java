@@ -1,19 +1,19 @@
 package com.playserengeti.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.AbstractCommandController;
+import org.springframework.web.servlet.mvc.SimpleFormController;
 
+import com.playserengeti.domain.User;
 import com.playserengeti.service.UserService;
 
 
 /**
  * Main controller for the calculator webapp.
  */
-public class UserCreateController extends AbstractCommandController {
+public class UserCreateController extends SimpleFormController {
 
 	private UserService service;
 	
@@ -21,30 +21,16 @@ public class UserCreateController extends AbstractCommandController {
 		this.service = service;
 	}
 	
-    @Override
-    protected ModelAndView handle(HttpServletRequest request,
-            HttpServletResponse response, Object commandObject,
-            BindException errors) throws Exception {
-
-    	if (errors.hasErrors()) {
-    	    return new ModelAndView("errors.jspx", "errors", errors.getAllErrors());	
-    	}
-    	
-        UserCreateCommand command = (UserCreateCommand)commandObject;
-        String login = command.getLogin();
-        String password = command.getPassword();
-
-        String viewName = "signup.jsp";
-        
-        /*
-        if ("xml".equals(command.getFormat())) {
-        	viewName = "answer.jspx";
-        }
-        */
-        
-        ModelAndView mav = new ModelAndView(viewName);
-        mav.addObject("login", login);
-        mav.addObject("password", password);        
-        return mav;
-    }
+	public ModelAndView onSubmit(Object _command) {
+		UserCreateCommand command = (UserCreateCommand)_command;
+		String login = command.getLogin();
+		String display = command.getDisplay();
+		
+		// Insert the entry into the database.
+		service.saveUser(new User(null, login, display));
+		
+		Map<String, String> model = new HashMap<String, String>();
+		model.put("login", ((UserCreateCommand)_command).getLogin());
+		return new ModelAndView(getSuccessView(), model);
+	}
 }

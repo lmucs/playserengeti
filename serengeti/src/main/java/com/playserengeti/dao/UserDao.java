@@ -29,11 +29,6 @@ public interface UserDao {
 	public void deleteUser(Integer id);
 	
 	/**
-	 * Get all users from storage.
-	 */
-	public Collection<User> getAllUsers();
-	
-	/**
 	 * Get a user from storage.
 	 * 
 	 * @param id user id of the user to fetch
@@ -42,18 +37,23 @@ public interface UserDao {
 	public User getUserById(Integer id);
 	
 	/**
-	 * Get a user from storage.
-	 * 
-	 * @param login login name of the user
-	 * @return the fetched user
+	 * Get all users from storage.
 	 */
-	public User getUserByLoginName(String login);
+	public Collection<User> getAllUsers();
 	
 	/**
-	 * Get a user from storage.
+	 * Get a users from storage.
 	 * 
-	 * @param display display name of the user
+	 * @param login login name of the users
 	 * @return the fetched user
 	 */
-	public User getUserByDisplayName(String display);
+	public Collection<User> getUsersByLoginName(String login);
+	
+	/**
+	 * Get a users from storage.
+	 * 
+	 * @param display display name of the users
+	 * @return the fetched user
+	 */
+	public Collection<User> getUsersByDisplayName(String display);
 }
