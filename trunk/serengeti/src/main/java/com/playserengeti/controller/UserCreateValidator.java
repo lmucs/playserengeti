@@ -11,9 +11,9 @@ public class UserCreateValidator implements Validator {
 	}
 
 	@Override
-	public void validate(Object object, Errors errors) {
-		UserCreateCommand c = UserCreateCommand.class.cast(object);
+	public void validate(Object _command, Errors errors) {
+		UserCreateCommand command = (UserCreateCommand)_command;
 		
-		/* Doesn't do anything. */
+		// TODO: Validation.
 	}
 }

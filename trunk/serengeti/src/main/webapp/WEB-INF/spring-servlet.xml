@@ -73,6 +73,8 @@
         />
         <property name="commandName" value="userCreate"/>
         <property name="validator" ref="userCreateValidator"/>
+        <property name="formView" value="signup.jsp"/>
+        <property name="successView" value="signupSuccess.jsp"/>
         <constructor-arg ref="userService"/>
     </bean>
 

@@ -3,7 +3,7 @@ package com.playserengeti.controller;
 public class UserCreateCommand {
 
 	private String login;
-    private String password;
+    private String display;
 
     public String getLogin() {
 		return login;
@@ -13,11 +13,11 @@ public class UserCreateCommand {
 		this.login = login;
 	}
 
-	public String getPassword() {
-        return password;
+	public String getDisplay() {
+        return display;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setDisplay(String display) {
+        this.display = display;
     }
 }

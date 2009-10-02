@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import com.playserengeti.domain.User;
 
@@ -13,53 +14,19 @@ import com.playserengeti.domain.User;
  */
 public class UserDaoMockImpl implements UserDao {
 
+	// TODO: Implement synchornization and defensive copying.
+	
 	// Sample users to insert into the database.
 	private static final User sampleUsers[] = {
-		new User(0, "Loren Abrams", "durnew"),
-		new User(1, "Ray Toal", "hihimanuhahalua"),
-		new User(2, "Christian Mueller", "mueller.chris0"),
-		new User(3, "Lita Gratrix", "lgratrix"),
-		new User(4, "James Coleman", "jcol88"),
-		new User(5, "Mark Miscavage", "mxchickmagnet86"),
-		new User(6, "Edgardo Ineguez", "malevolentman87"),
-		new User(7, "Don Murphy", "DJScythe15")
+		new User(null, "Loren Abrams", "durnew"),
+		new User(null, "Ray Toal", "hihimanuhahalua"),
+		new User(null, "Christian Mueller", "mueller.chris0"),
+		new User(null, "Lita Gratrix", "lgratrix"),
+		new User(null, "James Coleman", "jcol88"),
+		new User(null, "Mark Miscavage", "mxchickmagnet86"),
+		new User(null, "Edgardo Ineguez", "malevolentman87"),
+		new User(null, "Don Murphy", "DJScythe15")
 	};
-
-	private Map<Integer, User> storage;
-	private int maxId;
-
-	public UserDaoMockImpl() {
-		storage = Collections.synchronizedMap(new HashMap<Integer, User>());
-		maxId = -1;
-
-		// Insert the sample users into the database as this is a mock impl.
-		insertUsers(sampleUsers);
-	}
-
-	@Override
-	public void deleteUser(Integer id) {
-		storage.remove(id);
-	}
-
-	@Override
-	public Collection<User> getAllUsers() {
-		return new HashSet<User>(storage.values());
-	}
-
-	@Override
-	public User getUserByDisplayName(String display) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public User getUserById(Integer id) {
-		return new User(storage.get(id));
-	}
-
-	@Override
-	public User getUserByLoginName(String login) {
-		throw new UnsupportedOperationException();
-	}
 
 	/**
 	 * A convenience method to insert an array of users into the database.
@@ -68,6 +35,52 @@ public class UserDaoMockImpl implements UserDao {
 		for (User user : users) {
 			insertUser(user);
 		}
+	}
+	
+	private Map<Integer, User> storage;
+	private int maxId;
+
+	public UserDaoMockImpl() {
+		storage = Collections.synchronizedMap(new HashMap<Integer, User>());
+		maxId = -1;
+
+		insertUsers(sampleUsers);
+	}
+
+	@Override
+	public Collection<User> getAllUsers() {
+		return storage.values();
+	}
+	
+	@Override
+	public User getUserById(Integer id) {
+		return storage.get(id);
+	}
+	
+	@Override
+	public Collection<User> getUsersByDisplayName(String display) {
+		Set<User> results = new HashSet<User>();
+		
+		for (User user : storage.values()) {
+			if (user.getDisplayName().equals(display)) {
+				results.add(user);
+			}
+		}
+		
+		return results;
+	}
+
+	@Override
+	public Collection<User> getUsersByLoginName(String login) {
+		Set<User> results = new HashSet<User>();
+		
+		for (User user : storage.values()) {
+			if (user.getLoginName().equals(login)) {
+				results.add(user);
+			}
+		}
+		
+		return results;
 	}
 
 	@Override
@@ -85,4 +98,9 @@ public class UserDaoMockImpl implements UserDao {
 		storage.put(user.getId(), user);
 	}
 
+	@Override
+	public void deleteUser(Integer id) {
+		storage.remove(id);
+	}
+	
 }
