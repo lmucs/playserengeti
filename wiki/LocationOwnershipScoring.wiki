@@ -1,0 +1,15 @@
+#summary Proposed scoring systems for determining ownership of a location.
+#labels Phase-Requirements,Phase-Implementation
+=Scoring Models=
+==Basic Scoring==
+When a user checks in to a location, a set amount of points is added to each of the user's teams. Ownership is given to the team with the highest number of points. If check-in limits (i.e., users can not check-in immediately after a previous check-in) are not implemented, check-ins to a location within a set period of time from a previous check-in to the same location will offer no additional points to a user's teams.
+===Potential Flaws===
+ * Near-permanent ownerships by defunct teams: If a team scored enough points for ownerships in a location, both by a huge margin and over a long period of time, and then abandoned the location, another team of similar scale could take much longer to take the location. Although the new team would likely be considered owners by most users, the old team would continue to be owners according to the database.
+
+==Decaying Scoring==
+When a user checks into a location, an entry is made for the visit with a date and starting point value. Over time, a visit's point amount value would lower; a more recent visit would be more valuable than an older one. Decay would be either exponential or linear, and applied after set intervals. Ownership is till given to the team with the highest points for a location, and limits are implemented either by the application's check-in limit or voiding of points to multiple check-ins to one location in a short period of time.
+===Potential Flaws===
+ * Old visits lose all value: If decay of points is linear, all visits will eventually deteriorate to the point of carrying no value.
+
+=Ownership: Universal or Over Sets=
+Should there be a general ownership of a location, or should location ownership only be based upon a set including a user's teams and the teams' rivals?
