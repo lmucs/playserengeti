@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import com.playserengeti.domain.Team;
 
@@ -15,12 +16,12 @@ public class TeamDaoMockImpl implements TeamDao {
 
 	// Sample teams to insert into the database.
 	private static final Team sampleTeams[] = {
-		new Team(null, "UmpaLumpas", "umpa"),
-		new Team(null, "Constipated Koalas", "koala"),
-		new Team(null, "Raptors", "chillupa"),
-		new Team(null, "Lions", "house cat"),
-		new Team(null, "frivolous fliers", "DonQuiote"),
-		new Team(null, "ChickMagnets", "mxchickmagnet86"),
+		new Team(null, "UmpaLumpas", "Green"),
+		new Team(null, "Constipated Koalas", "Gray"),
+		new Team(null, "Raptors", "Red"),
+		new Team(null, "Lions", "Gold"),
+		new Team(null, "frivolous fliers", "Orange"),
+		new Team(null, "ChickMagnets", "Money"),
 	};
 	
 	private Map<Integer, Team> storage;
@@ -41,12 +42,20 @@ public class TeamDaoMockImpl implements TeamDao {
 
 	@Override
 	public Collection<Team> getAllTeams() {
-		return new HashSet<Team>(storage.values());
+		return storage.values();
 	}
 
 	@Override
-	public Team getTeamByTeamName(String team) {
-		throw new UnsupportedOperationException();
+	public Collection<Team> getTeamsByTeamName(String display) {
+		Set<Team> results = new HashSet<Team>();
+		
+		for (Team team : storage.values()) {
+			if (team.getName().equals(display)) {
+				results.add(team);
+			}
+		}
+		
+		return results;
 	}
 
 	@Override
