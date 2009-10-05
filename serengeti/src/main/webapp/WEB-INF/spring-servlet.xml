@@ -63,9 +63,14 @@
     <!--
         Controllers
     -->
+
     <bean id="welcomeController"
         class="com.playserengeti.controller.WelcomeController">
     </bean>
+
+    <!--
+        User Controllers and Such
+    -->
 
     <bean id="userCreateController"
         class="com.playserengeti.controller.UserCreateController">
@@ -79,91 +84,11 @@
         <constructor-arg ref="userService"/>
     </bean>
 
-    <bean id="teamCreateController"
-        class="com.playserengeti.controller.TeamCreateController">
-        <property name="commandClass"
-          value="com.playserengeti.controller.TeamCreateCommand"
-        />
-        <property name="commandName" value="createTeam"/>
-        <property name="validator" ref="teamCreateValidator"/>
-        <property name="formView" value="teamCreate.jsp"/>
-        <property name="successView" value="teamCreateSuccess.jsp"/>
-        <constructor-arg ref="teamService"/>
-    </bean>
-
-    <bean id="teamUpdateController"
-        class="com.playserengeti.controller.TeamUpdateController">
-        <property name="commandClass"
-          value="com.playserengeti.controller.TeamUpdateCommand"
-        />
-        <property name="commandName" value="updateTeam"/>
-        <property name="validator" ref="teamUpdateValidator"/>
-        <constructor-arg ref="teamService"/>
-    </bean>
-
-    <bean id="teamDeleteController"
-        class="com.playserengeti.controller.TeamDeleteController">
-        <property name="commandClass"
-          value="com.playserengeti.controller.TeamDeleteCommand"
-        />
-        <property name="commandName" value="deleteTeam"/>
-        <property name="validator" ref="teamDeleteValidator"/>
-        <constructor-arg ref="teamService"/>
-    </bean>
-
-        <bean id="locationCreateController"
-        class="com.playserengeti.controller.LocationCreateController">
-        <property name="commandClass"
-          value="com.playserengeti.controller.LocationCreateCommand"
-        />
-        <property name="commandName" value="createLocation"/>
-        <property name="validator" ref="locationCreateValidator"/>
-        <constructor-arg ref="locationService"/>
-    </bean>
-
-    <bean id="locationManageController"
-        class="com.playserengeti.controller.LocationManageController">
-        <property name="commandClass"
-          value="com.playserengeti.controller.LocationManageCommand"
-        />
-        <property name="commandName" value="manageLocation"/>
-        <property name="validator" ref="locationManageValidator"/>
-        <constructor-arg ref="locationService"/>
-    </bean>
-
-    <bean id="locationDeleteController"
-        class="com.playserengeti.controller.LocationDeleteController">
-        <property name="commandClass"
-          value="com.playserengeti.controller.LocationDeleteCommand"
-        />
-        <property name="commandName" value="deleteLocation"/>
-        <property name="validator" ref="locationDeleteValidator"/>
-        <constructor-arg ref="locationService"/>
-    </bean>
-
-    <bean id="teamListController"
-        class="com.playserengeti.controller.TeamListController">
-        <constructor-arg ref="teamService"/>
-    </bean>
-    
-    <bean id="teamService"
-        class="com.playserengeti.service.TeamService">
-        <constructor-arg ref="teamDao"/>
-    </bean>
-    
-    <bean id="teamDao"
-        class="com.playserengeti.dao.TeamDaoMockImpl">
-    </bean>
-
     <bean id="userCreateValidator"
         class="com.playserengeti.controller.UserCreateValidator">
     </bean>
 
-    <bean id="locationService"
-        class="com.playserengeti.service.LocationService">
-    </bean>
-
-    <bean id="userDeleteController"
+        <bean id="userDeleteController"
         class="com.playserengeti.controller.UserDeleteController">
         <property name="commandClass"
             value="com.playserengeti.controller.UserDeleteCommand"
@@ -219,6 +144,55 @@
         class="com.playserengeti.controller.UserViewProfileValidator">
     </bean>
 
+    <!--
+        Team Controllers and Such
+    -->
+    <bean id="teamCreateController"
+        class="com.playserengeti.controller.TeamCreateController">
+        <property name="commandClass"
+          value="com.playserengeti.controller.TeamCreateCommand"
+        />
+        <property name="commandName" value="createTeam"/>
+        <property name="validator" ref="teamCreateValidator"/>
+        <property name="formView" value="teamCreate.jsp"/>
+        <property name="successView" value="teamCreateSuccess.jsp"/>
+        <constructor-arg ref="teamService"/>
+    </bean>
+
+    <bean id="teamUpdateController"
+        class="com.playserengeti.controller.TeamUpdateController">
+        <property name="commandClass"
+          value="com.playserengeti.controller.TeamUpdateCommand"
+        />
+        <property name="commandName" value="updateTeam"/>
+        <property name="validator" ref="teamUpdateValidator"/>
+        <constructor-arg ref="teamService"/>
+    </bean>
+
+    <bean id="teamDeleteController"
+        class="com.playserengeti.controller.TeamDeleteController">
+        <property name="commandClass"
+          value="com.playserengeti.controller.TeamDeleteCommand"
+        />
+        <property name="commandName" value="deleteTeam"/>
+        <property name="validator" ref="teamDeleteValidator"/>
+        <constructor-arg ref="teamService"/>
+    </bean>
+
+    <bean id="teamListController"
+        class="com.playserengeti.controller.TeamListController">
+        <constructor-arg ref="teamService"/>
+    </bean>
+
+    <bean id="teamService"
+        class="com.playserengeti.service.TeamService">
+        <constructor-arg ref="teamDao"/>
+    </bean>
+
+    <bean id="teamDao"
+        class="com.playserengeti.dao.TeamDaoMockImpl">
+    </bean>
+
     <bean id="teamCreateValidator"
         class="com.playserengeti.controller.TeamCreateValidator">
     </bean>
@@ -229,6 +203,44 @@
 
     <bean id="teamDeleteValidator"
         class="com.playserengeti.controller.TeamDeleteValidator">
+    </bean>
+
+    <!--
+        Location Controllers and Such
+    -->
+
+    <bean id="locationCreateController"
+        class="com.playserengeti.controller.LocationCreateController">
+        <property name="commandClass"
+          value="com.playserengeti.controller.LocationCreateCommand"
+        />
+        <property name="commandName" value="createLocation"/>
+        <property name="validator" ref="locationCreateValidator"/>
+        <constructor-arg ref="locationService"/>
+    </bean>
+
+    <bean id="locationManageController"
+        class="com.playserengeti.controller.LocationManageController">
+        <property name="commandClass"
+          value="com.playserengeti.controller.LocationManageCommand"
+        />
+        <property name="commandName" value="manageLocation"/>
+        <property name="validator" ref="locationManageValidator"/>
+        <constructor-arg ref="locationService"/>
+    </bean>
+
+    <bean id="locationDeleteController"
+        class="com.playserengeti.controller.LocationDeleteController">
+        <property name="commandClass"
+          value="com.playserengeti.controller.LocationDeleteCommand"
+        />
+        <property name="commandName" value="deleteLocation"/>
+        <property name="validator" ref="locationDeleteValidator"/>
+        <constructor-arg ref="locationService"/>
+    </bean>
+
+    <bean id="locationService"
+        class="com.playserengeti.service.LocationService">
     </bean>
 
     <bean id="locationDeleteValidator"
@@ -242,6 +254,10 @@
     <bean id="locationManageValidator"
         class="com.playserengeti.controller.LocationManageValidator">
     </bean>
+
+    <!--
+        Status Controllers and Such
+    -->
 
     <bean id="pingController"
         class="com.playserengeti.controller.PingController">
@@ -315,6 +331,10 @@
         class="com.playserengeti.controller.ViewWorldMapValidator">
     </bean>
 
+    <!--
+        Visit Controllers and Such
+    -->
+
     <bean id="visitCreateController"
         class="com.playserengeti.controller.VisitCreateController">
         <property name="commandClass"
@@ -322,6 +342,8 @@
         />
         <property name="commandName" value="visitCreate"/>
         <property name="validator" ref="visitCreateValidator"/>
+        <property name="formView" value="visitCreate.jsp"/>
+        <property name="successView" value="visitCreateSuccess.jsp"/>
         <constructor-arg ref="visitService"/>
     </bean>
 

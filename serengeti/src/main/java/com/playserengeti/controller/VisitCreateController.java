@@ -1,19 +1,19 @@
 package com.playserengeti.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.AbstractCommandController;
+import org.springframework.web.servlet.mvc.SimpleFormController;
 
+import com.playserengeti.domain.Visit;
 import com.playserengeti.service.VisitService;
 
 
 /**
  * Main controller for the calculator webapp.
  */
-public class VisitCreateController extends AbstractCommandController {
+public class VisitCreateController extends SimpleFormController {
 
     private VisitService service;
 
@@ -21,32 +21,25 @@ public class VisitCreateController extends AbstractCommandController {
         this.service = service;
     }
 
-    @Override
-    protected ModelAndView handle(HttpServletRequest request,
-            HttpServletResponse response, Object commandObject,
-            BindException errors) throws Exception {
+	public ModelAndView onSubmit(Object _command) {
+		VisitCreateCommand command = (VisitCreateCommand)_command;
+		Integer userId = command.getUserId();
+		Integer locationId = command.getVisitId();
 
-        if (errors.hasErrors()) {
-            return new ModelAndView("errors.jspx", "errors", errors.getAllErrors());
-        }
+		// Insert the entry into the database.
+		try {
+			service.saveVisit(new Visit(null, userId, locationId));
+		} catch (NoSuchFieldException e) {
+			Map<String, String> model = new HashMap<String, String>();
+			model.put("error", (e.getMessage()));
+			e.printStackTrace();
+			return new ModelAndView(getFormView(), model);
+		}
 
-        VisitCreateCommand command = (VisitCreateCommand)commandObject;
-        Integer visitId = command.getVisitId();
-        Integer userId = command.getUserId();
-        Integer locationId = command.getlocationId();
-
-        String viewName = "visitCreate.jsp";
-
-        /*
-        if ("xml".equals(command.getFormat())) {
-            viewName = "visit.jspx";
-        }
-        */
-
-        ModelAndView mav = new ModelAndView(viewName);
-        mav.addObject("visitId", visitId);
-        mav.addObject("userId", userId);
-        mav.addObject("locationId", locationId);
-        return mav;
-    }
+		Map<String, Integer> model = new HashMap<String, Integer>();
+		model.put("visitId", ((VisitCreateCommand)_command).getVisitId());
+		model.put("userId", ((VisitCreateCommand)_command).getUserId());
+		model.put("locationId", ((VisitCreateCommand)_command).getLocationId());
+		return new ModelAndView(getSuccessView(), model);
+	}
 }

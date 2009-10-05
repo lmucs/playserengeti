@@ -22,18 +22,18 @@ public class LocationDaoMockImpl implements LocationDao {
 		new Location(null, "3rd Street Promenade", 12.393028, 3.3948292),
 		new Location(null, "ChickMagnetVille", 6.93838293, 6.93838469),
 	};
-	
+
 	private Map<Integer, Location> storage;
 	private int maxId;
-	
+
 	public LocationDaoMockImpl() {
 		storage = Collections.synchronizedMap(new HashMap<Integer, Location>());
 		maxId = -1;
-		
+
 		// Insert the sample locations into the database as this is a mock impl.
 		insertLocations(sampleLocations);
 	}
-	
+
 	@Override
 	public void deleteLocation(Integer id) {
 		storage.remove(id);
@@ -62,17 +62,17 @@ public class LocationDaoMockImpl implements LocationDao {
 			insertLocation(team);
 		}
 	}
-	
-	
+
+
 	public Integer insertLocation(Location loc) {
 		Integer id = ++maxId;
-		
+
 		loc.setId(id);
 		updateLocation(loc);
-		
+
 		return id;
 	}
-	
+
 	@Override
 	public void updateLocation(Location loc) {
 		storage.put(loc.getId(), loc);
@@ -84,6 +84,10 @@ public class LocationDaoMockImpl implements LocationDao {
 		return null;
 	}
 
+	@Override
+	public boolean locationExists(Integer locationId){
+		return (storage.get(locationId) != null);
+	}
 
 }
 

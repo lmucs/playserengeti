@@ -15,15 +15,15 @@ public class VisitDaoMockImpl implements VisitDao {
 
 	// Sample users to insert into the database.
 	private static final Visit sampleVisits[] = {
-		new Visit(0,3, null),
-		new Visit(1,3, null),
-		new Visit(2,0, null),
-		new Visit(3,1, null),
-		new Visit(4,2, null),
-		new Visit(5,3, null),
-		new Visit(6,4, null),
-		new Visit(7,5, null),
-		new Visit(8,6, null)
+		new Visit(null ,3, 0),
+		new Visit(null ,3, 1),
+		new Visit(null ,0, 2),
+		new Visit(null, 1, 3),
+		new Visit(null, 2, 4),
+		new Visit(null, 3, 0),
+		new Visit(null ,4, 1),
+		new Visit(null ,5, 2),
+		new Visit(null ,6, 3)
 	};
 
 	private Map<Integer, Visit> storage;
@@ -38,7 +38,7 @@ public class VisitDaoMockImpl implements VisitDao {
 	}
 
 	/**
-	 * A convenience method to insert an array of users into the database.
+	 * A convenience method to insert an array of visits into the database.
 	 */
 	private void insertVisits(Visit[] visits) {
 		for (Visit visit : visits) {
@@ -77,7 +77,7 @@ public class VisitDaoMockImpl implements VisitDao {
 	}
 
 	@Override
-	public Collection<Visit> getVisitBylocationId(Integer locationId) {
+	public Collection<Visit> getVisitByLocationId(Integer locationId) {
 		throw new UnsupportedOperationException();
 	}
 

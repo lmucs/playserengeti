@@ -15,7 +15,7 @@ import com.playserengeti.domain.User;
 public class UserDaoMockImpl implements UserDao {
 
 	// TODO: Implement synchornization and defensive copying.
-	
+
 	// Sample users to insert into the database.
 	private static final User sampleUsers[] = {
 		new User(null, "Loren Abrams", "durnew"),
@@ -36,7 +36,7 @@ public class UserDaoMockImpl implements UserDao {
 			insertUser(user);
 		}
 	}
-	
+
 	private Map<Integer, User> storage;
 	private int maxId;
 
@@ -51,35 +51,35 @@ public class UserDaoMockImpl implements UserDao {
 	public Collection<User> getAllUsers() {
 		return storage.values();
 	}
-	
+
 	@Override
 	public User getUserById(Integer id) {
 		return storage.get(id);
 	}
-	
+
 	@Override
 	public Collection<User> getUsersByDisplayName(String display) {
 		Set<User> results = new HashSet<User>();
-		
+
 		for (User user : storage.values()) {
 			if (user.getDisplayName().equals(display)) {
 				results.add(user);
 			}
 		}
-		
+
 		return results;
 	}
 
 	@Override
 	public Collection<User> getUsersByLoginName(String login) {
 		Set<User> results = new HashSet<User>();
-		
+
 		for (User user : storage.values()) {
 			if (user.getLoginName().equals(login)) {
 				results.add(user);
 			}
 		}
-		
+
 		return results;
 	}
 
@@ -102,5 +102,9 @@ public class UserDaoMockImpl implements UserDao {
 	public void deleteUser(Integer id) {
 		storage.remove(id);
 	}
-	
+
+	public boolean userExists(Integer userId){
+		return (storage.get(userId) != null);
+	}
+
 }

@@ -3,7 +3,11 @@ package com.playserengeti.service;
 import java.util.Collection;
 
 import com.playserengeti.dao.VisitDao;
+import com.playserengeti.dao.UserDao;
+import com.playserengeti.dao.LocationDao;
+
 import com.playserengeti.domain.Visit;
+
 
 /**
  * Service for operations related to users.
@@ -11,6 +15,8 @@ import com.playserengeti.domain.Visit;
 public class VisitService {
 
 	private VisitDao visitDao;
+	private UserDao userDao;
+	private LocationDao locationDao;
 
 	public VisitService(VisitDao visitDao) {
 	    this.visitDao = visitDao;
@@ -27,8 +33,10 @@ public class VisitService {
 	 * visit in persistent storage will be updated with the fields in
 	 * the argument.  If the id is not null, but no such visit with that
 	 * id exists, then throws some kind of exception.  (TODO)
+	 * @throws NoSuchFieldException
 	 */
-	public void saveVisit(Visit visit) {
+	public void saveVisit(Visit visit) throws NoSuchFieldException {
+		validateVisit(visit);
 		if (visit.getId() == null) {
 			visitDao.insertVisit(visit);
 		} else {
@@ -51,4 +59,23 @@ public class VisitService {
 	public Collection<Visit> getAllVisits() {
 		return visitDao.getAllVisits();
 	}
+
+	private void validateVisit(Visit visit) throws NoSuchFieldException{
+
+		Integer userId = visit.getUserId();
+		Integer locationId = visit.getLocationId();
+
+		String message = "No such ";
+
+		if(userDao.userExists(userId) == false){
+			message += "User Id " + userId + " Exists";
+			throw new NoSuchFieldException(message);
+		}
+		if(locationDao.locationExists(locationId) == false){
+			message += "Location Id " + locationId + " Exists";
+			throw new NoSuchFieldException(message);
+		}
+		return;
+	}
+
 }

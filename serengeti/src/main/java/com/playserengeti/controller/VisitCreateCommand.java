@@ -22,7 +22,7 @@ public class VisitCreateCommand {
         this.userId = userId;
     }
 
-    public Integer getlocationId() {
+    public Integer getLocationId() {
         return locationId;
     }
 
