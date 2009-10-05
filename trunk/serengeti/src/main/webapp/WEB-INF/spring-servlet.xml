@@ -26,6 +26,7 @@
                 <entry key="/team/create" value-ref="teamCreateController" />
                 <entry key="/team/update" value-ref="teamUpdateController" />
                 <entry key="/team/delete" value-ref="teamDeleteController" />
+                <entry key="/team/list" value-ref="teamListController" />
 
                 <entry key="/location/create" value-ref="locationCreateController" />
                 <entry key="/location/update" value-ref="locationManageController" />
@@ -85,6 +86,8 @@
         />
         <property name="commandName" value="createTeam"/>
         <property name="validator" ref="teamCreateValidator"/>
+        <property name="formView" value="teamCreate.jsp"/>
+        <property name="successView" value="teamCreateSuccess.jsp"/>
         <constructor-arg ref="teamService"/>
     </bean>
 
@@ -138,8 +141,18 @@
         <constructor-arg ref="locationService"/>
     </bean>
 
+    <bean id="teamListController"
+        class="com.playserengeti.controller.TeamListController">
+        <constructor-arg ref="teamService"/>
+    </bean>
+    
     <bean id="teamService"
         class="com.playserengeti.service.TeamService">
+        <constructor-arg ref="teamDao"/>
+    </bean>
+    
+    <bean id="teamDao"
+        class="com.playserengeti.dao.TeamDaoMockImpl">
     </bean>
 
     <bean id="userCreateValidator"

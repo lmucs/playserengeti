@@ -1,5 +1,8 @@
 package com.playserengeti.service;
 
+import java.util.Collection;
+
+import com.playserengeti.dao.TeamDao;
 import com.playserengeti.domain.Team;
 
 /**
@@ -7,15 +10,14 @@ import com.playserengeti.domain.Team;
  */
 public class TeamService {
 
-    // TODO: private TeamDao TeamDao;
+    private TeamDao teamDao;
 
-    public TeamService(/* TeamDao TeamDao */) {
-        // TODO: this.TeamDao = TeamDao;
+    public TeamService(TeamDao TeamDao) {
+        this.teamDao = TeamDao;
     }
 
     public Team getTeamById(Integer id) {
-        // TODO: return TeamDao.getTeamById(id);
-        return null;
+        return teamDao.getTeamById(id);
     }
 
     /**
@@ -26,14 +28,21 @@ public class TeamService {
      * with that id exists, then throws some kind of exception. (TODO)
      */
     public void saveTeam(Team team) {
-        // TODO: TeamDao.saveTeam(team);
-    }
+		if (team.getId() == null) {
+			teamDao.insertTeam(team);
+		} else {
+			teamDao.updateTeam(team);
+		}    }
 
     /**
      * Deletes the team with the given id from persistent storage. If no such
      * team exists, throws an IllegalArgumentException.
      */
     public void deleteTeam(Integer id) {
-        // TODO: TeamDao.deleteTeam(id);
+        teamDao.deleteTeam(id);
+    }
+    
+    public Collection<Team> getAllTeams() {
+    	return teamDao.getAllTeams();
     }
 }

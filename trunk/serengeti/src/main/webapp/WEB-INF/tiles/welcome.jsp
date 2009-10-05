@@ -3,7 +3,7 @@
         <title>Serengeti</title>
     </head>
     <body>
-        <img src="images/logo-big.png" alt="logo" style="float:right" />
+        <img src="images/serengeti-logo-full.png" alt="logo" style="float:right" height="20%" width="20%" />
 
         <h1>Serengeti</h1>
 
@@ -29,6 +29,7 @@
         <li><a href="location/update">Update a location</a></li>
         <li><a href="visit/create">Check In (aka create a Visit)</a></li>
         <li><a href="user/list">View all users in the system!</a></li>
+        <li><a href="team/list">View all teams in the system.</a></li>
         </ul>
 
     </body>

@@ -6,13 +6,10 @@ import java.awt.Image;
 public class TeamUpdateCommand {
 	private String name;
 	private int teamID;
-	private int teamTypeID;
 	private int leaderID;
 	private Color color;
 	private Image image;
-	private int homeLocation;
-	//private User[] members;
-	
+	private int homeLocation;	
 	
 	public String getName() {
 		return name;
@@ -28,14 +25,6 @@ public class TeamUpdateCommand {
 	
 	public void setTeamID(int teamID) {
 		this.teamID = teamID;
-	}
-	
-	public int getTeamTypeID() {
-		return this.teamTypeID;
-	}
-	
-	public void setTeamTypeID(int teamTypeID) {
-		this.teamTypeID = teamTypeID;
 	}
 	
 	public int getLeaderID() {

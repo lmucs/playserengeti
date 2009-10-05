@@ -1,18 +1,15 @@
 package com.playserengeti.controller;
 
-import java.awt.Color;
 import java.awt.Image;
 
 public class TeamCreateCommand {
 
 		private String name;
 		private int teamID;
-		private int teamTypeID;
 		private int leaderID;
-		private Color color;
+		private String color;
 		private Image image;
 		private int homeLocation;
-		//private User[] members;
 		
 		
 		public String getName() {
@@ -31,14 +28,6 @@ public class TeamCreateCommand {
 			this.teamID = teamID;
 		}
 		
-		public int getTeamTypeID() {
-			return this.teamTypeID;
-		}
-		
-		public void setTeamTypeID(int teamTypeID) {
-			this.teamTypeID = teamTypeID;
-		}
-		
 		public int getLeaderID() {
 			return leaderID;
 		}
@@ -47,11 +36,11 @@ public class TeamCreateCommand {
 			this.leaderID = leaderID;
 		}
 		
-		public Color getColor() {
+		public String getColor() {
 			return color;
 		}
 		
-		public void setColor(Color color) {
+		public void setColor(String color) {
 			this.color = color;
 		}
 		

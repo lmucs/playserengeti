@@ -32,7 +32,6 @@ public class TeamUpdateController extends AbstractCommandController {
         TeamUpdateCommand command = (TeamUpdateCommand)commandObject;
         String name = command.getName();
         int teamID = command.getTeamID();
-        int teamTypeID = command.getTeamTypeID();
         int leaderID = command.getLeaderID();
         Color color = command.getColor();
         Image image = command.getImage();
@@ -44,7 +43,6 @@ public class TeamUpdateController extends AbstractCommandController {
         ModelAndView mav = new ModelAndView(viewName);
         mav.addObject("name", name);
         mav.addObject("teamID", teamID);
-        mav.addObject("teamTypeID", teamTypeID);
         mav.addObject("leaderID", leaderID); 
         mav.addObject("color", color);        
         mav.addObject("image", image);        
