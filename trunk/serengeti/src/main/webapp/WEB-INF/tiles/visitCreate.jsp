@@ -7,13 +7,6 @@
     </head>
 
     <body>
-    	<c:if test='${ !empty userId && !empty locationId }'>
-
-    		<p>Stub page for adding a visit from <strong><c:out value="${userId}"/></strong>
-    		to location <strong><c:out value="${locationId}"/></strong>...</p>
-    	</c:if>
-
-        <c:if test='${ empty userId || empty locationId }'>
     	<p>Check in UserId at LocationId</p>
         <p>
 			<form method="get" action="">
@@ -22,6 +15,5 @@
 				<input type="submit" value="Check In!"/>
 			</form>
         </p>
-        </c:if>
     </body>
 </html>
