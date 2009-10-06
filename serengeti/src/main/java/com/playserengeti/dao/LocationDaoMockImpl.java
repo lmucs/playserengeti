@@ -15,12 +15,12 @@ public class LocationDaoMockImpl implements LocationDao {
 
 	// Sample teams to insert into the database.
 	private static final Location sampleLocations[] = {
-		new Location(null, "Doolan Hall", 1.3819383, 2.4928394),
-		new Location(null, "Viva Fresh", 3.3840183, 4.3892839),
-		new Location(null, "LAX Airport", 5.382728, 1.28837392),
-		new Location(null, "Chris's House", 1.2839282, 0.38371930),
-		new Location(null, "3rd Street Promenade", 12.393028, 3.3948292),
-		new Location(null, "ChickMagnetVille", 6.93838293, 6.93838469),
+		new Location(null, "Doolan Hall", 1.3819383, 2.4928394, 3),
+		new Location(null, "Viva Fresh", 3.3840183, 4.3892839, 1),
+		new Location(null, "LAX Airport", 5.382728, 1.28837392, 2),
+		new Location(null, "Chris's House", 1.2839282, 0.38371930, 1),
+		new Location(null, "3rd Street Promenade", 12.393028, 3.3948292, 3),
+		new Location(null, "ChickMagnetVille", 6.93838293, 6.93838469, 0),
 	};
 
 	private Map<Integer, Location> storage;
@@ -64,24 +64,19 @@ public class LocationDaoMockImpl implements LocationDao {
 	}
 
 
-	public Integer insertLocation(Location loc) {
-		Integer id = ++maxId;
-
-		loc.setId(id);
-		updateLocation(loc);
-
-		return id;
-	}
-
 	@Override
 	public void updateLocation(Location loc) {
-		storage.put(loc.getId(), loc);
+		storage.put(loc.getLocationId(), loc);
 	}
 
 	@Override
-	public Integer insertLocaion(Location loc) {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer insertLocation(Location location) {
+		Integer locationId = ++maxId;
+
+		location.setLocationId(locationId);
+		updateLocation(location);
+
+		return locationId;
 	}
 
 	@Override

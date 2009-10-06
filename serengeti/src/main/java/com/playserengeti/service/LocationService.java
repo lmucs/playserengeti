@@ -1,5 +1,8 @@
 package com.playserengeti.service;
 
+import com.playserengeti.dao.LocationDao;
+import com.playserengeti.dao.UserDao;
+import com.playserengeti.dao.TeamDao;
 import com.playserengeti.domain.Location;
 
 /**
@@ -7,15 +10,18 @@ import com.playserengeti.domain.Location;
  */
 public class LocationService {
 
+	private TeamDao teamDao;
+	private UserDao userDao;
+	private LocationDao locationDao;
+
     // TODO: private LocationDao LocationDao;
 
-    public LocationService(/* LocationDao LocationDao */) {
-        // TODO: this.LocationDao = LocationDao;
+    public LocationService(LocationDao LocationDao) {
+        this.locationDao = locationDao;
     }
 
-    public Location getLocationId(Integer id) {
-        // TODO: return LocationDao.getLocationById(id);
-        return null;
+    public Location getLocationId(Integer locationId) {
+        return locationDao.getLocationById(locationId);
     }
 
     /**
@@ -26,15 +32,19 @@ public class LocationService {
      * with that id exists, then throws some kind of exception. (TODO)
      */
     public void saveLocation(Location location) {
-        // TODO: LocationDao.saveLocation(location);
+		if (location.getLocationId() == null) {
+			locationDao.insertLocation(location);
+		} else {
+			locationDao.updateLocation(location);
+		}
     }
 
     /**
      * Deletes the location with the given id from persistent storage. If no such
      * location exists, throws an IllegalArgumentException.
      */
-    public void deleteLocation(Integer id) {
-        // TODO: LocationDao.deleteLocation(id);
+    public void deleteLocation(Integer locationId) {
+        locationDao.deleteLocation(locationId);
     }
 }
 

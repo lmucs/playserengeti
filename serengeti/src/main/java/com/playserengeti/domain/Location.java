@@ -2,37 +2,37 @@ package com.playserengeti.domain;
 
 public class Location {
 
-    private Integer id;
-    private String name;
+    private Integer locationId;
+    private String locationName;
     private double longitude;
     private double latitude;
     private int teamOwner;
 
-    public Location(Integer id, String name, double longitude, double latitude) {
-        this.id = id;
-        this.name = name;
+    public Location(Integer locationId, String locationName, double longitude, double latitude, int teamOwner) {
+        this.locationId = locationId;
+        this.locationName = locationName;
         this.longitude = longitude;
         this.latitude = latitude;
     }
-    
+
     public Location(Location b) {
-    	this(b.id, b.name,b.longitude,b.latitude);
+    	this(b.locationId, b.locationName, b.longitude, b.latitude, b.teamOwner);
 	}
 
-	public Integer getId() {
-		return id;
+	public Integer getLocationId() {
+		return locationId;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setLocationId(Integer locationId) {
+		this.locationId = locationId;
 	}
 
-	public String getName() {
-		return name;
+	public String getLocationName() {
+		return locationName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setLocationName(String locationName) {
+		this.locationName = locationName;
 	}
 
 	public double getLongitude() {
@@ -58,7 +58,7 @@ public class Location {
 	public void setTeamOwner(int teamOwner) {
 		this.teamOwner = teamOwner;
 	}
-    
+
     // TODO: equals, hashCode, toString
 
 }
