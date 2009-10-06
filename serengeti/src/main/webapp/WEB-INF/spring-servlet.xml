@@ -19,7 +19,7 @@
 
                 <entry key="/user/create" value-ref="userCreateController" />
                 <entry key="/user/delete" value-ref="userDeleteController" />
-                <entry key="/user/update" value-ref="userManageController" />
+                <entry key="/user/update" value-ref="userUpdateController" />
                 <entry key="/user/view" value-ref="userViewProfileController" />
                 <entry key="/user/list" value-ref="userListController" />
 
@@ -30,7 +30,7 @@
                 <entry key="/team/list" value-ref="teamListController" />
 
                 <entry key="/location/create" value-ref="locationCreateController" />
-                <entry key="/location/update" value-ref="locationManageController" />
+                <entry key="/location/update" value-ref="locationUpdateController" />
                 <entry key="/location/delete" value-ref="locationDeleteController" />
 
                 <entry key="/status/ping" value-ref="pingController" />
@@ -117,18 +117,18 @@
         class="com.playserengeti.controller.UserDeleteValidator">
     </bean>
 
-    <bean id="userManageController"
-        class="com.playserengeti.controller.UserManageController">
+    <bean id="userUpdateController"
+        class="com.playserengeti.controller.UserUpdateController">
         <property name="commandClass"
-            value="com.playserengeti.controller.UserManageCommand"
+            value="com.playserengeti.controller.UserUpdateCommand"
         />
-        <property name="commandName" value="userManage"/>
-        <property name="validator" ref="userManageValidator"/>
+        <property name="commandName" value="userUpdate"/>
+        <property name="validator" ref="userUpdateValidator"/>
         <constructor-arg ref="userService"/>
     </bean>
 
-    <bean id="userManageValidator"
-        class="com.playserengeti.controller.UserManageValidator">
+    <bean id="userUpdateValidator"
+        class="com.playserengeti.controller.UserUpdateValidator">
     </bean>
 
     <bean id="userViewProfileController"
@@ -240,13 +240,15 @@
         <constructor-arg ref="locationService"/>
     </bean>
 
-    <bean id="locationManageController"
-        class="com.playserengeti.controller.LocationManageController">
+    <bean id="locationUpdateController"
+        class="com.playserengeti.controller.LocationUpdateController">
         <property name="commandClass"
-          value="com.playserengeti.controller.LocationManageCommand"
+          value="com.playserengeti.controller.LocationUpdateCommand"
         />
-        <property name="commandName" value="manageLocation"/>
-        <property name="validator" ref="locationManageValidator"/>
+        <property name="commandName" value="updateLocation"/>
+        <property name="validator" ref="locationUpdateValidator"/>
+                <property name="formView" value="locationUpdate.jsp" />
+        <property name="successView" value="locationUpdateSuccess.jsp" />
         <constructor-arg ref="locationService"/>
     </bean>
 
@@ -273,8 +275,8 @@
         class="com.playserengeti.controller.LocationCreateValidator">
     </bean>
 
-    <bean id="locationManageValidator"
-        class="com.playserengeti.controller.LocationManageValidator">
+    <bean id="locationUpdateValidator"
+        class="com.playserengeti.controller.LocationUpdateValidator">
     </bean>
 
     <bean id="locationDao"

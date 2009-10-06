@@ -1,5 +1,5 @@
 /*
- * UserManageController. Calls UserManageService and provides the result to userManage.jsp
+ * UserUpdateController. Calls UserManageService and provides the result to userManage.jsp
  */
 
 package com.playserengeti.controller;
@@ -13,11 +13,11 @@ import org.springframework.web.servlet.mvc.AbstractCommandController;
 
 import com.playserengeti.service.UserService;
 
-public class UserManageController extends AbstractCommandController {
+public class UserUpdateController extends AbstractCommandController {
 
     private UserService service;
 
-    public UserManageController(UserService service) {
+    public UserUpdateController(UserService service) {
         this.service = service;
     }
 
@@ -31,7 +31,7 @@ public class UserManageController extends AbstractCommandController {
             return new ModelAndView("errors.jspx", "errors", errors.getAllErrors());
         }
 
-        UserManageCommand command = (UserManageCommand)commandObject;
+        UserUpdateCommand command = (UserUpdateCommand)commandObject;
         String userID = command.getUserID();
 
         String viewName = "userManage.jsp";

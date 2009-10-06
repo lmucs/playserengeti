@@ -1,10 +1,10 @@
 /*
- * UserManageCommand. Contains the methods to get and set UserManage parameters (ie, userID)
+ * UserUpdateCommand. Contains the methods to get and set UserManage parameters (ie, userID)
  */
 
 package com.playserengeti.controller;
 
-public class UserManageCommand {
+public class UserUpdateCommand {
 
 	private String userID;
 
