@@ -130,7 +130,7 @@
     <bean id="userManageValidator"
         class="com.playserengeti.controller.UserManageValidator">
     </bean>
-    
+
     <bean id="userViewProfileController"
         class="com.playserengeti.controller.UserViewProfileController">
         <property name="commandClass"
@@ -183,7 +183,7 @@
         <property name="successView" value="teamDeleteSuccess.jsp" />
         <constructor-arg ref="teamService"/>
     </bean>
-    
+
     <bean id="teamViewProfileController"
         class="com.playserengeti.controller.TeamViewProfileController">
         <property name="commandClass"
@@ -193,12 +193,12 @@
         <property name="validator" ref="teamViewProfileValidator"/>
         <constructor-arg ref="teamService"/>
     </bean>
-    
+
     <bean id="teamListController"
         class="com.playserengeti.controller.TeamListController">
         <constructor-arg ref="teamService"/>
     </bean>
-    
+
     <bean id="teamCreateValidator"
         class="com.playserengeti.controller.TeamCreateValidator">
     </bean>
@@ -210,16 +210,16 @@
     <bean id="teamDeleteValidator"
         class="com.playserengeti.controller.TeamDeleteValidator">
     </bean>
-    
+
     <bean id="teamViewProfileValidator"
         class="com.playserengeti.controller.TeamViewProfileValidator">
     </bean>
-    
+
     <bean id="teamService"
         class="com.playserengeti.service.TeamService">
         <constructor-arg ref="teamDao"/>
     </bean>
-    
+
     <bean id="teamDao"
         class="com.playserengeti.dao.TeamDaoMockImpl">
     </bean>
@@ -235,6 +235,8 @@
         />
         <property name="commandName" value="createLocation"/>
         <property name="validator" ref="locationCreateValidator"/>
+        <property name="formView" value="locationCreate.jsp" />
+        <property name="successView" value="locationCreateSuccess.jsp" />
         <constructor-arg ref="locationService"/>
     </bean>
 
@@ -260,6 +262,7 @@
 
     <bean id="locationService"
         class="com.playserengeti.service.LocationService">
+        <constructor-arg ref="locationDao"/>
     </bean>
 
     <bean id="locationDeleteValidator"
@@ -272,6 +275,10 @@
 
     <bean id="locationManageValidator"
         class="com.playserengeti.controller.LocationManageValidator">
+    </bean>
+
+    <bean id="locationDao"
+        class="com.playserengeti.dao.LocationDaoMockImpl">
     </bean>
 
     <!--
