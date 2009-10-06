@@ -18,7 +18,9 @@
             <c:forEach var="team" items="${allTeams}">
                 <tr>
                     <td>${team.id}</td>
-                    <td><c:out value="${team.name}"/></td>
+                    <td>
+                        <a href="view?teamId=${team.id}"><c:out value="${team.name}"/></a>
+                    </td>
                     <td><c:out value="${team.color}"/></td>
                 </tr>
             </c:forEach>

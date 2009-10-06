@@ -1,13 +1,12 @@
 package com.playserengeti.controller;
 
-import java.awt.Color;
 import java.awt.Image;
 
 public class TeamUpdateCommand {
 	private String name;
 	private int teamID;
 	private int leaderID;
-	private Color color;
+	private String color;
 	private Image image;
 	private int homeLocation;	
 	
@@ -35,11 +34,11 @@ public class TeamUpdateCommand {
 		this.leaderID = leaderID;
 	}
 	
-	public Color getColor() {
+	public String getColor() {
 		return color;
 	}
 	
-	public void setColor(Color color) {
+	public void setColor(String color) {
 		this.color = color;
 	}
 	
