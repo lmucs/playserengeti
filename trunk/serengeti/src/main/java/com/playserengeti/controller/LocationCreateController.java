@@ -23,38 +23,6 @@ public class LocationCreateController extends SimpleFormController {
         this.service = service;
     }
 
-    /*
-    @Override
-    protected ModelAndView onSubmit(HttpServletRequest request,
-        HttpServletResponse response, Object commandObject,
-        BindException errors) throws Exception {
-
-    	if (errors.hasErrors()) {
-    	    return new ModelAndView("errors.jspx", "errors", errors.getAllErrors());
-    	}
-
-        LocationCreateCommand command = (LocationCreateCommand)commandObject;
-        String locationName = command.getLocationName();
-        int locationId = command.getLocationID();
-        String locationName = command.getLocationName();
-        double locationLongitude = command.getLocationLongitude();
-        double locationLatitude = command.getLocationLatitude();
-//        int userOwnerId = command.getUserOwnerID();
-        int teamOwnerId = command.getTeamOwnerID();
-
-        String viewName = "locationCreate.jsp";
-
-        ModelAndView mav = new ModelAndView(viewName);
-        mav.addObject("locationName", locationName);
-        mav.addObject("locationId", locationId);
-        mav.addObject("locationLongitude", locationLongitude);
-        mav.addObject("locationLatitude", locationLatitude);
-//       mav.addObject("userOwnerId", userOwnerId);
-        mav.addObject("teamOwnerId", teamOwnerId);
-
-        return mav;
-    }*/
-
     /**
      * Handles the submit functionality of the controller.  Currently only uses
      * name and color for development purposes.
@@ -71,8 +39,10 @@ public class LocationCreateController extends SimpleFormController {
 		service.saveLocation(new Location(null, locationName, locationLatitude, locationLongitude, teamOwnerId));
 
 		Map<String, String> model = new HashMap<String, String>();
-		model.put("name", ((TeamCreateCommand)_command).getName());
-		model.put("color", ((TeamCreateCommand)_command).getColor());
+		model.put("locationId", Integer.toString(((LocationCreateCommand)_command).getLocationId()));
+		model.put("locationName", ((LocationCreateCommand)_command).getLocationName());
+		model.put("latitude", Double.toString(((LocationCreateCommand)_command).getLocationLatitude()));
+		model.put("longitude", Double.toString(((LocationCreateCommand)_command).getLocationLongitude()));
 		return new ModelAndView(getSuccessView(), model);
 	}
 }
