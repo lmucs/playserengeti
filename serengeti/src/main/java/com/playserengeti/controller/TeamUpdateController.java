@@ -5,7 +5,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.validation.Errors;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
@@ -28,6 +27,17 @@ public class TeamUpdateController extends SimpleFormController {
 	 */
 	public TeamUpdateController (TeamService service) {
 		this.service = service;
+	}
+	
+	protected Object formBackingObject(HttpServletRequest request)
+    throws Exception {
+        String teamId = request.getParameter("teamId");
+		Team team = service.getTeamById(Integer.valueOf(teamId));
+		
+		TeamUpdateCommand c = new TeamUpdateCommand();
+		c.setTeamId(team.getId());
+		c.setColor(team.getColor());
+		return c;
 	}
 	
 	/**

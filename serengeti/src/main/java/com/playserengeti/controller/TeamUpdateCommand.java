@@ -39,6 +39,14 @@ public class TeamUpdateCommand {
 	}
 	
 	/**
+	 * Sets the team's id.
+	 * @param teamId
+	 */
+	public void setTeamId(int teamId) {
+	    this.teamId = teamId;
+	}
+	
+	/**
 	 * Returns the user ID of the team's leader.
 	 * @return
 	 */
