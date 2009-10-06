@@ -8,10 +8,14 @@
 	</head>
 	
 	<body>
-		<p>You can delete one of you teams from below.</p>
+		<p>Which team would you like to do.</p>
 		
 		<p>
-			List of teams the user is a leader of.
+			<form method="post" action="delete">
+				<label for="teamId">Team ID: </label><input type="text" id="teamId"/><br/>
+				<p>etc.</p>
+				<input type="submit" value="Delete Team!"/>
+			</form>
         </p>
 	</body>
 
