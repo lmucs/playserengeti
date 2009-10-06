@@ -9,9 +9,9 @@
 	
 	<body>
 	    <c:choose>
-            <c:when test='${ !empty team }'>
+            <c:when test='${ !empty updateTeam.teamId }'>
 		        <p>Modify your team's settings.</p>
-		        <p><strong><c:out value="${team.name}"/></strong></p>
+		        <p><strong><c:out value="${updateTeam.name}"/></strong></p>
 		        <p>
 			        <form method="post" action="update">
 				        <label for="color">Preferred Color: </label>
