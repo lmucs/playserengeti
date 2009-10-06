@@ -3,6 +3,11 @@ package com.playserengeti.controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+/**
+ * The validator for deleting teams.
+ * @author Chris
+ *
+ */
 public class TeamDeleteValidator implements Validator {
 	@Override
 	public boolean supports(Class c) {

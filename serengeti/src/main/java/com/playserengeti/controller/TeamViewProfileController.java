@@ -10,13 +10,26 @@ import org.springframework.web.servlet.mvc.AbstractCommandController;
 import com.playserengeti.domain.Team;
 import com.playserengeti.service.TeamService;
 
+/**
+ * The controller for viewing a team's profile.
+ * @author Chris
+ *
+ */
 public class TeamViewProfileController extends AbstractCommandController{
 
 	private TeamService service;
 	
+	/**
+	 * Constructor.  Sets the service.
+	 * @param service
+	 */
 	public TeamViewProfileController(TeamService service) {
 		this.service = service;
 	}
+	
+	/**
+	 * Gets the team from the command and pushes it to the model.
+	 */
 	@Override
 	protected ModelAndView handle(HttpServletRequest request,
             HttpServletResponse response, Object commandObject,
