@@ -27,6 +27,10 @@ public class TeamDaoMockImpl implements TeamDao {
 	private Map<Integer, Team> storage;
 	private int maxId;
 	
+	/**
+	 * Sets the storage map and id counter.  Inserts the sample teams into the 
+	 * database.
+	 */
 	public TeamDaoMockImpl() {
 		storage = Collections.synchronizedMap(new HashMap<Integer, Team>());
 		maxId = -1;
@@ -35,16 +39,27 @@ public class TeamDaoMockImpl implements TeamDao {
 		insertTeams(sampleTeams);
 	}
 	
+	/**
+	 * Removes a team specified by the given id from the database.
+	 */
 	@Override
 	public void deleteTeam(Integer id) {
 		storage.remove(id);
 	}
 
+	/**
+	 * Returns a collection of all teams in the database.
+	 */
 	@Override
 	public Collection<Team> getAllTeams() {
 		return storage.values();
 	}
 
+	/**
+	 * Returns a collection of teams who's name match the given string.  
+	 * Must return collection because currently duplicate team names are 
+	 * allowed.
+	 */
 	@Override
 	public Collection<Team> getTeamsByTeamName(String display) {
 		Set<Team> results = new HashSet<Team>();
@@ -58,6 +73,10 @@ public class TeamDaoMockImpl implements TeamDao {
 		return results;
 	}
 
+	/**
+	 * Returns the team specified by the given id.  Returns a 
+	 * defensive copy.
+	 */
 	@Override
 	public Team getTeamById(Integer id) {
 		return new Team(storage.get(id));
@@ -72,6 +91,9 @@ public class TeamDaoMockImpl implements TeamDao {
 		}
 	}
 	
+	/**
+	 * Inserts the given team into the database with a uniqu id.
+	 */
 	@Override
 	public Integer insertTeam(Team team) {
 		Integer id = ++maxId;
@@ -82,6 +104,9 @@ public class TeamDaoMockImpl implements TeamDao {
 		return id;
 	}
 	
+	/**
+	 * Updates the corresponding team in the database with the one given.
+	 */
 	@Override
 	public void updateTeam(Team team) {
 		storage.put(team.getId(), team);

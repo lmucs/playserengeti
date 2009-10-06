@@ -3,6 +3,11 @@ package com.playserengeti.controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+/**
+ * The validator for creating teams.
+ * @author Chris
+ *
+ */
 public class TeamCreateValidator implements Validator {
 	
 	@Override

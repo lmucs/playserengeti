@@ -12,10 +12,19 @@ public class TeamService {
 
     private TeamDao teamDao;
 
+    /**
+     * Constructor.  Sets the dao.
+     * @param TeamDao
+     */
     public TeamService(TeamDao TeamDao) {
         this.teamDao = TeamDao;
     }
 
+    /**
+     * Returns the team specified by the given id.
+     * @param id
+     * @return
+     */
     public Team getTeamById(Integer id) {
         return teamDao.getTeamById(id);
     }
@@ -42,6 +51,10 @@ public class TeamService {
         teamDao.deleteTeam(id);
     }
     
+    /**
+     * Returns a collection of all teams in the database.
+     * @return
+     */
     public Collection<Team> getAllTeams() {
     	return teamDao.getAllTeams();
     }

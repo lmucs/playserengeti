@@ -10,7 +10,7 @@ import com.playserengeti.domain.Team;
 import com.playserengeti.service.TeamService;
 
 /**
- * The controller for creating a team.  Uses a 
+ * The controller for creating a team.
  * @author Chris
  *
  */
@@ -18,10 +18,18 @@ public class TeamCreateController extends SimpleFormController {
 
     private TeamService service;
 
+	/**
+	 * Constructor.  Sets the service.
+	 * @param service
+	 */
     public TeamCreateController (TeamService service) {
         this.service = service;
     }
 
+    /**
+     * Handles the submit functionality of the controller.  Currently only uses
+     * name and color for development purposes.
+     */
 	public ModelAndView onSubmit(Object _command) {
 		TeamCreateCommand command = (TeamCreateCommand)_command;
 		String display = command.getName();
