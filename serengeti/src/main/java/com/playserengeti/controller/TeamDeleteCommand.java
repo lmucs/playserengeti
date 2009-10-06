@@ -9,11 +9,7 @@ package com.playserengeti.controller;
 public class TeamDeleteCommand {
 
 	private String name;
-	private int teamId;
-	private int leaderId;
-	private String color;
-	private String image;
-	private int homeLocation;
+	private String teamId;
 	
 	/**
 	 * Returns the name of the team.
@@ -35,72 +31,15 @@ public class TeamDeleteCommand {
 	 * Returns the team's ID.
 	 * @return
 	 */
-	public int getTeamId() {
+	public String getTeamId() {
 		return teamId;
 	}
 	
 	/**
-	 * Returns the user ID of the team's leader.
-	 * @return
+	 * Sets the team's ID.
+	 * @param teamId
 	 */
-	public int getLeaderId() {
-		return leaderId;
+	public void setTeamId(String teamId) {
+		this.teamId = teamId;
 	}
-	
-	/**
-	 * Sets the leader of the team.
-	 * @param leaderID
-	 */
-	public void setLeaderId(int leaderId) {
-		this.leaderId = leaderId;
-	}
-	
-	/**
-	 * Returns the team's preferred color.
-	 * @return
-	 */
-	public String getColor() {
-		return color;
-	}
-	
-	/**
-	 * Sets the team's preferred color.
-	 * @param color
-	 */
-	public void setColor(String color) {
-		this.color = color;
-	}
-	
-	/**
-	 * Returns the url of the team's image.
-	 * @return
-	 */
-	public String getImage() {
-		return image;
-	}
-	
-	/**
-	 * Sets the url of the team's image.
-	 * @param image
-	 */
-	public void setImage(String image) {
-		this.image = image;
-	}
-	
-	/**
-	 * Returns the location ID of the team's home location.
-	 * @return
-	 */
-	public int getHomeLocation() {
-		return homeLocation;
-	}
-	
-	/**
-	 * Sets the team's home location to that specified by the given location ID.
-	 * @param homeLocation
-	 */
-	public void setHomeLocation(int homeLocation) {
-		this.homeLocation = homeLocation;
-	}
-	
 }

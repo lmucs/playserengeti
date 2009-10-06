@@ -15,7 +15,7 @@ import com.playserengeti.service.TeamService;
  * @author Chris
  *
  */
-public class TeamViewProfileController extends AbstractCommandController{
+public class TeamViewProfileController extends AbstractCommandController {
 
 	private TeamService service;
 	

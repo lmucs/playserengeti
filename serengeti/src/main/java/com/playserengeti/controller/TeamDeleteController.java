@@ -30,13 +30,16 @@ public class TeamDeleteController extends SimpleFormController {
      */
 	public ModelAndView onSubmit(Object _command) {
 		TeamDeleteCommand command = (TeamDeleteCommand)_command;
-		int teamId = command.getTeamId();
+        String teamId = command.getTeamId();
+        
+		int id = Integer.parseInt(teamId);
+		String teamName = service.getTeamById(id).getName();
 		
 		// Delete the entry from the database.
-		service.deleteTeam(teamId);
+		service.deleteTeam(id);
 		
 		Map<String, String> model = new HashMap<String, String>();
-		model.put("name", ((TeamDeleteCommand)_command).getName());
+		model.put("name", teamName);
 		return new ModelAndView(getSuccessView(), model);
 	}
 
