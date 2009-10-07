@@ -27,17 +27,24 @@ public class TeamUpdateController extends SimpleFormController {
 	 */
 	public TeamUpdateController (TeamService service) {
 		this.service = service;
+		setSessionForm(true);
 	}
 	
+	/**
+	 * Sets the BackingObject to the team specified by the given teamId.
+	 */
 	protected Object formBackingObject(HttpServletRequest request)
     throws Exception {
         String teamId = request.getParameter("teamId");
-		Team team = service.getTeamById(Integer.valueOf(teamId));
+        Team team;
+        TeamUpdateCommand updateTeam = new TeamUpdateCommand();
+		if (teamId != null) {
+			team = service.getTeamById(Integer.valueOf(teamId));
+		    updateTeam.setTeamId(team.getId());
+	    	updateTeam.setName(team.getName());
+    		updateTeam.setColor(team.getColor());
+		}
 		
-		TeamUpdateCommand updateTeam = new TeamUpdateCommand();
-		updateTeam.setTeamId(team.getId());
-		updateTeam.setName(team.getName());
-		updateTeam.setColor(team.getColor());
 		return updateTeam;
 	}
 	
@@ -56,8 +63,7 @@ public class TeamUpdateController extends SimpleFormController {
 		service.saveTeam(team);
 		
 		Map<String, String> model = new HashMap<String, String>();
-		model.put("name", team.getName());
-		
+		model.put("name", command.getName());
 		return new ModelAndView(getSuccessView(), model);
 	}
     

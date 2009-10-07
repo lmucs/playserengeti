@@ -92,7 +92,7 @@ public class TeamDaoMockImpl implements TeamDao {
 	}
 	
 	/**
-	 * Inserts the given team into the database with a uniqu id.
+	 * Inserts the given team into the database with a unique id.
 	 */
 	@Override
 	public Integer insertTeam(Team team) {

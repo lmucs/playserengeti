@@ -7,6 +7,6 @@
     </head>
 
     <body>
-        <p><c:out value="${name}"/> has been modified.</p>
+        <p><strong><c:out value="${name}"/></strong> has been modified.</p>
     </body>
 </html>
