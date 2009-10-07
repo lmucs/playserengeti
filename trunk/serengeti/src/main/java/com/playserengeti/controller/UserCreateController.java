@@ -15,7 +15,10 @@ import com.playserengeti.service.UserService;
 public class UserCreateController extends SimpleFormController {
 
 	private UserService service;
-	
+
+	/**
+	 * Creates the controller, injecting a service.
+	 */
 	public UserCreateController(UserService service) {
 		this.service = service;
 	}
@@ -26,12 +29,17 @@ public class UserCreateController extends SimpleFormController {
 		String login = command.getLogin();
 		String display = command.getDisplay();
 		
-		// Insert the entry into the database.
 		try {
+			// Insert the entry into the database.
 		    service.saveUser(new User(null, login, display));
 		    return new ModelAndView(getSuccessView(), "login", login);
+
 		} catch (Exception e) {
-			return new ModelAndView(getFormView(), "message", e.getMessage());
+			// On service error, try again
+			Map<String, Object> model = new HashMap<String, Object>();
+			model.put("command", command);
+			model.put("message", e.getMessage());
+			return new ModelAndView(getFormView(), model);
 		}
 	}
 }
