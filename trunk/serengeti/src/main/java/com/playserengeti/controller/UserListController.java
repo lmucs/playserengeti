@@ -15,6 +15,9 @@ import org.springframework.web.servlet.mvc.AbstractController;
 import com.playserengeti.domain.User;
 import com.playserengeti.service.UserService;
 
+/**
+ * Trivial controller for showing the view of all users in the system.
+ */
 public class UserListController extends AbstractController {
 
     private UserService service;
@@ -23,6 +26,10 @@ public class UserListController extends AbstractController {
         this.service = service;
     }
 
+    /*
+     * TODO: Eventually this list will have to be paginated and sortable.
+     */
+    
     @Override
     protected ModelAndView handleRequestInternal(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
