@@ -78,7 +78,6 @@
         <property name="commandClass"
             value="com.playserengeti.controller.UserCreateCommand"
         />
-        <property name="commandName" value="userCreate"/>
         <property name="validator" ref="userCreateValidator"/>
         <property name="formView" value="signup.jsp"/>
         <property name="successView" value="signupSuccess.jsp"/>
