@@ -10,12 +10,11 @@
 	</head>
 	
 	<body>
-		<p>Which team would you like to delete.</p>
-		
+	    <a href="/serengeti"><img src="../images/serengeti-logo-full.png" alt="logo" style="float:right" height="20%" width="20%" border="0"/></a>
+
 		<p>
 			<form method="post" action="delete">
-				<label for="teamId">Team ID: </label><input type="text" name="teamId"/><br/>
-				<p>etc.</p>
+				<p>Are you sure you want to delete team <c:out value="${deleteTeam.name}"/>?</p>
 				<input type="submit" value="Delete Team!"/>
 			</form>
         </p>

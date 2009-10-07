@@ -167,7 +167,6 @@
         <property name="commandName" value="updateTeam"/>
         <property name="validator" ref="teamUpdateValidator"/>
         <property name="formView" value="teamUpdate.jsp" />
-        <property name="successView" value="teamUpdateSuccess.jsp" />
         <constructor-arg ref="teamService"/>
     </bean>
 
@@ -179,7 +178,7 @@
         <property name="commandName" value="deleteTeam"/>
         <property name="validator" ref="teamDeleteValidator"/>
         <property name="formView" value="teamDelete.jsp" />
-        <property name="successView" value="teamDeleteSuccess.jsp" />
+        <property name="successView" value="teamList.jsp" />
         <constructor-arg ref="teamService"/>
     </bean>
 
