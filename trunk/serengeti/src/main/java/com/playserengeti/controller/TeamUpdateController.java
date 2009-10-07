@@ -34,10 +34,11 @@ public class TeamUpdateController extends SimpleFormController {
         String teamId = request.getParameter("teamId");
 		Team team = service.getTeamById(Integer.valueOf(teamId));
 		
-		TeamUpdateCommand c = new TeamUpdateCommand();
-		c.setTeamId(team.getId());
-		c.setColor(team.getColor());
-		return c;
+		TeamUpdateCommand updateTeam = new TeamUpdateCommand();
+		updateTeam.setTeamId(team.getId());
+		updateTeam.setName(team.getName());
+		updateTeam.setColor(team.getColor());
+		return updateTeam;
 	}
 	
 	/**
