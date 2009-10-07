@@ -1,8 +1,5 @@
 package com.playserengeti.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.servlet.ModelAndView;
@@ -61,10 +58,13 @@ public class TeamUpdateController extends SimpleFormController {
 		Team team = service.getTeamById(teamId);
 		team.setColor(command.getColor());
 		service.saveTeam(team);
+
+		String success = "teamViewProfile.jsp?teamId=" + Integer.toString(teamId);
 		
-		Map<String, String> model = new HashMap<String, String>();
-		model.put("name", command.getName());
-		return new ModelAndView(getSuccessView(), model);
+		ModelAndView mav = new ModelAndView(success);
+		mav.addObject(team);
+
+		return mav;
 	}
     
 }

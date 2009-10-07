@@ -10,6 +10,8 @@
 	</head>
 	
 	<body>
+	    <a href="/serengeti"><img src="../images/serengeti-logo-full.png" alt="logo" style="float:right" height="20%" width="20%" border="0"/></a>
+	
 		<p>Create your own team and start marking your territory.  
 		   Just fill in the information below.</p>
 		

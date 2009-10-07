@@ -7,6 +7,8 @@
     </head>
   
     <body>
+	    <a href="/serengeti"><img src="../images/serengeti-logo-full.png" alt="logo" style="float:right" height="20%" width="20%" border="0"/></a>
+    
         <c:choose>
             <c:when test='${ !empty team }'>
                 <p>Here's the team's profile you requested</p>
@@ -20,10 +22,12 @@
                         <td><c:out value="${team.color}"/></td>
                     </tr>
                 </table>
-                <a href="update?teamId=${team.id}">Modify Team</a>
+                <a href="update?teamId=${team.id}">Modify Team</a><br/>
+                <a href="delete?teamId=${team.id}">Delete Team</a><br/>
+                <a href="list">View All Teams</a>
             </c:when>
             <c:otherwise>
-                <p>That team does not exist.</p>
+                <p>The team you requested does not exist.</p>
             </c:otherwise>
         </c:choose>
     </body>

@@ -8,6 +8,8 @@
 	</head>
 	
 	<body>
+	    <a href="/serengeti"><img src="../images/serengeti-logo-full.png" alt="logo" style="float:right" height="20%" width="20%" border="0"/></a>
+	
 	    <c:choose>
             <c:when test='${ !empty updateTeam}'>
 		        <p>Modify your team's settings.</p>

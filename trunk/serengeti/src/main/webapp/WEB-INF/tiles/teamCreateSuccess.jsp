@@ -7,6 +7,8 @@
     </head>
   
     <body>
+	    <a href="/serengeti"><img src="../images/serengeti-logo-full.png" alt="logo" style="float:right" height="20%" width="20%" border="0"/></a>
+        
         <p>The team <strong><c:out value="${name}"/></strong> with the color of 
         <strong><c:out value="${color}"/></strong> has just been created.</p>
         
