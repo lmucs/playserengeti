@@ -9,7 +9,7 @@
 	
 	<body>
 	    <c:choose>
-            <c:when test='${ !empty updateTeam.teamId }'>
+            <c:when test='${ !empty updateTeam}'>
 		        <p>Modify your team's settings.</p>
 		        <p><strong><c:out value="${updateTeam.name}"/></strong></p>
 		        <p>
