@@ -9,9 +9,8 @@ import org.springframework.web.servlet.mvc.SimpleFormController;
 import com.playserengeti.domain.User;
 import com.playserengeti.service.UserService;
 
-
 /**
- * Main controller for the calculator webapp.
+ * Controller for creating a user.
  */
 public class UserCreateController extends SimpleFormController {
 
@@ -21,16 +20,18 @@ public class UserCreateController extends SimpleFormController {
 		this.service = service;
 	}
 	
+	@Override
 	public ModelAndView onSubmit(Object _command) {
 		UserCreateCommand command = (UserCreateCommand)_command;
 		String login = command.getLogin();
 		String display = command.getDisplay();
 		
 		// Insert the entry into the database.
-		service.saveUser(new User(null, login, display));
-		
-		Map<String, String> model = new HashMap<String, String>();
-		model.put("login", ((UserCreateCommand)_command).getLogin());
-		return new ModelAndView(getSuccessView(), model);
+		try {
+		    service.saveUser(new User(null, login, display));
+		    return new ModelAndView(getSuccessView(), "login", login);
+		} catch (Exception e) {
+			return new ModelAndView(getFormView(), "message", e.getMessage());
+		}
 	}
 }

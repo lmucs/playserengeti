@@ -17,5 +17,9 @@
 				<input type="submit" value="Sign up!"/>
 			</form>
         </p>
+        
+        <c:if test="${not empty message}">
+            <p><c:out value="${message}"/></p>
+        </c:if>        
     </body>
 </html>
