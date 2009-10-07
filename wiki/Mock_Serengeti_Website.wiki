@@ -1,0 +1,3 @@
+#summary Link to Mark's mock-up of the Serengeti website.
+
+[http://www.cs.lmu.edu/~mmiscava/fall2009/cmsi499/serengetiTests.html playSERENGETI]
