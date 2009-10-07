@@ -88,13 +88,15 @@
         class="com.playserengeti.controller.UserCreateValidator">
     </bean>
 
-        <bean id="userDeleteController"
+    <bean id="userDeleteController"
         class="com.playserengeti.controller.UserDeleteController">
         <property name="commandClass"
             value="com.playserengeti.controller.UserDeleteCommand"
         />
         <property name="commandName" value="userDelete"/>
         <property name="validator" ref="userDeleteValidator"/>
+        <property name="formView" value="userDelete.jsp"/>
+        <property name="successView" value="userDeleteSuccess.jsp"/>
         <constructor-arg ref="userService"/>
     </bean>
 

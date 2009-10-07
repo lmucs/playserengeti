@@ -107,6 +107,10 @@ public class UserDaoMockImpl implements UserDao {
 
 	@Override
 	public void deleteUser(Integer id) {
+		if (!storage.containsKey(id)) {
+			// TODO: Localize message.
+			throw new IllegalArgumentException("Invalid user ID.");
+		}
 		storage.remove(id);
 	}
 
