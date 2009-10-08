@@ -33,11 +33,13 @@ public class LocationService {
      * with the fields in the argument. If the id is not null, but no such location
      * with that id exists, then throws some kind of exception. (TODO)
      */
-    public void saveLocation(Location location) {
+    public Integer saveLocation(Location location) {
 		if (location.getLocationId() == null) {
-			locationDao.insertLocation(location);
+			return locationDao.insertLocation(location);
+
 		} else {
 			locationDao.updateLocation(location);
+			return location.getLocationId();
 		}
     }
 
