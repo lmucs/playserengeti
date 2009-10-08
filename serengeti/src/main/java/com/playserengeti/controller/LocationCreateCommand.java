@@ -6,8 +6,11 @@ public class LocationCreateCommand {
     private int locationId;
     private double locationLongitude;
     private double locationLatitude;
-    private int userOwnerId;
     private int teamOwnerId;
+
+    public void setLocationId(Integer locationId) {
+        this.locationId = locationId;
+    }
 
     public String getLocationName() {
         return locationName;
@@ -21,28 +24,28 @@ public class LocationCreateCommand {
         return locationId;
     }
 
-    public int getUserOwnerId() {
-        return userOwnerId;
-    }
-
-    public int getTeamOwnerId() {
-        return teamOwnerId;
-    }
-
-	public double getLocationLongitude() {
+	public double getLongitude() {
 		return locationLongitude;
 	}
 
-	public void setLocationLongitude(double locationLongitude) {
+	public void setLongitude(double locationLongitude) {
 		this.locationLongitude = locationLongitude;
 	}
 
-	public double getLocationLatitude() {
+	public double getLatitude() {
 		return locationLatitude;
 	}
 
-	public void setLocationLatitude(double locationLatitude) {
+	public void setLatitude(double locationLatitude) {
 		this.locationLatitude = locationLatitude;
+	}
+
+	public Integer getTeamOwnerId() {
+		return teamOwnerId;
+	}
+
+	public void setTeamOwnerId(Integer teamOwnerId) {
+		this.teamOwnerId = teamOwnerId;
 	}
 
 }

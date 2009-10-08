@@ -29,20 +29,23 @@ public class LocationCreateController extends SimpleFormController {
      */
 	public ModelAndView onSubmit(Object _command) {
 		LocationCreateCommand command = (LocationCreateCommand)_command;
+		Integer locationId;
 		String locationName = command.getLocationName();
-		double locationLatitude = command.getLocationLatitude();
-		double locationLongitude = command.getLocationLongitude();
+		double latitude = command.getLatitude();
+		double longitude = command.getLongitude();
 		Integer teamOwnerId = command.getTeamOwnerId();
+		Location location = new Location(null, locationName, latitude, longitude, teamOwnerId);
 
 
 		// Insert the entry into the database.
-		service.saveLocation(new Location(null, locationName, locationLatitude, locationLongitude, teamOwnerId));
+		locationId = service.saveLocation(location);
 
 		Map<String, String> model = new HashMap<String, String>();
-		model.put("locationId", Integer.toString(((LocationCreateCommand)_command).getLocationId()));
-		model.put("locationName", ((LocationCreateCommand)_command).getLocationName());
-		model.put("latitude", Double.toString(((LocationCreateCommand)_command).getLocationLatitude()));
-		model.put("longitude", Double.toString(((LocationCreateCommand)_command).getLocationLongitude()));
+		model.put("locationId", Integer.toString(locationId));
+		model.put("locationName", locationName);
+		model.put("latitude", Double.toString(latitude));
+		model.put("longitude", Double.toString(longitude));
+		model.put("teamOwner", Integer.toString(teamOwnerId));
 		return new ModelAndView(getSuccessView(), model);
 	}
 }
