@@ -13,7 +13,7 @@
                 <table>
                     <tr>
                     	<td><string>Location Id </strong></td>
-                    	<td><c:out value="${location.locationName}</td>
+                    	<td><c:out value="${location.locationName}"/></td>
                     </tr>
                     <tr>
                         <td><strong>Location Name</strong></td>
@@ -35,12 +35,12 @@
                         </td>
                     </tr>
                 </table>
-                <a href="update?teamId=${team.id}">Modify Team</a><br/>
-                <a href="delete?teamId=${team.id}">Delete Team</a><br/>
-                <a href="list">View All Teams</a>
+                <a href="update?locationId=${location.locationId}">Modify Location</a><br/>
+                <a href="delete?locationId=${location.locationId}">Delete Location</a><br/>
+                <a href="list">View All Locations</a>
             </c:when>
             <c:otherwise>
-                <p>The team you requested does not exist.</p>
+                <p>The location you requested does not exist.</p>
             </c:otherwise>
         </c:choose>
     </body>
