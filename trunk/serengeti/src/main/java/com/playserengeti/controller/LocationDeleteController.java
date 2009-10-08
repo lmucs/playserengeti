@@ -1,53 +1,65 @@
 package com.playserengeti.controller;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.AbstractCommandController;
+import org.springframework.web.servlet.mvc.SimpleFormController;
 
+import com.playserengeti.domain.Location;
 import com.playserengeti.service.LocationService;
 
 /*
  *The controller for deleting a location
 */
 
-public class LocationDeleteController extends AbstractCommandController {
-	
+public class LocationDeleteController extends SimpleFormController {
+
 	private LocationService service;
-	
+
 	public LocationDeleteController (LocationService service) {
 		this.service = service;
 	}
-	
+
+	/**
+	 * Sets the BackingObject to the team specified by the given teamId.
+	 */
+	protected Object formBackingObject(HttpServletRequest request)
+    throws Exception {
+        Integer locationId = Integer.valueOf(request.getParameter("locationId"));
+        Location location;
+        LocationDeleteCommand deleteLocation = new LocationDeleteCommand();
+		if (locationId != null) {
+			location = service.getLocationById(locationId);
+		    deleteLocation.setLocationId(location.getLocationId());
+	    	deleteLocation.setLocationName(location.getLocationName());
+		}
+
+		return deleteLocation;
+	}
+
     @Override
-    protected ModelAndView handle(HttpServletRequest request,
-            HttpServletResponse response, Object commandObject,
-            BindException errors) throws Exception {
+	protected ModelAndView onSubmit(Object _command) {
 
-    	if (errors.hasErrors()) {
-    	    return new ModelAndView("errors.jspx", "errors", errors.getAllErrors());	
-    	}
-    	
-        LocationDeleteCommand command = (LocationDeleteCommand)commandObject;
-        String name = command.getName();
-        int locationID = command.getLocationID();
-        double locationLongitude = command.getLocationLongitude();
-        double locationLatitude = command.getLocationLatitude();
-        int userOwnerID = command.getUserOwnerID();
-        int teamOwnerID = command.getTeamOwnerID();
+		LocationDeleteCommand command = (LocationDeleteCommand)_command;
 
-        String viewName = "locationDelete.jsp";
+		Integer locationId = command.getLocationId();
 
-        ModelAndView mav = new ModelAndView(viewName);
-        mav.addObject("name", name);
-        mav.addObject("locationID", locationID);
-        mav.addObject("locationLongitude", locationLongitude);
-        mav.addObject("locationLatitude", locationLatitude);
-        mav.addObject("userOwnerID", userOwnerID);
-        mav.addObject("teamOwnerID", teamOwnerID);
+		Map<String, String> model = new HashMap<String, String>();
+		model.put("locationName", service.getLocationById(locationId).getLocationName());
+		model.put("deleted", "true");
 
-        return mav;
-    }
+		ModelAndView mav = new ModelAndView(getSuccessView(), model);
+
+		//Deletes the team from the database.
+		service.deleteLocation(locationId);
+
+        Collection<Location> allLocations = service.getAllLocations();
+        mav.addObject("allLocations", allLocations);
+
+		return mav;
+	}
 }

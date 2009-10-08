@@ -1,5 +1,7 @@
 package com.playserengeti.service;
 
+import java.util.Collection;
+
 import com.playserengeti.dao.LocationDao;
 import com.playserengeti.dao.UserDao;
 import com.playserengeti.dao.TeamDao;
@@ -16,11 +18,11 @@ public class LocationService {
 
     // TODO: private LocationDao LocationDao;
 
-    public LocationService(LocationDao LocationDao) {
+    public LocationService(LocationDao locationDao) {
         this.locationDao = locationDao;
     }
 
-    public Location getLocationId(Integer locationId) {
+    public Location getLocationById(Integer locationId) {
         return locationDao.getLocationById(locationId);
     }
 
@@ -45,6 +47,14 @@ public class LocationService {
      */
     public void deleteLocation(Integer locationId) {
         locationDao.deleteLocation(locationId);
+    }
+
+    /**
+     * Returns a collection of all locations in the database.
+     * @return
+     */
+    public Collection<Location> getAllLocations() {
+    	return locationDao.getAllLocations();
     }
 }
 
