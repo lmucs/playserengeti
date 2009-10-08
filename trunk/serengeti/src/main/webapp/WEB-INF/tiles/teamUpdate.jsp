@@ -25,7 +25,10 @@
 				                <option value="Magenta">Magenta</option>
 				                <option value="Cyan">Cyan</option>
 				            </select><br/>
-				        <p>etc.</p>
+				        <label for="leaderId">Team Leader ID: </label><input type="text" name="leaderId"/><br/>
+				        <label for="homeLocation">Enter an address to be you teams home location: 
+				          </label><input type="text" name="homeLocation"/><br/>
+				        <label for="image">Team Image URL: </label><input type="text" name="image"/><br/>
 				        <input type="submit" value="Modify Team!"/>
 			        </form>
                 </p>

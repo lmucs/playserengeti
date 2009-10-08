@@ -40,6 +40,9 @@ public class TeamUpdateController extends SimpleFormController {
 		    updateTeam.setTeamId(team.getId());
 	    	updateTeam.setName(team.getName());
     		updateTeam.setColor(team.getColor());
+    		if (team.getLeaderId() != null) updateTeam.setLeaderId(team.getLeaderId());
+    		if (team.getHomeLocation() != null) updateTeam.setHomeLocation(team.getHomeLocation());
+    		if (team.getImage() != null) updateTeam.setImage(team.getImage());
 		}
 		
 		return updateTeam;
@@ -47,8 +50,7 @@ public class TeamUpdateController extends SimpleFormController {
 	
 	/**
 	 * Modifies the database entry with the information from the command.  
-	 * Should be modified to check what info has changed.  Currently only 
-	 * modifies color for development.
+	 * Should be modified to check what info has changed.
 	 */
 	public ModelAndView onSubmit(Object _command) {
 		TeamUpdateCommand command = (TeamUpdateCommand)_command;
@@ -57,6 +59,10 @@ public class TeamUpdateController extends SimpleFormController {
 		// Modify the entry in the database.
 		Team team = service.getTeamById(teamId);
 		team.setColor(command.getColor());
+		team.setLeaderId(command.getLeaderId());
+		team.setHomeLocation(command.getHomeLocation());
+		team.setImage(command.getImage());
+		
 		service.saveTeam(team);
 
 		String success = "teamViewProfile.jsp?teamId=" + Integer.toString(teamId);

@@ -12,7 +12,7 @@ public class TeamUpdateCommand {
 	private int leaderId;
 	private String color;
 	private String image;
-	private int homeLocation;
+	private String homeLocation;
 	
 	/**
 	 * Returns the name of the team.
@@ -98,7 +98,7 @@ public class TeamUpdateCommand {
 	 * Returns the location ID of the team's home location.
 	 * @return
 	 */
-	public int getHomeLocation() {
+	public String getHomeLocation() {
 		return homeLocation;
 	}
 	
@@ -106,7 +106,7 @@ public class TeamUpdateCommand {
 	 * Sets the team's home location to that specified by the given location ID.
 	 * @param homeLocation
 	 */
-	public void setHomeLocation(int homeLocation) {
+	public void setHomeLocation(String homeLocation) {
 		this.homeLocation = homeLocation;
 	}
 	
