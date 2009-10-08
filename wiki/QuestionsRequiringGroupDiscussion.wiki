@@ -8,6 +8,7 @@
     ** [http://www.degraeve.com/color-palette/index.php?q=http://newsimg.bbc.co.uk/media/images/41111000/jpg/_41111460_10beastafrica-fulton.jpg,2e170cbc6825e59335efb34af6f2c7,3c0000f41b00ff5400ff9a00ffffc5 Choice 4]
     ** [http://www.degraeve.com/color-palette/index.php?q=http://www.tanzaniaodyssey.com/images/serengeti_serengeti_top_60_4.jpg,4c4526579fd5428ac1b8dae7677874,635000006dfb0088ff709b92b4ffff Choice 5]
  **
+** Scoring Decay (LocationOwnershipScoring)
 
 
 = Closed Questions =
