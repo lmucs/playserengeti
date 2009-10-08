@@ -22,13 +22,13 @@
                 <th>Location Longitude</th>
                 <th>Location Owner (Team)</th>
             </tr>
-            <c:forEach var="team" items="${allLocations}">
+            <c:forEach var="location" items="${allLocations}">
                 <tr>
-                    <td>${location.id}</td>
+                    <td>${location.locationId}</td>
                     <td>
                         <a href="view?locationId=${location.locationId}"><c:out value="${location.locationName}"/></a>
                     </td>
-                    <td><c:out value="${location.color}"/></td>
+                    <td><c:out value="${location.locationName}"/></td>
                     <td><c:out value="${location.latitude}"/></td>
                     <td><c:out value="${location.longitude}"/></td>
                     <td><c:out value="${location.teamOwner}"/></td>
