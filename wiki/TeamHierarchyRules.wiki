@@ -4,7 +4,7 @@
 
 Ideas for how to structure the team Hierarchy
 
-= Details =
+= Details (Version 1) =
 
 I have some ideas for Team Hierarchy Rules/Definition (please feel free to viciously savage, as these are merely passing thoughts):
 
@@ -13,4 +13,8 @@ Within each League, there would be "Teams" (or "species" or whatnot) that are al
 
 Within each Team, there can be sub-leagues and sub-teams (or "packs" or "herds") that can be user generated. For example, there could be a "Greek Org" sub-league with teams for each greek org. Again, each user could be a member of only one sub-group per sub-league, but could be a member of multiple sub-leagues. Joining a sub-team automatically makes you a member of the parent team. Owners of the parent Team should be able to specify if sub-leagues/sub-teams can be user generated or if they should be controlled. If controlled, the Team leader should have rights to create/manage sub-leagues/sub-teams.
 
-Within each league or sub-league, a particular team can declare another team a special "rival". Checking game status could then be done by league/sub-league, which would show all teams in the league, or by rivals only
+Within each league or sub-league, a particular team can declare another team a special "rival". Checking game status could then be done by league/sub-league, which would show all teams in the league, or by rivals only.
+
+= Details (Version 2) =
+
+Instead of leagues or categories, teams are independent. Users can belong to as many teams as they wish, even if they are opposing each other. However, when checking in to a location, a user must select one of their teams to attribute their check-in to. This selection can be made on the same page used to check-in, preferably by a drop-down box containing all teams the user belongs to.
