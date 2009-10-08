@@ -14,7 +14,7 @@ import com.playserengeti.domain.Location;
 public class LocationDaoMockImpl implements LocationDao {
 
 	// Sample teams to insert into the database.
-	private static final Location sampleLocations[] = {
+	private static final Location[] sampleLocations = {
 		new Location(null, "Doolan Hall", 1.3819383, 2.4928394, 3),
 		new Location(null, "Viva Fresh", 3.3840183, 4.3892839, 1),
 		new Location(null, "LAX Airport", 5.382728, 1.28837392, 2),
