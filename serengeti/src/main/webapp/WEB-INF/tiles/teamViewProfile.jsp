@@ -21,6 +21,18 @@
                         <td><strong>Team Color</strong></td>
                         <td><c:out value="${team.color}"/></td>
                     </tr>
+                    <tr>
+                        <td><strong>Team Leader</strong></td>
+                        <td><c:out value="${team.leaderId}"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Home Location</strong></td>
+                        <td><c:out value="${team.homeLocation}"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Team Image</strong></td>
+                        <td><c:out value="${team.image}"/></td>
+                    </tr>
                 </table>
                 <a href="update?teamId=${team.id}">Modify Team</a><br/>
                 <a href="delete?teamId=${team.id}">Delete Team</a><br/>

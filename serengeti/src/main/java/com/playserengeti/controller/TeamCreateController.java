@@ -34,13 +34,25 @@ public class TeamCreateController extends SimpleFormController {
 		TeamCreateCommand command = (TeamCreateCommand)_command;
 		String display = command.getName();
 		String color = command.getColor();
+		Integer leaderId = Integer.valueOf(command.getLeaderId());
+		String homeLocation = command.getHomeLocation();
+		String image = command.getImage();
+		
+		Team team = new Team(null, display, color);
+		if (leaderId != null) team.setLeaderId(leaderId);
+		if (homeLocation != null) team.setHomeLocation(homeLocation);
+		if (image != null) team.setImage(image);
 		
 		// Insert the entry into the database.
-		service.saveTeam(new Team(null, display, color));
+		service.saveTeam(team);
 		
 		Map<String, String> model = new HashMap<String, String>();
-		model.put("name", ((TeamCreateCommand)_command).getName());
-		model.put("color", ((TeamCreateCommand)_command).getColor());
+		model.put("name", display);
+		model.put("color", color);
+		model.put("leaderId", leaderId.toString());
+		model.put("homeLocation", homeLocation.toString());
+		model.put("image", image);
+		
 		return new ModelAndView(getSuccessView(), model);
 	}
 

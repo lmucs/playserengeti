@@ -9,10 +9,10 @@ public class TeamCreateCommand {
 
 	private String name;
 	private int teamId;
-	private int leaderId;
+	private String leaderId;
 	private String color;
 	private String image;
-	private int homeLocation;
+	private String homeLocation;
 	
 	/**
 	 * Returns the name of the team.
@@ -42,7 +42,7 @@ public class TeamCreateCommand {
 	 * Returns the user ID of the team's leader.
 	 * @return
 	 */
-	public int getLeaderId() {
+	public String getLeaderId() {
 		return leaderId;
 	}
 	
@@ -50,7 +50,7 @@ public class TeamCreateCommand {
 	 * Sets the leader of the team.
 	 * @param leaderID
 	 */
-	public void setLeaderId(int leaderId) {
+	public void setLeaderId(String leaderId) {
 		this.leaderId = leaderId;
 	}
 	
@@ -90,7 +90,7 @@ public class TeamCreateCommand {
 	 * Returns the location ID of the team's home location.
 	 * @return
 	 */
-	public int getHomeLocation() {
+	public String getHomeLocation() {
 		return homeLocation;
 	}
 	
@@ -98,7 +98,7 @@ public class TeamCreateCommand {
 	 * Sets the team's home location to that specified by the given location ID.
 	 * @param homeLocation
 	 */
-	public void setHomeLocation(int homeLocation) {
+	public void setHomeLocation(String homeLocation) {
 		this.homeLocation = homeLocation;
 	}
 	
