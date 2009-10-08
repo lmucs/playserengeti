@@ -18,3 +18,7 @@ Within each league or sub-league, a particular team can declare another team a s
 = Details (Version 2) =
 
 Instead of leagues or categories, teams are independent. Users can belong to as many teams as they wish, even if they are opposing each other. However, when checking in to a location, a user must select one of their teams to attribute their check-in to. This selection can be made on the same page used to check-in, preferably by a drop-down box containing all teams the user belongs to.
+
+Only one team can be be used to check-in due to a potential problem caused when many users belong to similar teams and check-in as a member of each of their teams. The teams shared by most users would almost always be extremely close to each other as owner, leading to long periods of a location being neutral or in conflict instead of having either as an owner.
+
+<wiki:comment>In progress, please edit/comment on.</wiki:comment>
