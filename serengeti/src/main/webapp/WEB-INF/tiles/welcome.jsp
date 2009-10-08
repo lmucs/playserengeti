@@ -21,7 +21,7 @@
         </ul>
         <ul>
         <li><a href="team/create">Create a team</a></li>
-        <li><a href="team/list">View all teams in the system.</a></li>   
+        <li><a href="team/list">View all teams in the system.</a></li>
         </ul>
         <ul>
         <li><a href="status/ping">send a ping</a></li>
@@ -31,8 +31,7 @@
         </ul>
         <ul>
         <li><a href="location/create">Create a location</a></li>
-        <li><a href="location/delete">Delete a location</a></li>
-        <li><a href="location/update">Update a location</a></li>
+        <li><a href="location/list">View all locations in the system</a></li>
         <li><a href="visit/create">Check In (aka create a Visit)</a></li>
         </ul>
 

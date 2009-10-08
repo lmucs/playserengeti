@@ -6,17 +6,18 @@
 	<head>
 		<title>Create Location</title>
 	</head>
-	
+
 	<body>
 		<p>You can create a location.</p>
-		
+
 		<p>
-			<form method="get" action="">
-				<label for="name">Location Name: </label><input type="text" name="name"/><br/>
-				<p>etc.</p>
+            <form method="post" action="create">
+				<label for="name">Location Name: </label><input type="text" name="locationName"/><br/>
+				<label for="latitude">Latitude: </label><input type="text" name="latitude"/><br/>
+				<label for="latitude">Longitude: </label><input type="text" name="longitude"/><br/>
+				<label for="teamOwner">Team Owner: </label><input type="text" name="teamOwner"/><br/>
 				<input type="submit" value="Create Location!"/>
 			</form>
         </p>
 	</body>
-
 </html>

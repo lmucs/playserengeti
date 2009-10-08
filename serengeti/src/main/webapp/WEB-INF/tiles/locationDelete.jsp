@@ -6,12 +6,14 @@
 	<head>
 		<title>Delete Location</title>
 	</head>
-	
+
 	<body>
-		<p>You can delete one of the locations from below.</p>
-		
+
 		<p>
-			List of locations the user owns (actual business owners).
+			<form method="post" action="delete">
+				<p>Are you sure you want to delete location <c:out value="${deleteLocation.locationName}"/>?</p>
+				<input type="submit" value="Delete Location!"/>
+			</form>
         </p>
 	</body>
 
