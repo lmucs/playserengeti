@@ -79,13 +79,7 @@ public class TeamDaoMockImpl implements TeamDao {
 	 */
 	@Override
 	public Team getTeamById(Integer id) {
-		Team orig = storage.get(id);
-		Team copy = new Team(storage.get(id));
-		copy.setLeaderId(orig.getLeaderId());
-		copy.setHomeLocation(orig.getHomeLocation());
-		copy.setImage(orig.getImage());
-		
-		return copy;
+		return new Team(storage.get(id));
 	}
 
 	/**

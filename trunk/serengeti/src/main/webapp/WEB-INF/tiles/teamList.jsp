@@ -18,15 +18,13 @@
             <tr>
                 <th>Id</th>
                 <th>Team Name</th>
-                <th>Team Color</th>
             </tr>
             <c:forEach var="team" items="${allTeams}">
                 <tr>
                     <td>${team.id}</td>
                     <td>
                         <a href="view?teamId=${team.id}"><c:out value="${team.name}"/></a>
-                    </td>
-                    <td><c:out value="${team.color}"/></td>
+                    </td>                    
                 </tr>
             </c:forEach>
         </table>

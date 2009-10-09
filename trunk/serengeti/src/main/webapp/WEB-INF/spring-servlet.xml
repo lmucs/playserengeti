@@ -161,6 +161,8 @@
         <property name="formView" value="teamCreate.jsp"/>
         <property name="successView" value="teamCreateSuccess.jsp"/>
         <constructor-arg ref="teamService"/>
+        <constructor-arg ref="userService"/>
+        <constructor-arg ref="locationService"/>
     </bean>
 
     <bean id="teamUpdateController"
@@ -172,6 +174,8 @@
         <property name="validator" ref="teamUpdateValidator"/>
         <property name="formView" value="teamUpdate.jsp" />
         <constructor-arg ref="teamService"/>
+        <constructor-arg ref="userService"/>
+        <constructor-arg ref="locationService"/>
     </bean>
 
     <bean id="teamDeleteController"

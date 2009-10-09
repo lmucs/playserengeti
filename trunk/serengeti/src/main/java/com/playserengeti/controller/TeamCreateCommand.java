@@ -1,5 +1,10 @@
 package com.playserengeti.controller;
 
+import java.util.Collection;
+
+import com.playserengeti.domain.Location;
+import com.playserengeti.domain.User;
+
 /**
  * The commander for creating a new team.
  * @author Chris
@@ -8,12 +13,13 @@ package com.playserengeti.controller;
 public class TeamCreateCommand {
 
 	private String name;
-	private int teamId;
-	private String leaderId;
+	private Integer teamId;
+	private Integer leaderId;
 	private String color;
 	private String image;
-	private String homeLocation;
-	
+	private Integer homeLocation;
+	private Collection<User> allUsers;
+	private Collection<Location> allLocations;
 	/**
 	 * Returns the name of the team.
 	 * @return
@@ -34,7 +40,7 @@ public class TeamCreateCommand {
 	 * Returns the team's ID.
 	 * @return
 	 */
-	public int getTeamId() {
+	public Integer getTeamId() {
 		return teamId;
 	}
 	
@@ -42,7 +48,7 @@ public class TeamCreateCommand {
 	 * Returns the user ID of the team's leader.
 	 * @return
 	 */
-	public String getLeaderId() {
+	public Integer getLeaderId() {
 		return leaderId;
 	}
 	
@@ -50,7 +56,7 @@ public class TeamCreateCommand {
 	 * Sets the leader of the team.
 	 * @param leaderID
 	 */
-	public void setLeaderId(String leaderId) {
+	public void setLeaderId(Integer leaderId) {
 		this.leaderId = leaderId;
 	}
 	
@@ -90,7 +96,7 @@ public class TeamCreateCommand {
 	 * Returns the location ID of the team's home location.
 	 * @return
 	 */
-	public String getHomeLocation() {
+	public Integer getHomeLocation() {
 		return homeLocation;
 	}
 	
@@ -98,8 +104,25 @@ public class TeamCreateCommand {
 	 * Sets the team's home location to that specified by the given location ID.
 	 * @param homeLocation
 	 */
-	public void setHomeLocation(String homeLocation) {
+	public void setHomeLocation(Integer homeLocation) {
 		this.homeLocation = homeLocation;
 	}
+
+	public Collection<User> getAllUsers() {
+		return allUsers;
+	}
+
+	public void setAllUsers(Collection<User> allUsers) {
+		this.allUsers = allUsers;
+	}
+
+	public Collection<Location> getAllLocations() {
+		return allLocations;
+	}
+
+	public void setAllLocations(Collection<Location> allLocations) {
+		this.allLocations = allLocations;
+	}
+	
 	
 }

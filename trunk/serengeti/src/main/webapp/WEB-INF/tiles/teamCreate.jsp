@@ -27,9 +27,18 @@
 				        <option value="Magenta">Magenta</option>
 				        <option value="Cyan">Cyan</option>
 				    </select><br/>
-				<label for="leaderId">Team Leader ID: </label><input type="text" name="leaderId"/><br/>
-				<label for="homeLocation">Enter an address to be you teams home location: 
-				  </label><input type="text" name="homeLocation"/><br/>
+				<label for="leaderId">Team Leader: </label>
+				    <select name="leaderId">
+				        <c:forEach var="user" items="${createTeam.allUsers}">
+				            <option value="${user.id}"><c:out value="${user.displayName}"/></option>
+				        </c:forEach>
+				    </select><br/>				        
+				<label for="homeLocation">Home Location: </label>
+		            <select name="homeLocation">
+				        <c:forEach var="location" items="${createTeam.allLocations}">
+				            <option value="${location.locationId}"><c:out value="${location.locationName}"/></option>
+				        </c:forEach>
+				    </select><br/>	
 				<label for="image">Team Image URL: </label><input type="text" name="image"/><br/>
 				
 				<input type="submit" value="Create Team!"/>

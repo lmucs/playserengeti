@@ -6,7 +6,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import com.playserengeti.domain.Team;
+import com.playserengeti.service.LocationService;
 import com.playserengeti.service.TeamService;
+import com.playserengeti.service.UserService;
 
 /**
  * Controller for updating/modifying teams.  May need to change back to 
@@ -16,14 +18,19 @@ import com.playserengeti.service.TeamService;
  */
 public class TeamUpdateController extends SimpleFormController {
 	
-	private TeamService service;
+	private TeamService teamService;
+	private UserService userService;
+	private LocationService locationService;
 	
 	/**
 	 * Constructor.  Sets the service.
 	 * @param service
 	 */
-	public TeamUpdateController (TeamService service) {
-		this.service = service;
+	public TeamUpdateController (TeamService teamService, UserService userService, 
+			LocationService locationService) {
+		this.teamService = teamService;
+		this.userService = userService;
+		this.locationService = locationService;
 		setSessionForm(true);
 	}
 	
@@ -36,14 +43,17 @@ public class TeamUpdateController extends SimpleFormController {
         Team team;
         TeamUpdateCommand updateTeam = new TeamUpdateCommand();
 		if (teamId != null) {
-			team = service.getTeamById(Integer.valueOf(teamId));
+			team = teamService.getTeamById(Integer.valueOf(teamId));
 		    updateTeam.setTeamId(team.getId());
 	    	updateTeam.setName(team.getName());
     		updateTeam.setColor(team.getColor());
-    		if (team.getLeaderId() != null) updateTeam.setLeaderId(team.getLeaderId());
-    		if (team.getHomeLocation() != null) updateTeam.setHomeLocation(team.getHomeLocation());
+    		if (team.getLeader() != null) updateTeam.setLeaderId(team.getLeader().getId());
+    		if (team.getHomeLocation() != null) updateTeam.setHomeLocation(team.getHomeLocation().getLocationId());
     		if (team.getImage() != null) updateTeam.setImage(team.getImage());
 		}
+		
+		updateTeam.setAllUsers(userService.getAllUsers());
+		updateTeam.setAllLocations(locationService.getAllLocations());
 		
 		return updateTeam;
 	}
@@ -54,16 +64,16 @@ public class TeamUpdateController extends SimpleFormController {
 	 */
 	public ModelAndView onSubmit(Object _command) {
 		TeamUpdateCommand command = (TeamUpdateCommand)_command;
-		int teamId = command.getTeamId();
+		Integer teamId = command.getTeamId();
 		
 		// Modify the entry in the database.
-		Team team = service.getTeamById(teamId);
+		Team team = teamService.getTeamById(teamId);
 		team.setColor(command.getColor());
-		team.setLeaderId(command.getLeaderId());
-		team.setHomeLocation(command.getHomeLocation());
+		team.setLeader(userService.getUserById(command.getLeaderId()));
+		team.setHomeLocation(locationService.getLocationById(command.getHomeLocation()));
 		team.setImage(command.getImage());
 		
-		service.saveTeam(team);
+		teamService.saveTeam(team);
 
 		String success = "teamViewProfile.jsp?teamId=" + Integer.toString(teamId);
 		
