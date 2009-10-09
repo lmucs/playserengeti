@@ -3,10 +3,13 @@ package com.playserengeti.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import com.playserengeti.domain.Location;
+import com.playserengeti.domain.Team;
 import com.playserengeti.service.LocationService;
 
 /*
@@ -21,23 +24,47 @@ public class LocationUpdateController extends SimpleFormController {
 		this.service = service;
 	}
 
+	/**
+	 * Sets the BackingObject to the location specified by the given locationId.
+	 */
+	protected Object formBackingObject(HttpServletRequest request)
+    throws Exception {
+        String locationId = request.getParameter("locationId");
+        Location location;
+        LocationUpdateCommand updateLocation = new LocationUpdateCommand();
+		if (locationId != null) {
+			location = service.getLocationById(Integer.valueOf(locationId));
+		    updateLocation.setLocationId(location.getLocationId());
+	    	updateLocation.setLocationName(location.getLocationName());
+    		updateLocation.setLatitude(location.getLatitude());
+    		updateLocation.setLongitude(location.getLongitude());
+    		if (location.getTeamOwnerId() != null) updateLocation.setTeamOwnerId(location.getTeamOwnerId());
+		}
+
+		return updateLocation;
+	}
+
 	public ModelAndView onSubmit(Object _command) {
 		LocationUpdateCommand command = (LocationUpdateCommand)_command;
 		Integer locationId = command.getLocationId();
-		String locationName = command.getLocationName();
-		double locationLatitude = command.getLocationLatitude();
-		double locationLongitude = command.getLocationLongitude();
-		Integer teamOwnerId = command.getTeamOwnerId();
+
+		//Modify the entry in the database
+		Location location = service.getLocationById(locationId);
+		location.setLocationName(command.getLocationName());
+		location.setLatitude(command.getLatitude());
+		location.setLongitude(command.getLongitude());
+		location.setTeamOwnerId(command.getTeamOwnerId());
 
 		// Insert the entry into the database.
-		service.saveLocation(new Location(locationId, locationName, locationLatitude, locationLongitude, teamOwnerId));
+		service.saveLocation(location);
 
 		Map<String, String> model = new HashMap<String, String>();
-		model.put("locationId", Integer.toString(((LocationUpdateCommand)_command).getLocationId()));
-		model.put("locationName", ((LocationUpdateCommand)_command).getLocationName());
-		model.put("latitude", Double.toString(((LocationUpdateCommand)_command).getLocationLatitude()));
-		model.put("longitude", Double.toString(((LocationUpdateCommand)_command).getLocationLongitude()));
-		model.put("teamOwner", Integer.toString(((LocationUpdateCommand)_command).getTeamOwnerId()));
-		return new ModelAndView(getSuccessView(), model);
+		model.put("locationName", service.getLocationById(locationId).getLocationName());
+
+		ModelAndView mav = new ModelAndView(getSuccessView(), model);
+		mav.addObject(location);
+
+		return mav;
 	}
+
 }

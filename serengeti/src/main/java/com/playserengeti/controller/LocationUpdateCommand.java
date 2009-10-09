@@ -1,13 +1,22 @@
 package com.playserengeti.controller;
 
+import com.playserengeti.domain.Team;
+
 public class LocationUpdateCommand {
 
     private String locationName;
     private int locationId;
-    private double locationLongitude;
-    private double locationLatitude;
-    private int userOwnerId;
-    private int teamOwnerId;
+    private double longitude;
+    private double latitude;
+    private Team teamOwnerId;
+
+    public int getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(Integer locationId){
+    	this.locationId = locationId;
+    }
 
     public String getLocationName() {
         return locationName;
@@ -17,32 +26,28 @@ public class LocationUpdateCommand {
         this.locationName = locationName;
     }
 
-    public int getLocationId() {
-        return locationId;
-    }
+	public double getLongitude() {
+		return longitude;
+	}
 
-    public int getUserOwnerId() {
-        return userOwnerId;
-    }
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
 
-    public int getTeamOwnerId() {
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+    public Team getTeamOwnerId() {
         return teamOwnerId;
     }
 
-	public double getLocationLongitude() {
-		return locationLongitude;
-	}
-
-	public void setLocationLongitude(double locationLongitude) {
-		this.locationLongitude = locationLongitude;
-	}
-
-	public double getLocationLatitude() {
-		return locationLatitude;
-	}
-
-	public void setLocationLatitude(double locationLatitude) {
-		this.locationLatitude = locationLatitude;
-	}
+    public void setTeamOwnerId(Team teamOwnerId){
+    	this.teamOwnerId = teamOwnerId;
+    }
 
 }

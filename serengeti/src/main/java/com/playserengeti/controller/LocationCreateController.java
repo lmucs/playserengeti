@@ -7,6 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import com.playserengeti.domain.Location;
+import com.playserengeti.domain.Team;
 import com.playserengeti.service.LocationService;
 
 
@@ -33,7 +34,7 @@ public class LocationCreateController extends SimpleFormController {
 		String locationName = command.getLocationName();
 		double latitude = command.getLatitude();
 		double longitude = command.getLongitude();
-		Integer teamOwnerId = command.getTeamOwnerId();
+		Team teamOwnerId = command.getTeamOwnerId();
 		Location location = new Location(null, locationName, latitude, longitude, teamOwnerId);
 
 
@@ -45,7 +46,7 @@ public class LocationCreateController extends SimpleFormController {
 		model.put("locationName", locationName);
 		model.put("latitude", Double.toString(latitude));
 		model.put("longitude", Double.toString(longitude));
-		model.put("teamOwner", Integer.toString(teamOwnerId));
+		model.put("teamOwner", teamOwnerId.getName());
 		return new ModelAndView(getSuccessView(), model);
 	}
 }

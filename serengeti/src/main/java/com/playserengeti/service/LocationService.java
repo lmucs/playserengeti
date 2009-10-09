@@ -3,7 +3,6 @@ package com.playserengeti.service;
 import java.util.Collection;
 
 import com.playserengeti.dao.LocationDao;
-import com.playserengeti.dao.UserDao;
 import com.playserengeti.dao.TeamDao;
 import com.playserengeti.domain.Location;
 
@@ -13,7 +12,6 @@ import com.playserengeti.domain.Location;
 public class LocationService {
 
 	private TeamDao teamDao;
-	private UserDao userDao;
 	private LocationDao locationDao;
 
     // TODO: private LocationDao LocationDao;
