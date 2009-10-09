@@ -105,11 +105,23 @@ This page summarizes the activities for each class meeting, as well as informal 
   * Created a Google Groups thread for questions-requiring-whole-team-discussion.
     * Agreed that each class would begin with a discussion of questions on this thread.
 
-== October 1 (Class) ==
-
 == October 6 (Class) ==
 
+  * Began with a much more successful stand-up.
+  * Class has started partitioning into teams -- Mark, Edgardo, and James on the UI; Loren, Lita, and Chris on the back end, with Don roving.
+  * Mark passed out UI wireframes.
+  * Backend team presented questions about form controllers, etc.
+  * Went over some Spring docs again.
+  * Talked a bit about web layer vs. service layer.
+  * Looked at the SimpleFormController workflow and dabbled a bit in the code.
+
 == October 8 (Class) ==
+
+  * David Arnerich, director of Consumer Product from Citysearch, Inc. "ran" today's class.
+  * It was informal Q and A about both the state of the industry (especially mobile), what he looks for in resumes and cover letters, skills that students should develop, mobile web vs. apps, iPhone vs. Android, the pros and cons of working at large vs. small companies, etc.
+  * Also discussed how possible relationships between Citysearch and the class.
+  * Possibility of getting Citysearch to be a data provider for Serengeti.
+  * Students were advised to get on LinkedIn and link to Mr. Arnerich.
 
 == October 13 (Class) ==
 
