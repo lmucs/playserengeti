@@ -1,5 +1,10 @@
 package com.playserengeti.controller;
 
+import java.util.Collection;
+
+import com.playserengeti.domain.Location;
+import com.playserengeti.domain.User;
+
 
 /**
  * Command for updating/modifying a team.
@@ -8,11 +13,13 @@ package com.playserengeti.controller;
  */
 public class TeamUpdateCommand {
 	private String name;
-	private int teamId;
-	private int leaderId;
+	private Integer teamId;
+	private Integer leaderId;
 	private String color;
 	private String image;
-	private String homeLocation;
+	private Integer homeLocation;
+	private Collection<User> allUsers;
+	private Collection<Location> allLocations;
 	
 	/**
 	 * Returns the name of the team.
@@ -34,7 +41,7 @@ public class TeamUpdateCommand {
 	 * Returns the team's ID.
 	 * @return
 	 */
-	public int getTeamId() {
+	public Integer getTeamId() {
 		return teamId;
 	}
 	
@@ -42,7 +49,7 @@ public class TeamUpdateCommand {
 	 * Sets the team's id.
 	 * @param teamId
 	 */
-	public void setTeamId(int teamId) {
+	public void setTeamId(Integer teamId) {
 	    this.teamId = teamId;
 	}
 	
@@ -50,7 +57,7 @@ public class TeamUpdateCommand {
 	 * Returns the user ID of the team's leader.
 	 * @return
 	 */
-	public int getLeaderId() {
+	public Integer getLeaderId() {
 		return leaderId;
 	}
 	
@@ -58,7 +65,7 @@ public class TeamUpdateCommand {
 	 * Sets the leader of the team.
 	 * @param leaderID
 	 */
-	public void setLeaderId(int leaderId) {
+	public void setLeaderId(Integer leaderId) {
 		this.leaderId = leaderId;
 	}
 	
@@ -98,7 +105,7 @@ public class TeamUpdateCommand {
 	 * Returns the location ID of the team's home location.
 	 * @return
 	 */
-	public String getHomeLocation() {
+	public Integer getHomeLocation() {
 		return homeLocation;
 	}
 	
@@ -106,8 +113,26 @@ public class TeamUpdateCommand {
 	 * Sets the team's home location to that specified by the given location ID.
 	 * @param homeLocation
 	 */
-	public void setHomeLocation(String homeLocation) {
+	public void setHomeLocation(Integer homeLocation) {
 		this.homeLocation = homeLocation;
 	}
+
+	public Collection<User> getAllUsers() {
+		return allUsers;
+	}
+
+	public void setAllUsers(Collection<User> allUsers) {
+		this.allUsers = allUsers;
+	}
+
+	public Collection<Location> getAllLocations() {
+		return allLocations;
+	}
+
+	public void setAllLocations(Collection<Location> allLocations) {
+		this.allLocations = allLocations;
+	}
+	
+	
 	
 }

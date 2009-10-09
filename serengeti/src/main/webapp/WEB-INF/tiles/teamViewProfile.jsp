@@ -23,17 +23,26 @@
                     </tr>
                     <tr>
                         <td><strong>Team Leader</strong></td>
-                        <td><c:out value="${team.leaderId}"/></td>
+                        <td><c:out value="${team.leader.displayName}"/></td>
                     </tr>
                     <tr>
                         <td><strong>Home Location</strong></td>
-                        <td><c:out value="${team.homeLocation}"/></td>
+                        <td><c:out value="${team.homeLocation.locationName}"/></td>
                     </tr>
                     <tr>
                         <td><strong>Team Image</strong></td>
                         <td><c:out value="${team.image}"/></td>
                     </tr>
+                    <tr>
+                      <td><strong>Team Members:</strong><br/></td>
+                      <c:forEach var="user" items="${team.members}">
+                        <tr>
+                          <td><a href="../user/view?userId=${user.id}"><c:out value="${user.displayName}"/></a></td>                    
+                        </tr>
+                      </c:forEach>
+                    </tr>
                 </table>
+                <hr>                
                 <a href="update?teamId=${team.id}">Modify Team</a><br/>
                 <a href="delete?teamId=${team.id}">Delete Team</a><br/>
                 <a href="list">View All Teams</a>

@@ -20,14 +20,14 @@ public class UserDaoMockImpl implements UserDao {
 
 	// Sample users to insert into the database.
 	private static final User sampleUsers[] = {
-		new User(null, "Loren Abrams", "durnew"),
-		new User(null, "Ray Toal", "hihimanuhahalua"),
-		new User(null, "Chris Mueller", "mueller.chris0"),
-		new User(null, "Lita Gratrix", "lgratrix"),
-		new User(null, "James Coleman", "jcol88"),
-		new User(null, "Mark Miscavage", "mxchickmagnet86"),
-		new User(null, "Edgardo Ineguez", "malevolentman87"),
-		new User(null, "Don Murphy", "DJScythe15")
+		new User(null, "durnew","Loren Abrams"),
+		new User(null, "hihimanuhahalua", "Ray Toal"),
+		new User(null, "mueller.chris0", "Chris Mueller"),
+		new User(null, "lgratrix", "Lita Gratrix"),
+		new User(null, "jcol88", "James Coleman"),
+		new User(null, "mxchickmagnet86", "Mark Miscavage"),
+		new User(null, "malevolentman87", "Edgardo Ineguez"),
+		new User(null, "DJScythe15", "Don Murphy")
 	};
 
 	private Map<Integer, User> storage = 

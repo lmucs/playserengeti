@@ -9,7 +9,7 @@ package com.playserengeti.controller;
 public class TeamDeleteCommand {
 
 	private String name;
-	private int teamId;
+	private Integer teamId;
 	
 	/**
 	 * Returns the name of the team.
@@ -31,7 +31,7 @@ public class TeamDeleteCommand {
 	 * Returns the team's ID.
 	 * @return
 	 */
-	public int getTeamId() {
+	public Integer getTeamId() {
 		return teamId;
 	}
 	
@@ -39,7 +39,7 @@ public class TeamDeleteCommand {
 	 * Sets the team's ID.
 	 * @param teamId
 	 */
-	public void setTeamId(int teamId) {
+	public void setTeamId(Integer teamId) {
 		this.teamId = teamId;
 	}
 }

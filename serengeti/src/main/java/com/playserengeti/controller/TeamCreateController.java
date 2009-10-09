@@ -1,13 +1,16 @@
 package com.playserengeti.controller;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
+import com.playserengeti.domain.Location;
 import com.playserengeti.domain.Team;
+import com.playserengeti.domain.User;
+import com.playserengeti.service.LocationService;
 import com.playserengeti.service.TeamService;
+import com.playserengeti.service.UserService;
 
 /**
  * The controller for creating a team.
@@ -16,16 +19,32 @@ import com.playserengeti.service.TeamService;
  */
 public class TeamCreateController extends SimpleFormController {
 
-    private TeamService service;
+    private TeamService teamService;
+    private UserService userService;
+    private LocationService locationService;
 
 	/**
 	 * Constructor.  Sets the service.
 	 * @param service
 	 */
-    public TeamCreateController (TeamService service) {
-        this.service = service;
+    public TeamCreateController (TeamService teamService, UserService userService, 
+    		LocationService locationService) {
+        this.teamService = teamService;
+        this.userService = userService;
+        this.locationService = locationService;
     }
 
+	/**
+	 * Sets the BackingObject.
+	 */
+	protected Object formBackingObject(HttpServletRequest request)
+    throws Exception {
+        TeamCreateCommand createTeam = new TeamCreateCommand();
+        createTeam.setAllUsers(userService.getAllUsers());
+        createTeam.setAllLocations(locationService.getAllLocations());
+        return createTeam;
+	}
+	
     /**
      * Handles the submit functionality of the controller.  Currently only uses
      * name and color for development purposes.
@@ -34,26 +53,21 @@ public class TeamCreateController extends SimpleFormController {
 		TeamCreateCommand command = (TeamCreateCommand)_command;
 		String display = command.getName();
 		String color = command.getColor();
-		Integer leaderId = Integer.valueOf(command.getLeaderId());
-		String homeLocation = command.getHomeLocation();
+		User leader = userService.getUserById(command.getLeaderId());
+		Location homeLocation = locationService.getLocationById(command.getHomeLocation());
 		String image = command.getImage();
 		
 		Team team = new Team(null, display, color);
-		if (leaderId != null) team.setLeaderId(leaderId);
+		if (leader != null) team.setLeader(leader);
 		if (homeLocation != null) team.setHomeLocation(homeLocation);
 		if (image != null) team.setImage(image);
 		
 		// Insert the entry into the database.
-		service.saveTeam(team);
+		teamService.saveTeam(team);
 		
-		Map<String, String> model = new HashMap<String, String>();
-		model.put("name", display);
-		model.put("color", color);
-		model.put("leaderId", leaderId.toString());
-		model.put("homeLocation", homeLocation.toString());
-		model.put("image", image);
-		
-		return new ModelAndView(getSuccessView(), model);
+		ModelAndView mav = new ModelAndView(getSuccessView());
+		mav.addObject("team", team);
+		return mav;
 	}
 
 }
