@@ -304,6 +304,7 @@
 
     <bean id="locationDao"
         class="com.playserengeti.dao.LocationDaoMockImpl">
+        <constructor-arg ref="teamDao"/>
     </bean>
 
     <!--
