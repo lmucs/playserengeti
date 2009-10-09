@@ -13,14 +13,16 @@ import com.playserengeti.domain.Location;
  */
 public class LocationDaoMockImpl implements LocationDao {
 
+	private static TeamDao teamDao;
+
 	// Sample teams to insert into the database.
 	private static final Location[] sampleLocations = {
-		new Location(null, "Doolan Hall", 1.3819383, 2.4928394, 3),
-		new Location(null, "Viva Fresh", 3.3840183, 4.3892839, 1),
-		new Location(null, "LAX Airport", 5.382728, 1.28837392, 2),
-		new Location(null, "Chris's House", 1.2839282, 0.38371930, 1),
-		new Location(null, "3rd Street Promenade", 12.393028, 3.3948292, 3),
-		new Location(null, "ChickMagnetVille", 6.93838293, 6.93838469, 0),
+		new Location(null, "Doolan Hall", 1.3819383, 2.4928394, teamDao.getTeamById(1)),
+		new Location(null, "Viva Fresh", 3.3840183, 4.3892839, teamDao.getTeamById(1)),
+		new Location(null, "LAX Airport", 5.382728, 1.28837392, teamDao.getTeamById(1)),
+		new Location(null, "Chris's House", 1.2839282, 0.38371930, teamDao.getTeamById(1)),
+		new Location(null, "3rd Street Promenade", 12.393028, 3.3948292, teamDao.getTeamById(3)),
+		new Location(null, "ChickMagnetVille", 6.93838293, 6.93838469, teamDao.getTeamById(2)),
 	};
 
 	private Map<Integer, Location> storage;
@@ -35,8 +37,8 @@ public class LocationDaoMockImpl implements LocationDao {
 	}
 
 	@Override
-	public void deleteLocation(Integer id) {
-		storage.remove(id);
+	public void deleteLocation(Integer locationId) {
+		storage.remove(locationId);
 	}
 
 	@Override
@@ -45,28 +47,28 @@ public class LocationDaoMockImpl implements LocationDao {
 	}
 
 	@Override
-	public Location getLocationByLocationName(String loc) {
+	public Location getLocationByLocationName(String location) {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public Location getLocationById(Integer id) {
-		return new Location(storage.get(id));
+	public Location getLocationById(Integer locationId) {
+		return new Location(storage.get(locationId));
 	}
 
 	/**
 	 * A convenience method to insert an array of teams into the database.
 	 */
-	private void insertLocations(Location[] teams) {
-		for (Location team : teams) {
-			insertLocation(team);
+	private void insertLocations(Location[] locations) {
+		for (Location location : locations) {
+			insertLocation(location);
 		}
 	}
 
 
 	@Override
-	public void updateLocation(Location loc) {
-		storage.put(loc.getLocationId(), loc);
+	public void updateLocation(Location location) {
+		storage.put(location.getLocationId(), location);
 	}
 
 	@Override

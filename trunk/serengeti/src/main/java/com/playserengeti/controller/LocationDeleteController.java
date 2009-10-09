@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import com.playserengeti.domain.Location;
+import com.playserengeti.domain.Team;
 import com.playserengeti.service.LocationService;
 
 /*
@@ -29,11 +30,11 @@ public class LocationDeleteController extends SimpleFormController {
 	 */
 	protected Object formBackingObject(HttpServletRequest request)
     throws Exception {
-        Integer locationId = Integer.valueOf(request.getParameter("locationId"));
+        String locationId = request.getParameter("locationId");
         Location location;
         LocationDeleteCommand deleteLocation = new LocationDeleteCommand();
 		if (locationId != null) {
-			location = service.getLocationById(locationId);
+			location = service.getLocationById(Integer.valueOf(locationId));
 		    deleteLocation.setLocationId(location.getLocationId());
 	    	deleteLocation.setLocationName(location.getLocationName());
 		}
@@ -41,12 +42,13 @@ public class LocationDeleteController extends SimpleFormController {
 		return deleteLocation;
 	}
 
+
     @Override
 	protected ModelAndView onSubmit(Object _command) {
 
 		LocationDeleteCommand command = (LocationDeleteCommand)_command;
 
-		Integer locationId = command.getLocationId();
+		int locationId = command.getLocationId();
 
 		Map<String, String> model = new HashMap<String, String>();
 		model.put("locationName", service.getLocationById(locationId).getLocationName());
@@ -62,4 +64,5 @@ public class LocationDeleteController extends SimpleFormController {
 
 		return mav;
 	}
+
 }
