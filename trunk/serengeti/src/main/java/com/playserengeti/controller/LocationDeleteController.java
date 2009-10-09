@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import com.playserengeti.domain.Location;
-import com.playserengeti.domain.Team;
 import com.playserengeti.service.LocationService;
 
 /*
