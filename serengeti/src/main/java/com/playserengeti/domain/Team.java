@@ -1,6 +1,7 @@
 package com.playserengeti.domain;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -100,6 +101,12 @@ public class Team {
     
     public void addMember(User user) {
     	this.members.add(user);
+    }
+    
+    public void addMembers(Collection<User> users) {
+    	for (User user : users) {
+    		addMember(user);
+    	}
     }
     
     public void removeMember(User user) {
