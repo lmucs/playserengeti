@@ -12,12 +12,12 @@
                 <p>Here's the user profile you requested</p>
                 <table>
                     <tr>
-                        <td><strong>Login Name</strong></td>
-                        <td><c:out value="${user.loginName}"/></td>
+                        <td><strong>User Name</strong></td>
+                        <td><c:out value="${user.userName}"/></td>
                     </tr>
                     <tr>
-                        <td><strong>Display Name</strong></td>
-                        <td><c:out value="${user.displayName}"/></td>
+                        <td><strong>Email Address</strong></td>
+                        <td><c:out value="${user.email}"/></td>
                     </tr>
                 </table>
             </c:when>

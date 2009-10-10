@@ -37,7 +37,7 @@
                       <td><strong>Team Members:</strong><br/></td>
                       <c:forEach var="user" items="${team.members}">
                         <tr>
-                          <td><a href="../user/view?userId=${user.id}"><c:out value="${user.displayName}"/></a></td>                    
+                          <td><a href="../user/view?userId=${user.userId}"><c:out value="${user.userName}"/></a></td>                    
                         </tr>
                       </c:forEach>
                     </tr>

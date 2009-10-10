@@ -13,16 +13,22 @@
     	
     	<form:form method="post">
     	    <div>
-			    <label for="login">Login Name: </label>
-			    <form:input path="login"/>
-                <form:errors path="login"/>
+			    <label for="userName">User Name: </label>
+			    <form:input path="userName"/>
+                <form:errors path="userName"/>
             </div>
 			
 			<div>
-			    <label for="display">Display Name: </label>
-			    <form:input path="display"/>
-                <form:errors path="display"/>
+			    <label for="password">Password: </label>
+			    <form:password path="password"/>
+                <form:errors path="password"/>
 			</div>
+			
+			<div>
+			    <label for="email">Email Address: </label>
+                <form:input path="email"/>
+                <form:errors path="email"/>
+            </div>
 			
 			<div>
 			    <input type="submit" value="Sign up!"/>

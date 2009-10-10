@@ -21,19 +21,11 @@ public class UserService {
 	}
 	
 	/**
-	 * Writes the given user to persistent storage.  If the given
-	 * user has a null id, a user is created in persistent storage.
-	 * If the id is not null, and a user with that id exists, the
-	 * user in persistent storage will be updated with the fields in
-	 * the argument.  If the id is not null, but no such user with that
-	 * id exists, then throws some kind of exception.  (TODO) 
+	 * Creates a user from the provided information and writes the user to
+	 * storage. 
 	 */
-	public void saveUser(User user) {
-		if (user.getId() == null) {
-			userDao.insertUser(user);
-		} else {
-			userDao.updateUser(user);
-		}
+	public User createUser(String userName, String password, String email) {
+		return userDao.insertUser(userName, password, email);
 	}
 	
 	/**

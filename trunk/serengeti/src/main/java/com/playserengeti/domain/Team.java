@@ -91,7 +91,7 @@ public class Team {
     
     public User getMemberById(Integer id) {
     	for (User user : members) {
-    		if (user.getId() == id) {
+    		if (user.getUserId() == id) {
     			return user;
     		}
     	}
@@ -108,7 +108,7 @@ public class Team {
     
     public void removeMemberById(Integer id) {
     	for (User user : members) {
-    		if (user.getId() == id) {
+    		if (user.getUserId() == id) {
     			this.members.remove(user);
     		}
     	}
