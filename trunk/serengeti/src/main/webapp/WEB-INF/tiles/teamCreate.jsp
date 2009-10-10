@@ -27,10 +27,11 @@
 				        <option value="Magenta">Magenta</option>
 				        <option value="Cyan">Cyan</option>
 				    </select><br/>
-				<label for="leaderId">Team Leader: </label>
-				    <select name="leaderId">
+				<p> This will not be necessary when user sign in is implemented.</p>
+				<label for="userId">Team Leader: </label>
+				    <select name="userId">
 				        <c:forEach var="user" items="${createTeam.allUsers}">
-				            <option value="${user.id}"><c:out value="${user.displayName}"/></option>
+				            <option value="${user.userId}"><c:out value="${user.userName}"/></option>
 				        </c:forEach>
 				    </select><br/>				        
 				<label for="homeLocation">Home Location: </label>

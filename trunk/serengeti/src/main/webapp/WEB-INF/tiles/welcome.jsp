@@ -20,8 +20,7 @@
         <li><a href="user/list">View all users in the system!</a></li>
         </ul>
         <ul>
-        <li><a href="team/create">Create a team</a></li>
-        <li><a href="team/list">View all teams in the system.</a></li>
+        <li><a href="team/central">Team Central</a></li>
         </ul>
         <ul>
         <li><a href="status/ping">send a ping</a></li>

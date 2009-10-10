@@ -8,9 +8,9 @@
   
     <body>
 	    <a href="/serengeti"><img src="../images/serengeti-logo-full.png" alt="logo" style="float:right" height="20%" width="20%" border="0"/></a>
-    
+
         <c:choose>
-            <c:when test='${ !empty team }'>
+            <c:when test='${ !empty teamId }'>
                 <p>Here's the team's profile you requested</p>
                 <table>
                     <tr>
@@ -23,7 +23,7 @@
                     </tr>
                     <tr>
                         <td><strong>Team Leader</strong></td>
-                        <td><c:out value="${team.leader.displayName}"/></td>
+                        <td><c:out value="${team.leader.userName}"/></td>
                     </tr>
                     <tr>
                         <td><strong>Home Location</strong></td>
@@ -43,9 +43,9 @@
                     </tr>
                 </table>
                 <hr>                
+                <!-- These will only display if team.leader.id == userId  and pass in the userId -->
                 <a href="update?teamId=${team.id}">Modify Team</a><br/>
                 <a href="delete?teamId=${team.id}">Delete Team</a><br/>
-                <a href="list">View All Teams</a>
             </c:when>
             <c:otherwise>
                 <p>The team you requested does not exist.</p>

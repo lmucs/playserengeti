@@ -40,19 +40,27 @@ public class TeamUpdateController extends SimpleFormController {
 	protected Object formBackingObject(HttpServletRequest request)
     throws Exception {
         String teamId = request.getParameter("teamId");
-        Team team;
+        //String userId = request.getParameter("userId");
+       
         TeamUpdateCommand updateTeam = new TeamUpdateCommand();
-		if (teamId != null) {
+        Team team; 
+		
+        if (teamId != null) {
 			team = teamService.getTeamById(Integer.valueOf(teamId));
 		    updateTeam.setTeamId(team.getId());
 	    	updateTeam.setName(team.getName());
     		updateTeam.setColor(team.getColor());
+    		
+    		if (team.getLeader() != null) updateTeam.setLeaderId(team.getLeader().getUserId());
     		if (team.getLeader() != null) updateTeam.setLeaderId(team.getLeader().getUserId());
     		if (team.getHomeLocation() != null) updateTeam.setHomeLocation(team.getHomeLocation().getLocationId());
     		if (team.getImage() != null) updateTeam.setImage(team.getImage());
+    		
+    		updateTeam.setTeamUsers(team.getMembers());
+
 		}
 		
-		updateTeam.setAllUsers(userService.getAllUsers());
+        //updateTeam.setUserId(Integer.valueOf(userId));
 		updateTeam.setAllLocations(locationService.getAllLocations());
 		
 		return updateTeam;
@@ -65,6 +73,7 @@ public class TeamUpdateController extends SimpleFormController {
 	public ModelAndView onSubmit(Object _command) {
 		TeamUpdateCommand command = (TeamUpdateCommand)_command;
 		Integer teamId = command.getTeamId();
+		//Integer userId = command.getUserId();
 		
 		// Modify the entry in the database.
 		Team team = teamService.getTeamById(teamId);
@@ -74,11 +83,11 @@ public class TeamUpdateController extends SimpleFormController {
 		team.setImage(command.getImage());
 		
 		teamService.saveTeam(team);
-
-		String success = "teamViewProfile.jsp?teamId=" + Integer.toString(teamId);
 		
-		ModelAndView mav = new ModelAndView(success);
-		mav.addObject(team);
+		ModelAndView mav = new ModelAndView("redirect:view");
+		
+		mav.addObject("teamId", teamId);
+		//mav.addObject("userId", userID);
 
 		return mav;
 	}

@@ -10,6 +10,7 @@ public class TeamDeleteCommand {
 
 	private String name;
 	private Integer teamId;
+	private Integer userId;
 	
 	/**
 	 * Returns the name of the team.
@@ -42,4 +43,14 @@ public class TeamDeleteCommand {
 	public void setTeamId(Integer teamId) {
 		this.teamId = teamId;
 	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+	
+	
 }
