@@ -52,7 +52,6 @@ public class TeamUpdateController extends SimpleFormController {
     		updateTeam.setColor(team.getColor());
     		
     		if (team.getLeader() != null) updateTeam.setLeaderId(team.getLeader().getUserId());
-    		if (team.getLeader() != null) updateTeam.setLeaderId(team.getLeader().getUserId());
     		if (team.getHomeLocation() != null) updateTeam.setHomeLocation(team.getHomeLocation().getLocationId());
     		if (team.getImage() != null) updateTeam.setImage(team.getImage());
     		

@@ -29,6 +29,7 @@
                 <entry key="/team/view" value-ref="teamViewProfileController" />
                 <entry key="/team/list" value-ref="teamListController" />
                 <entry key="/team/central" value-ref="teamCentralController" />
+                <entry key="/team/invite" value-ref="teamInviteController" />
 
                 <entry key="/location/create" value-ref="locationCreateController" />
                 <entry key="/location/update" value-ref="locationUpdateController" />
@@ -218,6 +219,18 @@
         <constructor-arg ref="userService"/>
     </bean>
 
+    <bean id="teamInviteController"
+        class="com.playserengeti.controller.TeamInviteController">
+        <property name="commandClass"
+          value="com.playserengeti.controller.TeamInviteCommand"
+        />
+        <property name="commandName" value="teamInvite"/>
+        <property name="validator" ref="teamInviteValidator"/>
+        <property name="formView" value="teamInvite.jsp" />
+        <constructor-arg ref="teamService"/>
+        <constructor-arg ref="userService"/>
+    </bean>
+    
     <bean id="teamCreateValidator"
         class="com.playserengeti.controller.TeamCreateValidator">
     </bean>
@@ -238,6 +251,10 @@
         class="com.playserengeti.controller.TeamCentralValidator">
     </bean>
 
+    <bean id="teamInviteValidator"
+        class="com.playserengeti.controller.TeamInviteValidator">
+    </bean>
+    
     <bean id="teamService"
         class="com.playserengeti.service.TeamService">
         <constructor-arg ref="teamDao"/>
