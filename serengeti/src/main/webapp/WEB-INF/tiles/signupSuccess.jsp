@@ -7,7 +7,7 @@
     </head>
   
     <body>
-        <p>Thank you <strong><c:out value="${login}"/></strong> for signing up!</p>
+        <p>Thank you <strong><c:out value="${userName}"/></strong> for signing up!</p>
         
         <p><a href="list">View your entry!</a></p>
     </body>

@@ -7,31 +7,25 @@ import com.playserengeti.domain.User;
 public interface UserDao {
 
 	/**
-	 * Commit the user to storage for the first time.
+	 * Commit a user to storage for the first time.
 	 *
-	 * @param user user to commit
-	 * @return the user id of the newly inserted user
+	 * @return the user object that is generated
 	 */
-	public Integer insertUser(User user);
+	public User insertUser(String userName, String password, String email);
 
 	/**
 	 * Update the user in storage.
-	 *
-	 * @param user user to update
 	 */
 	public void updateUser(User user);
 
 	/**
 	 * Delete a user from storage.
-	 *
-	 * @param id user id of the user to delete
 	 */
 	public void deleteUser(Integer id);
 
 	/**
-	 * Get a user from storage.
+	 * Get a user from storage by user id.
 	 *
-	 * @param id user id of the user to fetch
 	 * @return the fetched user or null if none exist with that id
 	 */
 	public User getUserById(Integer id);
@@ -42,20 +36,14 @@ public interface UserDao {
 	public Collection<User> getAllUsers();
 
 	/**
-	 * Get a users from storage.
-	 *
-	 * @param login login name of the users
-	 * @return the fetched user
+	 * Get a users from storage by their user name.
 	 */
-	public Collection<User> getUsersByLoginName(String login);
+	public Collection<User> getUsersByUserName(String userName);
 
 	/**
-	 * Get a users from storage.
-	 *
-	 * @param display display name of the users
-	 * @return the fetched user
+	 * Get a users from storage by their email addresses.
 	 */
-	public Collection<User> getUsersByDisplayName(String display);
+	public Collection<User> getUsersByEmail(String email);
 
 	/**
 	 * Check the existance of a userId.

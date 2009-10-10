@@ -17,11 +17,11 @@
             </tr>
             <c:forEach var="user" items="${allUsers}">
                 <tr>
-                    <td>${user.id}</td>
+                    <td>${user.userId}</td>
                     <td>
-                        <a href="view?userId=${user.id}"><c:out value="${user.loginName}"/></a>
+                        <a href="view?userId=${user.userId}"><c:out value="${user.userName}"/></a>
                     </td>
-                    <td><c:out value="${user.displayName}"/></td>
+                    <td><c:out value="${user.email}"/></td>
                 </tr>
             </c:forEach>
         </table>

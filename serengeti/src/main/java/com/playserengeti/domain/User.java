@@ -1,70 +1,100 @@
 package com.playserengeti.domain;
 
+import java.util.Date;
+
+import static com.playserengeti.util.ArgumentChecker.assertArgument;
+
 /**
- * A game user, or player.
+ * A Serengeti user (player).
  */
 public class User {
 	
-	private Integer id;
-    private String loginName;
-    private String displayName;
-    private String avatar;
-    // TODO: private Team team;
-
-    public User(User b) {
-    	this(b.id, b.loginName, b.displayName);
-    }
+	private final Integer userId;	// User table primary key.
+    private String userName;		// Not null.
+    private byte[] passwordHash;	// Not null.
+    private String firstName;		// Optional.
+    private String lastName;		// Optional.
+    private String email;			// Not null.
+    private Date dateOfBirth;		// Optional.
     
-    public User(Integer id, String loginName, String displayName) {
-        this.id = id;
-        this.loginName = loginName;
-        this.displayName = displayName;
-        this.avatar = null;
-    }
-
-	public Integer getId() {
-		return id;
+	public User(Integer userId, String userName, byte[] passwordHash,
+			String firstName, String lastName, String email, Date dateOfBirth) {
+		// Set userId.
+		assertArgument(userId != null, "UserId must not be null.");
+		this.userId = userId;
+		
+		setUserName(userName);
+		setPasswordHash(passwordHash);
+		setFirstName(firstName);
+		setLastName(lastName);
+		setEmail(email);
+		setDateOfBirth(dateOfBirth);
+	}
+	
+	public User(Integer userId, String userName, byte[] passwordHash,
+			String email) {
+		this(userId, userName, passwordHash, null, null, email, null);
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public Integer getUserId() {
+		return userId;
 	}
 
-	public String getLoginName() {
-		return loginName;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setLoginName(String loginName) {
-		this.loginName = loginName;
+	public void setUserName(String userName) {
+		assertArgument(userName != null, "A username must be provided.");
+		this.userName = userName;
 	}
 
-	public String getDisplayName() {
-		return displayName;
+	public byte[] getPasswordHash() {
+		return passwordHash;
 	}
 
-	public void setDisplayName(String displayName) {
-		this.displayName = displayName;
+	public void setPasswordHash(byte[] passwordHash) {
+		assertArgument(passwordHash != null, "A user must have a password.");
+		this.passwordHash = passwordHash;
 	}
 
-	public String getAvatar() {
-		return avatar;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setAvatar(String avatar) {
-		this.avatar = avatar;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		assertArgument(email != null, "A user must have an email address.");
+		this.email = email;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((avatar == null) ? 0 : avatar.hashCode());
-		result = prime * result
-				+ ((displayName == null) ? 0 : displayName.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result
-				+ ((loginName == null) ? 0 : loginName.hashCode());
-		return result;
+		return prime * 1 + userId.hashCode();
 	}
 
 	@Override
@@ -75,29 +105,10 @@ public class User {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
-		if (avatar == null) {
-			if (other.avatar != null)
-				return false;
-		} else if (!avatar.equals(other.avatar))
-			return false;
-		if (displayName == null) {
-			if (other.displayName != null)
-				return false;
-		} else if (!displayName.equals(other.displayName))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (loginName == null) {
-			if (other.loginName != null)
-				return false;
-		} else if (!loginName.equals(other.loginName))
+		User other = (User)obj;
+		if (!userId.equals(other.userId))
 			return false;
 		return true;
 	}
 	
-	// TODO: toString
 }

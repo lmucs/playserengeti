@@ -44,7 +44,7 @@
         <ul>
 		  <c:forEach var="user" items="${allUsers}">
 		  <li>
-		      <a href="javascript:void(0);" onclick="deleteUser(${user.id});"><c:out value="${user.loginName}"/></a>
+		      <a href="javascript:void(0);" onclick="deleteUser(${user.userId});"><c:out value="${user.userName}"/></a>
 		  </li>
           </c:forEach>
         </ul>
