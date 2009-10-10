@@ -14,7 +14,7 @@ public class TeamCreateCommand {
 
 	private String name;
 	private Integer teamId;
-	private Integer leaderId;
+	private Integer userId;
 	private String color;
 	private String image;
 	private Integer homeLocation;
@@ -48,16 +48,16 @@ public class TeamCreateCommand {
 	 * Returns the user ID of the team's leader.
 	 * @return
 	 */
-	public Integer getLeaderId() {
-		return leaderId;
+	public Integer getUserId() {
+		return userId;
 	}
 	
 	/**
 	 * Sets the leader of the team.
 	 * @param leaderID
 	 */
-	public void setLeaderId(Integer leaderId) {
-		this.leaderId = leaderId;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 	
 	/**

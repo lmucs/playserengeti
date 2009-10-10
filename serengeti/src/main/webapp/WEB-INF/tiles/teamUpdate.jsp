@@ -27,7 +27,7 @@
 				            </select><br/>
 			            <label for="leaderId">Team Leader: </label>
 				            <select name="leaderId">
-				                <c:forEach var="user" items="${updateTeam.allUsers}">
+				                <c:forEach var="user" items="${updateTeam.teamUsers}">
 				                    <option value="${user.userId}"><c:out value="${user.userName}"/></option>
 				                </c:forEach>
 				            </select><br/>				        

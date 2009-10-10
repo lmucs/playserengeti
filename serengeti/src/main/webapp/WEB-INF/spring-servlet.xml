@@ -28,6 +28,7 @@
                 <entry key="/team/delete" value-ref="teamDeleteController" />
                 <entry key="/team/view" value-ref="teamViewProfileController" />
                 <entry key="/team/list" value-ref="teamListController" />
+                <entry key="/team/central" value-ref="teamCentralController" />
 
                 <entry key="/location/create" value-ref="locationCreateController" />
                 <entry key="/location/update" value-ref="locationUpdateController" />
@@ -159,7 +160,6 @@
         <property name="commandName" value="createTeam"/>
         <property name="validator" ref="teamCreateValidator"/>
         <property name="formView" value="teamCreate.jsp"/>
-        <property name="successView" value="teamCreateSuccess.jsp"/>
         <constructor-arg ref="teamService"/>
         <constructor-arg ref="userService"/>
         <constructor-arg ref="locationService"/>
@@ -186,7 +186,7 @@
         <property name="commandName" value="deleteTeam"/>
         <property name="validator" ref="teamDeleteValidator"/>
         <property name="formView" value="teamDelete.jsp" />
-        <property name="successView" value="teamList.jsp" />
+        <property name="successView" value="teamCentral.jsp" />
         <constructor-arg ref="teamService"/>
     </bean>
 
@@ -204,6 +204,19 @@
         class="com.playserengeti.controller.TeamListController">
         <constructor-arg ref="teamService"/>
     </bean>
+    
+    <bean id="teamCentralController"
+        class="com.playserengeti.controller.TeamCentralController">
+        <property name="commandClass"
+          value="com.playserengeti.controller.TeamCentralCommand"
+        />
+        <property name="commandName" value="teamCentral"/>
+        <property name="validator" ref="teamCentralValidator"/>
+        <property name="formView" value="teamCentral.jsp" />
+        <property name="successView" value="teamCreate.jsp" />
+        <constructor-arg ref="teamService"/>
+        <constructor-arg ref="userService"/>
+    </bean>
 
     <bean id="teamCreateValidator"
         class="com.playserengeti.controller.TeamCreateValidator">
@@ -219,6 +232,10 @@
 
     <bean id="teamViewProfileValidator"
         class="com.playserengeti.controller.TeamViewProfileValidator">
+    </bean>
+    
+    <bean id="teamCentralValidator"
+        class="com.playserengeti.controller.TeamCentralValidator">
     </bean>
 
     <bean id="teamService"

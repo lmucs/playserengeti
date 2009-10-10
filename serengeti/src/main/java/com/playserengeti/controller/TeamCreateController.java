@@ -40,8 +40,13 @@ public class TeamCreateController extends SimpleFormController {
 	protected Object formBackingObject(HttpServletRequest request)
     throws Exception {
         TeamCreateCommand createTeam = new TeamCreateCommand();
+        
+        //Won't be needed when sign in is implemented.
         createTeam.setAllUsers(userService.getAllUsers());
         createTeam.setAllLocations(locationService.getAllLocations());
+        
+		setSessionForm(true);
+
         return createTeam;
 	}
 	
@@ -53,7 +58,7 @@ public class TeamCreateController extends SimpleFormController {
 		TeamCreateCommand command = (TeamCreateCommand)_command;
 		String display = command.getName();
 		String color = command.getColor();
-		User leader = userService.getUserById(command.getLeaderId());
+		User leader = userService.getUserById(command.getUserId());
 		Location homeLocation = locationService.getLocationById(command.getHomeLocation());
 		String image = command.getImage();
 		
@@ -64,9 +69,13 @@ public class TeamCreateController extends SimpleFormController {
 		
 		// Insert the entry into the database.
 		teamService.saveTeam(team);
+		//Need to add the team to the User's teams attribute.
 		
-		ModelAndView mav = new ModelAndView(getSuccessView());
-		mav.addObject("team", team);
+		ModelAndView mav = new ModelAndView("redirect:view");
+		
+		mav.addObject("teamId", team.getId());
+		//mav.addObject("userId", leader.getId());
+		
 		return mav;
 	}
 

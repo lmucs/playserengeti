@@ -8,6 +8,7 @@ package com.playserengeti.controller;
 public class TeamViewProfileCommand {
 
 	private Integer teamId;
+	private Integer userId;
 
 	/**
 	 * Returns the team's id.
@@ -24,4 +25,13 @@ public class TeamViewProfileCommand {
 	public void setTeamId(Integer teamId) {
 		this.teamId = teamId;
 	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+	
 }

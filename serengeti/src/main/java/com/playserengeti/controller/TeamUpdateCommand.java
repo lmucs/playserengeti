@@ -12,13 +12,14 @@ import com.playserengeti.domain.User;
  *
  */
 public class TeamUpdateCommand {
+	private Integer userId;
 	private String name;
 	private Integer teamId;
 	private Integer leaderId;
 	private String color;
 	private String image;
 	private Integer homeLocation;
-	private Collection<User> allUsers;
+	private Collection<User> teamUsers;
 	private Collection<Location> allLocations;
 	
 	/**
@@ -117,12 +118,12 @@ public class TeamUpdateCommand {
 		this.homeLocation = homeLocation;
 	}
 
-	public Collection<User> getAllUsers() {
-		return allUsers;
+	public Collection<User> getTeamUsers() {
+		return teamUsers;
 	}
 
-	public void setAllUsers(Collection<User> allUsers) {
-		this.allUsers = allUsers;
+	public void setTeamUsers(Collection<User> teamUsers) {
+		this.teamUsers = teamUsers;
 	}
 
 	public Collection<Location> getAllLocations() {
@@ -131,6 +132,14 @@ public class TeamUpdateCommand {
 
 	public void setAllLocations(Collection<Location> allLocations) {
 		this.allLocations = allLocations;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 	
 	

@@ -56,21 +56,17 @@ public class TeamDaoMockImpl implements TeamDao {
 	}
 
 	/**
-	 * Returns a collection of teams who's name match the given string.  
-	 * Must return collection because currently duplicate team names are 
-	 * allowed.
+	 * Returns a team who's name matches the given string.
 	 */
 	@Override
-	public Collection<Team> getTeamsByTeamName(String display) {
-		Set<Team> results = new HashSet<Team>();
-		
+	public Team getTeamByTeamName(String display) {		
 		for (Team team : storage.values()) {
 			if (team.getName().equals(display)) {
-				results.add(team);
+				return team;
 			}
 		}
 		
-		return results;
+		return null;
 	}
 
 	/**

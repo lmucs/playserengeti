@@ -38,6 +38,8 @@ public class TeamDeleteController extends SimpleFormController {
 	protected Object formBackingObject(HttpServletRequest request)
     throws Exception {
         String teamId = request.getParameter("teamId");
+        //String userId = request.getParameter("userId");
+        
         Team team;
         TeamDeleteCommand deleteTeam = new TeamDeleteCommand();
 		if (teamId != null) {
@@ -45,6 +47,8 @@ public class TeamDeleteController extends SimpleFormController {
 		    deleteTeam.setTeamId(team.getId());
 	    	deleteTeam.setName(team.getName());
 		}
+		
+		//if (userID != null) deleteTeam.setUserId(Integer.valueOf(userId));
 		
 		return deleteTeam;
 	}
@@ -59,18 +63,14 @@ public class TeamDeleteController extends SimpleFormController {
 		TeamDeleteCommand command = (TeamDeleteCommand)_command;
 		
 		Integer teamId = command.getTeamId();
-		
-		Map<String, String> model = new HashMap<String, String>();
-		model.put("deletedName", service.getTeamById(teamId).getName());
-		model.put("deleted", "true");
-		
-		ModelAndView mav = new ModelAndView(getSuccessView(), model);
-		
+		//Integer userId = command.getUserId();
+				
 		//Deletes the team from the database.
 		service.deleteTeam(teamId);
 
-        Collection<Team> allTeams = service.getAllTeams();
-        mav.addObject("allTeams", allTeams);
+        ModelAndView mav = new ModelAndView("redirect:central");
+        
+        //mav.addObject("userId", userId);
         
 		return mav;
 	}

@@ -58,4 +58,9 @@ public class TeamService {
     public Collection<Team> getAllTeams() {
     	return teamDao.getAllTeams();
     }
+    
+    public Team getTeamByTeamName(String display) {
+    	return teamDao.getTeamByTeamName(display);
+    }
+    
 }

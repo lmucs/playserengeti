@@ -51,6 +51,10 @@ public class TeamViewProfileController extends AbstractCommandController {
         
         ModelAndView mav = new ModelAndView(viewName);
         mav.addObject("team", team);
+        mav.addObject("teamId", teamId);
+        
+        //mav.addObject("userId", command.getUserId());
+        
         return mav;
 	}
 }

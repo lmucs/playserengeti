@@ -47,5 +47,5 @@ public interface TeamDao {
 	 * @param team team name
 	 * @return the fetched team
 	 */
-	public Collection<Team> getTeamsByTeamName(String display);
+	public Team getTeamByTeamName(String display);
 }
