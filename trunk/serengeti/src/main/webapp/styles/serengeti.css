@@ -1,9 +1,22 @@
 .pagetitle {
-    color: #308000;
+    color: #446611;
     background-color: transparent;
     font-size: 175%;
     font-weight: bold;
     text-decoration: none;
+    margin-top: 0.25em;
+}
+
+body {
+    margin: 0;
+    background-color: #ddccbb;
+}
+
+.mainContentArea {
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid #888877;
+    background-color: white;
 }
 
 .mainlogo {
