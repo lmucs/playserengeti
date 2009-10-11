@@ -14,13 +14,27 @@
     </head>
 
     <body>
-        <a href="/serengeti"><img src="${pageContext.request.contextPath}/images/serengeti-logo-full.png"
-            alt="logo" style="float:right" height="20%" width="20%" border="0" />
-        </a>
         <tiles:insertAttribute name="header"/>
+
+        <%-- Right-floated big logo, linked to home --%>
+        <div class="mainlogo">
+            <a href="${pageContext.request.contextPath}/"><img
+            src="${pageContext.request.contextPath}/images/logo-full-116.png"
+            alt="logo" /></a>
+        </div>
+
+        <%-- Page title prefixed with small tree linked to home --%>
+        <div class="pagetitle">
+            <a href="${pageContext.request.contextPath}/"><img
+            src="${pageContext.request.contextPath}/images/logo-tree-32.png"
+            alt="logo" /></a>
+            <tiles:insertAttribute name="title" value="${title}"/>
+        </div>
+
         <div class="mainContentArea">
             <tiles:insertAttribute name="body"/>
         </div>
+
         <tiles:insertAttribute name="footer"/>
     </body>
 </html>
