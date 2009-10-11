@@ -1,6 +1,8 @@
 #summary Any questions that need group involvement to decide on an answer should be posted here.
 
 = Open Questions =
+ ** Do team owners have to be stored with a location?  Or is this just derived data?
+
  ** Choose a color palette 
     ** [http://www.degraeve.com/color-palette/index.php?q=http://www.travel247.ie/images/regions/serengeti.jpg,3553b89c6e3fca9651aab7e0484455,4c426f0000efcb5400ff800097b9ff Choice 1]
     ** [http://www.degraeve.com/color-palette/index.php?q=http://www.smallbagbigworld.com/images/tanzania/serengeti_leopard.jpg,373b35778ca5f7f5f2aea4a08e867d,434d3d5f94d7b9a48be2c9bfffffff Choice 2] This one has been used for my mock ups and tentatively chosen ( I'll try to add some orange)
