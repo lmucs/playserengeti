@@ -1,15 +1,19 @@
+body {
+    margin: 0;
+    background-color: #ddccbb;
+}
+
 .pagetitle {
     color: #446611;
     background-color: transparent;
     font-size: 175%;
     font-weight: bold;
     text-decoration: none;
-    margin-top: 0.25em;
+    margin: 0.25em 0 0 .25em;
 }
 
-body {
-    margin: 0;
-    background-color: #ddccbb;
+.mainlogo {
+    float: right;
 }
 
 .mainContentArea {
@@ -19,8 +23,8 @@ body {
     background-color: white;
 }
 
-.mainlogo {
-    float: right;
+td, th {
+    background-color: #ffeeee;
 }
 
 .error {
@@ -30,4 +34,17 @@ body {
 
 a img {
     border-style: none;
+}
+
+a:link {
+    color: #6699dd;
+}
+
+a:visited {
+    color: 8899bb;
+}
+
+a:hover {
+    background-color: #aaaa99;
+    color: white;
 }
