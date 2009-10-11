@@ -9,7 +9,16 @@
 
     <name>playserengeti</name>
     <version>0.0.1-SNAPSHOT</version>
-    <description>A superduper game</description>
+    <description>
+        A physical location-aware, social networking application where participants organize into
+        teams and claim territory.
+    </description>
+    <url>http://code.google.com/p/playserengeti/</url>
+    <organization>
+        <name>Loyola Marymount University Computer Science</name>
+        <url>http://www.cs.lmu.edu</url>
+    </organization>
+
 
     <dependencies>
         <dependency>
@@ -49,11 +58,16 @@
             <artifactId>spring-webmvc</artifactId>
             <version>2.5.6</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-jsp</artifactId>
+            <version>2.0.6</version>
+        </dependency>
     </dependencies>
-    
+
     <build>
         <finalName>serengeti</finalName>
-        <plugins>  
+        <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
@@ -62,5 +76,5 @@
                 </configuration>
             </plugin>
         </plugins>
-    </build>    
+    </build>
 </project>

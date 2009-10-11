@@ -15,6 +15,6 @@ public class WelcomeController extends AbstractController {
     protected ModelAndView handleRequestInternal(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
 
-        return new ModelAndView("welcome.jsp");
+        return new ModelAndView("welcome");
     }
 }

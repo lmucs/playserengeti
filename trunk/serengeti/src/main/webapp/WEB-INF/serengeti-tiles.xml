@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions
+    PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+    "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+    <definition name="template" template="/WEB-INF/tiles/layout/main.jsp">
+        <put-attribute name="title" value="Serengeti"/>
+        <put-attribute name="header" value="/WEB-INF/tiles/layout/header.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/layout/bodyPlaceholder.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/tiles/layout/footer.jsp"/>
+    </definition>
+
+    <definition name="welcome" extends="template">
+        <put-attribute name="title" value="Welcome to Serengeti"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/welcome.jsp"/>
+    </definition>
+
+    <definition name="signup" extends="template">
+        <put-attribute name="title" value="Signup for Serengeti"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/signup.jsp"/>
+    </definition>
+
+    <definition name="signupSuccess" extends="template">
+        <put-attribute name="title" value="Signup Successful"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/signup.jsp"/>
+    </definition>
+
+    <definition name="viewWorldMap" extends="template">
+        <put-attribute name="title" value="Serengeti Map"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/viewWorldMap.jsp"/>
+    </definition>
+
+    <definition name="ping" extends="template">
+        <put-attribute name="title" value="Ping Someone"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/ping.jsp"/>
+    </definition>
+
+    <definition name="show" extends="template">
+        <put-attribute name="title" value="Turn on Pinging"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/show.jsp"/>
+    </definition>
+
+    <definition name="hide" extends="template">
+        <put-attribute name="title" value="Hide from Pinging"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/hide.jsp"/>
+    </definition>
+
+    <definition name="locationCreate" extends="template">
+        <put-attribute name="title" value="Create a Location"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/locationCreate.jsp"/>
+    </definition>
+
+    <definition name="locationCreateSuccess" extends="template">
+        <put-attribute name="title" value="Location Created"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/locationCreateSuccess.jsp"/>
+    </definition>
+
+    <definition name="locationDelete" extends="template">
+        <put-attribute name="title" value="Delete a Location"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/locationDelete.jsp"/>
+    </definition>
+
+    <definition name="locationDeleteSuccess" extends="template">
+        <put-attribute name="title" value="Location Deleted"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/locationDeleteSuccess.jsp"/>
+    </definition>
+
+    <definition name="locationUpdate" extends="template">
+        <put-attribute name="title" value="Update a Location"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/locationUpdate.jsp"/>
+    </definition>
+
+    <definition name="locationUpdateSuccess" extends="template">
+        <put-attribute name="title" value="Location Updated"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/locationUpdateSuccess.jsp"/>
+    </definition>
+
+    <definition name="locationList" extends="template">
+        <put-attribute name="title" value="Location List"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/locationList.jsp"/>
+    </definition>
+
+    <definition name="locationViewProfile" extends="template">
+        <put-attribute name="title" value="Location Profile"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/locationViewProfile.jsp"/>
+    </definition>
+
+    <definition name="userlist" extends="template">
+        <put-attribute name="title" value="List of Users"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/userlist.jsp"/>
+    </definition>
+
+    <definition name="userDelete" extends="template">
+        <put-attribute name="title" value="Delete a User"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/userDelete.jsp"/>
+    </definition>
+
+    <definition name="userDeleteSuccess" extends="template">
+        <put-attribute name="title" value="User Deleted"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/userDeleteSuccess.jsp"/>
+    </definition>
+
+    <definition name="userUpdate" extends="template">
+        <put-attribute name="title" value="Update a User"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/userUpdate.jsp"/>
+    </definition>
+
+    <definition name="userUpdateSuccess" extends="template">
+        <put-attribute name="title" value="User Updated"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/userUpdateSuccess.jsp"/>
+    </definition>
+
+    <definition name="userViewProfile" extends="template">
+        <put-attribute name="title" value="User Profile"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/userViewProfile.jsp"/>
+    </definition>
+
+    <definition name="teamCreate" extends="template">
+        <put-attribute name="title" value="Create a Team"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/teamCreate.jsp"/>
+    </definition>
+
+    <definition name="teamCreateSuccess" extends="template">
+        <put-attribute name="title" value="Team Created"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/teamCreateSuccess.jsp"/>
+    </definition>
+
+    <definition name="teamCentral" extends="template">
+        <put-attribute name="title" value="Team Central"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/teamCentral.jsp"/>
+    </definition>
+
+    <definition name="teamList" extends="template">
+        <put-attribute name="title" value="List of Teams"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/teamList.jsp"/>
+    </definition>
+
+    <definition name="teamInvite" extends="template">
+        <put-attribute name="title" value="Invite to a Team"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/teamInvite.jsp"/>
+    </definition>
+
+    <definition name="teamDelete" extends="template">
+        <put-attribute name="title" value="Delete a Team"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/teamDelete.jsp"/>
+    </definition>
+
+    <definition name="teamDeleteSuccess" extends="template">
+        <put-attribute name="title" value="Team Deleted"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/teamDeleteSuccess.jsp"/>
+    </definition>
+
+    <definition name="teamUpdate" extends="template">
+        <put-attribute name="title" value="Update a Team"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/teamUpdate.jsp"/>
+    </definition>
+
+    <definition name="teamUpdateSuccess" extends="template">
+        <put-attribute name="title" value="Team Updated"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/teamUpdateSuccess.jsp"/>
+    </definition>
+
+    <definition name="teamViewProfile" extends="template">
+        <put-attribute name="title" value="Team Profile"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/teamViewProfile.jsp"/>
+    </definition>
+
+    <definition name="visitCreate" extends="template">
+        <put-attribute name="title" value="Create a Visit"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/visitCreate.jsp"/>
+    </definition>
+
+    <definition name="visitCreateSuccess" extends="template">
+        <put-attribute name="title" value="Visit Created"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/visitCreateSuccess.jsp"/>
+    </definition>
+
+</tiles-definitions>

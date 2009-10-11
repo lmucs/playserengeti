@@ -83,8 +83,8 @@
             value="com.playserengeti.controller.UserCreateCommand"
         />
         <property name="validator" ref="userCreateValidator"/>
-        <property name="formView" value="signup.jsp"/>
-        <property name="successView" value="signupSuccess.jsp"/>
+        <property name="formView" value="signup"/>
+        <property name="successView" value="signupSuccess"/>
         <constructor-arg ref="userService"/>
     </bean>
 
@@ -99,8 +99,8 @@
         />
         <property name="commandName" value="userDelete"/>
         <property name="validator" ref="userDeleteValidator"/>
-        <property name="formView" value="userDelete.jsp"/>
-        <property name="successView" value="userDeleteSuccess.jsp"/>
+        <property name="formView" value="userDelete"/>
+        <property name="successView" value="userDeleteSuccess"/>
         <constructor-arg ref="userService"/>
     </bean>
 
@@ -160,7 +160,7 @@
         />
         <property name="commandName" value="createTeam"/>
         <property name="validator" ref="teamCreateValidator"/>
-        <property name="formView" value="teamCreate.jsp"/>
+        <property name="formView" value="teamCreate"/>
         <constructor-arg ref="teamService"/>
         <constructor-arg ref="userService"/>
         <constructor-arg ref="locationService"/>
@@ -173,7 +173,7 @@
         />
         <property name="commandName" value="updateTeam"/>
         <property name="validator" ref="teamUpdateValidator"/>
-        <property name="formView" value="teamUpdate.jsp" />
+        <property name="formView" value="teamUpdate" />
         <constructor-arg ref="teamService"/>
         <constructor-arg ref="userService"/>
         <constructor-arg ref="locationService"/>
@@ -186,8 +186,8 @@
         />
         <property name="commandName" value="deleteTeam"/>
         <property name="validator" ref="teamDeleteValidator"/>
-        <property name="formView" value="teamDelete.jsp" />
-        <property name="successView" value="teamCentral.jsp" />
+        <property name="formView" value="teamDelete" />
+        <property name="successView" value="teamCentral" />
         <constructor-arg ref="teamService"/>
     </bean>
 
@@ -205,7 +205,7 @@
         class="com.playserengeti.controller.TeamListController">
         <constructor-arg ref="teamService"/>
     </bean>
-    
+
     <bean id="teamCentralController"
         class="com.playserengeti.controller.TeamCentralController">
         <property name="commandClass"
@@ -213,8 +213,8 @@
         />
         <property name="commandName" value="teamCentral"/>
         <property name="validator" ref="teamCentralValidator"/>
-        <property name="formView" value="teamCentral.jsp" />
-        <property name="successView" value="teamCreate.jsp" />
+        <property name="formView" value="teamCentral" />
+        <property name="successView" value="teamCreate" />
         <constructor-arg ref="teamService"/>
         <constructor-arg ref="userService"/>
     </bean>
@@ -226,11 +226,11 @@
         />
         <property name="commandName" value="teamInvite"/>
         <property name="validator" ref="teamInviteValidator"/>
-        <property name="formView" value="teamInvite.jsp" />
+        <property name="formView" value="teamInvite" />
         <constructor-arg ref="teamService"/>
         <constructor-arg ref="userService"/>
     </bean>
-    
+
     <bean id="teamCreateValidator"
         class="com.playserengeti.controller.TeamCreateValidator">
     </bean>
@@ -246,7 +246,7 @@
     <bean id="teamViewProfileValidator"
         class="com.playserengeti.controller.TeamViewProfileValidator">
     </bean>
-    
+
     <bean id="teamCentralValidator"
         class="com.playserengeti.controller.TeamCentralValidator">
     </bean>
@@ -254,7 +254,7 @@
     <bean id="teamInviteValidator"
         class="com.playserengeti.controller.TeamInviteValidator">
     </bean>
-    
+
     <bean id="teamService"
         class="com.playserengeti.service.TeamService">
         <constructor-arg ref="teamDao"/>
@@ -275,8 +275,8 @@
         />
         <property name="commandName" value="createLocation"/>
         <property name="validator" ref="locationCreateValidator"/>
-        <property name="formView" value="locationCreate.jsp" />
-        <property name="successView" value="locationCreateSuccess.jsp" />
+        <property name="formView" value="locationCreate" />
+        <property name="successView" value="locationCreateSuccess" />
         <constructor-arg ref="locationService"/>
     </bean>
 
@@ -287,8 +287,8 @@
         />
         <property name="commandName" value="updateLocation"/>
         <property name="validator" ref="locationUpdateValidator"/>
-                <property name="formView" value="locationUpdate.jsp" />
-        <property name="successView" value="locationUpdateSuccess.jsp" />
+                <property name="formView" value="locationUpdate" />
+        <property name="successView" value="locationUpdateSuccess" />
         <constructor-arg ref="locationService"/>
     </bean>
 
@@ -299,8 +299,8 @@
         />
         <property name="commandName" value="deleteLocation"/>
         <property name="validator" ref="locationDeleteValidator"/>
-        <property name="formView" value="locationDelete.jsp" />
-        <property name="successView" value="locationDeleteSuccess.jsp" />
+        <property name="formView" value="locationDelete" />
+        <property name="successView" value="locationDeleteSuccess" />
         <constructor-arg ref="locationService"/>
     </bean>
 
@@ -432,8 +432,8 @@
         />
         <property name="commandName" value="visitCreate"/>
         <property name="validator" ref="visitCreateValidator"/>
-        <property name="formView" value="visitCreate.jsp"/>
-        <property name="successView" value="visitCreateSuccess.jsp"/>
+        <property name="formView" value="visitCreate"/>
+        <property name="successView" value="visitCreateSuccess"/>
         <constructor-arg ref="visitService"/>
     </bean>
 
@@ -451,13 +451,32 @@
     </bean>
 
     <!--
-        View Resolvers
-    -->
+    This is the way to do it without tiles
     <bean id="viewResolver"
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass"
             value="org.springframework.web.servlet.view.JstlView"
         />
         <property name="prefix" value="/WEB-INF/tiles/"/>
+    </bean>
+    -->
+
+    <!--
+        Tiles configuration and view resolver
+    -->
+    <bean id="tilesConfigurer"
+        class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/serengeti-tiles.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="viewResolver"
+        class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass">
+            <value>org.springframework.web.servlet.view.tiles2.TilesView</value>
+        </property>
     </bean>
 </beans>
