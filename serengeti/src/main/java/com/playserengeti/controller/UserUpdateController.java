@@ -34,7 +34,7 @@ public class UserUpdateController extends AbstractCommandController {
         UserUpdateCommand command = (UserUpdateCommand)commandObject;
         String userID = command.getUserID();
 
-        String viewName = "userManage.jsp";
+        String viewName = "userUpdate";
 
         ModelAndView mav = new ModelAndView(viewName);
         mav.addObject("userID", userID);

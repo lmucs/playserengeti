@@ -1,12 +1,3 @@
-<html>
-    <head>
-        <title>Serengeti</title>
-    </head>
-    <body>
-        <a href="/serengeti"><img src="images/serengeti-logo-full.png" alt="logo" style="float:right" height="20%" width="20%" border="0" /></a>
-
-        <h1>Serengeti</h1>
-
         <p>Welcome to Serengeti.  Someday we will have something cool
         to say here.</p>
 
@@ -33,6 +24,3 @@
         <li><a href="location/list">View all locations in the system</a></li>
         <li><a href="visit/create">Check In (aka create a Visit)</a></li>
         </ul>
-
-    </body>
-</html>

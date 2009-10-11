@@ -1,14 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<html>
-    <head>
-        <title>All of the Teams</title>
-    </head>
-
-    <body>
-	    <a href="/serengeti"><img src="../images/serengeti-logo-full.png" alt="logo" style="float:right" height="20%" width="20%" border="0"/></a>
-    
         <p>All of your teams registered with Serengeti.</p>
 
         <table>
@@ -21,10 +13,8 @@
                     <td>${team.id}</td>
                     <td>
                         <a href="view?teamId=${team.id}"><c:out value="${team.name}"/></a>
-                    </td>                    
+                    </td>
                 </tr>
             </c:forEach>
         </table>
         <p><a href="create">Create a new team?</a></p>
-    </body>
-</html>

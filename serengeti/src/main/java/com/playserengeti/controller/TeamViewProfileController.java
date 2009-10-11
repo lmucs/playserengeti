@@ -17,44 +17,44 @@ import com.playserengeti.service.TeamService;
  */
 public class TeamViewProfileController extends AbstractCommandController {
 
-	private TeamService service;
-	
-	/**
-	 * Constructor.  Sets the service.
-	 * @param service
-	 */
-	public TeamViewProfileController(TeamService service) {
-		this.service = service;
-	}
-	
-	/**
-	 * Gets the team from the command and pushes it to the model.
-	 */
-	@Override
-	protected ModelAndView handle(HttpServletRequest request,
+    private TeamService service;
+
+    /**
+     * Constructor.  Sets the service.
+     * @param service
+     */
+    public TeamViewProfileController(TeamService service) {
+        this.service = service;
+    }
+
+    /**
+     * Gets the team from the command and pushes it to the model.
+     */
+    @Override
+    protected ModelAndView handle(HttpServletRequest request,
             HttpServletResponse response, Object commandObject,
             BindException errors)throws Exception {
-		
-    	if (errors.hasErrors()) {
-    	    return new ModelAndView("errors.jspx", "errors", errors.getAllErrors());	
-    	}	
-    	
+
+        if (errors.hasErrors()) {
+            return new ModelAndView("errors.jspx", "errors", errors.getAllErrors());
+        }
+
         TeamViewProfileCommand command = (TeamViewProfileCommand)commandObject;
-        
+
         Integer teamId = command.getTeamId();
         Team team = null;
         if (teamId != null) {
-        	team = service.getTeamById(teamId);
+            team = service.getTeamById(teamId);
         }
 
-        String viewName = "teamViewProfile.jsp";
-        
+        String viewName = "teamViewProfile";
+
         ModelAndView mav = new ModelAndView(viewName);
         mav.addObject("team", team);
         mav.addObject("teamId", teamId);
-        
+
         //mav.addObject("userId", command.getUserId());
-        
+
         return mav;
-	}
+    }
 }

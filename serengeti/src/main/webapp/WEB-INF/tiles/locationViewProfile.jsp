@@ -1,19 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<html>
-    <head>
-        <title>View Location Profile</title>
-    </head>
-
-    <body>
         <c:choose>
             <c:when test='${ !empty location }'>
                 <p>Here's the location you requested</p>
                 <table>
                     <tr>
-                    	<td><string>Location Id </strong></td>
-                    	<td><c:out value="${location.locationName}"/></td>
+                      <td><string>Location Id </strong></td>
+                      <td><c:out value="${location.locationName}"/></td>
                     </tr>
                     <tr>
                         <td><strong>Location Name</strong></td>
@@ -43,6 +37,4 @@
                 <p>The location you requested does not exist.</p>
             </c:otherwise>
         </c:choose>
-    </body>
-</html>
 

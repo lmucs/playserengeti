@@ -1,14 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<html>
-    <head>
-        <title>View Team Profile</title>
-    </head>
-  
-    <body>
-	    <a href="/serengeti"><img src="../images/serengeti-logo-full.png" alt="logo" style="float:right" height="20%" width="20%" border="0"/></a>
-
         <c:choose>
             <c:when test='${ !empty teamId }'>
                 <p>Here's the team's profile you requested</p>
@@ -37,12 +29,12 @@
                       <td><strong>Team Members:</strong><br/></td>
                       <c:forEach var="user" items="${team.members}">
                         <tr>
-                          <td><a href="../user/view?userId=${user.userId}"><c:out value="${user.userName}"/></a></td>                    
+                          <td><a href="../user/view?userId=${user.userId}"><c:out value="${user.userName}"/></a></td>
                         </tr>
                       </c:forEach>
                     </tr>
                 </table>
-                <hr>                
+                <hr>
                 <!-- These will only display if team.leader.id == userId  and pass in the userId -->
                 <a href="update?teamId=${team.id}">Modify Team</a><br/>
                 <a href="delete?teamId=${team.id}">Delete Team</a><br/>
@@ -52,6 +44,3 @@
                 <p>The team you requested does not exist.</p>
             </c:otherwise>
         </c:choose>
-    </body>
-</html>
-

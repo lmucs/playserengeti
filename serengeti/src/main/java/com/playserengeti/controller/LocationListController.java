@@ -18,12 +18,12 @@ import com.playserengeti.service.LocationService;
  */
 public class LocationListController extends AbstractController {
 
-	private LocationService service;
+    private LocationService service;
 
-	/**
-	 * Constructor.  Sets the service.
-	 * @param service
-	 */
+    /**
+     * Constructor.  Sets the service.
+     * @param service
+     */
     public LocationListController(LocationService service) {
         this.service = service;
     }
@@ -35,7 +35,7 @@ public class LocationListController extends AbstractController {
     protected ModelAndView handleRequestInternal(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         Collection<Location> allLocations = service.getAllLocations();
-        return new ModelAndView("locationList.jsp", "allLocations", allLocations);
+        return new ModelAndView("locationList", "allLocations", allLocations);
     }
 
 }

@@ -29,11 +29,11 @@ public class UserListController extends AbstractController {
     /*
      * TODO: Eventually this list will have to be paginated and sortable.
      */
-    
+
     @Override
     protected ModelAndView handleRequestInternal(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         Collection<User> allUsers = service.getAllUsers();
-        return new ModelAndView("userlist.jsp", "allUsers", allUsers);
+        return new ModelAndView("userlist", "allUsers", allUsers);
     }
 }
