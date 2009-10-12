@@ -23,7 +23,7 @@
                     <td><c:out value="${location.locationName}"/></td>
                     <td><c:out value="${location.latitude}"/></td>
                     <td><c:out value="${location.longitude}"/></td>
-                    <td><c:out value="${location.teamOwner}"/></td>
+                    <td><c:out value="${location.teamOwnerId.id}"/></td>
                 </tr>
             </c:forEach>
         </table>

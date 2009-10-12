@@ -289,6 +289,7 @@
         <property name="validator" ref="locationUpdateValidator"/>
                 <property name="formView" value="locationUpdate" />
         <property name="successView" value="locationUpdateSuccess" />
+        <constructor-arg ref="teamDao"/>
         <constructor-arg ref="locationService"/>
     </bean>
 

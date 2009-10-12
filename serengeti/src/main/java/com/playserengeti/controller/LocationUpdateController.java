@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
+import com.playserengeti.dao.TeamDao;
 import com.playserengeti.domain.Location;
-import com.playserengeti.domain.Team;
 import com.playserengeti.service.LocationService;
 
 /*
@@ -19,9 +19,11 @@ import com.playserengeti.service.LocationService;
 public class LocationUpdateController extends SimpleFormController {
 
 	private LocationService service;
+	private TeamDao teamDao;
 
-	public LocationUpdateController(LocationService service) {
+	public LocationUpdateController(LocationService service, TeamDao teamDao) {
 		this.service = service;
+		this.teamDao = teamDao;
 	}
 
 	/**

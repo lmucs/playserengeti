@@ -23,8 +23,8 @@
                     </tr>
                     <tr>
                         <td><strong>Owned by Team</strong></td>
-                        <td><c:if test='${ !empty location.teamOwner }'>
-                                <c:out value="${location.latitude}"/>
+                        <td><c:if test='${ !empty location.teamOwnerId }'>
+                                <c:out value="${location.teamOwnerId.id}"/>
                             </c:if>
                         </td>
                     </tr>
