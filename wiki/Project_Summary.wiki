@@ -1,7 +1,12 @@
+#labels Featured,Phase-Design
 *Project Name*: Serengeti
 
-*Tagline*: Mark your territory
+*Tagline*: Mark Your Territory
 
-*Description*: A physical location-aware, social networking application where participants organize into teams and claim territory.  Team members can move independently and can track each others' movements.  Claiming territory can be done for the purpose of
+*Description*: A social networking application/game where participants join teams, record visits to real world locations for a team, and assist their team in taking ownership of the locations. Users can be part of multiple teams, but their visits can only be attributed to one team of the user's choice at a time. To record visits, users check in at their location, either by a web application accessible to mobile devices or a specially developed application for major mobile platforms, such as iPhone and Blackberry. Points for a location and team are given for each visit, and the team with the highest point total for a location is considered the "owner" of the location.
+
+
+
+<wiki:comment>A physical location-aware, social networking application where participants organize into teams and claim territory.  Team members can move independently and can track each others' movements.  Claiming territory can be done for the purpose of
   * Winning a challenge (e.g., between schools or organizations)
-  * Obtaining discounts at local businesses (in return for frequent visits)
+  * Obtaining discounts at local businesses (in return for frequent visits)</wiki:comment>
