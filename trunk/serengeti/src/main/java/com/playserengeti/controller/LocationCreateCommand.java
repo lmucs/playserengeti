@@ -1,13 +1,14 @@
 package com.playserengeti.controller;
 
+import com.playserengeti.domain.Location;
 import com.playserengeti.domain.Team;
 
 public class LocationCreateCommand {
 
     private String locationName;
     private int locationId;
-    private double locationLongitude;
-    private double locationLatitude;
+    private double longitude;
+    private double latitude;
     private Team teamOwnerId;
 
     public void setLocationId(Integer locationId) {
@@ -27,19 +28,19 @@ public class LocationCreateCommand {
     }
 
 	public double getLongitude() {
-		return locationLongitude;
+		return longitude;
 	}
 
-	public void setLongitude(double locationLongitude) {
-		this.locationLongitude = locationLongitude;
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
 	}
 
 	public double getLatitude() {
-		return locationLatitude;
+		return latitude;
 	}
 
-	public void setLatitude(double locationLatitude) {
-		this.locationLatitude = locationLatitude;
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
 	}
 
 	public Team getTeamOwnerId() {

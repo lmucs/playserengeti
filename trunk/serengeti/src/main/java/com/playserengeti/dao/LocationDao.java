@@ -12,21 +12,21 @@ public interface LocationDao {
 	 * @param location to commit
 	 * @return the location id of the newly inserted location
 	 */
-	public Integer insertLocation(Location loc);
+	public Integer insertLocation(Location location);
 
 	/**
 	 * Update the location in storage.
 	 *
 	 * @param location to update
 	 */
-	public void updateLocation(Location loc);
+	public void updateLocation(Location location);
 
 	/**
 	 * Delete a location from storage.
 	 *
 	 * @param id location id of the location to delete
 	 */
-	public void deleteLocation(Integer id);
+	public void deleteLocation(Integer locationId);
 
 	/**
 	 * Get all locations from storage.
@@ -47,10 +47,10 @@ public interface LocationDao {
 	 * @param loc location name
 	 * @return the fetched location
 	 */
-	public Location getLocationByLocationName(String loc);
+	public Location getLocationByLocationName(String location);
 
 	/*
-	 * Check the existance of a locaitionId
+	 * Check the existence of a locaitionId
 	 */
 	public boolean locationExists(Integer locationId);
 
