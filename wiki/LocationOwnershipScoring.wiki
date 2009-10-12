@@ -11,7 +11,7 @@ Team totals are floored when displayed for users. When a owner's team point tota
 ==Points to Discuss==
  * Dynamic decay: Should decay be implemented dynamically, or should it occur at set intervals (daily, hourly, a fraction of the dynamically based decay period)?
 
- * 
+ * Unique visitors worth more: Should 1 user visiting multiple times in a day (for example, 10am, 11:30am, 2pm) be worth less than multiple users checking in at similar times (user 1 checks in at 10am, user 2 at 11:30am, and user 3 at 2pm)? Should more points be given based upon number of visitors when number of check-ins are equal?
 
 <wiki:comment>==Basic Scoring==
 When a user checks in to a location, a set amount of points is added to each of the user's teams. Ownership is given to the team with the highest number of points. If check-in limits (i.e., users can not check-in immediately after a previous check-in) are not implemented, check-ins to a location within a set period of time from a previous check-in to the same location will offer no additional points to a user's teams.
