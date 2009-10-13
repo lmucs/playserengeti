@@ -6,7 +6,7 @@ import com.playserengeti.domain.Location;
 import com.playserengeti.domain.User;
 
 /**
- * The commander for creating a new team.  Contains the basic information about 
+ * The commander for creating a new team.  Contains the basic information about
  * teams.  Should probably be re-designed.
  * @author Chris
  *
@@ -23,7 +23,7 @@ public class TeamCreateCommand {
 	//Not sure how to determine home location.
 	private Integer homeLocation;
 	private Collection<Location> allLocations;
-	
+
 	/**
 	 * Returns the name of the team.
 	 * @return
@@ -31,7 +31,7 @@ public class TeamCreateCommand {
 	public String getName() {
 		return name;
 	}
-	
+
 	/**
 	 * Sets the name of the team.
 	 * @param name
@@ -39,7 +39,7 @@ public class TeamCreateCommand {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	/**
 	 * Returns the team's ID.
 	 * @return
@@ -47,7 +47,7 @@ public class TeamCreateCommand {
 	public Integer getTeamId() {
 		return teamId;
 	}
-	
+
 	/**
 	 * Returns the user ID of the team's leader.
 	 * @return
@@ -55,7 +55,7 @@ public class TeamCreateCommand {
 	public Integer getUserId() {
 		return userId;
 	}
-	
+
 	/**
 	 * Sets the leader of the team.
 	 * @param leaderID
@@ -63,7 +63,7 @@ public class TeamCreateCommand {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	
+
 	/**
 	 * Returns the team's preferred color.
 	 * @return
@@ -71,7 +71,7 @@ public class TeamCreateCommand {
 	public String getColor() {
 		return color;
 	}
-	
+
 	/**
 	 * Sets the team's preferred color.
 	 * @param color
@@ -79,7 +79,7 @@ public class TeamCreateCommand {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	
+
 	/**
 	 * Returns the url of the team's image.
 	 * @return
@@ -87,7 +87,7 @@ public class TeamCreateCommand {
 	public String getImage() {
 		return image;
 	}
-	
+
 	/**
 	 * Sets the url of the team's image.
 	 * @param image
@@ -95,7 +95,7 @@ public class TeamCreateCommand {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
+
 	/**
 	 * Returns the location ID of the team's home location.
 	 * @return
@@ -103,7 +103,7 @@ public class TeamCreateCommand {
 	public Integer getHomeLocation() {
 		return homeLocation;
 	}
-	
+
 	/**
 	 * Sets the team's home location to that specified by the given location ID.
 	 * @param homeLocation
@@ -143,6 +143,6 @@ public class TeamCreateCommand {
 	public void setAllLocations(Collection<Location> allLocations) {
 		this.allLocations = allLocations;
 	}
-	
-	
+
+
 }

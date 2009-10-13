@@ -8,21 +8,19 @@ import static com.playserengeti.util.ArgumentChecker.assertArgument;
  * A Serengeti user (player).
  */
 public class User {
-	
-	private final Integer userId;	// User table primary key.
+
+	private Integer userId;	// User table primary key.
     private String userName;		// Not null.
-    private byte[] passwordHash;	// Not null.
+    private String passwordHash;	// Not null.
     private String firstName;		// Optional.
     private String lastName;		// Optional.
     private String email;			// Not null.
     private Date dateOfBirth;		// Optional.
-    
-	public User(Integer userId, String userName, byte[] passwordHash,
+
+	public User(Integer userId, String userName, String passwordHash,
 			String firstName, String lastName, String email, Date dateOfBirth) {
-		// Set userId.
-		assertArgument(userId != null, "UserId must not be null.");
-		this.userId = userId;
-		
+
+		setUserId(userId);
 		setUserName(userName);
 		setPasswordHash(passwordHash);
 		setFirstName(firstName);
@@ -30,10 +28,14 @@ public class User {
 		setEmail(email);
 		setDateOfBirth(dateOfBirth);
 	}
-	
-	public User(Integer userId, String userName, byte[] passwordHash,
+
+	public User(Integer userId, String userName, String passwordHash,
 			String email) {
 		this(userId, userName, passwordHash, null, null, email, null);
+	}
+
+	public void setUserId(Integer userId){
+		this.userId = userId;
 	}
 
 	public Integer getUserId() {
@@ -49,11 +51,11 @@ public class User {
 		this.userName = userName;
 	}
 
-	public byte[] getPasswordHash() {
+	public String getPasswordHash() {
 		return passwordHash;
 	}
 
-	public void setPasswordHash(byte[] passwordHash) {
+	public void setPasswordHash(String passwordHash) {
 		assertArgument(passwordHash != null, "A user must have a password.");
 		this.passwordHash = passwordHash;
 	}
@@ -110,5 +112,5 @@ public class User {
 			return false;
 		return true;
 	}
-	
+
 }

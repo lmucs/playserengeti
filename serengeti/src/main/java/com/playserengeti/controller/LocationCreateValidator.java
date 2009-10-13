@@ -13,6 +13,11 @@ public class LocationCreateValidator implements Validator {
 	public void validate(Object object, Errors errors) {
 		LocationCreateCommand c = LocationCreateCommand.class.cast(object);
 
-		/* Doesn't do anything. */
+		if (c.getLatitude() < -180 || c.getLatitude() > 180) {
+			errors.reject("error.invalid.Latitude");
+		}
+		if (c.getLongitude() < -180 || c.getLongitude() > 180) {
+			errors.reject("error.invalid.Longitude");
+		}
 	}
 }

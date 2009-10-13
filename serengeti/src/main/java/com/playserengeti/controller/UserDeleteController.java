@@ -36,11 +36,11 @@ public class UserDeleteController extends SimpleFormController {
     	if (model == null) {
     		model = new HashMap();
     	}
-    	
+
     	model.put("allUsers", service.getAllUsers());
     	return super.showForm(request, response, errors, model);
     }
-    
+
 	@Override
 	protected ModelAndView onSubmit(HttpServletRequest request,
 			HttpServletResponse response, Object _command, BindException errors)

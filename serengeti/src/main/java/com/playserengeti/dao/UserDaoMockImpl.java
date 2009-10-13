@@ -4,6 +4,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -11,37 +12,41 @@ import java.util.Set;
 
 import org.springframework.dao.DataIntegrityViolationException;
 
+import com.playserengeti.domain.Location;
 import com.playserengeti.domain.User;
 
 /**
  * A mock implementation of the User DAO that's backed by an id-keyed map.
  */
 public class UserDaoMockImpl implements UserDao {
-	
-	// TODO: Implement synchronization and defensive copying. 
 
-	// Sample users to insert into the database.
-	private static final String sampleUsers[][] = {
-		{"durnew", "password1", "labrams@lion.lmu.edu"},
-		{"rtoal", "password2", "rtoal@lmu.edu"}
-	};
+	// Storage for the user objects
+    private Map<Integer, User> storage;
+    private int maxId;
 
-	private Map<Integer, User> storage = 
-		Collections.synchronizedMap(new HashMap<Integer, User>());
+    private UserDao userDao;
 
-	private int maxId = -1;
+    public UserDaoMockImpl() {
+        storage = Collections.synchronizedMap(new HashMap<Integer, User>());
+        maxId = -1;
+
+        User[] sampleUsers = new User[] {
+        		new User(null, "durnew", "password1", null, null, "labrams@lion.lmu.edu", null),
+        		new User(null, "rtoal", "password2", null, null, "rtoal@lmu.edu", null),
+        		new User(null, "gratrixl", "isAwesome", null, null, "litagratrix@gmail.com", null)
+        };
+
+        // Insert the sample locations into the database as this is a mock impl.
+        insertUsers(sampleUsers);
+    }
 
 	/**
 	 * A convenience method to insert an array of users into the database.
 	 */
-	private void insertUsers(String[][] usersInfo) {
-		for (String[] userInfo : usersInfo) {
-			insertUser(userInfo[0], userInfo[1], userInfo[2]);
+	private void insertUsers(User[] sampleUsers) {
+		for (User sampleUser : sampleUsers) {
+			insertUser(sampleUser);
 		}
-	}
-
-	public UserDaoMockImpl() {
-		insertUsers(sampleUsers);
 	}
 
 	@Override
@@ -49,10 +54,10 @@ public class UserDaoMockImpl implements UserDao {
 		return storage.values();
 	}
 
-	@Override
-	public User getUserById(Integer id) {
-		return storage.get(id);
-	}
+    @Override
+    public User getUserById(Integer userId) {
+        return storage.get(userId);
+    }
 
 	@Override
 	public Collection<User> getUsersByUserName(String userName) {
@@ -80,20 +85,21 @@ public class UserDaoMockImpl implements UserDao {
 		return results;
 	}
 
-	@Override
-	public User insertUser(String userName, String password, String email) {
+    @Override
+    public Integer insertUser(User user) {
 		for (User u : storage.values()) {
-			if (u.getUserName().equals(userName)) {
+			if (u.getUserName().equals(user.getUserName())) {
 				throw new DataIntegrityViolationException(
 						"Login name already exists");
 			}
 		}
-		
-		User user = new User(++maxId, userName, hashPassword(password), email);
-		updateUser(user);
+        Integer userId = ++maxId;
 
-		return user;
-	}
+        user.setUserId(userId);
+        updateUser(user);
+
+        return userId;
+    }
 
 	@Override
 	public void updateUser(User user) {
@@ -112,8 +118,8 @@ public class UserDaoMockImpl implements UserDao {
 	public boolean userExists(Integer userId) {
 		return (storage.get(userId) != null);
 	}
-	
-	
+
+
 	private static byte[] hashPassword(String password) {
 		try {
 			return MessageDigest.getInstance("MD5").digest(password.getBytes());

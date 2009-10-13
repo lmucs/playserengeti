@@ -1,6 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-        <p>Thank you <strong><c:out value="${userName}"/></strong> for signing up!</p>
+        <p>The user <strong><c:out value="${userName}"/></strong> with an email of
+        <strong><c:out value="${email}"/></strong> has just been created with a
+        userId of <strong><c:out value="${userId}"/></strong>
+        </p>
 
-        <p><a href="list">View your entry!</a></p>
+
+       <p><a href="list">View all users.</a></p>

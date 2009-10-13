@@ -11,10 +11,10 @@ import com.playserengeti.domain.User;
  *
  */
 public class TeamCentralCommand {
-    
+
 	private Integer userId;
-	
-	//Only needed until the user sign in is in place. Then it can reference the user's 
+
+	//Only needed until the user sign in is in place. Then it can reference the user's
 	//team attribute.
 	private Collection<Team> userTeams;
 
@@ -25,7 +25,7 @@ public class TeamCentralCommand {
 	public Integer getUserId() {
 		return userId;
 	}
-	
+
 	/**
 	 * Sets the userId.
 	 * @param name

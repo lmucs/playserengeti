@@ -11,7 +11,7 @@ public interface UserDao {
 	 *
 	 * @return the user object that is generated
 	 */
-	public User insertUser(String userName, String password, String email);
+	public Integer insertUser(User user);
 
 	/**
 	 * Update the user in storage.

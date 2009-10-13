@@ -4,10 +4,7 @@
         <p>For now, this page will be used for testing:</p>
 
         <ul>
-        <li><a href="user/create">Sign up!</a></li>
-        <li><a href="user/delete">Delete a user</a></li>
-        <li><a href="user/update">Manage a user</a></li>
-        <li><a href="user/view">View a user's profile</a></li>
+        <li><a href="user/create">Sign up! (aka Create User)</a></li>
         <li><a href="user/list">View all users in the system!</a></li>
         </ul>
         <ul>

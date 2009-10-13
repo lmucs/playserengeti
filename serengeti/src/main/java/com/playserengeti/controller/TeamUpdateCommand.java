@@ -23,7 +23,7 @@ public class TeamUpdateCommand {
 	//Not sure how to deal with selecting home location.
 	private Integer homeLocation;
 	private Collection<Location> allLocations;
-	
+
 	/**
 	 * Returns the name of the team.
 	 * @return
@@ -31,7 +31,7 @@ public class TeamUpdateCommand {
 	public String getName() {
 		return name;
 	}
-	
+
 	/**
 	 * Sets the name of the team.
 	 * @param name
@@ -39,7 +39,7 @@ public class TeamUpdateCommand {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	/**
 	 * Returns the team's ID.
 	 * @return
@@ -47,7 +47,7 @@ public class TeamUpdateCommand {
 	public Integer getTeamId() {
 		return teamId;
 	}
-	
+
 	/**
 	 * Sets the team's id.
 	 * @param teamId
@@ -55,7 +55,7 @@ public class TeamUpdateCommand {
 	public void setTeamId(Integer teamId) {
 	    this.teamId = teamId;
 	}
-	
+
 	/**
 	 * Returns the user ID of the team's leader.
 	 * @return
@@ -63,7 +63,7 @@ public class TeamUpdateCommand {
 	public Integer getLeaderId() {
 		return leaderId;
 	}
-	
+
 	/**
 	 * Sets the leader of the team.
 	 * @param leaderID
@@ -71,7 +71,7 @@ public class TeamUpdateCommand {
 	public void setLeaderId(Integer leaderId) {
 		this.leaderId = leaderId;
 	}
-	
+
 	/**
 	 * Returns the team's preferred color.
 	 * @return
@@ -79,7 +79,7 @@ public class TeamUpdateCommand {
 	public String getColor() {
 		return color;
 	}
-	
+
 	/**
 	 * Sets the team's preferred color.
 	 * @param color
@@ -87,7 +87,7 @@ public class TeamUpdateCommand {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	
+
 	/**
 	 * Returns the url of the team's image.
 	 * @return
@@ -95,7 +95,7 @@ public class TeamUpdateCommand {
 	public String getImage() {
 		return image;
 	}
-	
+
 	/**
 	 * Sets the url of the team's image.
 	 * @param image
@@ -103,7 +103,7 @@ public class TeamUpdateCommand {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
+
 	/**
 	 * Returns the location ID of the team's home location.
 	 * @return
@@ -111,7 +111,7 @@ public class TeamUpdateCommand {
 	public Integer getHomeLocation() {
 		return homeLocation;
 	}
-	
+
 	/**
 	 * Sets the team's home location to that specified by the given location ID.
 	 * @param homeLocation
@@ -166,7 +166,7 @@ public class TeamUpdateCommand {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	
-	
-	
+
+
+
 }

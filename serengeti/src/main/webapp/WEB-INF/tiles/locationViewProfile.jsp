@@ -7,7 +7,7 @@
                 <table>
                     <tr>
                       <td><string>Location Id </strong></td>
-                      <td><c:out value="${location.locationName}"/></td>
+                      <td><c:out value="${location.locationId}"/></td>
                     </tr>
                     <tr>
                         <td><strong>Location Name</strong></td>
