@@ -1,11 +1,16 @@
 package com.playserengeti.controller;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import com.playserengeti.domain.Team;
+import com.playserengeti.domain.User;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
 
@@ -44,8 +49,14 @@ public class TeamInviteController extends SimpleFormController {
             teamInvite.setUsers(the users friends);
         }
         */
-
-        teamInvite.setUsers(userService.getAllUsers());
+        
+        Map<Integer, String> users = new HashMap<Integer, String>();
+        Collection<User> allUsers = userService.getAllUsers();
+        
+        for (User u : allUsers) {
+        	users.put(u.getUserId(), u.getUserName());
+        }
+        teamInvite.setUsers(users);
         
 		setSessionForm(true);
 		return teamInvite;
@@ -59,9 +70,14 @@ public class TeamInviteController extends SimpleFormController {
 		Integer teamId = command.getTeamId();
 		//Integer userId = command.getUserId();
 		
-        //Team team = teamService.getTeamById(teamId);
-        //team.addMembers(command.getInvitees());
-        //teamService.saveTeam(team);
+        Team team = teamService.getTeamById(teamId);
+        Integer[] invitees = command.getInvitees();
+        
+        for (Integer i : invitees) {
+        	team.addMember(userService.getUserById(i));
+        }
+        
+        teamService.saveTeam(team);
         
         ModelAndView mav = new ModelAndView("redirect:view");
         mav.addObject("teamId", teamId);

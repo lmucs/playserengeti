@@ -100,7 +100,7 @@ public class Team {
     }
     
     public void addMember(User user) {
-    	this.members.add(user);
+    	if (!this.members.contains(user)) this.members.add(user);
     }
     
     public void addMembers(Collection<User> users) {

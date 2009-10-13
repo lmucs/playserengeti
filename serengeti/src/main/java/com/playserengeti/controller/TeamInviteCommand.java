@@ -1,15 +1,13 @@
 package com.playserengeti.controller;
 
-import java.util.Collection;
-
-import com.playserengeti.domain.User;
+import java.util.Map;
 
 public class TeamInviteCommand {
 
 	private Integer teamId;
 	private Integer userId;
-	private Collection<User> users;
-	private Collection<User> invitees;
+	private Map<Integer, String> users;
+	private Integer[] invitees;
 	
 	
 	public Integer getTeamId() {
@@ -24,19 +22,16 @@ public class TeamInviteCommand {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	public Collection<User> getUsers() {
+	public Map<Integer, String> getUsers() {
 		return users;
 	}
-	public void setUsers(Collection<User> users) {
+	public void setUsers(Map<Integer, String> users) {
 		this.users = users;
 	}
-	public Collection<User> getInvitees() {
+	public Integer[] getInvitees() {
 		return invitees;
 	}
-	public void setInvitees(Collection<User> invitees) {
+	public void setInvitees(Integer[] invitees) {
 		this.invitees = invitees;
 	}
-	
-	
-	
 }
