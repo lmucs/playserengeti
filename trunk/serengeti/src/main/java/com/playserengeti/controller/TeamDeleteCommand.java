@@ -44,10 +44,18 @@ public class TeamDeleteCommand {
 		this.teamId = teamId;
 	}
 
+	/**
+	 * Gets the current user's id.
+	 * @return
+	 */
 	public Integer getUserId() {
 		return userId;
 	}
 
+	/**
+	 * Sets the id of the current user.
+	 * @param userId
+	 */
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}

@@ -11,6 +11,12 @@ import com.playserengeti.domain.User;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
 
+/**
+ * The controller for the team central section.  Is the gateway for all 
+ * team functionality
+ * @author Chris
+ *
+ */
 public class TeamCentralController extends SimpleFormController {
 
 	private TeamService teamService;
@@ -21,16 +27,15 @@ public class TeamCentralController extends SimpleFormController {
 		this.userService = userService;
 	}
 
-	
 	/**
-	 * Sets the BackingObject.
+	 * Sets the backing object for the .jsp page.
 	 */
 	protected Object formBackingObject(HttpServletRequest request)
     throws Exception {
         TeamCentralCommand teamCentral = new TeamCentralCommand();
         
-        //String id = request.getParameter("userId");
-        //teamCentral.setUser(userService.getUserById(Integer.valueOf(id)));
+        //Integer userId = request.getParameter("userId");
+        //teamCentral.setUserId(userService.getUserById(userId));
         
         teamCentral.setUserTeams(teamService.getAllTeams());
 
@@ -44,7 +49,7 @@ public class TeamCentralController extends SimpleFormController {
 	public ModelAndView onSubmit(Object _command) {
 		//TeamCentralCommand command = (TeamCentralCommand)_command;
 		
-		//Integer userId = command.getUser().getId();
+		//Integer userId = command.getUserId();
 		//return new ModelAndView(getSuccessView(),"userId", userId);
 	
 	    return new ModelAndView(getSuccessView());

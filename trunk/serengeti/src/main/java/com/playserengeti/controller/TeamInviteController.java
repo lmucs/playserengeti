@@ -14,11 +14,21 @@ import com.playserengeti.domain.User;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
 
+/**
+ * The controller for inviting users to a team.
+ * @author Chris
+ *
+ */
 public class TeamInviteController extends SimpleFormController {
 	
 	private TeamService teamService;
 	private UserService userService;
 	
+	/**
+	 * Constructor.  Sets the services.
+	 * @param teamService
+	 * @param userService
+	 */
 	public TeamInviteController (TeamService teamService, UserService userService) {
 		this.teamService = teamService;
 		this.userService = userService;

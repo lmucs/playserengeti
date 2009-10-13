@@ -47,9 +47,7 @@ public class TeamViewProfileController extends AbstractCommandController {
             team = service.getTeamById(teamId);
         }
 
-        String viewName = "teamViewProfile";
-
-        ModelAndView mav = new ModelAndView(viewName);
+        ModelAndView mav = new ModelAndView("teamViewProfile");
         mav.addObject("team", team);
         mav.addObject("teamId", teamId);
 

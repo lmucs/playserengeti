@@ -6,7 +6,8 @@ import com.playserengeti.domain.Location;
 import com.playserengeti.domain.User;
 
 /**
- * The commander for creating a new team.
+ * The commander for creating a new team.  Contains the basic information about 
+ * teams.  Should probably be re-designed.
  * @author Chris
  *
  */
@@ -17,9 +18,12 @@ public class TeamCreateCommand {
 	private Integer userId;
 	private String color;
 	private String image;
-	private Integer homeLocation;
+	//Will not be necessary once user sign in is implemented.
 	private Collection<User> allUsers;
+	//Not sure how to determine home location.
+	private Integer homeLocation;
 	private Collection<Location> allLocations;
+	
 	/**
 	 * Returns the name of the team.
 	 * @return
@@ -108,18 +112,34 @@ public class TeamCreateCommand {
 		this.homeLocation = homeLocation;
 	}
 
+	/**
+	 * Returns all users to be selected as leader.  TEMPORARY
+	 * @return
+	 */
 	public Collection<User> getAllUsers() {
 		return allUsers;
 	}
 
+	/**
+	 * Sets the list of users to be selected as leader.  TEMPORARY
+	 * @param allUsers
+	 */
 	public void setAllUsers(Collection<User> allUsers) {
 		this.allUsers = allUsers;
 	}
 
+	/**
+	 * Gets all location to be selected as home location.  TEMPORARY
+	 * @return
+	 */
 	public Collection<Location> getAllLocations() {
 		return allLocations;
 	}
 
+	/**
+	 * Sets the list of all locations to be selected as home.  TEMPORARY
+	 * @param allLocations
+	 */
 	public void setAllLocations(Collection<Location> allLocations) {
 		this.allLocations = allLocations;
 	}

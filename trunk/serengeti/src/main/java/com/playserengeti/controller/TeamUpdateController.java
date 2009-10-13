@@ -11,8 +11,7 @@ import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
 
 /**
- * Controller for updating/modifying teams.  May need to change back to 
- * extend AbstractController.
+ * Controller for updating/modifying teams.
  * @author Chris
  *
  */
