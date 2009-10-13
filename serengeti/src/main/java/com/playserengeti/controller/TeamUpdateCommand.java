@@ -18,8 +18,10 @@ public class TeamUpdateCommand {
 	private Integer leaderId;
 	private String color;
 	private String image;
-	private Integer homeLocation;
+	//TODO re-design to use Map<Integer, String>
 	private Collection<User> teamUsers;
+	//Not sure how to deal with selecting home location.
+	private Integer homeLocation;
 	private Collection<Location> allLocations;
 	
 	/**
@@ -118,26 +120,49 @@ public class TeamUpdateCommand {
 		this.homeLocation = homeLocation;
 	}
 
+	/**
+	 * Gets the users on the current team.
+	 * @return
+	 */
 	public Collection<User> getTeamUsers() {
 		return teamUsers;
 	}
 
+	/**
+	 * Sets the users on the current team.
+	 * @param teamUsers
+	 */
 	public void setTeamUsers(Collection<User> teamUsers) {
 		this.teamUsers = teamUsers;
 	}
 
+	/**
+	 * Gets all locations to be selected as home.  TEMPORARY
+	 * @return
+	 */
 	public Collection<Location> getAllLocations() {
 		return allLocations;
 	}
 
+	/**
+	 * Sets the list of all locations to be selected as home.  TEMPORARY.
+	 * @param allLocations
+	 */
 	public void setAllLocations(Collection<Location> allLocations) {
 		this.allLocations = allLocations;
 	}
 
+	/**
+	 * Gets the current user's id.
+	 * @return
+	 */
 	public Integer getUserId() {
 		return userId;
 	}
 
+	/*
+	 * Sets the current user's id.
+	 */
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}

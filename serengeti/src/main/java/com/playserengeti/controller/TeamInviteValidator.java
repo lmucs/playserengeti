@@ -3,6 +3,11 @@ package com.playserengeti.controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+/**
+ * The validator for inviting users to teams.
+ * @author Chris
+ *
+ */
 public class TeamInviteValidator implements Validator {
 	
 	@Override

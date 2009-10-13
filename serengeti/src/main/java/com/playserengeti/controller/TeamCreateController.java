@@ -35,14 +35,17 @@ public class TeamCreateController extends SimpleFormController {
     }
 
 	/**
-	 * Sets the BackingObject.
+	 * Sets the BackingObject of the .jsp page.
 	 */
 	protected Object formBackingObject(HttpServletRequest request)
     throws Exception {
         TeamCreateCommand createTeam = new TeamCreateCommand();
         
-        //Won't be needed when sign in is implemented.
+        //Won't be needed when sign in is implemented because the team's
+        //leader will automatically be set by the given userId.
         createTeam.setAllUsers(userService.getAllUsers());
+        //Don't know how we want to specify a home location...
+        //By city maybe?
         createTeam.setAllLocations(locationService.getAllLocations());
         
 		setSessionForm(true);
@@ -51,8 +54,7 @@ public class TeamCreateController extends SimpleFormController {
 	}
 	
     /**
-     * Handles the submit functionality of the controller.  Currently only uses
-     * name and color for development purposes.
+     * Handles the submit functionality of the controller.  
      */
 	public ModelAndView onSubmit(Object _command) {
 		TeamCreateCommand command = (TeamCreateCommand)_command;
