@@ -23,8 +23,19 @@ body {
     background-color: white;
 }
 
+table {
+    border: 1px solid #228811;
+    border-collapse: collapse;
+}
+
 td, th {
     background-color: #ffeeee;
+    border-left: 1px solid #228811;
+    padding: 0.1em 0.5em;
+}
+
+th {
+    border-bottom: 1px solid #228811;
 }
 
 .error {
