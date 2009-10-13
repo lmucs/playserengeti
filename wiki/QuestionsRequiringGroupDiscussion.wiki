@@ -1,6 +1,8 @@
 #summary Any questions that need group involvement to decide on an answer should be posted here.
 
 = Open Questions =
+ ** Should teams have a home/base location?
+
  ** Do team owners have to be stored with a location?  Or is this just derived data?
 
  ** Choose a color palette 
