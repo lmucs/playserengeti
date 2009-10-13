@@ -46,7 +46,9 @@ public class LocationCreateController extends SimpleFormController {
 		model.put("locationName", locationName);
 		model.put("latitude", Double.toString(latitude));
 		model.put("longitude", Double.toString(longitude));
-		model.put("teamOwnerId", teamOwnerId.getName());
+		if(teamOwnerId != null){
+		     model.put("teamOwnerId", teamOwnerId.getName());
+		}
 		return new ModelAndView(getSuccessView(), model);
 	}
 }

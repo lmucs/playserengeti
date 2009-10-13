@@ -13,7 +13,7 @@ public class TeamInviteCommand {
 	private Integer userId;
 	private Map<Integer, String> users;
 	private Integer[] invitees;
-	
+
 	/**
 	 * Gets the current team's id.
 	 * @return
@@ -21,7 +21,7 @@ public class TeamInviteCommand {
 	public Integer getTeamId() {
 		return teamId;
 	}
-	
+
 	/**
 	 * Sets the current team's id.
 	 * @param teamId
@@ -29,7 +29,7 @@ public class TeamInviteCommand {
 	public void setTeamId(Integer teamId) {
 		this.teamId = teamId;
 	}
-	
+
 	/**
 	 * Gets the current user's id.
 	 * @return
@@ -37,7 +37,7 @@ public class TeamInviteCommand {
 	public Integer getUserId() {
 		return userId;
 	}
-	
+
 	/**
 	 * Sets the current user's id.
 	 * @param userId
@@ -45,7 +45,7 @@ public class TeamInviteCommand {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	
+
 	/**
 	 * Gets the map of invite-able users.
 	 * @return
@@ -53,7 +53,7 @@ public class TeamInviteCommand {
 	public Map<Integer, String> getUsers() {
 		return users;
 	}
-	
+
 	/**
 	 * Sets the map of users available for invite.
 	 * @param users
@@ -61,7 +61,7 @@ public class TeamInviteCommand {
 	public void setUsers(Map<Integer, String> users) {
 		this.users = users;
 	}
-	
+
 	/**
 	 * Gets the array of selected users to invite to the team.
 	 * @return
@@ -69,7 +69,7 @@ public class TeamInviteCommand {
 	public Integer[] getInvitees() {
 		return invitees;
 	}
-	
+
 	/**
 	 * Sets the array of users to invite to the team.
 	 * @param invitees

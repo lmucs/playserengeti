@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
+import com.playserengeti.domain.User;
 import com.playserengeti.service.UserService;
 
 /**
@@ -13,26 +14,33 @@ import com.playserengeti.service.UserService;
  */
 public class UserCreateController extends SimpleFormController {
 
-	private UserService service;
+	private UserService userService;
 
 	/**
 	 * Creates the controller, injecting a service.
 	 */
-	public UserCreateController(UserService service) {
-		this.service = service;
+	public UserCreateController(UserService userService) {
+		this.userService = userService;
 	}
-	
+
 	@Override
 	public ModelAndView onSubmit(Object _command) {
 		UserCreateCommand command = (UserCreateCommand)_command;
+		Integer userId;
 		String userName = command.getUserName();
 		String password = command.getPassword();
 		String email = command.getEmail();
-		
+		User user = new User(null, userName, password, null, null, email, null);
+
 		try {
 			// Insert the entry into the database.
-		    service.createUser(userName, password, email);
-		    return new ModelAndView(getSuccessView(), "userName", userName);
+		    userId = userService.saveUser(user);
+
+		    Map<String, String> model = new HashMap<String, String>();
+		    model.put("userId", Integer.toString(userId));
+		    model.put("userName", userName);
+			model.put("email", email);
+		    return new ModelAndView(getSuccessView(), model);
 
 		} catch (Exception e) {
 			// On service error, try again

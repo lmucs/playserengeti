@@ -82,6 +82,7 @@
         <property name="commandClass"
             value="com.playserengeti.controller.UserCreateCommand"
         />
+<!--        <property name="commandName" value="createUser"/> -->
         <property name="validator" ref="userCreateValidator"/>
         <property name="formView" value="signup"/>
         <property name="successView" value="signupSuccess"/>
@@ -129,6 +130,8 @@
         />
         <property name="commandName" value="userUpdate"/>
         <property name="validator" ref="userUpdateValidator"/>
+        <property name="formView" value="userUpdate"/>
+        <property name="successView" value="userUpdateSuccess"/>
         <constructor-arg ref="userService"/>
     </bean>
 

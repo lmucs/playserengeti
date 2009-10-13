@@ -28,4 +28,4 @@
     </c:forEach>
 </table>
 
- <p><a href="create">Create new location</a></p>
+        <p><a href="create">Create a new location?</a></p>
