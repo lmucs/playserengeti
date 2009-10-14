@@ -1,8 +1,8 @@
 package com.playserengeti.controller;
 
 import java.util.Collection;
+import java.util.Map;
 
-import com.playserengeti.domain.Location;
 import com.playserengeti.domain.User;
 
 
@@ -19,10 +19,9 @@ public class TeamUpdateCommand {
 	private String color;
 	private String image;
 	//TODO re-design to use Map<Integer, String>
-	private Collection<User> teamUsers;
-	//Not sure how to deal with selecting home location.
-	private Integer homeLocation;
-	private Collection<Location> allLocations;
+	private Map<Integer, String> teamUsers;
+	//private Collection<User> teamUsers;
+
 
 	/**
 	 * Returns the name of the team.
@@ -103,28 +102,12 @@ public class TeamUpdateCommand {
 	public void setImage(String image) {
 		this.image = image;
 	}
-
-	/**
-	 * Returns the location ID of the team's home location.
-	 * @return
-	 */
-	public Integer getHomeLocation() {
-		return homeLocation;
-	}
-
-	/**
-	 * Sets the team's home location to that specified by the given location ID.
-	 * @param homeLocation
-	 */
-	public void setHomeLocation(Integer homeLocation) {
-		this.homeLocation = homeLocation;
-	}
-
+	
 	/**
 	 * Gets the users on the current team.
 	 * @return
 	 */
-	public Collection<User> getTeamUsers() {
+	public Map<Integer, String> getTeamUsers() {
 		return teamUsers;
 	}
 
@@ -132,24 +115,8 @@ public class TeamUpdateCommand {
 	 * Sets the users on the current team.
 	 * @param teamUsers
 	 */
-	public void setTeamUsers(Collection<User> teamUsers) {
+	public void setTeamUsers(Map<Integer, String> teamUsers) {
 		this.teamUsers = teamUsers;
-	}
-
-	/**
-	 * Gets all locations to be selected as home.  TEMPORARY
-	 * @return
-	 */
-	public Collection<Location> getAllLocations() {
-		return allLocations;
-	}
-
-	/**
-	 * Sets the list of all locations to be selected as home.  TEMPORARY.
-	 * @param allLocations
-	 */
-	public void setAllLocations(Collection<Location> allLocations) {
-		this.allLocations = allLocations;
 	}
 
 	/**

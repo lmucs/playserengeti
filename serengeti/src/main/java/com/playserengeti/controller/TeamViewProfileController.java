@@ -1,5 +1,8 @@
 package com.playserengeti.controller;
 
+import java.util.Collection;
+import java.util.HashSet;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -7,8 +10,11 @@ import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractCommandController;
 
+import com.playserengeti.domain.Membership;
 import com.playserengeti.domain.Team;
+import com.playserengeti.domain.User;
 import com.playserengeti.service.TeamService;
+import com.playserengeti.service.UserService;
 
 /**
  * The controller for viewing a team's profile.
@@ -17,14 +23,16 @@ import com.playserengeti.service.TeamService;
  */
 public class TeamViewProfileController extends AbstractCommandController {
 
-    private TeamService service;
+    private TeamService teamService;
+    private UserService userService;
 
     /**
      * Constructor.  Sets the service.
      * @param service
      */
-    public TeamViewProfileController(TeamService service) {
-        this.service = service;
+    public TeamViewProfileController(TeamService teamService, UserService userService) {
+        this.teamService = teamService;
+        this.userService = userService;
     }
 
     /**
@@ -44,12 +52,19 @@ public class TeamViewProfileController extends AbstractCommandController {
         Integer teamId = command.getTeamId();
         Team team = null;
         if (teamId != null) {
-            team = service.getTeamById(teamId);
+            team = teamService.getTeamById(teamId);
         }
+        
+		Collection<Membership> memberships = teamService.getMembershipsByTeam(team.getId());
+		Collection<User> members = new HashSet<User>();
+		for (Membership m : memberships) {
+			members.add(userService.getUserById(m.getUserId()));
+		}
 
         ModelAndView mav = new ModelAndView("teamViewProfile");
         mav.addObject("team", team);
         mav.addObject("teamId", teamId);
+        mav.addObject("members", members);
 
         //mav.addObject("userId", command.getUserId());
 

@@ -20,9 +20,6 @@ public class TeamCreateCommand {
 	private String image;
 	//Will not be necessary once user sign in is implemented.
 	private Collection<User> allUsers;
-	//Not sure how to determine home location.
-	private Integer homeLocation;
-	private Collection<Location> allLocations;
 
 	/**
 	 * Returns the name of the team.
@@ -97,22 +94,6 @@ public class TeamCreateCommand {
 	}
 
 	/**
-	 * Returns the location ID of the team's home location.
-	 * @return
-	 */
-	public Integer getHomeLocation() {
-		return homeLocation;
-	}
-
-	/**
-	 * Sets the team's home location to that specified by the given location ID.
-	 * @param homeLocation
-	 */
-	public void setHomeLocation(Integer homeLocation) {
-		this.homeLocation = homeLocation;
-	}
-
-	/**
 	 * Returns all users to be selected as leader.  TEMPORARY
 	 * @return
 	 */
@@ -127,22 +108,4 @@ public class TeamCreateCommand {
 	public void setAllUsers(Collection<User> allUsers) {
 		this.allUsers = allUsers;
 	}
-
-	/**
-	 * Gets all location to be selected as home location.  TEMPORARY
-	 * @return
-	 */
-	public Collection<Location> getAllLocations() {
-		return allLocations;
-	}
-
-	/**
-	 * Sets the list of all locations to be selected as home.  TEMPORARY
-	 * @param allLocations
-	 */
-	public void setAllLocations(Collection<Location> allLocations) {
-		this.allLocations = allLocations;
-	}
-
-
 }

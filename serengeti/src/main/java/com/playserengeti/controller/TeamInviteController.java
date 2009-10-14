@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
+import com.playserengeti.domain.Membership;
 import com.playserengeti.domain.Team;
 import com.playserengeti.domain.User;
 import com.playserengeti.service.TeamService;
@@ -56,13 +57,13 @@ public class TeamInviteController extends SimpleFormController {
         if (userId != null) {
             user = userService.getUserById(Integer.valueOf(userId));
             teamInvite.setUserId(user.getUserId());
-            teamInvite.setUsers(the users friends);
+            teamInvite.setUsers(the users friends in a map<Integer, String>);
         }
         */
         
+        //To be deleted in favor of above code.
         Map<Integer, String> users = new HashMap<Integer, String>();
         Collection<User> allUsers = userService.getAllUsers();
-        
         for (User u : allUsers) {
         	users.put(u.getUserId(), u.getUserName());
         }
@@ -84,7 +85,7 @@ public class TeamInviteController extends SimpleFormController {
         Integer[] invitees = command.getInvitees();
         
         for (Integer i : invitees) {
-        	team.addMember(userService.getUserById(i));
+        	teamService.saveMembership(new Membership(null, teamId, i));
         }
         
         teamService.saveTeam(team);

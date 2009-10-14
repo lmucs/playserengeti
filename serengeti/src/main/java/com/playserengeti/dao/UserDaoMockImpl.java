@@ -33,7 +33,8 @@ public class UserDaoMockImpl implements UserDao {
         User[] sampleUsers = new User[] {
         		new User(null, "durnew", "password1", null, null, "labrams@lion.lmu.edu", null),
         		new User(null, "rtoal", "password2", null, null, "rtoal@lmu.edu", null),
-        		new User(null, "gratrixl", "isAwesome", null, null, "litagratrix@gmail.com", null)
+        		new User(null, "gratrixl", "isAwesome", null, null, "litagratrix@gmail.com", null),
+        		new User(null, "cmuel", "password3", null, null, "mueller.chris0@gmail.com", null)
         };
 
         // Insert the sample locations into the database as this is a mock impl.

@@ -103,6 +103,7 @@
         <property name="formView" value="userDelete"/>
         <property name="successView" value="userDeleteSuccess"/>
         <constructor-arg ref="userService"/>
+        <constructor-arg ref="teamService"/>
     </bean>
 
     <bean id="userListController"
@@ -113,12 +114,17 @@
     <bean id="userService"
         class="com.playserengeti.service.UserService">
         <constructor-arg ref="userDao"/>
+        <constructor-arg ref="friendshipDao"/>
     </bean>
 
     <bean id="userDao"
         class="com.playserengeti.dao.UserDaoMockImpl">
     </bean>
-
+    
+    <bean id="friendshipDao"
+        class="com.playserengeti.dao.FriendshipDaoMockImpl">
+    </bean>
+    
     <bean id="userDeleteValidator"
         class="com.playserengeti.controller.UserDeleteValidator">
     </bean>
@@ -166,7 +172,6 @@
         <property name="formView" value="teamCreate"/>
         <constructor-arg ref="teamService"/>
         <constructor-arg ref="userService"/>
-        <constructor-arg ref="locationService"/>
     </bean>
 
     <bean id="teamUpdateController"
@@ -179,7 +184,6 @@
         <property name="formView" value="teamUpdate" />
         <constructor-arg ref="teamService"/>
         <constructor-arg ref="userService"/>
-        <constructor-arg ref="locationService"/>
     </bean>
 
     <bean id="teamDeleteController"
@@ -202,6 +206,7 @@
         <property name="commandName" value="teamViewProfile"/>
         <property name="validator" ref="teamViewProfileValidator"/>
         <constructor-arg ref="teamService"/>
+        <constructor-arg ref="userService"/>
     </bean>
 
     <bean id="teamListController"
@@ -261,10 +266,15 @@
     <bean id="teamService"
         class="com.playserengeti.service.TeamService">
         <constructor-arg ref="teamDao"/>
+        <constructor-arg ref="membershipDao"/>
     </bean>
 
     <bean id="teamDao"
         class="com.playserengeti.dao.TeamDaoMockImpl">
+    </bean>
+    
+    <bean id="membershipDao"
+        class="com.playserengeti.dao.MembershipDaoMockImpl">
     </bean>
 
     <!--

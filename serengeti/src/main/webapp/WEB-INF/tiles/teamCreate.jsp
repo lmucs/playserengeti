@@ -36,15 +36,6 @@
     </div>
 
     <div class="formRow">
-        <label for="homeLocation">Home Location: </label>
-        <select name="homeLocation">
-                <c:forEach var="location" items="${createTeam.allLocations}">
-                    <option value="${location.locationId}"><c:out value="${location.locationName}"/></option>
-                </c:forEach>
-        </select>
-    </div>
-
-    <div class="formRow">
         <label for="image">Team Image URL: </label><input type="text" name="image"/><br/>
     </div>
 
