@@ -15,15 +15,18 @@ import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
-import com.playserengeti.domain.User;
+import com.playserengeti.domain.Membership;
+import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
 
 public class UserDeleteController extends SimpleFormController {
 
-    private UserService service;
+    private UserService userService;
+    private TeamService teamService;
 
-    public UserDeleteController(UserService service) {
-        this.service = service;
+    public UserDeleteController(UserService userService, TeamService teamService) {
+        this.userService = userService;
+        this.teamService = teamService;
     }
 
     /**
@@ -37,7 +40,7 @@ public class UserDeleteController extends SimpleFormController {
     		model = new HashMap();
     	}
 
-    	model.put("allUsers", service.getAllUsers());
+    	model.put("allUsers", userService.getAllUsers());
     	return super.showForm(request, response, errors, model);
     }
 
@@ -49,7 +52,13 @@ public class UserDeleteController extends SimpleFormController {
 		Integer userId = command.getUserId();
 
     	try {
-    		service.deleteUser(userId);
+    		//Deletes memberships from the database.
+    		Collection<Membership> memberships = teamService.getMembershipsByUser(userId);
+    		for(Membership m : memberships) {
+    			teamService.deleteMembership(m.getMembershipId());
+    		}
+    		
+    		userService.deleteUser(userId);
     		return new ModelAndView(getSuccessView(), "userId", userId);
     	} catch (Exception e) {
     		Map<String, Object> model = new HashMap<String, Object>();

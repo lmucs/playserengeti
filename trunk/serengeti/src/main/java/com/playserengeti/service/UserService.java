@@ -2,7 +2,9 @@ package com.playserengeti.service;
 
 import java.util.Collection;
 
+import com.playserengeti.dao.FriendshipDao;
 import com.playserengeti.dao.UserDao;
+import com.playserengeti.domain.Friendship;
 import com.playserengeti.domain.User;
 
 /**
@@ -11,9 +13,11 @@ import com.playserengeti.domain.User;
 public class UserService {
 
 	private UserDao userDao;
+	private FriendshipDao friendshipDao;
 
-	public UserService(UserDao userDao) {
+	public UserService(UserDao userDao, FriendshipDao friendshipDao) {
 	    this.userDao = userDao;
+	    this.friendshipDao = friendshipDao;
 	}
 
 	public User getUserById(Integer id) {
@@ -47,4 +51,29 @@ public class UserService {
 	public Collection<User> getAllUsers() {
 		return userDao.getAllUsers();
 	}
+	
+    public void saveFriendship(Friendship f) {
+    	if(f.getFriendshipId() == null) {
+    		friendshipDao.insertFriendship(f);
+    	}
+    	else {
+    		friendshipDao.updateFriendship(f);
+    	}
+    }
+    
+    public void deleteFriendship(Integer id) {
+    	friendshipDao.deleteFriendship(id);
+    }
+    
+    public Collection<Friendship> getAllFriendships() {
+    	return friendshipDao.getAllFriendships();
+    }
+    
+    public Friendship getFriendshipById(Integer id) {
+    	return friendshipDao.getFriendshipById(id);
+    }
+    
+    public Collection<Friendship> getFriendshipsByUser(Integer userId) {
+    	return friendshipDao.getFriendshipsByUser(userId);
+    }
 }

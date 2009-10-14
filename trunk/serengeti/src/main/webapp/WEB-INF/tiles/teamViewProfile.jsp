@@ -18,16 +18,12 @@
                         <td><c:out value="${team.leader.userName}"/></td>
                     </tr>
                     <tr>
-                        <td><strong>Home Location</strong></td>
-                        <td><c:out value="${team.homeLocation.locationName}"/></td>
-                    </tr>
-                    <tr>
                         <td><strong>Team Image</strong></td>
                         <td><c:out value="${team.image}"/></td>
                     </tr>
                     <tr>
                       <td><strong>Team Members:</strong><br/></td>
-                      <c:forEach var="user" items="${team.members}">
+                      <c:forEach var="user" items="${members}">
                         <tr>
                           <td><a href="../user/view?userId=${user.userId}"><c:out value="${user.userName}"/></a></td>
                         </tr>

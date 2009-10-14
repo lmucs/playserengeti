@@ -2,7 +2,9 @@ package com.playserengeti.service;
 
 import java.util.Collection;
 
+import com.playserengeti.dao.MembershipDao;
 import com.playserengeti.dao.TeamDao;
+import com.playserengeti.domain.Membership;
 import com.playserengeti.domain.Team;
 
 /**
@@ -11,13 +13,15 @@ import com.playserengeti.domain.Team;
 public class TeamService {
 
     private TeamDao teamDao;
+    private MembershipDao membershipDao;
 
     /**
      * Constructor.  Sets the dao.
      * @param TeamDao
      */
-    public TeamService(TeamDao TeamDao) {
+    public TeamService(TeamDao TeamDao, MembershipDao membershipDao) {
         this.teamDao = TeamDao;
+        this.membershipDao = membershipDao;
     }
 
     /**
@@ -59,4 +63,32 @@ public class TeamService {
     	return teamDao.getAllTeams();
     }
     
+    public void saveMembership(Membership m) {
+    	if(m.getMembershipId() == null) {
+    		membershipDao.insertMembership(m);
+    	}
+    	else {
+    		membershipDao.updateMembership(m);
+    	}
+    }
+    
+    public void deleteMembership(Integer id) {
+    	membershipDao.deleteMembership(id);
+    }
+    
+    public Collection<Membership> getAllMemberships() {
+    	return membershipDao.getAllMemberships();
+    }
+    
+    public Membership getMembershipById(Integer id) {
+    	return membershipDao.getMembershipById(id);
+    }
+    
+    public Collection<Membership> getMembershipsByTeam(Integer id) {
+    	return membershipDao.getMembershipsByTeam(id);
+    }
+    
+    public Collection<Membership> getMembershipsByUser(Integer id) {
+    	return membershipDao.getMembershipsByUser(id);
+    }
 }

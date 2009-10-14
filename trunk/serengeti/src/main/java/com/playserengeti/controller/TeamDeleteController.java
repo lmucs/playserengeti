@@ -1,10 +1,13 @@
 package com.playserengeti.controller;
 
+import java.util.Collection;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
+import com.playserengeti.domain.Membership;
 import com.playserengeti.domain.Team;
 import com.playserengeti.service.TeamService;
 
@@ -58,7 +61,13 @@ public class TeamDeleteController extends SimpleFormController {
 		
 		Integer teamId = command.getTeamId();
 		//Integer userId = command.getUserId();
-				
+	
+		//Deletes memberships from the database.
+		Collection<Membership> memberships = service.getMembershipsByTeam(teamId);
+		for(Membership m : memberships) {
+			service.deleteMembership(m.getMembershipId());
+		}
+		
 		//Deletes the team from the database.
 		service.deleteTeam(teamId);
 

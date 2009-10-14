@@ -15,7 +15,7 @@ public class TeamCentralCommand {
 	private Integer userId;
 
 	//Only needed until the user sign in is in place. Then it can reference the user's
-	//team attribute.
+	//memberships.
 	private Collection<Team> userTeams;
 
 	/**
