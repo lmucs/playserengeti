@@ -7,13 +7,18 @@
 
     <form id="teamCreateForm" method="post" action="create"
         onsubmit="return validateCreateForm();">
-        <div class="formRow">
-          <label for="name">Team Name: </label><input type="text" id="name" name="name"/><br/>
+        <div>    
+            <div class="formLabel">
+                <label for="name">Team Name: </label>
+            </div>
+            <div class="spaceInputBox">
+                <input type="text" id="name" name="name"/>
+            </div>
         </div>
-
-
-        <div class="formRow">
-            <label for="color">Preferred Color: </label>
+        <div>
+            <div class="formLabel">
+                <label for="color">Preferred Color: </label>
+            </div>
             <select name="color">
                 <option value="Red">Red</option>
                 <option value="Green">Green</option>
@@ -26,17 +31,26 @@
 
         <p> This will not be necessary when user sign in is implemented.</p>
 
-    <div class="formRow">
-        <label for="userId">Team Leader: </label>
-        <select name="userId">
-            <c:forEach var="user" items="${createTeam.allUsers}">
-                <option value="${user.userId}"><c:out value="${user.userName}"/></option>
-            </c:forEach>
-        </select>
+    <div>
+        <div class="formLabel">
+            <label for="userId">Team Leader: </label>
+        </div>
+        <div class="spaceInputBox">
+	        <select name="userId">
+	            <c:forEach var="user" items="${createTeam.allUsers}">
+	                <option value="${user.userId}"><c:out value="${user.userName}"/></option>
+	            </c:forEach>
+	        </select>
+	    </div>
     </div>
 
-    <div class="formRow">
-        <label for="image">Team Image URL: </label><input type="text" name="image"/><br/>
+    <div>
+        <div class="formLabel">
+            <label for="image">Team Image URL:</label>
+        </div>
+        <div class="spaceInputBox">
+            <input type="text" name="image"/>
+        </div
     </div>
 
     <div class="formRow">

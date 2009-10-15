@@ -53,9 +53,13 @@ color:white;
 float:left;
 text-align:right;
 margin-right:15px;
-width:125px;
+margin-bottom:5px;
+width:150px;
 }
 formarea:FOCUS, INPUT:FOCUS {
 border: 3px solid #CC5500;
 background: #8899BB;
+}
+.spaceInputBox {
+margin-bottom:3px;
 }
