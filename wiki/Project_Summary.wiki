@@ -3,12 +3,16 @@
 
 *Tagline*: Mark Your Territory
 
-*Description*: A social networking application/game where participants join teams, record visits to real world locations for a team, and assist their team in taking ownership of the locations. Users can be part of multiple teams, but their visits can only be attributed to one team of the user's choice at a time. To record visits, users check in at their location, either by a web application accessible to mobile devices or a specially developed application for major mobile platforms, such as iPhone. Points for a location and team are given for each visit, and the team with the highest point total for a location is considered the "owner" of the location.
+*Description*: A social networking application/game where players join teams that compete for "ownership" of locations by recording their visits to the location. Players can track their teams' conquests through the playSerengeti website, a mobile web application, or an iPhone app. In addition, proprietors of locations can offer benefits or discounts to their current "owner" team to draw more customers.
+
+<wiki:comment> Too much detail
+A social networking application/game where participants join teams, record visits to real world locations for a team, and assist their team in taking ownership of the locations. Users can be part of multiple teams, but their visits can only be attributed to one team of the user's choice at a time. To record visits, users check in at their location, either by a web application accessible to mobile devices or a specially developed application for major mobile platforms, such as iPhone. Points for a location and team are given for each visit, and the team with the highest point total for a location is considered the "owner" of the location.
 
 Teams can get a more in-depth look at their teams' standings on the playSerengeti website. Team statistics can be seen, including a Google Maps interface poiting out locations a team owns.
 
-Locations can offer benefits to their owner teams, such as a discount, if they wish to do so. Sets of teams can also set up small competitions between their teams, offering a prize to a team based upon a set of rules specified at the creation of the competition.
+Locations can offer benefits to their owner teams, such as a discount, if they wish to do so. Sets of teams can also set up small competitions between their teams, offering a prize to a team based upon a set of rules specified at the creation of the competition.</wiki:comment>
 
-<wiki:comment>A physical location-aware, social networking application where participants organize into teams and claim territory.  Team members can move independently and can track each others' movements.  Claiming territory can be done for the purpose of
+<wiki:comment>Too vague
+A physical location-aware, social networking application where participants organize into teams and claim territory.  Team members can move independently and can track each others' movements.  Claiming territory can be done for the purpose of
   * Winning a challenge (e.g., between schools or organizations)
   * Obtaining discounts at local businesses (in return for frequent visits)</wiki:comment>
