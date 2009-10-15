@@ -32,7 +32,6 @@ The class will create a Serengeti server and at least two clients - a web client
             * Team Name
             * Preferred Color (for the map overlay)
             * Team Picture
-            * Team Home Location
           ** After the team is created, the user will be able to select people to invite to their team.
           ** The creator of the team is automatically set as the team leader.
         * For the "Modify Team" option:
@@ -131,3 +130,17 @@ These are questions that shall be answered by the requirements.
   # What happens when the server receives a bad request?
 
 *Technical Requirements*
+ * Teams
+  ** Users are part of one or more teams.
+ * Checking In
+  ** Users can check in to a location through either the mobile web app or the iPhone app.
+   * Location is derived from a search of existing locations based upon tags, address, or GPS coordinates. (GPS Coordinates found automatically on iPhone app.)
+   * Users must indicate a team when they check in by selecting one from a drop-down menu of teams they are a part of.
+ * Scoring
+  ** Score is calculated based upon the total number of visits attributed to a team as well as the number of unique visitors on the team.
+   * The score from an individual visit decays over a set period of time.
+  ** //TODO
+ * Locations
+  ** Locations are identified by name, street address, GPS coordinates, and tags identifying the type of location. (i.e.: bar, bookstore, etc.)
+ * Format Output
+ ** //TODO
