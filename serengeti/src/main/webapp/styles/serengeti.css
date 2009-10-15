@@ -1,61 +1,51 @@
+
 body {
-    margin: 0;
-    background-color: #ddccbb;
+background-color:#445530;
+margin:0;
 }
-
 .pagetitle {
-    color: #446611;
-    background-color: transparent;
-    font-size: 175%;
-    font-weight: bold;
-    text-decoration: none;
-    margin: 0.25em 0 0 .25em;
+background-color:transparent;
+color:#cc5500;
+font-size:175%;
+font-weight:bold;
+margin:0.25em 0 0 0.25em;
+text-decoration:none;
 }
-
 .mainlogo {
-    float: right;
+float:right;
 }
-
 .mainContentArea {
-    margin: 1em;
-    padding: 1em;
-    border: 1px solid #888877;
-    background-color: white;
+background-color:#446611;
+border:1px solid #888877;
+margin:1em;
+padding:1em;
 }
-
 table {
-    border: 1px solid #228811;
-    border-collapse: collapse;
+border:1px solid #228811;
+border-collapse:collapse;
 }
-
 td, th {
-    background-color: #ffeeee;
-    border-left: 1px solid #228811;
-    padding: 0.1em 0.5em;
+background-color:#FFEEEE;
+border-left:1px solid #228811;
+padding:0.1em 0.5em;
 }
-
 th {
-    border-bottom: 1px solid #228811;
+border-bottom:1px solid #228811;
 }
-
 .error {
-    padding: 5em;
-    background-color: red;
+background-color:red;
+padding:5em;
 }
-
 a img {
-    border-style: none;
+border-style:none;
 }
-
 a:link {
-    color: #6699dd;
+color:#6699DD;
 }
-
 a:visited {
-    color: 8899bb;
+color:#8899BB;
 }
-
 a:hover {
-    background-color: #aaaa99;
-    color: white;
+background-color:#AAAA99;
+color:white;
 }
