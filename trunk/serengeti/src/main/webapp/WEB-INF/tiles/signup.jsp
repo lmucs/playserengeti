@@ -7,19 +7,25 @@
 
 <form:form method="post">
     <div>
-        <label for="userName">User Name: </label>
+        <div class="formLabel">
+            <label for="userName">User Name: </label>
+        </div>
         <form:input path="userName"/>
         <form:errors path="userName"/>
     </div>
 
     <div>
-        <label for="password">Password: </label>
+        <div  class="formLabel">
+            <label for="password">Password: </label>
+        </div>
         <form:password path="password"/>
         <form:errors path="password"/>
     </div>
 
     <div>
-        <label for="email">Email Address: </label>
+        <div  class="formLabel">
+            <label for="email">Email Address: </label>
+        </div>
         <form:input path="email"/>
         <form:errors path="email"/>
     </div>

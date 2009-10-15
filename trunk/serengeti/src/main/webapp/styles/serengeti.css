@@ -49,3 +49,13 @@ a:hover {
 background-color:#AAAA99;
 color:white;
 }
+.formLabel {
+float:left;
+text-align:right;
+margin-right:15px;
+width:125px;
+}
+formarea:FOCUS, INPUT:FOCUS {
+border: 3px solid #CC5500;
+background: #8899BB;
+}
