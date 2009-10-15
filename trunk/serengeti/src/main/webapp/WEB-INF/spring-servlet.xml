@@ -120,11 +120,11 @@
     <bean id="userDao"
         class="com.playserengeti.dao.UserDaoMockImpl">
     </bean>
-    
+
     <bean id="friendshipDao"
         class="com.playserengeti.dao.FriendshipDaoMockImpl">
     </bean>
-    
+
     <bean id="userDeleteValidator"
         class="com.playserengeti.controller.UserDeleteValidator">
     </bean>
@@ -272,7 +272,7 @@
     <bean id="teamDao"
         class="com.playserengeti.dao.TeamDaoMockImpl">
     </bean>
-    
+
     <bean id="membershipDao"
         class="com.playserengeti.dao.MembershipDaoMockImpl">
     </bean>
@@ -286,7 +286,7 @@
         <property name="commandClass"
           value="com.playserengeti.controller.LocationCreateCommand"
         />
-        <property name="commandName" value="createLocation"/>
+<!--        <property name="commandName" value="createLocation"/> -->
         <property name="validator" ref="locationCreateValidator"/>
         <property name="formView" value="locationCreate" />
         <property name="successView" value="locationCreateSuccess" />
@@ -298,11 +298,10 @@
         <property name="commandClass"
           value="com.playserengeti.controller.LocationUpdateCommand"
         />
-        <property name="commandName" value="updateLocation"/>
+<!--        <property name="commandName" value="updateLocation"/> -->
         <property name="validator" ref="locationUpdateValidator"/>
                 <property name="formView" value="locationUpdate" />
         <property name="successView" value="locationUpdateSuccess" />
-        <constructor-arg ref="teamDao"/>
         <constructor-arg ref="locationService"/>
     </bean>
 
@@ -458,6 +457,8 @@
     <bean id="visitService"
         class="com.playserengeti.service.VisitService">
         <constructor-arg ref="visitDao"/>
+        <constructor-arg ref="userDao"/>
+        <constructor-arg ref="locationDao"/>
     </bean>
 
     <bean id="visitDao"

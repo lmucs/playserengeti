@@ -18,8 +18,10 @@ public class VisitService {
 	private UserDao userDao;
 	private LocationDao locationDao;
 
-	public VisitService(VisitDao visitDao) {
+	public VisitService(VisitDao visitDao, UserDao userDao, LocationDao locationDao)  {
 	    this.visitDao = visitDao;
+	    this.userDao = userDao;
+	    this.locationDao = locationDao;
 	}
 
 	public Visit getVisitByVisitId(Integer visitId) {

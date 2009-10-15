@@ -20,11 +20,10 @@ import com.playserengeti.service.LocationService;
 public class LocationUpdateController extends SimpleFormController {
 
 	private LocationService locationService;
-	private TeamDao teamDao;
 
-	public LocationUpdateController(LocationService locationService, TeamDao teamDao) {
+	public LocationUpdateController(LocationService locationService) {
 		this.locationService = locationService;
-		this.teamDao = teamDao;
+		setSessionForm(true);
 	}
 
 	/**
@@ -54,21 +53,31 @@ public class LocationUpdateController extends SimpleFormController {
 
 		//Modify the entry in the database
 		Location location = locationService.getLocationById(locationId);
-		if (location.getLocationName() != null) location.setLocationName(command.getLocationName());
-		//if (location.getLatitude())) location.setLatitude(command.getLatitude());
-		//if (location.getLongitude() != null) location.setLongitude(command.getLongitude());
-		if (location.getTeamOwnerId() != null) location.setTeamOwnerId(command.getTeamOwnerId());
+		location.setLocationName(command.getLocationName());
+		location.setLatitude(command.getLatitude());
+		location.setLongitude(command.getLongitude());
+		location.setTeamOwnerId(command.getTeamOwnerId());
 
-		// Insert the entry into the database.
-		locationService.saveLocation(location);
+		try {
+			// Insert the entry into the database.
+			locationService.saveLocation(location);
 
-		Map<String, String> model = new HashMap<String, String>();
-		model.put("locationName", locationService.getLocationById(locationId).getLocationName());
+			Map<String, String> model = new HashMap<String, String>();
+			model.put("locationName", locationService.getLocationById(locationId).getLocationName());
+			model.put("latitude", Double.toString(locationService.getLocationById(locationId).getLatitude()));
+			model.put("longitude", Double.toString(locationService.getLocationById(locationId).getLongitude()));
 
-		ModelAndView mav = new ModelAndView(getSuccessView(), model);
-		mav.addObject(location);
+			ModelAndView mav = new ModelAndView(getSuccessView(), model);
+			mav.addObject(location);
 
-		return mav;
+			return mav;
+		} catch (Exception e) {
+			// On service error, try again
+			Map<String, Object> model = new HashMap<String, Object>();
+			model.put("command", command);
+			model.put("message", e.getMessage());
+			return new ModelAndView(getFormView(), model);
+		}
 	}
 
 }
