@@ -16,6 +16,12 @@ public class Location {
         this.teamOwnerId = teamOwnerId;
     }
 
+    public Location(String locationName, double latitude, double longitude){
+    	this.locationName = locationName;
+    	this.latitude = latitude;
+    	this.longitude = longitude;
+    }
+
     public Location(Location b) {
     	this(b.locationId, b.locationName, b.longitude, b.latitude, b.teamOwnerId);
 	}

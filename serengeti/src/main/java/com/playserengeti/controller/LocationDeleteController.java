@@ -22,6 +22,7 @@ public class LocationDeleteController extends SimpleFormController {
 
 	public LocationDeleteController (LocationService service) {
 		this.service = service;
+		setSessionForm(true);
 	}
 
 	/**
