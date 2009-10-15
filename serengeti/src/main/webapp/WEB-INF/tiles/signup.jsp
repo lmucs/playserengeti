@@ -10,24 +10,28 @@
         <div class="formLabel">
             <label for="userName">User Name: </label>
         </div>
-        <form:input path="userName"/>
-        <form:errors path="userName"/>
+        <div class="spaceInputBox">
+	        <form:input path="userName"/>
+	        <form:errors path="userName"/>
+	    </div>
     </div>
-
     <div>
         <div  class="formLabel">
             <label for="password">Password: </label>
         </div>
-        <form:password path="password"/>
-        <form:errors path="password"/>
+        <div class="spaceInputBox">
+	        <form:password path="password"/>
+	        <form:errors path="password"/>
+	    </div>
     </div>
-
     <div>
         <div  class="formLabel">
             <label for="email">Email Address: </label>
         </div>
-        <form:input path="email"/>
-        <form:errors path="email"/>
+        <div class="spaceInputBox">
+	        <form:input path="email"/>
+	        <form:errors path="email"/>
+	    </div>
     </div>
 
     <div>

@@ -6,10 +6,38 @@
 
     <p>
         <form method="post" action="create">
-        	<label for="name">Location Name: </label><input type="text" name="locationName"/><br/>
-        	<label for="latitude">Latitude: </label><input type="text" name="latitude"/><br/>
-        	<label for="latitude">Longitude: </label><input type="text" name="longitude"/><br/>
-        	<label for="teamOwner">Team Owner: </label><input type="text" name="teamOwner"/><br/>
+            <div>
+	            <div class="formLabel">
+	        	    <label for="name">Location Name:</label>
+	        	</div>
+	        	<div class="spaceInputBox">
+        	    	<input type="text" name="locationName"/>
+        	    </div>
+        	</div>
+	        <div>
+	        	<div class="formLabel">
+	        	    <label for="latitude">Latitude:</label>
+	        	</div>
+	        	<div class="spaceInputBox">
+        	    	<input type="text" name="latitude"/>
+        	    </div>
+        	</div>
+        	<div>
+	        	<div class="formLabel">
+	        	    <label for="latitude">Longitude:</label>
+	        	</div>
+	        	<div class="spaceInputBox">
+	        	   	<input type="text" name="longitude"/>
+	        	</div>
+	        </div>
+	        <div>
+	        	<div class="formLabel">
+	        	    <label for="teamOwner">Team Owner:</label> 
+	        	</div>
+	        	<div class="spaceInputBox">
+	        	    <input type="text" name="teamOwner"/>
+	        	</div>
+	        </div>
         	<input type="submit" value="Create Location!"/>
         </form>
     </p>
