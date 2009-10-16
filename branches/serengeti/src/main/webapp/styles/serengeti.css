@@ -1,0 +1,65 @@
+
+body {
+background-color:#445530;
+margin:0;
+}
+.pagetitle {
+background-color:transparent;
+color:#cc5500;
+font-size:175%;
+font-weight:bold;
+margin:0.25em 0 0 0.25em;
+text-decoration:none;
+}
+.mainlogo {
+float:right;
+}
+.mainContentArea {
+background-color:#446611;
+border:1px solid #888877;
+margin:1em;
+padding:1em;
+}
+table {
+border:1px solid #228811;
+border-collapse:collapse;
+}
+td, th {
+background-color:#FFEEEE;
+border-left:1px solid #228811;
+padding:0.1em 0.5em;
+}
+th {
+border-bottom:1px solid #228811;
+}
+.error {
+background-color:red;
+padding:5em;
+}
+a img {
+border-style:none;
+}
+a:link {
+color:#6699DD;
+}
+a:visited {
+color:#8899BB;
+}
+a:hover {
+background-color:#AAAA99;
+color:white;
+}
+.formLabel {
+float:left;
+text-align:right;
+margin-right:15px;
+margin-bottom:5px;
+width:150px;
+}
+formarea:FOCUS, INPUT:FOCUS {
+border: 3px solid #CC5500;
+background: #8899BB;
+}
+.spaceInputBox {
+margin-bottom:3px;
+}

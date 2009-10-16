@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app version="2.4"
+    xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+    http://java.sun.com/xml/ns/j2ee/web-app.xsd">
+
+    <display-name>Serengeti</display-name>
+    <description>
+        This application provides both the backend Serengeti services and a web
+        frontend.
+    </description>
+
+    <!-- Location of Spring application context -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:/applicationContext.xml
+        </param-value>
+    </context-param>
+
+    <!-- Simple Spring security filter -->
+    <!--  filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>
+            org.springframework.web.filter.DelegatingFilterProxy
+        </filter-class>
+    </filter -->
+
+    <!-- Run the spring security filter everywhere -->
+    <!--
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    -->
+
+    <!--
+        Define a listener so we can put Spring context data in files
+        other than spring-servlet.xml.  Without this, the application
+        files defined above as context parameters would not get loaded.
+    -->
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+
+    <!--
+        Specify the dispatcher servlet, and have it load up the
+        Spring application context on startup.
+    -->
+    <servlet>
+        <servlet-name>spring</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!--
+        Map uris to the spring servlet defined above.  The *.html mapping
+        is used to deal with the welcome file, index.html, which is mapped
+        to the welcome controller elsewhere (in the application context).
+    -->
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/user/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/team/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/location/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/status/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/invite/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/message/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/find/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+    <url-pattern>/visit/*</url-pattern>
+    </servlet-mapping>
+    <!--
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/error/*</url-pattern>
+    </servlet-mapping>
+    -->
+
+    <!--
+        Allow logins to persist for eight hours.
+    -->
+    <session-config>
+        <session-timeout>480</session-timeout>
+    </session-config>
+
+    <!--
+        Specify the "welcome file".  This is actually mapped above to
+        the spring dispatcher servlet, so the actual file doesn't have
+        to have any content.
+    -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <!--
+        Direct common errors to the spring dispatcher servlet.
+    -->
+    <!--
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error/fiveHundred</location>
+    </error-page>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error/notFound</location>
+    </error-page>
+
+    <error-page>
+        <error-code>403</error-code>
+        <location>/error/forbidden</location>
+    </error-page>
+    -->
+</web-app>
