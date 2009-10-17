@@ -3,21 +3,24 @@ package com.playserengeti.service;
 import java.util.Collection;
 
 import com.playserengeti.dao.LocationDao;
-import com.playserengeti.dao.TeamDao;
+import com.playserengeti.dao.VisitDao;
 import com.playserengeti.domain.Location;
+import com.playserengeti.domain.Membership;
+import com.playserengeti.domain.Visit;
 
 /**
  * Service for operations related to location.
  */
 public class LocationService {
 
-	private TeamDao teamDao;
 	private LocationDao locationDao;
+	private VisitDao visitDao;
 
     // TODO: private LocationDao LocationDao;
 
-    public LocationService(LocationDao locationDao) {
+    public LocationService(LocationDao locationDao, VisitDao visitDao) {
         this.locationDao = locationDao;
+        this.visitDao = visitDao;
     }
 
     public Location getLocationById(Integer locationId) {
@@ -56,5 +59,28 @@ public class LocationService {
     public Collection<Location> getAllLocations() {
     	return locationDao.getAllLocations();
     }
+    
+    public void saveVisit(Visit v) {
+    	if(v.getId() == null) {
+    		visitDao.insertVisit(v);
+    	}
+    	else {
+    		visitDao.updateVisit(v);
+    	}
+    }
+    
+    public void deleteVisit(Integer visitId) {
+        visitDao.deleteVisit(visitId);
+    }
+    
+    public Collection<Visit> getAllVisits() {
+    	return visitDao.getAllVisits();
+    }
+    
+    public Visit getVisitById(Integer id) {
+    	return visitDao.getVisitByVisitId(id);
+    }
+    
+    
 }
 

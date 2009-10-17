@@ -335,6 +335,7 @@
     <bean id="locationService"
         class="com.playserengeti.service.LocationService">
         <constructor-arg ref="locationDao"/>
+        <constructor-arg ref="visitDao"/>
     </bean>
 
     <bean id="locationDeleteValidator"
@@ -355,7 +356,6 @@
 
     <bean id="locationDao"
         class="com.playserengeti.dao.LocationDaoMockImpl">
-        <constructor-arg ref="teamDao"/>
     </bean>
 
     <!--

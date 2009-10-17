@@ -21,7 +21,7 @@ public interface VisitDao {
 	 * Delete a visit from storage.
 	 * Is this even necessary? Is there a case where such a thing would be done?
 	 */
-	public void deleteVisit(Integer vistiId);
+	public void deleteVisit(Integer visitId);
 
 	/**
 	 * Get all visits from storage.

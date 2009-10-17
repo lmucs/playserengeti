@@ -57,7 +57,7 @@ public class TeamUpdateController extends SimpleFormController {
     		if (team.getLeader() != null) updateTeam.setLeaderId(team.getLeader().getUserId());
     		if (team.getImage() != null) updateTeam.setImage(team.getImage());
     		
-    		Collection<Membership> memberships = teamService.getMembershipsByTeam(team.getId());
+    		Collection<Membership> memberships = teamService.getMembershipsByTeam(Integer.valueOf(teamId));
     		Map<Integer, String> users = new HashMap<Integer, String>();
     		for (Membership m : memberships) {
     			Integer id = m.getUserId();

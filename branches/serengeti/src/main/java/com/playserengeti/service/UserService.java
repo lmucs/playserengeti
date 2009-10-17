@@ -1,6 +1,8 @@
 package com.playserengeti.service;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.playserengeti.dao.FriendshipDao;
 import com.playserengeti.dao.UserDao;
@@ -75,5 +77,19 @@ public class UserService {
     
     public Collection<Friendship> getFriendshipsByUser(Integer userId) {
     	return friendshipDao.getFriendshipsByUser(userId);
+    }
+    
+    public Collection<Integer> getFriends(Integer userId) {
+    	Set<Integer> result = new HashSet<Integer>();
+    	Collection<Friendship> friends = friendshipDao.getFriendshipsByUser(userId);
+    	
+    	for (Friendship f : friends) {
+    		if (f.getPrimaryUserId() == userId) result.add(f.getSecondaryUserId());
+    		else {
+    			result.add(f.getPrimaryUserId());
+    		}
+    	}
+    	
+    	return result;
     }
 }
