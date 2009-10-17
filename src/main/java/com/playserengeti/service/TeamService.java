@@ -1,6 +1,8 @@
 package com.playserengeti.service;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.playserengeti.dao.MembershipDao;
 import com.playserengeti.dao.TeamDao;
@@ -90,5 +92,27 @@ public class TeamService {
     
     public Collection<Membership> getMembershipsByUser(Integer id) {
     	return membershipDao.getMembershipsByUser(id);
+    }
+    
+    public Collection<Integer> getTeamMembers(Integer teamId) {
+    	Set<Integer> result = new HashSet<Integer>();
+    	Collection<Membership> mem = membershipDao.getMembershipsByTeam(teamId);
+    	
+    	for (Membership m : mem) {
+    		result.add(m.getUserId());
+    	}    	
+    	
+    	return result;
+    }
+    
+    public Collection<Integer> getUsersTeams(Integer userId) {
+    	Set<Integer> result = new HashSet<Integer>();
+    	Collection<Membership> mem = membershipDao.getMembershipsByUser(userId);
+    	
+    	for (Membership m : mem) {
+    		result.add(m.getTeamId());
+    	}
+    	
+    	return result;
     }
 }

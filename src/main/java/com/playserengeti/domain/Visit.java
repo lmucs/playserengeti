@@ -1,5 +1,7 @@
 package com.playserengeti.domain;
 
+import java.util.Date;
+
 /**
  * A game visit, or check-in.
  */
@@ -7,18 +9,21 @@ public class Visit {
 
 	private Integer id;
     private Integer userId;
+    private Integer teamId;
     private Integer locationId;
-    // TODO: teams;
+    private Date date;
 
     public Visit(Visit b) {
-    	this(b.id, b.userId, b.locationId);
+    	this(b.id, b.userId, b.teamId, b.locationId);
+    	this.date = b.date;
     }
 
-    public Visit(Integer id, Integer userId, Integer locationId) {
+    public Visit(Integer id, Integer userId, Integer teamId, Integer locationId) {
         this.id = id;
-
         this.userId = userId;
+        this.teamId = teamId;
         this.locationId = locationId;
+        this.date = new Date();
     }
 
 	public Integer getId() {
@@ -43,6 +48,22 @@ public class Visit {
 
 	public void setLocationId(Integer locationId) {
 		this.locationId = locationId;
+	}
+
+	public Integer getTeamId() {
+		return teamId;
+	}
+
+	public void setTeamId(Integer teamId) {
+		this.teamId = teamId;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	@Override

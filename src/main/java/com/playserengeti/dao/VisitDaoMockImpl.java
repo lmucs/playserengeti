@@ -15,15 +15,12 @@ public class VisitDaoMockImpl implements VisitDao {
 
 	// Sample users to insert into the database.
 	private static final Visit sampleVisits[] = {
-		new Visit(null ,3, 0),
-		new Visit(null ,3, 1),
-		new Visit(null ,0, 2),
-		new Visit(null, 1, 3),
-		new Visit(null, 2, 4),
-		new Visit(null, 3, 0),
-		new Visit(null ,4, 1),
-		new Visit(null ,5, 2),
-		new Visit(null ,6, 3)
+		new Visit(null ,2, 1, 0),
+		new Visit(null ,0, 0, 1),
+		new Visit(null ,0, 1, 2),
+		new Visit(null, 1, 3, 3),
+		new Visit(null, 2, 4, 4),
+		new Visit(null, 1, 5, 0),
 	};
 
 	private Map<Integer, Visit> storage;
@@ -62,8 +59,8 @@ public class VisitDaoMockImpl implements VisitDao {
 	}
 
 	@Override
-	public void deleteVisit(Integer vistiId) {
-		storage.remove(vistiId);
+	public void deleteVisit(Integer visitId) {
+		storage.remove(visitId);
 	}
 
 	@Override

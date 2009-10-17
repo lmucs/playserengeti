@@ -28,7 +28,7 @@ public class VisitCreateController extends SimpleFormController {
 
 		// Insert the entry into the database.
 		try {
-			service.saveVisit(new Visit(null, userId, locationId));
+			service.saveVisit(new Visit(null, userId, null, locationId));
 		} catch (NoSuchFieldException e) {
 			Map<String, String> model = new HashMap<String, String>();
 			model.put("error", (e.getMessage()));

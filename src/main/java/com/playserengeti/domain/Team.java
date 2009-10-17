@@ -1,8 +1,7 @@
 package com.playserengeti.domain;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.Date;
+
 
 
 /**
@@ -12,20 +11,27 @@ public class Team {
 
     private Integer id;
     private String name;
+    private Date creationDate;
     private String color;
     private String image;
     private User leader;
+    private String description;
+    private String homeBase;
 
     public Team(Integer id, String name, String color) {
         this.id = id;
         this.name = name;
+        this.creationDate = new Date();
         this.color = color;
     }
 
     public Team(Team b) {
     	this(b.id, b.name, b.color);
+    	this.creationDate = b.creationDate;
     	this.leader = b.leader;
     	this.image = b.image;
+    	this.description = b.description;
+    	this.homeBase = b.homeBase;
 	}
 
     public Integer getId() {
@@ -67,7 +73,31 @@ public class Team {
 		this.leader = user;
 	}
 
-    public boolean equals(Team team) {
+    public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getHomeBase() {
+		return homeBase;
+	}
+
+	public void setHomeBase(String homeBase) {
+		this.homeBase = homeBase;
+	}
+
+	public boolean equals(Team team) {
     	if (this.id != team.id) return false;
     	return true;
     }

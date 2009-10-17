@@ -13,26 +13,22 @@ import com.playserengeti.domain.Location;
  */
 public class LocationDaoMockImpl implements LocationDao {
 
+    private static final Location sampleLocations[] = new Location[] {
+            new Location(null, "Doolan Hall", 1.3819383, 2.4928394),
+            new Location(null, "Viva Fresh", 3.3840183, 4.3892839),
+            new Location(null, "LAX Airport", 5.382728, 1.28837392),
+            new Location(null, "Chris's House", 1.2839282, 0.38371930),
+            new Location(null, "3rd Street Promenade", 12.393028, 3.3948292),
+            new Location(null, "ChickMagnetVille", 6.93838293, 6.93838469),
+        };
+
     // Storage for the location objects
     private Map<Integer, Location> storage;
     private int maxId;
 
-    private TeamDao teamDao;
-
-    public LocationDaoMockImpl(TeamDao teamDao) {
-        this.teamDao = teamDao;
-
+    public LocationDaoMockImpl() {
         storage = Collections.synchronizedMap(new HashMap<Integer, Location>());
         maxId = -1;
-
-        Location[] sampleLocations = new Location[] {
-            new Location(null, "Doolan Hall", 1.3819383, 2.4928394, teamDao.getTeamById(2)),
-            new Location(null, "Viva Fresh", 3.3840183, 4.3892839, teamDao.getTeamById(1)),
-            new Location(null, "LAX Airport", 5.382728, 1.28837392, teamDao.getTeamById(2)),
-            new Location(null, "Chris's House", 1.2839282, 0.38371930, teamDao.getTeamById(1)),
-            new Location(null, "3rd Street Promenade", 12.393028, 3.3948292, teamDao.getTeamById(0)),
-            new Location(null, "ChickMagnetVille", 6.93838293, 6.93838469, teamDao.getTeamById(2)),
-        };
 
         // Insert the sample locations into the database as this is a mock impl.
         insertLocations(sampleLocations);

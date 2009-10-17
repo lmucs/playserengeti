@@ -8,12 +8,11 @@ public class Location {
     private double latitude;
     private Team teamOwnerId;
 
-    public Location(Integer locationId, String locationName, double longitude, double latitude, Team teamOwnerId) {
+    public Location(Integer locationId, String locationName, double longitude, double latitude) {
         this.locationId = locationId;
         this.locationName = locationName;
         this.longitude = longitude;
         this.latitude = latitude;
-        this.teamOwnerId = teamOwnerId;
     }
 
     public Location(String locationName, double latitude, double longitude){
@@ -23,7 +22,7 @@ public class Location {
     }
 
     public Location(Location b) {
-    	this(b.locationId, b.locationName, b.longitude, b.latitude, b.teamOwnerId);
+    	this(b.locationId, b.locationName, b.longitude, b.latitude);
 	}
 
 	public Integer getLocationId() {
