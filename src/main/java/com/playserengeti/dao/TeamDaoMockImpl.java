@@ -21,7 +21,7 @@ public class TeamDaoMockImpl implements TeamDao {
 		new Team(null, "Raptors", "Red"),
 		new Team(null, "Lions", "Gold"),
 		new Team(null, "frivolous fliers", "Orange"),
-		new Team(null, "ChickMagnets", "Money"),
+		new Team(null, "ChickMagnets", "Money")
 	};
 	
 	private Map<Integer, Team> storage;
@@ -110,5 +110,7 @@ public class TeamDaoMockImpl implements TeamDao {
 		storage.put(team.getId(), team);
 	}
 
-
+	public boolean teamExists(Integer teamId) {
+		return (storage.get(teamId) != null);
+	}
 }

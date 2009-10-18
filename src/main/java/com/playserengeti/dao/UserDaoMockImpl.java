@@ -4,7 +4,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -12,7 +11,6 @@ import java.util.Set;
 
 import org.springframework.dao.DataIntegrityViolationException;
 
-import com.playserengeti.domain.Location;
 import com.playserengeti.domain.User;
 
 /**
@@ -24,8 +22,6 @@ public class UserDaoMockImpl implements UserDao {
     private Map<Integer, User> storage;
     private int maxId;
 
-    private UserDao userDao;
-
     public UserDaoMockImpl() {
         storage = Collections.synchronizedMap(new HashMap<Integer, User>());
         maxId = -1;
@@ -34,7 +30,11 @@ public class UserDaoMockImpl implements UserDao {
         		new User(null, "durnew", "password1", null, null, "labrams@lion.lmu.edu", null),
         		new User(null, "rtoal", "password2", null, null, "rtoal@lmu.edu", null),
         		new User(null, "gratrixl", "isAwesome", null, null, "litagratrix@gmail.com", null),
-        		new User(null, "cmuel", "password3", null, null, "mueller.chris0@gmail.com", null)
+        		new User(null, "cmuel", "password3", null, null, "mueller.chris0@gmail.com", null),
+        		new User(null, "jcol88", "password4", null, null, "jcol88@gmail.com", null),
+        		new User(null, "mxchickmagnet86", "password5", null, null, "mxchickmagnet86@gmail.com", null),
+        		new User(null, "malevolentman87", "password6", null, null, "malevolentman87@gmail.com", null),
+        		new User(null, "DJScythe15", "password3", null, null, "DJScythe15@gmail.com", null)
         };
 
         // Insert the sample locations into the database as this is a mock impl.

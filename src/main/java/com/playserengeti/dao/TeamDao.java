@@ -48,4 +48,6 @@ public interface TeamDao {
 	 * @return the fetched team
 	 */
 	public Collection<Team> getTeamsByTeamName(String display);
+	
+	public boolean teamExists(Integer teamId);
 }

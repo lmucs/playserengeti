@@ -42,4 +42,8 @@ public interface VisitDao {
 	 * Get a history of visits from storage by locationId.
 	 */
 	public Collection<Visit> getVisitByLocationId(Integer locationId);
+	
+	public Collection<Visit> getVisitsByTeamId(Integer teamId);
+
+
 }

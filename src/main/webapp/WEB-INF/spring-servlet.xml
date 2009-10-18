@@ -28,7 +28,7 @@
                 <entry key="/team/delete" value-ref="teamDeleteController" />
                 <entry key="/team/view" value-ref="teamViewProfileController" />
                 <entry key="/team/list" value-ref="teamListController" />
-                <entry key="/team/central" value-ref="teamCentralController" />
+                <entry key="/team/create" value-ref="teamCentralController" />
                 <entry key="/team/invite" value-ref="teamInviteController" />
 
                 <entry key="/location/create" value-ref="locationCreateController" />
@@ -162,6 +162,20 @@
  <!--
      Team Controllers and Such
  -->
+
+     <bean id="teamController"
+        class="com.playserengeti.controller.TeamController">
+        <property name="methodNameResolver">
+           <bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+              <property name="paramName" value="method"/>
+           </bean>
+        </property>
+        <constructor-arg ref="teamService"/>
+        <constructor-arg ref="userService"/>
+        <constructor-arg ref="locationService"/>
+        <constructor-arg ref="visitService"/>
+     </bean>    
+     
      <bean id="teamCreateController"
         class="com.playserengeti.controller.TeamCreateController">
         <property name="commandClass"
@@ -335,7 +349,6 @@
     <bean id="locationService"
         class="com.playserengeti.service.LocationService">
         <constructor-arg ref="locationDao"/>
-        <constructor-arg ref="visitDao"/>
     </bean>
 
     <bean id="locationDeleteValidator"
@@ -459,6 +472,7 @@
         <constructor-arg ref="visitDao"/>
         <constructor-arg ref="userDao"/>
         <constructor-arg ref="locationDao"/>
+        <constructor-arg ref="teamDao"/>
     </bean>
 
     <bean id="visitDao"

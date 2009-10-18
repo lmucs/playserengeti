@@ -14,13 +14,11 @@ import com.playserengeti.domain.Visit;
 public class LocationService {
 
 	private LocationDao locationDao;
-	private VisitDao visitDao;
 
     // TODO: private LocationDao LocationDao;
 
-    public LocationService(LocationDao locationDao, VisitDao visitDao) {
+    public LocationService(LocationDao locationDao) {
         this.locationDao = locationDao;
-        this.visitDao = visitDao;
     }
 
     public Location getLocationById(Integer locationId) {
@@ -59,28 +57,6 @@ public class LocationService {
     public Collection<Location> getAllLocations() {
     	return locationDao.getAllLocations();
     }
-    
-    public void saveVisit(Visit v) {
-    	if(v.getId() == null) {
-    		visitDao.insertVisit(v);
-    	}
-    	else {
-    		visitDao.updateVisit(v);
-    	}
-    }
-    
-    public void deleteVisit(Integer visitId) {
-        visitDao.deleteVisit(visitId);
-    }
-    
-    public Collection<Visit> getAllVisits() {
-    	return visitDao.getAllVisits();
-    }
-    
-    public Visit getVisitById(Integer id) {
-    	return visitDao.getVisitByVisitId(id);
-    }
-    
-    
+        
 }
 

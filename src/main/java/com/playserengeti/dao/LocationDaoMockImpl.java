@@ -19,7 +19,7 @@ public class LocationDaoMockImpl implements LocationDao {
             new Location(null, "LAX Airport", 5.382728, 1.28837392),
             new Location(null, "Chris's House", 1.2839282, 0.38371930),
             new Location(null, "3rd Street Promenade", 12.393028, 3.3948292),
-            new Location(null, "ChickMagnetVille", 6.93838293, 6.93838469),
+            new Location(null, "ChickMagnetVille", 6.93838293, 6.93838469)
         };
 
     // Storage for the location objects
