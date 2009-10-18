@@ -1,7 +1,9 @@
 package com.playserengeti.service;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import com.playserengeti.dao.FriendshipDao;
@@ -54,6 +56,21 @@ public class UserService {
 		return userDao.getAllUsers();
 	}
 	
+	/**
+	 * Returns all users as a map with key userId and value username.
+	 * @return
+	 */
+	public Map<Integer, String> getAllUsersMap() {
+		Map<Integer, String> result = new HashMap<Integer, String>();
+		Collection<User> users = userDao.getAllUsers();
+		
+		for(User u : users) {
+			result.put(u.getUserId(), u.getUserName());
+		}
+		
+		return result;
+	}
+	
     public void saveFriendship(Friendship f) {
     	if(f.getFriendshipId() == null) {
     		friendshipDao.insertFriendship(f);
@@ -90,6 +107,22 @@ public class UserService {
     		}
     	}
     	
+    	return result;
+    }
+    
+    /**
+     * Returns a map of the given users friends.
+     * Key is the friend's userId and value is their username.
+     * @param userId
+     * @return
+     */
+    public Map<Integer, String> getFriendsMap(Integer userId) {
+    	Map<Integer, String> result = new HashMap<Integer, String>();
+    	Collection<Integer> friends = getFriends(userId);
+    	
+    	for(Integer i : friends) {
+    		result.put(i, userDao.getUserById(i).getUserName());
+    	}
     	return result;
     }
 }

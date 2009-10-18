@@ -94,6 +94,16 @@ public class TeamService {
     	return membershipDao.getMembershipsByUser(id);
     }
     
+    public Membership getMembershipByTeamAndUser(Integer teamId, Integer userId) {
+    	Collection<Membership> mem = membershipDao.getMembershipsByUser(userId);
+    	
+    	for(Membership m : mem) {
+    		if(m.getTeamId() == teamId) return m;
+    	}
+    	
+    	return null;
+    }
+    
     public Collection<Integer> getTeamMembers(Integer teamId) {
     	Set<Integer> result = new HashSet<Integer>();
     	Collection<Membership> mem = membershipDao.getMembershipsByTeam(teamId);
@@ -115,4 +125,5 @@ public class TeamService {
     	
     	return result;
     }
+    
 }
