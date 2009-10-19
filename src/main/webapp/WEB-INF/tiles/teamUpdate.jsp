@@ -9,7 +9,7 @@
                 <label for="name">Team Name: </label>
             </div>
             <div class="spaceInputBox">
-                <input type="text" id="name" name="name"/>
+                <form:input path="teamCommand.name" />
             </div>
         </div>
         <div>
@@ -32,17 +32,20 @@
         <div class="formLabel">
             <label for="userId">Team Leader: </label>
         </div>
-	    <select name="leaderId">
-	    </select>
+        <div class="spaceInputBox">
+            <form:select path="teamCommand.leaderId">
+        	    <form:options items="${teamCommand.candidates}" />
+    	    </form:select>
+    	</div> 
     </div>
 
     <div>
         <div class="formLabel">
-            <label for="image">Team Image URL:</label>
+            <label for="image">Team Image URL: </label>
         </div>
         <div class="spaceInputBox">
-            <input type="text" name="image"/>
-        </div
+            <form:input path="teamCommand.image" />
+        </div>
     </div>
     
     <div>
@@ -50,8 +53,8 @@
             <label for="description">Team Description:</label>
         </div>
         <div class="spaceInputBox">
-            <input type="textarea" path="teamCommand.description" rows="3" cols="20"/>
-        </div
+            <form:textarea path="teamCommand.description" rows="4" cols="40" />
+        </div>
     </div>
     
     <div>
@@ -59,18 +62,18 @@
             <label for="homeBase">Home Base:</label>
         </div>
         <div class="spaceInputBox">
-            <input type="text" name="homeBase"/>
-        </div
+            <form:input path="teamCommand.homeBase" />
+        </div>
     </div>
     <div>
         <div class="formLabel">
             <label for="removals">Remove selected users:</label>
         </div>
-		<form:checkboxes path="teamCommand.removals" items="${teamCommand.candidates}"/><br/>
+		<form:checkboxes path="teamCommand.removals" items="${teamCommand.candidates}" /><br/>
     </div>
     
     <div class="formRow">
-        <input type="submit" value="Update Team!"/>
+        <input type="submit" value="Update Team!" />
     </div>
 
 </form>

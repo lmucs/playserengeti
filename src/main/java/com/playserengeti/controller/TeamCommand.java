@@ -1,6 +1,5 @@
 package com.playserengeti.controller;
 
-import java.util.Collection;
 import java.util.Map;
 
 public class TeamCommand {
@@ -12,7 +11,7 @@ public class TeamCommand {
 	Integer leaderId;
 	String description;
 	String homeBase;
-	Collection<Integer> members;
+	Map<Integer, String> members;
 	Integer[] invitees;
 	Integer[] removals;
 	Map<Integer, String> candidates;
@@ -59,10 +58,10 @@ public class TeamCommand {
 	public void setHomeBase(String homeBase) {
 		this.homeBase = homeBase;
 	}
-	public Collection<Integer> getMembers() {
+	public Map<Integer, String> getMembers() {
 		return members;
 	}
-	public void setMembers(Collection<Integer> members) {
+	public void setMembers(Map<Integer, String> members) {
 		this.members = members;
 	}
 	public Integer[] getInvitees() {

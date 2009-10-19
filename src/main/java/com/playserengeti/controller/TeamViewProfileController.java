@@ -10,7 +10,6 @@ import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractCommandController;
 
-import com.playserengeti.domain.Membership;
 import com.playserengeti.domain.Team;
 import com.playserengeti.domain.User;
 import com.playserengeti.service.TeamService;
@@ -47,7 +46,7 @@ public class TeamViewProfileController extends AbstractCommandController {
             return new ModelAndView("errors.jspx", "errors", errors.getAllErrors());
         }
 
-        TeamViewProfileCommand command = (TeamViewProfileCommand)commandObject;
+        TeamCommand command = (TeamCommand)commandObject;
 
         Integer teamId = command.getTeamId();
         Team team = null;
@@ -55,18 +54,23 @@ public class TeamViewProfileController extends AbstractCommandController {
             team = teamService.getTeamById(teamId);
         }
         
-		Collection<Membership> memberships = teamService.getMembershipsByTeam(team.getId());
+        command.setTeamId(teamId);
+        command.setName(team.getName());
+        command.setColor(team.getColor());
+        command.setDescription(team.getDescription());
+        command.setHomeBase(team.getHomeBase());
+        command.setImage(team.getImage());
+        if (team.getLeader() != null) command.setLeaderId(team.getLeader().getUserId());
+        
+		Collection<Integer> users = teamService.getTeamMembers(Integer.valueOf(teamId));
 		Collection<User> members = new HashSet<User>();
-		for (Membership m : memberships) {
-			members.add(userService.getUserById(m.getUserId()));
+		for (Integer id : users) {
+			members.add(userService.getUserById(id));
 		}
 
         ModelAndView mav = new ModelAndView("teamViewProfile");
-        mav.addObject("team", team);
-        mav.addObject("teamId", teamId);
+        mav.addObject("teamCommand", command);
         mav.addObject("members", members);
-
-        //mav.addObject("userId", command.getUserId());
 
         return mav;
     }
