@@ -28,7 +28,7 @@
                 <entry key="/team/delete" value-ref="teamDeleteController" />
                 <entry key="/team/view" value-ref="teamViewProfileController" />
                 <entry key="/team/list" value-ref="teamListController" />
-                <entry key="/team/create" value-ref="teamCentralController" />
+                <entry key="/team/central" value-ref="teamCentralController" />
                 <entry key="/team/invite" value-ref="teamInviteController" />
 
                 <entry key="/location/create" value-ref="locationCreateController" />
@@ -179,9 +179,9 @@
      <bean id="teamCreateController"
         class="com.playserengeti.controller.TeamCreateController">
         <property name="commandClass"
-          value="com.playserengeti.controller.TeamCreateCommand"
+          value="com.playserengeti.controller.TeamCommand"
         />
-        <property name="commandName" value="createTeam"/>
+        <property name="commandName" value="teamCommand"/>
         <property name="validator" ref="teamCreateValidator"/>
         <property name="formView" value="teamCreate"/>
         <constructor-arg ref="teamService"/>
@@ -191,9 +191,9 @@
     <bean id="teamUpdateController"
         class="com.playserengeti.controller.TeamUpdateController">
         <property name="commandClass"
-          value="com.playserengeti.controller.TeamUpdateCommand"
+          value="com.playserengeti.controller.TeamCommand"
         />
-        <property name="commandName" value="updateTeam"/>
+        <property name="commandName" value="teamCommand"/>
         <property name="validator" ref="teamUpdateValidator"/>
         <property name="formView" value="teamUpdate" />
         <constructor-arg ref="teamService"/>

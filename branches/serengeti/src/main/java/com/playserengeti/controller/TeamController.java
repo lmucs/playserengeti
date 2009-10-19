@@ -53,52 +53,6 @@ public class TeamController extends MultiActionController {
 	}	
 	
 	/**
-	 * The method called when a team is to be created.
-	 * Creates a blank command object to be populated by the form.
-	 * @param request
-	 * @param response
-	 * @return
-	 */
-	public ModelAndView create(HttpServletRequest request, HttpServletResponse response) {
-		TeamCommand command = new TeamCommand();
-		
-		Map<Integer, String> candidates = userService.getAllUsersMap();
-		
-		ModelAndView mav = new ModelAndView("teamCreate.jsp");
-		mav.addObject("teamCommand", command);
-		mav.addObject("candidates", candidates);
-		
-		return null;
-	}
-	
-	/**
-	 * Have to use a method to act as an onSubmit method for creating teams.
-	 * Creates the team and memberships based on the form.  Goes to the team's 
-	 * profile.
-	 * @param request
-	 * @param response
-	 * @param command
-	 * @return
-	 */
-	public ModelAndView createSubmit(HttpServletRequest request, HttpServletResponse response, TeamCommand command) {
-		Team team = new Team(null, command.getName(), command.getColor());
-		team.setImage(command.getImage());
-		team.setDescription(command.getDescription());
-		team.setHomeBase(command.getHomeBase());
-		//team.setLeader(currentUserId);
-		
-		teamService.saveTeam(team);
-		
-		Collection<Integer> invitees = command.getInvitees();
-		for(Integer i : invitees) {
-			teamService.saveMembership(new Membership(null, team.getId(), i));
-		}
-		
-	    ModelAndView mav = new ModelAndView("redirect:team?method=view&teamid=" + team.getId().toString());
-		return mav;
-	}
-	
-	/**
 	 * Brings up the given team's profile page.
 	 * @param request
 	 * @param response
@@ -122,42 +76,4 @@ public class TeamController extends MultiActionController {
 		
 		return mav;
 	}
-	
-	public ModelAndView edit(HttpServletRequest request, HttpServletResponse response, TeamCommand command) {
-		ModelAndView mav = new ModelAndView("teamEdit.jsp");
-		mav.addObject("command", command);
-		return mav;
-	}
-	
-	/**
-	 * Have to use this method to act as an onSubmit for team edit.  Updates the 
-	 * team with the results of the form and removes the selected memberships.  
-	 * Goes to team's profile afterwards.
-	 * @param request
-	 * @param response
-	 * @param command
-	 * @return
-	 */
-	public ModelAndView editSubmit(HttpServletRequest request, HttpServletResponse response, TeamCommand command) {
-		Team team = teamService.getTeamById(command.getTeamId());
-		team.setName(command.getName());
-		team.setColor(command.getColor());
-		team.setImage(command.getImage());
-		team.setDescription(command.getDescription());
-		team.setHomeBase(command.getHomeBase());
-		
-		//team.setLeader(currentUserId);
-		
-		teamService.saveTeam(team);
-		
-		Collection<Integer> removals = command.getRemovals();
-		for(Integer id : removals) {
-			Membership m = teamService.getMembershipByTeamAndUser(team.getId(), id);
-			teamService.deleteMembership(m.getMembershipId());
-		}
-		
-	    ModelAndView mav = new ModelAndView("redirect:team?method=view&teamid=" + team.getId().toString());
-		return mav;		
-	}
-
 }
