@@ -1,7 +1,9 @@
 package com.playserengeti.service;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import com.playserengeti.dao.MembershipDao;
@@ -95,10 +97,10 @@ public class TeamService {
     }
     
     public Membership getMembershipByTeamAndUser(Integer teamId, Integer userId) {
-    	Collection<Membership> mem = membershipDao.getMembershipsByUser(userId);
+    	Collection<Membership> mem = membershipDao.getMembershipsByTeam(teamId);
     	
     	for(Membership m : mem) {
-    		if(m.getTeamId() == teamId) return m;
+    		if(m.getUserId() == userId) return m;
     	}
     	
     	return null;
@@ -126,4 +128,12 @@ public class TeamService {
     	return result;
     }
     
+    public void addToTeam(Integer teamId, Integer userId) {
+        saveMembership(new Membership(null, teamId, userId));
+    }
+    
+    public void removeFromTeam(Integer teamId, Integer userId) {
+    	Membership m = getMembershipByTeamAndUser(teamId, userId);
+    	membershipDao.deleteMembership(m.getMembershipId());
+    }
 }

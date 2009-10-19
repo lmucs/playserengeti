@@ -1,14 +1,14 @@
 package com.playserengeti.controller;
 
+import java.util.Collection;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
-import com.playserengeti.domain.Location;
 import com.playserengeti.domain.Membership;
 import com.playserengeti.domain.Team;
-import com.playserengeti.service.LocationService;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
 
@@ -36,41 +36,35 @@ public class TeamCreateController extends SimpleFormController {
 	 */
 	protected Object formBackingObject(HttpServletRequest request)
     throws Exception {
-        TeamCreateCommand createTeam = new TeamCreateCommand();
-        
-        //Won't be needed when sign in is implemented because the team's
-        //leader will automatically be set by the given userId.
-        createTeam.setAllUsers(userService.getAllUsers());
+        TeamCommand teamCommand = new TeamCommand();
+        teamCommand.setCandidates(userService.getAllUsersMap());
         
 		setSessionForm(true);
-
-        return createTeam;
+        return teamCommand;
 	}
 	
     /**
      * Handles the submit functionality of the controller.  
      */
 	public ModelAndView onSubmit(Object _command) {
-		TeamCreateCommand command = (TeamCreateCommand)_command;
-		String display = command.getName();
+		TeamCommand command = (TeamCommand)_command;
+		String name = command.getName();
 		String color = command.getColor();
-		Integer userId = command.getUserId();
-		String image = command.getImage();
-		
-		Team team = new Team(null, display, color);
-		if (userId != null) { 
-			team.setLeader(userService.getUserById(userId));
-		}
-		if (image != null) team.setImage(image);
-		
-		// Insert the entry into the database.
+
+		Team team = new Team(null, name, color);
+		team.setDescription(command.getDescription());
+		team.setHomeBase(command.getHomeBase());
+		team.setImage(command.getImage());
+		//team.setLeader(userService.getUserById(command.getLeaderId()));
 		teamService.saveTeam(team);
-        teamService.saveMembership(new Membership(null, team.getId(), userId));
+
+		Integer[] invitees = command.getInvitees();
+		for(Integer id : invitees) {
+			teamService.addToTeam(team.getId(), Integer.valueOf(id));
+		}
 		
 		ModelAndView mav = new ModelAndView("redirect:view");
-		
-		mav.addObject("teamId", team.getId());
-		//mav.addObject("userId", userId);
+		mav.addObject("teamId", team.getId());		
 		
 		return mav;
 	}
