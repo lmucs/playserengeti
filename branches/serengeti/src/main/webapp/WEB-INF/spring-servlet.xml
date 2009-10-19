@@ -215,9 +215,9 @@
     <bean id="teamViewProfileController"
         class="com.playserengeti.controller.TeamViewProfileController">
         <property name="commandClass"
-            value="com.playserengeti.controller.TeamViewProfileCommand"
+            value="com.playserengeti.controller.TeamCommand"
         />
-        <property name="commandName" value="teamViewProfile"/>
+        <property name="commandName" value="teamCommand"/>
         <property name="validator" ref="teamViewProfileValidator"/>
         <constructor-arg ref="teamService"/>
         <constructor-arg ref="userService"/>

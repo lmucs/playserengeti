@@ -1,6 +1,7 @@
 package com.playserengeti.controller;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
@@ -10,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
-import com.playserengeti.domain.Membership;
 import com.playserengeti.domain.Team;
 import com.playserengeti.service.LocationService;
 import com.playserengeti.service.TeamService;
@@ -69,7 +69,13 @@ public class TeamController extends MultiActionController {
 		command.setHomeBase(team.getHomeBase());
 		command.setImage(team.getImage());
 		//command.setLeaderId(team.getLeader().getUserId());
-		command.setMembers(teamService.getTeamMembers(teamId));
+		
+		Map<Integer, String> members = new HashMap<Integer, String>();
+		Collection<Integer> users = teamService.getTeamMembers(teamId);
+		for(Integer id : users) {
+			members.put(id, userService.getUserById(id).getUserName());
+		}
+		command.setMembers(members);
 		
 		ModelAndView mav = new ModelAndView("teamProfile.jsp");
 		mav.addObject("command", command);

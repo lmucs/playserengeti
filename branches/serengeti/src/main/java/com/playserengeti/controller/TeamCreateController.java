@@ -1,13 +1,10 @@
 package com.playserengeti.controller;
 
-import java.util.Collection;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
-import com.playserengeti.domain.Membership;
 import com.playserengeti.domain.Team;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;

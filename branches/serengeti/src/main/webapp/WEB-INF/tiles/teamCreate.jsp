@@ -14,7 +14,7 @@
                 <label for="name">Team Name: </label>
             </div>
             <div class="spaceInputBox">
-                <input type="text" id="name" name="name"/>
+                <input type="text" id="name" name="name" />
             </div>
         </div>
         <div>
@@ -31,23 +31,13 @@
             </select>
         </div>
 
-        <p> This will not be necessary when user sign in is implemented.</p>
-
     <div>
         <div class="formLabel">
-            <label for="userId">Team Leader: </label>
-        </div>
-	    <select name="leaderId">
-	    </select>
-    </div>
-
-    <div>
-        <div class="formLabel">
-            <label for="image">Team Image URL:</label>
+            <label for="image">Team Image URL: </label>
         </div>
         <div class="spaceInputBox">
-            <input type="text" name="image"/>
-        </div
+            <input type="text" name="image" />
+        </div>
     </div>
     
     <div>
@@ -55,8 +45,8 @@
             <label for="description">Team Description:</label>
         </div>
         <div class="spaceInputBox">
-            <input type="textarea" path="teamCommand.description" rows="3" cols="20"/>
-        </div
+            <form:textarea path="teamCommand.description" rows="4" cols="40" />
+        </div>
     </div>
     
     <div>
@@ -64,18 +54,18 @@
             <label for="homeBase">Home Base:</label>
         </div>
         <div class="spaceInputBox">
-            <input type="text" name="homeBase"/>
-        </div
+            <input type="text" name="homeBase" />
+        </div>
     </div>
     <div>
         <div class="formLabel">
             <label for="invitees">Invite people to team:</label>
         </div>
-		<form:checkboxes path="teamCommand.invitees" items="${teamCommand.candidates}"/><br/>
+		<form:checkboxes path="teamCommand.invitees" items="${teamCommand.candidates}" /><br/>
     </div>
     
     <div class="formRow">
-        <input type="submit" value="Create Team!"/>
+        <input type="submit" value="Create Team!" />
     </div>
 
 </form>
