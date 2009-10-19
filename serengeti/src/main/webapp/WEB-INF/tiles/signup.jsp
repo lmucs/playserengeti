@@ -3,7 +3,9 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-<p>Sign up below!</p>
+<div class="signUpCenter">
+	Sign up below!
+</div>
 
 <form:form method="post">
     <div>
@@ -34,7 +36,7 @@
 	    </div>
     </div>
 
-    <div>
+    <div class="signUpCenter">
         <input type="submit" value="Sign up!"/>
     </div>
 </form:form>
