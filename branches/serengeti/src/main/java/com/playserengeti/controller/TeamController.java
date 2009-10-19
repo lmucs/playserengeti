@@ -31,6 +31,26 @@ public class TeamController extends MultiActionController {
 		this.visitService = visitService;
 	}
 	
+	public ModelAndView root(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("redirect:/");
+	}
+	
+	public ModelAndView empty(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("redirect:/");
+	}
+	
+	public ModelAndView ROOT(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("redirect:/");
+	}
+	
+	public ModelAndView DEFAULT(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("redirect:/");
+	}
+	
+	public ModelAndView team (HttpServletRequest request, HttpServletResponse response) {
+		return central(request, response);
+	}
+	
 	/**
 	 * The method to be used with going to /team.
 	 * Shows interesting information regarding teams.
@@ -44,12 +64,15 @@ public class TeamController extends MultiActionController {
 		Collection<Team> mostActive = new HashSet<Team>();
 		Collection<Team> newest = new HashSet<Team>();
 		
+		/*
 		ModelAndView mav = new ModelAndView("teamCentral.jsp");
 		mav.addObject("leaders", leaders);
 		mav.addObject("mostActive", mostActive);
 		mav.addObject("newest", newest);
 		
 		return mav;
+		*/
+		return new ModelAndView("redirect:/");
 	}	
 	
 	/**

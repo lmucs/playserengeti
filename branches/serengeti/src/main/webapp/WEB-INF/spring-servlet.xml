@@ -16,7 +16,7 @@
             <map>
                 <entry key="/" value-ref="welcomeController" />
                 <entry key="/index.html" value-ref="welcomeController" />
-
+                <!--
                 <entry key="/user/create" value-ref="userCreateController" />
                 <entry key="/user/delete" value-ref="userDeleteController" />
                 <entry key="/user/update" value-ref="userUpdateController" />
@@ -44,11 +44,14 @@
 
                 <entry key="/visit/create" value-ref="visitCreateController" />
 
+                -->
                 <!--
                 <entry key="/login" value-ref="loginController" />
                 <entry key="/logout" value-ref="logoutController" />
                 <entry key="/error/*" value-ref="errorController" />
                 -->
+                <entry key="/team" value-ref="teamController" />
+                <entry key="/team/*" value-ref="teamController" />
             </map>
         </property>
     </bean>
@@ -166,8 +169,8 @@
      <bean id="teamController"
         class="com.playserengeti.controller.TeamController">
         <property name="methodNameResolver">
-           <bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
-              <property name="paramName" value="method"/>
+           <bean class="com.playserengeti.controller.SerengetiMultipartResolver">
+              <!-- <property name="paramName" value="method"/> -->
            </bean>
         </property>
         <constructor-arg ref="teamService"/>
