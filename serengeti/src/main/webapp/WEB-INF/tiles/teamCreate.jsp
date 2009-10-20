@@ -43,7 +43,18 @@
 	        </select>
 	    </div>
     </div>
-
+    <div>
+        <div class="formLabel">
+            <label for="userId">Add friends: </label>
+        </div>
+        <div>
+	   
+	            <c:forEach var="user" items="${createTeam.allUsers}">
+	                <input type="checkbox" name="${user.userId}" value="${user.userName}" checked="checked"/>${user.userName}<BR>
+	            </c:forEach>
+	       
+	    </div>
+    </div>
     <div>
         <div class="formLabel">
             <label for="image">Team Image URL:</label>
@@ -51,6 +62,14 @@
         <div class="spaceInputBox">
             <input type="text" name="image"/>
         </div
+    </div>
+    <div>    
+	    <div class="formLabel">
+	        <label for="name">Home Base: </label>
+	    </div>
+	    <div class="spaceInputBox">
+	        <input type="text" id="name" name="name"/>
+	    </div>
     </div>
 
     <div class="formRow">
