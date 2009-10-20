@@ -2,7 +2,6 @@ package com.playserengeti.controller;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,10 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
-import com.playserengeti.domain.Membership;
 import com.playserengeti.domain.Team;
-import com.playserengeti.domain.User;
-import com.playserengeti.service.LocationService;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
 
@@ -42,34 +38,30 @@ public class TeamUpdateController extends SimpleFormController {
 	 */
 	protected Object formBackingObject(HttpServletRequest request)
     throws Exception {
-        String teamId = request.getParameter("teamId");
-        //String userId = request.getParameter("userId");
+        Integer teamId = Integer.valueOf(request.getParameter("teamId"));
        
-        TeamUpdateCommand updateTeam = new TeamUpdateCommand();
+        TeamCommand teamCommand = new TeamCommand();
         Team team; 
 		
         if (teamId != null) {
-			team = teamService.getTeamById(Integer.valueOf(teamId));
-		    updateTeam.setTeamId(team.getId());
-	    	updateTeam.setName(team.getName());
-    		updateTeam.setColor(team.getColor());
+			team = teamService.getTeamById(teamId);
+		    teamCommand.setTeamId(team.getId());
+	    	teamCommand.setName(team.getName());
+    		teamCommand.setColor(team.getColor());
+      		teamCommand.setImage(team.getImage());
+      		teamCommand.setDescription(team.getDescription());
+      		teamCommand.setHomeBase(team.getHomeBase());
+    		if (team.getLeader() != null) teamCommand.setLeaderId(team.getLeader().getUserId());
     		
-    		if (team.getLeader() != null) updateTeam.setLeaderId(team.getLeader().getUserId());
-    		if (team.getImage() != null) updateTeam.setImage(team.getImage());
-    		
-    		Collection<Membership> memberships = teamService.getMembershipsByTeam(team.getId());
-    		Map<Integer, String> users = new HashMap<Integer, String>();
-    		for (Membership m : memberships) {
-    			Integer id = m.getUserId();
-    			users.put(id, userService.getUserById(id).getUserName());
+    		Collection<Integer> members = teamService.getTeamMembers(Integer.valueOf(teamId));
+    		Map<Integer, String> candidates = new HashMap<Integer, String>();
+    		for (Integer id : members) {
+    			candidates.put(id, userService.getUserById(id).getUserName());
     		}
-            
-    		updateTeam.setTeamUsers(users);
-
+    		teamCommand.setCandidates(candidates);
 		}
-		
-        //updateTeam.setUserId(Integer.valueOf(userId));		
-		return updateTeam;
+        
+		return teamCommand;
 	}
 	
 	/**
@@ -77,22 +69,27 @@ public class TeamUpdateController extends SimpleFormController {
 	 * Should be modified to check what info has changed.
 	 */
 	public ModelAndView onSubmit(Object _command) {
-		TeamUpdateCommand command = (TeamUpdateCommand)_command;
+		TeamCommand command = (TeamCommand)_command;
 		Integer teamId = command.getTeamId();
-		//Integer userId = command.getUserId();
 		
 		// Modify the entry in the database.
 		Team team = teamService.getTeamById(teamId);
+		team.setName(command.getName());
 		team.setColor(command.getColor());
-		team.setLeader(userService.getUserById(command.getLeaderId()));
+		if(command.getLeaderId() != null) team.setLeader(userService.getUserById(command.getLeaderId()));
 		team.setImage(command.getImage());
+		team.setDescription(command.getDescription());
+		team.setHomeBase(command.getHomeBase());
 		
 		teamService.saveTeam(team);
 		
-		ModelAndView mav = new ModelAndView("redirect:view");
-		
+		Integer[] removals = command.getRemovals();
+		for (Integer id : removals) {
+			teamService.removeFromTeam(teamId, Integer.valueOf(id));
+		}
+
+		ModelAndView mav = new ModelAndView("redirect:view");		
 		mav.addObject("teamId", teamId);
-		//mav.addObject("userId", userID);
 
 		return mav;
 	}

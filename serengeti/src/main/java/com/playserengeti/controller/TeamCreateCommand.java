@@ -2,7 +2,6 @@ package com.playserengeti.controller;
 
 import java.util.Collection;
 
-import com.playserengeti.domain.Location;
 import com.playserengeti.domain.User;
 
 /**

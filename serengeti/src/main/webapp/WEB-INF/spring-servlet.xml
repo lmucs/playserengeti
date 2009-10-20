@@ -16,20 +16,14 @@
             <map>
                 <entry key="/" value-ref="welcomeController" />
                 <entry key="/index.html" value-ref="welcomeController" />
-
+                <!--
                 <entry key="/user/create" value-ref="userCreateController" />
                 <entry key="/user/delete" value-ref="userDeleteController" />
                 <entry key="/user/update" value-ref="userUpdateController" />
                 <entry key="/user/view" value-ref="userViewProfileController" />
                 <entry key="/user/list" value-ref="userListController" />
-
-                <entry key="/team/create" value-ref="teamCreateController" />
-                <entry key="/team/update" value-ref="teamUpdateController" />
+				
                 <entry key="/team/delete" value-ref="teamDeleteController" />
-                <entry key="/team/view" value-ref="teamViewProfileController" />
-                <entry key="/team/list" value-ref="teamListController" />
-                <entry key="/team/central" value-ref="teamCentralController" />
-                <entry key="/team/invite" value-ref="teamInviteController" />
 
                 <entry key="/location/create" value-ref="locationCreateController" />
                 <entry key="/location/update" value-ref="locationUpdateController" />
@@ -44,11 +38,17 @@
 
                 <entry key="/visit/create" value-ref="visitCreateController" />
 
+                -->
                 <!--
                 <entry key="/login" value-ref="loginController" />
                 <entry key="/logout" value-ref="logoutController" />
                 <entry key="/error/*" value-ref="errorController" />
                 -->
+                
+                <entry key="/team/create" value-ref="teamCreateController" />
+                <entry key="/team/update" value-ref="teamUpdateController" />
+                <entry key="/team" value-ref="teamController" />
+                <entry key="/team/*" value-ref="teamController" />
             </map>
         </property>
     </bean>
@@ -162,12 +162,26 @@
  <!--
      Team Controllers and Such
  -->
+
+     <bean id="teamController"
+        class="com.playserengeti.controller.TeamController">
+        <property name="methodNameResolver">
+           <bean class="com.playserengeti.controller.SerengetiMultipartResolver">
+              <!-- <property name="paramName" value="method"/> -->
+           </bean>
+        </property>
+        <constructor-arg ref="teamService"/>
+        <constructor-arg ref="userService"/>
+        <constructor-arg ref="locationService"/>
+        <constructor-arg ref="visitService"/>
+     </bean>    
+     
      <bean id="teamCreateController"
         class="com.playserengeti.controller.TeamCreateController">
         <property name="commandClass"
-          value="com.playserengeti.controller.TeamCreateCommand"
+          value="com.playserengeti.controller.TeamCommand"
         />
-        <property name="commandName" value="createTeam"/>
+        <property name="commandName" value="teamCommand"/>
         <property name="validator" ref="teamCreateValidator"/>
         <property name="formView" value="teamCreate"/>
         <constructor-arg ref="teamService"/>
@@ -177,9 +191,9 @@
     <bean id="teamUpdateController"
         class="com.playserengeti.controller.TeamUpdateController">
         <property name="commandClass"
-          value="com.playserengeti.controller.TeamUpdateCommand"
+          value="com.playserengeti.controller.TeamCommand"
         />
-        <property name="commandName" value="updateTeam"/>
+        <property name="commandName" value="teamCommand"/>
         <property name="validator" ref="teamUpdateValidator"/>
         <property name="formView" value="teamUpdate" />
         <constructor-arg ref="teamService"/>
@@ -198,47 +212,6 @@
         <constructor-arg ref="teamService"/>
     </bean>
 
-    <bean id="teamViewProfileController"
-        class="com.playserengeti.controller.TeamViewProfileController">
-        <property name="commandClass"
-            value="com.playserengeti.controller.TeamViewProfileCommand"
-        />
-        <property name="commandName" value="teamViewProfile"/>
-        <property name="validator" ref="teamViewProfileValidator"/>
-        <constructor-arg ref="teamService"/>
-        <constructor-arg ref="userService"/>
-    </bean>
-
-    <bean id="teamListController"
-        class="com.playserengeti.controller.TeamListController">
-        <constructor-arg ref="teamService"/>
-    </bean>
-
-    <bean id="teamCentralController"
-        class="com.playserengeti.controller.TeamCentralController">
-        <property name="commandClass"
-          value="com.playserengeti.controller.TeamCentralCommand"
-        />
-        <property name="commandName" value="teamCentral"/>
-        <property name="validator" ref="teamCentralValidator"/>
-        <property name="formView" value="teamCentral" />
-        <property name="successView" value="teamCreate" />
-        <constructor-arg ref="teamService"/>
-        <constructor-arg ref="userService"/>
-    </bean>
-
-    <bean id="teamInviteController"
-        class="com.playserengeti.controller.TeamInviteController">
-        <property name="commandClass"
-          value="com.playserengeti.controller.TeamInviteCommand"
-        />
-        <property name="commandName" value="teamInvite"/>
-        <property name="validator" ref="teamInviteValidator"/>
-        <property name="formView" value="teamInvite" />
-        <constructor-arg ref="teamService"/>
-        <constructor-arg ref="userService"/>
-    </bean>
-
     <bean id="teamCreateValidator"
         class="com.playserengeti.controller.TeamCreateValidator">
     </bean>
@@ -249,18 +222,6 @@
 
     <bean id="teamDeleteValidator"
         class="com.playserengeti.controller.TeamDeleteValidator">
-    </bean>
-
-    <bean id="teamViewProfileValidator"
-        class="com.playserengeti.controller.TeamViewProfileValidator">
-    </bean>
-
-    <bean id="teamCentralValidator"
-        class="com.playserengeti.controller.TeamCentralValidator">
-    </bean>
-
-    <bean id="teamInviteValidator"
-        class="com.playserengeti.controller.TeamInviteValidator">
     </bean>
 
     <bean id="teamService"
@@ -355,7 +316,6 @@
 
     <bean id="locationDao"
         class="com.playserengeti.dao.LocationDaoMockImpl">
-        <constructor-arg ref="teamDao"/>
     </bean>
 
     <!--
@@ -459,6 +419,7 @@
         <constructor-arg ref="visitDao"/>
         <constructor-arg ref="userDao"/>
         <constructor-arg ref="locationDao"/>
+        <constructor-arg ref="teamDao"/>
     </bean>
 
     <bean id="visitDao"

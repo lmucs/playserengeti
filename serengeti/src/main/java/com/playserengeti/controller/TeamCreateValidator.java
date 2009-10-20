@@ -12,12 +12,12 @@ public class TeamCreateValidator implements Validator {
 	
 	@Override
 	public boolean supports(Class c) {
-		return TeamCreateCommand.class.equals(c);
+		return TeamCommand.class.equals(c);
 	}
 
 	@Override
 	public void validate(Object object, Errors errors) {
-		TeamCreateCommand c = TeamCreateCommand.class.cast(object);
+		TeamCommand c = TeamCommand.class.cast(object);
 
 		/* Doesn't do anything. */
 	}

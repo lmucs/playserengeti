@@ -1,8 +1,8 @@
 package com.playserengeti.domain;
 
-import java.util.Date;
-
 import static com.playserengeti.util.ArgumentChecker.assertArgument;
+
+import java.util.Date;
 
 /**
  * A Serengeti user (player).
@@ -113,4 +113,7 @@ public class User {
 		return true;
 	}
 
+	public String getFullName() {
+		return this.firstName + " " + this.lastName;
+	}
 }
