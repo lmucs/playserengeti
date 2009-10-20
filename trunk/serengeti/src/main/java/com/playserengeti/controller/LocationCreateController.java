@@ -7,7 +7,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import com.playserengeti.domain.Location;
-import com.playserengeti.domain.Team;
 import com.playserengeti.service.LocationService;
 
 
@@ -63,7 +62,7 @@ public class LocationCreateController extends SimpleFormController {
 		location.setLocationName(command.getLocationName());
 		location.setLatitude(Double.valueOf(command.getLatitude()));
 		location.setLongitude(Double.valueOf(command.getLongitude()));
-		location.setTeamOwnerId(command.getTeamOwnerId());
+		location.setTeamOwner(command.getTeamOwnerId());
 
 		try {
 			// Insert the entry into the database.

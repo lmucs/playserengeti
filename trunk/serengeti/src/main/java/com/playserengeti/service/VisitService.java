@@ -2,10 +2,10 @@ package com.playserengeti.service;
 
 import java.util.Collection;
 
-import com.playserengeti.dao.VisitDao;
-import com.playserengeti.dao.UserDao;
 import com.playserengeti.dao.LocationDao;
-
+import com.playserengeti.dao.TeamDao;
+import com.playserengeti.dao.UserDao;
+import com.playserengeti.dao.VisitDao;
 import com.playserengeti.domain.Visit;
 
 
@@ -17,11 +17,13 @@ public class VisitService {
 	private VisitDao visitDao;
 	private UserDao userDao;
 	private LocationDao locationDao;
+	private TeamDao teamDao;
 
-	public VisitService(VisitDao visitDao, UserDao userDao, LocationDao locationDao)  {
+	public VisitService(VisitDao visitDao, UserDao userDao, LocationDao locationDao, TeamDao teamDao)  {
 	    this.visitDao = visitDao;
 	    this.userDao = userDao;
 	    this.locationDao = locationDao;
+	    this.teamDao = teamDao;
 	}
 
 	public Visit getVisitByVisitId(Integer visitId) {
@@ -66,6 +68,7 @@ public class VisitService {
 
 		Integer userId = visit.getUserId();
 		Integer locationId = visit.getLocationId();
+		Integer teamId = visit.getTeamId();
 
 		String message = "No such ";
 
@@ -77,7 +80,10 @@ public class VisitService {
 			message += "Location Id " + locationId + " Exists";
 			throw new NoSuchFieldException(message);
 		}
+		if(teamDao.teamExists(teamId) == false){
+			message += "Team Id " + teamId + " Exists";
+			throw new NoSuchFieldException(message);
+		}
 		return;
 	}
-
 }

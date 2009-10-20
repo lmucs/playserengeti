@@ -127,16 +127,6 @@
         <put-attribute name="body" value="/WEB-INF/tiles/teamCentral.jsp"/>
     </definition>
 
-    <definition name="teamList" extends="template">
-        <put-attribute name="title" value="List of Teams"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/teamList.jsp"/>
-    </definition>
-
-    <definition name="teamInvite" extends="template">
-        <put-attribute name="title" value="Invite to a Team"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/teamInvite.jsp"/>
-    </definition>
-
     <definition name="teamDelete" extends="template">
         <put-attribute name="title" value="Delete a Team"/>
         <put-attribute name="body" value="/WEB-INF/tiles/teamDelete.jsp"/>
@@ -145,11 +135,6 @@
     <definition name="teamUpdate" extends="template">
         <put-attribute name="title" value="Update a Team"/>
         <put-attribute name="body" value="/WEB-INF/tiles/teamUpdate.jsp"/>
-    </definition>
-
-    <definition name="teamUpdateSuccess" extends="template">
-        <put-attribute name="title" value="Team Updated"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/teamUpdateSuccess.jsp"/>
     </definition>
 
     <definition name="teamViewProfile" extends="template">

@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 
     <p>Create your own team and start marking your territory.
        Just fill in the information below.</p>
@@ -12,7 +14,7 @@
                 <label for="name">Team Name: </label>
             </div>
             <div class="spaceInputBox">
-                <input type="text" id="name" name="name"/>
+                <input type="text" id="name" name="name" />
             </div>
         </div>
         <div>
@@ -29,51 +31,41 @@
             </select>
         </div>
 
-        <p> This will not be necessary when user sign in is implemented.</p>
-
     <div>
         <div class="formLabel">
-            <label for="userId">Team Leader: </label>
+            <label for="image">Team Image URL: </label>
         </div>
         <div class="spaceInputBox">
-	        <select name="userId">
-	            <c:forEach var="user" items="${createTeam.allUsers}">
-	                <option value="${user.userId}"><c:out value="${user.userName}"/></option>
-	            </c:forEach>
-	        </select>
-	    </div>
-    </div>
-    <div>
-        <div class="formLabel">
-            <label for="userId">Add friends: </label>
+            <input type="text" name="image" />
         </div>
-        <div>
-	   
-	            <c:forEach var="user" items="${createTeam.allUsers}">
-	                <input type="checkbox" name="${user.userId}" value="${user.userName}" checked="checked"/>${user.userName}<BR>
-	            </c:forEach>
-	       
-	    </div>
     </div>
+    
     <div>
         <div class="formLabel">
-            <label for="image">Team Image URL:</label>
+            <label for="description">Team Description:</label>
         </div>
         <div class="spaceInputBox">
-            <input type="text" name="image"/>
-        </div
+            <form:textarea path="teamCommand.description" rows="4" cols="40" />
+        </div>
     </div>
-    <div>    
-	    <div class="formLabel">
-	        <label for="name">Home Base: </label>
-	    </div>
-	    <div class="spaceInputBox">
-	        <input type="text" id="name" name="name"/>
-	    </div>
+    
+    <div>
+        <div class="formLabel">
+            <label for="homeBase">Home Base:</label>
+        </div>
+        <div class="spaceInputBox">
+            <input type="text" name="homeBase" />
+        </div>
     </div>
-
+    <div>
+        <div class="formLabel">
+            <label for="invitees">Invite people to team:</label>
+        </div>
+		<form:checkboxes path="teamCommand.invitees" items="${teamCommand.candidates}" /><br/>
+    </div>
+    
     <div class="formRow">
-        <input type="submit" value="Create Team!"/>
+        <input type="submit" value="Create Team!" />
     </div>
 
 </form>
