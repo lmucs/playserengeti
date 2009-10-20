@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
-import com.playserengeti.dao.TeamDao;
 import com.playserengeti.domain.Location;
-import com.playserengeti.domain.Team;
 import com.playserengeti.service.LocationService;
 
 /*
@@ -40,7 +38,7 @@ public class LocationUpdateController extends SimpleFormController {
 	    	updateLocation.setLocationName(location.getLocationName());
     		updateLocation.setLatitude(location.getLatitude());
     		updateLocation.setLongitude(location.getLongitude());
-    		if (location.getTeamOwnerId() != null) updateLocation.setTeamOwnerId(location.getTeamOwnerId());
+    		if (location.getTeamOwner() != null) updateLocation.setTeamOwnerId(location.getTeamOwner());
 
 		}
 
@@ -56,7 +54,7 @@ public class LocationUpdateController extends SimpleFormController {
 		location.setLocationName(command.getLocationName());
 		location.setLatitude(command.getLatitude());
 		location.setLongitude(command.getLongitude());
-		location.setTeamOwnerId(command.getTeamOwnerId());
+		location.setTeamOwner(command.getTeamOwnerId());
 
 		try {
 			// Insert the entry into the database.

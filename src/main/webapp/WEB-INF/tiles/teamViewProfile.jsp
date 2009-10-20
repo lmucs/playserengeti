@@ -45,7 +45,6 @@
                 <!-- These will only display if team.leader.id == userId  and pass in the userId -->
                 <a href="update?teamId=${teamCommand.teamId}">Modify Team</a><br/>
                 <a href="delete?teamId=${teamCommand.teamId}">Delete Team</a><br/>
-                <a href="invite?teamId=${teamCommand.teamId}">Invite People</a><br/>
             </c:when>
             <c:otherwise>
                 <p>The team you requested does not exist.</p>

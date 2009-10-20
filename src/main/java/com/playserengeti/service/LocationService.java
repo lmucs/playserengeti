@@ -3,10 +3,7 @@ package com.playserengeti.service;
 import java.util.Collection;
 
 import com.playserengeti.dao.LocationDao;
-import com.playserengeti.dao.VisitDao;
 import com.playserengeti.domain.Location;
-import com.playserengeti.domain.Membership;
-import com.playserengeti.domain.Visit;
 
 /**
  * Service for operations related to location.

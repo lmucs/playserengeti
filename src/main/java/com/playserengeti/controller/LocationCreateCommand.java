@@ -1,6 +1,5 @@
 package com.playserengeti.controller;
 
-import com.playserengeti.domain.Location;
 import com.playserengeti.domain.Team;
 
 public class LocationCreateCommand {
