@@ -1,9 +1,7 @@
 package com.playserengeti.controller;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 import com.playserengeti.domain.Team;
+import com.playserengeti.domain.User;
 import com.playserengeti.service.LocationService;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
@@ -31,22 +30,6 @@ public class TeamController extends MultiActionController {
 		this.visitService = visitService;
 	}
 	
-	public ModelAndView root(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("redirect:/");
-	}
-	
-	public ModelAndView empty(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("redirect:/");
-	}
-	
-	public ModelAndView ROOT(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("redirect:/");
-	}
-	
-	public ModelAndView DEFAULT(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("redirect:/");
-	}
-	
 	public ModelAndView team (HttpServletRequest request, HttpServletResponse response) {
 		return central(request, response);
 	}
@@ -60,19 +43,17 @@ public class TeamController extends MultiActionController {
 	 */
 	public ModelAndView central(HttpServletRequest request, HttpServletResponse response) {
 		
-		Collection<Team> leaders = new HashSet<Team>();
-		Collection<Team> mostActive = new HashSet<Team>();
-		Collection<Team> newest = new HashSet<Team>();
+		//TODO
+		Collection<Team> leaders = teamService.getAllTeams();
+		Collection<Team> mostActive = teamService.getAllTeams();
+		Collection<Team> newest = teamService.getAllTeams();
 		
-		/*
-		ModelAndView mav = new ModelAndView("teamCentral.jsp");
+		ModelAndView mav = new ModelAndView("teamCentral");
 		mav.addObject("leaders", leaders);
 		mav.addObject("mostActive", mostActive);
 		mav.addObject("newest", newest);
 		
 		return mav;
-		*/
-		return new ModelAndView("redirect:/");
 	}	
 	
 	/**
@@ -84,25 +65,30 @@ public class TeamController extends MultiActionController {
 	public ModelAndView view(HttpServletRequest request, HttpServletResponse response) {
 		TeamCommand command = new TeamCommand();
 		Integer teamId = Integer.valueOf(request.getParameter("teamId"));
-		Team team = teamService.getTeamById(teamId);
-		
-		command.setTeamId(teamId);
-		command.setColor(team.getColor());
-		command.setDescription(team.getDescription());
-		command.setHomeBase(team.getHomeBase());
-		command.setImage(team.getImage());
-		//command.setLeaderId(team.getLeader().getUserId());
-		
-		Map<Integer, String> members = new HashMap<Integer, String>();
-		Collection<Integer> users = teamService.getTeamMembers(teamId);
-		for(Integer id : users) {
-			members.put(id, userService.getUserById(id).getUserName());
+        Team team = null;
+        if (teamId != null) {
+            team = teamService.getTeamById(teamId);
+        }
+        
+        command.setTeamId(teamId);
+        command.setName(team.getName());
+        command.setColor(team.getColor());
+        command.setDescription(team.getDescription());
+        command.setHomeBase(team.getHomeBase());
+        command.setImage(team.getImage());
+        if (team.getLeader() != null) command.setLeaderId(team.getLeader().getUserId());
+        
+		Collection<Integer> users = teamService.getTeamMembers(Integer.valueOf(teamId));
+		Collection<User> members = new HashSet<User>();
+		for (Integer id : users) {
+			members.add(userService.getUserById(id));
 		}
-		command.setMembers(members);
-		
-		ModelAndView mav = new ModelAndView("teamProfile.jsp");
-		mav.addObject("command", command);
-		
-		return mav;
+
+        ModelAndView mav = new ModelAndView("teamViewProfile");
+        mav.addObject("teamCommand", command);
+        mav.addObject("members", members);
+
+        return mav;
+
 	}
 }

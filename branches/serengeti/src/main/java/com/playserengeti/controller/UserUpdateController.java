@@ -8,15 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
-import com.playserengeti.domain.Location;
 import com.playserengeti.domain.User;
-
 import com.playserengeti.service.UserService;
 
 public class UserUpdateController extends SimpleFormController {

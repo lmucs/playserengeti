@@ -8,7 +8,7 @@
         <li><a href="user/list">View all users in the system!</a></li>
         </ul>
         <ul>
-        <li><a href="team/central">Team Central</a></li>
+        <li><a href="team">Team Central</a></li>
         </ul>
         <ul>
         <li><a href="status/ping">send a ping</a></li>

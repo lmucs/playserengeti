@@ -2,7 +2,6 @@ package com.playserengeti.controller;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,10 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
-import com.playserengeti.domain.Membership;
 import com.playserengeti.domain.Team;
-import com.playserengeti.domain.User;
-import com.playserengeti.service.LocationService;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
 

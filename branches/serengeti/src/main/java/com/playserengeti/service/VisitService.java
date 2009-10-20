@@ -1,16 +1,11 @@
 package com.playserengeti.service;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 
 import com.playserengeti.dao.LocationDao;
 import com.playserengeti.dao.TeamDao;
 import com.playserengeti.dao.UserDao;
 import com.playserengeti.dao.VisitDao;
-import com.playserengeti.domain.Team;
 import com.playserengeti.domain.Visit;
 
 
