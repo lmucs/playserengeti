@@ -23,8 +23,6 @@
                 <entry key="/user/view" value-ref="userViewProfileController" />
                 <entry key="/user/list" value-ref="userListController" />
 				
-                <entry key="/team/create" value-ref="teamCreateController" />
-                <entry key="/team/update" value-ref="teamUpdateController" />
                 <entry key="/team/delete" value-ref="teamDeleteController" />
 
                 <entry key="/location/create" value-ref="locationCreateController" />
