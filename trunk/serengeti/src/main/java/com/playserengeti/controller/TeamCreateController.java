@@ -57,7 +57,7 @@ public class TeamCreateController extends SimpleFormController {
 
 		Integer[] invitees = command.getInvitees();
 		for(Integer id : invitees) {
-			teamService.addToTeam(team.getId(), Integer.valueOf(id));
+			teamService.addToTeam(team.getId(), id);
 		}
 		
 		ModelAndView mav = new ModelAndView("redirect:view");

@@ -77,7 +77,7 @@ public class MembershipDaoMockImpl implements MembershipDao{
 		Set<Membership> result = new HashSet<Membership>();
 		
 		for (Membership m : storage.values()){
-			if (m.getTeamId() == teamId) result.add(m);
+			if (m.getTeamId().equals(teamId)) result.add(m);
 		}
 		return result;
 	}
@@ -87,7 +87,7 @@ public class MembershipDaoMockImpl implements MembershipDao{
 		Set<Membership> result = new HashSet<Membership>();
 		
 		for (Membership m : storage.values()){
-			if (m.getUserId() == userId) result.add(m);
+			if (m.getUserId().equals(userId)) result.add(m);
 		}
 		return result;
 	}

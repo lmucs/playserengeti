@@ -32,7 +32,7 @@
                         <td><c:out value="${teamCommand.homeBase}"/></td>
                     </tr>
                     <tr>
-                      <td><strong>Team Members:</strong><br/></td>
+                      <td><strong>Team Members:</strong></td>
                       <c:forEach var="user" items="${members}">
                         <tr>
                           <td><a href="../user/view?userId=${user.userId}"><c:out value="${user.userName}"/></a></td>
@@ -42,9 +42,8 @@
 
                 </table>
                 <hr>
-                <!-- These will only display if team.leader.id == userId  and pass in the userId -->
+                <!-- This will only display if team.leader.id == userId  and pass in the userId -->
                 <a href="update?teamId=${teamCommand.teamId}">Modify Team</a><br/>
-                <a href="delete?teamId=${teamCommand.teamId}">Delete Team</a><br/>
             </c:when>
             <c:otherwise>
                 <p>The team you requested does not exist.</p>

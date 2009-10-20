@@ -98,7 +98,7 @@ public class TeamService {
     	Collection<Membership> mem = membershipDao.getMembershipsByTeam(teamId);
     	
     	for(Membership m : mem) {
-    		if(m.getUserId() == userId) return m;
+    		if(m.getUserId().equals(userId)) return m;
     	}
     	
     	return null;
