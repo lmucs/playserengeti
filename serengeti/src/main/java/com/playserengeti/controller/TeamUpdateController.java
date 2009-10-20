@@ -53,7 +53,7 @@ public class TeamUpdateController extends SimpleFormController {
       		teamCommand.setHomeBase(team.getHomeBase());
     		if (team.getLeader() != null) teamCommand.setLeaderId(team.getLeader().getUserId());
     		
-    		Collection<Integer> members = teamService.getTeamMembers(Integer.valueOf(teamId));
+    		Collection<Integer> members = teamService.getTeamMembers(teamId);
     		Map<Integer, String> candidates = new HashMap<Integer, String>();
     		for (Integer id : members) {
     			candidates.put(id, userService.getUserById(id).getUserName());
@@ -85,7 +85,7 @@ public class TeamUpdateController extends SimpleFormController {
 		
 		Integer[] removals = command.getRemovals();
 		for (Integer id : removals) {
-			teamService.removeFromTeam(teamId, Integer.valueOf(id));
+			teamService.removeFromTeam(teamId, id);
 		}
 
 		ModelAndView mav = new ModelAndView("redirect:view");		

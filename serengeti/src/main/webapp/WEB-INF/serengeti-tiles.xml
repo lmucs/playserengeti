@@ -127,11 +127,6 @@
         <put-attribute name="body" value="/WEB-INF/tiles/teamCentral.jsp"/>
     </definition>
 
-    <definition name="teamDelete" extends="template">
-        <put-attribute name="title" value="Delete a Team"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/teamDelete.jsp"/>
-    </definition>
-
     <definition name="teamUpdate" extends="template">
         <put-attribute name="title" value="Update a Team"/>
         <put-attribute name="body" value="/WEB-INF/tiles/teamUpdate.jsp"/>
