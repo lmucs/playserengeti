@@ -6,7 +6,7 @@
         <p>Nearby Locations</p>
         <ul>
             <c:forEach var="location" items="${nearbyLocations}">
-               <li><a href="location/view?locationId=${location.locationId}"><c:out value="${location.locationName}"/></a></li>
+               <li><a href="view?locationId=${location.locationId}"><c:out value="${location.locationName}"/></a></li>
             </c:forEach>
         </ul>
 

@@ -32,21 +32,6 @@
         <put-attribute name="body" value="/WEB-INF/tiles/viewWorldMap.jsp"/>
     </definition>
 
-    <definition name="ping" extends="template">
-        <put-attribute name="title" value="Ping Someone"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/ping.jsp"/>
-    </definition>
-
-    <definition name="show" extends="template">
-        <put-attribute name="title" value="Turn on Pinging"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/show.jsp"/>
-    </definition>
-
-    <definition name="hide" extends="template">
-        <put-attribute name="title" value="Hide from Pinging"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/hide.jsp"/>
-    </definition>
-
     <definition name="locationCentral" extends="template">
         <put-attribute name="title" value="Location Central"/>
         <put-attribute name="body" value="/WEB-INF/tiles/locationCentral.jsp"/>
