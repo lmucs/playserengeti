@@ -13,6 +13,7 @@
     ** [http://www.degraeve.com/color-palette/index.php?q=http://www.tanzaniaodyssey.com/images/serengeti_serengeti_top_60_4.jpg,4c4526579fd5428ac1b8dae7677874,635000006dfb0088ff709b92b4ffff Choice 5]
  ** Scoring Decay (LocationOwnershipScoring)
 
+** Go to this link and tell me what you think about the navigation bar that I have temporarily added to our serengeti page. http://yfrog.com/0cpicture1ivp
 
 = Closed Questions =
  **
