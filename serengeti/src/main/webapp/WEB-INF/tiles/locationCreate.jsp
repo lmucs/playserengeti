@@ -1,36 +1,110 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<html>
 
-<p>Create a Location by filling in the information below.</p>
+    <p>Create your own team and start marking your territory.
+       Just fill in the information below.</p>
 
-<form:form method="post">
-    <div>
-        <label for="locationName">locationName: </label>
-        <form:input path="locationName"/>
-        <form:errors path="locationName"/>
+    <form id="locationCreateForm" method="post" action="create"
+        onsubmit="return validateCreateForm();">
+        <div>    
+            <div class="formLabel">
+                <label for="locationName">Location Name: </label>
+            </div>
+            <div class="spaceInputBox">
+                <input type="text" id="locationName" name="locationName" />
+            </div>
+        </div>
+
+        <div>
+            <div class="formLabel">
+                <label for="latitude">Location Latitude</label>
+            </div>
+            <div class="spaceInputBox">
+                <input type="text" name="latitude" />
+            </div>
+        </div>
+        <div>
+            <div class="formLabel">
+                <label for="longitude">Location Longitude</label>
+            </div>
+            <div class="spaceInputBox">
+                <input type="text" name="longitude" />
+            </div>
+        </div>
+        <div>
+            <div class="formLabel">
+                <label for="phoneNumber">Phone Number</label>
+            </div>
+            <div class="spaceInputBox">
+                <input type="text" name="phoneNumber" />
+            </div>
+        </div>
+        <div>
+            <div class="formLabel">
+                <label for="street">Street</label>
+            </div>
+            <div class="spaceInputBox">
+                <input type="text" name="street" />
+            </div>
+        </div>
+        <div>
+            <div class="formLabel">
+                <label for="city">City</label>
+            </div>
+            <div class="spaceInputBox">
+                <input type="text" name="city" />
+            </div>
+        </div>
+        <div>
+            <div class="formLabel">
+                <label for="state">State</label>
+            </div>
+            <div class="spaceInputBox">
+                <input type="text" name="state" />
+            </div>
+        </div>
+        <div>
+            <div class="formLabel">
+                <label for="zipcode">Zipcode</label>
+            </div>
+            <div class="spaceInputBox">
+                <input type="text" name="zipcode" />
+            </div>
+        </div>
+       <div>
+            <div class="formLabel">
+                <label for="description">Description:</label>
+            </div>
+            <div class="spaceInputBox">
+                <form:textarea path="locationCommand.description" rows="4" cols="40" />
+            </div>
+       </div>
+       <div>
+            <div class="formLabel">
+                <label for="image">Image</label>
+            </div>
+            <div class="spaceInputBox">
+                <input type="text" name="image" />
+            </div>
+        </div>
+    
+    
+    <div class="formRow">
+        <input type="submit" value="Create Location!" />
     </div>
 
-    <div>
-        <label for="latitude">Latitude: </label>
-        <form:input path="latitude"/>
-        <form:errors path="latitude"/>
-    </div>
+</form>
 
-    <div>
-        <label for="longitude">Longitude: </label>
-        <form:input path="longitude"/>
-        <form:errors path="longitude"/>
-    </div>
-
-    <div>
-        <input type="submit" value="Create!"/>
-    </div>
-</form:form>
-
-<c:if test="${not empty message}">
-    <p><c:out value="${message}"/></p>
-</c:if>
+<script>
+    var validateCreateForm = function () {
+        var name = document.getElementById("locationName");
+        if (name && name.value !== '') {
+            return true;
+        }
+        alert("The name cannot be blank");
+        return false;
+    }
+</script>

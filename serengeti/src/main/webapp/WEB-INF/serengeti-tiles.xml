@@ -47,39 +47,14 @@
         <put-attribute name="body" value="/WEB-INF/tiles/hide.jsp"/>
     </definition>
 
+    <definition name="locationCentral" extends="template">
+        <put-attribute name="title" value="Location Central"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/locationCentral.jsp"/>
+    </definition>
+    
     <definition name="locationCreate" extends="template">
         <put-attribute name="title" value="Create a Location"/>
         <put-attribute name="body" value="/WEB-INF/tiles/locationCreate.jsp"/>
-    </definition>
-
-    <definition name="locationCreateSuccess" extends="template">
-        <put-attribute name="title" value="Location Created"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/locationCreateSuccess.jsp"/>
-    </definition>
-
-    <definition name="locationDelete" extends="template">
-        <put-attribute name="title" value="Delete a Location"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/locationDelete.jsp"/>
-    </definition>
-
-    <definition name="locationDeleteSuccess" extends="template">
-        <put-attribute name="title" value="Location Deleted"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/locationDeleteSuccess.jsp"/>
-    </definition>
-
-    <definition name="locationUpdate" extends="template">
-        <put-attribute name="title" value="Update a Location"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/locationUpdate.jsp"/>
-    </definition>
-
-    <definition name="locationUpdateSuccess" extends="template">
-        <put-attribute name="title" value="Location Updated"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/locationUpdateSuccess.jsp"/>
-    </definition>
-
-    <definition name="locationList" extends="template">
-        <put-attribute name="title" value="Location List"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/locationList.jsp"/>
     </definition>
 
     <definition name="locationViewProfile" extends="template">

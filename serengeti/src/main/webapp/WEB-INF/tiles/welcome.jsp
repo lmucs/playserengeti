@@ -9,6 +9,7 @@
         </ul>
         <ul>
         <li><a href="team">Team Central</a></li>
+        <li><a href="location">Location Central</a></li>
         </ul>
         <ul>
         <li><a href="status/ping">send a ping</a></li>
@@ -17,7 +18,5 @@
         <li><a href="status/game">View the World Map</a></li>
         </ul>
         <ul>
-        <li><a href="location/create">Create a location</a></li>
-        <li><a href="location/list">View all locations in the system</a></li>
         <li><a href="visit/create">Check In (aka create a Visit)</a></li>
         </ul>

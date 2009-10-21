@@ -1,6 +1,5 @@
 package com.playserengeti.controller;
 
-import java.util.Map;
 
 
 public class LocationCommand {
@@ -10,7 +9,6 @@ public class LocationCommand {
     double longitude;
     double latitude;
     Integer teamOwner;
-    Map<Integer, String> teamList;
     String description;
     String phoneNumber;
     String image;
@@ -18,6 +16,7 @@ public class LocationCommand {
     String city;
     String state;
     String zipcode;
+    
 	public Integer getLocationId() {
 		return locationId;
 	}
@@ -47,12 +46,6 @@ public class LocationCommand {
 	}
 	public void setTeamOwner(Integer teamOwner) {
 		this.teamOwner = teamOwner;
-	}
-	public Map<Integer, String> getTeamList() {
-		return teamList;
-	}
-	public void setTeamList(Map<Integer, String> teamList) {
-		this.teamList = teamList;
 	}
 	public String getDescription() {
 		return description;
@@ -96,6 +89,4 @@ public class LocationCommand {
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
-    
-    
 }

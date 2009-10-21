@@ -23,12 +23,6 @@
                 <entry key="/user/view" value-ref="userViewProfileController" />
                 <entry key="/user/list" value-ref="userListController" />
 				
-                <entry key="/location/create" value-ref="locationCreateController" />
-                <entry key="/location/update" value-ref="locationUpdateController" />
-                <entry key="/location/delete" value-ref="locationDeleteController" />
-                <entry key="/location/view" value-ref="locationViewProfileController" />
-                <entry key="/location/list" value-ref="locationListController" />
-
                 <entry key="/status/ping" value-ref="pingController" />
                 <entry key="/status/show" value-ref="showController" />
                 <entry key="/status/hide" value-ref="hideController" />
@@ -46,6 +40,10 @@
                 <entry key="/team/update" value-ref="teamUpdateController" />
                 <entry key="/team" value-ref="teamController" />
                 <entry key="/team/*" value-ref="teamController" />
+                
+                <entry key="/location/create" value-ref="locationCreateController" />
+                <entry key="/location" value-ref="locationController" />
+                <entry key="/location/*" value-ref="locationController" />
             </map>
         </property>
     </bean>
@@ -164,13 +162,10 @@
         class="com.playserengeti.controller.TeamController">
         <property name="methodNameResolver">
            <bean class="com.playserengeti.controller.SerengetiMultipartResolver">
-              <!-- <property name="paramName" value="method"/> -->
            </bean>
         </property>
         <constructor-arg ref="teamService"/>
         <constructor-arg ref="userService"/>
-        <constructor-arg ref="locationService"/>
-        <constructor-arg ref="visitService"/>
      </bean>    
      
      <bean id="teamCreateController"
@@ -223,54 +218,24 @@
         Location Controllers and Such
     -->
 
+     <bean id="locationController"
+        class="com.playserengeti.controller.LocationController">
+        <property name="methodNameResolver">
+           <bean class="com.playserengeti.controller.SerengetiMultipartResolver">
+           </bean>
+        </property>
+        <constructor-arg ref="locationService"/>
+        <constructor-arg ref="teamService"/>
+     </bean>    
+     
     <bean id="locationCreateController"
         class="com.playserengeti.controller.LocationCreateController">
         <property name="commandClass"
-          value="com.playserengeti.controller.LocationCreateCommand"
+          value="com.playserengeti.controller.LocationCommand"
         />
-<!--        <property name="commandName" value="createLocation"/> -->
+        <property name="commandName" value="locationCommand"/>
         <property name="validator" ref="locationCreateValidator"/>
         <property name="formView" value="locationCreate" />
-        <property name="successView" value="locationCreateSuccess" />
-        <constructor-arg ref="locationService"/>
-    </bean>
-
-    <bean id="locationUpdateController"
-        class="com.playserengeti.controller.LocationUpdateController">
-        <property name="commandClass"
-          value="com.playserengeti.controller.LocationUpdateCommand"
-        />
-<!--        <property name="commandName" value="updateLocation"/> -->
-        <property name="validator" ref="locationUpdateValidator"/>
-                <property name="formView" value="locationUpdate" />
-        <property name="successView" value="locationUpdateSuccess" />
-        <constructor-arg ref="locationService"/>
-    </bean>
-
-    <bean id="locationDeleteController"
-        class="com.playserengeti.controller.LocationDeleteController">
-        <property name="commandClass"
-          value="com.playserengeti.controller.LocationDeleteCommand"
-        />
-        <property name="commandName" value="deleteLocation"/>
-        <property name="validator" ref="locationDeleteValidator"/>
-        <property name="formView" value="locationDelete" />
-        <property name="successView" value="locationDeleteSuccess" />
-        <constructor-arg ref="locationService"/>
-    </bean>
-
-    <bean id="locationViewProfileController"
-        class="com.playserengeti.controller.LocationViewProfileController">
-        <property name="commandClass"
-            value="com.playserengeti.controller.LocationViewProfileCommand"
-        />
-        <property name="commandName" value="locationViewProfile"/>
-        <property name="validator" ref="locationViewProfileValidator"/>
-        <constructor-arg ref="locationService"/>
-    </bean>
-
-    <bean id="locationListController"
-        class="com.playserengeti.controller.LocationListController">
         <constructor-arg ref="locationService"/>
     </bean>
 
@@ -279,20 +244,8 @@
         <constructor-arg ref="locationDao"/>
     </bean>
 
-    <bean id="locationDeleteValidator"
-        class="com.playserengeti.controller.LocationDeleteValidator">
-    </bean>
-
     <bean id="locationCreateValidator"
         class="com.playserengeti.controller.LocationCreateValidator">
-    </bean>
-
-    <bean id="locationUpdateValidator"
-        class="com.playserengeti.controller.LocationUpdateValidator">
-    </bean>
-
-    <bean id="locationViewProfileValidator"
-        class="com.playserengeti.controller.LocationViewProfileValidator">
     </bean>
 
     <bean id="locationDao"
