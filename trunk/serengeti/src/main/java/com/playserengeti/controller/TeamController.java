@@ -27,7 +27,7 @@ public class TeamController extends MultiActionController {
 	}
 	
 	public ModelAndView team (HttpServletRequest request, HttpServletResponse response) {
-		return central(request, response);
+		return new ModelAndView("redirect:team/");
 	}
 	
 	/**

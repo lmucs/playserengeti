@@ -23,7 +23,7 @@ public class LocationController extends MultiActionController {
 	}
 	
 	public ModelAndView location(HttpServletRequest request, HttpServletResponse response) {
-		return central(request, response);
+		return new ModelAndView("redirect:location/");
 	}
 	
 	public ModelAndView central(HttpServletRequest request, HttpServletResponse response) {

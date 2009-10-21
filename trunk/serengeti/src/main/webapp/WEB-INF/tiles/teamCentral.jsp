@@ -6,21 +6,21 @@
         <p>Teams With the Most Territory</p>
         <ul>
             <c:forEach var="team" items="${leaders}">
-               <li><a href="team/view?teamId=${team.id}"><c:out value="${team.name}"/></a></li>
+               <li><a href="view?teamId=${team.id}"><c:out value="${team.name}"/></a></li>
             </c:forEach>
         </ul>
         
         <p>Most Active Teams</p>
         <ul>
             <c:forEach var="team" items="${mostActive}">
-               <li><a href="team/view?teamId=${team.id}"><c:out value="${team.name}"/></a></li>
+               <li><a href="view?teamId=${team.id}"><c:out value="${team.name}"/></a></li>
             </c:forEach>
         </ul>
         
         <p>Newest Teams</p>
         <ul>
             <c:forEach var="team" items="${newest}">
-               <li><a href="team/view?teamId=${team.id}"><c:out value="${team.name}"/></a></li>
+               <li><a href="view?teamId=${team.id}"><c:out value="${team.name}"/></a></li>
             </c:forEach>
         </ul>
 
