@@ -1,7 +1,9 @@
 package com.playserengeti.service;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import com.playserengeti.dao.MembershipDao;
@@ -63,6 +65,17 @@ public class TeamService {
      */
     public Collection<Team> getAllTeams() {
     	return teamDao.getAllTeams();
+    }
+    
+    public Map<Integer, String> getAllTeamsMap() {
+    	Map<Integer, String> result = new HashMap<Integer, String>();
+    	Collection<Team> teams = teamDao.getAllTeams();
+    	
+    	for (Team t : teams) {
+    		result.put(t.getId(), t.getName());
+    	}
+    	
+    	return result;
     }
     
     public void saveMembership(Membership m) {

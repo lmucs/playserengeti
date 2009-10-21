@@ -20,14 +20,10 @@ public class TeamController extends MultiActionController {
 	
 	private TeamService teamService;
 	private UserService userService;
-	private LocationService locationService;
-	private VisitService visitService;
 	
-	public TeamController(TeamService teamService, UserService userService, LocationService locationService, VisitService visitService) {
+	public TeamController(TeamService teamService, UserService userService) {
 		this.teamService = teamService;
 		this.userService = userService;
-		this.locationService = locationService;
-		this.visitService = visitService;
 	}
 	
 	public ModelAndView team (HttpServletRequest request, HttpServletResponse response) {

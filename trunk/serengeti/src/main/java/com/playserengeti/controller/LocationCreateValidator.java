@@ -7,12 +7,12 @@ import org.springframework.validation.Validator;
 public class LocationCreateValidator implements Validator {
 	@Override
 	public boolean supports(Class c) {
-		return LocationCreateCommand.class.equals(c);
+		return LocationCommand.class.equals(c);
 	}
 
 	@Override
 	public void validate(Object object, Errors errors) {
-		LocationCreateCommand c = LocationCreateCommand.class.cast(object);
+		LocationCommand c = LocationCommand.class.cast(object);
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "locationName",
 				"locationName.blank", "The location name can not be blank");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "latitude",
