@@ -128,16 +128,28 @@ public class TeamService {
     	return result;
     }
     
-    public Collection<Integer> getUsersTeams(Integer userId) {
-    	Set<Integer> result = new HashSet<Integer>();
-    	Collection<Membership> mem = membershipDao.getMembershipsByUser(userId);
+    public Map<Integer, String> getUsersTeamsMap(Integer userId) {
+    	Map<Integer, String> result = new HashMap<Integer, String>();
+    	Collection<Team> teams = getUsersTeams(userId);
     	
-    	for (Membership m : mem) {
-    		result.add(m.getTeamId());
+    	for (Team t : teams) {
+    		result.put(t.getId(), t.getName());
     	}
     	
     	return result;
     }
+    
+    public Collection<Team> getUsersTeams(Integer userId) {
+    	Set<Team> result = new HashSet<Team>();
+    	Collection<Membership> mem = membershipDao.getMembershipsByUser(userId);
+    	
+    	for (Membership m : mem) {
+    		result.add(getTeamById(m.getTeamId()));
+    	}
+    	
+    	return result;
+    }
+    
     
     public void addToTeam(Integer teamId, Integer userId) {
         saveMembership(new Membership(null, teamId, userId));

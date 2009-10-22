@@ -26,8 +26,6 @@
             </select>
         </div>
 
-        <p> This will not be necessary when user sign in is implemented.</p>
-
     <div>
         <div class="formLabel">
             <label for="userId">Team Leader: </label>

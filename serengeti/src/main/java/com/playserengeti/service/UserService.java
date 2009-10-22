@@ -96,14 +96,14 @@ public class UserService {
     	return friendshipDao.getFriendshipsByUser(userId);
     }
     
-    public Collection<Integer> getFriends(Integer userId) {
-    	Set<Integer> result = new HashSet<Integer>();
+    public Collection<User> getFriends(Integer userId) {
+    	Set<User> result = new HashSet<User>();
     	Collection<Friendship> friends = friendshipDao.getFriendshipsByUser(userId);
     	
     	for (Friendship f : friends) {
-    		if (f.getPrimaryUserId() == userId) result.add(f.getSecondaryUserId());
+    		if (f.getPrimaryUserId().equals(userId)) result.add(getUserById(f.getSecondaryUserId()));
     		else {
-    			result.add(f.getPrimaryUserId());
+    			result.add(getUserById(f.getPrimaryUserId()));
     		}
     	}
     	
@@ -118,11 +118,22 @@ public class UserService {
      */
     public Map<Integer, String> getFriendsMap(Integer userId) {
     	Map<Integer, String> result = new HashMap<Integer, String>();
-    	Collection<Integer> friends = getFriends(userId);
+    	Collection<User> friends = getFriends(userId);
     	
-    	for(Integer i : friends) {
-    		result.put(i, userDao.getUserById(i).getUserName());
+    	for(User u : friends) {
+    		result.put(u.getUserId(), u.getUserName());
     	}
     	return result;
+    }
+    
+    public void removeFriendship(Integer primaryId, Integer secondaryId) {
+    	Collection<Friendship> friendships = getFriendshipsByUser(primaryId);
+    	
+    	for(Friendship f : friendships) {
+    		if(secondaryId.equals(f.getSecondaryUserId()) 
+    				|| secondaryId.equals(f.getPrimaryUserId())) {
+    		    deleteFriendship(f.getFriendshipId());
+    		}
+    	}
     }
 }

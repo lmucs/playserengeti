@@ -86,6 +86,5 @@ public class TeamController extends MultiActionController {
         mav.addObject("members", members);
 
         return mav;
-
 	}
 }

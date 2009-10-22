@@ -17,14 +17,8 @@
                 <entry key="/" value-ref="welcomeController" />
                 <entry key="/index.html" value-ref="welcomeController" />
 
-                <entry key="/user/create" value-ref="userCreateController" />
                 <entry key="/user/delete" value-ref="userDeleteController" />
-                <entry key="/user/update" value-ref="userUpdateController" />
-                <entry key="/user/view" value-ref="userViewProfileController" />
-                <entry key="/user/list" value-ref="userListController" />
-				
-                <entry key="/status/game" value-ref="viewWorldMapController" />
-
+                				
                 <entry key="/visit/create" value-ref="visitCreateController" />
 
                 <!--
@@ -32,6 +26,11 @@
                 <entry key="/logout" value-ref="logoutController" />
                 <entry key="/error/*" value-ref="errorController" />
                 -->
+                
+                <entry key="/user/create" value-ref="userCreateController" />
+                <entry key="/user/update" value-ref="userUpdateController" />
+                <entry key="/user" value-ref="userController" />
+                <entry key="/user/*" value-ref="userController" />
                 
                 <entry key="/team/create" value-ref="teamCreateController" />
                 <entry key="/team/update" value-ref="teamUpdateController" />
@@ -68,21 +67,37 @@
     <!--
         User Controllers and Such
     -->
-
+    
+    <bean id="userController"
+       class="com.playserengeti.controller.UserController">
+       <property name="methodNameResolver">
+          <bean class="com.playserengeti.controller.SerengetiMultipartResolver">
+          </bean>
+       </property>
+       <constructor-arg ref="userService"/>
+       <constructor-arg ref="teamService"/>
+    </bean>  
+     
     <bean id="userCreateController"
         class="com.playserengeti.controller.UserCreateController">
         <property name="commandClass"
-            value="com.playserengeti.controller.UserCreateCommand"
+            value="com.playserengeti.controller.UserCommand"
         />
-<!--        <property name="commandName" value="createUser"/> -->
         <property name="validator" ref="userCreateValidator"/>
-        <property name="formView" value="signup"/>
-        <property name="successView" value="signupSuccess"/>
+        <property name="formView" value="userCreate"/>
         <constructor-arg ref="userService"/>
     </bean>
 
-    <bean id="userCreateValidator"
-        class="com.playserengeti.controller.UserCreateValidator">
+    <bean id="userUpdateController"
+        class="com.playserengeti.controller.UserUpdateController">
+        <property name="commandClass"
+            value="com.playserengeti.controller.UserCommand"
+        />
+        <property name="commandName" value="userCommand"/>
+        <property name="validator" ref="userUpdateValidator"/>
+        <property name="formView" value="userUpdate"/>
+        <constructor-arg ref="userService"/>
+        <constructor-arg ref="teamService"/>
     </bean>
 
     <bean id="userDeleteController"
@@ -97,12 +112,19 @@
         <constructor-arg ref="userService"/>
         <constructor-arg ref="teamService"/>
     </bean>
-
-    <bean id="userListController"
-        class="com.playserengeti.controller.UserListController">
-        <constructor-arg ref="userService"/>
+    
+    <bean id="userCreateValidator"
+        class="com.playserengeti.controller.UserCreateValidator">
+    </bean>
+    
+    <bean id="userDeleteValidator"
+        class="com.playserengeti.controller.UserDeleteValidator">
     </bean>
 
+    <bean id="userUpdateValidator"
+        class="com.playserengeti.controller.UserUpdateValidator">
+    </bean>
+    
     <bean id="userService"
         class="com.playserengeti.service.UserService">
         <constructor-arg ref="userDao"/>
@@ -115,40 +137,6 @@
 
     <bean id="friendshipDao"
         class="com.playserengeti.dao.FriendshipDaoMockImpl">
-    </bean>
-
-    <bean id="userDeleteValidator"
-        class="com.playserengeti.controller.UserDeleteValidator">
-    </bean>
-
-    <bean id="userUpdateController"
-        class="com.playserengeti.controller.UserUpdateController">
-        <property name="commandClass"
-            value="com.playserengeti.controller.UserUpdateCommand"
-        />
-        <property name="commandName" value="userUpdate"/>
-        <property name="validator" ref="userUpdateValidator"/>
-        <property name="formView" value="userUpdate"/>
-        <property name="successView" value="userUpdateSuccess"/>
-        <constructor-arg ref="userService"/>
-    </bean>
-
-    <bean id="userUpdateValidator"
-        class="com.playserengeti.controller.UserUpdateValidator">
-    </bean>
-
-    <bean id="userViewProfileController"
-        class="com.playserengeti.controller.UserViewProfileController">
-        <property name="commandClass"
-            value="com.playserengeti.controller.UserViewProfileCommand"
-        />
-        <property name="commandName" value="userViewProfile"/>
-        <property name="validator" ref="userViewProfileValidator"/>
-        <constructor-arg ref="userService"/>
-    </bean>
-
-    <bean id="userViewProfileValidator"
-        class="com.playserengeti.controller.UserViewProfileValidator">
     </bean>
 
  <!--
@@ -247,28 +235,6 @@
 
     <bean id="locationDao"
         class="com.playserengeti.dao.LocationDaoMockImpl">
-    </bean>
-
-    <!--
-        Status Controllers and Such
-    -->
-
-    <bean id="viewWorldMapController"
-        class="com.playserengeti.controller.ViewWorldMapController">
-        <property name="commandClass"
-            value="com.playserengeti.controller.ViewWorldMapCommand"
-        />
-        <property name="commandName" value="viewWorldMap"/>
-        <property name="validator" ref="viewWorldMapValidator"/>
-        <constructor-arg ref="viewWorldMapService"/>
-    </bean>
-
-    <bean id="viewWorldMapService"
-        class="com.playserengeti.service.ViewWorldMapService">
-    </bean>
-
-    <bean id="viewWorldMapValidator"
-        class="com.playserengeti.controller.ViewWorldMapValidator">
     </bean>
 
     <!--

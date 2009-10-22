@@ -26,6 +26,24 @@
 	        <form:errors path="password"/>
 	    </div>
     </div>
+        <div>
+        <div  class="formLabel">
+            <label for="firstName">First Name: </label>
+        </div>
+        <div class="spaceInputBox">
+	        <form:input path="firstName"/>
+	        <form:errors path="firstName"/>
+	    </div>
+    </div>
+        <div>
+        <div  class="formLabel">
+            <label for="lastName">Last Name: </label>
+        </div>
+        <div class="spaceInputBox">
+	        <form:input path="lastName"/>
+	        <form:errors path="lastName"/>
+	    </div>
+    </div>
     <div>
         <div  class="formLabel">
             <label for="email">Email Address: </label>

@@ -17,16 +17,6 @@
         <put-attribute name="body" value="/WEB-INF/tiles/welcome.jsp"/>
     </definition>
 
-    <definition name="signup" extends="template">
-        <put-attribute name="title" value="Signup for Serengeti"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/signup.jsp"/>
-    </definition>
-
-    <definition name="signupSuccess" extends="template">
-        <put-attribute name="title" value="Signup Successful"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/signupSuccess.jsp"/>
-    </definition>
-
     <definition name="viewWorldMap" extends="template">
         <put-attribute name="title" value="Serengeti Map"/>
         <put-attribute name="body" value="/WEB-INF/tiles/viewWorldMap.jsp"/>
@@ -47,9 +37,14 @@
         <put-attribute name="body" value="/WEB-INF/tiles/locationViewProfile.jsp"/>
     </definition>
 
-    <definition name="userlist" extends="template">
-        <put-attribute name="title" value="List of Users"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/userlist.jsp"/>
+    <definition name="userCentral" extends="template">
+        <put-attribute name="title" value="User Central"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/userCentral.jsp"/>
+    </definition>
+    
+    <definition name="userCreate" extends="template">
+        <put-attribute name="title" value="Signup for Serengeti"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/userCreate.jsp"/>
     </definition>
 
     <definition name="userDelete" extends="template">
@@ -65,11 +60,6 @@
     <definition name="userUpdate" extends="template">
         <put-attribute name="title" value="Update a User"/>
         <put-attribute name="body" value="/WEB-INF/tiles/userUpdate.jsp"/>
-    </definition>
-
-    <definition name="userUpdateSuccess" extends="template">
-        <put-attribute name="title" value="User Updated"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/userUpdateSuccess.jsp"/>
     </definition>
 
     <definition name="userViewProfile" extends="template">

@@ -16,6 +16,7 @@ public class User {
     private String lastName;		// Optional.
     private String email;			// Not null.
     private Date dateOfBirth;		// Optional.
+    private String image;
 
 	public User(Integer userId, String userName, String passwordHash,
 			String firstName, String lastName, String email, Date dateOfBirth) {
@@ -91,6 +92,14 @@ public class User {
 
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	@Override

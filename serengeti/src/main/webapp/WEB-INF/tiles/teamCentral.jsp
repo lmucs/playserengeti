@@ -24,4 +24,4 @@
             </c:forEach>
         </ul>
 
-        <p><a href="team/create">Create a new team?</a></p>
+        <p><a href="create">Create a new team?</a></p>

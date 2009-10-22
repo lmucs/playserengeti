@@ -31,14 +31,13 @@
                         <td><strong>Home Base:</td>
                         <td><c:out value="${teamCommand.homeBase}"/></td>
                     </tr>
-                    <tr>
-                      <td><strong>Team Members:</strong></td>
+                    
+                    <strong>Team Members:</strong>
+                    <ul>
                       <c:forEach var="user" items="${members}">
-                        <tr>
-                          <td><a href="../user/view?userId=${user.userId}"><c:out value="${user.userName}"/></a></td>
-                        </tr>
+                          <li><a href="../user/view?userId=${user.userId}"><c:out value="${user.userName}"/></a></li>
                       </c:forEach>
-                    </tr>
+                    </ul>
 
                 </table>
                 <hr>
