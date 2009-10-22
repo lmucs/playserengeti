@@ -1,29 +1,86 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<form id="teamUpdateForm" method="post" action="update"
+        onsubmit="return validateUpdateForm();">
+
+    <div>    
+        <div class="formLabel">
+            <label for="userName">Username: </label>
+        </div>
+        <div class="spaceInputBox">
+            <form:input path="userCommand.userName" />
+        </div>
+    </div>
+    <div>    
+        <div class="formLabel">
+            <label for="password">Password: </label>
+        </div>
+        <div class="spaceInputBox">
+            <form:input path="userCommand.password" />
+        </div>
+    </div>
+    <div>    
+        <div class="formLabel">
+            <label for="firstName">First Name: </label>
+        </div>
+        <div class="spaceInputBox">
+            <form:input path="userCommand.firstName" />
+        </div>
+    </div>
+    <div>    
+        <div class="formLabel">
+            <label for="lastName">Last Lame: </label>
+        </div>
+        <div class="spaceInputBox">
+            <form:input path="userCommand.lastName" />
+        </div>
+    </div>
+    <div>    
+        <div class="formLabel">
+            <label for="email">Email: </label>
+        </div>
+        <div class="spaceInputBox">
+            <form:input path="userCommand.email" />
+        </div>
+    </div>
+    <div>    
+        <div class="formLabel">
+            <label for="image">Image URL: </label>
+        </div>
+        <div class="spaceInputBox">
+            <form:input path="userCommand.image" />
+        </div>
+    </div>
+    <div>
+        <div class="formLabel">
+            <label for="friendRemovals">Remove selected friends: </label>
+        </div>
+		<form:checkboxes path="userCommand.friendRemovals" items="${userCommand.friends}" /><br/>
+    </div>
+    <div>
+        <div class="formLabel">
+            <label for="teamRemovals">Remove selected teams: </label>
+        </div>
+		<form:checkboxes path="userCommand.teamRemovals" items="${userCommand.teams}" /><br/>
+    </div>
+    
+    <div class="formRow">
+        <input type="submit" value="Update Team!" />
+    </div>
+
+</form>
 
 
-      <c:choose>
-            <c:when test='${ !empty updateUser}'>
-                <p>Modify your user's settings.</p>
-                <p><strong><c:out value="${updateUser.userName}"/></strong></p>
-                <p>
-                    <form method="post" action="update">
-                        <label for="userName">User Name: </label><input type="text" name="userName"/><br/>
-                        <label for="firstName">First Name: </label><input type="text" name="firstName"/><br/>
-                        <label for="lastName">Last Name: </label><input type="text" name="lastName"/><br/>
-                        <label for="email">Email: </label><input type="text" name="email"/><br/>
-                        <label for="dateOfBirth">Date of Birth: </label><input type="text" name="dateOfBirth"/><br/>
-                        <input type="submit" value="Modify User!"/>
-                    </form>
-                </p>
-            </c:when>
-            <c:otherwise>
-                <p>Which ID would you like to update?</p>
-        		<p>
-                    <form method="get" action="update">
-                        <label for="userID"> User ID </label><input type="text" name="userID"/><br/>
-                        <input type="submit" value="Update ID"/>
-                    </form>
-                </p>
-            </c:otherwise>
-        </c:choose>
+<script>
+    var validateUpdateForm = function () {
+        var name = document.getElementById("userName");
+        if (name && name.value !== '') {
+            return true;
+        }
+        alert("The username cannot be blank");
+        return false;
+    }
+</script>
+

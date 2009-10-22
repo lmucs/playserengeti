@@ -67,7 +67,7 @@ public class FriendshipDaoMockImpl implements FriendshipDao {
 			Integer userId) {
 		Set<Friendship> result = new HashSet<Friendship>();
 	    for(Friendship f : storage.values()) {
-	    	if (f.getPrimaryUserId() == userId || f.getSecondaryUserId() == userId) {
+	    	if (f.getPrimaryUserId().equals(userId) || f.getSecondaryUserId().equals(userId)) {
 	    		result.add(f);
 	    	}
 	    }

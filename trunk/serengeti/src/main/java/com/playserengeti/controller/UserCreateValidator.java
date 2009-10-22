@@ -8,7 +8,7 @@ public class UserCreateValidator implements Validator {
 
 	@Override
 	public boolean supports(Class c) {
-		return UserCreateCommand.class.equals(c);
+		return UserCommand.class.equals(c);
 	}
 
 	@Override

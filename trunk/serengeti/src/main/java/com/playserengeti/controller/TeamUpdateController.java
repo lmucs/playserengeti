@@ -30,7 +30,6 @@ public class TeamUpdateController extends SimpleFormController {
 	public TeamUpdateController (TeamService teamService, UserService userService) {
 		this.teamService = teamService;
 		this.userService = userService;
-		setSessionForm(true);
 	}
 	
 	/**
@@ -61,6 +60,7 @@ public class TeamUpdateController extends SimpleFormController {
     		teamCommand.setCandidates(candidates);
 		}
         
+		setSessionForm(true);
 		return teamCommand;
 	}
 	
@@ -71,7 +71,7 @@ public class TeamUpdateController extends SimpleFormController {
 	public ModelAndView onSubmit(Object _command) {
 		TeamCommand command = (TeamCommand)_command;
 		Integer teamId = command.getTeamId();
-		
+				
 		// Modify the entry in the database.
 		Team team = teamService.getTeamById(teamId);
 		team.setName(command.getName());

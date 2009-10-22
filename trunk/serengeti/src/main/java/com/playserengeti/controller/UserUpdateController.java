@@ -4,23 +4,24 @@
 
 package com.playserengeti.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import com.playserengeti.domain.User;
+import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
 
 public class UserUpdateController extends SimpleFormController {
 
     private UserService userService;
+    private TeamService teamService;
 
-    public UserUpdateController(UserService userService) {
+    public UserUpdateController(UserService userService, TeamService teamService) {
         this.userService = userService;
+        this.teamService = teamService;
+		setSessionForm(true);
     }
 
 	/**
@@ -28,45 +29,54 @@ public class UserUpdateController extends SimpleFormController {
 	 */
 	protected Object formBackingObject(HttpServletRequest request)
     throws Exception {
-        String userId = request.getParameter("userId");
+        Integer userId = Integer.valueOf(request.getParameter("userId"));
         User user;
-        UserUpdateCommand updateUser = new UserUpdateCommand();
+        UserCommand userCommand = new UserCommand();
 		if (userId != null) {
-			user = userService.getUserById(Integer.valueOf(userId));
-		    updateUser.setUserId(user.getUserId());
-	    	updateUser.setUserName(user.getUserName());
-    		updateUser.setPasswordHash(user.getPasswordHash());
-    		if(user.getFirstName() != null) updateUser.setFirstName(user.getFirstName());
-    		if(user.getLastName() != null) updateUser.setLastName(user.getLastName());
-    		updateUser.setEmail(user.getEmail());
-    		if(user.getDateOfBirth() != null) updateUser.setDateOfBirth(user.getDateOfBirth());
-
+			user = userService.getUserById(userId);
+			userCommand.setUserId(user.getUserId());
+			userCommand.setUserName(user.getUserName());
+			userCommand.setPassword(user.getPasswordHash());
+			userCommand.setFirstName(user.getFirstName());
+			userCommand.setLastName(user.getLastName());
+			userCommand.setEmail(user.getEmail());
+			userCommand.setImage(user.getImage());
+			userCommand.setFriends(userService.getFriendsMap(userId));
+			userCommand.setTeams(teamService.getUsersTeamsMap(userId));
 		}
 
-		return updateUser;
+		return userCommand;
 	}
 
 	public ModelAndView onSubmit(Object _command) {
-		UserUpdateCommand command = (UserUpdateCommand)_command;
+		UserCommand command = (UserCommand)_command;
 		Integer userId = command.getUserId();
 
 		//Modify the entry in the database
 		User user = userService.getUserById(userId);
 		user.setUserName(command.getUserName());
-		user.setPasswordHash(command.getPasswordHash());
+		user.setPasswordHash(command.getPassword());
 		user.setFirstName(command.getFirstName());
 		user.setLastName(command.getLastName());
 		user.setEmail(command.getEmail());
-		user.setDateOfBirth(command.getDateOfBirth());
-
+        user.setImage(command.getImage());
+		
 		// Insert the entry into the database.
 		userService.saveUser(user);
-
-		Map<String, String> model = new HashMap<String, String>();
-		model.put("userName", userService.getUserById(userId).getUserName());
-
-		ModelAndView mav = new ModelAndView(getSuccessView(), model);
-		mav.addObject(user);
+		
+		Integer[] friendRemovals = command.getFriendRemovals();
+		Integer[] teamRemovals = command.getTeamRemovals();
+		
+		for(Integer friendId : friendRemovals) {
+			userService.removeFriendship(userId, friendId);
+		}
+		
+		for(Integer teamId : teamRemovals) {
+			teamService.removeFromTeam(teamId, userId);
+		}
+		
+		ModelAndView mav = new ModelAndView("redirect:view");
+		mav.addObject("userId", userId);
 
 		return mav;
 	}

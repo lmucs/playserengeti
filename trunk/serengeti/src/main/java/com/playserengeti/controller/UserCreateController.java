@@ -25,22 +25,24 @@ public class UserCreateController extends SimpleFormController {
 
 	@Override
 	public ModelAndView onSubmit(Object _command) {
-		UserCreateCommand command = (UserCreateCommand)_command;
+		UserCommand command = (UserCommand)_command;
 		Integer userId;
 		String userName = command.getUserName();
 		String password = command.getPassword();
 		String email = command.getEmail();
-		User user = new User(null, userName, password, null, null, email, null);
+		String firstName = command.getFirstName();
+		String lastName = command.getLastName();
+
+		User user = new User(null, userName, password, firstName, lastName, email, null);
 
 		try {
 			// Insert the entry into the database.
 		    userId = userService.saveUser(user);
 
-		    Map<String, String> model = new HashMap<String, String>();
-		    model.put("userId", Integer.toString(userId));
-		    model.put("userName", userName);
-			model.put("email", email);
-		    return new ModelAndView(getSuccessView(), model);
+			ModelAndView mav = new ModelAndView("redirect:view");
+			mav.addObject("userId", userId);		
+			
+			return mav;
 
 		} catch (Exception e) {
 			// On service error, try again

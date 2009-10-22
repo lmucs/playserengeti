@@ -52,14 +52,12 @@
                         <td><strong>Image</strong></td>
                         <td><c:out value="${locationCommand.image}"/></td>
                     </tr>
-                    <tr>
-                        <td><strong>Competing Teams</strong></td>
+                    <strong>Competing Teams</strong>
+                    <ul>
                         <c:forEach var="team" items="${teamList}">
-                          <tr>
-                            <td><a href="../team/view?teamId=${team.id}"><c:out value="${team.name}"/></a></td>
-                          </tr>
+                            <li><a href="../team/view?teamId=${team.id}"><c:out value="${team.name}"/></a></li>
                         </c:forEach>
-                    </tr>
+                    </ul>
                 </table>
             </c:when>
             <c:otherwise>
