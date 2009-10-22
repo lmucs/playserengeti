@@ -1,0 +1,5 @@
+*Services for Q6*
+
+Possible things to think about for the future. 
+
+  ** Determine square milage of a teams land ownership. 
