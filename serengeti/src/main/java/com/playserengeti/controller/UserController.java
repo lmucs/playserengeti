@@ -56,7 +56,7 @@ public class UserController extends MultiActionController {
         command.setImage(user.getImage());
 
         Collection<User> friends = userService.getFriends(userId);
-        Collection<Team> teams = teamService.getUsersTeams(user.getUserId());
+        Collection<Team> teams = teamService.getTeams(user.getUserId());
 
         ModelAndView mav = new ModelAndView("userViewProfile");
         mav.addObject("userCommand", command);
