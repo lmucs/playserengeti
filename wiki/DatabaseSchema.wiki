@@ -6,84 +6,59 @@
 == LOCATION ==
 
 || *Row name* || *Type* || *Notes*||  
-|| id || (int, primary key) || ||
-|| name || (string) || ||
-|| latitude || (double) || ||
-|| longitude || (double) || ||
-|| owner_user_id || int, foreign key => `user` || ||
+|| id || int, primary key || ||
+|| name || string || ||
+|| latitude || double || ||
+|| longitude || double || ||
 || owner_team_id || int, foreign key => `team` || ||
-|| proprietor_user_id || int, foreign key => `user` || (what if proprietor is not a user?) ||
-|| city || (string) || ||
-|| street || (string) || ||
-|| house_number || (string) || ||
-|| zip || (string) || postal code ||
-|| state || (string) || state, province, department, etc.||
-|| --details || (text) || <wiki:comment>(consider adding a `locations_attributes` table to identity different ad_hoc attributes of a location)</wiki:comment> (now contained in `location_attribute`)||
-
-== LOCATION_ATTRIBUTE ==
-
-|| *Row name* || *Type* || *Notes* ||
-|| id || (int, primary key) || ||
-|| location_id || (int, foreign key ==> `location`) || ||
-|| tag || (string) || detail about location (i.e., theater, bar, etc.) ||
+|| street || string || ||
+|| city || string || ||
+|| state || string || state, province, department, etc.||
+|| zip || string || postal code ||
+|| phone || int || ||
+|| description || string || ||
+|| image || string || ||
 
 == USER ==
 
 || *Row name* || *Type* || *Notes* ||  
 || id || int, primary key || ||
 || passwordHash || string ||  ||
-|| first_name || string, Required || ||
-|| last_name || string, Required || ||
+|| display_name || string, Required || ||
 || email_address || string, Required || ||
 || phone_number || int/string, Required for mobile app || ||
-|| current_location_id || int, foreign key => `location` ||  (1 to 1 of locations_id) ||
-|| home_location_id || int, foreign key => `location` || (1 to 1 of locations_id) ||
-|| status_message || text ||  (should this be an attribute of a visit?) ||
-|| logged_in || boolean || (pinging) (not sure what this is) ||
-|| --Teams (1 to many made up of teamIDs)-- || ||  (contained in separate table) ||
-|| --Friends (1 to many made up of userIDs)-- || ||  (contained in separate table) ||
-|| --streetAddressLine1-- || || (all of this information should be contained in a `location` record)  ||
-|| --streetAddressLine2-- || || (but do we want a user's home to be a location that can be taken over?) ||
-|| --streetAddressCity-- || || ||
-|| --streetAddressState-- || || ||
-|| --streetAddressZip-- || || ||
-|| profile_pic_url || string || ||
-|| --visitHistory (1 to many made up of visitIDs)-- || || (contained in a separate table) ||
-|| visit_count || int, sum of all `visits` where users_id == current_user) || ||
+|| image || string || ||
+|| creation_date || date || ||
+
 
 == TEAM ==
 || *Row name* || *Type* || *Notes* ||
 || id || int, primary key || ||
 || team_name || string || ||
-|| team_leader_id || int, foreign key => 'users' || ||
+|| team_leader_id || int, foreign key => 'user' || ||
 || color || (string, enum?) || (could be a string as name or hex code, or enum from set of colors) ||
-|| team_pic_url || string || (team logo/icon) ||
-|| --base_location_id || int, foreign key => 'locations' || (no longer being used) ||
-|| --parent_team || int || (no longer being used) ||
-|| --rival_team_id || int, ??? key => 'teams' || (no longer being used) ||
+|| image || string || (team logo/icon) ||
+|| description || string || ||
+|| home_base || string || ||
+|| creation_date || date || ||
 
 
-(Not done yet.)
 
-== USER_TEAM ==
+== MEMBER ==
 || *Row name* || *Type* || *Notes* ||
 ||  id || int, primary key || ||
-||  user_id || int, foreign key => `users` || ||
-||  team_id || int, foreign key => `teams` || || 
+||  user_id || int, foreign key => `user` || ||
+||  team_id || int, foreign key => `team` || || 
 
-== USER_LINK ==
+== FRIEND ==
 || *Row name* || *Type* || *Notes* ||
 || id || int, primary key || ||
-|| primary_user_id || int, foreign key => `users` || ||
-|| secondary_user_id || int, foreign key => `users` || || 
+|| primary_user_id || int, foreign key => `user` || ||
+|| secondary_user_id || int, foreign key => `user` || || 
 || status || enum{'Pending', 'Accepted', 'Rejected'} || ||
 
 == VISIT ==
 || id || (int, primary key) || ||
-|| user_id || int, foreign key => `users` || ||
-|| location_id  || int, foreign key => `locations` || || 
-|| --Teams-- || || this information can be discovered from the `users_teams` table, unless you check in as a team) ||
-||  --visitCount-- || || (can be computed by performing an SQL query (SELECT COUNT( {{{*}}} ) FROM visits WHERE users_id=1)) ||
-|| --visitHistory-- || || (again, can be computed by performing an SQL query (SELECT {{{*}}} FROM visits WHERE users_id=1 ORDER BY id DESC LIMIT 20)) ||
-
-Kelly left this note a while back: "In most databases in production I've interacted with, the column and table names follow the C-style convention. I've changed them as such. Also, I've included types for you. --Kelly"
+|| user_id || int, foreign key => `user` || ||
+|| team_id || int, foreign key => `team` || ||
+|| location_id  || int, foreign key => `location` || || 
