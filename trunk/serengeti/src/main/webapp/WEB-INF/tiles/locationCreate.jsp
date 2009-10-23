@@ -4,8 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
-    <p>Create your own team and start marking your territory.
-       Just fill in the information below.</p>
+    <p>Add a new location to Serengeti.</p>
 
     <form id="locationCreateForm" method="post" action="create"
         onsubmit="return validateCreateForm();">
@@ -15,23 +14,6 @@
             </div>
             <div class="spaceInputBox">
                 <input type="text" id="locationName" name="locationName" />
-            </div>
-        </div>
-
-        <div>
-            <div class="formLabel">
-                <label for="latitude">Location Latitude</label>
-            </div>
-            <div class="spaceInputBox">
-                <input type="text" name="latitude" />
-            </div>
-        </div>
-        <div>
-            <div class="formLabel">
-                <label for="longitude">Location Longitude</label>
-            </div>
-            <div class="spaceInputBox">
-                <input type="text" name="longitude" />
             </div>
         </div>
         <div>

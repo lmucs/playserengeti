@@ -39,6 +39,7 @@ public class LocationController extends MultiActionController {
         Integer locationId = Integer.valueOf(request.getParameter("locationId"));
         LocationCommand locationCommand = new LocationCommand();
         
+        String[] address = new String[2];
 		if (locationId != null) {
 			Location location = locationService.getLocationById(locationId);
 		    locationCommand.setLocationId(location.getLocationId());
@@ -46,17 +47,15 @@ public class LocationController extends MultiActionController {
     		locationCommand.setLatitude(location.getLatitude());
     		locationCommand.setLongitude(location.getLongitude());
     		if (location.getTeamOwner() != null) locationCommand.setTeamOwner(location.getTeamOwner().getId());
-            locationCommand.setStreet(location.getStreet());
-            locationCommand.setCity(location.getCity());
-            locationCommand.setState(location.getState());
-            locationCommand.setZipcode(location.getZipcode());
     		locationCommand.setPhoneNumber(location.getPhoneNumber());
     		locationCommand.setDescription(location.getDescription());
     		locationCommand.setImage(location.getImage());
+    		address = location.getFullAddress();
 		}
 		
 		ModelAndView mav = new ModelAndView("locationViewProfile");
 		mav.addObject("locationCommand", locationCommand);
+		mav.addObject("address", address);
 		mav.addObject("teamList", teamService.getAllTeams());
 		return mav;
 	}

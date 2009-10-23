@@ -10,7 +10,7 @@
             </c:forEach>
         </ul>
 
-        <p><a href="location/create">Create a new location?</a></p>
+        <p>Don't see your current location?  <a href="create">Add it.</a></p>
 
 <div id="map_canvas" style="width:50%; height:50%"></div>
 <p id="location"></p>
