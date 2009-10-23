@@ -51,10 +51,8 @@ public class UserController extends MultiActionController {
         }
         
         command.setUserId(user.getUserId());
-        command.setFirstName(user.getFirstName());
-        command.setLastName(user.getLastName());
-        command.setUserName(user.getUserName());
         command.setEmail(user.getEmail());
+        command.setDisplayName(user.getDisplayName());
         command.setImage(user.getImage());
 
         Collection<User> friends = userService.getFriends(userId);

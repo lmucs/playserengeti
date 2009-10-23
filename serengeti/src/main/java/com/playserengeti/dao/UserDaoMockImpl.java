@@ -27,14 +27,14 @@ public class UserDaoMockImpl implements UserDao {
         maxId = -1;
 
         User[] sampleUsers = new User[] {
-        		new User(null, "durnew", "password1", null, null, "labrams@lion.lmu.edu", null),
-        		new User(null, "rtoal", "password2", null, null, "rtoal@lmu.edu", null),
-        		new User(null, "gratrixl", "isAwesome", null, null, "litagratrix@gmail.com", null),
-        		new User(null, "cmuel", "password3", null, null, "mueller.chris0@gmail.com", null),
-        		new User(null, "jcol88", "password4", null, null, "jcol88@gmail.com", null),
-        		new User(null, "mxchickmagnet86", "password5", null, null, "mxchickmagnet86@gmail.com", null),
-        		new User(null, "malevolentman87", "password6", null, null, "malevolentman87@gmail.com", null),
-        		new User(null, "DJScythe15", "password3", null, null, "DJScythe15@gmail.com", null)
+        		new User(null, "labrams@lion.lmu.edu", "password", "Loren Abrams"),
+        		new User(null, "rtoal@lmu.edu", "password", "Ray Toal"),
+        		new User(null, "litagratrix@gmail.com", "password", "Lita Gratrix"),
+        		new User(null, "mueller.chris0@gmail.com", "password", "Chris Mueller"),
+        		new User(null, "jcol88@gmail.com", "password", "James Coleman"),
+        		new User(null, "mxchickmagnet86@gmail.com", "password", "Mark Miscavage"),
+        		new User(null, "malevolentman87@gmail.com", "password", "Ed"),
+        		new User(null, "DJScythe15@gmail.com", "password", "Don Murphy")
         };
 
         // Insert the sample locations into the database as this is a mock impl.
@@ -61,19 +61,6 @@ public class UserDaoMockImpl implements UserDao {
     }
 
 	@Override
-	public Collection<User> getUsersByUserName(String userName) {
-		Set<User> results = new HashSet<User>();
-
-		for (User user : storage.values()) {
-			if (user.getUserName().equals(userName)) {
-				results.add(user);
-			}
-		}
-
-		return results;
-	}
-
-	@Override
 	public Collection<User> getUsersByEmail(String email) {
 		Set<User> results = new HashSet<User>();
 
@@ -89,7 +76,7 @@ public class UserDaoMockImpl implements UserDao {
     @Override
     public Integer insertUser(User user) {
 		for (User u : storage.values()) {
-			if (u.getUserName().equals(user.getUserName())) {
+			if (u.getEmail().equals(user.getEmail())) {
 				throw new DataIntegrityViolationException(
 						"Login name already exists");
 			}

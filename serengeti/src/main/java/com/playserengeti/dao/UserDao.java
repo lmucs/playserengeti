@@ -36,11 +36,6 @@ public interface UserDao {
 	public Collection<User> getAllUsers();
 
 	/**
-	 * Get a users from storage by their user name.
-	 */
-	public Collection<User> getUsersByUserName(String userName);
-
-	/**
 	 * Get a users from storage by their email addresses.
 	 */
 	public Collection<User> getUsersByEmail(String email);

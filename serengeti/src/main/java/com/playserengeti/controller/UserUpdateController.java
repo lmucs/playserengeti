@@ -35,11 +35,9 @@ public class UserUpdateController extends SimpleFormController {
 		if (userId != null) {
 			user = userService.getUserById(userId);
 			userCommand.setUserId(user.getUserId());
-			userCommand.setUserName(user.getUserName());
-			userCommand.setPassword(user.getPasswordHash());
-			userCommand.setFirstName(user.getFirstName());
-			userCommand.setLastName(user.getLastName());
 			userCommand.setEmail(user.getEmail());
+			userCommand.setPassword(user.getPasswordHash());
+			userCommand.setDisplayName(user.getDisplayName());
 			userCommand.setImage(user.getImage());
 			userCommand.setFriends(userService.getFriendsMap(userId));
 			userCommand.setTeams(teamService.getUsersTeamsMap(userId));
@@ -54,11 +52,9 @@ public class UserUpdateController extends SimpleFormController {
 
 		//Modify the entry in the database
 		User user = userService.getUserById(userId);
-		user.setUserName(command.getUserName());
-		user.setPasswordHash(command.getPassword());
-		user.setFirstName(command.getFirstName());
-		user.setLastName(command.getLastName());
 		user.setEmail(command.getEmail());
+		user.setPasswordHash(command.getPassword());
+		user.setDisplayName(command.getDisplayName());
         user.setImage(command.getImage());
 		
 		// Insert the entry into the database.

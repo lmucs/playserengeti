@@ -10,29 +10,16 @@ import java.util.Date;
 public class User {
 
 	private Integer userId;	// User table primary key.
-    private String userName;		// Not null.
+    private String email;		    // Used as the username.  Not null.
     private String passwordHash;	// Not null.
-    private String firstName;		// Optional.
-    private String lastName;		// Optional.
-    private String email;			// Not null.
-    private Date dateOfBirth;		// Optional.
+    private String displayName;     // Not null.
     private String image;
 
-	public User(Integer userId, String userName, String passwordHash,
-			String firstName, String lastName, String email, Date dateOfBirth) {
-
-		setUserId(userId);
-		setUserName(userName);
-		setPasswordHash(passwordHash);
-		setFirstName(firstName);
-		setLastName(lastName);
+	public User(Integer userId, String email, String passwordHash,
+			String displayName) {
 		setEmail(email);
-		setDateOfBirth(dateOfBirth);
-	}
-
-	public User(Integer userId, String userName, String passwordHash,
-			String email) {
-		this(userId, userName, passwordHash, null, null, email, null);
+		setPasswordHash(passwordHash);
+		setDisplayName(displayName);
 	}
 
 	public void setUserId(Integer userId){
@@ -43,13 +30,13 @@ public class User {
 		return userId;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUserName(String userName) {
-		assertArgument(userName != null, "A username must be provided.");
-		this.userName = userName;
+	public void setEmail(String email) {
+		assertArgument(email != null, "An email address must be provided.");
+		this.email = email;
 	}
 
 	public String getPasswordHash() {
@@ -61,37 +48,12 @@ public class User {
 		this.passwordHash = passwordHash;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getDisplayName() {
+		return displayName;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		assertArgument(email != null, "A user must have an email address.");
-		this.email = email;
-	}
-
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
 	}
 
 	public String getImage() {
@@ -120,9 +82,5 @@ public class User {
 		if (!userId.equals(other.userId))
 			return false;
 		return true;
-	}
-
-	public String getFullName() {
-		return this.firstName + " " + this.lastName;
 	}
 }

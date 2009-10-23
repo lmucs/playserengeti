@@ -7,14 +7,6 @@
 
     <div>    
         <div class="formLabel">
-            <label for="userName">Username: </label>
-        </div>
-        <div class="spaceInputBox">
-            <form:input path="userCommand.userName" />
-        </div>
-    </div>
-    <div>    
-        <div class="formLabel">
             <label for="password">Password: </label>
         </div>
         <div class="spaceInputBox">
@@ -23,31 +15,15 @@
     </div>
     <div>    
         <div class="formLabel">
-            <label for="firstName">First Name: </label>
+            <label for="displayName">Display Name: </label>
         </div>
         <div class="spaceInputBox">
-            <form:input path="userCommand.firstName" />
+            <form:input path="userCommand.displayName" />
         </div>
     </div>
     <div>    
         <div class="formLabel">
-            <label for="lastName">Last Lame: </label>
-        </div>
-        <div class="spaceInputBox">
-            <form:input path="userCommand.lastName" />
-        </div>
-    </div>
-    <div>    
-        <div class="formLabel">
-            <label for="email">Email: </label>
-        </div>
-        <div class="spaceInputBox">
-            <form:input path="userCommand.email" />
-        </div>
-    </div>
-    <div>    
-        <div class="formLabel">
-            <label for="image">Image URL: </label>
+            <label for="image">Profile Picture: </label>
         </div>
         <div class="spaceInputBox">
             <form:input path="userCommand.image" />
@@ -67,7 +43,7 @@
     </div>
     
     <div class="formRow">
-        <input type="submit" value="Update Team!" />
+        <input type="submit" value="Update Profile!" />
     </div>
 
 </form>
@@ -75,11 +51,11 @@
 
 <script>
     var validateUpdateForm = function () {
-        var name = document.getElementById("userName");
+        var name = document.getElementById("password");
         if (name && name.value !== '') {
             return true;
         }
-        alert("The username cannot be blank");
+        alert("The password cannot be blank");
         return false;
     }
 </script>

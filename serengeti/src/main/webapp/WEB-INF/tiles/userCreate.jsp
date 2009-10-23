@@ -10,11 +10,11 @@
 <form:form method="post">
     <div>
         <div class="formLabel">
-            <label for="userName">User Name: </label>
+            <label for="email">Email Address: </label>
         </div>
         <div class="spaceInputBox">
-	        <form:input path="userName"/>
-	        <form:errors path="userName"/>
+	        <form:input path="email"/>
+	        <form:errors path="email"/>
 	    </div>
     </div>
     <div>
@@ -28,29 +28,11 @@
     </div>
         <div>
         <div  class="formLabel">
-            <label for="firstName">First Name: </label>
+            <label for="displayName">Display Name: </label>
         </div>
         <div class="spaceInputBox">
-	        <form:input path="firstName"/>
-	        <form:errors path="firstName"/>
-	    </div>
-    </div>
-        <div>
-        <div  class="formLabel">
-            <label for="lastName">Last Name: </label>
-        </div>
-        <div class="spaceInputBox">
-	        <form:input path="lastName"/>
-	        <form:errors path="lastName"/>
-	    </div>
-    </div>
-    <div>
-        <div  class="formLabel">
-            <label for="email">Email Address: </label>
-        </div>
-        <div class="spaceInputBox">
-	        <form:input path="email"/>
-	        <form:errors path="email"/>
+	        <form:input path="displayName"/>
+	        <form:errors path="displayName"/>
 	    </div>
     </div>
 
@@ -59,6 +41,3 @@
     </div>
 </form:form>
 
-<c:if test="${not empty message}">
-    <p><c:out value="${message}"/></p>
-</c:if>
