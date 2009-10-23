@@ -40,7 +40,7 @@ public class UserUpdateController extends SimpleFormController {
 			userCommand.setDisplayName(user.getDisplayName());
 			userCommand.setImage(user.getImage());
 			userCommand.setFriends(userService.getFriendsMap(userId));
-			userCommand.setTeams(teamService.getUsersTeamsMap(userId));
+			userCommand.setTeams(teamService.getTeamsMap(userId));
 		}
 
 		return userCommand;

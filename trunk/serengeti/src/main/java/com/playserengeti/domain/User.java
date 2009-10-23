@@ -14,12 +14,13 @@ public class User {
     private String passwordHash;	// Not null.
     private String displayName;     // Not null.
     private String image;
+    private Date creationDate;
 
-	public User(Integer userId, String email, String passwordHash,
-			String displayName) {
+	public User(Integer userId, String email, String passwordHash, String displayName) {
 		setEmail(email);
 		setPasswordHash(passwordHash);
 		setDisplayName(displayName);
+		creationDate = new Date();
 	}
 
 	public void setUserId(Integer userId){
@@ -62,6 +63,14 @@ public class User {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 
 	@Override

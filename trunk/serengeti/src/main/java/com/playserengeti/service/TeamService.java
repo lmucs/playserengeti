@@ -128,9 +128,9 @@ public class TeamService {
     	return result;
     }
     
-    public Map<Integer, String> getUsersTeamsMap(Integer userId) {
+    public Map<Integer, String> getTeamsMap(Integer userId) {
     	Map<Integer, String> result = new HashMap<Integer, String>();
-    	Collection<Team> teams = getUsersTeams(userId);
+    	Collection<Team> teams = getTeams(userId);
     	
     	for (Team t : teams) {
     		result.put(t.getId(), t.getName());
@@ -139,7 +139,7 @@ public class TeamService {
     	return result;
     }
     
-    public Collection<Team> getUsersTeams(Integer userId) {
+    public Collection<Team> getTeams(Integer userId) {
     	Set<Team> result = new HashSet<Team>();
     	Collection<Membership> mem = membershipDao.getMembershipsByUser(userId);
     	
