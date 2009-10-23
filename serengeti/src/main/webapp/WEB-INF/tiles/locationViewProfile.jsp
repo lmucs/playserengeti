@@ -14,28 +14,9 @@
                         <td><c:out value="${locationCommand.phoneNumber}"/></td>
                     </tr>
                     <tr>
-                        <td><strong>Street</strong></td>
-                        <td><c:out value="${locationCommand.street}"/></td>
-                    </tr>
-                    <tr>
-                        <td><strong>City</strong></td>
-                        <td><c:out value="${locationCommand.city}"/></td>
-                    </tr>
-                    <tr>
-                        <td><strong>State</strong></td>
-                        <td><c:out value="${locationCommand.state}"/></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Zipcode</strong></td>
-                        <td><c:out value="${locationCommand.zipcode}"/></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Latitude</strong></td>
-                        <td><c:out value="${locationCommand.latitude}"/></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Longitude</strong></td>
-                        <td><c:out value="${locationCommand.longitude}"/></td>
+                        <td><strong>Address</strong></td>
+                        <td><c:out value="${address[0]}"/><br/>
+                            <c:out value="${address[1]}"/></td>
                     </tr>
                     <tr>
                         <td><strong>Owned by Team</strong></td>

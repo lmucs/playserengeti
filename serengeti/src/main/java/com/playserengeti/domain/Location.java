@@ -22,12 +22,6 @@ public class Location {
         this.latitude = latitude;
     }
 
-    public Location(String locationName, double latitude, double longitude){
-    	this.locationName = locationName;
-    	this.latitude = latitude;
-    	this.longitude = longitude;
-    }
-
     public Location(Location b) {
     	this(b.locationId, b.locationName, b.longitude, b.latitude);
     	this.teamOwner = b.teamOwner;
@@ -136,6 +130,15 @@ public class Location {
 		this.zipcode = zipcode;
 	}
 
+	/**
+	 * Gets the full address of the location.
+	 * Had to do it like this because the .jsp pages wouldn't
+	 * render a newline character.
+	 * @return
+	 */
+	public String[] getFullAddress() {
+		return new String[]{street, city + ", " + state + " " + zipcode};
+	}
 	
     // TODO: equals, hashCode, toString
 
