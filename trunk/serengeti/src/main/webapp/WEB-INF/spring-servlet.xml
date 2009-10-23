@@ -16,9 +16,7 @@
             <map>
                 <entry key="/" value-ref="welcomeController" />
                 <entry key="/index.html" value-ref="welcomeController" />
-
-                <entry key="/user/delete" value-ref="userDeleteController" />
-                				
+                                				
                 <entry key="/visit/create" value-ref="visitCreateController" />
 
                 <!--
@@ -29,6 +27,7 @@
                 
                 <entry key="/user/create" value-ref="userCreateController" />
                 <entry key="/user/update" value-ref="userUpdateController" />
+                <entry key="/user/delete" value-ref="userDeleteController" />
                 <entry key="/user" value-ref="userController" />
                 <entry key="/user/*" value-ref="userController" />
                 

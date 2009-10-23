@@ -65,7 +65,7 @@ public class UserService {
 		Collection<User> users = userDao.getAllUsers();
 		
 		for(User u : users) {
-			result.put(u.getUserId(), u.getUserName());
+			result.put(u.getUserId(), u.getDisplayName());
 		}
 		
 		return result;
@@ -121,7 +121,7 @@ public class UserService {
     	Collection<User> friends = getFriends(userId);
     	
     	for(User u : friends) {
-    		result.put(u.getUserId(), u.getUserName());
+    		result.put(u.getUserId(), u.getDisplayName());
     	}
     	return result;
     }

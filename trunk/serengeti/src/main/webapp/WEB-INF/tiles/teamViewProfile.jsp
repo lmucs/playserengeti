@@ -35,7 +35,7 @@
                     <strong>Team Members:</strong>
                     <ul>
                       <c:forEach var="user" items="${members}">
-                          <li><a href="../user/view?userId=${user.userId}"><c:out value="${user.userName}"/></a></li>
+                          <li><a href="../user/view?userId=${user.userId}"><c:out value="${user.displayName}"/></a></li>
                       </c:forEach>
                     </ul>
 

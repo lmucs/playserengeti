@@ -13,11 +13,11 @@ public class UserCreateValidator implements Validator {
 
 	@Override
 	public void validate(Object command, Errors errors) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userName", 
-				"login.blank", "The login name can not be blank");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", 
+				"login.blank", "The email address can not be blank");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", 
 				"display.blank", "The display name can not be blank");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", 
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "displayName", 
 				"display.blank", "The display name can not be blank");
 	}
 }

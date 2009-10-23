@@ -27,13 +27,11 @@ public class UserCreateController extends SimpleFormController {
 	public ModelAndView onSubmit(Object _command) {
 		UserCommand command = (UserCommand)_command;
 		Integer userId;
-		String userName = command.getUserName();
-		String password = command.getPassword();
 		String email = command.getEmail();
-		String firstName = command.getFirstName();
-		String lastName = command.getLastName();
+		String password = command.getPassword();
+		String displayName = command.getDisplayName();
 
-		User user = new User(null, userName, password, firstName, lastName, email, null);
+		User user = new User(null, email, password, displayName);
 
 		try {
 			// Insert the entry into the database.
