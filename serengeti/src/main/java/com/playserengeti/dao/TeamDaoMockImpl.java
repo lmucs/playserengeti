@@ -33,7 +33,7 @@ public class TeamDaoMockImpl implements TeamDao {
 	 */
 	public TeamDaoMockImpl() {
 		storage = Collections.synchronizedMap(new HashMap<Integer, Team>());
-		maxId = -1;
+		maxId = 0;
 		
 		// Insert the sample teams into the database as this is a mock impl.
 		insertTeams(sampleTeams);
