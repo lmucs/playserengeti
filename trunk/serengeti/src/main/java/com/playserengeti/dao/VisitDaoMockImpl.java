@@ -15,24 +15,24 @@ public class VisitDaoMockImpl implements VisitDao {
 
 	// Sample users to insert into the database.
 	private static final Visit sampleVisits[] = {
-		new Visit(null ,0, 0, 1),
-		new Visit(null ,0, 1, 2),		
-		new Visit(null, 1, 1, 3),
-		new Visit(null ,2, 1, 0),	
-		new Visit(null, 2, 4, 4),
-		new Visit(null, 3, 2, 1),
-		new Visit(null, 3, 2, 5),
-		new Visit(null, 3, 5, 3),
-		new Visit(null, 4, 1, 2),
-		new Visit(null, 4, 2, 3),
-		new Visit(null, 5, 3, 3),
-		new Visit(null, 5, 5, 4),
-		new Visit(null, 6, 2, 5),
-		new Visit(null, 6, 5, 1),
-		new Visit(null, 7, 0, 0),
-		new Visit(null, 7, 4, 0),
-		new Visit(null, 7, 5, 3),
-		new Visit(null, 7, 4, 2)
+		new Visit(null ,1, 1, 2),
+		new Visit(null ,1, 2, 3),		
+		new Visit(null, 2, 2, 4),
+		new Visit(null ,3, 2, 1),	
+		new Visit(null, 3, 5, 5),
+		new Visit(null, 4, 3, 2),
+		new Visit(null, 4, 3, 6),
+		new Visit(null, 4, 6, 4),
+		new Visit(null, 5, 2, 3),
+		new Visit(null, 5, 3, 4),
+		new Visit(null, 6, 4, 4),
+		new Visit(null, 6, 6, 5),
+		new Visit(null, 7, 3, 6),
+		new Visit(null, 7, 6, 2),
+		new Visit(null, 8, 1, 1),
+		new Visit(null, 8, 5, 1),
+		new Visit(null, 8, 6, 4),
+		new Visit(null, 8, 5, 3)
 	};
 
 	private Map<Integer, Visit> storage;
@@ -40,7 +40,7 @@ public class VisitDaoMockImpl implements VisitDao {
 
 	public VisitDaoMockImpl() {
 		storage = Collections.synchronizedMap(new HashMap<Integer, Visit>());
-		maxId = -1;
+		maxId = 0;
 
 		// Insert the sample visits into the database as this is a mock impl.
 		insertVisits(sampleVisits);

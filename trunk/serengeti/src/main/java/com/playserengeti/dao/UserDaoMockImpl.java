@@ -24,7 +24,7 @@ public class UserDaoMockImpl implements UserDao {
 
     public UserDaoMockImpl() {
         storage = Collections.synchronizedMap(new HashMap<Integer, User>());
-        maxId = -1;
+        maxId = 0;
 
         User[] sampleUsers = new User[] {
         		new User(null, "labrams@lion.lmu.edu", "password", "Loren Abrams"),
@@ -33,7 +33,7 @@ public class UserDaoMockImpl implements UserDao {
         		new User(null, "mueller.chris0@gmail.com", "password", "Chris Mueller"),
         		new User(null, "jcol88@gmail.com", "password", "James Coleman"),
         		new User(null, "mxchickmagnet86@gmail.com", "password", "Mark Miscavage"),
-        		new User(null, "malevolentman87@gmail.com", "password", "Ed"),
+        		new User(null, "malevolentman87@gmail.com", "password", "Edgardo Ineguez"),
         		new User(null, "DJScythe15@gmail.com", "password", "Don Murphy")
         };
 

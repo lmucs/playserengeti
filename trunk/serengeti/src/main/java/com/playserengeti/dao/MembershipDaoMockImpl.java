@@ -13,31 +13,31 @@ public class MembershipDaoMockImpl implements MembershipDao{
 
 	// Sample memberships to insert into the database.
 	private static final Membership sampleMemberships[] = {
-		new Membership(null, 0, 0),
-		new Membership(null, 0, 1),		
-		new Membership(null, 0, 7),
-		new Membership(null, 1, 0),
 		new Membership(null, 1, 1),
 		new Membership(null, 1, 2),		
-		new Membership(null, 1, 4),
-		new Membership(null, 2, 4),
-		new Membership(null, 2, 3),
-		new Membership(null, 2, 6),
-		new Membership(null, 2, 0),
-		new Membership(null, 3, 0),
-		new Membership(null, 3, 1),	
+		new Membership(null, 1, 8),
+		new Membership(null, 2, 1),
+		new Membership(null, 2, 2),
+		new Membership(null, 2, 3),		
+		new Membership(null, 2, 5),
 		new Membership(null, 3, 5),
 		new Membership(null, 3, 4),
-		new Membership(null, 4, 7),
-		new Membership(null, 4, 0),
+		new Membership(null, 3, 7),
+		new Membership(null, 3, 1),
 		new Membership(null, 4, 1),
-		new Membership(null, 4, 2),
-		new Membership(null, 5, 0),
+		new Membership(null, 4, 2),	
+		new Membership(null, 4, 6),
+		new Membership(null, 4, 5),
+		new Membership(null, 5, 8),
 		new Membership(null, 5, 1),
+		new Membership(null, 5, 2),
 		new Membership(null, 5, 3),
-		new Membership(null, 5, 7),
-		new Membership(null, 5, 6),
-		new Membership(null, 5, 5)
+		new Membership(null, 6, 1),
+		new Membership(null, 6, 2),
+		new Membership(null, 6, 4),
+		new Membership(null, 6, 8),
+		new Membership(null, 6, 7),
+		new Membership(null, 6, 6)
 	};
 	
 	private Map<Integer, Membership> storage;
@@ -45,7 +45,7 @@ public class MembershipDaoMockImpl implements MembershipDao{
 	
 	public MembershipDaoMockImpl(){
 		storage = Collections.synchronizedMap(new HashMap<Integer, Membership>());
-		maxId = -1;
+		maxId = 0;
 		
 		// Insert the sample teams into the database as this is a mock impl.
 		insertMemberships(sampleMemberships);		
