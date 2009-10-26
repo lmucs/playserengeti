@@ -15,6 +15,7 @@ import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
+import com.playserengeti.domain.Friendship;
 import com.playserengeti.domain.Membership;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
@@ -32,23 +33,23 @@ public class UserDeleteController extends SimpleFormController {
     /**
      * Method provides the list of all users to the form view.
      */
-    @Override
-    protected ModelAndView showForm(HttpServletRequest request,
-    		HttpServletResponse response, BindException errors,
-    		Map model) throws Exception {
-    	if (model == null) {
-    		model = new HashMap();
-    	}
-
-    	model.put("allUsers", userService.getAllUsers());
-    	return super.showForm(request, response, errors, model);
+    protected Object formBackingObject(HttpServletRequest request)
+    throws Exception {
+    	Integer userId = Integer.valueOf(request.getParameter("userId"));
+    	UserCommand userCommand = new UserCommand();
+    	
+    	userCommand.setUserId(userId);
+    	userCommand.setDisplayName(userService.getUserById(userId).getDisplayName());
+    	
+    	setSessionForm(true);
+    	return userCommand;
     }
 
 	@Override
 	protected ModelAndView onSubmit(HttpServletRequest request,
 			HttpServletResponse response, Object _command, BindException errors)
 			throws Exception {
-		UserDeleteCommand command = (UserDeleteCommand)_command;
+		UserCommand command = (UserCommand)_command;
 		Integer userId = command.getUserId();
 
     	try {
@@ -57,10 +58,17 @@ public class UserDeleteController extends SimpleFormController {
     		for(Membership m : memberships) {
     			teamService.deleteMembership(m.getMembershipId());
     		}
-    		
+    		//Deletes friendships from the database.
+    		Collection<Friendship> friendships = userService.getFriendshipsByUser(userId);
+    		for(Friendship f : friendships) {
+    			userService.deleteFriendship(f.getFriendshipId());
+    		}
+    		//Deletes the user from the database.
     		userService.deleteUser(userId);
-    		return new ModelAndView(getSuccessView(), "userId", userId);
-    	} catch (Exception e) {
+    		return new ModelAndView("redirect:../");
+    	} 
+    	
+    	catch (Exception e) {
     		Map<String, Object> model = new HashMap<String, Object>();
     		model.put("command", command);
     		model.put("message", e.getMessage());

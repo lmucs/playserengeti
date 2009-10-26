@@ -4,8 +4,8 @@ public class Location {
 
     private Integer locationId;
     private String locationName;
-    private double longitude;
     private double latitude;
+    private double longitude;
     private Team teamOwner;
     private String description;
     private String phoneNumber;
@@ -15,15 +15,15 @@ public class Location {
     private String state;
     private String zipcode;
 
-    public Location(Integer locationId, String locationName, double longitude, double latitude) {
+    public Location(Integer locationId, String locationName, double latitude, double longitude) {
         this.locationId = locationId;
         this.locationName = locationName;
-        this.longitude = longitude;
         this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public Location(Location b) {
-    	this(b.locationId, b.locationName, b.longitude, b.latitude);
+    	this(b.locationId, b.locationName, b.latitude, b.longitude);
     	this.teamOwner = b.teamOwner;
     	this.description = b.description;
     	this.phoneNumber = b.phoneNumber;

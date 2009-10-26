@@ -52,11 +52,6 @@
         <put-attribute name="body" value="/WEB-INF/tiles/userDelete.jsp"/>
     </definition>
 
-    <definition name="userDeleteSuccess" extends="template">
-        <put-attribute name="title" value="User Deleted"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/userDeleteSuccess.jsp"/>
-    </definition>
-
     <definition name="userUpdate" extends="template">
         <put-attribute name="title" value="Update a User"/>
         <put-attribute name="body" value="/WEB-INF/tiles/userUpdate.jsp"/>

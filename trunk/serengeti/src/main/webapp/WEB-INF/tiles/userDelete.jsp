@@ -1,6 +1,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+
+<form id="userDeleteForm" method="post" action="delete">
+    <p>Are you sure you want to remove yourself from Serengeti?  By continuing, you will lose all 
+        data associated with your profile.  This cannot be recovered.</p>
+
+    <p>${userCommand.displayName}</p>
+
+    <div class="formRow">
+        <input type="submit" value="Delete Profile" />
+    </div>
+</form>
+
+<!--
 <c:if test="${ !empty message }">
     <p class="error"><c:out value="${message}"/></p>
 </c:if>
@@ -35,3 +48,4 @@
         form.submit();
     }
 </script>
+-->
