@@ -102,12 +102,11 @@
     <bean id="userDeleteController"
         class="com.playserengeti.controller.UserDeleteController">
         <property name="commandClass"
-            value="com.playserengeti.controller.UserDeleteCommand"
+            value="com.playserengeti.controller.UserCommand"
         />
-        <property name="commandName" value="userDelete"/>
+        <property name="commandName" value="userCommand"/>
         <property name="validator" ref="userDeleteValidator"/>
         <property name="formView" value="userDelete"/>
-        <property name="successView" value="userDeleteSuccess"/>
         <constructor-arg ref="userService"/>
         <constructor-arg ref="teamService"/>
     </bean>

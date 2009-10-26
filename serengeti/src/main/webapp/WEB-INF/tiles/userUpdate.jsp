@@ -46,6 +46,8 @@
         <input type="submit" value="Update Profile!" />
     </div>
 
+    <a href="delete?userId=${userCommand.userId}">Delete Profile</a>
+    
 </form>
 
 

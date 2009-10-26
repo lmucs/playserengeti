@@ -29,7 +29,7 @@
                 <label for="street">Street</label>
             </div>
             <div class="spaceInputBox">
-                <input type="text" name="street" />
+                <input id="street" type="text" name="street" />
             </div>
         </div>
         <div>
@@ -37,7 +37,7 @@
                 <label for="city">City</label>
             </div>
             <div class="spaceInputBox">
-                <input type="text" name="city" />
+                <input id="city" type="text" name="city" />
             </div>
         </div>
         <div>
@@ -45,7 +45,7 @@
                 <label for="state">State</label>
             </div>
             <div class="spaceInputBox">
-                <input type="text" name="state" />
+                <input id="state" type="text" name="state" />
             </div>
         </div>
         <div>
@@ -53,7 +53,7 @@
                 <label for="zipcode">Zipcode</label>
             </div>
             <div class="spaceInputBox">
-                <input type="text" name="zipcode" />
+                <input id="zipcode" type="text" name="zipcode" />
             </div>
         </div>
        <div>
@@ -75,12 +75,16 @@
     
     
     <div class="formRow">
-        <input type="submit" value="Create Location!" />
+        <input type="submit" value="Create Location!""/>
     </div>
+    
+    <input type="button" value="Encode" onclick="codeAddress()">
 
 </form>
 
-<script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+    
     var validateCreateForm = function () {
         var name = document.getElementById("locationName");
         if (name && name.value !== '') {
@@ -89,4 +93,20 @@
         alert("The name cannot be blank");
         return false;
     }
+    
+    var codeAddress = function () {
+        var geocoder = new google.maps.Geocoder();
+        var address = document.getElementById("street").value + " " + document.getElementById("city").value + 
+            ", " + document.getElementById("state").value + " " + document.getElementById("zipcode").value;
+        if (geocoder) {
+            geocoder.geocode( { 'address': address}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    alert(results[0].geometry.location.lat() + ", " + results[0].geometry.location.lng());
+                } else {
+                    alert("Geocode was not successful for the following reason: " + status);
+                }
+            });
+        }
+    }
+    
 </script>

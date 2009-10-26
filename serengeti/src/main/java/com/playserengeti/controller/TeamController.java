@@ -70,6 +70,7 @@ public class TeamController extends MultiActionController {
         command.setDescription(team.getDescription());
         command.setHomeBase(team.getHomeBase());
         command.setImage(team.getImage());
+
         if (team.getLeader() != null) command.setLeaderId(team.getLeader().getUserId());
         
 		Collection<Integer> users = teamService.getTeamMembers(teamId);
