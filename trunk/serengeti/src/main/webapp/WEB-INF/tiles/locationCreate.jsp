@@ -73,6 +73,8 @@
             </div>
         </div>
     
+    <input id="latitude" type="text" name="latitude" />
+    <input id="longitude" type="text" name="longitude" />
     
     <div class="formRow">
         <input type="submit" value="Create Location!""/>
@@ -86,11 +88,16 @@
 <script type="text/javascript">
     
     var validateCreateForm = function () {
+        codeAddress();
+        
         var name = document.getElementById("locationName");
+        var street = document.getElementById("street");
         if (name && name.value !== '') {
             return true;
         }
-        alert("The name cannot be blank");
+        else {
+            alert("The name cannot be blank");
+        }
         return false;
     }
     
@@ -102,6 +109,8 @@
             geocoder.geocode( { 'address': address}, function(results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     alert(results[0].geometry.location.lat() + ", " + results[0].geometry.location.lng());
+                    document.getElementById("latitude").value = results[0].geometry.location.lat();
+                    document.getElementById("longitude").value = results[0].geometry.location.lng();
                 } else {
                     alert("Geocode was not successful for the following reason: " + status);
                 }
