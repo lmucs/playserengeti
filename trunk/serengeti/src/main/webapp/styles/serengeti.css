@@ -93,3 +93,35 @@ formarea:FOCUS,INPUT:FOCUS {
   margin-right: 600px;
   text-align: right;
 }
+
+#logoNameContainer{
+	padding-right: 80;
+	float: left;
+}
+#attributeContainer{
+	display:block;
+	float: left;
+}
+
+#description{
+	display:bock;
+	clear:both;
+	padding-top:15px;
+	padding-bottom:15px
+}
+
+#memberTable{
+	height: 200px;
+    width: 300px;
+	overflow:scroll;
+	overflow-x:hidden;
+    clear:both;
+    margin:auto;
+    border: 2px solid #CC5500;
+}
+.container{
+	margin-top:20px;
+	display:block;
+    clear:both;
+    float:none;
+}
