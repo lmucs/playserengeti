@@ -11,15 +11,18 @@ import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 import com.playserengeti.domain.Location;
 import com.playserengeti.service.LocationService;
 import com.playserengeti.service.TeamService;
+import com.playserengeti.service.VisitService;
 
 public class LocationController extends MultiActionController {
 
 	private LocationService locationService;
 	private TeamService teamService;
+	private VisitService visitService;
 	
-	public LocationController(LocationService locationService, TeamService teamService) {
+	public LocationController(LocationService locationService, TeamService teamService, VisitService visitService) {
 		this.locationService = locationService;
 		this.teamService = teamService;
+		this.visitService = visitService;
 	}
 	
 	public ModelAndView location(HttpServletRequest request, HttpServletResponse response) {
@@ -50,13 +53,13 @@ public class LocationController extends MultiActionController {
     		locationCommand.setPhoneNumber(location.getPhoneNumber());
     		locationCommand.setDescription(location.getDescription());
     		locationCommand.setImage(location.getImage());
-    		address = location.getFullAddress();
+    		address = location.getFormattedAddress();
 		}
 		
 		ModelAndView mav = new ModelAndView("locationViewProfile");
 		mav.addObject("locationCommand", locationCommand);
 		mav.addObject("address", address);
-		mav.addObject("teamList", teamService.getAllTeams());
+		mav.addObject("teamList", visitService.getCompetingTeams(locationId));
 		return mav;
 	}
 	

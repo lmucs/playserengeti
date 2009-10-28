@@ -72,12 +72,11 @@ public class TeamDaoMockImpl implements TeamDao {
 	}
 
 	/**
-	 * Returns the team specified by the given id.  Returns a 
-	 * defensive copy.
+	 * Returns the team specified by the given id.
 	 */
 	@Override
 	public Team getTeamById(Integer id) {
-		return new Team(storage.get(id));
+		return storage.get(id);
 	}
 
 	/**

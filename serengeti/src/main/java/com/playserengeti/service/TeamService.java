@@ -159,4 +159,9 @@ public class TeamService {
     	Membership m = getMembershipByTeamAndUser(teamId, userId);
     	membershipDao.deleteMembership(m.getMembershipId());
     }
+    
+    //TODO
+    public Collection<Team> getNewestTeams(int bound) {
+        return null;
+    }
 }

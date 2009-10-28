@@ -136,7 +136,7 @@ public class Location {
 	 * render a newline character.
 	 * @return
 	 */
-	public String[] getFullAddress() {
+	public String[] getFormattedAddress() {
 		return new String[]{street, city + ", " + state + " " + zipcode};
 	}
 	
