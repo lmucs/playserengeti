@@ -12,11 +12,13 @@ import com.playserengeti.domain.Team;
 import com.playserengeti.domain.User;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
+import com.playserengeti.session.UserSession;
 
 public class UserController extends MultiActionController {
 	
 	private UserService userService;
 	private TeamService teamService;
+	private UserSession session;
 	
 	public UserController(UserService userService, TeamService teamService) {
 		this.userService = userService;
@@ -44,10 +46,13 @@ public class UserController extends MultiActionController {
 	
 	public ModelAndView view(HttpServletRequest request, HttpServletResponse response) {
 		UserCommand command = new UserCommand();
-		Integer userId = Integer.valueOf(request.getParameter("userId"));
-        User user = null;
-        if (userId != null) {
+        User user = session.getUser();
+        Integer userId;
+        if (user == null) {
+        	userId = Integer.valueOf(request.getParameter("userId"));
             user = userService.getUserById(userId);
+        } else {
+        	userId = user.getUserId();
         }
         
         command.setUserId(user.getUserId());
@@ -62,7 +67,16 @@ public class UserController extends MultiActionController {
         mav.addObject("userCommand", command);
         mav.addObject("teams", teams);
         mav.addObject("friends", friends);
+        mav.addObject("session", session);
 
         return mav;
+	}
+	
+	public UserSession getSession() {
+		return session;
+	}
+	
+	public void setSession(UserSession session) {
+		this.session = session;
 	}
 }

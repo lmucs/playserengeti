@@ -61,16 +61,13 @@ public class UserDaoMockImpl implements UserDao {
     }
 
 	@Override
-	public Collection<User> getUsersByEmail(String email) {
-		Set<User> results = new HashSet<User>();
-
+	public User getUserByEmail(String email) {
 		for (User user : storage.values()) {
 			if (user.getEmail().equals(email)) {
-				results.add(user);
+				return user;
 			}
 		}
-
-		return results;
+		return null;
 	}
 
     @Override

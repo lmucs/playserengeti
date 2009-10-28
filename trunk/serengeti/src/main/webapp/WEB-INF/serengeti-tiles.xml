@@ -8,6 +8,7 @@
     <definition name="template" template="/WEB-INF/tiles/layout/main.jsp">
         <put-attribute name="title" value="Serengeti"/>
         <put-attribute name="header" value="/WEB-INF/tiles/layout/header.jsp"/>
+        <put-attribute name="login" value="/WEB-INF/tiles/layout/login.jsp"/>
         <put-attribute name="body" value="/WEB-INF/tiles/layout/bodyPlaceholder.jsp"/>
         <put-attribute name="footer" value="/WEB-INF/tiles/layout/footer.jsp"/>
     </definition>
@@ -50,6 +51,11 @@
     <definition name="userDelete" extends="template">
         <put-attribute name="title" value="Delete a User"/>
         <put-attribute name="body" value="/WEB-INF/tiles/userDelete.jsp"/>
+    </definition>
+    
+    <definition name="userLogin" extends="template">
+        <put-attribute name="title" value="Login to Serengeti"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/userLogin.jsp"/>
     </definition>
 
     <definition name="userUpdate" extends="template">

@@ -38,7 +38,7 @@ public interface UserDao {
 	/**
 	 * Get a users from storage by their email addresses.
 	 */
-	public Collection<User> getUsersByEmail(String email);
+	public User getUserByEmail(String email);
 
 	/**
 	 * Check the existance of a userId.

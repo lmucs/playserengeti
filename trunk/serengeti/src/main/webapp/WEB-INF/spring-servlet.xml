@@ -3,10 +3,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:aop="http://www.springframework.org/schema/aop"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
     http://www.springframework.org/schema/util
-    http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+    http://www.springframework.org/schema/util/spring-util-2.5.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
     <bean id="handlerMapping"
         class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
@@ -28,6 +31,7 @@
                 <entry key="/user/create" value-ref="userCreateController" />
                 <entry key="/user/update" value-ref="userUpdateController" />
                 <entry key="/user/delete" value-ref="userDeleteController" />
+                <entry key="/user/login" value-ref="userLoginController" />
                 <entry key="/user" value-ref="userController" />
                 <entry key="/user/*" value-ref="userController" />
                 
@@ -56,11 +60,20 @@
     </bean>
 
     <!--
+        Session Beans
+    -->
+    <bean id="userSession"
+        class="com.playserengeti.session.UserSession" scope="session">
+        <aop:scoped-proxy/>
+    </bean>
+
+    <!--
         Controllers
     -->
 
     <bean id="welcomeController"
         class="com.playserengeti.controller.WelcomeController">
+        <property name="session" ref="userSession"/>
     </bean>
 
     <!--
@@ -73,6 +86,7 @@
           <bean class="com.playserengeti.controller.SerengetiMultipartResolver">
           </bean>
        </property>
+       <property name="session" ref="userSession"/>
        <constructor-arg ref="userService"/>
        <constructor-arg ref="teamService"/>
     </bean>  
@@ -84,6 +98,16 @@
         />
         <property name="validator" ref="userCreateValidator"/>
         <property name="formView" value="userCreate"/>
+        <constructor-arg ref="userService"/>
+    </bean>
+
+    <bean id="userLoginController"
+        class="com.playserengeti.controller.UserLoginController">
+        <property name="commandClass"
+            value="com.playserengeti.controller.UserCommand"/>
+        <property name="session" ref="userSession"/>
+        <property name="validator" ref="userLoginValidator"/>
+        <property name="formView" value="userLogin"/>
         <constructor-arg ref="userService"/>
     </bean>
 
@@ -113,6 +137,10 @@
     
     <bean id="userCreateValidator"
         class="com.playserengeti.controller.UserCreateValidator">
+    </bean>
+    
+    <bean id="userLoginValidator"
+        class="com.playserengeti.controller.UserLoginValidator">
     </bean>
     
     <bean id="userDeleteValidator"

@@ -27,6 +27,14 @@ public class UserService {
 	public User getUserById(Integer id) {
 		return userDao.getUserById(id);
 	}
+	
+	public User getUserByEmailAndPassword(String email, String password) {
+		User user = userDao.getUserByEmail(email);
+		if (user == null || !password.equals(user.getPasswordHash())) {
+			return null;
+		}
+		return user;
+	}
 
 	/**
 	 * Creates a user from the provided information and writes the user to
