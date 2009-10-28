@@ -237,6 +237,7 @@
         </property>
         <constructor-arg ref="locationService"/>
         <constructor-arg ref="teamService"/>
+        <constructor-arg ref="visitService"/>
      </bean>    
      
     <bean id="locationCreateController"

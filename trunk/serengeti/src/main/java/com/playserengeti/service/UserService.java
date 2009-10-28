@@ -9,6 +9,7 @@ import java.util.Set;
 import com.playserengeti.dao.FriendshipDao;
 import com.playserengeti.dao.UserDao;
 import com.playserengeti.domain.Friendship;
+import com.playserengeti.domain.Team;
 import com.playserengeti.domain.User;
 
 /**
@@ -143,5 +144,10 @@ public class UserService {
     		    deleteFriendship(f.getFriendshipId());
     		}
     	}
+    }
+    
+    //TODO
+    public Collection<User> getNewestUsers(int bound) {
+        return null;
     }
 }

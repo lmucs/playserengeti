@@ -24,6 +24,8 @@
                 <input type="text" name="phoneNumber" />
             </div>
         </div>
+        
+    <div id="locationEntry">
         <div>
             <div class="formLabel">
                 <label for="street">Street</label>
@@ -56,6 +58,12 @@
                 <input id="zipcode" type="text" name="zipcode" />
             </div>
         </div>
+    </div>
+    
+    <div id="locationSelect">
+
+    </div>
+    
        <div>
             <div class="formLabel">
                 <label for="description">Description:</label>
@@ -75,7 +83,8 @@
     
     <input id="latitude" type="text" name="latitude" />
     <input id="longitude" type="text" name="longitude" />
-    
+    <input id="candidates" type="hidden" name="candidates" />
+        
     <div class="formRow">
         <input type="submit" value="Create Location!""/>
     </div>
@@ -88,7 +97,6 @@
 <script type="text/javascript">
     
     var validateCreateForm = function () {
-        codeAddress();
         
         var name = document.getElementById("locationName");
         var street = document.getElementById("street");
@@ -104,13 +112,14 @@
     var codeAddress = function () {
         var geocoder = new google.maps.Geocoder();
         var address = document.getElementById("street").value + " " + document.getElementById("city").value + 
-            ", " + document.getElementById("state").value + " " + document.getElementById("zipcode").value;
+            " " + document.getElementById("state").value + " " + document.getElementById("zipcode").value + " USA";
         if (geocoder) {
             geocoder.geocode( { 'address': address}, function(results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
-                    alert(results[0].geometry.location.lat() + ", " + results[0].geometry.location.lng());
+                    document.getElementById("candidates").value = results;
                     document.getElementById("latitude").value = results[0].geometry.location.lat();
                     document.getElementById("longitude").value = results[0].geometry.location.lng();
+                    
                 } else {
                     alert("Geocode was not successful for the following reason: " + status);
                 }

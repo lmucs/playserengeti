@@ -5,7 +5,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
+import com.playserengeti.domain.User;
 import com.playserengeti.domain.Visit;
 
 /**
@@ -87,17 +89,41 @@ public class VisitDaoMockImpl implements VisitDao {
 
 	@Override
 	public Collection<Visit> getVisitByLocationId(Integer locationId) {
-		throw new UnsupportedOperationException();
-	}
+		Set<Visit> results = new HashSet<Visit>();
+
+		for (Visit v : storage.values()) {
+			if (v.getLocationId().equals(locationId)) {
+				results.add(v);
+			}
+		}
+
+		return results;	
+    }
 
 	@Override
 	public Collection<Visit> getVisitsByUserId(Integer userId) {
-		throw new UnsupportedOperationException();
+		Set<Visit> results = new HashSet<Visit>();
+
+		for (Visit v : storage.values()) {
+			if (v.getUserId().equals(userId)) {
+				results.add(v);
+			}
+		}
+
+		return results;		
 	}
 	
 	@Override
 	public Collection<Visit> getVisitsByTeamId(Integer teamId) {
-		throw new UnsupportedOperationException();
+		Set<Visit> results = new HashSet<Visit>();
+
+		for (Visit v : storage.values()) {
+			if (v.getTeamId().equals(teamId)) {
+				results.add(v);
+			}
+		}
+
+		return results;		
 	}
 
 }

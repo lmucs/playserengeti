@@ -1,11 +1,15 @@
 package com.playserengeti.service;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.playserengeti.dao.LocationDao;
 import com.playserengeti.dao.TeamDao;
 import com.playserengeti.dao.UserDao;
 import com.playserengeti.dao.VisitDao;
+import com.playserengeti.domain.Team;
+import com.playserengeti.domain.User;
 import com.playserengeti.domain.Visit;
 
 
@@ -28,6 +32,17 @@ public class VisitService {
 
 	public Visit getVisitByVisitId(Integer visitId) {
 		return visitDao.getVisitByVisitId(visitId);
+	}
+	
+	public Collection<Visit> getVisitsByTeamAndLocation(Integer teamId, Integer locationId) {
+		Set<Visit> result = new HashSet<Visit>();
+		Collection<Visit> visits = visitDao.getVisitByLocationId(locationId);
+		
+		for (Visit v : visits) {
+			if(v.getTeamId().equals(teamId)) result.add(v);
+		}
+		
+		return result;
 	}
 
 	/**
@@ -86,4 +101,34 @@ public class VisitService {
 		}
 		return;
 	}
+	
+	public Collection<Team> getCompetingTeams(Integer locationId) {
+		Set<Team> result = new HashSet<Team>();
+		Collection<Visit> visits = visitDao.getVisitByLocationId(locationId);
+		
+		Team team;
+		for(Visit v : visits) {
+			team = teamDao.getTeamById(v.getTeamId());
+			if (!result.contains(team)) result.add(team);
+		}
+		
+		return result;
+	}
+	
+	public Team getLeadingTeam(Integer locationId) {
+		Collection<Team> teams = getCompetingTeams(locationId);
+	    Team result = null;
+	    for(Team t : teams) {
+	    	if (result == null) result = t;
+	    	else {
+	    		if (getVisitsByTeamAndLocation(t.getId(), locationId).size() > 
+	    			getVisitsByTeamAndLocation(result.getId(), locationId).size()) {
+	    			result = t;
+	    		}
+	    	}
+	    }
+	    
+	    return result;
+	}
+	
 }
