@@ -1,4 +1,5 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
     <head>
@@ -8,6 +9,9 @@
         <link rel="stylesheet" type="text/css"
             href="${pageContext.request.contextPath}/styles/serengeti.css"
         />
+        <script type="text/javascript"
+            src="${pageContext.request.contextPath}/scripts/jquery-1.3.2.min.js">
+        </script>
         <script type="text/javascript"
             src="${pageContext.request.contextPath}/scripts/serengeti.js">
         </script>
@@ -32,6 +36,7 @@
         </div>
 
         <div class="mainContentArea">
+            <tiles:insertAttribute name="login"/>
             <tiles:insertAttribute name="body"/>
         </div>
 
