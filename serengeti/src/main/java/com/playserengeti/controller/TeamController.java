@@ -13,11 +13,13 @@ import com.playserengeti.domain.Team;
 import com.playserengeti.domain.User;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
+import com.playserengeti.session.UserSession;
 
 public class TeamController extends MultiActionController {
 	
 	private TeamService teamService;
 	private UserService userService;
+	private UserSession session;
 	
 	public TeamController(TeamService teamService, UserService userService) {
 		this.teamService = teamService;
@@ -43,6 +45,7 @@ public class TeamController extends MultiActionController {
 		Collection<Team> newest = teamService.getAllTeams();
 		
 		ModelAndView mav = new ModelAndView("teamCentral");
+		mav.addObject("session", session);
 		mav.addObject("leaders", leaders);
 		mav.addObject("mostActive", mostActive);
 		mav.addObject("newest", newest);
@@ -81,9 +84,18 @@ public class TeamController extends MultiActionController {
 		}
 
         ModelAndView mav = new ModelAndView("teamViewProfile");
+        mav.addObject("session", session);
         mav.addObject("teamCommand", command);
         mav.addObject("members", members);
 
         return mav;
+	}
+	
+	public UserSession getSession() {
+		return session;
+	}
+	
+	public void setSession(UserSession session) {
+		this.session = session;
 	}
 }

@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.SimpleFormController;
 import com.playserengeti.domain.Team;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
+import com.playserengeti.session.UserSession;
 
 /**
  * Controller for updating/modifying teams.
@@ -22,6 +23,7 @@ public class TeamUpdateController extends SimpleFormController {
 	
 	private TeamService teamService;
 	private UserService userService;
+	private UserSession session;
 	
 	/**
 	 * Constructor.  Sets the service.
@@ -55,7 +57,9 @@ public class TeamUpdateController extends SimpleFormController {
     		Collection<Integer> members = teamService.getTeamMembers(teamId);
     		Map<Integer, String> candidates = new HashMap<Integer, String>();
     		for (Integer id : members) {
-    			candidates.put(id, userService.getUserById(id).getDisplayName());
+    			if (id != session.getUser().getUserId()) {
+    				candidates.put(id, userService.getUserById(id).getDisplayName());
+    			}
     		}
     		teamCommand.setCandidates(candidates);
 		}
@@ -93,5 +97,12 @@ public class TeamUpdateController extends SimpleFormController {
 
 		return mav;
 	}
-    
+	
+	public UserSession getSession() {
+		return session;
+	}
+	
+	public void setSession(UserSession session) {
+		this.session = session;
+	}
 }

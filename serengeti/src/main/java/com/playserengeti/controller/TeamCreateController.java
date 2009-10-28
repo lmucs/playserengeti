@@ -8,6 +8,7 @@ import org.springframework.web.servlet.mvc.SimpleFormController;
 import com.playserengeti.domain.Team;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
+import com.playserengeti.session.UserSession;
 
 /**
  * The controller for creating a team.
@@ -18,6 +19,7 @@ public class TeamCreateController extends SimpleFormController {
 
     private TeamService teamService;
     private UserService userService;
+    private UserSession session;
 
 	/**
 	 * Constructor.  Sets the service.
@@ -34,7 +36,7 @@ public class TeamCreateController extends SimpleFormController {
 	protected Object formBackingObject(HttpServletRequest request)
     throws Exception {
         TeamCommand teamCommand = new TeamCommand();
-        teamCommand.setCandidates(userService.getAllUsersMap());
+        teamCommand.setCandidates(userService.getFriendsMap(session.getUser().getUserId()));
         
 		setSessionForm(true);
         return teamCommand;
@@ -52,12 +54,14 @@ public class TeamCreateController extends SimpleFormController {
 		team.setDescription(command.getDescription());
 		team.setHomeBase(command.getHomeBase());
 		team.setImage(command.getImage());
-		//team.setLeader(userService.getUserById(command.getLeaderId()));
+		team.setLeader(session.getUser());
 		teamService.saveTeam(team);
-
+ 
+		Integer teamId = team.getId();
+		teamService.addToTeam(teamId, session.getUser().getUserId());
 		Integer[] invitees = command.getInvitees();
 		for(Integer id : invitees) {
-			teamService.addToTeam(team.getId(), id);
+			teamService.addToTeam(teamId, id);
 		}
 		
 		ModelAndView mav = new ModelAndView("redirect:view");
@@ -66,4 +70,11 @@ public class TeamCreateController extends SimpleFormController {
 		return mav;
 	}
 
+	public UserSession getSession() {
+		return session;
+	}
+	
+	public void setSession(UserSession session) {
+		this.session = session;
+	}
 }

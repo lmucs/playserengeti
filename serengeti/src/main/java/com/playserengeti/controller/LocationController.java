@@ -12,12 +12,14 @@ import com.playserengeti.domain.Location;
 import com.playserengeti.service.LocationService;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.VisitService;
+import com.playserengeti.session.UserSession;
 
 public class LocationController extends MultiActionController {
 
 	private LocationService locationService;
 	private TeamService teamService;
 	private VisitService visitService;
+	private UserSession session;
 	
 	public LocationController(LocationService locationService, TeamService teamService, VisitService visitService) {
 		this.locationService = locationService;
@@ -33,6 +35,7 @@ public class LocationController extends MultiActionController {
 		Collection<Location> nearbyLocations = locationService.getAllLocations();
 		
 		ModelAndView mav = new ModelAndView("locationCentral");
+		mav.addObject("session", session);
 		mav.addObject("nearbyLocations", nearbyLocations);
 		
 		return mav;
@@ -57,10 +60,18 @@ public class LocationController extends MultiActionController {
 		}
 		
 		ModelAndView mav = new ModelAndView("locationViewProfile");
+		mav.addObject("session", session);
 		mav.addObject("locationCommand", locationCommand);
 		mav.addObject("address", address);
 		mav.addObject("teamList", visitService.getCompetingTeams(locationId));
 		return mav;
 	}
 	
+	public UserSession getSession() {
+		return session;
+	}
+	
+	public void setSession(UserSession session) {
+		this.session = session;
+	}
 }

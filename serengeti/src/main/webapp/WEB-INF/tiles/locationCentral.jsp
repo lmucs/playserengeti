@@ -9,9 +9,11 @@
                <li><a href="view?locationId=${location.locationId}"><c:out value="${location.locationName}"/></a></li>
             </c:forEach>
         </ul>
-
-        <p>Don't see your current location?  <a href="create">Add it.</a></p>
-
+        
+        <c:if test="${session.loggedIn}">
+            <p>Don't see your current location?  <a href="create">Add it.</a></p>
+        </c:if>
+        
 <div id="map_canvas" style="width:50%; height:50%"></div>
 <p id="location"></p>
 
