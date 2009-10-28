@@ -23,5 +23,6 @@
                <li><a href="view?teamId=${team.id}"><c:out value="${team.name}"/></a></li>
             </c:forEach>
         </ul>
-
-        <p><a href="create">Create a new team?</a></p>
+        <c:if test="${session.loggedIn}">
+            <p><a href="create">Create a new team?</a></p>
+        </c:if>

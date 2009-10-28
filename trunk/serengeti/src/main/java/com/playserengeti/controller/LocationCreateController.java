@@ -7,6 +7,7 @@ import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import com.playserengeti.domain.Location;
 import com.playserengeti.service.LocationService;
+import com.playserengeti.session.UserSession;
 
 
 
@@ -17,6 +18,7 @@ import com.playserengeti.service.LocationService;
 public class LocationCreateController extends SimpleFormController {
 
     private LocationService locationService;
+    private UserSession session;
 
     public LocationCreateController (LocationService locationService) {
         this.locationService = locationService;
@@ -51,5 +53,13 @@ public class LocationCreateController extends SimpleFormController {
 		mav.addObject("locationId", location.getLocationId());		
 		
 		return mav;		
+	}
+	
+	public UserSession getSession() {
+		return session;
+	}
+	
+	public void setSession(UserSession session) {
+		this.session = session;
 	}
 }

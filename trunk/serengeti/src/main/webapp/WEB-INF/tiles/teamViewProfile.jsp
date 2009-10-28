@@ -44,8 +44,9 @@
                     </ul>	
                 </div>
                 <hr>
-                <!-- This will only display if team.leader.id == userId  and pass in the userId -->
-                <a href="update?teamId=${teamCommand.teamId}">Modify Team</a><br/>
+                <c:if test="${session.loggedIn && (session.user.userId == teamCommand.leaderId)}">
+                    <a href="update?teamId=${teamCommand.teamId}">Modify Team</a><br/>
+                </c:if>
             </c:when>
             <c:otherwise>
                 <p>The team you requested does not exist.</p>

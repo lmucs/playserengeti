@@ -32,7 +32,9 @@
                       </c:forEach>
                    </ul> 
                 </table>
-                <a href="update?userId=${userCommand.userId}">Edit Profile</a><br/>
+                <c:if test="${session.user.userId == userCommand.userId}">
+                    <a href="update?userId=${userCommand.userId}">Edit Profile</a><br/>
+                </c:if>
             </c:when>
             <c:otherwise>
                 <p>The user you requested does not exist.</p>

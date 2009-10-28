@@ -175,6 +175,7 @@
            <bean class="com.playserengeti.controller.SerengetiMultipartResolver">
            </bean>
         </property>
+        <property name="session" ref="userSession"/>
         <constructor-arg ref="teamService"/>
         <constructor-arg ref="userService"/>
      </bean>    
@@ -187,6 +188,7 @@
         <property name="commandName" value="teamCommand"/>
         <property name="validator" ref="teamCreateValidator"/>
         <property name="formView" value="teamCreate"/>
+        <property name="session" ref="userSession"/>
         <constructor-arg ref="teamService"/>
         <constructor-arg ref="userService"/>
     </bean>
@@ -199,6 +201,7 @@
         <property name="commandName" value="teamCommand"/>
         <property name="validator" ref="teamUpdateValidator"/>
         <property name="formView" value="teamUpdate" />
+        <property name="session" ref="userSession"/>
         <constructor-arg ref="teamService"/>
         <constructor-arg ref="userService"/>
     </bean>
@@ -235,6 +238,7 @@
            <bean class="com.playserengeti.controller.SerengetiMultipartResolver">
            </bean>
         </property>
+        <property name="session" ref="userSession"/>
         <constructor-arg ref="locationService"/>
         <constructor-arg ref="teamService"/>
         <constructor-arg ref="visitService"/>
@@ -248,6 +252,7 @@
         <property name="commandName" value="locationCommand"/>
         <property name="validator" ref="locationCreateValidator"/>
         <property name="formView" value="locationCreate" />
+        <property name="session" ref="userSession"/>
         <constructor-arg ref="locationService"/>
     </bean>
 

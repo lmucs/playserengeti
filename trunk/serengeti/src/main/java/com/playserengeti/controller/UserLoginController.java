@@ -43,7 +43,7 @@ public class UserLoginController extends SimpleFormController {
 		
 		// Login successful!
 		session.setUser(user);
-		return new ModelAndView("redirect:view");
+		return new ModelAndView("redirect:view", "userId", user.getUserId());
 	}
 	
 	public UserSession getSession() {

@@ -37,6 +37,7 @@ public class UserController extends MultiActionController {
 		Collection<User> newest = userService.getAllUsers();
 		
 		ModelAndView mav = new ModelAndView("userCentral");
+		mav.addObject("session", session);
 		mav.addObject("recent", recentlyCheckedIn);
 		mav.addObject("mostActive", mostActive);
 		mav.addObject("newest", newest);
@@ -46,15 +47,9 @@ public class UserController extends MultiActionController {
 	
 	public ModelAndView view(HttpServletRequest request, HttpServletResponse response) {
 		UserCommand command = new UserCommand();
-        User user = session.getUser();
-        Integer userId;
-        if (user == null) {
-        	userId = Integer.valueOf(request.getParameter("userId"));
-            user = userService.getUserById(userId);
-        } else {
-        	userId = user.getUserId();
-        }
-        
+        Integer userId = Integer.valueOf(request.getParameter("userId"));
+        User user = userService.getUserById(userId);
+
         command.setUserId(user.getUserId());
         command.setEmail(user.getEmail());
         command.setDisplayName(user.getDisplayName());
