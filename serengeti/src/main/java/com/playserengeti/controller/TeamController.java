@@ -46,7 +46,12 @@ public class TeamController extends MultiActionController {
         Collection<Team> mostActive = teamService.getAllTeams();
         Collection<Team> newest = teamService.getAllTeams();
 
-        ModelAndView mav = new ModelAndView("teamCentral");
+		String view = "teamCentral";
+        if("xml".equals(request.getParameter("format"))) {
+        	view = "teamCentralXML";
+        }
+        
+        ModelAndView mav = new ModelAndView(view);
         mav.addObject("session", session);
         mav.addObject("leaders", leaders);
         mav.addObject("mostActive", mostActive);
@@ -87,7 +92,12 @@ public class TeamController extends MultiActionController {
             members.add(userService.getUserById(id));
         }
 
-        ModelAndView mav = new ModelAndView("teamViewProfile");
+		String view = "teamViewProfile";
+        if("xml".equals(request.getParameter("format"))) {
+        	view = "teamViewProfileXML";
+        }
+        
+        ModelAndView mav = new ModelAndView(view);
         mav.addObject("session", session);
         mav.addObject("teamCommand", command);
         mav.addObject("members", members);

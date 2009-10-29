@@ -28,6 +28,8 @@
         <put-attribute name="body" value="/WEB-INF/tiles/locationCentral.jsp"/>
     </definition>
     
+    <definition name="locationCentralXML" template="/WEB-INF/tiles/locationCentral.jspx"> </definition>
+    
     <definition name="locationCreate" extends="template">
         <put-attribute name="title" value="Create a Location"/>
         <put-attribute name="body" value="/WEB-INF/tiles/locationCreate.jsp"/>
@@ -37,6 +39,8 @@
         <put-attribute name="title" value="Location Profile"/>
         <put-attribute name="body" value="/WEB-INF/tiles/locationViewProfile.jsp"/>
     </definition>
+
+    <definition name="locationViewProfileXML" template="/WEB-INF/tiles/locationViewProfile.jspx"> </definition>
 
     <definition name="userCentral" extends="template">
         <put-attribute name="title" value="User Central"/>
@@ -83,6 +87,8 @@
         <put-attribute name="body" value="/WEB-INF/tiles/teamCentral.jsp"/>
     </definition>
 
+    <definition name="teamCentralXML" template="/WEB-INF/tiles/teamCentral.jspx"> </definition>
+
     <definition name="teamUpdate" extends="template">
         <put-attribute name="title" value="Update a Team"/>
         <put-attribute name="body" value="/WEB-INF/tiles/teamUpdate.jsp"/>
@@ -92,6 +98,8 @@
         <put-attribute name="title" value="Team Profile"/>
         <put-attribute name="body" value="/WEB-INF/tiles/teamViewProfile.jsp"/>
     </definition>
+    
+    <definition name="teamViewProfileXML" template="/WEB-INF/tiles/teamViewProfile.jspx"> </definition>
 
     <definition name="visitCreate" extends="template">
         <put-attribute name="title" value="Create a Visit"/>
