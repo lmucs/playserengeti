@@ -1,0 +1,27 @@
+<jsp:root version="2.0"
+    xmlns:jsp="http://java.sun.com/JSP/Page"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+    <user>
+        <userId><c:out value="${userCommand.userId}" /></userId>
+        <email><c:out value="${userCommand.email}" /></email>
+        <displayName><c:out value="${userCommand.displayName}" /></displayName>
+        <friends>
+            <c:forEach var="friend" items="${friends}">
+                <friend>
+                    <friendId><c:out value="${friend.userId}" /></friendId>
+                    <friendDisplayName><c:out value="${friend.displayName}" /></friendDisplayName>
+                </friend>
+            </c:forEach>
+        </friends>
+        <teams>
+            <c:forEach var="team" items="${teams}">
+                <team>
+                    <teamId><c:out value="${team.id}" /></teamId>
+                    <teamName><c:out value="${team.name}" /></teamName>
+                </team>
+            </c:forEach>
+        </teams>
+    </user>
+</jsp:root>

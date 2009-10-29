@@ -1,0 +1,31 @@
+<jsp:root version="2.0"
+    xmlns:jsp="http://java.sun.com/JSP/Page"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<userCentral>
+    <recent>
+        <c:forEach var="user" items="${recent}">
+            <user>
+                <userId><c:out value="${user.userId}" /></userId>
+                <displayName><c:out value="${user.displayName}" /></displayName>
+            </user>
+        </c:forEach>
+    </recent>
+    <mostActive>
+        <c:forEach var="user" items="${mostActive}">
+            <user>
+                <userId><c:out value="${user.userId}" /></userId>
+                <displayName><c:out value="${user.displayName}" /></displayName>
+            </user>
+        </c:forEach>
+    </mostActive>
+    <newest>
+        <c:forEach var="user" items="${newest}">
+            <user>
+                <userId><c:out value="${user.userId}" /></userId>
+                <displayName><c:out value="${user.displayName}" /></displayName>
+            </user>
+        </c:forEach>
+    </newest>
+</userCentral>
+</jsp:root>

@@ -36,7 +36,12 @@ public class UserController extends MultiActionController {
 		Collection<User> mostActive = userService.getAllUsers();
 		Collection<User> newest = userService.getAllUsers();
 		
-		ModelAndView mav = new ModelAndView("userCentral");
+		String view = "userCentral";
+        if("xml".equals(request.getParameter("format"))) {
+        	view = "userCentralXML";
+        }
+		
+		ModelAndView mav = new ModelAndView(view);
 		mav.addObject("session", session);
 		mav.addObject("recent", recentlyCheckedIn);
 		mav.addObject("mostActive", mostActive);
@@ -58,7 +63,12 @@ public class UserController extends MultiActionController {
         Collection<User> friends = userService.getFriends(userId);
         Collection<Team> teams = teamService.getTeams(user.getUserId());
 
-        ModelAndView mav = new ModelAndView("userViewProfile");
+        String view = "userViewProfile";
+        if("xml".equals(request.getParameter("format"))) {
+        	view = "userViewProfileXML";
+        }
+        
+        ModelAndView mav = new ModelAndView(view);
         mav.addObject("userCommand", command);
         mav.addObject("teams", teams);
         mav.addObject("friends", friends);
