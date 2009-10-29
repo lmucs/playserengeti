@@ -34,7 +34,12 @@ public class LocationController extends MultiActionController {
 	public ModelAndView central(HttpServletRequest request, HttpServletResponse response) {
 		Collection<Location> nearbyLocations = locationService.getAllLocations();
 		
-		ModelAndView mav = new ModelAndView("locationCentral");
+		String view = "locationCentral";
+        if("xml".equals(request.getParameter("format"))) {
+        	view = "locationCentralXML";
+        }
+        
+		ModelAndView mav = new ModelAndView(view);
 		mav.addObject("session", session);
 		mav.addObject("nearbyLocations", nearbyLocations);
 		
@@ -59,11 +64,16 @@ public class LocationController extends MultiActionController {
     		address = location.getFormattedAddress();
 		}
 		
-		ModelAndView mav = new ModelAndView("locationViewProfile");
+		String view = "locationViewProfile";
+        if("xml".equals(request.getParameter("format"))) {
+        	view = "locationViewProfileXML";
+        }
+		
+		ModelAndView mav = new ModelAndView(view);
 		mav.addObject("session", session);
 		mav.addObject("locationCommand", locationCommand);
 		mav.addObject("address", address);
-		mav.addObject("teamList", visitService.getCompetingTeams(locationId));
+		mav.addObject("competingTeams", visitService.getCompetingTeams(locationId));
 		return mav;
 	}
 	
