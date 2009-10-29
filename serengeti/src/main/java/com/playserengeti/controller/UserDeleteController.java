@@ -19,11 +19,13 @@ import com.playserengeti.domain.Friendship;
 import com.playserengeti.domain.Membership;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
+import com.playserengeti.session.UserSession;
 
 public class UserDeleteController extends SimpleFormController {
 
     private UserService userService;
     private TeamService teamService;
+    private UserSession session;
 
     public UserDeleteController(UserService userService, TeamService teamService) {
         this.userService = userService;
@@ -65,6 +67,8 @@ public class UserDeleteController extends SimpleFormController {
     		}
     		//Deletes the user from the database.
     		userService.deleteUser(userId);
+    		session.setUser(null);
+    		
     		return new ModelAndView("redirect:../");
     	} 
     	
@@ -74,5 +78,13 @@ public class UserDeleteController extends SimpleFormController {
     		model.put("message", e.getMessage());
     		return showForm(request, response, errors, model);
     	}
+	}
+	
+	public UserSession getSession() {
+		return session;
+	}
+	
+	public void setSession(UserSession session) {
+		this.session = session;
 	}
 }

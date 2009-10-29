@@ -131,6 +131,7 @@
         <property name="commandName" value="userCommand"/>
         <property name="validator" ref="userDeleteValidator"/>
         <property name="formView" value="userDelete"/>
+        <property name="session" ref="userSession"/>
         <constructor-arg ref="userService"/>
         <constructor-arg ref="teamService"/>
     </bean>

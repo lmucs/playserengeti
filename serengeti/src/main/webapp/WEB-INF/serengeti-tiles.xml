@@ -43,6 +43,9 @@
         <put-attribute name="body" value="/WEB-INF/tiles/userCentral.jsp"/>
     </definition>
     
+    <definition name="userCentralXML" template="/WEB-INF/tiles/userCentral.jspx">
+    </definition>
+    
     <definition name="userCreate" extends="template">
         <put-attribute name="title" value="Signup for Serengeti"/>
         <put-attribute name="body" value="/WEB-INF/tiles/userCreate.jsp"/>
@@ -68,6 +71,8 @@
         <put-attribute name="body" value="/WEB-INF/tiles/userViewProfile.jsp"/>
     </definition>
 
+    <definition name="userViewProfileXML" template="/WEB-INF/tiles/userViewProfile.jspx"> </definition>
+        
     <definition name="teamCreate" extends="template">
         <put-attribute name="title" value="Create a Team"/>
         <put-attribute name="body" value="/WEB-INF/tiles/teamCreate.jsp"/>
