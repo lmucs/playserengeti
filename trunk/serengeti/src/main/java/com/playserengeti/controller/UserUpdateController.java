@@ -4,6 +4,8 @@
 
 package com.playserengeti.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.servlet.ModelAndView;
@@ -60,8 +62,9 @@ public class UserUpdateController extends SimpleFormController {
 		// Insert the entry into the database.
 		userService.saveUser(user);
 		
-		Integer[] friendRemovals = command.getFriendRemovals();
-		Integer[] teamRemovals = command.getTeamRemovals();
+		/*
+		List<Integer> friendRemovals = command.getFriendRemovals();
+		List<Integer> teamRemovals = command.getTeamRemovals();
 		
 		for(Integer friendId : friendRemovals) {
 			userService.removeFriendship(userId, friendId);
@@ -70,6 +73,7 @@ public class UserUpdateController extends SimpleFormController {
 		for(Integer teamId : teamRemovals) {
 			teamService.removeFromTeam(teamId, userId);
 		}
+		*/
 		
 		ModelAndView mav = new ModelAndView("redirect:view");
 		mav.addObject("userId", userId);

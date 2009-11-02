@@ -1,9 +1,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 
  <c:choose>
             <c:when test='${!empty userCommand}'>
                 <p>Here's the user profile you requested</p>
+
+                <c:if test="${session.user.userId == userCommand.userId}">
+                    <div class=checkin">
+                        <p>Checkin from:</p>
+                        <form:select path="userCommand.checkinLocation">
+                            <form:options items="${nearbyLocations}" itemValue="locationId" itemLabel="locationName"/>
+                        </form:select>
+                    
+                        <p>As a member of team:</p>
+                        <form:select path="userCommand.checkinTeam">
+                            <form:options items="${teams}" itemValue="id" itemLabel="name"/>
+                        </form:select>
+                    
+                        <button type="button">Check In</button>
+                    </div>
+                </c:if>
+                
                 <table>
                     <tr>
                         <td><strong>Email Address: </strong></td>

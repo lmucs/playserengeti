@@ -23,5 +23,22 @@
                 </team>
             </c:forEach>
         </teams>
+        <nearbyLocatoins>
+            <c:forEach var="location" items="${nearbyLocatoins}">
+                <location>
+                    <locationId><c:out value="${location.locationId}" /></locationId>
+                    <locationName><c:out value="${location.locationName}" /></locationName>
+                    <phoneNumber><c:out value="${location.phoneNumber}" /></phoneNumber>
+        			<latitude><c:out value="${location.latitude}" /></latitude>
+        			<longitude><c:out value="${location.longitude}" /></longitude>
+      				<street><c:out value="${location.street}" /></street>
+     	     		<city><c:out value="${location.city}" /></city>
+      				<state><c:out value="${location.state}" /></state>
+        			<zipcode><c:out value="${location.zipcode}" /></zipcode>
+        			<description><c:out value="${location.description}" /></description>
+        			<teamOwner><c:out value="${location.teamOwner}" /></teamOwner>
+                </location>
+            </c:forEach>
+        </nearbyLocations>
     </user>
 </jsp:root>
