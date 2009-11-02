@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
+import com.playserengeti.domain.Location;
 import com.playserengeti.domain.Team;
 import com.playserengeti.domain.User;
+import com.playserengeti.service.LocationService;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
 import com.playserengeti.session.UserSession;
@@ -18,11 +20,13 @@ public class UserController extends MultiActionController {
 	
 	private UserService userService;
 	private TeamService teamService;
+	private LocationService locationService;
 	private UserSession session;
 	
-	public UserController(UserService userService, TeamService teamService) {
+	public UserController(UserService userService, TeamService teamService, LocationService locationService) {
 		this.userService = userService;
 		this.teamService = teamService;
+		this.locationService = locationService;
 	}
 	
 	public ModelAndView user(HttpServletRequest request, HttpServletResponse response) {
@@ -62,6 +66,7 @@ public class UserController extends MultiActionController {
 
         Collection<User> friends = userService.getFriends(userId);
         Collection<Team> teams = teamService.getTeams(user.getUserId());
+		Collection<Location> nearbyLocations = locationService.getAllLocations();
 
         String view = "userViewProfile";
         if("xml".equals(request.getParameter("format"))) {
@@ -72,7 +77,9 @@ public class UserController extends MultiActionController {
         mav.addObject("userCommand", command);
         mav.addObject("teams", teams);
         mav.addObject("friends", friends);
+        mav.addObject("nearbyLocations", nearbyLocations);
         mav.addObject("session", session);
+        
 
         return mav;
 	}

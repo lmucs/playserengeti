@@ -29,19 +29,24 @@
             <form:input path="userCommand.image" />
         </div>
     </div>
-    <div>
-        <div class="formLabel">
-            <label for="friendRemovals">Remove selected friends: </label>
-        </div>
-		<form:checkboxes path="userCommand.friendRemovals" items="${userCommand.friends}" /><br/>
-    </div>
-    <div>
-        <div class="formLabel">
-            <label for="teamRemovals">Remove selected teams: </label>
-        </div>
-		<form:checkboxes path="userCommand.teamRemovals" items="${userCommand.teams}" /><br/>
-    </div>
     
+    <div>
+        <label for="friendRemovals">Friends: </label>
+        <ul>
+            <c:forEach var="user" items="${userCommand.friends}">
+                <li><c:out value="${user.value}"/><input type="button" value="Remove" onClick="removeFriend(${user.key})" /></li>
+            </c:forEach>
+        </ul>	
+    </div>
+    <div>
+        <label for="teamRemovals">Teams: </label>
+        <ul>
+            <c:forEach var="team" items="${userCommand.teams}">
+                <li><c:out value="${team.value}"/><input type="button" value="Remove" onClick="removeTeam(${team.key})" /></li>
+            </c:forEach>
+        </ul>	
+    </div>
+        
     <div class="formRow">
         <input type="submit" value="Update Profile!" />
     </div>
@@ -59,6 +64,14 @@
         }
         alert("The password cannot be blank");
         return false;
+    }
+    
+    var removeFriend = function (userId) {
+
+    }
+    
+    var removeTeam = function (teamId) {
+
     }
 </script>
 
