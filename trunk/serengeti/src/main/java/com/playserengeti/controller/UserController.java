@@ -87,6 +87,11 @@ public class UserController extends MultiActionController {
         return mav;
 	}
 	
+	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) {
+		session.setUser(null);
+		return new ModelAndView("welcome");
+	}
+	
 	public void checkIn(HttpServletRequest request, HttpServletResponse response) {
 		Integer userId = Integer.valueOf(request.getParameter("userId"));
 		Integer teamId = Integer.valueOf(request.getParameter("teamId"));

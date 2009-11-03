@@ -11,6 +11,3 @@
         <li><a href="team">Team Central</a></li>
         <li><a href="location">Location Central</a></li>
         </ul>
-        <ul>
-        <li><a href="visit/create">Check In (aka create a Visit)</a></li>
-        </ul>
