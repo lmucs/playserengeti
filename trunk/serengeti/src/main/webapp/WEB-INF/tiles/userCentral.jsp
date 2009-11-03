@@ -9,19 +9,14 @@
 	        <ul class="hor_menu">
 	            <c:forEach var="user" items="${recent}">
 	               <li>
-	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user"/>
+	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user" title="${user.displayName}"/>
 	                   <span>
 	                       <a href="view?userId=${user.userId}"><c:out value="${user.displayName}"/></a>
 	                   </span>
 	               </li>
 	            </c:forEach>
 	        </ul>
-	        
-	        <ul>
-            <c:forEach var="user" items="${recent}">
-               <li><a href="view?userId=${user.userId}"><c:out value="${user.displayName}"/></a></li>
-            </c:forEach>
-        </ul>
+	       
 	        
 	    </div>
         <div class="hor_menu">
@@ -31,19 +26,14 @@
 	        <ul class="hor_menu">
 	            <c:forEach var="user" items="${mostActive}">
 	               <li>
-	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user"/>
+	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user" title="${user.displayName}"/>
 	                   <span>
 	                       <a href="view?userId=${user.userId}"><c:out value="${user.displayName}"/></a>
 	                   </span>
 	               </li>
 	            </c:forEach>
 	        </ul>
-	        
-	        <ul>
-            <c:forEach var="user" items="${mostActive}">
-               <li><a href="view?userId=${user.userId}"><c:out value="${user.displayName}"/></a></li>
-            </c:forEach>
-        </ul>
+	       
         
         </div>
         <div class="hor_menu">
@@ -53,19 +43,14 @@
 	        <ul class="hor_menu">
 	            <c:forEach var="user" items="${newest}">
 	               <li>
-	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user"/>
+	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user" title="${user.displayName}"/>
 	                   <span>
 	                       <a href="view?userId=${team.userId}"><c:out value="${user.displayName}"/></a>
 	                   </span>
 	               </li>
 	            </c:forEach>
 	        </ul>
-	        
-	        <ul>
-            <c:forEach var="user" items="${newest}">
-               <li><a href="view?userId=${user.userId}"><c:out value="${user.displayName}"/></a></li>
-            </c:forEach>
-        </ul>
+	       
         
 	    </div>
     </div>
