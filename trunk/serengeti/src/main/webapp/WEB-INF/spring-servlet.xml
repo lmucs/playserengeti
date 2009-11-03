@@ -90,6 +90,7 @@
        <constructor-arg ref="userService"/>
        <constructor-arg ref="teamService"/>
        <constructor-arg ref="locationService"/>
+       <constructor-arg ref="visitService"/>
     </bean>  
      
     <bean id="userCreateController"

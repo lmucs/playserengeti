@@ -14,6 +14,7 @@ import com.playserengeti.domain.User;
 import com.playserengeti.service.LocationService;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
+import com.playserengeti.service.VisitService;
 import com.playserengeti.session.UserSession;
 
 public class UserController extends MultiActionController {
@@ -21,12 +22,14 @@ public class UserController extends MultiActionController {
 	private UserService userService;
 	private TeamService teamService;
 	private LocationService locationService;
+	private VisitService visitService;
 	private UserSession session;
 	
-	public UserController(UserService userService, TeamService teamService, LocationService locationService) {
+	public UserController(UserService userService, TeamService teamService, LocationService locationService, VisitService visitService) {
 		this.userService = userService;
 		this.teamService = teamService;
 		this.locationService = locationService;
+		this.visitService = visitService;
 	}
 	
 	public ModelAndView user(HttpServletRequest request, HttpServletResponse response) {
@@ -82,6 +85,28 @@ public class UserController extends MultiActionController {
         
 
         return mav;
+	}
+	
+	public void checkIn(HttpServletRequest request, HttpServletResponse response) {
+		Integer userId = Integer.valueOf(request.getParameter("userId"));
+		Integer teamId = Integer.valueOf(request.getParameter("teamId"));
+		Integer locationId = Integer.valueOf(request.getParameter("locationId"));
+      
+		visitService.checkIn(userId, teamId, locationId);
+	}
+	
+	public void removeFriend(HttpServletRequest request, HttpServletResponse response) {
+		Integer primaryId = Integer.valueOf(request.getParameter("pUserId"));
+		Integer secondaryId = Integer.valueOf(request.getParameter("sUserId"));
+
+		userService.removeFriendship(primaryId, secondaryId);
+	}
+	
+	public void removeTeam(HttpServletRequest request, HttpServletResponse response) {
+		Integer userId = Integer.valueOf(request.getParameter("userId"));
+		Integer teamId = Integer.valueOf(request.getParameter("teamId"));
+		
+		teamService.removeFromTeam(teamId, userId);
 	}
 	
 	public UserSession getSession() {

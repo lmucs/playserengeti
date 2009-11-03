@@ -71,6 +71,10 @@ public class VisitService {
 	public void deleteVisit(Integer visitId) {
 	    visitDao.deleteVisit(visitId);
 	}
+	
+	public void checkIn(Integer userId, Integer teamId, Integer locationId) {
+		visitDao.insertVisit(new Visit(null, userId, teamId, locationId));
+	}
 
 	/**
 	 * Fetches all the visits from persistent storage.
