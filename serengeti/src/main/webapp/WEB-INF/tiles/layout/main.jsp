@@ -39,11 +39,17 @@
         <div id="navbar2">
         <ul>
             <li><a href="${pageContext.request.contextPath}/">Home  </a></li>
-            <li><a href="link2.html ">Profile</a></li>
-            <li><a href="link4.html ">Teams</a></li>
+            <c:if test="${session.loggedIn}">
+                <li><a href="${pageContext.request.contextPath}/user/view?userId=${session.user.userId}" >Profile</a></li>
+            </c:if>
+            <li><a href="${pageContext.request.contextPath}/user">Users</a></li>
+            <li><a href="${pageContext.request.contextPath}/team">Teams</a></li>
+            <li><a href="${pageContext.request.contextPath}/location">Locations</a></li>
             <li><a href="link5.html ">Help</a></li>
             <li><a href="link6.html ">Settings</a></li>
-            <li><a href="link7.html ">Log Out</a></li>
+            <c:if test="${session.loggedIn}">
+                <li><a href="${pageContext.request.contextPath}/user/logout">Log Out</a></li>
+            </c:if>
         </ul>
         </div>
 
