@@ -29,14 +29,12 @@
             <form:input path="userCommand.image" />
         </div>
     </div>
-    
-    <p> Currently, when the "Remove" button is pressed, the friend/team remains in the list.</p>
-    <p> However, it actually has been removed.</p> 
+
     <div>
         <label for="friendRemovals">Friends: </label>
         <ul>
             <c:forEach var="user" items="${userCommand.friends}">
-                <li><c:out value="${user.value}"/><input type="button" value="Remove" onClick="removeFriend(${user.key})" /></li>
+                <li id="user_${user.key}"><c:out value="${user.value}"/><input type="button" value="Remove" onClick="removeFriend(${user.key}, 'user_${user.key}')" /></li>
             </c:forEach>
         </ul>	
     </div>
@@ -44,7 +42,7 @@
         <label for="teamRemovals">Teams: </label>
         <ul>
             <c:forEach var="team" items="${userCommand.teams}">
-                <li><c:out value="${team.value}"/><input type="button" value="Remove" onClick="removeTeam(${team.key})" /></li>
+                <li id="team_${team.key}"><c:out value="${team.value}"/><input type="button" value="Remove" onClick="removeTeam(${team.key}, 'team_${team.key}')" /></li>
             </c:forEach>
         </ul>	
     </div>
@@ -69,12 +67,14 @@
         return false;
     }
     
-    var removeFriend = function (sUserId) {
+    var removeFriend = function (sUserId, elementId) {
         $.get("removeFriend", {pUserId : ${userCommand.userId}, sUserId : sUserId});
+        $("#" + elementId).fadeOut("slow");
     }
     
-    var removeTeam = function (teamId) {
+    var removeTeam = function (teamId, elementId) {
         $.get("removeTeam", {userId : ${userCommand.userId}, teamId : teamId});
+        $("#" + elementId).fadeOut("slow");
     }
     
 </script>
