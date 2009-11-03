@@ -2,25 +2,33 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-
  <c:choose>
             <c:when test='${!empty userCommand}'>
                 <p>Here's the user profile you requested</p>
 
                 <c:if test="${session.user.userId == userCommand.userId}">
-                    <div class=checkin">
+                    <div class="thanks">
+                        <p>Thank you for checking in.</p>
+                    </div>
+                    
+                    <div class="checkin">
                         <p>Checkin from:</p>
-                        <form:select path="userCommand.checkinLocation">
-                            <form:options items="${nearbyLocations}" itemValue="locationId" itemLabel="locationName"/>
-                        </form:select>
+                        <select name="checkinLocation" id="checkinLocation">
+                            <c:forEach var="location" items="${nearbyLocations}">
+                                <option value="${location.locationId}"><c:out value="${location.locationName}"/></option>
+                            </c:forEach>
+                        </select>
                     
                         <p>As a member of team:</p>
-                        <form:select path="userCommand.checkinTeam">
-                            <form:options items="${teams}" itemValue="id" itemLabel="name"/>
-                        </form:select>
+                        <select name="checkinTeam" id="checkinTeam">
+                            <c:forEach var="team" items="${teams}">
+                                <option value="${team.id}"><c:out value="${team.name}"/></option>
+                            </c:forEach>
+                        </select>
                     
-                        <button type="button">Check In</button>
+                        <button type="button" class="button">Check In</button>
                     </div>
+                    
                 </c:if>
                 
                 <table>
@@ -60,3 +68,15 @@
             </c:otherwise>
         </c:choose>
 
+<script>
+    $(function() {
+        $(".thanks").hide();
+        $(".button").click(function() {  
+            $.get("checkIn", {userId : ${userCommand.userId}, teamId : $("select#checkinTeam").val(), 
+                locationId : $("select#checkinLocation").val()}
+            );
+            $(".checkin").fadeOut("slow", function() {$(".thanks").fadeIn("slow");});  
+                 
+        });  
+    });
+</script>

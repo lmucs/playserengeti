@@ -62,19 +62,6 @@ public class UserUpdateController extends SimpleFormController {
 		// Insert the entry into the database.
 		userService.saveUser(user);
 		
-		/*
-		List<Integer> friendRemovals = command.getFriendRemovals();
-		List<Integer> teamRemovals = command.getTeamRemovals();
-		
-		for(Integer friendId : friendRemovals) {
-			userService.removeFriendship(userId, friendId);
-		}
-		
-		for(Integer teamId : teamRemovals) {
-			teamService.removeFromTeam(teamId, userId);
-		}
-		*/
-		
 		ModelAndView mav = new ModelAndView("redirect:view");
 		mav.addObject("userId", userId);
 

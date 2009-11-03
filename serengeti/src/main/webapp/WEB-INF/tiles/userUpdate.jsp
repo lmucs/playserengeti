@@ -30,6 +30,8 @@
         </div>
     </div>
     
+    <p> Currently, when the "Remove" button is pressed, the friend/team remains in the list.</p>
+    <p> However, it actually has been removed.</p> 
     <div>
         <label for="friendRemovals">Friends: </label>
         <ul>
@@ -48,7 +50,7 @@
     </div>
         
     <div class="formRow">
-        <input type="submit" value="Update Profile!" />
+        <input type="submit" value="Save Changes" />
     </div>
 
     <a href="delete?userId=${userCommand.userId}">Delete Profile</a>
@@ -57,6 +59,7 @@
 
 
 <script>
+    
     var validateUpdateForm = function () {
         var name = document.getElementById("password");
         if (name && name.value !== '') {
@@ -66,12 +69,13 @@
         return false;
     }
     
-    var removeFriend = function (userId) {
-
+    var removeFriend = function (sUserId) {
+        $.get("removeFriend", {pUserId : ${userCommand.userId}, sUserId : sUserId});
     }
     
     var removeTeam = function (teamId) {
-
+        $.get("removeTeam", {userId : ${userCommand.userId}, teamId : teamId});
     }
+    
 </script>
 

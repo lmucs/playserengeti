@@ -10,11 +10,7 @@ public class UserCommand {
     private String displayName;
     private String image;
     private Map<Integer, String> friends;
-    private List<Integer> friendRemovals;
     private Map<Integer, String> teams;
-    private List<Integer> teamRemovals;
-    private Integer checkinLocation;
-    private Integer checkinTeam;
 
     public Integer getUserId() {
         return userId;
@@ -72,35 +68,4 @@ public class UserCommand {
         this.image = image;
     }
 
-    public List<Integer> getFriendRemovals() {
-        return friendRemovals;
-    }
-
-    public void setFriendRemovals(List<Integer> friendRemovals) {
-        this.friendRemovals = friendRemovals;
-    }
-
-    public List<Integer> getTeamRemovals() {
-        return teamRemovals;
-    }
-
-    public void setTeamRemovals(List<Integer> teamRemovals) {
-        this.teamRemovals = teamRemovals;
-    }
-
-	public Integer getCheckinLocation() {
-		return checkinLocation;
-	}
-
-	public void setCheckinLocation(Integer checkinLocation) {
-		this.checkinLocation = checkinLocation;
-	}
-
-	public Integer getCheckinTeam() {
-		return checkinTeam;
-	}
-
-	public void setCheckinTeam(Integer checkinTeam) {
-		this.checkinTeam = checkinTeam;
-	}
 }
