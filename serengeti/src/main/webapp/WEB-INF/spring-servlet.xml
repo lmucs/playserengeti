@@ -100,6 +100,7 @@
         />
         <property name="validator" ref="userCreateValidator"/>
         <property name="formView" value="userCreate"/>
+        <property name="session" ref="userSession"/>
         <constructor-arg ref="userService"/>
     </bean>
 
