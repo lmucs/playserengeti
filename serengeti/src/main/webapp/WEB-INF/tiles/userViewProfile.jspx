@@ -23,8 +23,8 @@
                 </team>
             </c:forEach>
         </teams>
-        <nearbyLocatoins>
-            <c:forEach var="location" items="${nearbyLocatoins}">
+        <nearbyLocations>
+            <c:forEach var="location" items="${nearbyLocations}">
                 <location>
                     <locationId><c:out value="${location.locationId}" /></locationId>
                     <locationName><c:out value="${location.locationName}" /></locationName>
