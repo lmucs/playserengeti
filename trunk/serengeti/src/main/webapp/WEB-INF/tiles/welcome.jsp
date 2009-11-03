@@ -1,13 +1,10 @@
-        <p>Welcome to Serengeti.  Someday we will have something cool
-        to say here.</p>
-
-        <p>For now, this page will be used for testing:</p>
 
         <ul>
         <li><a href="user/create">Sign up!</a></li>
         </ul>
-        <ul>
-        <li><a href="user">User Central</a></li>
-        <li><a href="team">Team Central</a></li>
-        <li><a href="location">Location Central</a></li>
-        </ul>
+
+        <p>This is a paragraph that tells everyone how awesome Serengeti is and why they should 
+            be playing it.
+        </p>
+        
+        

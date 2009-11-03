@@ -8,6 +8,7 @@ import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import com.playserengeti.domain.User;
 import com.playserengeti.service.UserService;
+import com.playserengeti.session.UserSession;
 
 /**
  * Controller for creating a user.
@@ -15,6 +16,7 @@ import com.playserengeti.service.UserService;
 public class UserCreateController extends SimpleFormController {
 
 	private UserService userService;
+	private UserSession session;
 
 	/**
 	 * Creates the controller, injecting a service.
@@ -36,6 +38,7 @@ public class UserCreateController extends SimpleFormController {
 		try {
 			// Insert the entry into the database.
 		    userId = userService.saveUser(user);
+		    session.setUser(user);
 
 			ModelAndView mav = new ModelAndView("redirect:view");
 			mav.addObject("userId", userId);		
@@ -49,5 +52,13 @@ public class UserCreateController extends SimpleFormController {
 			model.put("message", e.getMessage());
 			return new ModelAndView(getFormView(), model);
 		}
+	}
+	
+	public UserSession getSession() {
+		return session;
+	}
+	
+	public void setSession(UserSession session) {
+		this.session = session;
 	}
 }
