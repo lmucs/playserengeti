@@ -143,3 +143,50 @@ formarea:FOCUS,INPUT:FOCUS {
 	width:50%; 
 	height:50%;
 }
+
+
+#logo{
+ font-size: 2.2em;
+ font-style: italic;
+ border: 10px solid #ddccbb;
+
+}
+
+#navbar2 {
+ height: 30px;
+ width: 100%;
+
+ background-color: #445544;
+}
+#navbar2 ul {
+ margin: 0px;
+ padding: 0px;
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: small;
+ color: #bbaa88;
+ line-height: 30px;
+ white-space: nowrap;
+}
+#navbar2 li {
+ list-style-type: none;
+ display: inline;
+}
+#navbar2 li a {
+ text-decoration: none;
+ padding: 7px 10px;
+ color: #bbaa88;
+}
+#navbar2 lia:link {
+ color: #bbaa88:
+}
+#navbar2 lia:visited {
+ color: #CCC;
+
+#navbar2 lia:hover {
+ font-weight: bold;
+ color: #FFF;
+ background-color: #bbaa88;
+ background:url(img/logo-small.png)
+}
+
+
