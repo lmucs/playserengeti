@@ -9,6 +9,12 @@
         <link rel="stylesheet" type="text/css"
             href="${pageContext.request.contextPath}/styles/serengeti.css"
         />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/960.css"/>
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/reset.css"/>
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/text.css"/>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"
+            type="text/javascript">
+        </script>
         <script type="text/javascript"
             src="${pageContext.request.contextPath}/scripts/jquery-1.3.2.min.js">
         </script>
@@ -18,7 +24,8 @@
     </head>
 
     <body>
-        <tiles:insertAttribute name="header"/>
+        <div class="container_12" id="pageWrapper">
+	        <tiles:insertAttribute name="header"/>
 
         <%-- Right-floated big logo, linked to home --%>
         <div class="mainlogo">
@@ -59,5 +66,6 @@
         </div>
 
         <tiles:insertAttribute name="footer"/>
+	    </div>
     </body>
 </html>
