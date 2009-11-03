@@ -18,7 +18,7 @@
         </div>
         <div>
             <div class="formLabel">
-                <label for="phoneNumber">Phone Number</label>
+               <label for="phoneNumber">Phone Number</label>
             </div>
             <div class="spaceInputBox">
                 <input type="text" name="phoneNumber" />
