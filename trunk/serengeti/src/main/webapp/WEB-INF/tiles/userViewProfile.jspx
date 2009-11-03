@@ -3,16 +3,17 @@
     xmlns:c="http://java.sun.com/jsp/jstl/core"
     xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 
-    <user>
+    <profile>
+      <user>
         <userId><c:out value="${userCommand.userId}" /></userId>
         <email><c:out value="${userCommand.email}" /></email>
         <displayName><c:out value="${userCommand.displayName}" /></displayName>
         <friends>
             <c:forEach var="friend" items="${friends}">
-                <friend>
-                    <friendId><c:out value="${friend.userId}" /></friendId>
-                    <friendDisplayName><c:out value="${friend.displayName}" /></friendDisplayName>
-                </friend>
+                <user>
+                    <userId><c:out value="${friend.userId}" /></userId>
+                    <displayName><c:out value="${friend.displayName}" /></displayName>
+                </user>
             </c:forEach>
         </friends>
         <teams>
@@ -40,5 +41,6 @@
                 </location>
             </c:forEach>
         </nearbyLocations>
-    </user>
+      </user>
+    </profile>
 </jsp:root>

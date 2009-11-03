@@ -12,8 +12,10 @@
                     	</div>
                     	<div>
                         	<td><strong>Address:</strong></td>
-                        	<td><c:out value="${address[0]}"/><br/>
-                            	<c:out value="${address[1]}"/></td>
+                        	<td><c:out value="${locationCommand.street}"/><br/>
+                            	<c:out value="${locationCommand.city}"/>
+                            	<c:out value="${locationCommand.state}"/>
+                            	<c:out value="${locationCommand.zipcode}"/></td>
                     	</div>
                     	<div>
                         	<td><strong>Phone Number:</strong></td>

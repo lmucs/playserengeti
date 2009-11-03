@@ -61,7 +61,10 @@ public class LocationController extends MultiActionController {
     		locationCommand.setPhoneNumber(location.getPhoneNumber());
     		locationCommand.setDescription(location.getDescription());
     		locationCommand.setImage(location.getImage());
-    		address = location.getFormattedAddress();
+    		locationCommand.setStreet(location.getStreet());
+    		locationCommand.setCity(location.getCity());
+    		locationCommand.setState(location.getState());
+    		locationCommand.setZipcode(location.getZipcode());
 		}
 		
 		String view = "locationViewProfile";
@@ -72,7 +75,6 @@ public class LocationController extends MultiActionController {
 		ModelAndView mav = new ModelAndView(view);
 		mav.addObject("session", session);
 		mav.addObject("locationCommand", locationCommand);
-		mav.addObject("address", address);
 		mav.addObject("competingTeams", visitService.getCompetingTeams(locationId));
 		return mav;
 	}

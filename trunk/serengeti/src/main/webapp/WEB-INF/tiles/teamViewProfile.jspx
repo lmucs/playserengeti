@@ -3,6 +3,7 @@
     xmlns:c="http://java.sun.com/jsp/jstl/core"
     xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 
+<profile>
     <team>
         <teamId><c:out value="${teamCommand.teamId}" /></teamId>
         <name><c:out value="${teamCommand.name}" /></name>
@@ -13,11 +14,12 @@
         <leaderId><c:out value="${teamCommand.leaderId}" /></leaderId>
         <members>
             <c:forEach var="member" items="${members}">
-                <member>
-                    <memberId><c:out value="${member.userId}" /></memberId>
-                    <memberDisplayName><c:out value="${member.displayName}" /></memberDisplayName>
-                </member>
+                <user>
+                    <userId><c:out value="${member.userId}" /></userId>
+                    <displayName><c:out value="${member.displayName}" /></displayName>
+                </user>
             </c:forEach>
         </members>
     </team>
+</profile>
 </jsp:root>
