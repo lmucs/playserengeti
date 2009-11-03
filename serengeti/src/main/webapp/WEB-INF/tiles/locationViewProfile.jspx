@@ -1,0 +1,20 @@
+<jsp:root version="2.0"
+    xmlns:jsp="http://java.sun.com/JSP/Page"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <profile>
+            <location>
+                <locationId><c:out value="${locationCommand.locationId}" /></locationId>
+                <locationName><c:out value="${locationCommand.locationName}" /></locationName>
+                <phoneNumber><c:out value="${locationCommand.phoneNumber}" /></phoneNumber>
+                <latitude><c:out value="${locationCommand.latitude}" /></latitude>
+                <longitude><c:out value="${locationCommand.longitude}" /></longitude>
+                <street><c:out value="${locationCommand.street}" /></street>
+                <city><c:out value="${locationCommand.city}" /></city>
+                <state><c:out value="${locationCommand.state}" /></state>
+                <zipcode><c:out value="${locationCommand.zipcode}" /></zipcode>
+                <description><c:out value="${locationCommand.description}" /></description>
+                <teamOwner><c:out value="${locationCommand.teamOwner.name}" /></teamOwner>
+            </location>
+    </profile>
+</jsp:root>
