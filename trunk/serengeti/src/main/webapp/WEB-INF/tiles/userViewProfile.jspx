@@ -41,6 +41,17 @@
                 </location>
             </c:forEach>
         </nearbyLocations>
+        <invites>
+            <friendshipInvites>
+                <c:forEach var="invite" items="${friendInvites}">
+                    <friendshipInvite>
+                        <friendshipId><c:out value="${invite.key}" /></friendshipId>
+                        <friendshipUserId><c:out value="${invite.value.userId}" /></friendshipUserId>
+                        <friendshipDisplayName><c:out value="${invite.value.displayName}" /></friendshipDisplayName>
+                    </friendshipInvite>
+                </c:forEach>
+            </friendshipInvites>
+        </invites>
       </user>
     </profile>
 </jsp:root>
