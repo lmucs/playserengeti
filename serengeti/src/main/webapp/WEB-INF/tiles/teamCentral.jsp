@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-    <div class="mainContentArea">
         <div class="hor_menu">
 	        <div>
 	            <p>Teams With the Most Territory</p>
@@ -46,8 +45,10 @@
 	               </li>
 	            </c:forEach>
 	        </ul>
-	    </div>
         <c:if test="${session.loggedIn}">
             <p><a href="create">Create a new team?</a></p>
         </c:if>
+        <script type="text/javascript">
+            scrollbar();
+        </script>
     </div>
