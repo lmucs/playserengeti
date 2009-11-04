@@ -4,9 +4,19 @@
 
  <c:choose>
             <c:when test='${!empty userCommand}'>
-                <p>Here's the user profile you requested</p>
-
-                <c:if test="${session.user.userId == userCommand.userId}">
+            <c:choose>
+                <c:when test="${session.user.userId == userCommand.userId}">
+                    <c:if test='${!empty friendInvites}'>
+                        <div class="friendRequests">
+                            <p>These people want to be your friend.</p>
+                            <ul>
+                            <c:forEach var="invite" items="${friendInvites}">
+                                <li id="invite_${invite.key}"><a href="view?userId=${invite.value.userId}"><c:out value="${invite.value.displayName}"/></a>
+                                <input type="button" value="I'll allow it" onClick="acceptInvite(${invite.key})"/></li>
+                            </c:forEach>
+                        </div>
+                    </c:if>                
+                
                     <div class="thanks">
                         <p>Thank you for checking in.</p>
                     </div>
@@ -29,7 +39,15 @@
                         <button type="button" class="button">Check In</button>
                     </div>
                     
-                </c:if>
+                </c:when>
+                <c:otherwise>
+                    <c:if test="${session.loggedIn && !alreadyFriends}">
+                        <div class="sendRequests">
+                            <input class="friendInvite" type="button" value="Send friend request" onClick="sendInvite()"/>
+                        </div>
+                    </c:if>
+                </c:otherwise>
+            </c:choose>
                 
                 <table>
                     <tr>
@@ -79,4 +97,15 @@
                  
         });  
     });
+    
+    var sendInvite = function () {
+        $.get("sendInvite", {pUserId : ${session.user.userId}, sUserId : ${userCommand.userId}});
+        $(".friendInvite").fadeOut("slow");
+    }
+    
+    var acceptInvite = function (inviteId) {
+        $.get("acceptInvite", {friendshipId : inviteId});
+        $("#invite_" + inviteId).fadeOut("slow");
+    }
+    
 </script>

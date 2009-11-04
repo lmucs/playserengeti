@@ -5,15 +5,18 @@ public class Friendship {
 	private Integer friendshipId;
 	private Integer primaryUserId;
 	private Integer secondaryUserId;
+	private String status;
 	
 	public Friendship(Integer friendshipId, Integer primaryUserId, Integer secondaryUserId) {
 		this.friendshipId = friendshipId;
 		this.primaryUserId = primaryUserId;
 		this.secondaryUserId = secondaryUserId;
+		this.status = "pending";
 	}
 	
 	public Friendship(Friendship f) {
 		this(f.friendshipId, f.primaryUserId, f.secondaryUserId);
+		this.status = f.status;
 	}
 
 	public Integer getFriendshipId() {
@@ -40,6 +43,14 @@ public class Friendship {
 		this.secondaryUserId = secondaryUserId;
 	}
 	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	/**
 	 * Checks to see if the users involved in two friendships 
 	 * are the same.

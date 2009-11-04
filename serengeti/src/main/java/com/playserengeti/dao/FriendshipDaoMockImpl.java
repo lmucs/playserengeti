@@ -59,7 +59,7 @@ public class FriendshipDaoMockImpl implements FriendshipDao {
 
 	@Override
 	public Friendship getFriendshipById(Integer id) {
-		return new Friendship(storage.get(id));
+		return storage.get(id);
 	}
 
 	@Override

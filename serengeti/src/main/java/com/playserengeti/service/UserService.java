@@ -110,9 +110,35 @@ public class UserService {
     	Collection<Friendship> friends = friendshipDao.getFriendshipsByUser(userId);
     	
     	for (Friendship f : friends) {
-    		if (f.getPrimaryUserId().equals(userId)) result.add(getUserById(f.getSecondaryUserId()));
-    		else {
-    			result.add(getUserById(f.getPrimaryUserId()));
+    		if (f.getStatus().equals("accepted")) {
+    			if (f.getPrimaryUserId().equals(userId)) result.add(getUserById(f.getSecondaryUserId()));
+    			else {
+    				result.add(getUserById(f.getPrimaryUserId()));
+    			}
+    		}
+    	}
+    	
+    	return result;
+    }
+    
+    public Collection<Friendship> getFriendInvites(Integer userId) {
+    	Set<Friendship> result = new HashSet<Friendship>();
+    	Collection<Friendship> friends = friendshipDao.getFriendshipsByUser(userId);
+    	
+    	for(Friendship f : friends) {
+    		if (f.getStatus().equals("pending") && f.getSecondaryUserId().equals(userId)) result.add(f);
+    	}
+    	
+    	return result;
+    }
+    
+    public Map<Integer, User> getFriendInvitesMap(Integer userId) {
+    	Map<Integer, User> result = new HashMap<Integer, User>();
+    	Collection<Friendship> friends = friendshipDao.getFriendshipsByUser(userId);
+    	
+    	for(Friendship f : friends) {
+    		if (f.getStatus().equals("pending") && f.getSecondaryUserId().equals(userId)) {
+    			result.put(f.getFriendshipId(), getUserById(f.getPrimaryUserId()));
     		}
     	}
     	
@@ -144,6 +170,14 @@ public class UserService {
     		    deleteFriendship(f.getFriendshipId());
     		}
     	}
+    }
+    
+    public void inviteFriend(Integer pUserId, Integer sUserId) {
+    	saveFriendship(new Friendship(null, pUserId, sUserId));
+    }
+    
+    public void acceptFriend(Integer friendshipId) {
+    	getFriendshipById(friendshipId).setStatus("accepted");
     }
     
     //TODO

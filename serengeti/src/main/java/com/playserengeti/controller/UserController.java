@@ -1,6 +1,7 @@
 package com.playserengeti.controller;
 
 import java.util.Collection;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -70,7 +71,8 @@ public class UserController extends MultiActionController {
         Collection<User> friends = userService.getFriends(userId);
         Collection<Team> teams = teamService.getTeams(user.getUserId());
 		Collection<Location> nearbyLocations = locationService.getAllLocations();
-
+        Map<Integer, User> friendInvites = userService.getFriendInvitesMap(userId);
+        
         String view = "userViewProfile";
         if("xml".equals(request.getParameter("format"))) {
         	view = "userViewProfileXML";
@@ -80,6 +82,9 @@ public class UserController extends MultiActionController {
         mav.addObject("userCommand", command);
         mav.addObject("teams", teams);
         mav.addObject("friends", friends);
+        mav.addObject("friendInvites", friendInvites);
+        //TODO check if a friend request was sent too
+        mav.addObject("alreadyFriends", friends.contains(session.getUser()));
         mav.addObject("nearbyLocations", nearbyLocations);
         mav.addObject("session", session);
         
@@ -112,6 +117,19 @@ public class UserController extends MultiActionController {
 		Integer teamId = Integer.valueOf(request.getParameter("teamId"));
 		
 		teamService.removeFromTeam(teamId, userId);
+	}
+	
+	public void sendInvite(HttpServletRequest request, HttpServletResponse response) {
+		Integer pUserId = Integer.valueOf(request.getParameter("pUserId"));
+		Integer sUserId = Integer.valueOf(request.getParameter("sUserId"));
+		
+		userService.inviteFriend(pUserId, sUserId);
+	}
+	
+	public void acceptInvite(HttpServletRequest request, HttpServletResponse response) {
+		Integer friendshipId = Integer.valueOf(request.getParameter("friendshipId"));
+		
+		userService.acceptFriend(friendshipId);
 	}
 	
 	public UserSession getSession() {
