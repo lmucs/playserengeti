@@ -14,10 +14,10 @@
         <leaderId><c:out value="${teamCommand.leaderId}" /></leaderId>
         <members>
             <c:forEach var="member" items="${members}">
-                <user>
-                    <userId><c:out value="${member.userId}" /></userId>
-                    <displayName><c:out value="${member.displayName}" /></displayName>
-                </user>
+                <member>
+                    <memberId><c:out value="${member.userId}" /></memberId>
+                    <memberDisplayName><c:out value="${member.displayName}" /></memberDisplayName>
+                </member>
             </c:forEach>
         </members>
     </team>
