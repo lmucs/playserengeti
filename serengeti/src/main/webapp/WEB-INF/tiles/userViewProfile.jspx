@@ -10,10 +10,10 @@
         <displayName><c:out value="${userCommand.displayName}" /></displayName>
         <friends>
             <c:forEach var="friend" items="${friends}">
-                <user>
-                    <userId><c:out value="${friend.userId}" /></userId>
-                    <displayName><c:out value="${friend.displayName}" /></displayName>
-                </user>
+                <friend>
+                    <friendId><c:out value="${friend.userId}" /></friendId>
+                    <friendDisplayName><c:out value="${friend.displayName}" /></friendDisplayName>
+                </friend>
             </c:forEach>
         </friends>
         <teams>

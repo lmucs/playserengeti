@@ -15,6 +15,14 @@
                 <zipcode><c:out value="${locationCommand.zipcode}" /></zipcode>
                 <description><c:out value="${locationCommand.description}" /></description>
                 <teamOwner><c:out value="${locationCommand.teamOwner.name}" /></teamOwner>
+                <competingTeams>
+                    <c:forEach var="team" items="${competingTeams}">
+                        <team>
+                            <teamId><c:out value</teamId>
+                            <teamName></teamName>
+                        </team>
+                    </c:forEach>
+                </comptetingTeams>
             </location>
     </profile>
 </jsp:root>

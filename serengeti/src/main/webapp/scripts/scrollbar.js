@@ -21,4 +21,4 @@ var scrollbar = function(){
 			var left = (e.pageX - div.offset().left) * (ulWidth-divWidth) / divWidth;
 			div.scrollLeft(left);
 		});
-});
+};
