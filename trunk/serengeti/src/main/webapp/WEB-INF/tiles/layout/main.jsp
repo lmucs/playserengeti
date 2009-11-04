@@ -21,51 +21,56 @@
         <script type="text/javascript"
             src="${pageContext.request.contextPath}/scripts/serengeti.js">
         </script>
+        <script type="text/javascript"
+            src="${pageContext.request.contextPath}/scripts/scrollbar.js">
+        </script>
+
+        
     </head>
 
     <body>
-        <div class="container_12" id="pageWrapper">
+        <div class="container_12 mainContentArea">
 	        <tiles:insertAttribute name="header"/>
 
-        <%-- Right-floated big logo, linked to home --%>
-        <div class="mainlogo">
-            <a href="${pageContext.request.contextPath}/"><img
-            src="${pageContext.request.contextPath}/images/logo-full-116.png"
-            alt="logo" /></a>
-        </div>
-
-        <%-- Page title prefixed with small tree linked to home --%>
-        <div class="pagetitle">
-            <a href="${pageContext.request.contextPath}/"><img
-            src="${pageContext.request.contextPath}/images/logo-tree-32.png"
-            alt="logo" /></a>
-            <tiles:insertAttribute name="title" value="${title}"/>
-        </div>
-        
-        
-        <div id="navbar2">
-        <ul>
-            <li><a href="${pageContext.request.contextPath}/">Home  </a></li>
-            <c:if test="${session.loggedIn}">
-                <li><a href="${pageContext.request.contextPath}/user/view?userId=${session.user.userId}" >Profile</a></li>
-            </c:if>
-            <li><a href="${pageContext.request.contextPath}/user">Users</a></li>
-            <li><a href="${pageContext.request.contextPath}/team">Teams</a></li>
-            <li><a href="${pageContext.request.contextPath}/location">Locations</a></li>
-            <li><a href="link5.html ">Help</a></li>
-            <li><a href="link6.html ">Settings</a></li>
-            <c:if test="${session.loggedIn}">
-                <li><a href="${pageContext.request.contextPath}/user/logout">Log Out</a></li>
-            </c:if>
-        </ul>
-        </div>
-
-        <div class="mainContentArea">
-            <tiles:insertAttribute name="login"/>
-            <tiles:insertAttribute name="body"/>
-        </div>
-
-        <tiles:insertAttribute name="footer"/>
+	        <%-- Right-floated big logo, linked to home --%>
+	        <div class="mainlogo">
+	            <a href="${pageContext.request.contextPath}/"><img
+	            src="${pageContext.request.contextPath}/images/logo-full-116.png"
+	            alt="logo" /></a>
+	        </div>
+	
+	        <%-- Page title prefixed with small tree linked to home --%>
+	        <div class="pagetitle">
+	            <a href="${pageContext.request.contextPath}/"><img
+	            src="${pageContext.request.contextPath}/images/logo-tree-32.png"
+	            alt="logo" /></a>
+	            <tiles:insertAttribute name="title" value="${title}"/>
+	        </div>
+	        
+	        
+	        <div id="navbar2">
+	        <ul>
+	            <li><a href="${pageContext.request.contextPath}/">Home  </a></li>
+	            <c:if test="${session.loggedIn}">
+	                <li><a href="${pageContext.request.contextPath}/user/view?userId=${session.user.userId}" >Profile</a></li>
+	            </c:if>
+	            <li><a href="${pageContext.request.contextPath}/user">Users</a></li>
+	            <li><a href="${pageContext.request.contextPath}/team">Teams</a></li>
+	            <li><a href="${pageContext.request.contextPath}/location">Locations</a></li>
+	            <li><a href="link5.html ">Help</a></li>
+	            <li><a href="link6.html ">Settings</a></li>
+	            <c:if test="${session.loggedIn}">
+	                <li><a href="${pageContext.request.contextPath}/user/logout">Log Out</a></li>
+	            </c:if>
+	        </ul>
+	        </div>
+	
+	        <div class="mainContentArea">
+	            <tiles:insertAttribute name="login"/>
+	            <tiles:insertAttribute name="body"/>
+	        </div>
+	
+	        <tiles:insertAttribute name="footer"/>
 	    </div>
     </body>
 </html>

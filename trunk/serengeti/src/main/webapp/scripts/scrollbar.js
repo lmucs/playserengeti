@@ -1,7 +1,7 @@
-function(){
+var scrollbar = function(){
 		//Get our elements for faster access and set overlay width
-		var div = $('div.sc_menu'),
-			ul = $('ul.sc_menu'),
+		var div = $('div.hor_menu'),
+			ul = $('ul.hor_menu'),
 			ulPadding = 15;
 		
 		//Get menu width
