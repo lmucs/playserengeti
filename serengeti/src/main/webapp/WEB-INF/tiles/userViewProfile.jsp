@@ -11,7 +11,7 @@
                             <p>These people want to be your friend.</p>
                             <ul>
                             <c:forEach var="invite" items="${friendInvites}">
-                                <li id="invite_${invite.key}"><a href="view?userId=${invite.value.userId}"><c:out value="${invite.value.displayName}"/></a>
+                                <li id="invite_${invite.key}"><a href="${invite.value.userId}"><c:out value="${invite.value.displayName}"/></a>
                                 <input type="button" value="I'll allow it" onClick="acceptInvite(${invite.key})"/></li>
                             </c:forEach>
                         </div>
@@ -66,19 +66,19 @@
                     <strong>Friends: </strong>
                       <ul>
                           <c:forEach var="user" items="${friends}">
-                              <li><a href="view?userId=${user.userId}"><c:out value="${user.displayName}"/></a></li>
+                              <li><a href="${user.userId}"><c:out value="${user.displayName}"/></a></li>
                           </c:forEach>
                       </ul>
                    
                    <strong>Teams: </strong>
                    <ul>   
                      <c:forEach var="team" items="${teams}">
-                          <li><a href="../team/view?teamId=${team.id}"><c:out value="${team.name}"/></a></li>
+                          <li><a href="../team/${team.id}"><c:out value="${team.name}"/></a></li>
                       </c:forEach>
                    </ul> 
                 </table>
                 <c:if test="${session.user.userId == userCommand.userId}">
-                    <a href="update?userId=${userCommand.userId}">Edit Profile</a><br/>
+                    <a href="update/${userCommand.userId}">Edit Profile</a><br/>
                 </c:if>
             </c:when>
             <c:otherwise>

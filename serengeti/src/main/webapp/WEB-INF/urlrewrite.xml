@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE urlrewrite
+    PUBLIC "-//tuckey.org//DTD UrlRewrite 3.0//EN"
+    "http://tuckey.org/res/dtds/urlrewrite3.0.dtd">
+
+<urlrewrite>
+
+    <rule match-type="regex">
+       <from>^/(location|team|user)/([0-9]+)$</from>
+       <to>/$1/view?$1Id=$2</to>
+    </rule>
+    
+    <rule match-type="regex">
+       <from>^/(location|team|user)/([A-Za-z]+)/([0-9]+)$</from>
+       <to>/$1/$2?$1Id=$3</to>
+    </rule>
+
+</urlrewrite>

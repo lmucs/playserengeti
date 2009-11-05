@@ -29,7 +29,7 @@
                     		<strong>Competing Teams:</strong>
                     		<ul>
                         		<c:forEach var="team" items="${competingTeams}">
-                            		<li><a href="../team/view?teamId=${team.id}"><c:out value="${team.name}"/></a></li>
+                            		<li><a href="../team/${team.id}"><c:out value="${team.name}"/></a></li>
                         		</c:forEach>
                     		</ul>
                     	</div>

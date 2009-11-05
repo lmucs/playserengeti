@@ -11,7 +11,7 @@
 	               <li>
 	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user" title="${user.displayName}"/>
 	                   <span>
-	                       <a href="view?userId=${user.userId}"><c:out value="${user.displayName}"/></a>
+	                       <a href="${user.userId}"><c:out value="${user.displayName}"/></a>
 	                   </span>
 	               </li>
 	            </c:forEach>
@@ -28,7 +28,7 @@
 	               <li>
 	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user" title="${user.displayName}"/>
 	                   <span>
-	                       <a href="view?userId=${user.userId}"><c:out value="${user.displayName}"/></a>
+	                       <a href="${user.userId}"><c:out value="${user.displayName}"/></a>
 	                   </span>
 	               </li>
 	            </c:forEach>
@@ -45,7 +45,7 @@
 	               <li>
 	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user" title="${user.displayName}"/>
 	                   <span>
-	                       <a href="view?userId=${team.userId}"><c:out value="${user.displayName}"/></a>
+	                       <a href="${team.userId}"><c:out value="${user.displayName}"/></a>
 	                   </span>
 	               </li>
 	            </c:forEach>
