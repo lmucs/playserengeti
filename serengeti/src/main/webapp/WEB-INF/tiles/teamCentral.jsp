@@ -35,11 +35,11 @@
 	        </ul>
         </div>
         
-        <div class="hor_menu">
+        <div class="grid_3 prefix_4">
             <p>Newest Teams</p>
         </div>
         <div class="clear">&nbsp;</div>
-        <div class="grid_10 prefix_1">
+        <div class="hor_menu">
 	        <ul class="hor_menu">
 	            <c:forEach var="team" items="${newest}">
 	               <li>
