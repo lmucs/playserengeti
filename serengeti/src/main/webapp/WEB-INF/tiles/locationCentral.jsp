@@ -10,10 +10,7 @@
 	        <ul class="hor_menu">
 	            <c:forEach var="location" items="${nearbyLocations}">
 	               <li>
-	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="location" title="${location.locationName}"/>
-	                   <span>
-	                       <a href="${location.locationId}"><c:out value="${location.locationName}" /></a>
-	                   </span>
+	                   <a href="${location.locationId}" > <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="location" title="${location.locationName}" <c:out value="${location.locationName}"/></a>
 	               </li>
 	            </c:forEach>
 	        </ul>
