@@ -1,14 +1,27 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-        <p>Welcome to Location Central!</p>
 
-        <p>Nearby Locations</p>
-        <ul>
-            <c:forEach var="location" items="${nearbyLocations}">
-               <li><a href="${location.locationId}"><c:out value="${location.locationName}"/></a></li>
-            </c:forEach>
-        </ul>
+
+        <div>
+	        <p>Locations near you</p>
+	    </div>
+        <div class="hor_menu">
+	        <ul class="hor_menu">
+	            <c:forEach var="location" items="${nearbyLocations}">
+	               <li>
+	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="location" title="${location.locationName}"/>
+	                   <span>
+	                       <a href="${location.locationId}"><c:out value="${location.locationName}" /></a>
+	                   </span>
+	               </li>
+	            </c:forEach>
+	        </ul>
+	    </div>
+
+<script type="text/javascript">
+            scrollbar();
+        </script>
         
         <c:if test="${session.loggedIn}">
             <p>Don't see your current location?  <a href="create">Add it.</a></p>
