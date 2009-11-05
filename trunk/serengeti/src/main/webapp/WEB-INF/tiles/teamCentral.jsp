@@ -10,7 +10,7 @@
 	               <li>
 	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="team"/>
 	                   <span>
-	                       <a href="view?teamId=${team.id}"><c:out value="${team.name}"/></a>
+	                       <a href="${team.id}"><c:out value="${team.name}"/></a>
 	                   </span>
 	               </li>
 	            </c:forEach>
@@ -25,7 +25,7 @@
 	               <li>
 	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="team"/>
 	                   <span>
-	                       <a href="view?teamId=${team.id}"><c:out value="${team.name}"/></a>
+	                       <a href="${team.id}"><c:out value="${team.name}"/></a>
 	                   </span>
 	               </li>
 	            </c:forEach>
@@ -40,7 +40,7 @@
 	               <li>
 	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="team"/>
 	                   <span>
-	                       <a href="view?teamId=${team.id}"><c:out value="${team.name}"/></a>
+	                       <a href="${team.id}"><c:out value="${team.name}"/></a>
 	                   </span>
 	               </li>
 	            </c:forEach>

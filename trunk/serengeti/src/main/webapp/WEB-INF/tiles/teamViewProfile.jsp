@@ -39,13 +39,13 @@
                     <strong>Team Members:</strong>
                     <ul>
                       <c:forEach var="user" items="${members}">
-                          <li><a href="../user/view?userId=${user.userId}"><c:out value="${user.displayName}"/></a></li>
+                          <li><a href="../user/${user.userId}"><c:out value="${user.displayName}"/></a></li>
                       </c:forEach>
                     </ul>	
                 </div>
                 <hr>
                 <c:if test="${session.loggedIn && (session.user.userId == teamCommand.leaderId)}">
-                    <a href="update?teamId=${teamCommand.teamId}">Modify Team</a><br/>
+                    <a href="update/${teamCommand.teamId}">Modify Team</a><br/>
                 </c:if>
             </c:when>
             <c:otherwise>
