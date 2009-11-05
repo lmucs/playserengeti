@@ -1,244 +1,256 @@
 body {
-  background-color: #445530;
-  margin: 0;
+	background-color: #445530;
+	margin: 0;
 }
 
 .pagetitle {
-  background-color: transparent;
-  color: #cc5500;
-  font-size: 175%;
-  font-weight: bold;
-  margin: 0.25em 0 0 0.25em;
-  text-decoration: none;
+	background-color: transparent;
+	color: #cc5500;
+	font-size: 175%;
+	font-weight: bold;
+	margin: 0.25em 0 0 0.25em;
+	text-decoration: none;
 }
 
 .mainlogo {
-  float: right;
+	float: right;
 }
 
 .mainContentArea {
-  background-color: #ffffff;
-  border: 1px solid #888877;
-  margin: 1em;
-  padding: 1em;
+	background-color: #ffffff;
+	border: 1px solid #888877;
+	margin: 1em;
+	padding: 1em;
 }
 
 #signUpArea {
-  background-color: #fffff;
-  border: 1px solid #888877;
-  margin: 1em;
-  padding: 1em;
+	background-color: #fffff;
+	border: 1px solid #888877;
+	margin: 1em;
+	padding: 1em;
 }
 
 table {
-  border: 1px solid #228811;
-  border-collapse: collapse;
+	border: 1px solid #228811;
+	border-collapse: collapse;
 }
 
 td,th {
-  background-color: #FFEEEE;
-  border-left: 1px solid #228811;
-  padding: 0.1em 0.5em;
+	background-color: #FFEEEE;
+	border-left: 1px solid #228811;
+	padding: 0.1em 0.5em;
 }
 
 th {
-  border-bottom: 1px solid #228811;
+	border-bottom: 1px solid #228811;
 }
 
 .error {
-  background-color: red;
-  padding: 5em;
+	background-color: red;
+	padding: 5em;
 }
 
 a img {
-  border-style: none;
+	border-style: none;
 }
 
 a:link {
-  color: #6699DD;
+	color: #6699DD;
 }
 
 a:visited {
-  color: #8899BB;
+	color: #8899BB;
 }
 
 a:hover {
-  background-color: #AAAA99;
-  color: white;
+	background-color: #AAAA99;
+	color: white;
 }
 
 .formLabel {
-  margin-bottom: 5px;
-  margin-right: 0;
-  text-align: right;
-  width: 450px;
-  float: left;
+	margin-bottom: 5px;
+	margin-right: 0;
+	text-align: right;
+	width: 450px;
+	float: left;
 }
 
 .signUpCenter {
-  text-align: center;
-  margin-bottom: 15px;
-  font-size: 20pt;
-  margin-right: 200px;
+	text-align: center;
+	margin-bottom: 15px;
+	font-size: 20pt;
+	margin-right: 200px;
 }
 
 }
 formarea:FOCUS,INPUT:FOCUS {
-  border: 3px solid #CC5500;
-  background: #8899BB;
+	border: 3px solid #CC5500;
+	background: #8899BB;
 }
 
 .spaceInputBox {
-  margin-bottom: 3px;
-  margin-right: 600px;
-  text-align: right;
+	margin-bottom: 3px;
+	margin-right: 600px;
+	text-align: right;
 }
 
-#logoNameContainer, logoImageContainer{
+#logoNameContainer,logoImageContainer {
 	padding-right: 80;
 	float: left;
 }
 
-.locationInfo{
+.locationInfo {
 	float: right;
-	padding-right:25%;
+	padding-right: 25%;
 	margin-top: 19%;
 }
 
-.imageDescription{
+.imageDescription {
 	float: right;
-	padding-right:25%;
+	padding-right: 25%;
 	margin-top: 19%;
 }
 
-#attributeContainer{
-	display:block;
+#attributeContainer {
+	display: block;
 	float: left;
 }
 
-#description{
-	display:bock;
-	clear:both;
-	padding-top:15px;
-	padding-bottom:15px
+#description {
+	display: bock;
+	clear: both;
+	padding-top: 15px;
+	padding-bottom: 15px
 }
 
-#memberTable{
+#memberTable {
 	height: 200px;
-    width: 300px;
-	overflow:scroll;
-	overflow-x:hidden;
-    clear:both;
-    margin:auto;
-    border: 2px solid #CC5500;
+	width: 300px;
+	overflow: scroll;
+	overflow-x: hidden;
+	clear: both;
+	margin: auto;
+	border: 2px solid #CC5500;
 }
-.container{
-	margin-top:20px;
-	display:block;
-    clear:both;
-    float:none;
+
+.container {
+	margin-top: 20px;
+	display: block;
+	clear: both;
+	float: none;
 }
-div.hor_menu {
-  /* Set it so we could calculate the offsetLeft */
-  position: relative;
-  height: 145px;
-  width: 500px;
-  /* Add scroll-bars */
-  overflow: auto;
+
+div.hor_menu { /* Set it so we could calculate the offsetLeft */
+	position: relative;
+	height: 145px;
+	width: 500px;
+	/* Add scroll-bars */
+	overflow: auto;
+	border: 1px solid #228811;
+	margin-bottom: 5px;
 }
+
 ul.hor_menu {
-  display: block;
-  height: 110px;
-  /* Max width here, for users without Javascript */
-  width: 1500px;
-  padding: 15px 0 0 15px;
-  /* Remove default margin */
-  margin: 0;
-  background: url('navigation.png');
-  list-style: none;
+	display: block;
+	height: 110px;
+	/* Max width here, for users without Javascript */
+	width: 1500px;
+	padding: 15px 0 0 15px;
+	/* Remove default margin */
+	margin: 0;
+	background: url('navigation.png');
+	list-style: none;
 }
+
 .hor_menu li {
-  display: block;
-  float: left;
-  padding: 0 4px;
+	display: block;
+	float: left;
+	padding: 0 4px;
 }
+
 .hor_menu a {
-  display: block;
-  text-decoration: none;
+	display: block;
+	text-decoration: none;
 }
+
+.hor_menu span { /* We want a caption to display on the next line */
+	display: block;
+	margin-top: 3px;
+	text-align: center;
+	font-size: 12px;
+	color: #fff;
+}
+
 .hor_menu span {
-  /* We want a caption to display on the next line */
-  display: block;
-  margin-top: 3px;
-  text-align: center;
-  font-size: 12px;
-  color: #fff;
+	display: none;
+	margin-top: 3px;
+	text-align: center;
+	font-size: 12px;
+	color: #fff;
 }
-.hor_menu span {
-  display: none;
-  margin-top: 3px;
-  text-align: center;
-  font-size: 12px;
-  color: #fff;
-}
+
 .hor_menu a:hover span {
-  display: block;
+	display: block;
 }
+
 .hor_menu img {
-  border: 3px #fff solid;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
+	border: 3px #fff solid;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
 }
+
 .hor_menu a:hover img {
-  filter:alpha(opacity=50);
-  opacity: 0.5;
-}
-#map_canvas{
-	width:50%; 
-	height:50%;
+	filter: alpha(opacity = 50);
+	opacity: 0.5;
 }
 
+#map_canvas {
+	width: 50%;
+	height: 50%;
+}
 
-#logo{
- font-size: 2.2em;
- font-style: italic;
- border: 10px solid #ddccbb;
-
+#logo {
+	font-size: 2.2em;
+	font-style: italic;
+	border: 10px solid #ddccbb;
 }
 
 #navbar2 {
- height: 30px;
- width: 100%;
-
- background-color: #445544;
+	height: 30px;
+	width: 100%;
+	background-color: #445544;
 }
+
 #navbar2 ul {
- margin: 0px;
- padding: 0px;
- font-family: Arial, Helvetica, sans-serif;
- font-size: small;
- color: #bbaa88;
- line-height: 30px;
- white-space: nowrap;
+	margin: 0px;
+	padding: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: small;
+	color: #bbaa88;
+	line-height: 30px;
+	white-space: nowrap;
 }
-#navbar2 li {
- list-style-type: none;
- display: inline;
-}
-#navbar2 li a {
- text-decoration: none;
- padding: 7px 10px;
- color: #bbaa88;
-}
-#navbar2 lia:link {
- color: #bbaa88:
-}
-#navbar2 lia:visited {
- color: #CCC;
 
-#navbar2 lia:hover {
- font-weight: bold;
- color: #FFF;
- background-color: #bbaa88;
- background:url(img/logo-small.png)
+#navbar2 li {
+	list-style-type: none;
+	display: inline;
+}
+
+#navbar2 li a {
+	text-decoration: none;
+	padding: 7px 10px;
+	color: #bbaa88;
+}
+
+#navbar2 lia:link {
+	color: #bbaa88 :
+}
+
+#navbar2 lia:visited {
+	color: #CCC; #
+	navbar2 lia: hover { 
+  font-weight :   bold;
+	color: #FFF;
+	background-color: #bbaa88;
+	background: url(img/logo-small.png)
 }

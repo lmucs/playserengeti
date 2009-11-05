@@ -50,7 +50,9 @@
 	               </li>
 	            </c:forEach>
 	        </ul>
-	       
+	 <script type="text/javascript">
+            scrollbar();
+        </script>      
         
 	    </div>
     </div>
