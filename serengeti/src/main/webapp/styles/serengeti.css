@@ -161,6 +161,7 @@ div.hor_menu {
 	overflow: auto;
 	position: relative;
 	width: 500px;
+	background: #445544;
 }
 
 ul.hor_menu {

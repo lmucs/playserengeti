@@ -4,73 +4,78 @@
 
 <form id="teamUpdateForm" method="post" action="update"
         onsubmit="return validateUpdateForm();">
-        <div>    
-            <div class="formLabel">
-                <label for="name">Team Name: </label>
-            </div>
-            <div class="spaceInputBox">
-                <form:input path="teamCommand.name" />
-            </div>
-        </div>
-        <div>
-            <div class="formLabel">
-                <label for="color">Preferred Color: </label>
-            </div>
-            <select name="color">
-                <option value="Red">Red</option>
-                <option value="Green">Green</option>
-                <option value="Blue">Blue</option>
-                <option value="Yellow">Yellow</option>
-                <option value="Magenta">Magenta</option>
-                <option value="Cyan">Cyan</option>
-            </select>
-        </div>
-
-    <div>
-        <div class="formLabel">
-            <label for="userId">Team Leader: </label>
-        </div>
-        <div class="spaceInputBox">
-            <form:select path="teamCommand.leaderId">
-        	    <form:options items="${teamCommand.candidates}" />
-    	    </form:select>
-    	</div> 
+   
+    <div class="grid_2">
+        <label for="name">Team Name: </label>
+    </div>
+    <div class="grid_2">
+        <form:input path="teamCommand.name" />
     </div>
 
-    <div>
-        <div class="formLabel">
-            <label for="image">Team Image URL: </label>
-        </div>
-        <div class="spaceInputBox">
-            <form:input path="teamCommand.image" />
-        </div>
+	<div class="clear">&nbsp;</div>
+
+    <div class="grid_2">
+        <label for="color">Preferred Color: </label>
+    </div>
+    <div class="grid_2">
+        <select name="color">
+            <option value="Red">Red</option>
+            <option value="Green">Green</option>
+            <option value="Blue">Blue</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Magenta">Magenta</option>
+            <option value="Cyan">Cyan</option>
+        </select>
+    </div>
+
+    <div class="grid_2">
+        <label for="userId">Team Leader: </label>
+    </div>
+    <div class="grid_2">
+        <form:select path="teamCommand.leaderId">
+    	    <form:options items="${teamCommand.candidates}" />
+	    </form:select>
+	</div> 
+	
+	<div class="clear">&nbsp;</div>
+
+    <div class="grid_2">
+        <label for="image">Team Image URL: </label>
+    </div>
+    <div class="grid_2">
+        <form:input path="teamCommand.image" />
+    </div>
+
+    <div class="clear">&nbsp;</div>
+
+    <div class="grid_2">
+        <label for="description">Team Description:</label>
+    </div>
+    <div class="grid_2">
+        <form:textarea path="teamCommand.description" rows="4" cols="40" />
+    </div>
+
+    <div class="clear">&nbsp;</div>
+    
+    <div class="grid_2">
+        <label for="homeBase">Home Base:</label>
+    </div>
+    <div class="grid_2">
+        <form:input path="teamCommand.homeBase" />
     </div>
     
-    <div>
-        <div class="formLabel">
-            <label for="description">Team Description:</label>
-        </div>
-        <div class="spaceInputBox">
-            <form:textarea path="teamCommand.description" rows="4" cols="40" />
-        </div>
+    <div class="clear">&nbsp;</div>
+
+    <div class="grid_2">
+        <label for="removals">Remove selected users:</label>
+    </div>
+    <div class="grid_5">
+	    <form:checkboxes path="teamCommand.removals" items="${teamCommand.candidates}" /><br/>
     </div>
     
-    <div>
-        <div class="formLabel">
-            <label for="homeBase">Home Base:</label>
-        </div>
-        <div class="spaceInputBox">
-            <form:input path="teamCommand.homeBase" />
-        </div>
-    </div>
-    <div>
-        <div class="formLabel">
-            <label for="removals">Remove selected users:</label>
-        </div>
-		<form:checkboxes path="teamCommand.removals" items="${teamCommand.candidates}" /><br/>
-    </div>
+    <div class="clear">&nbsp;</div>
     
-    <div class="formRow">
+    <div class="grid_1">
         <input type="submit" value="Update Team!" />
     </div>
 

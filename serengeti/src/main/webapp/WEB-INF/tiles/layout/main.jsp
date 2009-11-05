@@ -29,7 +29,6 @@
     </head>
 
     <body>
-        <div class="container_12 mainContentArea">
 	        <tiles:insertAttribute name="header"/>
 
 	        <%-- Right-floated big logo, linked to home --%>
@@ -65,12 +64,11 @@
 	        </ul>
 	        </div>
 	
-	        <div class="mainContentArea">
+	        <div class="mainContentArea container_12">
 	            <tiles:insertAttribute name="login"/>
 	            <tiles:insertAttribute name="body"/>
 	        </div>
 	
 	        <tiles:insertAttribute name="footer"/>
-	    </div>
     </body>
 </html>
