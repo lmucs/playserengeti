@@ -12,7 +12,7 @@
                             <ul>
                             <c:forEach var="invite" items="${friendInvites}">
                                 <li id="invite_${invite.key}"><a href="${invite.value.userId}"><c:out value="${invite.value.displayName}"/></a>
-                                <input type="button" value="I'll allow it" onClick="acceptInvite(${invite.key})"/></li>
+                                <input type="button" value="I'll allow it" onClick="acceptFriendInvite(${invite.key})"/></li>
                             </c:forEach>
                         </div>
                     </c:if>                
@@ -43,7 +43,7 @@
                 <c:otherwise>
                     <c:if test="${session.loggedIn && !alreadyFriends}">
                         <div class="sendRequests">
-                            <input class="friendInvite" type="button" value="Send friend request" onClick="sendInvite()"/>
+                            <input class="friendInvite" type="button" value="Send friend request" onClick="sendFriendInvite()"/>
                         </div>
                     </c:if>
                 </c:otherwise>
@@ -98,13 +98,13 @@
         });  
     });
     
-    var sendInvite = function () {
-        $.get("sendInvite", {pUserId : ${session.user.userId}, sUserId : ${userCommand.userId}});
+    var sendFriendInvite = function () {
+        $.get("sendFriendInvite", {pUserId : ${session.user.userId}, sUserId : ${userCommand.userId}});
         $(".friendInvite").fadeOut("slow");
     }
     
-    var acceptInvite = function (inviteId) {
-        $.get("acceptInvite", {friendshipId : inviteId});
+    var acceptFriendInvite = function (inviteId) {
+        $.get("acceptFriendInvite", {friendshipId : inviteId});
         $("#invite_" + inviteId).fadeOut("slow");
     }
     
