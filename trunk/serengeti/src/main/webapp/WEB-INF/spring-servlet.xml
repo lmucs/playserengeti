@@ -19,9 +19,7 @@
             <map>
                 <entry key="/" value-ref="welcomeController" />
                 <entry key="/index.html" value-ref="welcomeController" />
-                                				
-                <entry key="/visit/create" value-ref="visitCreateController" />
-
+                                			
                 <!--
                 <entry key="/login" value-ref="loginController" />
                 <entry key="/logout" value-ref="logoutController" />
@@ -276,22 +274,6 @@
     <!--
         Visit Controllers and Such
     -->
-
-    <bean id="visitCreateController"
-        class="com.playserengeti.controller.VisitCreateController">
-        <property name="commandClass"
-          value="com.playserengeti.controller.VisitCreateCommand"
-        />
-        <property name="commandName" value="visitCreate"/>
-        <property name="validator" ref="visitCreateValidator"/>
-        <property name="formView" value="visitCreate"/>
-        <property name="successView" value="visitCreateSuccess"/>
-        <constructor-arg ref="visitService"/>
-    </bean>
-
-    <bean id="visitCreateValidator"
-        class="com.playserengeti.controller.VisitCreateValidator">
-    </bean>
 
     <bean id="visitService"
         class="com.playserengeti.service.VisitService">

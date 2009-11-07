@@ -48,6 +48,9 @@ public class UserController extends MultiActionController {
         if("xml".equals(request.getParameter("format"))) {
         	view = "userCentralXML";
         }
+        if("json".equals(request.getParameter("format"))) {
+        	view = "userCentralJSON";
+        }
 		
 		ModelAndView mav = new ModelAndView(view);
 		mav.addObject("session", session);
@@ -76,6 +79,9 @@ public class UserController extends MultiActionController {
         String view = "userViewProfile";
         if("xml".equals(request.getParameter("format"))) {
         	view = "userViewProfileXML";
+        }
+        if("json".equals(request.getParameter("format"))) {
+        	view = "userViewProfileJSON";
         }
         
         ModelAndView mav = new ModelAndView(view);
@@ -119,14 +125,14 @@ public class UserController extends MultiActionController {
 		teamService.removeFromTeam(teamId, userId);
 	}
 	
-	public void sendInvite(HttpServletRequest request, HttpServletResponse response) {
+	public void sendFriendInvite(HttpServletRequest request, HttpServletResponse response) {
 		Integer pUserId = Integer.valueOf(request.getParameter("pUserId"));
 		Integer sUserId = Integer.valueOf(request.getParameter("sUserId"));
 		
 		userService.inviteFriend(pUserId, sUserId);
 	}
 	
-	public void acceptInvite(HttpServletRequest request, HttpServletResponse response) {
+	public void acceptFriendInvite(HttpServletRequest request, HttpServletResponse response) {
 		Integer friendshipId = Integer.valueOf(request.getParameter("friendshipId"));
 		
 		userService.acceptFriend(friendshipId);

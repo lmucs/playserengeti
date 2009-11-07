@@ -50,6 +50,9 @@ public class TeamController extends MultiActionController {
         if("xml".equals(request.getParameter("format"))) {
         	view = "teamCentralXML";
         }
+        if("json".equals(request.getParameter("format"))) {
+        	view = "teamCentralJSON";
+        }
         
         ModelAndView mav = new ModelAndView(view);
         mav.addObject("session", session);
@@ -95,6 +98,9 @@ public class TeamController extends MultiActionController {
 		String view = "teamViewProfile";
         if("xml".equals(request.getParameter("format"))) {
         	view = "teamViewProfileXML";
+        }
+        if("json".equals(request.getParameter("format"))) {
+        	view = "teamViewProfileJSON";
         }
         
         ModelAndView mav = new ModelAndView(view);

@@ -38,6 +38,9 @@ public class LocationController extends MultiActionController {
         if("xml".equals(request.getParameter("format"))) {
         	view = "locationCentralXML";
         }
+        if("json".equals(request.getParameter("format"))) {
+        	view = "locationCentralJSON";
+        }
         
 		ModelAndView mav = new ModelAndView(view);
 		mav.addObject("session", session);
@@ -70,6 +73,9 @@ public class LocationController extends MultiActionController {
 		String view = "locationViewProfile";
         if("xml".equals(request.getParameter("format"))) {
         	view = "locationViewProfileXML";
+        }
+        if("json".equals(request.getParameter("format"))) {
+        	view = "locationViewProfileJSON";
         }
 		
 		ModelAndView mav = new ModelAndView(view);

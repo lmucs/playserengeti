@@ -28,8 +28,10 @@
         <put-attribute name="body" value="/WEB-INF/tiles/locationCentral.jsp"/>
     </definition>
     
-    <definition name="locationCentralXML" template="/WEB-INF/tiles/locationCentral.jspx"> </definition>
-    
+    <definition name="locationCentralXML" template="/WEB-INF/tiles/locationCentralXML.jspx"> </definition>
+   
+    <definition name="locationCentralJSON" template="/WEB-INF/tiles/locationCentralJSON.jsp"> </definition>
+
     <definition name="locationCreate" extends="template">
         <put-attribute name="title" value="Create a Location"/>
         <put-attribute name="body" value="/WEB-INF/tiles/locationCreate.jsp"/>
@@ -40,15 +42,18 @@
         <put-attribute name="body" value="/WEB-INF/tiles/locationViewProfile.jsp"/>
     </definition>
 
-    <definition name="locationViewProfileXML" template="/WEB-INF/tiles/locationViewProfile.jspx"> </definition>
+    <definition name="locationViewProfileXML" template="/WEB-INF/tiles/locationViewProfileXML.jspx"> </definition>
+   
+    <definition name="locationViewProfileJSON" template="/WEB-INF/tiles/locationViewProfileJSON.jsp"> </definition>
 
     <definition name="userCentral" extends="template">
         <put-attribute name="title" value="User Central"/>
         <put-attribute name="body" value="/WEB-INF/tiles/userCentral.jsp"/>
     </definition>
     
-    <definition name="userCentralXML" template="/WEB-INF/tiles/userCentral.jspx">
-    </definition>
+    <definition name="userCentralXML" template="/WEB-INF/tiles/userCentralXML.jspx"></definition>
+   
+    <definition name="userCentralJSON" template="/WEB-INF/tiles/userCentralJSON.jsp"> </definition>
     
     <definition name="userCreate" extends="template">
         <put-attribute name="title" value="Signup for Serengeti"/>
@@ -75,7 +80,9 @@
         <put-attribute name="body" value="/WEB-INF/tiles/userViewProfile.jsp"/>
     </definition>
 
-    <definition name="userViewProfileXML" template="/WEB-INF/tiles/userViewProfile.jspx"> </definition>
+    <definition name="userViewProfileXML" template="/WEB-INF/tiles/userViewProfileXML.jspx"> </definition>
+  
+    <definition name="usreViewProfileJSON" template="/WEB-INF/tiles/userViewProfileJSON.jsp"> </definition>
         
     <definition name="teamCreate" extends="template">
         <put-attribute name="title" value="Create a Team"/>
@@ -87,7 +94,9 @@
         <put-attribute name="body" value="/WEB-INF/tiles/teamCentral.jsp"/>
     </definition>
 
-    <definition name="teamCentralXML" template="/WEB-INF/tiles/teamCentral.jspx"> </definition>
+    <definition name="teamCentralXML" template="/WEB-INF/tiles/teamCentralXML.jspx"> </definition>
+   
+    <definition name="teamCentralJSON" template="/WEB-INF/tiles/teamCentralJSON.jsp"> </definition>
 
     <definition name="teamUpdate" extends="template">
         <put-attribute name="title" value="Update a Team"/>
@@ -99,7 +108,9 @@
         <put-attribute name="body" value="/WEB-INF/tiles/teamViewProfile.jsp"/>
     </definition>
     
-    <definition name="teamViewProfileXML" template="/WEB-INF/tiles/teamViewProfile.jspx"> </definition>
+    <definition name="teamViewProfileXML" template="/WEB-INF/tiles/teamViewProfileXML.jspx"> </definition>
+   
+    <definition name="teamViewProfileJSON" template="/WEB-INF/tiles/teamViewProfileJSON.jsp"> </definition>
 
     <definition name="visitCreate" extends="template">
         <put-attribute name="title" value="Create a Visit"/>
