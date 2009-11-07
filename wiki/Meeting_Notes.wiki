@@ -125,11 +125,11 @@ This page summarizes the activities for each class meeting, as well as informal 
 
 == October 13 (Class) ==
 
-  * Does anyone remember what happened this day?
+  * Dang, forgot to record notes. Does anyone remember what happened this day?
 
 == October 15 (Class) ==
 
-  * Does anyone remember what happened this day?
+  * Dang, forgot to record notes. Does anyone remember what happened this day?
 
 == October 20 (Class) ==
 
@@ -138,20 +138,37 @@ This page summarizes the activities for each class meeting, as well as informal 
 
 == October 22 (Class) ==
 
-  * Started with standups
+  * Started with standups.
   * Mobile team had some nice demos.
-  * The whole class reviewed the page flow.
+  * The whole class reviewed the page flow (filled the entire huge whiteboard on the west wall).
   * Further discussions of differences between the mobile and web clients.
   * Very good discussion about the main navigation (top menu).
   * Separate discussion with the backend team about creating database initialization scripts.
 
 == October 27 (Class) ==
 
+  * Dang, forgot to record notes. Does anyone remember what happened this day?
+
 == October 29 (Class) ==
+
+  * Lecture and demos on the use of log4j.
+  * Lecture on cross cutting concerns in general.
+  * Individual reports and discussions.
 
 == November 3 (Class) ==
 
+  * Andres walked the class through setting up a server to host the web application.
+
 == November 5 (Class) ==
+
+  * Report on the Software Engineering conference.
+  * Brief talk about the conference tutorial on requirements engineering for large and very large projects.
+  * Handouts from the tutorial given to all students.
+  * Backend team reported completion of urlrewriting.
+  * Backend team also announced completion of the html and xml producing controllers.
+  * Frontend team gave a demo of their latest contributions, including the beginnings of some dhtml widgets.
+  * Mobile team expressed concern about the time remaining to complete a fully featured iPhone client.  A discussion ensued in which the point was brought up that it was necessary to do what it took to learn and master the new technologies.
+  * One of the backend developers offered to help out with iPhone development.
 
 == November 10 (Class) ==
 
