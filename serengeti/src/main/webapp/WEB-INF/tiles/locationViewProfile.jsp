@@ -3,62 +3,74 @@
 
         <c:choose>
             <c:when test='${ !empty locationCommand }'>
-                <div class = "container">
 
-                   <div class = "locationInfo"> 
-                   		<div>
-                        	<td><strong>Location Name:</strong></td>
-                        	<td><c:out value="${locationCommand.locationName}"/></td>
-                    	</div>
-                    	<div>
-                        	<td><strong>Address:</strong></td>
-                        	<td><c:out value="${locationCommand.street}"/><br/>
-                            	<c:out value="${locationCommand.city}"/>
-                            	<c:out value="${locationCommand.state}"/>
-                            	<c:out value="${locationCommand.zipcode}"/></td>
-                    	</div>
-                    	<div>
-                        	<td><strong>Phone Number:</strong></td>
-                        	<td><c:out value="${locationCommand.phoneNumber}"/></td>
-                    	</div>
-                    	<div>
-                        	<td><strong>Description:</strong></td>
-                        	<td><c:out value="${locationCommand.description}"/></td>
-                    	</div>
-                    	<div>
-                    		<strong>Competing Teams:</strong>
-                    		<ul>
-                        		<c:forEach var="team" items="${competingTeams}">
-                            		<li><a href="../team/${team.id}"><c:out value="${team.name}"/></a></li>
-                        		</c:forEach>
-                    		</ul>
-                    	</div>
+				
+				<div class = "grid_5">
+                   	<div class = "grid_4"> 
+                       	<td><strong>Location Name:</strong></td>
+                       	<td><c:out value="${locationCommand.locationName}"/></td>
                     </div>
-                    <div class = "imageDescription">
-                        <div id = "logoImageContainer">
+                    	
+                    <div class="clear">&nbsp;</div>
+
+                    <div class = "grid_4" >
+                       	<td><strong>Address:</strong></td>
+                       	<td><c:out value="${locationCommand.street}"/><br/>
+                           	<c:out value="${locationCommand.city}"/>
+                           	<c:out value="${locationCommand.state}"/>
+                           	<c:out value="${locationCommand.zipcode}"/></td>
+                    </div>
+                    	
+                    <div class="clear">&nbsp;</div>
+                    	
+                    <div class = "grid_4">
+                       	<td><strong>Phone Number:</strong></td>
+                       	<td><c:out value="${locationCommand.phoneNumber}"/></td>
+                    </div>
+                    	
+                    <div class="clear">&nbsp;</div>
+                    	
+                    <div class = "grid_4">
+                       	<td><strong>Description:</strong></td>
+                       	<td><c:out value="${locationCommand.description}"/></td>
+                    </div>
+                    	
+                    <div class="clear">&nbsp;</div>
+                    	
+                    <div class = "grid_4">
                     <!--  I feel that what is in bold shouldn't be in the final webpage, but for now they will display what info should be there  -->
-                        	<td><strong>Location Image</strong></td>
-                        	<td><c:out value="${locationCommand.image}"/></td>
-                    	</div>
+                       	<td><strong>Location Image</strong></td>
+                       	<td><c:out value="${locationCommand.image}"/></td>
+                    </div>   
 
+					<div class="clear">&nbsp;</div>
+
+                    <div class = "grid_4">
+                        <td><strong>Owned by Team:</strong></td>
+                        <td><c:if test='${ !empty location.teamOwnerId }'>
+                            <c:out value="${location.teamOwner.id}"/>
+                            </c:if>
+                        </td>
                     </div>
-					<div class = "owningTeam">
-                    	<div>
-                        	<td><strong>Owned by Team:</strong></td>
-                        	<td><c:if test='${ !empty location.teamOwnerId }'>
-                                <c:out value="${location.teamOwner.id}"/>
-                            	</c:if>
-                        	</td>
-                    	</div>
-                    </div>
-                </div>
+                    
+                    <div class="clear">&nbsp;</div>
+                    
+                    <div class = "grid_4">
+                    	<strong>Competing Teams:</strong>
+                    	<ul>
+                       		<c:forEach var="team" items="${competingTeams}">
+                           		<li><a href="../team/${team.id}"><c:out value="${team.name}"/></a></li>
+                       		</c:forEach>
+                    	</ul>
+                    </div>                
+				</div>
             </c:when>
             <c:otherwise>
                 <p>The location you requested does not exist.</p>
             </c:otherwise>
         </c:choose>
 
-<div id="map_canvas" style="width:50%; height:50%"></div>
+<div id="map_canvas"></div>
 
 <!--  meta name="viewport" content="initial-scale=0.5, user-scalable=no"/  -->
 
