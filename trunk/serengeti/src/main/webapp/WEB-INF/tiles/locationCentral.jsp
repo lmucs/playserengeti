@@ -3,10 +3,28 @@
 
 
 
-        <div>
+	<div class = "grid_10 prefix_3">
+
+        <div class="grid_3">
+        	<p id="location"></p>
+        </div>
+	    
+	    <div class="clear">&nbsp;</div>
+        
+		<div class="grid_6" id="map_canvas"></div>
+        
+        <div class="clear">&nbsp;</div>
+        
+        <div class="grid_3">
 	        <p>Locations near you</p>
 	    </div>
-        <div class="hor_menu">
+
+	</div>
+	
+	<div class="clear">&nbsp;</div>
+	
+	<div class="grid_3 prefix_3">    
+        <div class="hor_menu Locations">
 	        <ul class="hor_menu">
 	            <c:forEach var="location" items="${nearbyLocations}">
 	               <li>
@@ -15,16 +33,18 @@
 	            </c:forEach>
 	        </ul>
 	    </div>
-
+	    
+	    </div>
+	    <div class="clear">&nbsp;</div>
 <script type="text/javascript">
-            scrollbar();
+            scrollbar(["Locations"]);
         </script>
         
         <c:if test="${session.loggedIn}">
             <p>Don't see your current location?  <a href="create">Add it.</a></p>
         </c:if>
         
-<div id="map_canvas" style="width:50%; height:50%"></div>
+
 <p id="location"></p>
 
 <!--  meta name="viewport" content="initial-scale=0.5, user-scalable=no"/  -->
