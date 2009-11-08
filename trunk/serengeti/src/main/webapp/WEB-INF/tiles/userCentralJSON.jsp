@@ -4,20 +4,20 @@
 <json:object>
   <json:array name="recent" var="user" items="${recent}">
     <json:object>
-      <json:property name="userId" value="<c:out value="${user.userId}"/>"/>
-      <json:property name="displayName" value="<c:out value="${user.displayName}" />"/>
+      <json:property name="userId" value="${user.userId}"/>
+      <json:property name="displayName" value="${user.displayName}"/>
     </json:object>
   </json:array>
   <json:array name="mostActive" var="user" items="${mostActive}">
     <json:object>
-      <json:property name="userId" value="<c:out value="${user.userId}"/>"/>
-      <json:property name="displayName" value="<c:out value="${user.displayName}" />"/>
+      <json:property name="userId" value="${user.userId}"/>
+      <json:property name="displayName" value="${user.displayName}"/>
     </json:object>
   </json:array>
   <json:array name="newest" var="user" items="${newest}">
     <json:object>
-      <json:property name="userId" value="<c:out value="${user.userId}"/>"/>
-      <json:property name="displayName" value="<c:out value="${user.displayName}" />"/>
+      <json:property name="userId" value="${user.userId}"/>
+      <json:property name="displayName" value="${user.displayName}"/>
     </json:object>
   </json:array>
 </json:object>

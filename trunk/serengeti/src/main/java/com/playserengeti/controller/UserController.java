@@ -138,6 +138,13 @@ public class UserController extends MultiActionController {
 		userService.acceptFriend(friendshipId);
 	}
 	
+	public void acceptFriendInviteMobile(HttpServletRequest request, HttpServletResponse response) {
+		Integer pUserId = Integer.valueOf(request.getParameter("pUserId"));
+		Integer sUserId = Integer.valueOf(request.getParameter("sUserId"));
+
+		userService.acceptFriend(userService.getFriendshipByUserPair(pUserId, sUserId).getFriendshipId());
+	}
+	
 	public UserSession getSession() {
 		return session;
 	}

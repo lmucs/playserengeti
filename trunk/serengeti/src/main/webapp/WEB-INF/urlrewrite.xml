@@ -16,4 +16,14 @@
        <to>/$1/$2?$1Id=$3</to>
     </rule>
 
+    <rule match-type="regex">
+       <from>^/(location|team|user)/(xml|json)$</from>
+       <to>/$1/?format=$2</to>
+    </rule> 
+    
+    <rule match-type="regex">
+       <from>^/(.*)/(xml|json)$</from>
+       <to>/$1?format=$2</to>
+    </rule>
+    
 </urlrewrite>
