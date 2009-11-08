@@ -145,6 +145,17 @@ public class UserService {
     	return result;
     }
     
+    public Friendship getFriendshipByUserPair(Integer pUserId, Integer sUserId) {
+    	Collection<Friendship> friendships = getAllFriendships();
+    	
+    	for(Friendship f: friendships) {
+    		if (pUserId.equals(f.getPrimaryUserId()) && sUserId.equals(f.getSecondaryUserId())) {
+    			return f;
+    		}
+    	}
+    	return null;
+    }
+    
     /**
      * Returns a map of the given users friends.
      * Key is the friend's userId and value is their username.
