@@ -4,8 +4,8 @@ body {
 }
 
 .loginbar{
-	margin-bottom: 25px;
-
+	margin-bottom:25px;
+}
 .pagetitle {
 	background-color: transparent;
 	color: #CC5500;
@@ -104,6 +104,17 @@ a:hover {
 	float: right;
 	margin-top: 19%;
 	padding-right: 25%;
+}
+
+#attributeContainer {
+	display: block;
+	float: left;
+}
+
+#description {
+	clear: both;
+	padding-bottom: 15px;
+	padding-top: 15px;
 }
 
 #memberTable {
