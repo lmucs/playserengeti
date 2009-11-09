@@ -4,8 +4,6 @@
 
 package com.playserengeti.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.servlet.ModelAndView;
@@ -36,11 +34,10 @@ public class UserUpdateController extends SimpleFormController {
         UserCommand userCommand = new UserCommand();
 		if (userId != null) {
 			user = userService.getUserById(userId);
-			userCommand.setUserId(user.getUserId());
+			userCommand.setUserId(user.getId());
 			userCommand.setEmail(user.getEmail());
-			userCommand.setPassword(user.getPasswordHash());
-			userCommand.setDisplayName(user.getDisplayName());
-			userCommand.setImage(user.getImage());
+			userCommand.setFirstName(user.getFirstName());
+			userCommand.setLastName(user.getLastName());
 			userCommand.setFriends(userService.getFriendsMap(userId));
 			userCommand.setTeams(teamService.getTeamsMap(userId));
 		}
@@ -55,12 +52,12 @@ public class UserUpdateController extends SimpleFormController {
 		//Modify the entry in the database
 		User user = userService.getUserById(userId);
 		user.setEmail(command.getEmail());
-		user.setPasswordHash(command.getPassword());
-		user.setDisplayName(command.getDisplayName());
-        user.setImage(command.getImage());
+		user.setFirstName(command.getFirstName());
+		user.setLastName(command.getLastName());
 		
-		// Insert the entry into the database.
-		userService.saveUser(user);
+		// Update the entry in the database.
+		userService.updateUser(user);
+		userService.updateUserPassword(userId, command.getPassword());
 		
 		ModelAndView mav = new ModelAndView("redirect:view");
 		mav.addObject("userId", userId);

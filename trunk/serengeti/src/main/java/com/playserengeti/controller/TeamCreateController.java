@@ -36,7 +36,7 @@ public class TeamCreateController extends SimpleFormController {
 	protected Object formBackingObject(HttpServletRequest request)
     throws Exception {
         TeamCommand teamCommand = new TeamCommand();
-        teamCommand.setCandidates(userService.getFriendsMap(session.getUser().getUserId()));
+        teamCommand.setCandidates(userService.getFriendsMap(session.getUser().getId()));
         
 		setSessionForm(true);
         return teamCommand;
@@ -58,7 +58,7 @@ public class TeamCreateController extends SimpleFormController {
 		teamService.saveTeam(team);
  
 		Integer teamId = team.getId();
-		teamService.addToTeam(teamId, session.getUser().getUserId());
+		teamService.addToTeam(teamId, session.getUser().getId());
 		Integer[] invitees = command.getInvitees();
 		for(Integer id : invitees) {
 			teamService.addToTeam(teamId, id);

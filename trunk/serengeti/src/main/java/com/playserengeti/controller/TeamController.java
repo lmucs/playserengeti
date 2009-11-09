@@ -85,7 +85,7 @@ public class TeamController extends MultiActionController {
         command.setImage(team.getImage());
 
         if (team.getLeader() != null) {
-            command.setLeaderId(team.getLeader().getUserId());
+            command.setLeaderId(team.getLeader().getId());
         }
 
         Collection<Integer> users = teamService.getTeamMembers(teamId);

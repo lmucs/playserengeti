@@ -1,14 +1,13 @@
 package com.playserengeti.controller;
 
-import java.util.List;
 import java.util.Map;
 
 public class UserCommand {
     private Integer userId;
     private String email;
+    private String firstName;
+    private String lastName;
     private String password;
-    private String displayName;
-    private String image;
     private Map<Integer, String> friends;
     private Map<Integer, String> teams;
 
@@ -28,16 +27,24 @@ public class UserCommand {
         this.password = password;
     }
 
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
     public String getEmail() {
         return email;
+    }
+    
+    public void setFirstName(String firstName) {
+    	this.firstName = firstName;
+    }
+    
+    public String getFirstName() {
+    	return firstName;
+    }
+    
+    public void setLastName(String lastName) {
+    	this.lastName = lastName;
+    }
+    
+    public String getLastName() {
+    	return lastName;
     }
 
     public void setEmail(String email) {
@@ -58,14 +65,6 @@ public class UserCommand {
 
     public void setTeams(Map<Integer, String> teams) {
         this.teams = teams;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
 }
