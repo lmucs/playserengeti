@@ -30,14 +30,15 @@ public class UserCreateController extends SimpleFormController {
 		UserCommand command = (UserCommand)_command;
 		Integer userId;
 		String email = command.getEmail();
+		String firstName = command.getFirstName();
+		String lastName = command.getLastName();
 		String password = command.getPassword();
-		String displayName = command.getDisplayName();
 
-		User user = new User(null, email, password, displayName);
+		User user = new User(email, firstName, lastName);
 
 		try {
 			// Insert the entry into the database.
-		    userId = userService.saveUser(user);
+		    userId = userService.insertUserWithPassword(user, password);
 		    session.setUser(user);
 
 			ModelAndView mav = new ModelAndView("redirect:view");

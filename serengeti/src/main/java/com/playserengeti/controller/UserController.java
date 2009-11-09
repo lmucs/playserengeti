@@ -66,13 +66,13 @@ public class UserController extends MultiActionController {
         Integer userId = Integer.valueOf(request.getParameter("userId"));
         User user = userService.getUserById(userId);
 
-        command.setUserId(user.getUserId());
+        command.setUserId(user.getId());
         command.setEmail(user.getEmail());
-        command.setDisplayName(user.getDisplayName());
-        command.setImage(user.getImage());
+        command.setFirstName(user.getFirstName());
+        command.setLastName(user.getLastName());
 
         Collection<User> friends = userService.getFriends(userId);
-        Collection<Team> teams = teamService.getTeams(user.getUserId());
+        Collection<Team> teams = teamService.getTeams(user.getId());
 		Collection<Location> nearbyLocations = locationService.getAllLocations();
         Map<Integer, User> friendInvites = userService.getFriendInvitesMap(userId);
         

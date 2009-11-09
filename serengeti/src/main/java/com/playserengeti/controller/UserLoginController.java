@@ -32,7 +32,7 @@ public class UserLoginController extends SimpleFormController {
 		String email = command.getEmail();
 		String password = command.getPassword();
 
-		User user = userService.getUserByEmailAndPassword(email, password);
+		User user = userService.authenticateUserByEmailAndPassword(email, password);
 		
 		if (user == null) {
 			Map<String, Object> model = new HashMap<String, Object>();
@@ -43,7 +43,7 @@ public class UserLoginController extends SimpleFormController {
 		
 		// Login successful!
 		session.setUser(user);
-		return new ModelAndView("redirect:view", "userId", user.getUserId());
+		return new ModelAndView("redirect:view", "userId", user.getId());
 	}
 	
 	public UserSession getSession() {
