@@ -67,6 +67,8 @@ public class UserDaoIbatisImpl extends SqlMapClientDaoSupport implements UserDao
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
 		parameterMap.put("id", id);
 		parameterMap.put("password", password);
-		return false;
+		return getSqlMapClientTemplate().update(
+				"updateUserPassword",
+				parameterMap) > 0;
 	}
 }
