@@ -51,7 +51,7 @@
 	        <ul>
 	            <li><a href="${pageContext.request.contextPath}/">Home  </a></li>
 	            <c:if test="${session.loggedIn}">
-	                <li><a href="${pageContext.request.contextPath}/user/${session.user.userId}" >Profile</a></li>
+	                <li><a href="${pageContext.request.contextPath}/user/${session.user.id}" >Profile</a></li>
 	            </c:if>
 	            <li><a href="${pageContext.request.contextPath}/user">Users</a></li>
 	            <li><a href="${pageContext.request.contextPath}/team">Teams</a></li>
