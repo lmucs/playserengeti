@@ -23,7 +23,7 @@
 	        <ul class="hor_menu mostActiveUsers">
 	            <c:forEach var="user" items="${mostActive}">
 	               <li>
-	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user" title="${user.displayName}"/>
+	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user" title="${user.email}"/>
 	                   <span>
 	                       <a href="${user.id}"><c:out value="${user.email}"/></a>
 	                   </span>
