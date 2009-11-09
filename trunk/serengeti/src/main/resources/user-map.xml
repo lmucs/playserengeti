@@ -1,0 +1,76 @@
+<!DOCTYPE sqlMap
+   PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+   "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="User">
+
+  <insert id="insertUserWithPassword">
+    INSERT
+    INTO User (email, first_name, last_name, password_hash)
+    VALUES (#email#, #firstName#, #lastName#, md5(#password#))
+  </insert>
+  
+  <update id="updateUser">
+    UPDATE player
+    SET
+        email = #email#,
+        first_name = #firstName#,
+        last_name = #lastName#
+    WHERE id = #id#
+  </update>
+  
+  <update id="updateUserPassword">
+    UPDATE player
+    SET
+        password_hash = md5(#password#)
+    WHERE id = #id#
+  </update>
+  
+  <delete id="deleteUser">
+    DELETE FROM player
+    WHERE id = #value#
+  </delete>
+
+  <select id="getAllUsers" resultClass="com.playserengeti.domain.User">
+    SELECT
+        id,
+        email,
+        first_name          AS firstName,
+        last_name           AS lastName,
+        creation_timestamp  AS dateCreated
+    FROM player
+  </select>
+
+  <select id="getUserById" resultClass="com.playserengeti.domain.User">
+    SELECT
+        id,
+        email,
+        first_name          AS firstName,
+        last_name           AS lastName,
+        creation_timestamp  AS dateCreated
+    FROM player
+    WHERE id = #value#
+  </select>
+  
+  <select id="getUserByEmail" resultClass="com.playserengeti.domain.User">
+    SELECT
+        id,
+        email,
+        first_name          AS firstName,
+        last_name           AS lastName,
+        creation_timestamp  AS dateCreated
+    FROM player
+    WHERE email = #value#
+  </select>
+  
+  <select id="authenticateUserByEmailAndPassword" resultClass="com.playserengeti.domain.User">
+    SELECT
+        id,
+        email,
+        first_name          AS firstName,
+        last_name           AS lastName,
+        creation_timestamp  AS dateCreated
+    FROM player
+    WHERE email = #email# and password_hash = md5(#password#)
+  </select>
+
+</sqlMap>
