@@ -15,8 +15,8 @@
         <members>
             <c:forEach var="member" items="${members}">
                 <member>
-                    <memberId><c:out value="${member.userId}" /></memberId>
-                    <memberDisplayName><c:out value="${member.displayName}" /></memberDisplayName>
+                    <memberId><c:out value="${member.id}" /></memberId>
+                    <memberEmail><c:out value="${member.email}" /></memberEmail>
                 </member>
             </c:forEach>
         </members>

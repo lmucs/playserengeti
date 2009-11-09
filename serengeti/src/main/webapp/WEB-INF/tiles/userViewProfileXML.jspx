@@ -7,12 +7,13 @@
       <user>
         <userId><c:out value="${userCommand.userId}" /></userId>
         <email><c:out value="${userCommand.email}" /></email>
-        <displayName><c:out value="${userCommand.displayName}" /></displayName>
+        <firstName><c:out value="${userCommand.firstName}" /></firstName>
+        <lastName><c:out value="${userCommand.lastName}" /></lastName>
         <friends>
             <c:forEach var="friend" items="${friends}">
                 <friend>
-                    <friendId><c:out value="${friend.userId}" /></friendId>
-                    <friendDisplayName><c:out value="${friend.displayName}" /></friendDisplayName>
+                    <friendId><c:out value="${friend.id}" /></friendId>
+                    <friendEmail><c:out value="${friend.email}" /></friendEmail>
                 </friend>
             </c:forEach>
         </friends>
@@ -46,8 +47,8 @@
                 <c:forEach var="invite" items="${friendInvites}">
                     <friendshipInvite>
                         <friendshipId><c:out value="${invite.key}" /></friendshipId>
-                        <friendshipUserId><c:out value="${invite.value.userId}" /></friendshipUserId>
-                        <friendshipDisplayName><c:out value="${invite.value.displayName}" /></friendshipDisplayName>
+                        <friendshipUserId><c:out value="${invite.value.id}" /></friendshipUserId>
+                        <friendshipEmail><c:out value="${invite.value.email}" /></friendshipEmail>
                     </friendshipInvite>
                 </c:forEach>
             </friendshipInvites>

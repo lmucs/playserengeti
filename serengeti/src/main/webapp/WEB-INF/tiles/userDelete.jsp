@@ -6,7 +6,7 @@
     <p>Are you sure you want to remove yourself from Serengeti?  By continuing, you will lose all 
         data associated with your profile.  This cannot be recovered.</p>
 
-    <p>${userCommand.displayName}</p>
+    <p>${userCommand.email}</p>
 
     <div class="formRow">
         <input type="submit" value="Delete Profile" />
@@ -23,7 +23,7 @@
 <ul>
     <c:forEach var="user" items="${allUsers}">
         <li>
-            <a href="javascript:void(0);" onclick="deleteUser(${user.userId});"><c:out value="${user.userName}"/></a>
+            <a href="javascript:void(0);" onclick="deleteUser(${user.id});"><c:out value="${user.email}"/></a>
         </li>
     </c:forEach>
 </ul>

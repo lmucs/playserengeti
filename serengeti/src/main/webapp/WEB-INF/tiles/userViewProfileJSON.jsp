@@ -3,14 +3,13 @@
 
 <json:object>
     <json:property name="userId" value="${userCommand.userId}"/>
-    <json:property name="displayName" value="${userCommand.displayName}"/>
     <json:property name="email" value="${userCommand.email}"/>
 
     
     <json:array name="friends" var="user" items="${friends}">
       <json:object>
-        <json:property name="userId" value="${user.userId}"/>
-        <json:property name="displayName" value="${user.displayName}"/>
+        <json:property name="userId" value="${user.id}"/>
+        <json:property name="email" value="${user.email}" />
       </json:object>
     </json:array>
 
@@ -33,14 +32,14 @@
         <json:property name="state" value="${location.state}"/>
         <json:property name="zipcode" value="${location.zipcode}"/>
         <json:property name="description" value="${location.description}"/>
-        <json:property name="teamOwner" value="${location.teamOwner.name}"/>
+        <json:property name="teamOwner" value="${location.teamOwner.email}"/>
       </json:object>
     </json:array>
     
     <json:array name="invites" var="invite" items="${friendInvites}">
       <json:object>
-        <json:property name="userId" value="${invite.userId}"/>
-        <json:property name="displayName" value="${invite.displayName}"/>
+        <json:property name="userId" value="${invite.id}"/>
+        <json:property name="email" value="${invite.email}"/>
       </json:object>      
     </json:array>
     

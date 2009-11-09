@@ -64,13 +64,13 @@
 	                <div class="grid_4">
 	                    <ul>
 	                      <c:forEach var="user" items="${members}">
-	                          <li><a href="../user/${user.userId}"><c:out value="${user.displayName}"/></a></li>
+	                          <li><a href="../user/${user.id}"><c:out value="${user.email}"/></a></li>
 	                      </c:forEach>
 	                    </ul>	
 	                </div>
 	            </div>
                 <hr>
-                <c:if test="${session.loggedIn && (session.user.userId == teamCommand.leaderId)}">
+                <c:if test="${session.loggedIn && (session.user.id == teamCommand.leaderId)}">
                     <a href="update/${teamCommand.teamId}">Modify Team</a><br/>
                 </c:if>
             </c:when>

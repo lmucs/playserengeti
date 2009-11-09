@@ -13,20 +13,22 @@
             <form:input path="userCommand.password" />
         </div>
     </div>
+    
     <div>    
         <div class="formLabel">
-            <label for="displayName">Display Name: </label>
+            <label for="firstName">First Name: </label>
         </div>
         <div class="spaceInputBox">
-            <form:input path="userCommand.displayName" />
+            <form:input path="userCommand.firstName" />
         </div>
     </div>
+    
     <div>    
         <div class="formLabel">
-            <label for="image">Profile Picture: </label>
+            <label for="lastName">Last Name: </label>
         </div>
         <div class="spaceInputBox">
-            <form:input path="userCommand.image" />
+            <form:input path="userCommand.lastName" />
         </div>
     </div>
 

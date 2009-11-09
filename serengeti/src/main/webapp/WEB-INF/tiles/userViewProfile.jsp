@@ -5,13 +5,13 @@
  <c:choose>
             <c:when test='${!empty userCommand}'>
             <c:choose>
-                <c:when test="${session.user.userId == userCommand.userId}">
+                <c:when test="${session.user.id == userCommand.userId}">
                     <c:if test='${!empty friendInvites}'>
                         <div class="friendRequests">
                             <p>These people want to be your friend.</p>
                             <ul>
                             <c:forEach var="invite" items="${friendInvites}">
-                                <li id="invite_${invite.key}"><a href="${invite.value.userId}"><c:out value="${invite.value.displayName}"/></a>
+                                <li id="invite_${invite.key}"><a href="${invite.value.id}"><c:out value="${invite.value.email}"/></a>
                                 <input type="button" value="I'll allow it" onClick="acceptFriendInvite(${invite.key})"/></li>
                             </c:forEach>
                         </div>
@@ -55,18 +55,18 @@
                         <td><c:out value="${userCommand.email}"/></td>
                     </tr>
                     <tr>
-                        <td><strong>Display Name: </strong></td>
-                        <td><c:out value="${userCommand.displayName}"/></td>
+                        <td><strong>First Name: </strong></td>
+                        <td><c:out value="${userCommand.firstName}"/></td>
                     </tr>
                     <tr>
-                        <td><strong>Profile Picture: </strong></td>
-                        <td><c:out value="${userCommand.image}"/></td>
+                        <td><strong>Last Name: </strong></td>
+                        <td><c:out value="${userCommand.lastName}"/></td>
                     </tr>
                     
                     <strong>Friends: </strong>
                       <ul>
                           <c:forEach var="user" items="${friends}">
-                              <li><a href="${user.userId}"><c:out value="${user.displayName}"/></a></li>
+                              <li><a href="${user.id}"><c:out value="${user.email}"/></a></li>
                           </c:forEach>
                       </ul>
                    
@@ -77,7 +77,7 @@
                       </c:forEach>
                    </ul> 
                 </table>
-                <c:if test="${session.user.userId == userCommand.userId}">
+                <c:if test="${session.user.id == userCommand.userId}">
                     <a href="update/${userCommand.userId}">Edit Profile</a><br/>
                 </c:if>
             </c:when>
@@ -99,7 +99,7 @@
     });
     
     var sendFriendInvite = function () {
-        $.get("sendFriendInvite", {pUserId : ${session.user.userId}, sUserId : ${userCommand.userId}});
+        $.get("sendFriendInvite", {pUserId : ${session.user.id}, sUserId : ${userCommand.userId}});
         $(".friendInvite").fadeOut("slow");
     }
     

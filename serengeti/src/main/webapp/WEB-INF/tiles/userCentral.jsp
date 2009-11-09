@@ -8,9 +8,9 @@
 	        <ul class="hor_menu recentlyCheckedIn">
 	            <c:forEach var="user" items="${recent}">
 	               <li>
-	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user" title="${user.displayName}"/>
+	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user" title="${user.email}"/>
 	                   <span>
-	                       <a href="${user.userId}"><c:out value="${user.displayName}"/></a>
+	                       <a href="${user.id}"><c:out value="${user.email}"/></a>
 	                   </span>
 	               </li>
 	            </c:forEach>
@@ -25,7 +25,7 @@
 	               <li>
 	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user" title="${user.displayName}"/>
 	                   <span>
-	                       <a href="${user.userId}"><c:out value="${user.displayName}"/></a>
+	                       <a href="${user.id}"><c:out value="${user.email}"/></a>
 	                   </span>
 	               </li>
 	            </c:forEach>
@@ -40,9 +40,9 @@
 	        <ul class="hor_menu newestUsers">
 	            <c:forEach var="user" items="${newest}">
 	               <li>
-	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user" title="${user.displayName}"/>
+	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user" title="${user.email}"/>
 	                   <span>
-	                       <a href="${team.userId}"><c:out value="${user.displayName}"/></a>
+	                       <a href="${user.id}"><c:out value="${user.email}"/></a>
 	                   </span>
 	               </li>
 	            </c:forEach>
