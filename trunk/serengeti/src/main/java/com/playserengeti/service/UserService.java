@@ -9,7 +9,6 @@ import java.util.Set;
 import com.playserengeti.dao.FriendshipDao;
 import com.playserengeti.dao.UserDao;
 import com.playserengeti.domain.Friendship;
-import com.playserengeti.domain.Team;
 import com.playserengeti.domain.User;
 
 /**
@@ -29,11 +28,8 @@ public class UserService {
 		return userDao.getUserById(id);
 	}
 	
-	public User getUserByEmailAndPassword(String email, String password) {
-		User user = userDao.getUserByEmail(email);
-		if (user == null || !password.equals(user.getPasswordHash())) {
-			return null;
-		}
+	public User authenticateUserByEmailAndPassword(String email, String password) {
+		User user = userDao.authenticateUserByEmailAndPassword(email, password);
 		return user;
 	}
 
@@ -41,21 +37,27 @@ public class UserService {
 	 * Creates a user from the provided information and writes the user to
 	 * storage.
 	 */
-    public Integer saveUser(User user) {
-		if (user.getUserId() == null) {
-			return userDao.insertUser(user);
-		} else {
-			userDao.updateUser(user);
-			return user.getUserId();
-		}
+    public Integer insertUserWithPassword(User user, String password) {
+		Integer id = userDao.insertUserWithPassword(user, password);
+		User storedUser = userDao.getUserById(id);
+		user.setDateCreated(storedUser.getDateCreated());
+		return id;
+    }
+    
+    public boolean updateUser(User user) {
+    	return userDao.updateUser(user);
     }
 
+    public boolean updateUserPassword(Integer userId, String password) {
+    	return userDao.updateUserPassword(userId, password);
+    }
+    
 	/**
-	 * Deletes the user with the given id from persistent storage.  If no
-	 * such user exists, throws an IllegalArgumentException.
+	 * Deletes the user with the given id from persistent storage.
 	 */
-	public void deleteUser(Integer id) {
-	    userDao.deleteUser(id);
+	public boolean deleteUser(Integer id) {
+		// TODO: If no such user exists, throws an IllegalArgumentException.
+	    return userDao.deleteUser(id);
 	}
 
 	/**
@@ -66,17 +68,13 @@ public class UserService {
 	}
 	
 	/**
-	 * Returns all users as a map with key userId and value username.
-	 * @return
+	 * Returns all users as a map with key userId and value email.
 	 */
 	public Map<Integer, String> getAllUsersMap() {
 		Map<Integer, String> result = new HashMap<Integer, String>();
-		Collection<User> users = userDao.getAllUsers();
-		
-		for(User u : users) {
-			result.put(u.getUserId(), u.getDisplayName());
+		for(User u : userDao.getAllUsers()) {
+			result.put(u.getId(), u.getEmail());
 		}
-		
 		return result;
 	}
 	
@@ -164,10 +162,8 @@ public class UserService {
      */
     public Map<Integer, String> getFriendsMap(Integer userId) {
     	Map<Integer, String> result = new HashMap<Integer, String>();
-    	Collection<User> friends = getFriends(userId);
-    	
-    	for(User u : friends) {
-    		result.put(u.getUserId(), u.getDisplayName());
+    	for(User u : getFriends(userId)) {
+    		result.put(u.getId(), u.getEmail());
     	}
     	return result;
     }
