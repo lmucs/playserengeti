@@ -159,8 +159,15 @@
         <constructor-arg ref="friendshipDao"/>
     </bean>
 
+<!-- 
     <bean id="userDao"
         class="com.playserengeti.dao.UserDaoMockImpl">
+    </bean>
+-->
+
+    <bean id="userDao"
+        class="com.playserengeti.dao.UserDaoIbatisImpl">
+        <property name="sqlMapClient" ref="sqlMapClient"/>
     </bean>
 
     <bean id="friendshipDao"
