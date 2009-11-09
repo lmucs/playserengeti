@@ -4,45 +4,71 @@
 
         <c:choose>
             <c:when test='${ !empty teamCommand }'>
-                <div class="container">
-                    <div id="logoNameContainer">
-	                    <div>
-	                        <td><strong>Team Image</strong></td>
-	                        <td><c:out value="${teamCommand.image}"/></td>
-	                    </div>
-	                    <div>
-	                        <td><strong>Team Name</strong></td>
-	                        <td><c:out value="${teamCommand.name}"/></td>
-	                    </div>
+                <div class="grid_6">
+	                <div class="grid_2">
+	                    <td><strong>Team Image</strong></td>
 	                </div>
-	                <div id="attributeContainer">
-		                <div>
-	                        <td><strong>Team Color</strong></td>
-	                        <td><c:out value="${teamCommand.color}"/></td>
-	                    </div>
-	                    <div>
-	                        <td><strong>Team Leader</strong></td>
-	                        <td><c:out value="${teamCommand.leaderId}"/></td>
-	                    </div>
-	                    <div>
-                        	<td><strong>Home Base:</td>
-                        	<td><c:out value="${teamCommand.homeBase}"/></td>
-                        </div>
+	                <div class="grid_3"> 
+	                    <td><c:out value="${teamCommand.image}"/></td>
+	                </div>
+	                
+	                <div class="clear">&nbsp;</div>
+	                
+	                <div class="grid_2">
+	                    <td><strong>Team Name</strong></td>
+	                </div>
+	                <div class="grid_3">
+	                    <td><c:out value="${teamCommand.name}"/></td>
+	                </div>
+	            
+	                <div class="clear">&nbsp;</div>
+	                
+	                <div class="grid_2">
+	                    <td><strong>Team Color</strong></td>
+	                </div>
+	                <div class="grid_3">
+	                    <td><c:out value="${teamCommand.color}"/></td>
+	                </div>
+	                
+	                <div class="clear">&nbsp;</div>
+	                
+	                <div class="grid_2">
+	                    <td><strong>Team Leader</strong></td>
+	                </div>
+	                <div class="grid_3">
+	                    <td><c:out value="${teamCommand.leaderId}"/></td>
+	                </div>
+	                
+	                <div class="clear">&nbsp;</div>
+	                
+	                <div class="grid_2">
+	                	<td><strong>Home Base:</td>
+	                </div>
+	                <div class="grid_3">
+	                	<td><c:out value="${teamCommand.homeBase}"/></td>
+	                </div>
+	                
+	                <div class="clear">&nbsp;</div>
+	                
+		            <div class="grid_2">
+	                    <td><strong>Team Description:</td>
+	                </div>	
+	                <div class="grid_3">
+	                    <td><c:out value="${teamCommand.description}"/></td>
 	                </div>
 	            </div>
-                <div id="description">
-                    <td><strong>Team Description:</td>
-                    <td><c:out value="${teamCommand.description}"/></td>
-                </div>
-                
-                <div id="memberTable">
-                    <strong>Team Members:</strong>
-                    <ul>
-                      <c:forEach var="user" items="${members}">
-                          <li><a href="../user/${user.userId}"><c:out value="${user.displayName}"/></a></li>
-                      </c:forEach>
-                    </ul>	
-                </div>
+	            <div class="grid_6">
+	                <div class="grid_2">
+	                    <strong>Team Members:</strong>
+	                </div>
+	                <div class="grid_4">
+	                    <ul>
+	                      <c:forEach var="user" items="${members}">
+	                          <li><a href="../user/${user.userId}"><c:out value="${user.displayName}"/></a></li>
+	                      </c:forEach>
+	                    </ul>	
+	                </div>
+	            </div>
                 <hr>
                 <c:if test="${session.loggedIn && (session.user.userId == teamCommand.leaderId)}">
                     <a href="update/${teamCommand.teamId}">Modify Team</a><br/>

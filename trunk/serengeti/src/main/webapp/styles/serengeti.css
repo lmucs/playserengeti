@@ -3,6 +3,9 @@ body {
 	margin: 0;
 }
 
+.loginbar{
+	margin-bottom: 25px;
+
 .pagetitle {
 	background-color: transparent;
 	color: #CC5500;
@@ -18,7 +21,6 @@ body {
 
 .mainContentArea {
 	background-color: #FFFFFF;
-	border: 1px solid #888877;
 	margin: 1em;
 	padding: 1em;
 }
@@ -102,17 +104,6 @@ a:hover {
 	float: right;
 	margin-top: 19%;
 	padding-right: 25%;
-}
-
-#attributeContainer {
-	display: block;
-	float: left;
-}
-
-#description {
-	clear: both;
-	padding-bottom: 15px;
-	padding-top: 15px;
 }
 
 #memberTable {
