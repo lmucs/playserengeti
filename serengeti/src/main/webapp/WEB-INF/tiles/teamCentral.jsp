@@ -1,12 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-        <div class="grid_3 prefix_4">
+        <div class="grid_3 prefix_1">
 	        <p>Teams With the Most Territory</p>
 	    </div>
 	    <div class="clear">&nbsp;</div>
 	    
-        <div class="hor_menu">
+        <div class="hor_menu grid_6">
 	        <ul class="hor_menu">
 	            <c:forEach var="team" items="${leaders}">
 	               <li>
@@ -18,11 +18,14 @@
 	            </c:forEach>
 	        </ul>
 	    </div>
-	    <div class="grid_3 prefix_4">
+	    <div class="clear">&nbsp;</div>
+	    <div class="grid_3 prefix_1">
 	        	<p>Most Active Teams</p>
 	    </div>
+	    
         <div class="clear">&nbsp;</div>
-        <div class="hor_menu">
+        
+        <div class="hor_menu grid_6">
 	        <ul class="hor_menu">
 	            <c:forEach var="team" items="${mostActive}">
 	               <li>
@@ -34,12 +37,12 @@
 	            </c:forEach>
 	        </ul>
         </div>
-        
-        <div class="grid_3 prefix_4">
+        <div class="clear">&nbsp;</div>
+        <div class="grid_3 prefix_1">
             <p>Newest Teams</p>
         </div>
         <div class="clear">&nbsp;</div>
-        <div class="hor_menu">
+        <div class="hor_menu grid_6">
 	        <ul class="hor_menu">
 	            <c:forEach var="team" items="${newest}">
 	               <li>
