@@ -9,7 +9,6 @@ import com.playserengeti.dao.TeamDao;
 import com.playserengeti.dao.UserDao;
 import com.playserengeti.dao.VisitDao;
 import com.playserengeti.domain.Team;
-import com.playserengeti.domain.User;
 import com.playserengeti.domain.Visit;
 
 
@@ -91,7 +90,7 @@ public class VisitService {
 
 		String message = "No such ";
 
-		if(userDao.userExists(userId) == false){
+		if(userDao.getUserById(userId) == null){
 			message += "User Id " + userId + " Exists";
 			throw new NoSuchFieldException(message);
 		}
