@@ -1,9 +1,8 @@
 package com.playserengeti.dao;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -13,28 +12,30 @@ import org.springframework.dao.DataIntegrityViolationException;
 
 import com.playserengeti.domain.User;
 
+// TODO: More argument checks/assertions!!
+
 /**
  * A mock implementation of the User DAO that's backed by an id-keyed map.
  */
 public class UserDaoMockImpl implements UserDao {
 
 	// Storage for the user objects
-    private Map<Integer, User> storage;
+    private Map<Integer, DBEntry> storage;
     private int maxId;
 
     public UserDaoMockImpl() {
-        storage = Collections.synchronizedMap(new HashMap<Integer, User>());
+        storage = Collections.synchronizedMap(new HashMap<Integer, DBEntry>());
         maxId = 0;
 
         User[] sampleUsers = new User[] {
-        		new User(null, "labrams@lion.lmu.edu", "password", "Loren Abrams"),
-        		new User(null, "rtoal@lmu.edu", "password", "Ray Toal"),
-        		new User(null, "litagratrix@gmail.com", "password", "Lita Gratrix"),
-        		new User(null, "mueller.chris0@gmail.com", "password", "Chris Mueller"),
-        		new User(null, "jcol88@gmail.com", "password", "James Coleman"),
-        		new User(null, "mxchickmagnet86@gmail.com", "password", "Mark Miscavage"),
-        		new User(null, "malevolentman87@gmail.com", "password", "Edgardo Ineguez"),
-        		new User(null, "DJScythe15@gmail.com", "password", "Don Murphy")
+        		new User("labrams@lion.lmu.edu", "Loren", "Abrams"),
+        		new User("rtoal@lmu.edu", "Ray", "Toal"),
+        		new User("litagratrix@gmail.com", "Lita", "Gratrix"),
+        		new User("mueller.chris0@gmail.com", "Chris", "Mueller"),
+        		new User("jcol88@gmail.com", "James", "Coleman"),
+        		new User("mxchickmagnet86@gmail.com", "Chick", "Magnet"),
+        		new User("malevolentman87@gmail.com", "Edgardo", "Ineguez"),
+        		new User("DJScythe15@gmail.com", "Don", "Murphy")
         };
 
         // Insert the sample locations into the database as this is a mock impl.
@@ -45,73 +46,109 @@ public class UserDaoMockImpl implements UserDao {
 	 * A convenience method to insert an array of users into the database.
 	 */
 	private void insertUsers(User[] sampleUsers) {
-		for (User sampleUser : sampleUsers) {
-			insertUser(sampleUser);
+		for (User user : sampleUsers) {
+			String firstName = user.getFirstName();
+			insertUserWithPassword(
+					user,
+					firstName.substring(0,1).toLowerCase() + firstName.substring(1));
 		}
 	}
 
 	@Override
 	public Collection<User> getAllUsers() {
-		return storage.values();
+		Set<User> users = new HashSet<User>();
+		for (DBEntry entry : storage.values()) {
+			users.add(entry.user);
+		}
+		return users;
 	}
 
     @Override
     public User getUserById(Integer userId) {
-        return storage.get(userId);
+    	DBEntry entry = storage.get(userId);
+    	if (entry == null) {
+    		return null;
+    	}
+        return entry.user;
     }
 
 	@Override
 	public User getUserByEmail(String email) {
-		for (User user : storage.values()) {
-			if (user.getEmail().equals(email)) {
-				return user;
+		for (DBEntry entry : storage.values()) {
+			if (entry.user.getEmail().equals(email)) {
+				return entry.user;
+			}
+		}
+		return null;
+	}
+	
+	@Override
+	public User authenticateUserByEmailAndPassword(String email, String password) {
+		for (DBEntry entry : storage.values()) {
+			if (entry.user.getEmail().equals(email)) {
+				if (entry.password.equals(password)) {
+					return entry.user;
+				}
+				break;
 			}
 		}
 		return null;
 	}
 
     @Override
-    public Integer insertUser(User user) {
-		for (User u : storage.values()) {
-			if (u.getEmail().equals(user.getEmail())) {
+    public Integer insertUserWithPassword(User user, String password) {
+		for (DBEntry entry : storage.values()) {
+			if (entry.user.getEmail().equals(user.getEmail())) {
 				throw new DataIntegrityViolationException(
 						"Login name already exists");
 			}
 		}
         Integer userId = ++maxId;
 
-        user.setUserId(userId);
-        updateUser(user);
+        // Need to store separate User which has a non-null creation date. 
+        storage.put(userId, new DBEntry(
+        		new User(
+        				userId,
+        				user.getEmail(),
+        				user.getFirstName(),
+        				user.getLastName(),
+        				new Date()), password));
 
-        return userId;
+        user.setId(userId);
+        return user.getId();
     }
 
 	@Override
-	public void updateUser(User user) {
-		storage.put(user.getUserId(), user);
+	public boolean updateUser(User user) {
+		DBEntry entry = storage.remove(user.getId());
+		entry.user = user;
+		storage.put(user.getId(), entry);
+		return true;
+	}
+	
+	@Override
+	public boolean updateUserPassword(Integer userId, String password) {
+		DBEntry entry = storage.remove(userId);
+		entry.password = password;
+		storage.put(userId, entry);
+		return true;
 	}
 
 	@Override
-	public void deleteUser(Integer id) {
+	public boolean deleteUser(Integer id) {
 		if (!storage.containsKey(id)) {
 			// TODO: Localize message.
 			throw new IllegalArgumentException("Invalid user ID.");
 		}
 		storage.remove(id);
+		return true;
 	}
-
-	public boolean userExists(Integer userId) {
-		return (storage.get(userId) != null);
-	}
-
-
-	private static byte[] hashPassword(String password) {
-		try {
-			return MessageDigest.getInstance("MD5").digest(password.getBytes());
-		} catch (NoSuchAlgorithmException e) {
-			// TODO: Do further error handling.
-			System.err.println("User password hashing: " + e.getMessage());
-			return null;
-		}
+	
+	private class DBEntry {
+		public User user;
+		public String password;
+		public DBEntry(User u, String pw) { this.user = u; this.password = pw; }
+		@Override public int hashCode() { return user.hashCode(); }
+		@Override public boolean equals(Object o) { return user.equals(o); }
 	}
 }
