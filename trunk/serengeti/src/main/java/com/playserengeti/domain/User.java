@@ -9,26 +9,34 @@ import java.util.Date;
  */
 public class User {
 
-	private Integer userId;	// User table primary key.
-    private String email;		    // Used as the username.  Not null.
-    private String passwordHash;	// Not null.
-    private String displayName;     // Not null.
-    private String image;
-    private Date creationDate;
+	private Integer id;
+    private String email;
+    private String firstName;
+    private String lastName;
+    private Date dateCreated;
 
-	public User(Integer userId, String email, String passwordHash, String displayName) {
+    public User() {
+    }
+    
+	public User(Integer id, String email, String firstName, String lastName,
+			Date dateCreated) {
+		setId(id);
 		setEmail(email);
-		setPasswordHash(passwordHash);
-		setDisplayName(displayName);
-		creationDate = new Date();
+		setFirstName(firstName);
+		setLastName(lastName);
+		setDateCreated(dateCreated);
+	}
+	
+	public User(String email, String firstName, String lastName) {
+		this(null, email, firstName, lastName, null);
 	}
 
-	public void setUserId(Integer userId){
-		this.userId = userId;
+	public void setId(Integer id){
+		this.id = id;
 	}
 
-	public Integer getUserId() {
-		return userId;
+	public Integer getId() {
+		return id;
 	}
 
 	public String getEmail() {
@@ -36,47 +44,36 @@ public class User {
 	}
 
 	public void setEmail(String email) {
-		assertArgument(email != null, "An email address must be provided.");
 		this.email = email;
 	}
 
-	public String getPasswordHash() {
-		return passwordHash;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setPasswordHash(String passwordHash) {
-		assertArgument(passwordHash != null, "A user must have a password.");
-		this.passwordHash = passwordHash;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getDisplayName() {
-		return displayName;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setDisplayName(String displayName) {
-		this.displayName = displayName;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	public String getImage() {
-		return image;
+	public Date getDateCreated() {
+		return dateCreated;
 	}
 
-	public void setImage(String image) {
-		this.image = image;
-	}
-
-	public Date getCreationDate() {
-		return creationDate;
-	}
-
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		return prime * 1 + userId.hashCode();
+		return id.hashCode();
 	}
 
 	@Override
@@ -87,9 +84,7 @@ public class User {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User)obj;
-		if (!userId.equals(other.userId))
-			return false;
-		return true;
+		User other = (User) obj;
+		return id.equals(other.id);
 	}
 }
