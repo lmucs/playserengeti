@@ -11,8 +11,8 @@
     <json:property name="leaderId" value="${teamCommand.leaderId}" />
     <json:array name="members" var="user" items="${members}">
         <json:object>
-            <json:property name="userId" value="${user.userId}"/>
-            <json:property name="displayName" value="${user.displayName}" />
+            <json:property name="userId" value="${user.id}"/>
+            <json:property name="email" value="${user.email}" />
         </json:object>
     </json:array>
 </json:object>

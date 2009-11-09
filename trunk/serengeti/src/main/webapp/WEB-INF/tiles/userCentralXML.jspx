@@ -6,24 +6,24 @@
     <recent>
         <c:forEach var="user" items="${recent}">
             <user>
-                <userId><c:out value="${user.userId}" /></userId>
-                <displayName><c:out value="${user.displayName}" /></displayName>
+                <userId><c:out value="${user.id}" /></userId>
+                <email><c:out value="${user.email}" /></email>
             </user>
         </c:forEach>
     </recent>
     <mostActive>
         <c:forEach var="user" items="${mostActive}">
             <user>
-                <userId><c:out value="${user.userId}" /></userId>
-                <displayName><c:out value="${user.displayName}" /></displayName>
+                <userId><c:out value="${user.id}" /></userId>
+                <email><c:out value="${user.email}" /></email>
             </user>
         </c:forEach>
     </mostActive>
     <newest>
         <c:forEach var="user" items="${newest}">
             <user>
-                <userId><c:out value="${user.userId}" /></userId>
-                <displayName><c:out value="${user.displayName}" /></displayName>
+                <userId><c:out value="${user.id}" /></userId>
+                <email><c:out value="${user.email}" /></email>
             </user>
         </c:forEach>
     </newest>
