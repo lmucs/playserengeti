@@ -36,11 +36,17 @@
       </json:object>
     </json:array>
     
-    <json:array name="invites" var="invite" items="${friendInvites}">
+    <json:array name="friendInvites" var="user" items="${friendInvites}">
       <json:object>
-        <json:property name="userId" value="${invite.id}"/>
-        <json:property name="email" value="${invite.email}"/>
+        <json:property name="userId" value="${user.id}"/>
+        <json:property name="email" value="${user.email}"/>
       </json:object>      
     </json:array>
     
+    <json:array name="teamInvites" var="team" items="${teamInvites}">
+      <json:object>
+        <json:property name="teamId" value="${team.id}"/>
+        <json:property name="name" value="${team.name}"/>
+      </json:object>      
+    </json:array>
 </json:object>

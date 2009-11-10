@@ -77,8 +77,7 @@ public class UserController extends MultiActionController {
 
 		Collection<User> friends = userService.getFriends(userId);
 		Collection<Team> teams = teamService.getTeams(user.getId());
-		Collection<Location> nearbyLocations = locationService
-				.getAllLocations();
+		Collection<Location> nearbyLocations = locationService.getAllLocations();
 		Collection<User> friendInvites = userService.getFriendInvites(userId);
 		Collection<Team> teamInvites = teamService.getTeamInvites(userId);
 		

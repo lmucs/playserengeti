@@ -44,14 +44,21 @@
         </nearbyLocations>
         <invites>
             <friendshipInvites>
-                <c:forEach var="invite" items="${friendInvites}">
+                <c:forEach var="user" items="${friendInvites}">
                     <friendshipInvite>
-                        <friendshipId><c:out value="${invite.key}" /></friendshipId>
-                        <friendshipUserId><c:out value="${invite.value.id}" /></friendshipUserId>
-                        <friendshipEmail><c:out value="${invite.value.email}" /></friendshipEmail>
+                        <userId><c:out value="${user.id}" /></userId>
+                        <email><c:out value="${user.email}" /></email>
                     </friendshipInvite>
                 </c:forEach>
             </friendshipInvites>
+            <teamInvites>
+                <c:forEach var="team" items="${teamInvites}">
+                    <teamInvite>
+                        <teamId><c:out value="${team.id}" /></teamId>
+                        <name><c:out value="${team.name}" /></name>
+                    </teamInvite>
+                </c:forEach>
+            </teamInvites>
         </invites>
       </user>
     </profile>
