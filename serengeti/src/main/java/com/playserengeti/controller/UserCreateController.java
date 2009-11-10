@@ -39,7 +39,7 @@ public class UserCreateController extends SimpleFormController {
 		try {
 			// Insert the entry into the database.
 		    userId = userService.insertUserWithPassword(user, password);
-		    session.setUser(user);
+		    session.setUser(userService.getUserById(userId));
 
 			ModelAndView mav = new ModelAndView("redirect:view");
 			mav.addObject("userId", userId);		
@@ -47,6 +47,7 @@ public class UserCreateController extends SimpleFormController {
 			return mav;
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			// On service error, try again
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("command", command);

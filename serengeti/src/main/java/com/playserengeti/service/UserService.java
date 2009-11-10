@@ -103,6 +103,17 @@ public class UserService {
     	return friendshipDao.getFriendshipsByUser(userId);
     }
     
+    public Friendship getFriendshipByUserPair(Integer pUserId, Integer sUserId) {
+    	Collection<Friendship> friendships = getAllFriendships();
+    	
+    	for(Friendship f: friendships) {
+    		if (pUserId.equals(f.getPrimaryUserId()) && sUserId.equals(f.getSecondaryUserId())) {
+    			return f;
+    		}
+    	}
+    	return null;
+    }
+    
     public Collection<User> getFriends(Integer userId) {
     	Set<User> result = new HashSet<User>();
     	Collection<Friendship> friends = friendshipDao.getFriendshipsByUser(userId);
@@ -119,39 +130,17 @@ public class UserService {
     	return result;
     }
     
-    public Collection<Friendship> getFriendInvites(Integer userId) {
-    	Set<Friendship> result = new HashSet<Friendship>();
-    	Collection<Friendship> friends = friendshipDao.getFriendshipsByUser(userId);
-    	
-    	for(Friendship f : friends) {
-    		if (f.getStatus().equals("pending") && f.getSecondaryUserId().equals(userId)) result.add(f);
-    	}
-    	
-    	return result;
-    }
-    
-    public Map<Integer, User> getFriendInvitesMap(Integer userId) {
-    	Map<Integer, User> result = new HashMap<Integer, User>();
+    public Collection<User> getFriendInvites(Integer userId) {
+    	Set<User> result = new HashSet<User>();
     	Collection<Friendship> friends = friendshipDao.getFriendshipsByUser(userId);
     	
     	for(Friendship f : friends) {
     		if (f.getStatus().equals("pending") && f.getSecondaryUserId().equals(userId)) {
-    			result.put(f.getFriendshipId(), getUserById(f.getPrimaryUserId()));
+    			result.add(userDao.getUserById(f.getPrimaryUserId()));
     		}
     	}
     	
     	return result;
-    }
-    
-    public Friendship getFriendshipByUserPair(Integer pUserId, Integer sUserId) {
-    	Collection<Friendship> friendships = getAllFriendships();
-    	
-    	for(Friendship f: friendships) {
-    		if (pUserId.equals(f.getPrimaryUserId()) && sUserId.equals(f.getSecondaryUserId())) {
-    			return f;
-    		}
-    	}
-    	return null;
     }
     
     /**
@@ -183,8 +172,16 @@ public class UserService {
     	saveFriendship(new Friendship(null, pUserId, sUserId));
     }
     
-    public void acceptFriend(Integer friendshipId) {
-    	getFriendshipById(friendshipId).setStatus("accepted");
+    public void acceptFriendInvite(Integer pUserId, Integer sUserId) {
+    	Friendship f = getFriendshipById(getFriendshipByUserPair(pUserId, sUserId).getFriendshipId());
+    	f.setStatus("accepted");
+    	saveFriendship(f);
+    }
+    
+    public void rejectFriendInvite(Integer pUserId, Integer sUserId) {
+    	Friendship f = getFriendshipById(getFriendshipByUserPair(pUserId, sUserId).getFriendshipId());
+    	f.setStatus("rejected");
+    	saveFriendship(f);
     }
     
     //TODO

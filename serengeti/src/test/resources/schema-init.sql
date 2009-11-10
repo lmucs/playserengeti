@@ -160,4 +160,4 @@ insert into visit (user_id, team_id, location_id) values (8, 6, 4);
 insert into visit (user_id, team_id, location_id) values (8, 5, 3);
 
 grant all on player, team, friendship, location, membership, visit to public;
-
+grant all on player_id_seq, team_id_seq, friendship_id_seq, location_id_seq, membership_id_seq, visit_id_seq to public;

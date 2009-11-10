@@ -7,7 +7,7 @@
 	Sign up below!
 </div>
 
-<form:form method="post">
+<form:form method="POST" action="${pageContext.request.contextPath}/user/create">
     <div>
         <div class="formLabel">
             <label for="email">Email Address: </label>

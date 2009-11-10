@@ -2,7 +2,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
-<form id="userDeleteForm" method="post" action="delete">
+<form id="userDeleteForm" method="POST" action="${pageContext.request.contextPath}/user/delete">
     <p>Are you sure you want to remove yourself from Serengeti?  By continuing, you will lose all 
         data associated with your profile.  This cannot be recovered.</p>
 

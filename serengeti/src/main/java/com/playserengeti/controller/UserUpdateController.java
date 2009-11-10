@@ -6,6 +6,7 @@ package com.playserengeti.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
@@ -45,6 +46,9 @@ public class UserUpdateController extends SimpleFormController {
 		return userCommand;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.springframework.web.servlet.mvc.SimpleFormController#onSubmit(java.lang.Object)
+	 */
 	public ModelAndView onSubmit(Object _command) {
 		UserCommand command = (UserCommand)_command;
 		Integer userId = command.getUserId();
@@ -59,8 +63,7 @@ public class UserUpdateController extends SimpleFormController {
 		userService.updateUser(user);
 		userService.updateUserPassword(userId, command.getPassword());
 		
-		ModelAndView mav = new ModelAndView("redirect:view");
-		mav.addObject("userId", userId);
+		ModelAndView mav = new ModelAndView("redirect:/user/" + userId);
 
 		return mav;
 	}

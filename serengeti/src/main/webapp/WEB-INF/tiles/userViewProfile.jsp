@@ -10,13 +10,26 @@
                         <div class="friendRequests">
                             <p>These people want to be your friend.</p>
                             <ul>
-                            <c:forEach var="invite" items="${friendInvites}">
-                                <li id="invite_${invite.key}"><a href="${invite.value.id}"><c:out value="${invite.value.email}"/></a>
-                                <input type="button" value="I'll allow it" onClick="acceptFriendInvite(${invite.key})"/></li>
+                            <c:forEach var="user" items="${friendInvites}">
+                                <li id="friendInvite_${user.id}"><a href="${user.id}"><c:out value="${user.email}"/></a>
+                                <input type="button" value="I'll allow it" onClick="acceptFriendInvite(${user.id})"/>
+                                <input type="button" value="Not Interested" onClick="rejectFriendInvite(${user.id})"/></li>
                             </c:forEach>
                         </div>
                     </c:if>                
                 
+                    <c:if test='${!empty teamInvites}'>
+                        <div class="teamRequests">
+                            <p>You have been invited to the following teams.</p>
+                            <ul>
+                            <c:forEach var="team" items="${teamInvites}">
+                                <li id="teamInvite_${team.id}"><a href="../team/${team.id}"><c:out value="${team.name}"/></a>
+                                <input type="button" value="I'll allow it" onClick="acceptTeamInvite(${team.id})"/>
+                                <input type="button" value="Not Interested" onClick="rejectTeamInvite(${team.id})"/></li>
+                            </c:forEach>
+                        </div>
+                    </c:if>
+                    
                     <div class="thanks">
                         <p>Thank you for checking in.</p>
                     </div>
@@ -41,10 +54,20 @@
                     
                 </c:when>
                 <c:otherwise>
-                    <c:if test="${session.loggedIn && !alreadyFriends}">
+                    <c:if test="${session.loggedIn}">
                         <div class="sendRequests">
-                            <input class="friendInvite" type="button" value="Send friend request" onClick="sendFriendInvite()"/>
-                        </div>
+                            <c:if test="${!alreadyFriends}">
+                                <input class="inviteFriend" type="button" value="Send friend request" onClick="sendFriendInvite()"/>
+                            </c:if>
+                            <c:if test="${!empty teamsToInviteTo}">
+                                <select name="teamToInvite" id="teamToInvite">
+                                    <c:forEach var="team" items="${teamsToInviteTo}">
+                                        <option value="${team.id}"><c:out value="${team.name}"/></option>
+                                    </c:forEach>
+                                </select>
+                                <input class="inviteMember" type="button" value="Send Team Invitation" onClick="sendTeamInvite()"/>
+                            </c:if>
+                        </div>                        
                     </c:if>
                 </c:otherwise>
             </c:choose>
@@ -100,12 +123,31 @@
     
     var sendFriendInvite = function () {
         $.get("sendFriendInvite", {pUserId : ${session.user.id}, sUserId : ${userCommand.userId}});
-        $(".friendInvite").fadeOut("slow");
+        $(".inviteFriend").fadeOut("slow");
     }
     
-    var acceptFriendInvite = function (inviteId) {
-        $.get("acceptFriendInvite", {friendshipId : inviteId});
-        $("#invite_" + inviteId).fadeOut("slow");
+    var acceptFriendInvite = function (userId) {
+        $.get("acceptFriendInvite", {pUserId : userId, sUserId : ${session.user.id}});
+        $("#friendInvite_" + userId).fadeOut("slow");
     }
     
+    var rejectFriendInvite = function (userId) {
+        $.get("rejectFriendInvite", {pUserId : userId, sUserId : ${session.user.id}});
+        $("#friendInvite_" + userId).fadeOut("slow");
+    }
+    
+    var sendTeamInvite = function () {
+        $.get("sendTeamInvite", {teamId : $("select#teamToInvite").val(), userId : ${userCommand.userId}});
+        $(".inviteMember").fadeOut("slow");
+    }
+    
+    var acceptTeamInvite = function (teamId) {
+        $.get("acceptTeamInvite", {teamId : teamId, userId : ${session.user.id}});
+        $("#teamInvite_" + teamId).fadeOut("slow");
+    }
+    
+    var rejectTeamInvite = function (teamId) {
+        $.get("rejectTeamInvite", {teamId : teamId, userId : ${session.user.id}});
+        $("#teamInvite_" + teamId).fadeOut("slow");
+    }
 </script>

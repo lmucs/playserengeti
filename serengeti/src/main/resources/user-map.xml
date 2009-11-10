@@ -5,7 +5,7 @@
 
   <insert id="insertUserWithPassword">
     INSERT
-    INTO User (email, first_name, last_name, password_hash)
+    INTO player (email, first_name, last_name, password_hash)
     VALUES (#email#, #firstName#, #lastName#, md5(#password#))
   </insert>
   

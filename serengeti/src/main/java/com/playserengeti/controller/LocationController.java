@@ -53,7 +53,6 @@ public class LocationController extends MultiActionController {
         Integer locationId = Integer.valueOf(request.getParameter("locationId"));
         LocationCommand locationCommand = new LocationCommand();
         
-        String[] address = new String[2];
 		if (locationId != null) {
 			Location location = locationService.getLocationById(locationId);
 		    locationCommand.setLocationId(location.getLocationId());
