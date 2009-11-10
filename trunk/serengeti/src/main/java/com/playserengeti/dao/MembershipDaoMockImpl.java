@@ -69,7 +69,7 @@ public class MembershipDaoMockImpl implements MembershipDao{
 
 	@Override
 	public Membership getMembershipById(Integer membershipId) {
-		return new Membership(storage.get(membershipId));
+		return storage.get(membershipId);
 	}
 
 	@Override

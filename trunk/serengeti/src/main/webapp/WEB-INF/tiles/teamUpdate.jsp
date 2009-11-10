@@ -2,7 +2,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<form id="teamUpdateForm" method="post" action="update"
+<form id="teamUpdateForm" method="post" action="${pageContext.request.contextPath}/team/update"
         onsubmit="return validateUpdateForm();">
    
     <div class="grid_2">

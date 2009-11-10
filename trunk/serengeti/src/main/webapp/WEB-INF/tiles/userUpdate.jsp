@@ -2,7 +2,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<form id="teamUpdateForm" method="post" action="update"
+<form id="teamUpdateForm" method="POST" action="${pageContext.request.contextPath}/user/update"
         onsubmit="return validateUpdateForm();">
 
     <div>    
@@ -53,7 +53,7 @@
         <input type="submit" value="Save Changes" />
     </div>
 
-    <a href="delete?userId=${userCommand.userId}">Delete Profile</a>
+    <a href="../delete/${userCommand.userId}">Delete Profile</a>
     
 </form>
 
@@ -70,12 +70,12 @@
     }
     
     var removeFriend = function (sUserId, elementId) {
-        $.get("removeFriend", {pUserId : ${userCommand.userId}, sUserId : sUserId});
+        $.get("../removeFriend", {pUserId : ${userCommand.userId}, sUserId : sUserId});
         $("#" + elementId).fadeOut("slow");
     }
     
     var removeTeam = function (teamId, elementId) {
-        $.get("removeTeam", {userId : ${userCommand.userId}, teamId : teamId});
+        $.get("../removeTeam", {userId : ${userCommand.userId}, teamId : teamId});
         $("#" + elementId).fadeOut("slow");
     }
     

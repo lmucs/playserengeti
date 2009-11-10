@@ -65,11 +65,12 @@ public class UserDeleteController extends SimpleFormController {
     		for(Friendship f : friendships) {
     			userService.deleteFriendship(f.getFriendshipId());
     		}
+    		
+    		session.setUser(null);
     		//Deletes the user from the database.
     		userService.deleteUser(userId);
-    		session.setUser(null);
     		
-    		return new ModelAndView("redirect:../");
+    		return new ModelAndView("redirect:/");
     	} 
     	
     	catch (Exception e) {

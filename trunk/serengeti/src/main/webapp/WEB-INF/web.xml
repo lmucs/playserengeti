@@ -12,7 +12,7 @@
         frontend.
     </description>
     
-    <!--  Turkey URL Rewrite Filter -->
+    <!--  Tuckey URL Rewrite Filter -->
     <filter>
         <filter-name>UrlRewriteFilter</filter-name>
         <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>

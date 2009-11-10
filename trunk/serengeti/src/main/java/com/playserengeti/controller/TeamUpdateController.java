@@ -92,8 +92,7 @@ public class TeamUpdateController extends SimpleFormController {
 			teamService.removeFromTeam(teamId, id);
 		}
 
-		ModelAndView mav = new ModelAndView("redirect:view");		
-		mav.addObject("teamId", teamId);
+		ModelAndView mav = new ModelAndView("redirect:/team/" + teamId);		
 
 		return mav;
 	}
