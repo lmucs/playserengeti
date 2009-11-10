@@ -3,9 +3,10 @@ body {
 	margin: 0;
 }
 
-.loginbar{
-	margin-bottom:25px;
+.loginbar {
+	margin-bottom: 25px;
 }
+
 .pagetitle {
 	background-color: transparent;
 	color: #CC5500;
@@ -246,4 +247,23 @@ ul.hor_menu {
 
 #navbar2 lia:visited {
 	color: #CCCCCC;
+}
+
+a.signup-button {
+	-moz-border-radius-bottomleft: 4px;
+	-moz-border-radius-bottomright: 4px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright: 4px;
+	border: solid #99CC22;
+	display: inline;
+	font-family: "Lucida Grande", Arial, Sans-serif;
+	font-size: 11px;
+	font-size-adjust: none;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	line-height: normal;
+	margin-right: 6px;
+	padding: 3px 6px 5px;
 }
