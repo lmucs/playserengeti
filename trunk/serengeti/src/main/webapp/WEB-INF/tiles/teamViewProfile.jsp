@@ -64,7 +64,7 @@
 	                <div class="grid_4">
 	                    <ul>
 	                      <c:forEach var="user" items="${members}">
-	                          <li><a href="../user/${user.id}"><c:out value="${user.email}"/></a></li>
+	                          <li><a href="../user/${user.id}"><c:out value="${user.firstName} ${user.lastName}"/></a></li>
 	                      </c:forEach>
 	                    </ul>	
 	                </div>

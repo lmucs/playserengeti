@@ -6,7 +6,6 @@
 <div class="loginbar">
     <c:choose>
     <c:when test="${session.loggedIn}">
-    <p>Welcome <c:out value="${session.user.email}"/>!</p>
     </c:when>
     <c:otherwise>
     <form action="${pageContext.request.contextPath}/user/login" method="POST">

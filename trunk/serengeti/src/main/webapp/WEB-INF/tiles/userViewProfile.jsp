@@ -11,7 +11,7 @@
                             <p>These people want to be your friend.</p>
                             <ul>
                             <c:forEach var="user" items="${friendInvites}">
-                                <li id="friendInvite_${user.id}"><a href="${user.id}"><c:out value="${user.email}"/></a>
+                                <li id="friendInvite_${user.id}"><a href="${user.id}"><c:out value="${user.firstName} ${user.lastName}"/></a>
                                 <input type="button" value="I'll allow it" onClick="acceptFriendInvite(${user.id})"/>
                                 <input type="button" value="Not Interested" onClick="rejectFriendInvite(${user.id})"/></li>
                             </c:forEach>
@@ -78,18 +78,14 @@
                         <td><c:out value="${userCommand.email}"/></td>
                     </tr>
                     <tr>
-                        <td><strong>First Name: </strong></td>
-                        <td><c:out value="${userCommand.firstName}"/></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Last Name: </strong></td>
-                        <td><c:out value="${userCommand.lastName}"/></td>
+                        <td><strong>Name: </strong></td>
+                        <td><c:out value="${userCommand.firstName} ${userCommand.lastName}"/></td>
                     </tr>
                     
                     <strong>Friends: </strong>
                       <ul>
                           <c:forEach var="user" items="${friends}">
-                              <li><a href="${user.id}"><c:out value="${user.email}"/></a></li>
+                              <li><a href="${user.id}"><c:out value="${user.firstName} ${user.lastName}"/></a></li>
                           </c:forEach>
                       </ul>
                    

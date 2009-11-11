@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import com.playserengeti.domain.Friendship;
 import com.playserengeti.domain.Membership;
+import com.playserengeti.domain.User;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
 import com.playserengeti.session.UserSession;
@@ -39,9 +40,12 @@ public class UserDeleteController extends SimpleFormController {
     throws Exception {
     	Integer userId = Integer.valueOf(request.getParameter("userId"));
     	UserCommand userCommand = new UserCommand();
+    	User user = userService.getUserById(userId);
     	
     	userCommand.setUserId(userId);
-    	userCommand.setEmail(userService.getUserById(userId).getEmail());
+    	userCommand.setEmail(user.getEmail());
+    	userCommand.setFirstName(user.getFirstName());
+    	userCommand.setLastName(user.getLastName());
     	
     	setSessionForm(true);
     	return userCommand;
@@ -74,6 +78,7 @@ public class UserDeleteController extends SimpleFormController {
     	} 
     	
     	catch (Exception e) {
+    		e.printStackTrace();
     		Map<String, Object> model = new HashMap<String, Object>();
     		model.put("command", command);
     		model.put("message", e.getMessage());

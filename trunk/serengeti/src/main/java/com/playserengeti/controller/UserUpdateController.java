@@ -6,18 +6,19 @@ package com.playserengeti.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import com.playserengeti.domain.User;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
+import com.playserengeti.session.UserSession;
 
 public class UserUpdateController extends SimpleFormController {
 
     private UserService userService;
     private TeamService teamService;
+    private UserSession session;
 
     public UserUpdateController(UserService userService, TeamService teamService) {
         this.userService = userService;
@@ -66,5 +67,13 @@ public class UserUpdateController extends SimpleFormController {
 		ModelAndView mav = new ModelAndView("redirect:/user/" + userId);
 
 		return mav;
+	}
+	
+	public UserSession getSession() {
+		return session;
+	}
+	
+	public void setSession(UserSession session) {
+		this.session = session;
 	}
 }

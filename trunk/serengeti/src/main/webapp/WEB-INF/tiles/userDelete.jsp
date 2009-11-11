@@ -6,7 +6,7 @@
     <p>Are you sure you want to remove yourself from Serengeti?  By continuing, you will lose all 
         data associated with your profile.  This cannot be recovered.</p>
 
-    <p>${userCommand.email}</p>
+    <p><c:out value="${userCommand.firstName} ${userCommand.lastName}"/></p>
 
     <div class="formRow">
         <input type="submit" value="Delete Profile" />

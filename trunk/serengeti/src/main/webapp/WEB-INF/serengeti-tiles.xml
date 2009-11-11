@@ -8,23 +8,20 @@
     <definition name="template" template="/WEB-INF/tiles/layout/main.jsp">
         <put-attribute name="title" value="Serengeti"/>
         <put-attribute name="header" value="/WEB-INF/tiles/layout/header.jsp"/>
-        <put-attribute name="login" value="/WEB-INF/tiles/layout/login.jsp"/>
+        <put-attribute name="login" value=""/>
         <put-attribute name="body" value="/WEB-INF/tiles/layout/bodyPlaceholder.jsp"/>
         <put-attribute name="footer" value="/WEB-INF/tiles/layout/footer.jsp"/>
     </definition>
 
     <definition name="welcome" extends="template">
         <put-attribute name="title" value="Welcome to Serengeti"/>
+        <put-attribute name="login" value="/WEB-INF/tiles/layout/login.jsp"/>
         <put-attribute name="body" value="/WEB-INF/tiles/welcome.jsp"/>
-    </definition>
-
-    <definition name="viewWorldMap" extends="template">
-        <put-attribute name="title" value="Serengeti Map"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/viewWorldMap.jsp"/>
     </definition>
 
     <definition name="locationCentral" extends="template">
         <put-attribute name="title" value="Location Central"/>
+        <put-attribute name="login" value="/WEB-INF/tiles/layout/login.jsp"/>
         <put-attribute name="body" value="/WEB-INF/tiles/locationCentral.jsp"/>
     </definition>
     
@@ -33,12 +30,13 @@
     <definition name="locationCentralJSON" template="/WEB-INF/tiles/locationCentralJSON.jsp"> </definition>
 
     <definition name="locationCreate" extends="template">
-        <put-attribute name="title" value="Create a Location"/>
+        <put-attribute name="title" value="Add a Location"/>
         <put-attribute name="body" value="/WEB-INF/tiles/locationCreate.jsp"/>
     </definition>
 
     <definition name="locationViewProfile" extends="template">
         <put-attribute name="title" value="Location Profile"/>
+        <put-attribute name="login" value="/WEB-INF/tiles/layout/login.jsp"/>
         <put-attribute name="body" value="/WEB-INF/tiles/locationViewProfile.jsp"/>
     </definition>
 
@@ -48,6 +46,7 @@
 
     <definition name="userCentral" extends="template">
         <put-attribute name="title" value="User Central"/>
+        <put-attribute name="login" value="/WEB-INF/tiles/layout/login.jsp"/>
         <put-attribute name="body" value="/WEB-INF/tiles/userCentral.jsp"/>
     </definition>
     
@@ -61,7 +60,7 @@
     </definition>
 
     <definition name="userDelete" extends="template">
-        <put-attribute name="title" value="Delete a User"/>
+        <put-attribute name="title" value="Delete Profile"/>
         <put-attribute name="body" value="/WEB-INF/tiles/userDelete.jsp"/>
     </definition>
     
@@ -71,12 +70,13 @@
     </definition>
 
     <definition name="userUpdate" extends="template">
-        <put-attribute name="title" value="Update a User"/>
+        <put-attribute name="title" value="Edit Profile"/>
         <put-attribute name="body" value="/WEB-INF/tiles/userUpdate.jsp"/>
     </definition>
 
     <definition name="userViewProfile" extends="template">
-        <put-attribute name="title" value="User Profile"/>
+        <put-attribute name="title" value="View Profile"/>
+        <put-attribute name="login" value="/WEB-INF/tiles/layout/login.jsp"/>
         <put-attribute name="body" value="/WEB-INF/tiles/userViewProfile.jsp"/>
     </definition>
 
@@ -91,6 +91,7 @@
 
     <definition name="teamCentral" extends="template">
         <put-attribute name="title" value="Team Central"/>
+        <put-attribute name="login" value="/WEB-INF/tiles/layout/login.jsp"/>
         <put-attribute name="body" value="/WEB-INF/tiles/teamCentral.jsp"/>
     </definition>
 
@@ -99,27 +100,18 @@
     <definition name="teamCentralJSON" template="/WEB-INF/tiles/teamCentralJSON.jsp"> </definition>
 
     <definition name="teamUpdate" extends="template">
-        <put-attribute name="title" value="Update a Team"/>
+        <put-attribute name="title" value="Edit Team"/>
         <put-attribute name="body" value="/WEB-INF/tiles/teamUpdate.jsp"/>
     </definition>
 
     <definition name="teamViewProfile" extends="template">
         <put-attribute name="title" value="Team Profile"/>
+        <put-attribute name="login" value="/WEB-INF/tiles/layout/login.jsp"/>
         <put-attribute name="body" value="/WEB-INF/tiles/teamViewProfile.jsp"/>
     </definition>
     
     <definition name="teamViewProfileXML" template="/WEB-INF/tiles/teamViewProfileXML.jspx"> </definition>
    
     <definition name="teamViewProfileJSON" template="/WEB-INF/tiles/teamViewProfileJSON.jsp"> </definition>
-
-    <definition name="visitCreate" extends="template">
-        <put-attribute name="title" value="Create a Visit"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/visitCreate.jsp"/>
-    </definition>
-
-    <definition name="visitCreateSuccess" extends="template">
-        <put-attribute name="title" value="Visit Created"/>
-        <put-attribute name="body" value="/WEB-INF/tiles/visitCreateSuccess.jsp"/>
-    </definition>
 
 </tiles-definitions>
