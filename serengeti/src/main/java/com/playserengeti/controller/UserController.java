@@ -165,6 +165,7 @@ public class UserController extends MultiActionController {
 		Integer sUserId = Integer.valueOf(request.getParameter("sUserId"));
 
 		userService.acceptFriendInvite(pUserId, sUserId);
+		
 	}
 
 	public void rejectFriendInvite(HttpServletRequest request,

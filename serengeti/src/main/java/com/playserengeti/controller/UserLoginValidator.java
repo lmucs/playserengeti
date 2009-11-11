@@ -16,6 +16,6 @@ public class UserLoginValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", 
 				"login.blank", "The email address can not be blank");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", 
-				"display.blank", "The display name can not be blank");
+				"display.blank", "The password can not be blank");
 	}
 }

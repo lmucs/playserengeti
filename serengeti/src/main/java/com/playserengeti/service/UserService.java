@@ -152,7 +152,7 @@ public class UserService {
     public Map<Integer, String> getFriendsMap(Integer userId) {
     	Map<Integer, String> result = new HashMap<Integer, String>();
     	for(User u : getFriends(userId)) {
-    		result.put(u.getId(), u.getEmail());
+    		result.put(u.getId(), u.getFirstName() + " " + u.getLastName());
     	}
     	return result;
     }

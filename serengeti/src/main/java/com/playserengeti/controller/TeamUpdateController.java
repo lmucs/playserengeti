@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import com.playserengeti.domain.Team;
+import com.playserengeti.domain.User;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
 import com.playserengeti.session.UserSession;
@@ -56,9 +57,11 @@ public class TeamUpdateController extends SimpleFormController {
     		
     		Collection<Integer> members = teamService.getTeamMembers(teamId);
     		Map<Integer, String> candidates = new HashMap<Integer, String>();
+    		User mem;
     		for (Integer id : members) {
-    			if (id != session.getUser().getId()) {
-    				candidates.put(id, userService.getUserById(id).getEmail());
+    			mem = userService.getUserById(id);
+    			if (!id.equals(session.getUser().getId())) {
+    				candidates.put(id, mem.getFirstName() + " " + mem.getLastName());
     			}
     		}
     		teamCommand.setCandidates(candidates);

@@ -117,6 +117,7 @@
         <property name="commandClass"
             value="com.playserengeti.controller.UserCommand"
         />
+        <property name="session" ref="userSession"/>
         <property name="commandName" value="userCommand"/>
         <property name="validator" ref="userUpdateValidator"/>
         <property name="formView" value="userUpdate"/>
