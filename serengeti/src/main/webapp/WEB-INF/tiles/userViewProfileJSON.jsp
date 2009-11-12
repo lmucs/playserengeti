@@ -1,11 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="json" uri="http://www.atg.com/taglibs/json" %>
+<%@ page contentType="application/json;charset=UTF-8" %>
 
 <json:object>
     <json:property name="userId" value="${userCommand.userId}"/>
     <json:property name="email" value="${userCommand.email}"/>
 
-    
+
     <json:array name="friends" var="user" items="${friends}">
       <json:object>
         <json:property name="userId" value="${user.id}"/>
@@ -17,9 +18,9 @@
       <json:object>
         <json:property name="teamId" value="${team.id}"/>
         <json:property name="name" value="${team.name}"/>
-      </json:object>      
+      </json:object>
     </json:array>
-    
+
     <json:array name="nearbyLocations" var="location" items="${nearbyLocations}">
       <json:object>
         <json:property name="locationId" value="${location.locationId}"/>
@@ -35,18 +36,18 @@
         <json:property name="teamOwner" value="${location.teamOwner.email}"/>
       </json:object>
     </json:array>
-    
+
     <json:array name="friendInvites" var="user" items="${friendInvites}">
       <json:object>
         <json:property name="userId" value="${user.id}"/>
         <json:property name="email" value="${user.email}"/>
-      </json:object>      
+      </json:object>
     </json:array>
-    
+
     <json:array name="teamInvites" var="team" items="${teamInvites}">
       <json:object>
         <json:property name="teamId" value="${team.id}"/>
         <json:property name="name" value="${team.name}"/>
-      </json:object>      
+      </json:object>
     </json:array>
 </json:object>
