@@ -65,7 +65,7 @@ a:visited {
 }
 
 a:hover {
-	background-color: #AAAA99;
+	background-color: #398F39;
 	color: white;
 }
 
@@ -149,6 +149,8 @@ ul.hor_menu {
 	-moz-background-clip: border;
 	-moz-background-inline-policy: continuous;
 	-moz-background-origin: padding;
+    -webkit-background-clip: border;
+    -webkit-background-origin: padding;
 	background: transparent url(navigation.png) repeat scroll 0 0;
 	display: block;
 	height: 110px;
@@ -225,7 +227,7 @@ ul.hor_menu {
 }
 
 #navbar2 ul {
-	color: #BBAA88;
+	color: #FFFFFF;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: small;
 	line-height: 30px;
