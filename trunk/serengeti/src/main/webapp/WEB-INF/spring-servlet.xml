@@ -231,7 +231,8 @@
     </bean>
 
     <bean id="teamDao"
-        class="com.playserengeti.dao.TeamDaoMockImpl">
+        class="com.playserengeti.dao.TeamDaoIbatisImpl">
+        <property name="sqlMapClient" ref="sqlMapClient"/>
     </bean>
 
     <bean id="membershipDao"

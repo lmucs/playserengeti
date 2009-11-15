@@ -32,19 +32,10 @@
         <label for="userId">Team Leader: </label>
     </div>
     <div class="grid_2">
-        <form:select path="teamCommand.leaderId">
+        <form:select path="teamCommand.leader.id">
     	    <form:options items="${teamCommand.candidates}" />
 	    </form:select>
 	</div> 
-	
-	<div class="clear">&nbsp;</div>
-
-    <div class="grid_2">
-        <label for="image">Team Image URL: </label>
-    </div>
-    <div class="grid_2">
-        <form:input path="teamCommand.image" />
-    </div>
 
     <div class="clear">&nbsp;</div>
 

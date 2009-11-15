@@ -53,7 +53,6 @@ public class TeamCreateController extends SimpleFormController {
 		Team team = new Team(null, name, color);
 		team.setDescription(command.getDescription());
 		team.setHomeBase(command.getHomeBase());
-		team.setImage(command.getImage());
 		team.setLeader(session.getUser());
 		teamService.saveTeam(team);
  

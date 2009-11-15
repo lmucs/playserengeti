@@ -46,10 +46,13 @@ public class TeamService {
      */
     public void saveTeam(Team team) {
 		if (team.getId() == null) {
-			teamDao.insertTeam(team);
+			Integer id = teamDao.insertTeam(team);
+			Team persistedTeam = teamDao.getTeamById(id);
+			team.setDateCreated(persistedTeam.getDateCreated());
 		} else {
 			teamDao.updateTeam(team);
-		}    }
+		}
+    }
 
     /**
      * Deletes the team with the given id from persistent storage. If no such
