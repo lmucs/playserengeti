@@ -5,14 +5,6 @@
         <c:choose>
             <c:when test='${ !empty teamCommand }'>
                 <div class="grid_6">
-	                <div class="grid_2">
-	                    <td><strong>Team Image</strong></td>
-	                </div>
-	                <div class="grid_3"> 
-	                    <td><c:out value="${teamCommand.image}"/></td>
-	                </div>
-	                
-	                <div class="clear">&nbsp;</div>
 	                
 	                <div class="grid_2">
 	                    <td><strong>Team Name</strong></td>
@@ -36,7 +28,7 @@
 	                    <td><strong>Team Leader</strong></td>
 	                </div>
 	                <div class="grid_3">
-	                    <td><c:out value="${teamCommand.leaderId}"/></td>
+	                    <td><c:out value="${teamCommand.leader.firstName} ${teamCommand.leader.lastName}"/></td>
 	                </div>
 	                
 	                <div class="clear">&nbsp;</div>
@@ -70,7 +62,7 @@
 	                </div>
 	            </div>
                 <hr>
-                <c:if test="${session.loggedIn && (session.user.id == teamCommand.leaderId)}">
+                <c:if test="${session.loggedIn && (session.user.id == teamCommand.leader.id)}">
                     <a href="update/${teamCommand.teamId}">Modify Team</a><br/>
                 </c:if>
             </c:when>

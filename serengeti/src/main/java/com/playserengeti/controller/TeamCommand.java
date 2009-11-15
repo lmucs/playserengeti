@@ -2,13 +2,14 @@ package com.playserengeti.controller;
 
 import java.util.Map;
 
+import com.playserengeti.domain.User;
+
 public class TeamCommand {
 
 	Integer teamId;
 	String name;
 	String color;
-	String image;
-	Integer leaderId;
+	User leader;
 	String description;
 	String homeBase;
 	Map<Integer, String> members;
@@ -34,17 +35,11 @@ public class TeamCommand {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	public String getImage() {
-		return image;
+	public User getLeader() {
+		return leader;
 	}
-	public void setImage(String image) {
-		this.image = image;
-	}
-	public Integer getLeaderId() {
-		return leaderId;
-	}
-	public void setLeaderId(Integer leaderId) {
-		this.leaderId = leaderId;
+	public void setLeader(User leader) {
+		this.leader = leader;
 	}
 	public String getDescription() {
 		return description;

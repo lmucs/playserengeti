@@ -50,10 +50,9 @@ public class TeamUpdateController extends SimpleFormController {
 		    teamCommand.setTeamId(team.getId());
 	    	teamCommand.setName(team.getName());
     		teamCommand.setColor(team.getColor());
-      		teamCommand.setImage(team.getImage());
       		teamCommand.setDescription(team.getDescription());
       		teamCommand.setHomeBase(team.getHomeBase());
-    		if (team.getLeader() != null) teamCommand.setLeaderId(team.getLeader().getId());
+    		if (team.getLeader() != null) teamCommand.setLeader(team.getLeader());
     		
     		Collection<Integer> members = teamService.getTeamMembers(teamId);
     		Map<Integer, String> candidates = new HashMap<Integer, String>();
@@ -83,8 +82,7 @@ public class TeamUpdateController extends SimpleFormController {
 		Team team = teamService.getTeamById(teamId);
 		team.setName(command.getName());
 		team.setColor(command.getColor());
-		if(command.getLeaderId() != null) team.setLeader(userService.getUserById(command.getLeaderId()));
-		team.setImage(command.getImage());
+		if(command.getLeader() != null) team.setLeader(userService.getUserById(command.getLeader().getId()));
 		team.setDescription(command.getDescription());
 		team.setHomeBase(command.getHomeBase());
 		

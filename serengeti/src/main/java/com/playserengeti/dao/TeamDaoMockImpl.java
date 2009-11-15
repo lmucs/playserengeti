@@ -3,9 +3,7 @@ package com.playserengeti.dao;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 import com.playserengeti.domain.Team;
 
@@ -43,8 +41,8 @@ public class TeamDaoMockImpl implements TeamDao {
 	 * Removes a team specified by the given id from the database.
 	 */
 	@Override
-	public void deleteTeam(Integer id) {
-		storage.remove(id);
+	public boolean deleteTeam(Integer id) {
+		return storage.remove(id) != null;
 	}
 
 	/**
@@ -59,16 +57,13 @@ public class TeamDaoMockImpl implements TeamDao {
 	 * Returns a team who's name matches the given string.
 	 */
 	@Override
-	public Collection<Team> getTeamsByTeamName(String display) {
-		Set<Team> result = new HashSet<Team>();
-		
+	public Team getTeamByTeamName(String display) {
 		for (Team team : storage.values()) {
 			if (team.getName().equals(display)) {
-				result.add(team);
+				return team;
 			}
 		}
-		
-		return result;
+		return null;
 	}
 
 	/**
@@ -105,8 +100,9 @@ public class TeamDaoMockImpl implements TeamDao {
 	 * Updates the corresponding team in the database with the one given.
 	 */
 	@Override
-	public void updateTeam(Team team) {
+	public boolean updateTeam(Team team) {
 		storage.put(team.getId(), team);
+		return true;
 	}
 
 	public boolean teamExists(Integer teamId) {

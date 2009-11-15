@@ -3,4 +3,5 @@
    "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
 <sqlMapConfig>
    <sqlMap resource="user-map.xml" />
+   <sqlMap resource="team-map.xml" />
 </sqlMapConfig>

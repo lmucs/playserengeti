@@ -19,14 +19,14 @@ public interface TeamDao {
 	 * 
 	 * @param team team to update
 	 */
-	public void updateTeam(Team team);
+	public boolean updateTeam(Team team);
 	
 	/**
 	 * Delete a team from storage.
 	 * 
 	 * @param id team id of the team to delete
 	 */
-	public void deleteTeam(Integer id);
+	public boolean deleteTeam(Integer id);
 	
 	/**
 	 * Get all teams from storage.
@@ -47,7 +47,5 @@ public interface TeamDao {
 	 * @param team team name
 	 * @return the fetched team
 	 */
-	public Collection<Team> getTeamsByTeamName(String display);
-	
-	public boolean teamExists(Integer teamId);
+	public Team getTeamByTeamName(String display);
 }

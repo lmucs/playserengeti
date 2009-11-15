@@ -98,7 +98,7 @@ public class VisitService {
 			message += "Location Id " + locationId + " Exists";
 			throw new NoSuchFieldException(message);
 		}
-		if(teamDao.teamExists(teamId) == false){
+		if(teamDao.getTeamById(teamId) == null){
 			message += "Team Id " + teamId + " Exists";
 			throw new NoSuchFieldException(message);
 		}

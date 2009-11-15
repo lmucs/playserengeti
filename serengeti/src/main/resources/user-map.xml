@@ -3,74 +3,66 @@
    "http://www.ibatis.com/dtd/sql-map-2.dtd">
 <sqlMap namespace="User">
 
+  <resultMap class="com.playserengeti.domain.User" id="userMap">
+    <result property="id" column="player_id"/>
+    <result property="email" column="player_email"/>
+    <result property="firstName" column="player_first_name"/>
+    <result property="lastName" column="player_last_name"/>
+    <result property="dateCreated" column="player_creation_timestamp"/>
+  </resultMap>
+
   <insert id="insertUserWithPassword">
     INSERT
-    INTO player (email, first_name, last_name, password_hash)
+    INTO player (player_email, player_first_name, player_last_name, player_password_hash)
     VALUES (#email#, #firstName#, #lastName#, md5(#password#))
   </insert>
   
   <update id="updateUser">
     UPDATE player
     SET
-        email = #email#,
-        first_name = #firstName#,
-        last_name = #lastName#
+        player_email = #email#,
+        player_first_name = #firstName#,
+        player_last_name = #lastName#
     WHERE id = #id#
   </update>
   
   <update id="updateUserPassword">
     UPDATE player
     SET
-        password_hash = md5(#password#)
+        player_password_hash = md5(#password#)
     WHERE id = #id#
   </update>
   
   <delete id="deleteUser">
     DELETE FROM player
-    WHERE id = #value#
+    WHERE player_id = #value#
   </delete>
 
-  <select id="getAllUsers" resultClass="com.playserengeti.domain.User">
+  <select id="getAllUsers" resultMap="userMap">
     SELECT
-        id,
-        email,
-        first_name          AS firstName,
-        last_name           AS lastName,
-        creation_timestamp  AS dateCreated
+        *
     FROM player
   </select>
 
-  <select id="getUserById" resultClass="com.playserengeti.domain.User">
+  <select id="getUserById" resultMap="userMap">
     SELECT
-        id,
-        email,
-        first_name          AS firstName,
-        last_name           AS lastName,
-        creation_timestamp  AS dateCreated
+        *
     FROM player
-    WHERE id = #value#
+    WHERE player_id = #value#
   </select>
   
-  <select id="getUserByEmail" resultClass="com.playserengeti.domain.User">
+  <select id="getUserByEmail" resultMap="userMap">
     SELECT
-        id,
-        email,
-        first_name          AS firstName,
-        last_name           AS lastName,
-        creation_timestamp  AS dateCreated
+        *
     FROM player
-    WHERE email = #value#
+    WHERE player_email = #value#
   </select>
   
-  <select id="authenticateUserByEmailAndPassword" resultClass="com.playserengeti.domain.User">
+  <select id="authenticateUserByEmailAndPassword" resultMap="userMap">
     SELECT
-        id,
-        email,
-        first_name          AS firstName,
-        last_name           AS lastName,
-        creation_timestamp  AS dateCreated
+        *
     FROM player
-    WHERE email = #email# and password_hash = md5(#password#)
+    WHERE player_email = #email# and player_password_hash = md5(#password#)
   </select>
 
 </sqlMap>

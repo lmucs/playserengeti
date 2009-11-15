@@ -10,8 +10,7 @@
         <color><c:out value="${teamCommand.color}" /></color>
         <description><c:out value="${teamCommand.description}" /></description>
         <homeBase><c:out value="${teamCommand.homeBase}" /></homeBase>
-        <image><c:out value="${teamCommand.image}" /></image>
-        <leaderId><c:out value="${teamCommand.leaderId}" /></leaderId>
+        <leaderId><c:out value="${teamCommand.leader.id}" /></leaderId>
         <members>
             <c:forEach var="member" items="${members}">
                 <member>

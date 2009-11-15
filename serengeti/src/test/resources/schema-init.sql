@@ -26,6 +26,7 @@ create table player (
 create table team (
     id                  serial              primary key,
     name                varchar(200)        unique not null,
+    color               varchar(200),
     description         char(400),
     home_base           varchar(200),
     leader_id           integer             not null,

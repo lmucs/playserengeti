@@ -1,0 +1,64 @@
+<!DOCTYPE sqlMap
+   PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+   "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Team">
+
+  <resultMap class="com.playserengeti.domain.Team" id="teamMap" groupBy="id">
+    <result property="id" column="team_id"/>
+    <result property="name" column="team_name"/>
+    <result property="color" column="team_color"/>
+    <result property="description" column="team_description"/>
+    <result property="homeBase" column="team_home_base"/>
+    <result property="dateCreated" column="team_creation_timestamp"/>
+    <result property="leader" resultMap="User.userMap"/>
+  </resultMap>
+
+  <insert id="insertTeam">
+    INSERT
+    INTO team (team_name, team_leader_id, team_home_base, team_color, team_description)
+    VALUES (#name#, #leaderId#, #homeBase#, #color#, #description#))
+  </insert>
+  
+  <update id="updateTeam">
+    UPDATE team
+    SET
+        team_name = #name#,
+        team_leader_id = #leaderId#,
+        team_home_base = #homeBase#,
+        team_color = #color#,
+        team_description = #description#
+    WHERE team_id = #id#
+  </update>
+  
+  <delete id="deleteTeam">
+    DELETE FROM team
+    WHERE team_id = #value#
+  </delete>
+
+  <select id="getAllTeams" resultMap="teamMap">
+    SELECT
+        *
+    FROM team
+    JOIN player
+    ON team.team_leader_id = player.player_id
+  </select>
+
+  <select id="getTeamById" resultMap="teamMap">
+    SELECT
+        *
+    FROM team
+    JOIN player
+    ON team.team_leader_id = player.player_id
+    WHERE team_id = #value#
+  </select>
+  
+  <select id="getTeamByTeamName" resultMap="teamMap">
+    SELECT
+        *
+    FROM team
+    JOIN player
+    ON team.team_leader_id = player.player_id
+    WHERE team_name = #value#
+  </select>
+
+</sqlMap>
