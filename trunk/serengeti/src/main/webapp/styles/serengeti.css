@@ -274,7 +274,7 @@ ul.hor_menu {
 	-webkit-border-bottom-right-radius: 4px; 
 }
 
-#scrollContent {
+.scrollContent {
 	position: absolute;
 	width: 400px;
 	left: 0;
