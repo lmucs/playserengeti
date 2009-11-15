@@ -4,21 +4,19 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 /**
- * The validator for creating teams.
- * @author Chris
- *
+ * Validator for team creation requests.
  */
 public class TeamCreateValidator implements Validator {
-	
-	@Override
-	public boolean supports(Class c) {
-		return TeamCommand.class.equals(c);
-	}
 
-	@Override
-	public void validate(Object object, Errors errors) {
-		TeamCommand c = TeamCommand.class.cast(object);
+    @Override
+    public boolean supports(Class c) {
+        return TeamCommand.class.equals(c);
+    }
 
-		/* Doesn't do anything. */
-	}
+    @Override
+    public void validate(Object object, Errors errors) {
+        TeamCommand c = TeamCommand.class.cast(object);
+
+        /* Doesn't do anything. */
+    }
 }

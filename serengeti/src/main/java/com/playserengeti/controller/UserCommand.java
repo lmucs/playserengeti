@@ -3,6 +3,7 @@ package com.playserengeti.controller;
 import java.util.Map;
 
 public class UserCommand {
+
     private Integer userId;
     private String email;
     private String firstName;
@@ -30,21 +31,21 @@ public class UserCommand {
     public String getEmail() {
         return email;
     }
-    
+
     public void setFirstName(String firstName) {
-    	this.firstName = firstName;
+        this.firstName = firstName;
     }
-    
+
     public String getFirstName() {
-    	return firstName;
+        return firstName;
     }
-    
+
     public void setLastName(String lastName) {
-    	this.lastName = lastName;
+        this.lastName = lastName;
     }
-    
+
     public String getLastName() {
-    	return lastName;
+        return lastName;
     }
 
     public void setEmail(String email) {
@@ -66,5 +67,4 @@ public class UserCommand {
     public void setTeams(Map<Integer, String> teams) {
         this.teams = teams;
     }
-
 }

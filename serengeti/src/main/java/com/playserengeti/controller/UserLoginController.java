@@ -15,42 +15,42 @@ import com.playserengeti.session.UserSession;
  */
 public class UserLoginController extends SimpleFormController {
 
-	private UserService userService;
-	private UserSession session;
+    private UserService userService;
+    private UserSession session;
 
-	/**
-	 * Creates the controller, injecting a service.
-	 */
-	public UserLoginController(UserService userService) {
-		this.userService = userService;
-	}
+    /**
+     * Creates the controller, injecting a service.
+     */
+    public UserLoginController(UserService userService) {
+        this.userService = userService;
+    }
 
-	@Override
-	public ModelAndView onSubmit(Object _command) {
-		UserCommand command = (UserCommand)_command;
-		Integer userId;
-		String email = command.getEmail();
-		String password = command.getPassword();
+    @Override
+    public ModelAndView onSubmit(Object _command) {
+        UserCommand command = (UserCommand) _command;
+        Integer userId;
+        String email = command.getEmail();
+        String password = command.getPassword();
 
-		User user = userService.authenticateUserByEmailAndPassword(email, password);
-		
-		if (user == null) {
-			Map<String, Object> model = new HashMap<String, Object>();
-			model.put("command", command);
-			model.put("message", "Email and/or password invalid.");
-			return new ModelAndView(getFormView(), model);
-		}
-		
-		// Login successful!
-		session.setUser(user);
-		return new ModelAndView("redirect:view", "userId", user.getId());
-	}
-	
-	public UserSession getSession() {
-		return session;
-	}
-	
-	public void setSession(UserSession session) {
-		this.session = session;
-	}
+        User user = userService.authenticateUserByEmailAndPassword(email, password);
+
+        if (user == null) {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("command", command);
+            model.put("message", "Email and/or password invalid.");
+            return new ModelAndView(getFormView(), model);
+        }
+
+        // Login successful!
+        session.setUser(user);
+        return new ModelAndView("redirect:view", "userId", user.getId());
+    }
+
+    public UserSession getSession() {
+        return session;
+    }
+
+    public void setSession(UserSession session) {
+        this.session = session;
+    }
 }

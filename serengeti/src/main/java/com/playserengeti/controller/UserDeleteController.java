@@ -1,7 +1,3 @@
-/*
- * UserDeleteController. Calls UserDeleteService and provides the result to userDelete.jsp
- */
-
 package com.playserengeti.controller;
 
 import java.util.Collection;
@@ -34,63 +30,67 @@ public class UserDeleteController extends SimpleFormController {
     }
 
     /**
-     * Method provides the list of all users to the form view.
+     * Provides the list of all users to the form view.
      */
     protected Object formBackingObject(HttpServletRequest request)
-    throws Exception {
-    	Integer userId = Integer.valueOf(request.getParameter("userId"));
-    	UserCommand userCommand = new UserCommand();
-    	User user = userService.getUserById(userId);
-    	
-    	userCommand.setUserId(userId);
-    	userCommand.setEmail(user.getEmail());
-    	userCommand.setFirstName(user.getFirstName());
-    	userCommand.setLastName(user.getLastName());
-    	
-    	setSessionForm(true);
-    	return userCommand;
+            throws Exception {
+        Integer userId = Integer.valueOf(request.getParameter("userId"));
+        UserCommand userCommand = new UserCommand();
+        User user = userService.getUserById(userId);
+
+        userCommand.setUserId(userId);
+        userCommand.setEmail(user.getEmail());
+        userCommand.setFirstName(user.getFirstName());
+        userCommand.setLastName(user.getLastName());
+
+        setSessionForm(true);
+        return userCommand;
     }
 
-	@Override
-	protected ModelAndView onSubmit(HttpServletRequest request,
-			HttpServletResponse response, Object _command, BindException errors)
-			throws Exception {
-		UserCommand command = (UserCommand)_command;
-		Integer userId = command.getUserId();
+    @Override
+    protected ModelAndView onSubmit(HttpServletRequest request,
+            HttpServletResponse response, Object _command, BindException errors)
+            throws Exception {
+        UserCommand command = (UserCommand) _command;
+        Integer userId = command.getUserId();
 
-    	try {
-    		//Deletes memberships from the database.
-    		Collection<Membership> memberships = teamService.getMembershipsByUser(userId);
-    		for(Membership m : memberships) {
-    			teamService.deleteMembership(m.getMembershipId());
-    		}
-    		//Deletes friendships from the database.
-    		Collection<Friendship> friendships = userService.getFriendshipsByUser(userId);
-    		for(Friendship f : friendships) {
-    			userService.deleteFriendship(f.getFriendshipId());
-    		}
-    		
-    		session.setUser(null);
-    		//Deletes the user from the database.
-    		userService.deleteUser(userId);
-    		
-    		return new ModelAndView("redirect:/");
-    	} 
-    	
-    	catch (Exception e) {
-    		e.printStackTrace();
-    		Map<String, Object> model = new HashMap<String, Object>();
-    		model.put("command", command);
-    		model.put("message", e.getMessage());
-    		return showForm(request, response, errors, model);
-    	}
-	}
-	
-	public UserSession getSession() {
-		return session;
-	}
-	
-	public void setSession(UserSession session) {
-		this.session = session;
-	}
+        try {
+            // Deletes memberships from the database.
+            Collection<Membership> memberships = teamService
+                    .getMembershipsByUser(userId);
+            for (Membership m : memberships) {
+                teamService.deleteMembership(m.getMembershipId());
+            }
+
+            // Deletes friendships from the database.
+            Collection<Friendship> friendships = userService
+                    .getFriendshipsByUser(userId);
+            for (Friendship f : friendships) {
+                userService.deleteFriendship(f.getFriendshipId());
+            }
+
+            session.setUser(null);
+
+            // Deletes the user from the database.
+            userService.deleteUser(userId);
+
+            return new ModelAndView("redirect:/");
+        }
+
+        catch (Exception e) {
+            e.printStackTrace();
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("command", command);
+            model.put("message", e.getMessage());
+            return showForm(request, response, errors, model);
+        }
+    }
+
+    public UserSession getSession() {
+        return session;
+    }
+
+    public void setSession(UserSession session) {
+        this.session = session;
+    }
 }

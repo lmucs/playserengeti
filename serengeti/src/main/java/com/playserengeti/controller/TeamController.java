@@ -38,22 +38,23 @@ public class TeamController extends MultiActionController {
     /**
      * Shows interesting information regarding teams.
      */
-    public ModelAndView central(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView central(HttpServletRequest request,
+            HttpServletResponse response) {
         logger.debug("Entering team central");
 
-        //TODO
+        // TODO
         Collection<Team> leaders = teamService.getAllTeams();
         Collection<Team> mostActive = teamService.getAllTeams();
         Collection<Team> newest = teamService.getAllTeams();
 
-		String view = "teamCentral";
-        if("xml".equals(request.getParameter("format"))) {
-        	view = "teamCentralXML";
+        String view = "teamCentral";
+        if ("xml".equals(request.getParameter("format"))) {
+            view = "teamCentralXML";
         }
-        if("json".equals(request.getParameter("format"))) {
-        	view = "teamCentralJSON";
+        if ("json".equals(request.getParameter("format"))) {
+            view = "teamCentralJSON";
         }
-        
+
         ModelAndView mav = new ModelAndView(view);
         mav.addObject("session", session);
         mav.addObject("leaders", leaders);
@@ -66,7 +67,8 @@ public class TeamController extends MultiActionController {
     /**
      * Brings up the given team's profile page.
      */
-    public ModelAndView view(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView view(HttpServletRequest request,
+            HttpServletResponse response) {
         logger.debug("Entering team view");
 
         Integer teamId = Integer.valueOf(request.getParameter("teamId"));
@@ -94,14 +96,14 @@ public class TeamController extends MultiActionController {
             members.add(userService.getUserById(id));
         }
 
-		String view = "teamViewProfile";
-        if("xml".equals(request.getParameter("format"))) {
-        	view = "teamViewProfileXML";
+        String view = "teamViewProfile";
+        if ("xml".equals(request.getParameter("format"))) {
+            view = "teamViewProfileXML";
         }
-        if("json".equals(request.getParameter("format"))) {
-        	view = "teamViewProfileJSON";
+        if ("json".equals(request.getParameter("format"))) {
+            view = "teamViewProfileJSON";
         }
-        
+
         ModelAndView mav = new ModelAndView(view);
         mav.addObject("session", session);
         mav.addObject("teamCommand", command);

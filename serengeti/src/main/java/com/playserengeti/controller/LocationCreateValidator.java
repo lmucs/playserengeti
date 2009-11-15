@@ -20,10 +20,12 @@ public class LocationCreateValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "longitude",
 				"longitude.blank", "The longitude can not be blank");
 		if (c.getLatitude() < -180 || c.getLatitude() > 180) {
-			errors.rejectValue("latitude", "invalid.latitude", "latitudes must be between -180 and 180");
+			errors.rejectValue("latitude", "invalid.latitude",
+					"latitudes must be between -180 and 180");
 		}
 		if (c.getLongitude() < -180 || c.getLongitude() > 180) {
-			errors.rejectValue("longitude", "invalid.longitude", "longitudes must be between -180 and 180");
+			errors.rejectValue("longitude", "invalid.longitude",
+					"longitudes must be between -180 and 180");
 		}
 	}
 }
