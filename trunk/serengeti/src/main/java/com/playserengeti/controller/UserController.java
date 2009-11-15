@@ -6,6 +6,7 @@ import java.util.HashSet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
@@ -20,191 +21,180 @@ import com.playserengeti.session.UserSession;
 
 public class UserController extends MultiActionController {
 
-	private UserService userService;
-	private TeamService teamService;
-	private LocationService locationService;
-	private VisitService visitService;
-	private UserSession session;
+    Logger logger = Logger.getLogger(getClass());
 
-	public UserController(UserService userService, TeamService teamService,
-			LocationService locationService, VisitService visitService) {
-		this.userService = userService;
-		this.teamService = teamService;
-		this.locationService = locationService;
-		this.visitService = visitService;
-	}
+    private UserService userService;
+    private TeamService teamService;
+    private LocationService locationService;
+    private VisitService visitService;
+    private UserSession session;
 
-	public ModelAndView user(HttpServletRequest request,
-			HttpServletResponse response) {
-		return new ModelAndView("redirect:user/");
-	}
+    public UserController(UserService userService, TeamService teamService,
+            LocationService locationService, VisitService visitService) {
+        this.userService = userService;
+        this.teamService = teamService;
+        this.locationService = locationService;
+        this.visitService = visitService;
+    }
 
-	public ModelAndView central(HttpServletRequest request,
-			HttpServletResponse response) {
+    public ModelAndView user(HttpServletRequest request, HttpServletResponse response) {
+        return new ModelAndView("redirect:user/");
+    }
 
-		// TODO
-		Collection<User> recentlyCheckedIn = userService.getAllUsers();
-		Collection<User> mostActive = userService.getAllUsers();
-		Collection<User> newest = userService.getAllUsers();
+    public ModelAndView central(HttpServletRequest request, HttpServletResponse response) {
 
-		String view = "userCentral";
-		if ("xml".equals(request.getParameter("format"))) {
-			view = "userCentralXML";
-		}
-		if ("json".equals(request.getParameter("format"))) {
-			view = "userCentralJSON";
-		}
+        // TODO
+        Collection<User> recentlyCheckedIn = userService.getAllUsers();
+        Collection<User> mostActive = userService.getAllUsers();
+        Collection<User> newest = userService.getAllUsers();
 
-		ModelAndView mav = new ModelAndView(view);
-		mav.addObject("session", session);
-		mav.addObject("recent", recentlyCheckedIn);
-		mav.addObject("mostActive", mostActive);
-		mav.addObject("newest", newest);
+        String view = "userCentral";
+        if ("xml".equals(request.getParameter("format"))) {
+            view = "userCentralXML";
+        }
+        if ("json".equals(request.getParameter("format"))) {
+            view = "userCentralJSON";
+            response.setContentType("application/json");
+        }
 
-		return mav;
-	}
+        ModelAndView mav = new ModelAndView(view);
+        mav.addObject("session", session);
+        mav.addObject("recent", recentlyCheckedIn);
+        mav.addObject("mostActive", mostActive);
+        mav.addObject("newest", newest);
 
-	public ModelAndView view(HttpServletRequest request,
-			HttpServletResponse response) {
-		UserCommand command = new UserCommand();
-		Integer userId = Integer.valueOf(request.getParameter("userId"));
-		User user = userService.getUserById(userId);
+        return mav;
+    }
 
-		command.setUserId(user.getId());
-		command.setEmail(user.getEmail());
-		command.setFirstName(user.getFirstName());
-		command.setLastName(user.getLastName());
+    public ModelAndView view(HttpServletRequest request, HttpServletResponse response) {
+        UserCommand command = new UserCommand();
+        Integer userId = Integer.valueOf(request.getParameter("userId"));
+        User user = userService.getUserById(userId);
 
-		Collection<User> friends = userService.getFriends(userId);
-		Collection<Team> teams = teamService.getTeams(user.getId());
-		Collection<Location> nearbyLocations = locationService.getAllLocations();
-		Collection<User> friendInvites = userService.getFriendInvites(userId);
-		Collection<Team> teamInvites = teamService.getTeamInvites(userId);
-		
-		Collection<Team> teamsToInviteTo = new HashSet<Team>();
-		boolean alreadyFriends = true;
-		if (session.isLoggedIn()) {
-			alreadyFriends = friends.contains(session.getUser())
-			|| friendInvites.contains(session.getUser())
-			|| userService.getFriendInvites(session.getUser().getId())
-					.contains(user);
-			
-			Collection<Team> eligableTeams = teamService.getTeams(session
-					.getUser().getId());
+        command.setUserId(user.getId());
+        command.setEmail(user.getEmail());
+        command.setFirstName(user.getFirstName());
+        command.setLastName(user.getLastName());
 
-			for (Team t : eligableTeams) {
-				if (!teams.contains(t) && !teamInvites.contains(t)) {
-					teamsToInviteTo.add(t);
-				}
-			}
-		}
-		String view = "userViewProfile";
-		if ("xml".equals(request.getParameter("format"))) {
-			view = "userViewProfileXML";
-		}
-		if ("json".equals(request.getParameter("format"))) {
-			view = "userViewProfileJSON";
-		}
+        Collection<User> friends = userService.getFriends(userId);
+        Collection<Team> teams = teamService.getTeams(user.getId());
+        Collection<Location> nearbyLocations = locationService.getAllLocations();
+        Collection<User> friendInvites = userService.getFriendInvites(userId);
+        Collection<Team> teamInvites = teamService.getTeamInvites(userId);
 
-		ModelAndView mav = new ModelAndView(view);
-		mav.addObject("userCommand", command);
-		mav.addObject("teams", teams);
-		mav.addObject("friends", friends);
-		mav.addObject("friendInvites", friendInvites);
-		mav.addObject("teamInvites", teamInvites);
-		mav.addObject("teamsToInviteTo", teamsToInviteTo);
-		mav.addObject("alreadyFriends", alreadyFriends);
-		mav.addObject("nearbyLocations", nearbyLocations);
-		mav.addObject("session", session);
+        Collection<Team> teamsToInviteTo = new HashSet<Team>();
+        boolean alreadyFriends = true;
+        if (session.isLoggedIn()) {
+            alreadyFriends = friends.contains(session.getUser())
+            || friendInvites.contains(session.getUser())
+            || userService.getFriendInvites(session.getUser().getId())
+                    .contains(user);
 
-		return mav;
-	}
+            Collection<Team> eligableTeams = teamService.getTeams(session.getUser().getId());
 
-	public ModelAndView logout(HttpServletRequest request,
-			HttpServletResponse response) {
-		session.setUser(null);
-		return new ModelAndView("redirect:/");
-	}
+            for (Team t : eligableTeams) {
+                if (!teams.contains(t) && !teamInvites.contains(t)) {
+                    teamsToInviteTo.add(t);
+                }
+            }
+        }
+        String view = "userViewProfile";
+        if ("xml".equals(request.getParameter("format"))) {
+            view = "userViewProfileXML";
+        }
+        if ("json".equals(request.getParameter("format"))) {
+            view = "userViewProfileJSON";
+        }
 
-	public void checkIn(HttpServletRequest request, HttpServletResponse response) {
-		Integer userId = Integer.valueOf(request.getParameter("userId"));
-		Integer teamId = Integer.valueOf(request.getParameter("teamId"));
-		Integer locationId = Integer
-				.valueOf(request.getParameter("locationId"));
+        ModelAndView mav = new ModelAndView(view);
+        mav.addObject("userCommand", command);
+        mav.addObject("teams", teams);
+        mav.addObject("friends", friends);
+        mav.addObject("friendInvites", friendInvites);
+        mav.addObject("teamInvites", teamInvites);
+        mav.addObject("teamsToInviteTo", teamsToInviteTo);
+        mav.addObject("alreadyFriends", alreadyFriends);
+        mav.addObject("nearbyLocations", nearbyLocations);
+        mav.addObject("session", session);
 
-		visitService.checkIn(userId, teamId, locationId);
-	}
+        return mav;
+    }
 
-	public void removeFriend(HttpServletRequest request,
-			HttpServletResponse response) {
-		Integer primaryId = Integer.valueOf(request.getParameter("pUserId"));
-		Integer secondaryId = Integer.valueOf(request.getParameter("sUserId"));
+    public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) {
+        session.setUser(null);
+        return new ModelAndView("redirect:/");
+    }
 
-		userService.removeFriendship(primaryId, secondaryId);
-	}
+    public void checkIn(HttpServletRequest request, HttpServletResponse response) {
+        Integer userId = Integer.valueOf(request.getParameter("userId"));
+        Integer teamId = Integer.valueOf(request.getParameter("teamId"));
+        Integer locationId = Integer.valueOf(request.getParameter("locationId"));
 
-	public void removeTeam(HttpServletRequest request,
-			HttpServletResponse response) {
-		Integer userId = Integer.valueOf(request.getParameter("userId"));
-		Integer teamId = Integer.valueOf(request.getParameter("teamId"));
+        visitService.checkIn(userId, teamId, locationId);
+    }
 
-		teamService.removeFromTeam(teamId, userId);
-	}
+    public void removeFriend(HttpServletRequest request, HttpServletResponse response) {
+        Integer primaryId = Integer.valueOf(request.getParameter("pUserId"));
+        Integer secondaryId = Integer.valueOf(request.getParameter("sUserId"));
 
-	public void sendFriendInvite(HttpServletRequest request,
-			HttpServletResponse response) {
-		Integer pUserId = Integer.valueOf(request.getParameter("pUserId"));
-		Integer sUserId = Integer.valueOf(request.getParameter("sUserId"));
+        userService.removeFriendship(primaryId, secondaryId);
+    }
 
-		userService.inviteFriend(pUserId, sUserId);
-	}
+    public void removeTeam(HttpServletRequest request, HttpServletResponse response) {
+        Integer userId = Integer.valueOf(request.getParameter("userId"));
+        Integer teamId = Integer.valueOf(request.getParameter("teamId"));
 
-	public void acceptFriendInvite(HttpServletRequest request,
-			HttpServletResponse response) {
-		Integer pUserId = Integer.valueOf(request.getParameter("pUserId"));
-		Integer sUserId = Integer.valueOf(request.getParameter("sUserId"));
+        teamService.removeFromTeam(teamId, userId);
+    }
 
-		userService.acceptFriendInvite(pUserId, sUserId);
-		
-	}
+    public void sendFriendInvite(HttpServletRequest request, HttpServletResponse response) {
+        Integer pUserId = Integer.valueOf(request.getParameter("pUserId"));
+        Integer sUserId = Integer.valueOf(request.getParameter("sUserId"));
 
-	public void rejectFriendInvite(HttpServletRequest request,
-			HttpServletResponse response) {
-		Integer pUserId = Integer.valueOf(request.getParameter("pUserId"));
-		Integer sUserId = Integer.valueOf(request.getParameter("sUserId"));
+        userService.inviteFriend(pUserId, sUserId);
+    }
 
-		userService.rejectFriendInvite(pUserId, sUserId);
-	}
+    public void acceptFriendInvite(HttpServletRequest request, HttpServletResponse response) {
+        Integer pUserId = Integer.valueOf(request.getParameter("pUserId"));
+        Integer sUserId = Integer.valueOf(request.getParameter("sUserId"));
 
-	public void sendTeamInvite(HttpServletRequest request,
-			HttpServletResponse response) {
-		Integer teamId = Integer.valueOf(request.getParameter("teamId"));
-		Integer userId = Integer.valueOf(request.getParameter("userId"));
+        userService.acceptFriendInvite(pUserId, sUserId);
 
-		teamService.inviteToTeam(teamId, userId);
-	}
+    }
 
-	public void acceptTeamInvite(HttpServletRequest request,
-			HttpServletResponse response) {
-		Integer teamId = Integer.valueOf(request.getParameter("teamId"));
-		Integer userId = Integer.valueOf(request.getParameter("userId"));
+    public void rejectFriendInvite(HttpServletRequest request, HttpServletResponse response) {
+        Integer pUserId = Integer.valueOf(request.getParameter("pUserId"));
+        Integer sUserId = Integer.valueOf(request.getParameter("sUserId"));
 
-		teamService.acceptTeamInvite(teamId, userId);
-	}
+        userService.rejectFriendInvite(pUserId, sUserId);
+    }
 
-	public void rejectTeamInvite(HttpServletRequest request,
-			HttpServletResponse response) {
-		Integer teamId = Integer.valueOf(request.getParameter("teamId"));
-		Integer userId = Integer.valueOf(request.getParameter("userId"));
+    public void sendTeamInvite(HttpServletRequest request, HttpServletResponse response) {
+        Integer teamId = Integer.valueOf(request.getParameter("teamId"));
+        Integer userId = Integer.valueOf(request.getParameter("userId"));
 
-		teamService.rejectTeamInvite(teamId, userId);
-	}
+        teamService.inviteToTeam(teamId, userId);
+    }
 
-	public UserSession getSession() {
-		return session;
-	}
+    public void acceptTeamInvite(HttpServletRequest request, HttpServletResponse response) {
+        Integer teamId = Integer.valueOf(request.getParameter("teamId"));
+        Integer userId = Integer.valueOf(request.getParameter("userId"));
 
-	public void setSession(UserSession session) {
-		this.session = session;
-	}
+        teamService.acceptTeamInvite(teamId, userId);
+    }
+
+    public void rejectTeamInvite(HttpServletRequest request, HttpServletResponse response) {
+        Integer teamId = Integer.valueOf(request.getParameter("teamId"));
+        Integer userId = Integer.valueOf(request.getParameter("userId"));
+
+        teamService.rejectTeamInvite(teamId, userId);
+    }
+
+    public UserSession getSession() {
+        return session;
+    }
+
+    public void setSession(UserSession session) {
+        this.session = session;
+    }
 }

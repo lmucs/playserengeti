@@ -13,19 +13,19 @@ import com.playserengeti.session.UserSession;
  */
 public class WelcomeController extends AbstractController {
 
-	private UserSession session;
-	
+    private UserSession session;
+
     @Override
     protected ModelAndView handleRequestInternal(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         return new ModelAndView("welcome", "session", session);
     }
-    
+
     public UserSession getSession() {
-    	return session;
+        return session;
     }
-    
+
     public void setSession(UserSession session) {
-    	this.session = session;
+        this.session = session;
     }
 }
