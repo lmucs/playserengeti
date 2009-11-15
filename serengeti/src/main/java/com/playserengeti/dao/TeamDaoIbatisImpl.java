@@ -20,7 +20,7 @@ public class TeamDaoIbatisImpl extends SqlMapClientDaoSupport implements
 
 	@Override
 	public Collection<Team> getAllTeams() {
-		return (List<Team>)getSqlMapClientTemplate().queryForList("getAllTeam");
+		return (List<Team>)getSqlMapClientTemplate().queryForList("getAllTeams");
 	}
 
 	@Override
