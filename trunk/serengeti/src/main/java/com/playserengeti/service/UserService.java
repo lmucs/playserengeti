@@ -6,6 +6,10 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.playserengeti.dao.FriendshipDao;
 import com.playserengeti.dao.UserDao;
 import com.playserengeti.domain.Friendship;
@@ -37,6 +41,7 @@ public class UserService {
 	 * Creates a user from the provided information and writes the user to
 	 * storage.
 	 */
+	@Transactional(readOnly = false, propagation=Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     public Integer insertUserWithPassword(User user, String password) {
 		Integer id = userDao.insertUserWithPassword(user, password);
 		User storedUser = userDao.getUserById(id);
