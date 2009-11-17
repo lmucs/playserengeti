@@ -296,6 +296,12 @@ ul.hor_menu {
     font-size: 13px;
     margin-bottom: 10px;
 }
+.round_Box_Container{
+	-webkit-border-radius: 10px; /* Safari prototype */
+    -moz-border-radius: 10px; /* Gecko browsers */
+    border-radius: 10px; /* Everything else - limited support at the moment */
+    background-color: #BBAA88;
+}
 #user_friend_team_container{
 	-webkit-border-radius: 10px; /* Safari prototype */
     -moz-border-radius: 10px; /* Gecko browsers */
