@@ -294,6 +294,7 @@ ul.hor_menu {
     border-radius: 10px; /* Everything else - limited support at the moment */
     background-color: #BBAA88;
     font-size: 13px;
+    margin-bottom: 10px;
 }
 #user_friend_team_container{
 	-webkit-border-radius: 10px; /* Safari prototype */
