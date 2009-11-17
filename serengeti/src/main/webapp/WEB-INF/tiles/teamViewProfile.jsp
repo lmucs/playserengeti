@@ -28,7 +28,7 @@
 	                    <td><strong>Team Leader</strong></td>
 	                </div>
 	                <div class="grid_3">
-	                    <td><c:out value="${teamCommand.leader.firstName} ${teamCommand.leader.lastName}"/></td>
+	                    <td><c:out value="${teamCommand.leader.firstName} ${teamCommand.leader.lastName} (${teamCommand.leader.email})"/></td>
 	                </div>
 	                
 	                <div class="clear">&nbsp;</div>
