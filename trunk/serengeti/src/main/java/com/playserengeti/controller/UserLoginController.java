@@ -45,7 +45,7 @@ public class UserLoginController extends SimpleFormController {
         // Login successful!
         session.setUser(user);
         String view = "redirect:/user/" + user.getId();
-        if ("JSON".equals(format)) view += "/JSON";
+        if ("json".equals(format)) view += "/json";
         
         return new ModelAndView(view);
     }
