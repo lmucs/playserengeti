@@ -11,6 +11,7 @@ public class UserCommand {
     private String password;
     private Map<Integer, String> friends;
     private Map<Integer, String> teams;
+    private String format;
 
     public Integer getUserId() {
         return userId;
@@ -67,4 +68,13 @@ public class UserCommand {
     public void setTeams(Map<Integer, String> teams) {
         this.teams = teams;
     }
+
+	public String getFormat() {
+		return format;
+	}
+
+	public void setFormat(String format) {
+		this.format = format;
+	}
+    
 }

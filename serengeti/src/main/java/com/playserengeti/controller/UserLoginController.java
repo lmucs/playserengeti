@@ -31,6 +31,7 @@ public class UserLoginController extends SimpleFormController {
         Integer userId;
         String email = command.getEmail();
         String password = command.getPassword();
+        String format = command.getFormat();
 
         User user = userService.authenticateUserByEmailAndPassword(email, password);
 
@@ -43,7 +44,10 @@ public class UserLoginController extends SimpleFormController {
 
         // Login successful!
         session.setUser(user);
-        return new ModelAndView("redirect:view", "userId", user.getId());
+        String view = "redirect:/user/" + user.getId();
+        if ("JSON".equals(format)) view += "/JSON";
+        
+        return new ModelAndView(view);
     }
 
     public UserSession getSession() {
