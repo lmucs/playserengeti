@@ -8,7 +8,6 @@ import java.util.Map;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
 import com.playserengeti.domain.Team;
-import com.playserengeti.domain.User;
 
 public class TeamDaoIbatisImpl extends SqlMapClientDaoSupport implements
 		TeamDao {
@@ -39,9 +38,10 @@ public class TeamDaoIbatisImpl extends SqlMapClientDaoSupport implements
 
 	@Override
 	public Integer insertTeam(Team team) {
-		return (Integer)getSqlMapClientTemplate().insert(
+		getSqlMapClientTemplate().insert(
 				"insertTeam",
 				team);
+		return team.getId();
 	}
 
 	@Override

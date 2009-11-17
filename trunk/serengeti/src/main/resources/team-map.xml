@@ -16,14 +16,17 @@
   <insert id="insertTeam">
     INSERT
     INTO team (team_name, team_leader_id, team_home_base, team_color, team_description)
-    VALUES (#name#, #leaderId#, #homeBase#, #color#, #description#))
+    VALUES (#name#, #leader.id#, #homeBase#, #color#, #description#)
+    <selectKey keyProperty="id" resultClass="int">
+      SELECT currval('team_id_seq')
+    </selectKey>
   </insert>
   
   <update id="updateTeam">
     UPDATE team
     SET
         team_name = #name#,
-        team_leader_id = #leaderId#,
+        team_leader_id = #leader.id#,
         team_home_base = #homeBase#,
         team_color = #color#,
         team_description = #description#
