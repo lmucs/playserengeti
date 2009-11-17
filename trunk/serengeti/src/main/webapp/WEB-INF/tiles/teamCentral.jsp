@@ -10,10 +10,7 @@
 	        <ul class="hor_menu">
 	            <c:forEach var="team" items="${leaders}">
 	               <li>
-	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="team"/>
-	                   <span>
-	                       <a href="${team.id}"><c:out value="${team.name}"/></a>
-	                   </span>
+<a href="${team.id}"><img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="team" title="${team.name}"/><c:out value="${team.name}"/></a>
 	               </li>
 	            </c:forEach>
 	        </ul>
@@ -29,10 +26,7 @@
 	        <ul class="hor_menu">
 	            <c:forEach var="team" items="${mostActive}">
 	               <li>
-	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="team"/>
-	                   <span>
-	                       <a href="${team.id}"><c:out value="${team.name}"/></a>
-	                   </span>
+	                       <a href="${team.id}"><img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="team" title="${team.name}"/><c:out value="${team.name}"/></a>
 	               </li>
 	            </c:forEach>
 	        </ul>
@@ -46,10 +40,7 @@
 	        <ul class="hor_menu">
 	            <c:forEach var="team" items="${newest}">
 	               <li>
-	                   <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="team"/>
-	                   <span>
-	                       <a href="${team.id}"><c:out value="${team.name}"/></a>
-	                   </span>
+	                       <a href="${team.id}"><img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="team" title="${team.name}"/><c:out value="${team.name}"/></a>
 	               </li>
 	            </c:forEach>
 	        </ul>
