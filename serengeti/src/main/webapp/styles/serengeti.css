@@ -288,6 +288,25 @@ ul.hor_menu {
 .shadowText {
 	text-shadow: 5px 5px 5px #445544;
 }
+#checkin{
+	-webkit-border-radius: 10px; /* Safari prototype */
+    -moz-border-radius: 10px; /* Gecko browsers */
+    border-radius: 10px; /* Everything else - limited support at the moment */
+    background-color: #BBAA88;
+    font-size: 13px;
+}
+#user_friend_team_container{
+	-webkit-border-radius: 10px; /* Safari prototype */
+    -moz-border-radius: 10px; /* Gecko browsers */
+    border-radius: 10px; /* Everything else - limited support at the moment */
+    background-color: #BBAAAA;
+}
+#user_info_friend_request_container{
+	-webkit-border-radius: 10px; /* Safari prototype */
+    -moz-border-radius: 10px; /* Gecko browsers */
+    border-radius: 10px; /* Everything else - limited support at the moment */
+    background-color: #BBBBBB;	
+}
 
 a.signup-button {
 	-moz-border-radius-bottomleft: 4px;
