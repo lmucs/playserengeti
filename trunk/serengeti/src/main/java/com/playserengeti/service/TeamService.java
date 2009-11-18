@@ -155,6 +155,10 @@ public class TeamService {
     	return result;
     }
     
+    public String getTeamsJSON(Integer userId) {
+    	return asJSON(getTeams(userId));
+    }
+    
     public Collection<Team> getTeamInvites(Integer userId) {
     	Set<Team> result = new HashSet<Team>();
     	Collection<Membership> mem = membershipDao.getMembershipsByUser(userId);
@@ -191,6 +195,21 @@ public class TeamService {
     public void removeFromTeam(Integer teamId, Integer userId) {
     	Membership m = getMembershipByTeamAndUser(teamId, userId);
     	membershipDao.deleteMembership(m.getMembershipId());
+    }
+    
+    public String asJSON(Collection<Team> teams) {
+    	String result = "[";
+    	int count = teams.size();
+    	
+    	for (Team t : teams) {
+    		result += t.asMinimalJSON();
+    	    if (count > 1) {
+    	    	result += ", ";
+    	    }
+    	    count--;
+    	}
+    	result += "]";
+    	return result;
     }
     
     //TODO

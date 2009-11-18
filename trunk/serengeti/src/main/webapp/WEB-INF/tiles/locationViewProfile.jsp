@@ -8,7 +8,7 @@
 				<div class = "grid_5">
                    	<div class = "grid_4"> 
                        	<td><strong>Location Name:</strong></td>
-                       	<td><c:out value="${locationCommand.locationName}"/></td>
+                       	<td><c:out value="${locationCommand.name}"/></td>
                     </div>
                     	
                     <div class="clear">&nbsp;</div>
@@ -35,20 +35,13 @@
                        	<td><c:out value="${locationCommand.description}"/></td>
                     </div>
                     	
-                    <div class="clear">&nbsp;</div>
-                    	
-                    <div class = "grid_4">
-                    <!--  I feel that what is in bold shouldn't be in the final webpage, but for now they will display what info should be there  -->
-                       	<td><strong>Location Image</strong></td>
-                       	<td><c:out value="${locationCommand.image}"/></td>
-                    </div>   
 
 					<div class="clear">&nbsp;</div>
 
                     <div class = "grid_4">
                         <td><strong>Owned by Team:</strong></td>
-                        <td><c:if test='${ !empty location.teamOwnerId }'>
-                            <c:out value="${location.teamOwner.id}"/>
+                        <td><c:if test='${ !empty location.ownerId }'>
+                            <c:out value="${location.owner.id}"/>
                             </c:if>
                         </td>
                     </div>
@@ -90,7 +83,7 @@
         var marker = new google.maps.Marker({
             position: latlng, 
             map: map, 
-            title:"${locationCommand.locationName}"
+            title:"${locationCommand.name}"
         });
     }
 </script>

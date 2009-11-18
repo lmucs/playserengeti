@@ -24,7 +24,9 @@
         <script type="text/javascript"
             src="${pageContext.request.contextPath}/scripts/scrollbar.js">
         </script>
-
+        <script type="text/javascript"
+            src="${pageContext.request.contextPath}/scripts/json2.js">
+        </script>
         
     </head>
 

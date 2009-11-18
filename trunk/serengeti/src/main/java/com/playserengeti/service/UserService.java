@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.playserengeti.dao.FriendshipDao;
 import com.playserengeti.dao.UserDao;
 import com.playserengeti.domain.Friendship;
+import com.playserengeti.domain.Team;
 import com.playserengeti.domain.User;
 
 /**
@@ -162,6 +163,10 @@ public class UserService {
     	return result;
     }
     
+    public String getFriendsJSON(Integer userId) {
+    	return asJSON(getFriends(userId));
+    }
+    
     public void removeFriendship(Integer primaryId, Integer secondaryId) {
     	Collection<Friendship> friendships = getFriendshipsByUser(primaryId);
     	
@@ -187,6 +192,21 @@ public class UserService {
     	Friendship f = getFriendshipById(getFriendshipByUserPair(pUserId, sUserId).getFriendshipId());
     	f.setStatus("rejected");
     	saveFriendship(f);
+    }
+    
+    public String asJSON(Collection<User> users) {
+    	String result = "[";
+    	int count = users.size();
+    	
+    	for (User u : users) {
+    		result += u.asMinimalJSON();
+    	    if (count > 1) {
+    	    	result += ", ";
+    	    }
+    	    count--;
+    	}
+    	result += "]";
+    	return result;
     }
     
     //TODO

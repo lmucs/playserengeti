@@ -35,8 +35,8 @@ public class LocationDaoMockImpl implements LocationDao {
     }
 
     @Override
-    public void deleteLocation(Integer locationId) {
-        storage.remove(locationId);
+    public void deleteLocation(Integer id) {
+        storage.remove(id);
     }
 
     @Override
@@ -50,8 +50,8 @@ public class LocationDaoMockImpl implements LocationDao {
     }
 
     @Override
-    public Location getLocationById(Integer locationId) {
-        return new Location(storage.get(locationId));
+    public Location getLocationById(Integer id) {
+        return new Location(storage.get(id));
     }
 
     /**
@@ -65,21 +65,21 @@ public class LocationDaoMockImpl implements LocationDao {
 
     @Override
     public void updateLocation(Location location) {
-        storage.put(location.getLocationId(), location);
+        storage.put(location.getId(), location);
     }
 
     @Override
     public Integer insertLocation(Location location) {
-        Integer locationId = ++maxId;
+        Integer id = ++maxId;
 
-        location.setLocationId(locationId);
+        location.setId(id);
         updateLocation(location);
 
-        return locationId;
+        return id;
     }
 
     @Override
-    public boolean locationExists(Integer locationId){
-        return (storage.get(locationId) != null);
+    public boolean locationExists(Integer id){
+        return (storage.get(id) != null);
     }
 }

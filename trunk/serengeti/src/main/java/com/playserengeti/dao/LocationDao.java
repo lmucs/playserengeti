@@ -26,7 +26,7 @@ public interface LocationDao {
 	 *
 	 * @param id location id of the location to delete
 	 */
-	public void deleteLocation(Integer locationId);
+	public void deleteLocation(Integer id);
 
 	/**
 	 * Get all locations from storage.
@@ -39,7 +39,7 @@ public interface LocationDao {
 	 * @param id location id of the location to fetch
 	 * @return the fetched location or null if none exist with that id
 	 */
-	public Location getLocationById(Integer locationId);
+	public Location getLocationById(Integer id);
 
 	/**
 	 * Get a location from storage.
@@ -52,6 +52,6 @@ public interface LocationDao {
 	/*
 	 * Check the existence of a locaitionId
 	 */
-	public boolean locationExists(Integer locationId);
+	public boolean locationExists(Integer id);
 
 }

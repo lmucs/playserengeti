@@ -6,8 +6,8 @@
     <nearbyLocations>
         <c:forEach var="location" items="${nearbyLocations}">
             <location>
-                <locationId><c:out value="${location.locationId}" /></locationId>
-                <locationName><c:out value="${location.locationName}" /></locationName>
+                <id><c:out value="${location.id}" /></id>
+                <name><c:out value="${location.name}" /></name>
                 <phoneNumber><c:out value="${location.phoneNumber}" /></phoneNumber>
                 <latitude><c:out value="${location.latitude}" /></latitude>
                 <longitude><c:out value="${location.longitude}" /></longitude>
@@ -16,7 +16,7 @@
                 <state><c:out value="${location.state}" /></state>
                 <zipcode><c:out value="${location.zipcode}" /></zipcode>
                 <description><c:out value="${location.description}" /></description>
-                <teamOwner><c:out value="${location.teamOwner.name}" /></teamOwner>
+                <owner><c:out value="${location.owner.name}" /></owner>
             </location>
         </c:forEach>
     </nearbyLocations>

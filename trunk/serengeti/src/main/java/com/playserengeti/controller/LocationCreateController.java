@@ -35,7 +35,7 @@ public class LocationCreateController extends SimpleFormController {
     public ModelAndView onSubmit(Object _command) {
         LocationCommand command = (LocationCommand) _command;
 
-        Location location = new Location(null, command.getLocationName(),
+        Location location = new Location(null, command.getName(),
                 command.getLatitude(), command.getLongitude());
         location.setStreet(command.getStreet());
         location.setCity(command.getCity());
@@ -43,12 +43,11 @@ public class LocationCreateController extends SimpleFormController {
         location.setZipcode(command.getZipcode());
         location.setDescription(command.getDescription());
         location.setPhoneNumber(command.getPhoneNumber());
-        location.setImage(command.getImage());
 
         locationService.saveLocation(location);
 
         ModelAndView mav = new ModelAndView("redirect:view");
-        mav.addObject("locationId", location.getLocationId());
+        mav.addObject("locationId", location.getId());
 
         return mav;
     }

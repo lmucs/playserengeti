@@ -2,52 +2,50 @@ package com.playserengeti.domain;
 
 public class Location {
 
-    private Integer locationId;
-    private String locationName;
+    private Integer id;
+    private String name;
     private double latitude;
     private double longitude;
-    private Team teamOwner;
+    private Team owner;
     private String description;
     private String phoneNumber;
-    private String image;
     private String street;
     private String city;
     private String state;
     private String zipcode;
 
-    public Location(Integer locationId, String locationName, double latitude, double longitude) {
-        this.locationId = locationId;
-        this.locationName = locationName;
+    public Location(Integer id, String name, double latitude, double longitude) {
+        this.id = id;
+        this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
     public Location(Location b) {
-    	this(b.locationId, b.locationName, b.latitude, b.longitude);
-    	this.teamOwner = b.teamOwner;
+    	this(b.id, b.name, b.latitude, b.longitude);
+    	this.owner = b.owner;
     	this.description = b.description;
     	this.phoneNumber = b.phoneNumber;
-    	this.image = b.image;
     	this.street = b.street;
     	this.city = b.city;
     	this.state = b.state;
     	this.zipcode = b.zipcode;
 	}
 
-	public Integer getLocationId() {
-		return locationId;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setLocationId(Integer locationId) {
-		this.locationId = locationId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public String getLocationName() {
-		return locationName;
+	public String getName() {
+		return name;
 	}
 
-	public void setLocationName(String locationName) {
-		this.locationName = locationName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public double getLongitude() {
@@ -66,12 +64,12 @@ public class Location {
 		this.latitude = latitude;
 	}
 
-	public Team getTeamOwner() {
-		return teamOwner;
+	public Team getOwner() {
+		return owner;
 	}
 
-	public void setTeamOwner(Team teamOwner) {
-		this.teamOwner = teamOwner;
+	public void setOwner(Team owner) {
+		this.owner = owner;
 	}
 
 	public String getDescription() {
@@ -88,14 +86,6 @@ public class Location {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
 	}
 
 	public String getStreet() {
@@ -130,6 +120,19 @@ public class Location {
 		this.zipcode = zipcode;
 	}
 
+	public String asJSON() {
+		String owner = this.owner != null ? this.owner.asMinimalJSON() : "{\"id\" : \"\", \"name\" : \"In Conflict\"}";
+		return "{\"id\" : \"" + this.id + "\", \"name\" : \"" + this.name + "\", \"latitude\" : \"" + 
+		    this.latitude + "\", \"longitude\" : \"" + this.longitude + "\", \"street\" : \"" + this.street + 
+		    "\", \"city\" : \"" + this.city + "\", \"state\" " + this.state + "\", \"zipcode\" : \"" + this.zipcode + 
+		    "\", \"owner\" : \"" + owner + "\", \"phoneNumber\" : \"" + this.phoneNumber + 
+		    "\", \"description\" : \"" + this.description + "\"}";
+	}
+	
+	public String asMinimalJSON() {
+		return "{\"id\" : \"" + this.id + "\", \"name\" : \"" + this.name + "\", \"latitude\" : \"" + 
+	    this.latitude + "\", \"longitude\" : \"" + this.longitude + "\"}";
+	}
 	/**
 	 * Gets the full address of the location.
 	 * Had to do it like this because the .jsp pages wouldn't

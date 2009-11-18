@@ -110,7 +110,7 @@ public class VisitService {
 		Collection<Visit> visits = visitDao.getVisitByLocationId(locationId);
 		
 		Team team;
-		for(Visit v : visits) {
+		for (Visit v : visits) {
 			team = teamDao.getTeamById(v.getTeamId());
 			if (!result.contains(team)) result.add(team);
 		}

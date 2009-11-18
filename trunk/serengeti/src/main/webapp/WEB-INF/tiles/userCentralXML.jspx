@@ -6,7 +6,7 @@
     <recent>
         <c:forEach var="user" items="${recent}">
             <user>
-                <userId><c:out value="${user.id}" /></userId>
+                <id><c:out value="${user.id}" /></id>
                 <email><c:out value="${user.email}" /></email>
             </user>
         </c:forEach>
@@ -14,7 +14,7 @@
     <mostActive>
         <c:forEach var="user" items="${mostActive}">
             <user>
-                <userId><c:out value="${user.id}" /></userId>
+                <id><c:out value="${user.id}" /></id>
                 <email><c:out value="${user.email}" /></email>
             </user>
         </c:forEach>
@@ -22,7 +22,7 @@
     <newest>
         <c:forEach var="user" items="${newest}">
             <user>
-                <userId><c:out value="${user.id}" /></userId>
+                <id><c:out value="${user.id}" /></id>
                 <email><c:out value="${user.email}" /></email>
             </user>
         </c:forEach>

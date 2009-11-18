@@ -3,8 +3,8 @@
     xmlns:c="http://java.sun.com/jsp/jstl/core"
     xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 <location>
-    <locationId><c:out value="${locationCommand.locationId}" /></locationId>
-    <locationName><c:out value="${locationCommand.locationName}" /></locationName>
+    <id><c:out value="${locationCommand.id}" /></id>
+    <name><c:out value="${locationCommand.name}" /></name>
     <phoneNumber><c:out value="${locationCommand.phoneNumber}" /></phoneNumber>
     <latitude><c:out value="${locationCommand.latitude}" /></latitude>
     <longitude><c:out value="${locationCommand.longitude}" /></longitude>
@@ -13,12 +13,12 @@
     <state><c:out value="${locationCommand.state}" /></state>
     <zipcode><c:out value="${locationCommand.zipcode}" /></zipcode>
     <description><c:out value="${locationCommand.description}" /></description>
-    <teamOwner><c:out value="${locationCommand.teamOwner.name}" /></teamOwner>
+    <owner><c:out value="${locationCommand.owner.name}" /></owner>
     <competingTeams>
         <c:forEach var="team" items="${competingTeams}">
             <team>
-                <teamId><c:out value="${team.id}" /></teamId>
-                <teamName><c:out value="${team.name}" /></teamName>
+                <id><c:out value="${team.id}" /></id>
+                <name><c:out value="${team.name}" /></name>
             </team>
         </c:forEach>
     </competingTeams>

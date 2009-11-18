@@ -66,6 +66,11 @@ public class Visit {
 		this.date = date;
 	}
 
+	public String asJSON() {
+		return "{\"id\" : \"" + this.id + "\", \"userId\" : \"" + this.userId + "\", \"teamId\" : \"" + this.teamId + 
+		    "\", \"locationId\" : \"" + this.locationId + "\"}";
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

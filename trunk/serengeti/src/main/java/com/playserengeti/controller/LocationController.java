@@ -59,15 +59,14 @@ public class LocationController extends MultiActionController {
 
         if (locationId != null) {
             Location location = locationService.getLocationById(locationId);
-            locationCommand.setLocationId(location.getLocationId());
-            locationCommand.setLocationName(location.getLocationName());
+            locationCommand.setId(location.getId());
+            locationCommand.setName(location.getName());
             locationCommand.setLatitude(location.getLatitude());
             locationCommand.setLongitude(location.getLongitude());
-            if (location.getTeamOwner() != null)
-                locationCommand.setTeamOwner(location.getTeamOwner().getId());
+            if (location.getOwner() != null)
+                locationCommand.setTeamOwner(location.getOwner().getId());
             locationCommand.setPhoneNumber(location.getPhoneNumber());
             locationCommand.setDescription(location.getDescription());
-            locationCommand.setImage(location.getImage());
             locationCommand.setStreet(location.getStreet());
             locationCommand.setCity(location.getCity());
             locationCommand.setState(location.getState());

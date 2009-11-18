@@ -1,5 +1,7 @@
 package com.playserengeti.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -98,14 +100,25 @@ public class UserController extends MultiActionController {
                 }
             }
         }
+        
+        String profileData = generateProfileData(userId);
+        
         String view = "userViewProfile";
         if ("xml".equals(request.getParameter("format"))) {
             view = "userViewProfileXML";
         }
         if ("json".equals(request.getParameter("format"))) {
-            view = "userViewProfileJSON";
+        	try {
+        		response.getWriter().print(profileData);
+             	response.getWriter().flush();
+            	return null;
+        	}
+        	catch(IOException e){
+        		view="redirect:error";
+        	}
         }
-
+        
+        
         ModelAndView mav = new ModelAndView(view);
         mav.addObject("userCommand", command);
         mav.addObject("teams", teams);
@@ -116,6 +129,8 @@ public class UserController extends MultiActionController {
         mav.addObject("alreadyFriends", alreadyFriends);
         mav.addObject("nearbyLocations", nearbyLocations);
         mav.addObject("session", session);
+        
+        mav.addObject("profileData", profileData);
 
         return mav;
     }
@@ -159,6 +174,11 @@ public class UserController extends MultiActionController {
         Integer sUserId = Integer.valueOf(request.getParameter("sUserId"));
 
         userService.acceptFriendInvite(pUserId, sUserId);
+        try {
+    		PrintWriter out = response.getWriter();
+    		out.println(userService.getUserById(pUserId).asMinimalJSON());	
+        }
+    	catch(IOException e) {}
 
     }
 
@@ -181,6 +201,11 @@ public class UserController extends MultiActionController {
         Integer userId = Integer.valueOf(request.getParameter("userId"));
 
         teamService.acceptTeamInvite(teamId, userId);
+        try {
+    		PrintWriter out = response.getWriter();
+    		out.println(teamService.getTeamById(teamId).asMinimalJSON());	
+        }
+    	catch(IOException e) {}
     }
 
     public void rejectTeamInvite(HttpServletRequest request, HttpServletResponse response) {
@@ -190,6 +215,42 @@ public class UserController extends MultiActionController {
         teamService.rejectTeamInvite(teamId, userId);
     }
 
+    private String generateProfileData(Integer userId) {
+    	User user = userService.getUserById(userId);
+    	
+    	Collection<User> friends = userService.getFriends(userId);
+        Collection<Team> teams = teamService.getTeams(userId);
+        Collection<Location> nearbyLocations = locationService.getAllLocations();
+        Collection<User> friendInvites = userService.getFriendInvites(userId);
+        Collection<Team> teamInvites = teamService.getTeamInvites(userId);
+
+        Collection<Team> teamsToInviteTo = new HashSet<Team>();
+        boolean alreadyFriends = true;
+        if (session.isLoggedIn()) {
+            alreadyFriends = friends.contains(session.getUser())
+            || friendInvites.contains(session.getUser())
+            || userService.getFriendInvites(session.getUser().getId())
+                    .contains(user);
+
+            Collection<Team> eligableTeams = teamService.getTeams(session.getUser().getId());
+
+            for (Team t : eligableTeams) {
+                if (!teams.contains(t) && !teamInvites.contains(t)) {
+                    teamsToInviteTo.add(t);
+                }
+            }
+        }
+        String result = "{\"user\" : " + user.asJSON() + ", \"friends\" : " + userService.asJSON(friends) +
+            ", \"teams\" : " + teamService.asJSON(teams) + /*", \"locations\" : " + 
+            locationService.asJSON(nearbyLocations) + */", \"invites\" : {\"friendInvites\" : " + 
+            userService.asJSON(friendInvites) + ", \"teamInvites\" : " + 
+            teamService.asJSON(teamInvites) + "}, \"eligableTeams\" : " + 
+            teamService.asJSON(teamsToInviteTo) + ", \"alreadyFriends\" : \"" + alreadyFriends +
+            "\"}";
+        
+    	return result;
+    }
+    
     public UserSession getSession() {
         return session;
     }

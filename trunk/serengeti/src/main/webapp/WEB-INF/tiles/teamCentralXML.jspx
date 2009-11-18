@@ -6,24 +6,24 @@
     <leaders>
         <c:forEach var="team" items="${leaders}">
             <team>
-                <teamId><c:out value="${team.id}" /></teamId>
-                <teamName><c:out value="${team.name}" /></teamName>
+                <id><c:out value="${team.id}" /></id>
+                <name><c:out value="${team.name}" /></name>
             </team>
         </c:forEach>
     </leaders>
     <mostActive>
         <c:forEach var="team" items="${mostActive}">
             <team>
-                <teamId><c:out value="${team.id}" /></teamId>
-                <teamName><c:out value="${team.name}" /></teamName>
+                <id><c:out value="${team.id}" /></id>
+                <name><c:out value="${team.name}" /></name>
             </team>
         </c:forEach>
     </mostActive>
     <newest>
         <c:forEach var="team" items="${newest}">
             <team>
-                <teamId><c:out value="${team.id}" /></teamId>
-                <teamName><c:out value="${team.name}" /></teamName>
+                <id><c:out value="${team.id}" /></id>
+                <name><c:out value="${team.name}" /></name>
             </team>
         </c:forEach>
     </newest>

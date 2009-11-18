@@ -2,33 +2,32 @@ package com.playserengeti.controller;
 
 public class LocationCommand {
 
-    Integer locationId;
-    String locationName;
+    Integer id;
+    String name;
     Double longitude;
     Double latitude;
     Integer teamOwner;
     String description;
     String phoneNumber;
-    String image;
     String street;
     String city;
     String state;
     String zipcode;
 
-    public Integer getLocationId() {
-        return locationId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setLocationId(Integer locationId) {
-        this.locationId = locationId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getLocationName() {
-        return locationName;
+    public String getName() {
+        return name;
     }
 
-    public void setLocationName(String locationName) {
-        this.locationName = locationName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Double getLongitude() {
@@ -69,14 +68,6 @@ public class LocationCommand {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public String getStreet() {
