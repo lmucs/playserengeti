@@ -70,21 +70,28 @@ public class User {
 	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
-
+	
+	public String asJSON() {
+		return "{\"id\" : \"" + this.id + "\", \"email\" : \"" + this.email + "\", \"firstName\" : \"" + this.firstName + 
+		    "\", \"lastName\" : \"" + this.lastName + "\"}";
+	}
+	
+	public String asMinimalJSON() {
+		return "{\"id\" : \"" + this.id + "\", \"name\" : \"" + this.firstName + " " + this.lastName + "\"}";
+	}
+	
 	@Override
 	public int hashCode() {
-		return id.hashCode();
+		return (id == null) ? 0 : id.hashCode();
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		User other = (User)obj;
+		if (id == null && other.id == null) {
 			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		return id.equals(other.id);
+		}
+		return (id == null) ? false : id.equals(other.id);
 	}
+	
 }

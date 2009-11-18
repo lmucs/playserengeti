@@ -9,10 +9,10 @@
     <form id="locationCreateForm" method="post" action="create"
         onsubmit="return validateCreateForm();">  
             <div class="grid_2">
-                <label for="locationName">Location Name: </label>
+                <label for="name">Location Name: </label>
             </div>
             <div class="grid_2">
-                <input type="text" id="locationName" name="locationName" />
+                <input type="text" id="name" name="name" />
             </div>
 
 			<div class="clear">&nbsp;</div>
@@ -105,7 +105,7 @@
     
     var validateCreateForm = function () {
         
-        var name = document.getElementById("locationName");
+        var name = document.getElementById("name");
         var street = document.getElementById("street");
         if (name && name.value !== '') {
             return true;

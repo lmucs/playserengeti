@@ -3,7 +3,7 @@
 <%@ page contentType="text/plain; charset=UTF-8" %>
 
 <json:object>
-  <json:property name="teamId" value="${teamCommand.teamId}"/>
+  <json:property name="id" value="${teamCommand.id}"/>
   <json:property name="name" value="${teamCommand.name}" />
   <json:property name="color" value="${teamCommand.color}" />
   <json:property name="description" value="${teamCommand.description}" />
@@ -11,7 +11,7 @@
   <json:property name="leaderId" value="${teamCommand.leader.id}" />
   <json:array name="members" var="user" items="${members}">
     <json:object>
-      <json:property name="userId" value="${user.id}"/>
+      <json:property name="id" value="${user.id}"/>
       <json:property name="email" value="${user.email}" />
     </json:object>
   </json:array>

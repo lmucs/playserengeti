@@ -90,6 +90,16 @@ public class Team {
 	public void setHomeBase(String homeBase) {
 		this.homeBase = homeBase;
 	}
+	
+	public String asJSON() {
+		return "{\"id\" : \"" + this.id + "\", \"name\" : \"" + this.name + "\", \"color\" : \"" + this.color + 
+		    "\", \"leaderId\" : \"" + this.leader.getId() + "\", \"description\" : \"" + this.description + 
+		    "\", \"homeBase\" : \"" + this.homeBase + "\"}";
+	}
+	
+	public String asMinimalJSON() {
+		return "{\"id\" : \"" + this.id + "\", \"name\" : \"" + this.name + "\"}";
+	}
 
 	public boolean equals(Team team) {
     	if (this.id != team.id) return false;

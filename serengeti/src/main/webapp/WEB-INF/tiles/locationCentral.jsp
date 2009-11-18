@@ -28,7 +28,7 @@
 	        <ul class="hor_menu">
 	            <c:forEach var="location" items="${nearbyLocations}">
 	               <li>
-	                   <a href="${location.locationId}" > <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="location" title="${location.locationName}" <c:out value="${location.locationName}"/></a>
+	                   <a href="${location.id}" > <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="location" title="${location.name}" <c:out value="${location.name}"/></a>
 	               </li>
 	            </c:forEach>
 	        </ul>

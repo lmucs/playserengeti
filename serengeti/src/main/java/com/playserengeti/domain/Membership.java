@@ -50,6 +50,11 @@ public class Membership {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	public String asJSON() {
+		return "{\"id\" : \"" + this.membershipId + "\", \"teamId\" : \"" + this.teamId + "\", \"userId\" : \"" + 
+		    this.userId + "\", \"status\" : \"" + this.status + "\"}";
+	}
 
 	public boolean equals(Membership m) {
 		return this.membershipId != m.membershipId ? false : true;

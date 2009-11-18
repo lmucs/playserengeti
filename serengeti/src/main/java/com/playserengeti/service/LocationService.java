@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import com.playserengeti.dao.LocationDao;
 import com.playserengeti.domain.Location;
+import com.playserengeti.domain.Team;
 
 /**
  * Service for operations related to location.
@@ -18,8 +19,8 @@ public class LocationService {
         this.locationDao = locationDao;
     }
 
-    public Location getLocationById(Integer locationId) {
-        return locationDao.getLocationById(locationId);
+    public Location getLocationById(Integer id) {
+        return locationDao.getLocationById(id);
     }
 
     /**
@@ -30,12 +31,12 @@ public class LocationService {
      * with that id exists, then throws some kind of exception. (TODO)
      */
     public Integer saveLocation(Location location) {
-		if (location.getLocationId() == null) {
+		if (location.getId() == null) {
 			return locationDao.insertLocation(location);
 
 		} else {
 			locationDao.updateLocation(location);
-			return location.getLocationId();
+			return location.getId();
 		}
     }
 
@@ -43,8 +44,8 @@ public class LocationService {
      * Deletes the location with the given id from persistent storage. If no such
      * location exists, throws an IllegalArgumentException.
      */
-    public void deleteLocation(Integer locationId) {
-        locationDao.deleteLocation(locationId);
+    public void deleteLocation(Integer id) {
+        locationDao.deleteLocation(id);
     }
 
     /**
@@ -55,5 +56,19 @@ public class LocationService {
     	return locationDao.getAllLocations();
     }
         
+    public String asJSON(Collection<Location> locations) {
+    	String result = "[";
+    	int count = locations.size();
+    	
+    	for (Location l : locations) {
+    		result += l.asMinimalJSON();
+    	    if (count > 1) {
+    	    	result += ", ";
+    	    }
+    	    count--;
+    	}
+    	result += "]";
+    	return result;
+    }
 }
 

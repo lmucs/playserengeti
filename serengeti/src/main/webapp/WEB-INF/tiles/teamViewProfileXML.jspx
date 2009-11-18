@@ -5,7 +5,7 @@
 
 <profile>
     <team>
-        <teamId><c:out value="${teamCommand.teamId}" /></teamId>
+        <id><c:out value="${teamCommand.teamId}" /></id>
         <name><c:out value="${teamCommand.name}" /></name>
         <color><c:out value="${teamCommand.color}" /></color>
         <description><c:out value="${teamCommand.description}" /></description>
@@ -13,10 +13,10 @@
         <leaderId><c:out value="${teamCommand.leader.id}" /></leaderId>
         <members>
             <c:forEach var="member" items="${members}">
-                <member>
-                    <memberId><c:out value="${member.id}" /></memberId>
-                    <memberEmail><c:out value="${member.email}" /></memberEmail>
-                </member>
+                <user>
+                    <id><c:out value="${member.id}" /></id>
+                    <email><c:out value="${member.email}" /></email>
+                </user>
             </c:forEach>
         </members>
     </team>

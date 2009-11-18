@@ -51,6 +51,11 @@ public class Friendship {
 		this.status = status;
 	}
 
+	public String asJSON() {
+		return "{\"id\" : \"" + this.friendshipId + "\", \"pUserId\" : \"" + this.primaryUserId + "\", \"sUserId\" : \"" + 
+		    this.secondaryUserId + "\", \"status\" : " + this.status + "\"}";
+	}
+	
 	/**
 	 * Checks to see if the users involved in two friendships 
 	 * are the same.
