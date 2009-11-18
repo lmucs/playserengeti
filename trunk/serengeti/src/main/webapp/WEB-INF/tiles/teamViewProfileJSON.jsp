@@ -3,7 +3,7 @@
 <%@ page contentType="text/plain; charset=UTF-8" %>
 
 <json:object>
-  <json:property name="id" value="${teamCommand.id}"/>
+  <json:property name="id" value="${teamCommand.teamId}"/>
   <json:property name="name" value="${teamCommand.name}" />
   <json:property name="color" value="${teamCommand.color}" />
   <json:property name="description" value="${teamCommand.description}" />

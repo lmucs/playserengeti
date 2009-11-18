@@ -140,7 +140,7 @@
     };
     
     var sendFriendInvite = function () {
-        $.get("sendFriendInvite", {pUserId : ${session.user.id}, sUserId : ${userCommand.userId}});
+        $.get("sendFriendInvite", {pUserId : ${session.user.id}, sUserId : uData.user.id});
         $("#inviteFriend").fadeOut("slow");
     };
     
@@ -159,7 +159,7 @@
     };
     
     var sendTeamInvite = function () {
-        $.get("sendTeamInvite", {teamId : $("select#teamInviteSelect").val(), userId : ${userCommand.userId}});
+        $.get("sendTeamInvite", {teamId : $("select#teamInviteSelect").val(), userId : uData.user.id});
         $("#inviteTeam").fadeOut("slow");
     };
     
@@ -177,4 +177,5 @@
         $.get("rejectTeamInvite", {teamId : teamId, userId : ${session.user.id}});
         $("#teamInvite_" + teamId).fadeOut("slow");
     };
+    
 </script>
