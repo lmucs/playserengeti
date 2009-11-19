@@ -9,7 +9,7 @@
 
     <form id="teamCreateForm" method="post" action="create"
         onsubmit="return validateCreateForm();">   
-	    <div class="round_Box_Container">
+	    <div class="round_Box_Container extraPadding">
 		    <div class="grid_2">
 		        <label for="name">Team Name: </label>
 		    </div>
@@ -18,7 +18,6 @@
 		    </div>
 		    
 		    <div class="clear">&nbsp;</div>
-	
 	        
 	        <div class="grid_2">
 	            <label for="color">Preferred Color: </label>

@@ -4,7 +4,7 @@
 
         <c:choose>
             <c:when test='${ !empty teamCommand }'>
-                <div class="grid_6">
+                <div class="grid_6 round_Box_Container">
 	                
 	                <div class="grid_2">
 	                    <td><strong>Team Name</strong></td>
@@ -49,7 +49,7 @@
 	                    <td><c:out value="${teamCommand.description}"/></td>
 	                </div>
 	            </div>
-	            <div class="grid_6">
+	            <div class="grid_6 round_Box_Container">
 	                <div class="grid_2">
 	                    <strong>Team Members:</strong>
 	                </div>
