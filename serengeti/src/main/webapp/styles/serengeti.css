@@ -314,6 +314,7 @@ ul.hor_menu {
 
 .shadowText {
 	text-shadow: 5px 5px 5px #445544;
+	margin-left: 280px;
 }
 #checkin{
 	-webkit-border-radius: 10px; /* Safari prototype */
@@ -388,8 +389,8 @@ a.signup-button {
 
 .allLeftArrows {
 	margin-right: 5px;
-	position: absolute;
-	right: 877;
+	position: relative;
+	left: 234;
 	z-index: 2;
 }
 
@@ -397,12 +398,12 @@ a.signup-button {
 	margin-right: 20px;
 	margin-bottom: 200px;
 	position: absolute;
-	right: 440;
+	right: 206;
 	z-index: 2;
 }
 
 .centralScrollSpan {
 	margin: 0px;
 	float: left;
-	position: relative;
+	position: absolute;
 }
