@@ -2,6 +2,9 @@ package com.playserengeti.controller;
 
 import java.util.Map;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
+
 public class UserCommand {
 
     private Integer userId;
@@ -69,12 +72,22 @@ public class UserCommand {
         this.teams = teams;
     }
 
-	public String getFormat() {
-		return format;
-	}
+    public String getFormat() {
+        return format;
+    }
 
-	public void setFormat(String format) {
-		this.format = format;
-	}
-    
+    public void setFormat(String format) {
+        this.format = format;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
+            .append("userId", userId)
+            .append("email", email)
+            .append("firstName", firstName)
+            .append("lastName", lastName)
+            .append("password", password)
+            .toString();
+    }
 }

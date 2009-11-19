@@ -3,6 +3,7 @@ package com.playserengeti.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
@@ -14,6 +15,8 @@ import com.playserengeti.session.UserSession;
  * Controller for creating a user.
  */
 public class UserLoginController extends SimpleFormController {
+
+    private Logger logger = Logger.getLogger(getClass());
 
     private UserService userService;
     private UserSession session;
@@ -28,6 +31,8 @@ public class UserLoginController extends SimpleFormController {
     @Override
     public ModelAndView onSubmit(Object _command) {
         UserCommand command = (UserCommand) _command;
+        logger.debug(command);
+
         Integer userId;
         String email = command.getEmail();
         String password = command.getPassword();
@@ -46,7 +51,7 @@ public class UserLoginController extends SimpleFormController {
         session.setUser(user);
         String view = "redirect:/user/" + user.getId();
         if ("json".equals(format)) view += "/json";
-        
+
         return new ModelAndView(view);
     }
 
