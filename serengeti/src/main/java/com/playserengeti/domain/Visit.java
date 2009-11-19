@@ -67,8 +67,8 @@ public class Visit {
 	}
 
 	public String asJSON() {
-		return "{\"id\" : \"" + this.id + "\", \"userId\" : \"" + this.userId + "\", \"teamId\" : \"" + this.teamId + 
-		    "\", \"locationId\" : \"" + this.locationId + "\"}";
+		return "{\"id\" : " + this.id + ", \"userId\" : " + this.userId + ", \"teamId\" : " + this.teamId + 
+		    ", \"locationId\" : " + this.locationId + "}";
 	}
 	
 	@Override
