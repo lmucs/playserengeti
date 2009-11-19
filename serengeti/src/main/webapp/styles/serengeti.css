@@ -329,6 +329,10 @@ ul.hor_menu {
     border-radius: 10px; /* Everything else - limited support at the moment */
     background-color: #BBAA88;
 }
+.extraPadding{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
 #info{
 	-webkit-border-radius: 10px; /* Safari prototype */
     -moz-border-radius: 10px; /* Gecko browsers */
