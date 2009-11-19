@@ -1,6 +1,8 @@
 body {
 	background-color: #445530;
 	margin: 0;
+	max-width: 960px;
+	min-width: 960px;
 }
 
 .loginbar {
@@ -302,13 +304,19 @@ ul.hor_menu {
     border-radius: 10px; /* Everything else - limited support at the moment */
     background-color: #BBAA88;
 }
-#user_friend_team_container{
+#info{
 	-webkit-border-radius: 10px; /* Safari prototype */
     -moz-border-radius: 10px; /* Gecko browsers */
     border-radius: 10px; /* Everything else - limited support at the moment */
     background-color: #BBAAAA;
 }
-#user_info_friend_request_container{
+#friendRequests{
+	-webkit-border-radius: 10px; /* Safari prototype */
+    -moz-border-radius: 10px; /* Gecko browsers */
+    border-radius: 10px; /* Everything else - limited support at the moment */
+    background-color: #BBBBBB;	
+}
+#teamRequests{
 	-webkit-border-radius: 10px; /* Safari prototype */
     -moz-border-radius: 10px; /* Gecko browsers */
     border-radius: 10px; /* Everything else - limited support at the moment */
