@@ -1,8 +1,14 @@
 package com.playserengeti.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.validation.BindException;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
@@ -28,12 +34,11 @@ public class UserLoginController extends SimpleFormController {
         this.userService = userService;
     }
 
-    @Override
-    public ModelAndView onSubmit(Object _command) {
+    public ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, Object _command, BindException errors) {
         UserCommand command = (UserCommand) _command;
+
         logger.debug(command);
 
-        Integer userId;
         String email = command.getEmail();
         String password = command.getPassword();
         String format = command.getFormat();
@@ -50,8 +55,15 @@ public class UserLoginController extends SimpleFormController {
         // Login successful!
         session.setUser(user);
         String view = "redirect:/user/" + user.getId();
-        if ("json".equals(format)) view += "/json";
-
+        if ("json".equals(format)) {
+        	try {
+        		PrintWriter out = response.getWriter();
+        		out.println(user.asMinimalJSON());	
+        		return null;
+            }
+        	catch(IOException e) {}
+        }
+        
         return new ModelAndView(view);
     }
 
