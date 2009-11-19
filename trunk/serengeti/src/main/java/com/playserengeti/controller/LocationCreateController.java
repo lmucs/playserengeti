@@ -34,7 +34,7 @@ public class LocationCreateController extends SimpleFormController {
 
     public ModelAndView onSubmit(Object _command) {
         LocationCommand command = (LocationCommand) _command;
-
+        
         Location location = new Location(null, command.getName(),
                 command.getLatitude(), command.getLongitude());
         location.setStreet(command.getStreet());
