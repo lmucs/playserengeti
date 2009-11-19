@@ -78,28 +78,7 @@ public class UserController extends MultiActionController {
         command.setFirstName(user.getFirstName());
         command.setLastName(user.getLastName());
 
-        Collection<User> friends = userService.getFriends(userId);
-        Collection<Team> teams = teamService.getTeams(user.getId());
         Collection<Location> nearbyLocations = locationService.getAllLocations();
-        Collection<User> friendInvites = userService.getFriendInvites(userId);
-        Collection<Team> teamInvites = teamService.getTeamInvites(userId);
-
-        Collection<Team> teamsToInviteTo = new HashSet<Team>();
-        boolean alreadyFriends = true;
-        if (session.isLoggedIn()) {
-            alreadyFriends = friends.contains(session.getUser())
-            || friendInvites.contains(session.getUser())
-            || userService.getFriendInvites(session.getUser().getId())
-                    .contains(user);
-
-            Collection<Team> eligableTeams = teamService.getTeams(session.getUser().getId());
-
-            for (Team t : eligableTeams) {
-                if (!teams.contains(t) && !teamInvites.contains(t)) {
-                    teamsToInviteTo.add(t);
-                }
-            }
-        }
         
         String profileData = generateProfileData(userId);
         
@@ -118,18 +97,10 @@ public class UserController extends MultiActionController {
         	}
         }
         
-        
         ModelAndView mav = new ModelAndView(view);
         mav.addObject("userCommand", command);
-        mav.addObject("teams", teams);
-        mav.addObject("friends", friends);
-        mav.addObject("friendInvites", friendInvites);
-        mav.addObject("teamInvites", teamInvites);
-        mav.addObject("teamsToInviteTo", teamsToInviteTo);
-        mav.addObject("alreadyFriends", alreadyFriends);
         mav.addObject("nearbyLocations", nearbyLocations);
         mav.addObject("session", session);
-        
         mav.addObject("profileData", profileData);
 
         return mav;
