@@ -7,19 +7,9 @@ body {
     top: 0; 
     left: 24px;
     padding: 0 20px 10px 20px;
+    margin-left: 110px
 
 }
-#main_website { /* #main_website targets only the main site screen, avoiding frames etc */
-   background: #999999; /* this is the background seen around our fixed width */
-}
-#main_website #body_inner {
-   width: 861px;
-   position: relative;
-   margin: 0 auto 0 auto;
-   background: white; /* set the background colour back to white for the area within our fixed width */
-}
-
-
 
 
 div#container {
@@ -33,6 +23,7 @@ div#header {
   font-size: 13px;
   position: relative;
   height: 150px;
+  border-bottom: solid #445544 8px;
 }
 
 
@@ -81,8 +72,8 @@ div#navbar2 {
 
 .mainContentArea {
 	background-color: #FFFFFF;
-	margin: 1em;
-	padding: 1em;
+	margin: 0px;
+	padding: .1px;
     left: 24px
 }
 
