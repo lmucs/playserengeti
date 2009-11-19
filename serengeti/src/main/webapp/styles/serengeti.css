@@ -8,6 +8,15 @@ body {
     padding: 0 20px 10px 20px;
 
 }
+#main_website { /* #main_website targets only the main site screen, avoiding frames etc */
+   background: #999999; /* this is the background seen around our fixed width */
+}
+#main_website #body_inner {
+   width: 861px;
+   position: relative;
+   margin: 0 auto 0 auto;
+   background: white; /* set the background colour back to white for the area within our fixed width */
+}
 
 
 
@@ -356,7 +365,7 @@ a.signup-button {
 	line-height: normal;
 	color: #445544;
 	margin-right: 6px;
-	padding: 3px 6px 5px;
+	padding: 6px 9px 8px;
 	background-color: rgba(153,204,34, 0.8);
     background-image: -webkit-gradient(linear, 0% 0%, 0% 90%, from(rgba(153,204,34, 0.8)), to(rgba(153,255,17, .9)));
     background-image: -moz-linear-gradient(left, right, from(rgba(153,204,34, 0.8)), to(rgba(153,255,17, .9)));
@@ -367,5 +376,25 @@ a.signup-button {
  	-webkit-box-shadow: rgba(66, 140, 0, 0.5) 0px 10px 16px;
  	-moz-box-shadow: rgba(66, 140, 0, 0.5) 0px 10px 16px; /* FF 3.5+ */
 }
-	border: solid #99CC22
+
+
+.allLeftArrows {
+	margin-right: 5px;
+	position: absolute;
+	right: 877;
+	z-index: 2;
+}
+
+.allRightArrows {
+	margin-right: 20px;
+	margin-bottom: 200px;
+	position: absolute;
+	right: 440;
+	z-index: 2;
+}
+
+.centralScrollSpan {
+	margin: 0px;
+	float: left;
+	position: relative;
 }
