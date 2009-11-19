@@ -7,11 +7,8 @@
             <tiles:insertAttribute name="title" value="${title}"/>
         </title>
         <link rel="stylesheet" type="text/css"
-            href="${pageContext.request.contextPath}/styles/serengeti.css"
-        />
+            href="${pageContext.request.contextPath}/styles/serengeti.css"/>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/960.css"/>
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/reset.css"/>
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/text.css"/>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"
             type="text/javascript">
         </script>
@@ -31,25 +28,13 @@
     </head>
 
     <body>
-	        <tiles:insertAttribute name="header"/>
-
-	        <%-- Right-floated big logo, linked to home --%>
-	        <div class="mainlogo">
-	            <a href="${pageContext.request.contextPath}/"><img
-	            src="${pageContext.request.contextPath}/images/logo-full-116.png"
-	            alt="logo" /></a>
-	        </div>
-	
-	        <%-- Page title prefixed with small tree linked to home --%>
-	        <div class="pagetitle">
-	            <a href="${pageContext.request.contextPath}/"><img
-	            src="${pageContext.request.contextPath}/images/logo-tree-32.png"
-	            alt="logo" /></a>
-	            <tiles:insertAttribute name="title" value="${title}"/>
-	        </div>
-	        
-	        
-	        <div id="navbar2">
+    
+    <div id="container">
+    <div id="header">
+        <img src="${pageContext.request.contextPath}/images/serengetiTopLogo.png"/>
+        <map id="hmap" name ="hmap">
+            <area href="${pageContext.request.contextPath}/" shape="rect" coords="18,0, 356, 129"/>
+        <div id="navbar2">
 	        <ul>
 	            <li><a href="${pageContext.request.contextPath}/">Home  </a></li>
 	            <c:if test="${session.loggedIn}">
@@ -64,7 +49,21 @@
 	                <li><a href="${pageContext.request.contextPath}/user/logout">Log Out</a></li>
 	            </c:if>
 	        </ul>
-	        </div>
+	    </div>
+    </div>
+</div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+	        <tiles:insertAttribute name="header"/>
+
+	        
 	
 	        <div class="mainContentArea container_12">
 	            <tiles:insertAttribute name="login"/>
