@@ -5,12 +5,59 @@
 <c:choose>
     <c:when test='${!empty userCommand}'>
         <div id="ownProfile">
-            <div id="friendRequests">
+        
+            <div class="grid_10 prefix_1" id="checkIn">
+                <div class="grid_4" id="locList">
+                    <p>Checkin from:</p>
+                    <select id="locSelect">
+                        <c:forEach var="location" items="${nearbyLocations}">
+                            <option value="${location.id}"><c:out value="${location.name}"/></option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="grid_4" id="teamList">
+                    <p>As a member of team:</p>
+                    <select id="teamSelect"></select>
+                </div>
+                    <input type="button" value="Check In" onClick="checkIn()"/>
+            </div>
+            
+            <div class="grid_4" id="info">
+                <div class="grid_2">
+	            	<strong>Email Address: </strong>
+	            </div>
+	            <div class="grid_2">
+	                <p id="email"></p>
+	            </div>
+	            
+	            <div class="grid_2">
+	                <strong>Name: </strong>
+	            </div>
+	            <div class="grid_2">
+	                <p id="name"></p>
+	            </div>
+	            
+	            <div class="grid_2">
+	                <strong>Friends: </strong>
+	            </div>
+	            <div class="grid_2">
+	                <ul id="friends"></ul>
+	            </div>
+	                   
+	            <div class="grid_2">
+	                <strong>Teams: </strong>
+	            </div>
+	            <div class="grid_2">
+	                <ul id="teams"></ul> 
+	            </div>
+            </div>
+            
+            <div class="grid_5 prefix_1" id="friendRequests">
                 <p>These people want to be your friend.</p>
                 <ul id="friendInvites"></ul>
             </div>
             
-            <div id="teamRequests">
+            <div class="grid_5 prefix_1" id="teamRequests">
                 <p>You have been invited to the following teams.</p>
                 <ul id="teamInvites"></ul>
             </div>
@@ -19,21 +66,7 @@
                 <p>Thank you for checking in.</p>
             </div>
                     
-            <div id="checkIn">
-                <div id="locList">
-                    <p>Checkin from:</p>
-                    <select id="locSelect">
-                        <c:forEach var="location" items="${nearbyLocations}">
-                            <option value="${location.id}"><c:out value="${location.name}"/></option>
-                        </c:forEach>
-                    </select>
-                </div>
-                <div id="teamList">
-                    <p>As a member of team:</p>
-                    <select id="teamSelect"></select>
-                </div>
-                    <input type="button" value="Check In" onClick="checkIn()"/>
-            </div>
+            
         </div>       
              
         <div id="othersProfile">
@@ -50,19 +83,7 @@
             </c:if>
         </div>
             
-        <div id="info">
-            <strong>Email Address: </strong>
-            <p id="email"></p>
-            
-            <strong>Name: </strong>
-            <p id="name"></p>
-                    
-            <strong>Friends: </strong>
-            <ul id="friends"></ul>
-                   
-            <strong>Teams: </strong>
-            <ul id="teams"></ul> 
-        </div>
+        
         <c:if test="${session.user.id == userCommand.userId}">
             <a href="update/${userCommand.userId}">Edit Profile</a><br/>
         </c:if>
