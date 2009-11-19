@@ -59,6 +59,7 @@ public class UserLoginController extends SimpleFormController {
         	try {
         		PrintWriter out = response.getWriter();
         		out.println(user.asMinimalJSON());	
+        		out.flush();
         		return null;
             }
         	catch(IOException e) {}
