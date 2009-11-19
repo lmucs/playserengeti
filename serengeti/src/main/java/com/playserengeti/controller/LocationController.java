@@ -1,5 +1,7 @@
 package com.playserengeti.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
@@ -86,6 +88,30 @@ public class LocationController extends MultiActionController {
         mav.addObject("locationCommand", locationCommand);
         mav.addObject("competingTeams", visitService.getCompetingTeams(locationId));
         return mav;
+    }
+    
+    public void handleResult(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        Double lat = Double.valueOf(request.getParameter("lat"));
+        Double lng = Double.valueOf(request.getParameter("lng"));
+        String street = request.getParameter("street");
+        String city = request.getParameter("city");
+        String state = request.getParameter("state");
+        String phone = request.getParameter("phone");
+        
+        Location l = new Location(null, name, lat, lng);
+        l.setStreet(street);
+        l.setCity(city);
+        l.setState(state);
+        l.setPhoneNumber(phone);
+        
+        locationService.saveLocation(l);
+        
+        try {
+    		PrintWriter out = response.getWriter();
+    		out.println(l.asMinimalJSON());	
+        }
+    	catch(IOException e) {}
     }
 
     public UserSession getSession() {
