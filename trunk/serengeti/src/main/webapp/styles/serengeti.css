@@ -3,11 +3,56 @@ body {
 	margin: 0;
 	max-width: 960px;
 	min-width: 960px;
+    position: relative;
+    top: 0; left: 24px;
+    padding: 0 20px 10px 20px;
+
 }
 
-.loginbar {
-	margin-bottom: 25px;
+
+
+
+div#container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 948px;
 }
+
+div#header {
+  font-size: 13px;
+  position: relative;
+  height: 150px;
+}
+
+
+div#navbar2 {
+  position: absolute;
+  top: 11px;
+  right: 50px;
+  float: left;
+  height: 30px;
+  line-height: 25pt;
+
+}
+
+#navbar2 li {
+	display: inline;
+	list-style-type: none;
+}
+
+
+
+
+.loginbar {
+  position: absolute;
+  top: 65px;
+  right: 65px;
+}
+
+
+
+
+
 
 .pagetitle {
 	background-color: transparent;
@@ -222,40 +267,7 @@ ul.hor_menu {
 	font-style: italic;
 }
 
-#navbar2 {
-	background-color: #445544;
-	height: 30px;
-	width: 100%;
-}
 
-#navbar2 ul {
-	color: #FFFFFF;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: small;
-	line-height: 30px;
-	margin: 0;
-	padding: 0;
-	white-space: nowrap;
-}
-
-#navbar2 li {
-	display: inline;
-	list-style-type: none;
-}
-
-#navbar2 li a {
-	color: #BBAA88;
-	padding: 7px 10px;
-	text-decoration: none;
-}
-
-#navbar2 lia:link {
-	
-}
-
-#navbar2 lia:visited {
-	color: #CCCCCC;
-}
 
 #scrollContainer {
 	position: relative;
