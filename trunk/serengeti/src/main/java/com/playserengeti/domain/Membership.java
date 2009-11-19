@@ -52,8 +52,8 @@ public class Membership {
 	}
 	
 	public String asJSON() {
-		return "{\"id\" : \"" + this.membershipId + "\", \"teamId\" : \"" + this.teamId + "\", \"userId\" : \"" + 
-		    this.userId + "\", \"status\" : \"" + this.status + "\"}";
+		return "{\"id\" : " + this.membershipId + ", \"teamId\" : " + this.teamId + ", \"userId\" : " + 
+		    this.userId + ", \"status\" : \"" + this.status + "\"}";
 	}
 
 	public boolean equals(Membership m) {

@@ -72,12 +72,11 @@ public class User {
 	}
 	
 	public String asJSON() {
-		return "{\"id\" : \"" + this.id + "\", \"email\" : \"" + this.email + "\", \"firstName\" : \"" + this.firstName + 
-		    "\", \"lastName\" : \"" + this.lastName + "\"}";
+		return "{\"id\" : " + this.id + ", \"email\" : \"" + this.email + "\", \"name\" : \"" + this.firstName + " " + this.lastName + "\"}";
 	}
 	
 	public String asMinimalJSON() {
-		return "{\"id\" : \"" + this.id + "\", \"name\" : \"" + this.firstName + " " + this.lastName + "\"}";
+		return "{\"id\" : " + this.id + ", \"name\" : \"" + this.firstName + " " + this.lastName + "\"}";
 	}
 	
 	@Override

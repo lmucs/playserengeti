@@ -122,7 +122,7 @@ public class Location {
 
 	public String asJSON() {
 		String owner = this.owner != null ? this.owner.asMinimalJSON() : "{\"id\" : \"\", \"name\" : \"In Conflict\"}";
-		return "{\"id\" : \"" + this.id + "\", \"name\" : \"" + this.name + "\", \"latitude\" : \"" + 
+		return "{\"id\" : " + this.id + ", \"name\" : \"" + this.name + "\", \"latitude\" : \"" + 
 		    this.latitude + "\", \"longitude\" : \"" + this.longitude + "\", \"street\" : \"" + this.street + 
 		    "\", \"city\" : \"" + this.city + "\", \"state\" " + this.state + "\", \"zipcode\" : \"" + this.zipcode + 
 		    "\", \"owner\" : \"" + owner + "\", \"phoneNumber\" : \"" + this.phoneNumber + 
@@ -133,6 +133,7 @@ public class Location {
 		return "{\"id\" : \"" + this.id + "\", \"name\" : \"" + this.name + "\", \"latitude\" : \"" + 
 	    this.latitude + "\", \"longitude\" : \"" + this.longitude + "\"}";
 	}
+	
 	/**
 	 * Gets the full address of the location.
 	 * Had to do it like this because the .jsp pages wouldn't
