@@ -110,7 +110,8 @@ div#navbar2 {
 .mainContentArea {
 	background-color: #FFFFFF;
 	margin: 0px;
-	padding: .1px;
+	padding-top: 1px;
+	padding-bottom: 1px;
     left: 24px
 }
 
