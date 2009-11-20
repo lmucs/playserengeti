@@ -418,15 +418,15 @@ a.signup-button {
 .allLeftArrows {
 	margin-right: 5px;
 	position: relative;
-	left: 234;
+	left: 238;
 	z-index: 2;
 }
 
 .allRightArrows {
 	margin-right: 20px;
 	margin-bottom: 200px;
-	position: absolute;
-	right: 206;
+	position: relative;
+	right: -573;
 	z-index: 2;
 }
 
