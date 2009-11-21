@@ -3,14 +3,14 @@ body {
   margin: 0 auto 0 auto;
   max-width: 960px;
   min-width: 960px;
-    padding: 0 20px 10px 20px;
+  padding: 0 20px 10px 20px;
 }
 
 div#container {
-    background: white;
-    margin-left: auto;
-    margin-right: auto;
-    width: 960px;
+  background: white;
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
 }
 
 div#header {
@@ -18,18 +18,14 @@ div#header {
   position: relative;
   height: 150px;
   background-color: #d092ff;
-  padding-bottom: 4px;
   margin-bottom: 8px;
 }
 
-
 div#navbar2 {
-    background-color:#445544;
-    height:40px;
-    padding:0;
-    position:absolute;
-    right:40px;
-    top:11px;
+  background-color: white;
+  position: absolute;
+  right: 40px;
+  top: 8px;
   -moz-border-radius-bottomleft: 3px;
   -moz-border-radius-bottomright: 3px;
   -moz-border-radius-topleft: 3px;
@@ -40,35 +36,29 @@ div#navbar2 {
   -webkit-border-bottom-right-radius: 3px;
 }
 
-
 #navbar2 ul {
   font-size: 13px;
-  line-height: 40px;
   margin: 0;
-  padding: 0;
+  padding: 7px 0;
 }
 
 #navbar2 li {
   display: inline;
   list-style-type: none;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #navbar2 li a {
-  color: #BBAA88;
-  padding: 7px 10px;
+  color: #134200;
+  padding: 4px 10px;
   text-decoration: none;
 }
 
-
-
-
-#navbar2 li {
-  display: inline;
-  list-style-type: none;
+#navbar2 a:hover {
+  background-color: #134209;
+  color: white;
 }
-
-
-
 
 .loginbar {
   position: absolute;
@@ -146,11 +136,6 @@ a:link {
 
 a:visited {
   color: #8899BB;
-}
-
-#navbar2 a:hover {
-  background-color: #398F39;
-  color: white;
 }
 
 .formLabel {
