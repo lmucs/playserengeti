@@ -57,7 +57,9 @@
         <tiles:insertAttribute name="header"/>
 
         <div class="mainContentArea container_12">
-            <tiles:insertAttribute name="login"/>
+            <div class="pagetitle">
+                <tiles:insertAttribute name="title" value="${title}"/>
+            </div>
             <tiles:insertAttribute name="body"/>
         </div>
 
