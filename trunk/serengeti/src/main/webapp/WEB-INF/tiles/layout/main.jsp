@@ -24,52 +24,43 @@
         <script type="text/javascript"
             src="${pageContext.request.contextPath}/scripts/json2.js">
         </script>
-
     </head>
 
     <body>
 
-    <div id="container">
-    <div id="header">
+        <div id="container">
+        <div id="header">
         <img src="${pageContext.request.contextPath}/images/banner.jpg"/>
         <map id="hmap" name ="hmap">
-            <area href="${pageContext.request.contextPath}/" shape="rect" coords="18,0, 356, 129"/>
+            <area href="${pageContext.request.contextPath}/" shape="rect" coords="18,0,356,129"/>
+        </map>
         <div id="navbar2">
           <ul>
-              <li><a href="${pageContext.request.contextPath}/">Home  </a></li>
+              <li><a href="${pageContext.request.contextPath}/">Home</a></li>
               <c:if test="${session.loggedIn}">
-                  <li><a href="${pageContext.request.contextPath}/user/${session.user.id}" >Profile</a></li>
+                  <li><a href="${pageContext.request.contextPath}/user/${session.user.id}">Profile</a></li>
+              </c:if>
+              <c:if test="${not session.loggedIn}">
+                  <li><a href="${pageContext.request.contextPath}/user/signin">Log In</a></li>
               </c:if>
               <li><a href="${pageContext.request.contextPath}/user">Users</a></li>
               <li><a href="${pageContext.request.contextPath}/team">Teams</a></li>
               <li><a href="${pageContext.request.contextPath}/location">Locations</a></li>
-              <li><a href="link5.html ">Help</a></li>
-              <li><a href="link6.html ">Settings</a></li>
+              <li><a href="${pageContext.request.contextPath}/help">Help</a></li>
               <c:if test="${session.loggedIn}">
                   <li><a href="${pageContext.request.contextPath}/user/logout">Log Out</a></li>
               </c:if>
           </ul>
-      </div>
-    </div>
-</div>
+        </div>
+        </div>
+        </div>
+        <tiles:insertAttribute name="header"/>
 
+        <div class="mainContentArea container_12">
+            <tiles:insertAttribute name="login"/>
+            <tiles:insertAttribute name="body"/>
+        </div>
 
-
-
-
-
-
-
-
-          <tiles:insertAttribute name="header"/>
-
-
-
-          <div class="mainContentArea container_12">
-              <tiles:insertAttribute name="login"/>
-              <tiles:insertAttribute name="body"/>
-          </div>
-
-          <tiles:insertAttribute name="footer"/>
+        <tiles:insertAttribute name="footer"/>
     </body>
 </html>
