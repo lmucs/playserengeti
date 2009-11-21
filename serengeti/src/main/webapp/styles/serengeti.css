@@ -97,7 +97,11 @@ div#navbar2 {
   margin: 0px;
   padding-top: 1px;
   padding-bottom: 1px;
-    left: 24px
+  left: 24px;
+  -moz-border-radius-bottomleft: 8px;
+  -moz-border-radius-bottomright: 8px;
+  -webkit-border-bottom-left-radius: 8px;
+  -webkit-border-bottom-right-radius: 8px;
 }
 
 #signUpArea {
