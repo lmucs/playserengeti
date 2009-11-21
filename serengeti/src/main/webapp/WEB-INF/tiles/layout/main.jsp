@@ -41,7 +41,7 @@
                   <li><a href="${pageContext.request.contextPath}/user/${session.user.id}">Profile</a></li>
               </c:if>
               <c:if test="${not session.loggedIn}">
-                  <li><a href="${pageContext.request.contextPath}/user/signin">Log In</a></li>
+                  <li><a href="${pageContext.request.contextPath}/user/login">Log In</a></li>
               </c:if>
               <li><a href="${pageContext.request.contextPath}/user">Users</a></li>
               <li><a href="${pageContext.request.contextPath}/team">Teams</a></li>
