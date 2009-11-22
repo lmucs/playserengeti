@@ -82,7 +82,7 @@ insert into player (email, password_hash, first_name, last_name) values ('lgratr
 insert into player (email, password_hash, first_name, last_name) values ('mueller.chris0@gmail.com', md5('chris'), 'Chris', 'Mueller');
 insert into player (email, password_hash, first_name, last_name) values ('jcol88@gmail.com', md5('james'), 'James', 'Coleman');
 insert into player (email, password_hash, first_name, last_name) values ('mxchickmagnet86@gmail.com', md5('chick'), 'Chick', 'Magnet');
-insert into player (email, password_hash, first_name, last_name) values ('malevolentman87@gmail.com', md5('egardo'), 'Edgardo', 'Ineguez');
+insert into player (email, password_hash, first_name, last_name) values ('malevolentman87@gmail.com', md5('edgardo'), 'Edgardo', 'Ineguez');
 insert into player (email, password_hash, first_name, last_name) values ('djscythe15@gmail.com', md5('don'), 'Don', 'Murphy');
 
 insert into team (name, description, home_base, leader_id) values ('UmpaLumpas', 'Doopidy Doo', 'The Factory', 1);
