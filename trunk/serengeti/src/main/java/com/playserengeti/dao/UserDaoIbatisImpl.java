@@ -48,9 +48,7 @@ public class UserDaoIbatisImpl extends SqlMapClientDaoSupport implements UserDao
 	@Override
 	public Integer insertUserWithPassword(User user, String password) {
 		Map<String,Object> parameterMap = new HashMap<String,Object>();
-		parameterMap.put("email", user.getEmail());
-		parameterMap.put("firstName", user.getFirstName());
-		parameterMap.put("lastName", user.getLastName());
+		parameterMap.put("user", user);
 		parameterMap.put("password", password);
 		getSqlMapClientTemplate().insert(
 				"insertUserWithPassword",
