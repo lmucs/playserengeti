@@ -19,28 +19,30 @@
             <map>
                 <entry key="/" value-ref="welcomeController" />
                 <entry key="/index.html" value-ref="welcomeController" />
-                                			
+
                 <!--
                 <entry key="/login" value-ref="loginController" />
                 <entry key="/logout" value-ref="logoutController" />
                 <entry key="/error/*" value-ref="errorController" />
                 -->
-                
+
                 <entry key="/user/create" value-ref="userCreateController" />
                 <entry key="/user/update" value-ref="userUpdateController" />
                 <entry key="/user/delete" value-ref="userDeleteController" />
                 <entry key="/user/login" value-ref="userLoginController" />
                 <entry key="/user" value-ref="userController" />
                 <entry key="/user/*" value-ref="userController" />
-                
+
                 <entry key="/team/create" value-ref="teamCreateController" />
                 <entry key="/team/update" value-ref="teamUpdateController" />
                 <entry key="/team" value-ref="teamController" />
                 <entry key="/team/*" value-ref="teamController" />
-                
+
                 <entry key="/location/create" value-ref="locationCreateController" />
                 <entry key="/location" value-ref="locationController" />
                 <entry key="/location/*" value-ref="locationController" />
+
+                <entry key="/help" value-ref="helpController" />
             </map>
         </property>
     </bean>
@@ -74,10 +76,14 @@
         <property name="session" ref="userSession"/>
     </bean>
 
+    <bean id="helpController"
+        class="com.playserengeti.controller.HelpController">
+    </bean>
+
     <!--
         User Controllers and Such
     -->
-    
+
     <bean id="userController"
        class="com.playserengeti.controller.UserController">
        <property name="methodNameResolver">
@@ -89,8 +95,8 @@
        <constructor-arg ref="teamService"/>
        <constructor-arg ref="locationService"/>
        <constructor-arg ref="visitService"/>
-    </bean>  
-     
+    </bean>
+
     <bean id="userCreateController"
         class="com.playserengeti.controller.UserCreateController">
         <property name="commandClass"
@@ -137,15 +143,15 @@
         <constructor-arg ref="userService"/>
         <constructor-arg ref="teamService"/>
     </bean>
-    
+
     <bean id="userCreateValidator"
         class="com.playserengeti.controller.UserCreateValidator">
     </bean>
-    
+
     <bean id="userLoginValidator"
         class="com.playserengeti.controller.UserLoginValidator">
     </bean>
-    
+
     <bean id="userDeleteValidator"
         class="com.playserengeti.controller.UserDeleteValidator">
     </bean>
@@ -153,14 +159,14 @@
     <bean id="userUpdateValidator"
         class="com.playserengeti.controller.UserUpdateValidator">
     </bean>
-    
+
     <bean id="userService"
         class="com.playserengeti.service.UserService">
         <constructor-arg ref="userDao"/>
         <constructor-arg ref="friendshipDao"/>
     </bean>
 
-<!-- 
+<!--
     <bean id="userDao"
         class="com.playserengeti.dao.UserDaoMockImpl">
     </bean>
@@ -188,8 +194,8 @@
         <property name="session" ref="userSession"/>
         <constructor-arg ref="teamService"/>
         <constructor-arg ref="userService"/>
-     </bean>    
-     
+     </bean>
+
      <bean id="teamCreateController"
         class="com.playserengeti.controller.TeamCreateController">
         <property name="commandClass"
@@ -215,7 +221,7 @@
         <constructor-arg ref="teamService"/>
         <constructor-arg ref="userService"/>
     </bean>
-    
+
     <bean id="teamCreateValidator"
         class="com.playserengeti.controller.TeamCreateValidator">
     </bean>
@@ -253,8 +259,8 @@
         <constructor-arg ref="locationService"/>
         <constructor-arg ref="teamService"/>
         <constructor-arg ref="visitService"/>
-     </bean>    
-     
+     </bean>
+
     <bean id="locationCreateController"
         class="com.playserengeti.controller.LocationCreateController">
         <property name="commandClass"
