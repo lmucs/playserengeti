@@ -1,0 +1,6 @@
+~/tomcat/bin/shutdown.sh
+mvn -Dmaven.test.skip=true clean package
+rm -rf ~/tomcat/webapps/serengeti*
+rm *.log*
+cp target/serengeti.war ~/tomcat/webapps/serengeti.war
+~/tomcat/bin/startup.sh
