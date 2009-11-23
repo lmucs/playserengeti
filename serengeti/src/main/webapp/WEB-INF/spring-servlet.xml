@@ -78,6 +78,7 @@
 
     <bean id="helpController"
         class="com.playserengeti.controller.HelpController">
+        <property name="session" ref="userSession"/>
     </bean>
 
     <!--
