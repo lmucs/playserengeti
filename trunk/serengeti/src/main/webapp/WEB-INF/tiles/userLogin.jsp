@@ -22,6 +22,6 @@
     <div class="clear"></div>
     <div class="grid_2">&nbsp;</div>
     <div class="grid_3">
-        <input type="submit" value="Sign up!"/>
+        <input type="submit" value="Login"/>
     </div>
 </form:form>

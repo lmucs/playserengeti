@@ -59,20 +59,13 @@ div#navbar2 {
   color: white;
 }
 
-.loginbar {
-  position: absolute;
-  top: 65px;
-  right: 60px;
-  font-size:13px;
-}
-
 #loginEmail, #loginPassword {
     width: 110;
     height: 25;
     font-size: 13px;
 }
 
-#login{
+#login {
     height: 25;
     font-size: 13px;
     padding-bottom: 2;
@@ -80,11 +73,15 @@ div#navbar2 {
 
 .pagetitle {
   background-color: transparent;
-  color: #CC5500;
+  color: #740;
   font-size: 175%;
   font-weight: bold;
   margin: 0 0 0.25em 0.25em;
   text-decoration: none;
+}
+
+.grid_3 input {
+  margin-bottom: 6px;
 }
 
 .mainlogo {
@@ -95,7 +92,7 @@ div#navbar2 {
   background-color: #FFFFFF;
   margin-left: 0 auto 0 auto;
   width: 960px;
-  padding: 1em 0;
+  padding: 1em 0 2em;
   -moz-border-radius-bottomleft: 8px;
   -moz-border-radius-bottomright: 8px;
   -webkit-border-bottom-left-radius: 8px;
