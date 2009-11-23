@@ -102,12 +102,13 @@ div#navbar2 {
 div.home-page-introduction {
   text-align: justify;
   margin: 0.5em 3em;
-  font: 125%/1.5em sans-serif;
+  font-size: 120%;
+  line-height: 1.4em;
 }
 
 div.signup-button {
   float: right;
-  margin: 0 0 1em 1em;
+  margin: 0.5em 0 1em 1em;
 }
 
 div.signup-button a {
@@ -150,7 +151,17 @@ div.signup-button a {
   padding: 1em;
 }
 
+#help dl {
+  margin-left: 2em;
+}
 
+#help dt {
+  font-style: italic;
+}
+
+#help dd {
+  margin: 0.25em 2em 1.25em 2em;
+}
 
 table {
   border: 1px solid #228811;

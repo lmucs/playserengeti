@@ -11,7 +11,7 @@
         This application provides both the backend Serengeti services and a web
         frontend.
     </description>
-    
+
     <!--  Tuckey URL Rewrite Filter -->
     <filter>
         <filter-name>UrlRewriteFilter</filter-name>
@@ -23,7 +23,7 @@
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
-    
+
 
     <!-- Location of Spring application context -->
     <context-param>
@@ -111,7 +111,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>spring</servlet-name>
-    <url-pattern>/visit/*</url-pattern>
+        <url-pattern>/visit/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/help/*</url-pattern>
     </servlet-mapping>
     <!--
     <servlet-mapping>
