@@ -109,9 +109,7 @@
         layout(uData);
         lSearch = new google.search.LocalSearch();
         lSearch.setSearchCompleteCallback(this, searchComplete);
-        userLoc = google.loader.ClientLocation.address.city;
-        alert(userLoc);
-                      
+        userLoc = google.loader.ClientLocation.address.city;                      
     });
         
     var populate = function(data) {
