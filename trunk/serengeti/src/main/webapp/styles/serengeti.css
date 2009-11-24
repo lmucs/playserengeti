@@ -297,6 +297,7 @@ ul.hor_menu {
 .hor_menu a {
   display: block;
   text-decoration: none;
+  text-align: center;
 }
 
 .hor_menu span {
