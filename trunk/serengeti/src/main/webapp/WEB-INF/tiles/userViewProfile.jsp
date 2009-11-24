@@ -109,6 +109,7 @@
         layout(uData);
         lSearch = new google.search.LocalSearch();
         lSearch.setSearchCompleteCallback(this, searchComplete);
+        lSearch.setAddressLookupMode(google.search.LocalSearch.ADDRESS_LOOKUP_DISABLED);
         userLoc = google.loader.ClientLocation.address.city;                      
     });
         
@@ -172,7 +173,7 @@
 
     var searchLoc = function() {
         lSearch.execute($("#searchText").val() + " " + userLoc);
-        
+        $("#locSelect").empty();
         $("#locSearch").fadeOut("slow");
         $("#locList").append("<a href=../location/create>Add Location</a>");
     };
@@ -180,16 +181,22 @@
     var searchComplete = function() {
         if (lSearch.results && lSearch.results.length > 0) {
             var results = lSearch.results;
-            $("#locSelect").empty();
             jQuery.each(results, function(i, val) {
+                 var number = "";
+                 if (val.phoneNumbers) {
+                     number = val.phoneNumbers[0].number;
+                 }
                  var request = $.get("../location/handleResult", {name : val.titleNoFormatting, lat : parseFloat(val.lat), 
                     lng : parseFloat(val.lng) , street : val.streetAddress, city : val.city, 
-                    state : val.region, phone : val.phoneNumbers[0].number}, 
+                    state : val.region, phone : number}, 
                         function(data) {
                             var jsonData = JSON.parse(request.responseText);
                             $("#locSelect").append("<option value=" + jsonData.id + ">" + jsonData.name + "</option>");
                         });
             });
+        }
+        else {
+            $("#locSelect").replaceWith("<p>We couldn't find any locations by that name.</p>");
         }
     };
     
