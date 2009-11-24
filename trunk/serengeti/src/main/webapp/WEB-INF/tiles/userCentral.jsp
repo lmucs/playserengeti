@@ -28,7 +28,7 @@
 		<li><a href="${user.id}"><img
 			src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user"
 			title="${user.email}" /></a> <span><c:out value="${user.email}" />
-		</span><a href="${user.email}" ><c:out value="${user.email}"/></a></li>
+		</span><a href="${user.firstName}" ><c:out value="${user.firstName}"/></a></li>
 	</c:forEach>
 </ul>
 
@@ -82,7 +82,7 @@
 		<li><a href="${user.id}"><img
 			src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user"
 			title="${user.email}" /></a> <span><c:out value="${user.email}" />
-		</span><a href="${user.email}" ><c:out value="${user.email}"/></a></li>
+		</span><a href="${user.firstName}" ><c:out value="${user.firstName}"/></a></li>
 	</c:forEach>
 </ul>
 
@@ -134,7 +134,7 @@
 		<li><a href="${user.id}"><img
 			src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user"
 			title="${user.email}" /></a> <span><c:out value="${user.email}" />
-		</span><a href="${user.email}" ><c:out value="${user.email}"/></a></li>
+		</span><a href="${user.firstName}" ><c:out value="${user.firstName}"/></a></li>
 	</c:forEach>
 </ul>
 
