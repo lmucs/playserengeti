@@ -94,14 +94,14 @@
 </c:choose>
 
 <!--  for www.playserengeti.com/ -->
-<script src="http://www.google.com/jsapi?key=ABQIAAAAR7Sxf2_KPHIRpaQfwXvauxQv3_WweJVuwpcJAWKgPpUMcLTc4xQYN-YeOeFB1YWbBQhMjMutwLRpug" type="text/javascript"></script>       
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
 
-<!-- for my (chris's) current ip 
-<script src="http://www.google.com/jsapi?key=ABQIAAAAR7Sxf2_KPHIRpaQfwXvauxTV9sNDj7EGQqasiMJiVHRR1vQelhRrCGaAWX6_EKQK_ltqJYiuCxiTlQ" type="text/javascript"></script>
--->
 <script>
+    google.load('search', '1');
+
     var uData;
     var lSearch;
+    var userLoc;
     
     $(function() {
         uData = JSON.parse('${profileData}');
@@ -109,6 +109,8 @@
         layout(uData);
         lSearch = new google.search.LocalSearch();
         lSearch.setSearchCompleteCallback(this, searchComplete);
+        userLoc = google.loader.ClientLocation.address.city;
+        alert(userLoc);
                       
     });
         
@@ -171,7 +173,7 @@
     };
 
     var searchLoc = function() {
-        lSearch.execute($("#searchText").val());
+        lSearch.execute($("#searchText").val() + " " + userLoc);
         
         $("#locSearch").fadeOut("slow");
         $("#locList").append("<a href=../location/create>Add Location</a>");
@@ -182,9 +184,9 @@
             var results = lSearch.results;
             $("#locSelect").empty();
             jQuery.each(results, function(i, val) {
-                 var request = $.get("../../location/handleResult", {name : val.title, lat : parseFloat(val.lat), 
+                 var request = $.get("../location/handleResult", {name : val.titleNoFormatting, lat : parseFloat(val.lat), 
                     lng : parseFloat(val.lng) , street : val.streetAddress, city : val.city, 
-                    state : val.region, phone : val.phoneNumbers[0]}, 
+                    state : val.region, phone : val.phoneNumbers[0].number}, 
                         function(data) {
                             var jsonData = JSON.parse(request.responseText);
                             $("#locSelect").append("<option value=" + jsonData.id + ">" + jsonData.name + "</option>");
