@@ -116,7 +116,7 @@ public class UserController extends MultiActionController {
         Integer teamId = Integer.valueOf(request.getParameter("teamId"));
         Integer locationId = Integer.valueOf(request.getParameter("locationId"));
 
-        visitService.checkIn(userId, teamId, locationId);
+        if (!userId.equals(-1)) visitService.checkIn(userId, teamId, locationId);
     }
 
     public void removeFriend(HttpServletRequest request, HttpServletResponse response) {
@@ -137,27 +137,29 @@ public class UserController extends MultiActionController {
         Integer pUserId = Integer.valueOf(request.getParameter("pUserId"));
         Integer sUserId = Integer.valueOf(request.getParameter("sUserId"));
 
-        userService.inviteFriend(pUserId, sUserId);
+        if (!pUserId.equals(-1)) userService.inviteFriend(pUserId, sUserId);
     }
 
     public void acceptFriendInvite(HttpServletRequest request, HttpServletResponse response) {
         Integer pUserId = Integer.valueOf(request.getParameter("pUserId"));
         Integer sUserId = Integer.valueOf(request.getParameter("sUserId"));
 
-        userService.acceptFriendInvite(pUserId, sUserId);
-        try {
-    		PrintWriter out = response.getWriter();
-    		out.println(userService.getUserById(pUserId).asMinimalJSON());	
+        if (!sUserId.equals(-1)) {
+        	userService.acceptFriendInvite(pUserId, sUserId);
+        
+            try {
+    		    PrintWriter out = response.getWriter();
+    		    out.println(userService.getUserById(pUserId).asMinimalJSON());	
+            }
+    	    catch(IOException e) {}
         }
-    	catch(IOException e) {}
-
     }
 
     public void rejectFriendInvite(HttpServletRequest request, HttpServletResponse response) {
         Integer pUserId = Integer.valueOf(request.getParameter("pUserId"));
         Integer sUserId = Integer.valueOf(request.getParameter("sUserId"));
 
-        userService.rejectFriendInvite(pUserId, sUserId);
+        if (!sUserId.equals(-1)) userService.rejectFriendInvite(pUserId, sUserId);
     }
 
     public void sendTeamInvite(HttpServletRequest request, HttpServletResponse response) {
@@ -171,19 +173,22 @@ public class UserController extends MultiActionController {
         Integer teamId = Integer.valueOf(request.getParameter("teamId"));
         Integer userId = Integer.valueOf(request.getParameter("userId"));
 
-        teamService.acceptTeamInvite(teamId, userId);
-        try {
-    		PrintWriter out = response.getWriter();
-    		out.println(teamService.getTeamById(teamId).asMinimalJSON());	
+        if (!userId.equals(-1)) {
+        	teamService.acceptTeamInvite(teamId, userId);
+        
+            try {
+    		    PrintWriter out = response.getWriter();
+    		    out.println(teamService.getTeamById(teamId).asMinimalJSON());	
+            }
+    	    catch(IOException e) {}
         }
-    	catch(IOException e) {}
     }
 
     public void rejectTeamInvite(HttpServletRequest request, HttpServletResponse response) {
         Integer teamId = Integer.valueOf(request.getParameter("teamId"));
         Integer userId = Integer.valueOf(request.getParameter("userId"));
 
-        teamService.rejectTeamInvite(teamId, userId);
+        if (!userId.equals(-1)) teamService.rejectTeamInvite(teamId, userId);
     }
 
     private String generateProfileData(Integer userId) {
@@ -211,13 +216,19 @@ public class UserController extends MultiActionController {
                 }
             }
         }
+        Integer sessionId;
+        if (session.isLoggedIn()) sessionId = session.getUser().getId();
+        else {
+        	sessionId = -1;
+        }
+        
         String result = "{\"user\" : " + user.asJSON() + ", \"friends\" : " + userService.asJSON(friends) +
             ", \"teams\" : " + teamService.asJSON(teams) + /*", \"locations\" : " + 
             locationService.asJSON(nearbyLocations) + */", \"invites\" : {\"friendInvites\" : " + 
             userService.asJSON(friendInvites) + ", \"teamInvites\" : " + 
             teamService.asJSON(teamInvites) + "}, \"eligableTeams\" : " + 
             teamService.asJSON(teamsToInviteTo) + ", \"alreadyFriends\" : \"" + alreadyFriends +
-            "\"}";
+            "\", \"sessionId\" : \"" + sessionId + "\"}";
         
     	return result;
     }
