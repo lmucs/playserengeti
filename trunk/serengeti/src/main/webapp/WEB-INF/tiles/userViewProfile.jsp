@@ -4,103 +4,112 @@
 
 <c:choose>
     <c:when test='${!empty userCommand}'>
-        <div id="ownProfile">
-        
-            <div class="grid_10 prefix_1" id="checkIn">
-                <div class="grid_4" id="locList">
-                    <p>Checkin from:</p>
-                    <select id="locSelect">
-                        <c:forEach var="location" items="${nearbyLocations}">
-                            <option value="${location.id}"><c:out value="${location.name}"/></option>
-                        </c:forEach>
-                    </select>
+        <c:if test="${session.loggedIn}">
+            <div id="ownProfile">
+                     
+                <div class="grid_10 prefix_1" id="thanks">
+                    <p>Thank you for checking in.</p>
                 </div>
-                <div class="grid_4" id="teamList">
-                    <p>As a member of team:</p>
-                    <select id="teamSelect"></select>
-                </div>
-                    <input type="button" value="Check In" onClick="checkIn()"/>
-            </div>
-            
-            <div class="grid_4" id="info">
-                <div class="grid_2">
-	            	<strong>Email Address: </strong>
-	            </div>
-	            <div class="grid_2">
-	                <p id="email"></p>
-	            </div>
-	            
-	            <div class="grid_2">
-	                <strong>Name: </strong>
-	            </div>
-	            <div class="grid_2">
-	                <p id="name"></p>
-	            </div>
-	            
-	            <div class="grid_2">
-	                <strong>Friends: </strong>
-	            </div>
-	            <div class="grid_2">
-	                <ul id="friends"></ul>
-	            </div>
-	                   
-	            <div class="grid_2">
-	                <strong>Teams: </strong>
-	            </div>
-	            <div class="grid_2">
-	                <ul id="teams"></ul> 
-	            </div>
-            </div>
-            
-            <div class="grid_5 prefix_1" id="friendRequests">
-                <p>These people want to be your friend.</p>
-                <ul id="friendInvites"></ul>
-            </div>
-            
-            <div class="grid_5 prefix_1" id="teamRequests">
-                <p>You have been invited to the following teams.</p>
-                <ul id="teamInvites"></ul>
-            </div>
                     
-            <div id="thanks">
-                <p>Thank you for checking in.</p>
-            </div>
-                    
-            
-        </div>       
-             
-        <div id="othersProfile">
-            <c:if test="${session.loggedIn}">
-                <div id="sendInvites">
-                    <div id="inviteFriend">
-                        <input type="button" value="Send friend request" onClick="sendFriendInvite()"/>
-                    </div>   
-                    <div id="inviteTeam">
-                        <select id="teamInviteSelect"></select>
-                        <input type="button" value="Send Team Invitation" onClick="sendTeamInvite()"/>
+                <div class="grid_10 prefix_1" id="checkIn">
+                    <div class="grid_4" id="locList">
+                        <p>Checkin from:</p>
+                        <select id="locSelect">
+                            <c:forEach var="location" items="${nearbyLocations}">
+                                <option value="${location.id}"><c:out value="${location.name}"/></option>
+                            </c:forEach>
+                        </select>
+                        <input id="notHere" type="button" value="Not Here?" onClick="showSearch()"/>
                     </div>
-                </div>                        
-            </c:if>
-        </div>
+                    <div class="grid_4" id="locSearch">
+                        <input id="searchText" type="text" value="Where are you?">
+                        <input type="button" value="Search" onClick="searchLoc()"/>
+                    </div>
+                    <div class="grid_4"  id="teamList">
+                        <p>As a member of team:</p>
+                        <select id="teamSelect"></select>
+                    </div>
+                    <input type="button" value="Check In" onClick="checkIn()"/>           
+                </div>
+                <div class="grid_5 prefix_1" id="friendRequests">
+                    <p>These people want to be your friend.</p>
+                    <ul id="friendInvites"></ul>
+                </div>
             
-        
-        <c:if test="${session.user.id == userCommand.userId}">
-            <a href="update/${userCommand.userId}">Edit Profile</a><br/>
+                <div class="grid_5 prefix_1" id="teamRequests">
+                    <p>You have been invited to the following teams.</p>
+                    <ul id="teamInvites"></ul>
+                </div>
+            </div>       
+             
+            <div id="othersProfile">
+                <c:if test="${session.loggedIn}">
+                    <div id="sendInvites">
+                        <div id="inviteFriend">
+                            <input type="button" value="Send friend request" onClick="sendFriendInvite()"/>
+                        </div>   
+                        <div id="inviteTeam">
+                            <select id="teamInviteSelect"></select>
+                            <input type="button" value="Send Team Invitation" onClick="sendTeamInvite()"/>
+                        </div>
+                    </div>                        
+                </c:if>
+            </div>
         </c:if>
+            
+        <div class="grid_4" id="info">
+            <div class="grid_2">
+	          	<strong>Email Address: </strong>
+	        </div>
+	        <div class="grid_2">
+	            <p id="email"></p>
+	        </div>
+	          
+	        <div class="grid_2">
+	            <strong>Name: </strong>
+	        </div>
+	        <div class="grid_2">
+	            <p id="name"></p>
+	        </div>
+	            
+	        <div class="grid_2">
+	            <strong>Friends: </strong>
+	        </div>
+	        <div class="grid_2">
+	            <ul id="friends"></ul>
+	        </div>
+	                   
+	        <div class="grid_2">
+	            <strong>Teams: </strong>
+	        </div>
+	        <div class="grid_2">
+	            <ul id="teams"></ul> 
+	        </div>
+        </div>
+        <div id="edit"></div>
     </c:when>
     <c:otherwise>
         <p>The user you requested does not exist.</p>
     </c:otherwise>
 </c:choose>
-        
+
+<!--  for www.playserengeti.com/ -->
+<script src="http://www.google.com/jsapi?key=ABQIAAAAR7Sxf2_KPHIRpaQfwXvauxQv3_WweJVuwpcJAWKgPpUMcLTc4xQYN-YeOeFB1YWbBQhMjMutwLRpug" type="text/javascript"></script>       
+
+<!-- for my (chris's) current ip 
+<script src="http://www.google.com/jsapi?key=ABQIAAAAR7Sxf2_KPHIRpaQfwXvauxTV9sNDj7EGQqasiMJiVHRR1vQelhRrCGaAWX6_EKQK_ltqJYiuCxiTlQ" type="text/javascript"></script>
+-->
 <script>
     var uData;
+    var lSearch;
     
     $(function() {
         uData = JSON.parse('${profileData}');
         populate(uData);
         layout(uData);
-                     
+        lSearch = new google.search.LocalSearch();
+        lSearch.setSearchCompleteCallback(this, searchComplete);
+                      
     });
         
     var populate = function(data) {
@@ -127,11 +136,11 @@
             $("#teamInviteSelect").append("<option value=" + val.id + ">" + val.name + "</option>");
             });
         $("#email").append(data.user.email);
-        $("#name").append(data.user.firstName + " " + data.user.lastName);
+        $("#name").append(data.user.name);
     };
     
     var layout = function(data) {
-        if (${session.user.id} == data.user.id) { 
+        if (data.sessionId == data.user.id) { 
             $("#othersProfile").hide();
             $("#thanks").hide();
             if (data.invites.friendInvites.length === 0) {
@@ -140,6 +149,8 @@
             if (data.invites.teamInvites.length === 0) {
                 $("#teamRequests").hide();
             }
+            $("#edit").html("<a href=update/" + data.user.id + ">Edit Profile</a>");
+            $("#locSearch").hide();
         }
         else {
             $("#ownProfile").hide();
@@ -153,20 +164,50 @@
 
     };
     
+    var showSearch = function(){
+        $("#locSearch").fadeIn("slow");
+        $("#notHere").fadeOut("slow");
+        
+    };
+
+    var searchLoc = function() {
+        lSearch.execute($("#searchText").val());
+        
+        $("#locSearch").fadeOut("slow");
+        $("#locList").append("<a href=../location/create>Add Location</a>");
+    };
+    
+    var searchComplete = function() {
+        if (lSearch.results && lSearch.results.length > 0) {
+            var results = lSearch.results;
+            $("#locSelect").empty();
+            jQuery.each(results, function(i, val) {
+                 var request = $.get("../../location/handleResult", {name : val.title, lat : parseFloat(val.lat), 
+                    lng : parseFloat(val.lng) , street : val.streetAddress, city : val.city, 
+                    state : val.region, phone : val.phoneNumbers[0]}, 
+                        function(data) {
+                            var jsonData = JSON.parse(request.responseText);
+                            $("#locSelect").append("<option value=" + jsonData.id + ">" + jsonData.name + "</option>");
+                        });
+            });
+        }
+    };
+    
     var checkIn = function() {
-        $.get("checkIn", {userId : ${userCommand.userId}, teamId : $("select#teamSelect").val(), 
+        $.get("checkIn", {userId : uData.sessionId, teamId : $("select#teamSelect").val(), 
             locationId : $("select#locSelect").val()}
         );
-        $("#checkIn").fadeOut("slow", function() {$("#thanks").fadeIn("slow");}); 
+        $("#checkIn").fadeOut("slow");
+        $("#thanks").fadeIn("slow"); 
     };
     
     var sendFriendInvite = function () {
-        $.get("sendFriendInvite", {pUserId : ${session.user.id}, sUserId : uData.user.id});
+        $.get("sendFriendInvite", {pUserId : uData.sessionId, sUserId : uData.user.id});
         $("#inviteFriend").fadeOut("slow");
     };
     
     var acceptFriendInvite = function (userId) {
-        var request = $.get("acceptFriendInvite", {pUserId : userId, sUserId : ${session.user.id}},
+        var request = $.get("acceptFriendInvite", {pUserId : userId, sUserId : uData.sessionId},
             function(data) {
                 var jsonData = JSON.parse(request.responseText);
                 $("#friends").append("<li><a href=" + jsonData.id + ">" + jsonData.name + "</a></li>");
@@ -175,7 +216,7 @@
     };
     
     var rejectFriendInvite = function (userId) {
-        $.get("rejectFriendInvite", {pUserId : userId, sUserId : ${session.user.id}});
+        $.get("rejectFriendInvite", {pUserId : userId, sUserId : uData.sessionId});
         $("#friendInvite_" + userId).fadeOut("slow");
     };
     
@@ -185,7 +226,7 @@
     };
     
     var acceptTeamInvite = function (teamId) {
-        var request = $.get("acceptTeamInvite", {teamId : teamId, userId : ${session.user.id}}, 
+        var request = $.get("acceptTeamInvite", {teamId : teamId, userId : uData.sessionId}, 
             function(data){
                 var jsonData = JSON.parse(request.responseText);
                 $("#teams").append("<li><a href=../team/" + jsonData.id + ">" + jsonData.name + "</a></li>");
@@ -195,7 +236,7 @@
     };
     
     var rejectTeamInvite = function (teamId) {
-        $.get("rejectTeamInvite", {teamId : teamId, userId : ${session.user.id}});
+        $.get("rejectTeamInvite", {teamId : teamId, userId : uData.sessionId});
         $("#teamInvite_" + teamId).fadeOut("slow");
     };
     
