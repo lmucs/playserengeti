@@ -14,33 +14,10 @@
 		<div class="grid_6" id="map_canvas"></div>
         
         <div class="clear">&nbsp;</div>
-        
-        <div class="grid_3">
-	        <p>Locations near you</p>
-	    </div>
 
 	</div>
 	
 	<div class="clear">&nbsp;</div>
-
-<!-- 	
-	<div class="grid_3 prefix_3">    
-        <div class="hor_menu Locations">
-	        <ul class="hor_menu">
-	            <c:forEach var="location" items="${nearbyLocations}">
-	               <li>
-	                   <a href="${location.id}" > <img src="${pageContext.request.contextPath}/images/avatar.jpg" alt="location" title="${location.name}" <c:out value="${location.name}"/></a>
-	               </li>
-	            </c:forEach>
-	        </ul>
-	    </div>
-	    
-	    </div>
-	    <div class="clear">&nbsp;</div>
-<script type="text/javascript">
-            scrollbar(["Locations"]);
-        </script>
- -->
  
  <div class="shadowText">
 <p>Locations Near You</p>
@@ -68,7 +45,8 @@
 		<li><a href="${location.id}"><img
 			src="${pageContext.request.contextPath}/images/avatar.jpg" alt="team"
 			title="${location.name}" /></a> <span><c:out value="${location.name}" />
-		</span></li>
+		</span><a href="${location.id}" ><c:out value="${location.name}"/></a></li>
+		
 	</c:forEach>
 </ul>
 
