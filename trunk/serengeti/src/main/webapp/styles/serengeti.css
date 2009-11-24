@@ -396,6 +396,9 @@ ul.hor_menu {
     border-radius: 10px; /* Everything else - limited support at the moment */
     background-color: #BBAA88;
 }
+.round_Box_Width{
+	width: 550px;
+}
 .extraPadding{
   padding-top: 5px;
   padding-bottom: 5px;
