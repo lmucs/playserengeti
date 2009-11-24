@@ -9,7 +9,7 @@
 
     <form id="teamCreateForm" method="post" action="create"
         onsubmit="return validateCreateForm();">   
-	    <div class="round_Box_Container extraPadding">
+	    <div class="round_Box_Container extraPadding round_Box_Width">
 		    <div class="grid_2">
 		        <label for="name">Team Name: </label>
 		    </div>

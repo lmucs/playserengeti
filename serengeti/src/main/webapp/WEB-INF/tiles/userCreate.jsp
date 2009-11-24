@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <form:form method="POST" action="${pageContext.request.contextPath}/user/create">
-    <div class="round_Box_Container extraPadding">
+    <div class="round_Box_Container extraPadding round_Box_Width">
         <div class="grid_2">
             <label for="email">Email Address:</label>
         </div>
