@@ -28,7 +28,7 @@
 		<li><a href="${team.id}"><img
 			src="${pageContext.request.contextPath}/images/avatar.jpg" alt="team"
 			title="${team.name}" /></a> <span><c:out value="${team.name}" />
-		</span></li>
+		</span><a href="${team.name}" ><c:out value="${team.name}"/></a></li>
 	</c:forEach>
 </ul>
 
@@ -74,7 +74,7 @@
 		<li><a href="${team.id}"><img
 			src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user"
 			title="${team.name}" /></a> <span><c:out value="${team.name}" />
-		</span></li>
+		</span><a href="${team.name}" ><c:out value="${team.name}"/></a></li>
 	</c:forEach>
 </ul>
 
@@ -119,7 +119,7 @@
 		<li><a href="${team.id}"><img
 			src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user"
 			title="${team.name}" /></a> <span><c:out value="${team.name}" />
-		</span></li>
+		</span><a href="${team.name}" ><c:out value="${team.name}"/></a></li>
 	</c:forEach>
 </ul>
 
