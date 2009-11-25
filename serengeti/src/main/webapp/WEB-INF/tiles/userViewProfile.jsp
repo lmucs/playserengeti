@@ -5,8 +5,7 @@
 <c:choose>
     <c:when test='${!empty userCommand}'>
         <c:if test="${session.loggedIn}">
-            <div id="ownProfile">
-                     
+            <div id="ownProfile"> 
                 <div class="grid_10 prefix_1" id="thanks">
                     <p>Thank you for checking in.</p>
                 </div>
@@ -26,22 +25,26 @@
                         <input type="button" value="Search" onClick="searchLoc()"/>
                     </div>
                     <div class="grid_4"  id="teamList">
-                        <p>As a member of team:</p>
+                        <p>As team:</p>
                         <select id="teamSelect"></select>
                     </div>
-                    <input type="button" value="Check In" onClick="checkIn()"/>           
+                    <div id="checkinButton">
+                        <input type="button" value="Check In" onClick="checkIn()"/> 
+                    </div>          
                 </div>
-                <div class="grid_5 prefix_1" id="friendRequests">
-                    <p>These people want to be your friend.</p>
-                    <ul id="friendInvites"></ul>
-                </div>
-            
-                <div class="grid_5 prefix_1" id="teamRequests">
-                    <p>You have been invited to the following teams.</p>
-                    <ul id="teamInvites"></ul>
-                </div>
-            </div>       
-             
+                <div class="clear">&nbsp</div>
+                <div id="requestContainer"
+	                <div class="width500 round_Box_Container">
+	                    <p>These people want to be your friend.</p>
+	                    <ul id="friendInvites"></ul>
+	                </div>
+	            
+	                <div class="width500 round_Box_Container">
+	                    <p>You have been invited to the following teams.</p>
+	                    <ul id="teamInvites"></ul>
+	                </div>
+	            </div>       
+            </div>
             <div id="othersProfile">
                 <c:if test="${session.loggedIn}">
                     <div id="sendInvites">
@@ -57,36 +60,37 @@
             </div>
         </c:if>
             
-        <div class="grid_4" id="info">
+        <div class="width300 round_Box_Container" id="info">
             <div class="grid_2">
 	          	<strong>Email Address: </strong>
 	        </div>
-	        <div class="grid_2">
+	        <div class="grid_3">
 	            <p id="email"></p>
 	        </div>
-	          
+	        <div class="clear">&nbsp</div>
 	        <div class="grid_2">
 	            <strong>Name: </strong>
 	        </div>
-	        <div class="grid_2">
+	        <div class="grid_3">
 	            <p id="name"></p>
 	        </div>
-	            
+	        <div class="clear">&nbsp</div>
 	        <div class="grid_2">
 	            <strong>Friends: </strong>
 	        </div>
-	        <div class="grid_2">
+	        <div class="grid_3">
 	            <ul id="friends"></ul>
 	        </div>
-	                   
+	        <div class="clear">&nbsp</div>     
 	        <div class="grid_2">
 	            <strong>Teams: </strong>
 	        </div>
-	        <div class="grid_2">
+	        <div class="grid_3">
 	            <ul id="teams"></ul> 
 	        </div>
+	        <div id="edit"></div>
         </div>
-        <div id="edit"></div>
+        
     </c:when>
     <c:otherwise>
         <p>The user you requested does not exist.</p>
