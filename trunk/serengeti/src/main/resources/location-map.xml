@@ -1,0 +1,100 @@
+<!DOCTYPE sqlMap
+   PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+   "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Location">
+
+    <resultMap class="com.playserengeti.domain.Location" id="locationMap">
+        <result property="id" column="location_id"/>
+        <result property="name" column="location_name"/>
+        <result property="latitude" column="location_latitude"/>
+        <result property="longitude" column="location_longitude"/>
+        <result property="street" column="location_street"/>
+        <result property="city" column="location_city"/>
+        <result property="state" column="location_state"/>
+        <result property="zipcode" column="location_zipcode"/>
+        <result property="description" column="location_description"/>
+        <result property="phoneNumber" column="location_phone_number"/>
+        <result property="owner" resultMap="Team.teamMap"/>
+    </resultMap>
+    
+    <insert id="insertLocation">
+	    INSERT
+	    INTO location (
+	       location_name,
+	       location_latitude,
+	       location_longitude,
+	       location_street,
+	       location_city,
+	       location_state,
+	       location_zipcode,
+	       location_description,
+	       location_phone_number,
+	       location_team_owner_id
+	    )
+	    VALUES (
+	       #name#,
+	       #latitude#,
+	       #longitude#,
+	       #street#,
+	       #city#,
+	       #state#,
+	       #zipcode#,
+	       #description#,
+	       #phoneNumber#,
+	       #owner.id#
+	    )
+	    <selectKey keyProperty="location.id" resultClass="int">
+	       SELECT currval('location_id_seq')
+	    </selectKey>
+    </insert>
+    
+    <update id="updateLocation">
+        UPDATE location
+        SET
+            location_name = #name#,
+            location_latitude = #latitude#,
+            location_longitude = #longitude#,
+            location_street = #street#,
+            location_city = #city#,
+            location_state = #state#,
+            location_zipcode = #zipcode#,
+            location_description = #description#,
+            location_phone_number = #phoneNumber#,
+            location_team_owner_id = #owner.id#
+        WHERE location_id = #id#
+    </update>
+    
+    <delete id="deleteLocation">
+        DELETE FROM location
+        WHERE location_id = #value#
+    </delete>
+    
+    <select id="getLocationById" resultMap="locationMap">
+        SELECT *
+        FROM location
+        JOIN team
+        ON team_owner_id = team_id
+        JOIN player
+        ON team_leader_id = player_id
+        WHERE location_id = #value#
+    </select>
+    
+    <select id="getAllLocations" resultMap="locationMap">
+        SELECT *
+        FROM location
+        JOIN team
+        ON team_owner_id = team_id
+        JOIN player
+        ON team_leader_id = player_id
+    </select>
+    
+    <select id="getLocationByName" resultMap="locationMap">
+        SELECT *
+        FROM location
+        JOIN team
+        ON team_owner_id = team_id
+        JOIN player
+        ON team_leader_id = player_id
+        WHERE location_name = #value#
+    </select>
+</sqlMap>
