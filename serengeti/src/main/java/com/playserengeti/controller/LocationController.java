@@ -65,8 +65,9 @@ public class LocationController extends MultiActionController {
             locationCommand.setName(location.getName());
             locationCommand.setLatitude(location.getLatitude());
             locationCommand.setLongitude(location.getLongitude());
-            if (location.getOwner() != null)
+            if (location.getOwner() != null) {
                 locationCommand.setOwner(location.getOwner());
+            }
             locationCommand.setPhoneNumber(location.getPhoneNumber());
             locationCommand.setDescription(location.getDescription());
             locationCommand.setStreet(location.getStreet());
