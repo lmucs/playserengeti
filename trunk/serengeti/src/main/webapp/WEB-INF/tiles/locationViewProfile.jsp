@@ -40,9 +40,7 @@
 
                     <div class = "grid_4">
                         <td><strong>Owned by Team:</strong></td>
-                        <td><c:if test='${ !empty location.ownerId }'>
-                            <c:out value="${location.owner.id}"/>
-                            </c:if>
+                        <td><c:out value="${locationCommand.owner.name}"/>
                         </td>
                     </div>
                     
