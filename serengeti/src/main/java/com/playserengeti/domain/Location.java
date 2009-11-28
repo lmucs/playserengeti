@@ -14,6 +14,9 @@ public class Location {
     private String state;
     private String zipcode;
 
+    public Location() {
+    }
+    
     public Location(Integer id, String name, double latitude, double longitude) {
         this.id = id;
         this.name = name;

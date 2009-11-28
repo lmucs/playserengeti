@@ -283,8 +283,15 @@
         class="com.playserengeti.controller.LocationCreateValidator">
     </bean>
 
+<!-- 
     <bean id="locationDao"
         class="com.playserengeti.dao.LocationDaoMockImpl">
+    </bean>
+-->
+    
+    <bean id="locationDao"
+        class="com.playserengeti.dao.LocationDaoIbatisImpl">
+        <property name="sqlMapClient" ref="sqlMapClient"/>
     </bean>
 
     <!--
