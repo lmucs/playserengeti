@@ -43,9 +43,9 @@ public class TeamController extends MultiActionController {
         logger.debug("Entering team central");
 
         // TODO
-        Collection<Team> leaders = teamService.getAllTeams();
-        Collection<Team> mostActive = teamService.getAllTeams();
-        Collection<Team> newest = teamService.getAllTeams();
+        Collection<Team> leaders = teamService.getLeadingTeams();
+        Collection<Team> mostActive = teamService.getMostActiveTeams();
+        Collection<Team> newest = teamService.getNewestTeams();
 
         String view = "teamCentral";
         if ("xml".equals(request.getParameter("format"))) {
@@ -89,12 +89,7 @@ public class TeamController extends MultiActionController {
             command.setLeader(team.getLeader());
         }
 
-        Collection<Integer> users = teamService.getTeamMembers(teamId);
-
-        Collection<User> members = new HashSet<User>();
-        for (Integer id : users) {
-            members.add(userService.getUserById(id));
-        }
+        Collection<User> members = teamService.getTeamMembers(teamId);
 
         String view = "teamViewProfile";
         if ("xml".equals(request.getParameter("format"))) {

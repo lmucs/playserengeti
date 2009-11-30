@@ -29,7 +29,7 @@
 	       location_zipcode,
 	       location_description,
 	       location_phone_number,
-	       location_team_owner_id
+	       team_owner_id
 	    )
 	    VALUES (
 	       #name#,
@@ -60,7 +60,7 @@
             location_zipcode = #zipcode#,
             location_description = #description#,
             location_phone_number = #phoneNumber#,
-            location_team_owner_id = #owner.id#
+            team_owner_id = #owner.id#
         WHERE location_id = #id#
     </update>
     

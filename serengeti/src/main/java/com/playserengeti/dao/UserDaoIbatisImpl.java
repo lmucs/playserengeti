@@ -72,4 +72,38 @@ public class UserDaoIbatisImpl extends SqlMapClientDaoSupport implements UserDao
 				"updateUserPassword",
 				parameterMap) > 0;
 	}
+	
+	public Collection<User> getFriends(Integer userId) {
+		return (List<User>)getSqlMapClientTemplate().queryForList("getFriends", userId);
+	}
+	
+	public Collection<User> getFriendInvites(Integer userId) {
+		return (List<User>)getSqlMapClientTemplate().queryForList("getFriendInvites", userId);
+	}
+	
+	public Collection<User> getNewestUsers() {
+		return (List<User>)getSqlMapClientTemplate().queryForList("getNewestUsers");
+	}
+	
+	public Collection<User> getMostActiveUsers() {
+		return (List<User>)getSqlMapClientTemplate().queryForList("getMostActiveUsers");
+	}
+	
+	public Collection<User> getRecentlyCheckedInUsers() {
+		return (List<User>)getSqlMapClientTemplate().queryForList("getRecentlyCheckedInUsers");
+	}
+	
+	public boolean acceptFriendInvite(Integer firstId, Integer secondId) {
+		Map<String, Integer> parameterMap = new HashMap<String, Integer>();
+		parameterMap.put("firstId", firstId);
+		parameterMap.put("secondId", secondId);
+		return getSqlMapClientTemplate().update("acceptFriendInvite", parameterMap) > 0;
+	}
+	
+	public boolean rejectFriendInvite(Integer firstId, Integer secondId) {
+		Map<String, Integer> parameterMap = new HashMap<String, Integer>();
+		parameterMap.put("firstId", firstId);
+		parameterMap.put("secondId", secondId);
+		return getSqlMapClientTemplate().update("rejectFriendInvite", parameterMap) > 0;
+	}
 }

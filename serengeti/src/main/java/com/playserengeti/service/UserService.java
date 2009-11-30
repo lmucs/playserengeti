@@ -108,47 +108,7 @@ public class UserService {
     public Collection<Friendship> getFriendshipsByUser(Integer userId) {
     	return friendshipDao.getFriendshipsByUser(userId);
     }
-    
-    public Friendship getFriendshipByUserPair(Integer pUserId, Integer sUserId) {
-    	Collection<Friendship> friendships = getAllFriendships();
-    	
-    	for(Friendship f: friendships) {
-    		if (pUserId.equals(f.getPrimaryUserId()) && sUserId.equals(f.getSecondaryUserId())) {
-    			return f;
-    		}
-    	}
-    	return null;
-    }
-    
-    public Collection<User> getFriends(Integer userId) {
-    	Set<User> result = new HashSet<User>();
-    	Collection<Friendship> friends = friendshipDao.getFriendshipsByUser(userId);
-    	
-    	for (Friendship f : friends) {
-    		if (f.getStatus().equals("accepted")) {
-    			if (f.getPrimaryUserId().equals(userId)) result.add(getUserById(f.getSecondaryUserId()));
-    			else {
-    				result.add(getUserById(f.getPrimaryUserId()));
-    			}
-    		}
-    	}
-    	
-    	return result;
-    }
-    
-    public Collection<User> getFriendInvites(Integer userId) {
-    	Set<User> result = new HashSet<User>();
-    	Collection<Friendship> friends = friendshipDao.getFriendshipsByUser(userId);
-    	
-    	for(Friendship f : friends) {
-    		if (f.getStatus().equals("pending") && f.getSecondaryUserId().equals(userId)) {
-    			result.add(userDao.getUserById(f.getPrimaryUserId()));
-    		}
-    	}
-    	
-    	return result;
-    }
-    
+   
     /**
      * Returns a map of the given users friends.
      * Key is the friend's userId and value is their username.
@@ -181,19 +141,7 @@ public class UserService {
     public void inviteFriend(Integer pUserId, Integer sUserId) {
     	saveFriendship(new Friendship(null, pUserId, sUserId));
     }
-    
-    public void acceptFriendInvite(Integer pUserId, Integer sUserId) {
-    	Friendship f = getFriendshipById(getFriendshipByUserPair(pUserId, sUserId).getFriendshipId());
-    	f.setStatus("accepted");
-    	saveFriendship(f);
-    }
-    
-    public void rejectFriendInvite(Integer pUserId, Integer sUserId) {
-    	Friendship f = getFriendshipById(getFriendshipByUserPair(pUserId, sUserId).getFriendshipId());
-    	f.setStatus("rejected");
-    	saveFriendship(f);
-    }
-    
+
     public String asJSON(Collection<User> users) {
     	String result = "[";
     	int count = users.size();
@@ -209,8 +157,31 @@ public class UserService {
     	return result;
     }
     
-    //TODO
-    public Collection<User> getNewestUsers(int bound) {
-        return null;
+    public Collection<User> getFriends(Integer userId) {
+    	return userDao.getFriends(userId);
+    }
+    
+    public Collection<User> getFriendInvites(Integer userId) {
+    	return userDao.getFriendInvites(userId);
+    }
+    
+    public Collection<User> getNewestUsers() {
+        return userDao.getNewestUsers();
+    }
+    
+    public Collection<User> getMostActiveUsers() {
+    	return userDao.getMostActiveUsers();
+    }
+    
+    public Collection<User> getRecentlyCheckedInUsers() {
+        return userDao.getRecentlyCheckedInUsers();	
+    }
+    
+    public void acceptFriendInvite(Integer firstId, Integer secondId) {
+    	userDao.acceptFriendInvite(firstId, secondId);
+    }
+    
+    public void rejectFriendInvite(Integer firstId, Integer secondId) {
+    	userDao.rejectFriendInvite(firstId, secondId);
     }
 }

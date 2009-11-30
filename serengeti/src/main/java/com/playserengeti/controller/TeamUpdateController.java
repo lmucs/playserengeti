@@ -51,13 +51,13 @@ public class TeamUpdateController extends SimpleFormController {
             if (team.getLeader() != null) {
                 teamCommand.setLeader(team.getLeader());
             }
-            Collection<Integer> members = teamService.getTeamMembers(teamId);
+            Collection<User> members = teamService.getTeamMembers(teamId);
             Map<Integer, String> candidates = new HashMap<Integer, String>();
             User mem;
-            for (Integer id : members) {
-                mem = userService.getUserById(id);
-                if (!id.equals(session.getUser().getId())) {
-                    candidates.put(id, mem.getFirstName() + " " + mem.getLastName());
+            for (User u : members) {
+                mem = userService.getUserById(u.getId());
+                if (!u.getId().equals(session.getUser().getId())) {
+                    candidates.put(u.getId(), mem.getFirstName() + " " + mem.getLastName());
                 }
             }
             teamCommand.setCandidates(candidates);
