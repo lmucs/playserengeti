@@ -1,18 +1,12 @@
 package com.playserengeti.dao;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 
-import com.playserengeti.domain.User;
-import com.playserengeti.domain.Visit;
+// TODO Redo mock dao.
 
 /**
  * A mock implementation of the User DAO that's backed by an id-keyed map.
  */
+/*
 public class VisitDaoMockImpl implements VisitDao {
 
 	// Sample users to insert into the database.
@@ -48,9 +42,7 @@ public class VisitDaoMockImpl implements VisitDao {
 		insertVisits(sampleVisits);
 	}
 
-	/**
-	 * A convenience method to insert an array of visits into the database.
-	 */
+	
 	private void insertVisits(Visit[] visits) {
 		for (Visit visit : visits) {
 			insertVisit(visit);
@@ -83,7 +75,7 @@ public class VisitDaoMockImpl implements VisitDao {
 	}
 
 	@Override
-	public Visit getVisitByVisitId(Integer visitId) {
+	public Visit getVisitById(Integer visitId) {
 		return new Visit(storage.get(visitId));
 	}
 
@@ -127,3 +119,4 @@ public class VisitDaoMockImpl implements VisitDao {
 	}
 
 }
+*/

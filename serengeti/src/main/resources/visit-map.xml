@@ -1,0 +1,88 @@
+<!DOCTYPE sqlMap
+   PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+   "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Visit">
+
+  <resultMap class="com.playserengeti.domain.Visit" id="visitMap">
+    <result property="id" column="visit_id"/>
+    <result property="user" column="visit_user_id" select="getUserById"/>
+    <result property="team" column="visit_team_id" select="getTeamById"/>
+    <result property="location" column="visit_location_id" select="getLocationById"/>
+    <result property="date" column="visit_timestamp"/>
+  </resultMap>
+
+  <insert id="insertVisit">
+    INSERT
+    INTO visit (visit_user_id, visit_team_id, visit_location_id)
+    VALUES (#user.id#, #team.id#, #location.id#)
+    <selectKey keyProperty="id" resultClass="int">
+      SELECT currval('visit_id_seq')
+    </selectKey>
+  </insert>
+  
+  <insert id="insertVisitByIds">
+    INSERT
+    INTO visit (visit_user_id, visit_team_id, visit_location_id)
+    VALUES (#userId#, #teamId#, #locationId#)
+  </insert>
+  
+  <update id="updateVisit">
+    UPDATE visit
+    SET
+        visit_user_id = #user.id#,
+        visit_team_id = #team.id#,
+        visit_location_id = #location.id#
+    WHERE visit_id = #id#
+  </update>
+  
+  <delete id="deleteVisit">
+    DELETE FROM visit
+    WHERE visit_id = #value#
+  </delete>
+
+  <select id="getAllVisits" resultMap="visitMap">
+    SELECT
+        *
+    FROM visit
+  </select>
+
+  <select id="getVisitById" resultMap="visitMap">
+    SELECT
+        *
+    FROM visit
+    WHERE visit_id = #value#
+  </select>
+  
+  <select id="getVisitsByUserId" resultMap="visitMap">
+    SELECT
+        *
+    FROM visit
+    WHERE visit_user_id = #value#
+  </select>
+  
+  <select id="getVisitsByTeamId" resultMap="visitMap">
+    SELECT
+        *
+    FROM visit
+    WHERE visit_team_id = #value#
+  </select>
+  
+  <select id="getVisitsByLocationId" resultMap="visitMap">
+    SELECT
+        *
+    FROM visit
+    WHERE visit_location_id = #value#
+  </select>
+  
+  <select id="getTeamsThatVisitedLocationByLocationId" resultMap="Team.teamMap">
+    SELECT DISTINCT
+        *
+    FROM visit
+    JOIN team
+    ON visit_team_id = team_id
+    JOIN player
+    ON team_leader_id = player_id
+    WHERE visit_location_id = #value#
+  </select>
+
+</sqlMap>

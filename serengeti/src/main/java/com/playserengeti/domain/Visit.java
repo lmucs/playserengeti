@@ -8,21 +8,24 @@ import java.util.Date;
 public class Visit {
 
 	private Integer id;
-    private Integer userId;
-    private Integer teamId;
-    private Integer locationId;
+    private User user;
+    private Team team;
+    private Location location;
     private Date date;
 
+    public Visit() {
+    }
+    
     public Visit(Visit b) {
-    	this(b.id, b.userId, b.teamId, b.locationId);
+    	this(b.id, b.user, b.team, b.location);
     	this.date = b.date;
     }
 
-    public Visit(Integer id, Integer userId, Integer teamId, Integer locationId) {
+    public Visit(Integer id, User user, Team team, Location location) {
         this.id = id;
-        this.userId = userId;
-        this.teamId = teamId;
-        this.locationId = locationId;
+        this.user = user;
+        this.team = team;
+        this.location = location;
         this.date = new Date();
     }
 
@@ -34,28 +37,28 @@ public class Visit {
 		this.id = id;
 	}
 
-	public Integer getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public Integer getLocationId() {
-		return locationId;
+	public Location getLocation() {
+		return location;
 	}
 
-	public void setLocationId(Integer locationId) {
-		this.locationId = locationId;
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
-	public Integer getTeamId() {
-		return teamId;
+	public Team getTeam() {
+		return team;
 	}
 
-	public void setTeamId(Integer teamId) {
-		this.teamId = teamId;
+	public void setTeam(Team team) {
+		this.team = team;
 	}
 
 	public Date getDate() {
@@ -67,8 +70,8 @@ public class Visit {
 	}
 
 	public String asJSON() {
-		return "{\"id\" : " + this.id + ", \"userId\" : " + this.userId + ", \"teamId\" : " + this.teamId + 
-		    ", \"locationId\" : " + this.locationId + "}";
+		return "{\"id\" : " + this.id + ", \"userId\" : " + this.user.getId() + ", \"teamId\" : " + this.team.getId() + 
+		    ", \"locationId\" : " + this.location.getId() + "}";
 	}
 	
 	@Override
@@ -77,8 +80,8 @@ public class Visit {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result
-				+ ((locationId == null) ? 0 : locationId.hashCode());
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+				+ ((location == null) ? 0 : location.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -96,15 +99,15 @@ public class Visit {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (locationId == null) {
-			if (other.locationId != null)
+		if (location == null) {
+			if (other.location != null)
 				return false;
-		} else if (!locationId.equals(other.locationId))
+		} else if (!location.equals(other.location))
 			return false;
-		if (userId == null) {
-			if (other.userId != null)
+		if (user == null) {
+			if (other.user != null)
 				return false;
-		} else if (!userId.equals(other.userId))
+		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}
