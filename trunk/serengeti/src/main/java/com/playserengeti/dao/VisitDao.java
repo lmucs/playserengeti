@@ -2,6 +2,7 @@ package com.playserengeti.dao;
 
 import java.util.Collection;
 
+import com.playserengeti.domain.Team;
 import com.playserengeti.domain.Visit;
 
 public interface VisitDao {
@@ -9,6 +10,8 @@ public interface VisitDao {
 	/**
 	 * Commit the visit to storage for the first time.
 	 */
+	public void insertVisit(Integer userId, Integer teamId, Integer locationId);
+	
 	public Integer insertVisit(Visit visit);
 
 	/**
@@ -31,7 +34,7 @@ public interface VisitDao {
 	/**
 	 * Get a visit from storage by Id.
 	 */
-	public Visit getVisitByVisitId(Integer visitId);
+	public Visit getVisitById(Integer visitId);
 
 	/**
 	 * Get a history of visits from storage by userId.
@@ -45,5 +48,6 @@ public interface VisitDao {
 	
 	public Collection<Visit> getVisitsByTeamId(Integer teamId);
 
+	public Collection<Team> getTeamsThatVisitedLocationByLocationId(Integer locationId);
 
 }

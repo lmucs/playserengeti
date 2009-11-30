@@ -30,7 +30,7 @@ public class VisitService {
 	}
 
 	public Visit getVisitByVisitId(Integer visitId) {
-		return visitDao.getVisitByVisitId(visitId);
+		return visitDao.getVisitById(visitId);
 	}
 	
 	public Collection<Visit> getVisitsByTeamAndLocation(Integer teamId, Integer locationId) {
@@ -38,7 +38,7 @@ public class VisitService {
 		Collection<Visit> visits = visitDao.getVisitByLocationId(locationId);
 		
 		for (Visit v : visits) {
-			if(v.getTeamId().equals(teamId)) result.add(v);
+			if(v.getTeam().getId().equals(teamId)) result.add(v);
 		}
 		
 		return result;
@@ -72,7 +72,7 @@ public class VisitService {
 	}
 	
 	public void checkIn(Integer userId, Integer teamId, Integer locationId) {
-		visitDao.insertVisit(new Visit(null, userId, teamId, locationId));
+		visitDao.insertVisit(userId, teamId, locationId);
 	}
 
 	/**
@@ -84,9 +84,9 @@ public class VisitService {
 
 	private void validateVisit(Visit visit) throws NoSuchFieldException{
 
-		Integer userId = visit.getUserId();
-		Integer locationId = visit.getLocationId();
-		Integer teamId = visit.getTeamId();
+		Integer userId = visit.getUser().getId();
+		Integer locationId = visit.getLocation().getId();
+		Integer teamId = visit.getTeam().getId();
 
 		String message = "No such ";
 
@@ -106,16 +106,7 @@ public class VisitService {
 	}
 	
 	public Collection<Team> getCompetingTeams(Integer locationId) {
-		Set<Team> result = new HashSet<Team>();
-		Collection<Visit> visits = visitDao.getVisitByLocationId(locationId);
-		
-		Team team;
-		for (Visit v : visits) {
-			team = teamDao.getTeamById(v.getTeamId());
-			if (!result.contains(team)) result.add(team);
-		}
-		
-		return result;
+		return visitDao.getTeamsThatVisitedLocationByLocationId(locationId);
 	}
 	
 	public Team getLeadingTeam(Integer locationId) {

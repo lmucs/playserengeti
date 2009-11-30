@@ -306,8 +306,15 @@
         <constructor-arg ref="teamDao"/>
     </bean>
 
+<!-- 
     <bean id="visitDao"
         class="com.playserengeti.dao.VisitDaoMockImpl">
+    </bean>
+-->
+
+    <bean id="visitDao"
+        class="com.playserengeti.dao.VisitDaoIbatisImpl">
+        <property name="sqlMapClient" ref="sqlMapClient"/>
     </bean>
 
     <!--
