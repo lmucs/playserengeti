@@ -6,11 +6,60 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.playserengeti.domain.Team;
+import com.playserengeti.domain.User;
 
 /**
  * A mock implementation of the Team DAO that's backed by an id-keyed map.
  */
 public class TeamDaoMockImpl implements TeamDao {
+
+	@Override
+	public boolean acceptTeamInvite(Integer teamId, Integer userId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean rejectTeamInvite(Integer teamId, Integer userId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Collection<Team> getLeadingTeams() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<Team> getMostActiveTeams() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<Team> getNewestTeams() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<Team> getTeamInvites(Integer userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<User> getTeamMembers(Integer teamId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<Team> getUsersTeams(Integer userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	// Sample teams to insert into the database.
 	private static final Team sampleTeams[] = {

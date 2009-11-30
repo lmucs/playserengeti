@@ -45,10 +45,9 @@ public class UserController extends MultiActionController {
 
     public ModelAndView central(HttpServletRequest request, HttpServletResponse response) {
 
-        // TODO
-        Collection<User> recentlyCheckedIn = userService.getAllUsers();
-        Collection<User> mostActive = userService.getAllUsers();
-        Collection<User> newest = userService.getAllUsers();
+        Collection<User> recentlyCheckedIn = userService.getRecentlyCheckedInUsers();
+        Collection<User> mostActive = userService.getMostActiveUsers();
+        Collection<User> newest = userService.getNewestUsers();
 
         String view = "userCentral";
         if ("xml".equals(request.getParameter("format"))) {
@@ -195,7 +194,7 @@ public class UserController extends MultiActionController {
     	User user = userService.getUserById(userId);
     	
     	Collection<User> friends = userService.getFriends(userId);
-        Collection<Team> teams = teamService.getTeams(userId);
+        Collection<Team> teams = teamService.getUsersTeams(userId);
         Collection<Location> nearbyLocations = locationService.getAllLocations();
         Collection<User> friendInvites = userService.getFriendInvites(userId);
         Collection<Team> teamInvites = teamService.getTeamInvites(userId);
@@ -208,7 +207,7 @@ public class UserController extends MultiActionController {
             || userService.getFriendInvites(session.getUser().getId())
                     .contains(user);
 
-            Collection<Team> eligableTeams = teamService.getTeams(session.getUser().getId());
+            Collection<Team> eligableTeams = teamService.getUsersTeams(session.getUser().getId());
 
             for (Team t : eligableTeams) {
                 if (!teams.contains(t) && !teamInvites.contains(t)) {

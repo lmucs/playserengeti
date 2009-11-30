@@ -10,6 +10,7 @@ import com.playserengeti.dao.MembershipDao;
 import com.playserengeti.dao.TeamDao;
 import com.playserengeti.domain.Membership;
 import com.playserengeti.domain.Team;
+import com.playserengeti.domain.User;
 
 /**
  * Service for operations related to teams.
@@ -70,17 +71,6 @@ public class TeamService {
     	return teamDao.getAllTeams();
     }
     
-    public Map<Integer, String> getAllTeamsMap() {
-    	Map<Integer, String> result = new HashMap<Integer, String>();
-    	Collection<Team> teams = teamDao.getAllTeams();
-    	
-    	for (Team t : teams) {
-    		result.put(t.getId(), t.getName());
-    	}
-    	
-    	return result;
-    }
-    
     public void saveMembership(Membership m) {
     	if(m.getMembershipId() == null) {
     		membershipDao.insertMembership(m);
@@ -89,27 +79,7 @@ public class TeamService {
     		membershipDao.updateMembership(m);
     	}
     }
-    
-    public void deleteMembership(Integer id) {
-    	membershipDao.deleteMembership(id);
-    }
-    
-    public Collection<Membership> getAllMemberships() {
-    	return membershipDao.getAllMemberships();
-    }
-    
-    public Membership getMembershipById(Integer id) {
-    	return membershipDao.getMembershipById(id);
-    }
-    
-    public Collection<Membership> getMembershipsByTeam(Integer id) {
-    	return membershipDao.getMembershipsByTeam(id);
-    }
-    
-    public Collection<Membership> getMembershipsByUser(Integer id) {
-    	return membershipDao.getMembershipsByUser(id);
-    }
-    
+
     public Membership getMembershipByTeamAndUser(Integer teamId, Integer userId) {
     	Collection<Membership> mem = membershipDao.getMembershipsByTeam(teamId);
     	
@@ -120,22 +90,13 @@ public class TeamService {
     	return null;
     }
     
-    public Collection<Integer> getTeamMembers(Integer teamId) {
-    	Set<Integer> result = new HashSet<Integer>();
-    	Collection<Membership> mem = membershipDao.getMembershipsByTeam(teamId);
-    	
-    	for (Membership m : mem) {
-    		if (m.getStatus().equals("accepted")) {
-                result.add(m.getUserId());
-    		}
-    	}    	
-    	
-    	return result;
+    public Collection<User> getTeamMembers(Integer teamId) {
+    	return teamDao.getTeamMembers(teamId);
     }
     
     public Map<Integer, String> getTeamsMap(Integer userId) {
     	Map<Integer, String> result = new HashMap<Integer, String>();
-    	Collection<Team> teams = getTeams(userId);
+    	Collection<Team> teams = getUsersTeams(userId);
     	
     	for (Team t : teams) {
     		result.put(t.getId(), t.getName());
@@ -144,30 +105,12 @@ public class TeamService {
     	return result;
     }
     
-    public Collection<Team> getTeams(Integer userId) {
-    	Set<Team> result = new HashSet<Team>();
-    	Collection<Membership> mem = membershipDao.getMembershipsByUser(userId);
-    	
-    	for (Membership m : mem) {
-    		if (m.getStatus().equals("accepted")) result.add(getTeamById(m.getTeamId()));
-    	}
-    	
-    	return result;
-    }
-    
     public String getTeamsJSON(Integer userId) {
-    	return asJSON(getTeams(userId));
+    	return asJSON(getUsersTeams(userId));
     }
     
     public Collection<Team> getTeamInvites(Integer userId) {
-    	Set<Team> result = new HashSet<Team>();
-    	Collection<Membership> mem = membershipDao.getMembershipsByUser(userId);
-    	
-    	for (Membership m : mem) {
-    		if (m.getStatus().equals("pending")) result.add(teamDao.getTeamById(m.getTeamId()));
-    	}
-    	
-    	return result;
+    	return teamDao.getTeamInvites(userId);
     }
     
     public void addToTeam(Integer teamId, Integer userId) {
@@ -179,19 +122,7 @@ public class TeamService {
     public void inviteToTeam(Integer teamId, Integer userId) {
         saveMembership(new Membership(null, teamId, userId));        
     }
-    
-    public void acceptTeamInvite(Integer teamId, Integer userId) {
-        Membership m = getMembershipByTeamAndUser(teamId, userId);
-        m.setStatus("accepted");
-        saveMembership(m);
-    }
-    
-    public void rejectTeamInvite(Integer teamId, Integer userId) {
-        Membership m = getMembershipByTeamAndUser(teamId, userId);
-        m.setStatus("rejected");
-        saveMembership(m);
-    }
-    
+
     public void removeFromTeam(Integer teamId, Integer userId) {
     	Membership m = getMembershipByTeamAndUser(teamId, userId);
     	membershipDao.deleteMembership(m.getMembershipId());
@@ -212,8 +143,27 @@ public class TeamService {
     	return result;
     }
     
-    //TODO
-    public Collection<Team> getNewestTeams(int bound) {
-        return null;
+    public Collection<Team> getNewestTeams() {
+        return teamDao.getNewestTeams();
+    }
+    
+    public Collection<Team> getUsersTeams(Integer userId) {
+    	return teamDao.getUsersTeams(userId);
+    }
+    
+    public Collection<Team> getMostActiveTeams() {
+    	return teamDao.getMostActiveTeams();
+    }
+    
+    public Collection<Team> getLeadingTeams() {
+    	return teamDao.getLeadingTeams();
+    }
+    
+    public void acceptTeamInvite(Integer teamId, Integer userId) {
+        teamDao.acceptTeamInvite(teamId, userId);
+    }
+    
+    public void rejectTeamInvite(Integer teamId, Integer userId) {
+        teamDao.rejectTeamInvite(teamId, userId);
     }
 }

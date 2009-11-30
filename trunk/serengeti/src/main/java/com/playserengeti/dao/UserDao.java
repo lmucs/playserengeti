@@ -51,5 +51,18 @@ public interface UserDao {
 	 * Authenticate a user by email and password.
 	 */
 	public User authenticateUserByEmailAndPassword(String email, String password);
+	
+	public Collection<User> getFriends(Integer userId);
+	
+	public Collection<User> getFriendInvites(Integer userId);
+	
+	public Collection<User> getNewestUsers();
+	
+	public Collection<User> getMostActiveUsers();
+	
+	public Collection<User> getRecentlyCheckedInUsers();
+	
+	public boolean acceptFriendInvite(Integer firstId, Integer secondId);
 
+	public boolean rejectFriendInvite(Integer firstId, Integer secondId);
 }

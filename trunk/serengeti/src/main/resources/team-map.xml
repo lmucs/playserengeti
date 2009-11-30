@@ -39,16 +39,14 @@
   </delete>
 
   <select id="getAllTeams" resultMap="teamMap">
-    SELECT
-        *
+    SELECT *
     FROM team
     JOIN player
     ON team.team_leader_id = player.player_id
   </select>
 
   <select id="getTeamById" resultMap="teamMap">
-    SELECT
-        *
+    SELECT *
     FROM team
     JOIN player
     ON team.team_leader_id = player.player_id
@@ -56,12 +54,73 @@
   </select>
   
   <select id="getTeamByTeamName" resultMap="teamMap">
-    SELECT
-        *
+    SELECT *
     FROM team
     JOIN player
     ON team.team_leader_id = player.player_id
     WHERE team_name = #value#
   </select>
-
+  
+  <select id="getTeamMembers" resultMap="User.userMap">
+      SELECT *
+      FROM player, membership
+      WHERE membership.team_id = #value# AND player.player_id = membership.player_id AND status = 'accepted'
+  </select>
+  
+  <select id="getUsersTeams" resultMap="teamMap">
+      SELECT *
+      FROM membership, (team
+          JOIN player
+          ON team.team_leader_id = player.player_id)
+      WHERE membership.player_id = #value# AND team.team_id = membership.team_id 
+          AND membership.status = 'accepted'
+  </select>
+  
+  <select id="getTeamInvites" resultMap="teamMap">
+      SELECT *
+      FROM membership, (team
+          JOIN player
+          ON team.team_leader_id = player.player_id)
+      WHERE membership.player_id = #value# AND team.team_id = membership.team_id
+          AND membership.status = 'pending'
+  </select>
+  
+  <select id="getNewestTeams" resultMap="teamMap">
+      SELECT * 
+      FROM team
+      JOIN player
+      ON team.team_leader_id = player.player_id
+      ORDER BY now() - team_creation_timestamp
+      LIMIT 10
+  </select>
+  
+  <select id="getMostActiveTeams" resultMap="teamMap">
+      SELECT * 
+      FROM team
+      JOIN player
+      ON team.team_leader_id = player.player_id
+  </select>
+  
+  <select id="getLeadingTeams" resultMap="teamMap">
+       SELECT *
+       FROM team, (
+           SELECT team_owner_id, COUNT(location_id)
+           FROM location 
+           GROUP BY team_owner_id) temp, player
+       WHERE team_id = temp.team_owner_id AND player_id = team_leader_id
+       ORDER BY count
+       LIMIT 10;
+  </select>
+  
+  <update id="acceptTeamInvite">
+      UPDATE membership
+      SET status = 'accepted'
+      WHERE team_id = #teamId# AND player_id = #userId#
+  </update>
+  
+  <update id="rejectTeamInvite">
+      UPDATE membership
+      SET status = 'rejected'
+      WHERE team_id = #teamId# AND player_id = #userId#
+  </update>
 </sqlMap>

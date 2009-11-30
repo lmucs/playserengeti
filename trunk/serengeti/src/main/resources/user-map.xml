@@ -67,5 +67,55 @@
     FROM player
     WHERE player_email = #email# and player_password_hash = md5(#password#)
   </select>
+  
+  <select id="getFriends" resultMap="userMap">
+      SELECT player_id, player_email, player_password_hash, 
+        player_first_name, player_last_name, player_creation_timestamp 
+      FROM player, friendship 
+      WHERE ((#value# = first_id AND player_id = second_id) 
+                OR (#value# = second_id AND player_id = first_id)) 
+            AND (status = 'accepted')
+  </select>
 
+  <select id="getFriendInvites" resultMap="userMap">
+      SELECT player_id, player_email, player_password_hash, 
+        player_first_name, player_last_name, player_creation_timestamp
+      FROM player, friendship 
+      WHERE #value# = second_id 
+        AND player_id = first_id 
+        AND status = 'pending'
+  </select>
+  
+  <select id="getNewestUsers" resultMap="userMap">
+      SELECT * 
+      FROM player
+      ORDER BY now() - player_creation_timestamp
+      LIMIT 10
+  </select>
+  
+  <select id="getMostActiveUsers" resultMap="userMap">
+      SELECT * 
+      FROM player
+      LIMIT 10
+  </select>
+  
+  <select id="getRecentlyCheckedInUsers" resultMap="userMap">
+      SELECT * 
+      FROM player
+      LIMIT 10
+  </select>
+  
+  <update id="acceptFriendInvite">
+      UPDATE friendship
+      SET status = 'accepted'
+      WHERE #firstId# = first_id 
+        AND #secondId# = second_id
+  </update>
+  
+  <update id="rejectFriendInvite">
+      UPDATE friendship
+      SET status = 'rejected'
+      WHERE #firstId# = first_id 
+        AND #secondId# = second_id 
+  </update>
 </sqlMap>

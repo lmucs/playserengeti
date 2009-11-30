@@ -19,6 +19,48 @@ import com.playserengeti.domain.User;
  */
 public class UserDaoMockImpl implements UserDao {
 
+	@Override
+	public boolean acceptFriendInvite(Integer firstId, Integer secondId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean rejectFriendInvite(Integer firstId, Integer secondId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Collection<User> getFriendInvites(Integer userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<User> getMostActiveUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<User> getNewestUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<User> getRecentlyCheckedInUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<User> getFriends(Integer userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	// Storage for the user objects
     private Map<Integer, DBEntry> storage;
     private int maxId;
