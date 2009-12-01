@@ -203,6 +203,12 @@ This page summarizes the activities for each class meeting, as well as informal 
 
 == November 24 (Class) ==
 
+* Derek Smith came by to assist with iPhone development.
+* Lab session.
+* Progress made on help page.
+* Database daos fleshed out.
+* Backend completed (for the most part).
+
 == December 1 (Class) ==
 
 == December 3 (Class) ==
