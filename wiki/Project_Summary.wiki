@@ -1,8 +1,6 @@
 #labels Featured,Phase-Design
 *Project Name*: Serengeti
 
-*Tagline*: Mark Your Territory
-
 *Description*: A social networking application/game where players join teams that compete for "ownership" of locations by recording their visits to the location. Players can track their teams' conquests through the playSerengeti website, a mobile web application, or an iPhone app. In addition, proprietors of locations can offer benefits or discounts to their current "owner" team to draw more customers.
 
 <wiki:comment> Too much detail
