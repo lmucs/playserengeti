@@ -10,5 +10,7 @@
     <dd>If your current location is not in the drop down menu, click the "Not Here?" button. Enter the name of the location in the search box that appears, and then choose the location from the new drop down menu. You can now finish your check in at your new location.</dd>
     <dt>Can I check in by text messaging or mobile apps?</dt>
     <dd>Serengeti does not currently support check in by text messaging. However, an iPhone/iPod Touch application is currently in development.</dd>
+    <dt>How do my visits contribute to my team's efforts?</dt>
+    <dd>When you record a visit to a location, you contribute to your team's score for that location. The team with the highest score for a location are named the location's owner. The point values of visits decrease over time, so the ownership of a location is always up for grabs.</dd>
   </dl>
 </div>
