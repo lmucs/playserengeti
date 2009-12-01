@@ -293,7 +293,7 @@ ul.hor_menu {
   display: block;
   float: left;
   padding: 0 4px;
-  margin-right: 30px;
+  margin-right: 20px;
 }
 
 .hor_menu a {
@@ -353,13 +353,12 @@ ul.hor_menu {
 
 #scrollContainer {
   position: relative;
-  width: 600px;
+  width: 860px;
   height: 160px;
   overflow: hidden;
-  margin-left: 100px;
-  margin-right: 200px;
+  margin-left: -50px;
+  margin-right: 0px;
   margin-bottom: 50px;
-  border: 1px solid #445544;
   -moz-border-radius-bottomleft: 4px;
   -moz-border-radius-bottomright: 4px;
   -moz-border-radius-topleft: 4px;
@@ -428,6 +427,7 @@ ul.hor_menu {
   position: relative;
   left: 138;
   z-index: 2;
+  visibility: hidden;
 }
 
 .allRightArrows {
@@ -436,6 +436,7 @@ ul.hor_menu {
   position: relative;
   right: -673;
   z-index: 2;
+  visibility: hidden;
 }
 
 .centralScrollSpan {
