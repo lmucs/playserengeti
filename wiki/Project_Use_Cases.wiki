@@ -1,18 +1,17 @@
-Use cases are organized by primary actor.  Each use case has associated with it various information, including a URI under http://www.playserengeti.com/ which maps to a controller that implements that specific use case's functionality.
+The primary use cases for Serengeti are listed below.
 
-=User=
-----
+===U1 Sign Up User===
 
-===Sign Up===
-Description: Register a user.
-
-URI: /user/signup
-
-Users: User
-
-Security:
-
-Notes:
+  * *Description*: An end user registers as a new player.
+  * *Actor*: End user.
+  * *Preconditions*: None.
+  * *Flow of Events for Main Scenario*:
+    # User sends email address and desired password to system.
+    # The system validates the inputs and, if acceptable, creates a new player.
+  * *Alternative Scenarios*:
+    # If the email address is invalid or already exists, or the password is missing, the action is cancelled. 
+  * *Postconditions*: A new player record has been inserted into the database.
+  * *Handles Requirements*: R1, R2.6.
 
 ===Delete User===
 
