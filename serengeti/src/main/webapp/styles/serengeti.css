@@ -91,7 +91,7 @@ div#navbar2 {
 .mainContentArea {
 	background-color: #FFFFFF;
 	margin-left: 0 auto 0 auto;
-	overflow: auto;	
+	overflow: hidden;	
 	width: 960px;
 	padding: 1em 0 2em;
 	-moz-border-radius-bottomleft: 8px;
@@ -297,7 +297,7 @@ ul.hor_menu {
 	height: 75px;
 	margin-right: 80px;
 	padding: 0 4px;
-	width: 10px;
+	width: 1px;
 }
 
 .hor_menu a {
@@ -357,8 +357,8 @@ word-wrap:break-word;
 
 #scrollContainer {
 	position: relative;
-	width: 860px;
-	height: 160px;
+	width: 900px;
+	height: 210;
 	overflow: hidden;
 	margin-left: -50px;
 	margin-right: 0px;
