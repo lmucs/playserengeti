@@ -4,52 +4,46 @@
 
         <c:choose>
             <c:when test='${ !empty teamCommand }'>
-                <div class="grid_6 round_Box_Container">
-	                
-	                <div class="grid_2">
-	                    <td><strong>Team Name</strong></td>
-	                </div>
-	                <div class="grid_3">
-	                    <td><c:out value="${teamCommand.name}"/></td>
-	                </div>
-	            
-	                <div class="clear">&nbsp;</div>
-	                
-	                <div class="grid_2">
-	                    <td><strong>Team Color</strong></td>
-	                </div>
-	                <div class="grid_3">
-	                    <td><c:out value="${teamCommand.color}"/></td>
+                
+                <div class="clear">&nbsp;</div>
+                
+            	<div class="grid_3 teamImage">
+            	    <img src="${pageContext.request.contextPath}/images/koala.jpg" alt="teamImage"
+		            title="teamImage"/>               
+		        </div>
+		        <div class="grid_3">
+	                <div class="grid_3" id="teamName">
+	                    <td><strong><c:out value="${teamCommand.name}"/></td>
 	                </div>
 	                
 	                <div class="clear">&nbsp;</div>
-	                
-	                <div class="grid_2">
-	                    <td><strong>Team Leader</strong></td>
-	                </div>
-	                <div class="grid_3">
-	                    <td><c:out value="${teamCommand.leader.firstName} ${teamCommand.leader.lastName} (${teamCommand.leader.email})"/></td>
-	                </div>
-	                
-	                <div class="clear">&nbsp;</div>
-	                
-	                <div class="grid_2">
-	                	<td><strong>Home Base:</td>
-	                </div>
-	                <div class="grid_3">
-	                	<td><c:out value="${teamCommand.homeBase}"/></td>
-	                </div>
-	                
-	                <div class="clear">&nbsp;</div>
-	                
-		            <div class="grid_2">
-	                    <td><strong>Team Description:</td>
-	                </div>	
-	                <div class="grid_3">
-	                    <td><c:out value="${teamCommand.description}"/></td>
-	                </div>
+	                <div id="teamInfo">
+		                <div class="grid_4">
+		                	<td><strong>Home Base:</td>
+		                	<td><c:out value="${teamCommand.homeBase}"/></td>
+		                </div>
+		            
+		                <div class="clear">&nbsp;</div>
+		                
+		                <div class="grid_4">
+		                    <td><strong>Team Leader:</strong></td>
+		                    <td><c:out value="${teamCommand.leader.firstName} ${teamCommand.leader.lastName}"/></td>
+		                </div>
+		            </div>
 	            </div>
-	            <div class="grid_6 round_Box_Container">
+
+	            <div class="clear">&nbsp;</div>
+	                
+	            <div class="grid_2">
+                    <td><strong>Description:</td>
+                </div>	
+                
+                <div class="clear">&nbsp;</div>
+                
+                <div class="grid_8 round_Box_Container">
+                    <td><c:out value="${teamCommand.description}"/></td>
+                </div>
+	            <div class="grid_4 round_Box_Container">
 	                <div class="grid_2">
 	                    <strong>Team Members:</strong>
 	                </div>
