@@ -159,6 +159,10 @@ public class TeamService {
     	return teamDao.getLeadingTeams();
     }
     
+    public Collection<Team> getInvitableTeams(Integer sourceId, Integer targetId) {
+    	return teamDao.getInvitableTeams(sourceId, targetId);
+    }
+    
     public void acceptTeamInvite(Integer teamId, Integer userId) {
         teamDao.acceptTeamInvite(teamId, userId);
     }

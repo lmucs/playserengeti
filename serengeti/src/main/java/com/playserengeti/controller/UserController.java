@@ -12,9 +12,9 @@ import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
-import com.playserengeti.domain.Location;
 import com.playserengeti.domain.Team;
 import com.playserengeti.domain.User;
+import com.playserengeti.domain.Visit;
 import com.playserengeti.service.LocationService;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
@@ -45,7 +45,7 @@ public class UserController extends MultiActionController {
 
     public ModelAndView central(HttpServletRequest request, HttpServletResponse response) {
 
-        Collection<User> recentlyCheckedIn = userService.getRecentlyCheckedInUsers();
+        Collection<Visit> recentlyCheckedIn = visitService.getRecentCheckIns();
         Collection<User> mostActive = userService.getMostActiveUsers();
         Collection<User> newest = userService.getNewestUsers();
 
@@ -73,12 +73,7 @@ public class UserController extends MultiActionController {
         User user = userService.getUserById(userId);
 
         command.setUserId(user.getId());
-        command.setEmail(user.getEmail());
-        command.setFirstName(user.getFirstName());
-        command.setLastName(user.getLastName());
-
-        Collection<Location> nearbyLocations = locationService.getAllLocations();
-        
+                
         String profileData = generateProfileData(userId);
         
         String view = "userViewProfile";
@@ -92,13 +87,12 @@ public class UserController extends MultiActionController {
             	return null;
         	}
         	catch(IOException e){
-        		view="redirect:error";
+        		view = "redirect:error";
         	}
         }
         
         ModelAndView mav = new ModelAndView(view);
         mav.addObject("userCommand", command);
-        mav.addObject("nearbyLocations", nearbyLocations);
         mav.addObject("session", session);
         mav.addObject("profileData", profileData);
 
@@ -190,16 +184,28 @@ public class UserController extends MultiActionController {
         if (!userId.equals(-1)) teamService.rejectTeamInvite(teamId, userId);
     }
 
+    public void getNearbyLocations(HttpServletRequest request, HttpServletResponse response) {
+    	Double latitude = Double.valueOf(request.getParameter("latitude"));
+        Double longitude = Double.valueOf(request.getParameter("longitude"));
+
+        try {
+  		    PrintWriter out = response.getWriter();
+   		    out.println("{\"locations\" : " + 
+   		    		locationService.asJSON(locationService.getNearbyLocations(latitude, longitude)) + 
+   		    		"}");	
+        }
+   	    catch(IOException e) {}
+    }	
+    
     private String generateProfileData(Integer userId) {
     	User user = userService.getUserById(userId);
     	
     	Collection<User> friends = userService.getFriends(userId);
         Collection<Team> teams = teamService.getUsersTeams(userId);
-        Collection<Location> nearbyLocations = locationService.getAllLocations();
         Collection<User> friendInvites = userService.getFriendInvites(userId);
         Collection<Team> teamInvites = teamService.getTeamInvites(userId);
 
-        Collection<Team> teamsToInviteTo = new HashSet<Team>();
+        Collection<Team> invitableTeams = new HashSet<Team>();
         boolean alreadyFriends = true;
         if (session.isLoggedIn()) {
             alreadyFriends = friends.contains(session.getUser())
@@ -207,13 +213,7 @@ public class UserController extends MultiActionController {
             || userService.getFriendInvites(session.getUser().getId())
                     .contains(user);
 
-            Collection<Team> eligableTeams = teamService.getUsersTeams(session.getUser().getId());
-
-            for (Team t : eligableTeams) {
-                if (!teams.contains(t) && !teamInvites.contains(t)) {
-                    teamsToInviteTo.add(t);
-                }
-            }
+            invitableTeams = teamService.getInvitableTeams(session.getUser().getId(), userId);
         }
         Integer sessionId;
         if (session.isLoggedIn()) sessionId = session.getUser().getId();
@@ -222,11 +222,10 @@ public class UserController extends MultiActionController {
         }
         
         String result = "{\"user\" : " + user.asJSON() + ", \"friends\" : " + userService.asJSON(friends) +
-            ", \"teams\" : " + teamService.asJSON(teams) + /*", \"locations\" : " + 
-            locationService.asJSON(nearbyLocations) + */", \"invites\" : {\"friendInvites\" : " + 
+            ", \"teams\" : " + teamService.asJSON(teams) + ", \"invites\" : {\"friendInvites\" : " + 
             userService.asJSON(friendInvites) + ", \"teamInvites\" : " + 
             teamService.asJSON(teamInvites) + "}, \"eligableTeams\" : " + 
-            teamService.asJSON(teamsToInviteTo) + ", \"alreadyFriends\" : \"" + alreadyFriends +
+            teamService.asJSON(invitableTeams) + ", \"alreadyFriends\" : \"" + alreadyFriends +
             "\", \"sessionId\" : \"" + sessionId + "\"}";
         
     	return result;

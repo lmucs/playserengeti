@@ -60,8 +60,6 @@ public interface UserDao {
 	
 	public Collection<User> getMostActiveUsers();
 	
-	public Collection<User> getRecentlyCheckedInUsers();
-	
 	public boolean acceptFriendInvite(Integer firstId, Integer secondId);
 
 	public boolean rejectFriendInvite(Integer firstId, Integer secondId);

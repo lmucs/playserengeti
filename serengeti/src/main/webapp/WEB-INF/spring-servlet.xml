@@ -74,6 +74,7 @@
     <bean id="welcomeController"
         class="com.playserengeti.controller.WelcomeController">
         <property name="session" ref="userSession"/>
+        <constructor-arg ref="userService"/>
     </bean>
 
     <bean id="helpController"
@@ -194,7 +195,6 @@
         </property>
         <property name="session" ref="userSession"/>
         <constructor-arg ref="teamService"/>
-        <constructor-arg ref="userService"/>
      </bean>
 
      <bean id="teamCreateController"
@@ -258,7 +258,6 @@
         </property>
         <property name="session" ref="userSession"/>
         <constructor-arg ref="locationService"/>
-        <constructor-arg ref="teamService"/>
         <constructor-arg ref="visitService"/>
      </bean>
 

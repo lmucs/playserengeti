@@ -81,6 +81,14 @@ public class TeamDaoIbatisImpl extends SqlMapClientDaoSupport implements
 	}
 	
 	@Override
+	public Collection<Team> getInvitableTeams(Integer sourceId, Integer targetId) {
+		Map<String, Integer> parameterMap = new HashMap<String, Integer>();
+		parameterMap.put("sourceId", sourceId);
+		parameterMap.put("targetId", targetId);
+		return (List<Team>)getSqlMapClientTemplate().queryForList("getInvitableTeams", parameterMap);
+	}
+	
+	@Override
 	public boolean acceptTeamInvite(Integer teamId, Integer userId) {
 		Map<String, Integer> parameterMap = new HashMap<String, Integer>();
 		parameterMap.put("teamId", teamId);

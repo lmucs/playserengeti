@@ -14,9 +14,6 @@
                     <div class="grid_4" id="locList">
                         <p>Checkin from:</p>
                         <select id="locSelect">
-                            <c:forEach var="location" items="${nearbyLocations}">
-                                <option value="${location.id}"><c:out value="${location.name}"/></option>
-                            </c:forEach>
                         </select>
                         <input id="notHere" type="button" value="Not Here?" onClick="showSearch()"/>
                     </div>
@@ -109,12 +106,12 @@
     
     $(function() {
         uData = JSON.parse('${profileData}');
-        populate(uData);
-        layout(uData);
         lSearch = new google.search.LocalSearch();
         lSearch.setSearchCompleteCallback(this, searchComplete);
         lSearch.setAddressLookupMode(google.search.LocalSearch.ADDRESS_LOOKUP_DISABLED);
-        userLoc = google.loader.ClientLocation.address.city;                      
+        userLoc = google.loader.ClientLocation;
+        populate(uData);
+        layout(uData); 
     });
         
     var populate = function(data) {
@@ -142,6 +139,8 @@
             });
         $("#email").append(data.user.email);
         $("#name").append(data.user.name);
+        
+        getNearbyLocations();
     };
     
     var layout = function(data) {
@@ -176,7 +175,7 @@
     };
 
     var searchLoc = function() {
-        lSearch.execute($("#searchText").val() + " " + userLoc);
+        lSearch.execute($("#searchText").val() + " " + userLoc.address.city);
         $("#locSelect").empty();
         $("#locSearch").fadeOut("slow");
         $("#locList").append("<a href=../location/create>Add Location</a>");
@@ -210,6 +209,20 @@
         );
         $("#checkIn").fadeOut("slow");
         $("#thanks").fadeIn("slow"); 
+    };
+    
+    var getNearbyLocations = function() {
+        var request = $.get("getNearbyLocations", {latitude : userLoc.latitude, 
+            longitude : userLoc.longitude}, function(data) {
+                var jsonData = JSON.parse(request.responseText);
+                populateLocations(jsonData.locations);
+            });  
+    };
+    
+    var populateLocations = function(nearby) {
+        jQuery.each(nearby, function(i, val) {
+            $("#locSelect").append("<option value=" + val.id + ">" + val.name + "</option>");
+            });
     };
     
     var sendFriendInvite = function () {

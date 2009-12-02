@@ -14,7 +14,7 @@
         <result property="zipcode" column="location_zipcode"/>
         <result property="description" column="location_description"/>
         <result property="phoneNumber" column="location_phone_number"/>
-        <result property="owner" resultMap="Team.teamMap"/>
+        <result property="owner" column="team_owner_id" select="getTeamById"/>
     </resultMap>
     
     <insert id="insertLocation">
@@ -43,7 +43,7 @@
 	       #phoneNumber#,
 	       #owner.id#
 	    )
-	    <selectKey keyProperty="location.id" resultClass="int">
+	    <selectKey keyProperty="id" resultClass="int">
 	       SELECT currval('location_id_seq')
 	    </selectKey>
     </insert>
@@ -72,29 +72,30 @@
     <select id="getLocationById" resultMap="locationMap">
         SELECT *
         FROM location
-        JOIN team
-        ON team_owner_id = team_id
-        JOIN player
-        ON team_leader_id = player_id
         WHERE location_id = #value#
     </select>
     
     <select id="getAllLocations" resultMap="locationMap">
         SELECT *
         FROM location
-        JOIN team
-        ON team_owner_id = team_id
-        JOIN player
-        ON team_leader_id = player_id
     </select>
     
     <select id="getLocationByName" resultMap="locationMap">
         SELECT *
         FROM location
-        JOIN team
-        ON team_owner_id = team_id
-        JOIN player
-        ON team_leader_id = player_id
         WHERE location_name = #value#
+    </select>
+    
+    <select id="getNearbyLocations" resultMap="locationMap">
+        SELECT * 
+        FROM location
+        WHERE ABS(#latitude# - location_latitude) <![CDATA[ < ]]> 0.033333 
+          AND ABS(#longitude# - location_longitude) <![CDATA[ < ]]> 0.03333
+    </select>
+    
+    <select id="getControlledTerritory" resultMap="locationMap">
+        SELECT * 
+        FROM location
+        WHERE team_owner_id = #value#
     </select>
 </sqlMap>

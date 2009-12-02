@@ -55,20 +55,6 @@ public class UserDeleteController extends SimpleFormController {
         Integer userId = command.getUserId();
 
         try {
-            // Deletes memberships from the database.
-           /* Collection<Membership> memberships = teamService
-                    .getMembershipsByUser(userId);
-            for (Membership m : memberships) {
-                teamService.deleteMembership(m.getMembershipId());
-            }*/
-
-            // Deletes friendships from the database.
-            Collection<Friendship> friendships = userService
-                    .getFriendshipsByUser(userId);
-            for (Friendship f : friendships) {
-                userService.deleteFriendship(f.getFriendshipId());
-            }
-
             session.setUser(null);
 
             // Deletes the user from the database.

@@ -49,5 +49,13 @@ public interface VisitDao {
 	public Collection<Visit> getVisitsByTeamId(Integer teamId);
 
 	public Collection<Team> getTeamsThatVisitedLocationByLocationId(Integer locationId);
+	
+	public Collection<Visit> getRecentCheckIns();
+
+	public Collection<Visit> getRecentFriendCheckIns(Integer userId);
+	
+	public Collection<Visit> getUsersRecentActivity(Integer userId);
+	
+	public Collection<Visit> getTeamsRecentActivity(Integer teamId);
 
 }

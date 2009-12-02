@@ -173,10 +173,6 @@ public class UserService {
     	return userDao.getMostActiveUsers();
     }
     
-    public Collection<User> getRecentlyCheckedInUsers() {
-        return userDao.getRecentlyCheckedInUsers();	
-    }
-    
     public void acceptFriendInvite(Integer firstId, Integer secondId) {
     	userDao.acceptFriendInvite(firstId, secondId);
     }

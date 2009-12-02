@@ -69,8 +69,7 @@
   </select>
   
   <select id="getFriends" resultMap="userMap">
-      SELECT player_id, player_email, player_password_hash, 
-        player_first_name, player_last_name, player_creation_timestamp 
+      SELECT * 
       FROM player, friendship 
       WHERE ((#value# = first_id AND player_id = second_id) 
                 OR (#value# = second_id AND player_id = first_id)) 
@@ -78,8 +77,7 @@
   </select>
 
   <select id="getFriendInvites" resultMap="userMap">
-      SELECT player_id, player_email, player_password_hash, 
-        player_first_name, player_last_name, player_creation_timestamp
+      SELECT *
       FROM player, friendship 
       WHERE #value# = second_id 
         AND player_id = first_id 
@@ -94,14 +92,13 @@
   </select>
   
   <select id="getMostActiveUsers" resultMap="userMap">
-      SELECT * 
-      FROM player
-      LIMIT 10
-  </select>
-  
-  <select id="getRecentlyCheckedInUsers" resultMap="userMap">
-      SELECT * 
-      FROM player
+      SELECT *
+      FROM player, (
+        SELECT COUNT(visit_id), visit_user_id
+        FROM visit
+        GROUP BY visit_user_id) temp
+      WHERE player_id = temp.visit_user_id
+      ORDER BY count DESC
       LIMIT 10
   </select>
   

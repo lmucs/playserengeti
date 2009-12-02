@@ -7,6 +7,7 @@ import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
@@ -19,14 +20,11 @@ import com.playserengeti.session.UserSession;
 public class LocationController extends MultiActionController {
 
     private LocationService locationService;
-    private TeamService teamService;
     private VisitService visitService;
     private UserSession session;
 
-    public LocationController(LocationService locationService,
-            TeamService teamService, VisitService visitService) {
+    public LocationController(LocationService locationService, VisitService visitService) {
         this.locationService = locationService;
-        this.teamService = teamService;
         this.visitService = visitService;
     }
 
@@ -106,8 +104,12 @@ public class LocationController extends MultiActionController {
         l.setState(state);
         l.setPhoneNumber(phone);
         
-        locationService.saveLocation(l);
-        
+        try {
+            locationService.saveLocation(l);
+        }
+        catch(DataIntegrityViolationException e){
+        	l = locationService.getLocationByName(name);
+        }
         try {
     		PrintWriter out = response.getWriter();
     		out.println(l.asMinimalJSON());	

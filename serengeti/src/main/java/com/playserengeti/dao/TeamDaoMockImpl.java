@@ -14,6 +14,12 @@ import com.playserengeti.domain.User;
 public class TeamDaoMockImpl implements TeamDao {
 
 	@Override
+	public Collection<Team> getInvitableTeams(Integer sourceId, Integer targetId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public boolean acceptTeamInvite(Integer teamId, Integer userId) {
 		// TODO Auto-generated method stub
 		return false;

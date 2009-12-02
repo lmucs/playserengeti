@@ -75,5 +75,24 @@ public class VisitDaoIbatisImpl extends SqlMapClientDaoSupport implements
 		return (Collection<Team>)
 			getSqlMapClientTemplate().queryForList("getTeamsThatVisitedLocationByLocationId", locationId);
 	}
+	
+	@Override
+	public Collection<Visit> getRecentCheckIns() {
+		return (Collection<Visit>)getSqlMapClientTemplate().queryForList("getRecentCheckIns");
+	}
+	
+	@Override
+	public Collection<Visit> getRecentFriendCheckIns(Integer userId) {
+		return (Collection<Visit>)getSqlMapClientTemplate().queryForList("getRecentFriendCheckIns", userId);
+	}
 
+	@Override
+	public Collection<Visit> getUsersRecentActivity(Integer userId) {
+		return (Collection<Visit>)getSqlMapClientTemplate().queryForList("getUsersRecentActivity", userId);
+	}
+	
+	@Override
+	public Collection<Visit> getTeamsRecentActivity(Integer teamId) {
+		return (Collection<Visit>)getSqlMapClientTemplate().queryForList("getTeamsRecentActivity", teamId);
+	}
 }

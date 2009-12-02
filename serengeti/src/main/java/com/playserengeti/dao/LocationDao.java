@@ -47,11 +47,14 @@ public interface LocationDao {
 	 * @param loc location name
 	 * @return the fetched location
 	 */
-	public Location getLocationByLocationName(String location);
+	public Location getLocationByName(String display);
 
 	/*
 	 * Check the existence of a locaitionId
 	 */
 	public boolean locationExists(Integer id);
+	
+	public Collection<Location> getNearbyLocations(Double latitude, Double longitude);
 
+	public Collection<Location> getControlledTerritory(Integer teamId);
 }
