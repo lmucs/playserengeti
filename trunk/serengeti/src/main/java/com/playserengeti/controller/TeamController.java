@@ -23,12 +23,10 @@ public class TeamController extends MultiActionController {
     private Logger logger = Logger.getLogger(getClass());
 
     private TeamService teamService;
-    private UserService userService;
     private UserSession session;
 
-    public TeamController(TeamService teamService, UserService userService) {
+    public TeamController(TeamService teamService) {
         this.teamService = teamService;
-        this.userService = userService;
     }
 
     public ModelAndView team(HttpServletRequest request, HttpServletResponse response) {
@@ -42,7 +40,6 @@ public class TeamController extends MultiActionController {
             HttpServletResponse response) {
         logger.debug("Entering team central");
 
-        // TODO
         Collection<Team> leaders = teamService.getLeadingTeams();
         Collection<Team> mostActive = teamService.getMostActiveTeams();
         Collection<Team> newest = teamService.getNewestTeams();

@@ -84,5 +84,38 @@
     ON team_leader_id = player_id
     WHERE visit_location_id = #value#
   </select>
+  
+  <select id="getRecentCheckIns" resultMap="visitMap">
+      SELECT * 
+      FROM visit
+      ORDER BY visit_timestamp DESC
+      LIMIT 10
+  </select>
 
+  <select id="getRecentFriendCheckIns" resultMap="visitMap">
+      SELECT *
+      FROM visit, friendship
+      WHERE ((first_id = 4 AND visit_user_id = second_id) OR 
+        (first_id = visit_user_id AND second_id = 4)) AND
+        status = 'accepted'
+      ORDER BY visit_timestamp DESC
+      LIMIT 10
+  </select>
+  
+  <select id="getUsersRecentActivity" resultMap="visitMap">
+      SELECT * 
+      FROM visit
+      WHERE visit_user_id = #value#
+      ORDER BY visit_timestamp DESC
+      LIMIT 10
+  </select>
+  
+  <select id="getTeamsRecentActivity" resultMap="visitMap">
+      SELECT * 
+      FROM visit
+      WHERE visit_team_id = #value#
+      ORDER BY visit_timestamp DESC
+      LIMIT 10
+  </select>
+  
 </sqlMap>

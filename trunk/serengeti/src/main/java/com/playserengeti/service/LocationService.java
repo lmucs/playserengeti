@@ -22,6 +22,10 @@ public class LocationService {
     public Location getLocationById(Integer id) {
         return locationDao.getLocationById(id);
     }
+    
+    public Location getLocationByName(String display) {
+    	return locationDao.getLocationByName(display);
+    }
 
     /**
      * Writes the given location to persistent storage. If the given location has a null
@@ -54,6 +58,14 @@ public class LocationService {
      */
     public Collection<Location> getAllLocations() {
     	return locationDao.getAllLocations();
+    }
+    
+    public Collection<Location> getNearbyLocations(Double latitude, Double longitude) {
+    	return locationDao.getNearbyLocations(latitude, longitude);
+    }
+    
+    public Collection<Location> getControlledTerritory(Integer teamId) {
+    	return locationDao.getControlledTerritory(teamId);
     }
         
     public String asJSON(Collection<Location> locations) {

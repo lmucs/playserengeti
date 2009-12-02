@@ -91,5 +91,6 @@
         };
         var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
         document.getElementById("location").innerHTML = location;
+        
     }
 </script>

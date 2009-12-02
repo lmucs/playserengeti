@@ -50,12 +50,6 @@ public class UserDaoMockImpl implements UserDao {
 	}
 
 	@Override
-	public Collection<User> getRecentlyCheckedInUsers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Collection<User> getFriends(Integer userId) {
 		// TODO Auto-generated method stub
 		return null;

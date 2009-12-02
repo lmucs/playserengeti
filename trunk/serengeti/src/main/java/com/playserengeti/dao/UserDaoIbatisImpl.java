@@ -89,10 +89,6 @@ public class UserDaoIbatisImpl extends SqlMapClientDaoSupport implements UserDao
 		return (List<User>)getSqlMapClientTemplate().queryForList("getMostActiveUsers");
 	}
 	
-	public Collection<User> getRecentlyCheckedInUsers() {
-		return (List<User>)getSqlMapClientTemplate().queryForList("getRecentlyCheckedInUsers");
-	}
-	
 	public boolean acceptFriendInvite(Integer firstId, Integer secondId) {
 		Map<String, Integer> parameterMap = new HashMap<String, Integer>();
 		parameterMap.put("firstId", firstId);

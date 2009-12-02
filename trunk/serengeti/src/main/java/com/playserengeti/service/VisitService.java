@@ -125,4 +125,19 @@ public class VisitService {
 	    return result;
 	}
 	
+	public Collection<Visit> getRecentCheckIns() {
+		return visitDao.getRecentCheckIns();
+	}
+	
+	public Collection<Visit> getRecentFriendCheckIns(Integer userId) {
+		return visitDao.getRecentFriendCheckIns(userId);
+	}
+	
+	public Collection<Visit> getUsersRecentActivity(Integer userId) {
+		return visitDao.getUsersRecentActivity(userId);
+	}
+	
+	public Collection<Visit> getTeamsRecentActivity(Integer teamId) {
+		return visitDao.getTeamsRecentActivity(teamId);
+	}
 }

@@ -13,7 +13,20 @@ import com.playserengeti.domain.Location;
  */
 public class LocationDaoMockImpl implements LocationDao {
 
-    private static final Location sampleLocations[] = new Location[] {
+    @Override
+	public Collection<Location> getControlledTerritory(Integer teamId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<Location> getNearbyLocations(Double latitude,
+			Double longitude) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private static final Location sampleLocations[] = new Location[] {
             new Location(null, "Doolan Hall", 33.969326, -118.414387),
             new Location(null, "Viva Fresh", 33.959988, -118.416851),
             new Location(null, "LAX Airport", 33.946864, -118.401504),
@@ -45,7 +58,7 @@ public class LocationDaoMockImpl implements LocationDao {
     }
 
     @Override
-    public Location getLocationByLocationName(String location) {
+    public Location getLocationByName(String display) {
         throw new UnsupportedOperationException();
     }
 

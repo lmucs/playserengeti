@@ -1,11 +1,13 @@
 package com.playserengeti.dao;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
 import com.playserengeti.domain.Location;
-import com.playserengeti.domain.Team;
 
 public class LocationDaoIbatisImpl extends SqlMapClientDaoSupport implements
 		LocationDao {
@@ -29,10 +31,10 @@ public class LocationDaoIbatisImpl extends SqlMapClientDaoSupport implements
 	}
 
 	@Override
-	public Location getLocationByLocationName(String location) {
+	public Location getLocationByName(String display) {
 		return (Location)getSqlMapClientTemplate().queryForObject(
 				"getLocationByName",
-				location);
+				display);
 	}
 
 	@Override
@@ -54,4 +56,16 @@ public class LocationDaoIbatisImpl extends SqlMapClientDaoSupport implements
 		getSqlMapClientTemplate().update("updateLocation", location);
 	}
 	
+	@Override
+	public Collection<Location> getNearbyLocations(Double latitude, Double longitude) {
+	    Map<String, Double> parameterMap = new HashMap<String, Double>();
+	    parameterMap.put("latitude", latitude);
+	    parameterMap.put("longitude", longitude);
+		return (List<Location>)getSqlMapClientTemplate().queryForList("getNearbyLocations", parameterMap);
+	}
+	
+	@Override
+	public Collection<Location> getControlledTerritory(Integer teamId) {
+		return (Collection<Location>)getSqlMapClientTemplate().queryForList("getControlledTerritory", teamId);
+	}
 }

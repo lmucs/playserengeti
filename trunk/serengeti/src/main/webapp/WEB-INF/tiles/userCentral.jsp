@@ -24,11 +24,11 @@
 <div id="nscontent" width=300 height=160 visibility=hidden><!--INSERT CONTENT HERE-->
 
 <ul class="hor_menu">
-	<c:forEach var="user" items="${recent}">
-		<li><a href="${user.id}"><img
+	<c:forEach var="visit" items="${recent}">
+		<li><a href="${visit.user.id}"><img
 			src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user"
-			title="${user.email}" /></a> <span><c:out value="${user.email}" />
-		</span><a href="${user.firstName}" ><c:out value="${user.firstName}"/></a></li>
+			title="${visit.user.email}" /></a> <span><c:out value="${visit.user.email}" />
+		</span><a href="${visit.user.firstName}" ><c:out value="${visit.user.firstName}"/></a></li>
 	</c:forEach>
 </ul>
 

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
+import com.playserengeti.service.UserService;
 import com.playserengeti.session.UserSession;
 
 /**
@@ -14,11 +15,19 @@ import com.playserengeti.session.UserSession;
 public class WelcomeController extends AbstractController {
 
     private UserSession session;
-
+    private UserService userService;
+    
+    public WelcomeController(UserService userService) {
+    	this.userService = userService;
+    }
+    
     @Override
     protected ModelAndView handleRequestInternal(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        return new ModelAndView("welcome", "session", session);
+        ModelAndView mav = new ModelAndView("welcome");
+        mav.addObject("session", session);
+        mav.addObject("newest", userService.getNewestUsers());
+        return mav;
     }
 
     public UserSession getSession() {
