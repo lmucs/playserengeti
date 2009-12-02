@@ -301,9 +301,11 @@ ul.hor_menu {
 }
 
 .hor_menu a {
-	display: block;
-	text-decoration: none;
-	text-align: center;
+display:block;
+text-align:center;
+text-decoration:none;
+width:50px;
+word-wrap:break-word;
 }
 
 .hor_menu span {
