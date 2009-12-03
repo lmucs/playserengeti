@@ -73,7 +73,7 @@ public class LocationService {
     	int count = locations.size();
     	
     	for (Location l : locations) {
-    		result += l.asMinimalJSON();
+    		result += l.asJSON();
     	    if (count > 1) {
     	    	result += ", ";
     	    }
