@@ -28,7 +28,7 @@ This is the main wiki page for the CMSI 401 Software Engineering Laboratory cour
 
 == Table of Contents ==
   # [Main_Page Main Page]
-  # [Project Summary Project Summary]
+  # [Project_Summary Project Summary]
   # [Project_Use_Cases Use Cases]
   # [DatabaseSchema Database Schema]
   # [Webapp_Architecture Webapp Architecture]
@@ -39,5 +39,5 @@ This is the main wiki page for the CMSI 401 Software Engineering Laboratory cour
   # [Meeting_Notes Meeting Notes]
   # Design Pages
     * [LocationOwnershipScoring Location Ownership]
-    * [TeamHierarchy Rules Team Hierarchy]
+    * [TeamHierarchyRules Team Hierarchy]
     * [Qb_Services Qb Services]
