@@ -1,4 +1,4 @@
-= Welcome =
+<wiki:comment>= Welcome =
 
 This is the main wiki page for the CMSI 401 Software Engineering Laboratory course for 2009.  
 
@@ -17,3 +17,27 @@ The [http://www.cs.lmu.edu/~ray/classes/se course web page] has links to the syl
   * [http://code.google.com/p/playserengeti/wiki/Project_Architecture Project Architecture]
   * [http://code.google.com/p/playserengeti/wiki/Meeting_Notes Meeting Notes]
   * [http://code.google.com/p/playserengeti/wiki/Schedule_and_Milestones Project Schedule and Milestones]
+</wiki:comment>
+
+= Welcome to Serengeti =
+This is the main wiki page for the CMSI 401 Software Engineering Laboratory course for 2009.
+<wiki:comment>Add logo/picture.</wiki:comment>
+
+== Who We Are ==
+
+
+== Table of Contents ==
+  # [Main_Page Main Page]
+  # [Project Summary Project Summary]
+  # [Project_Use_Cases Use Cases]
+  # [DatabaseSchema Database Schema]
+  # [Webapp_Architecture Webapp Architecture]
+  # [Server_Architecture Server Architecture]
+  # [Client_Architecture Client Architecture]
+  # [Testing]
+  # [Deployment]
+  # [Meeting_Notes Meeting Notes]
+  # Design Pages
+    * [LocationOwnershipScoring Location Ownership]
+    * [TeamHierarchy Rules Team Hierarchy]
+    * [Qb_Services Qb Services]
