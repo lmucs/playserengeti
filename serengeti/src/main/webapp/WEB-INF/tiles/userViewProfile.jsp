@@ -134,7 +134,7 @@
                 val.id + ")>" + "I\'ll allow it" + "</button><button onClick=rejectTeamInvite(" +
                 val.id + ")>" + "Not Interested" + "</button></li>");
             });
-        jQuery.each(data.eligableTeams, function(i, val) {
+        jQuery.each(data.invitableTeams, function(i, val) {
             $("#teamInviteSelect").append("<option value=" + val.id + ">" + val.name + "</option>");
             });
         $("#email").append(data.user.email);
@@ -161,7 +161,7 @@
             if (data.alreadyFriends == "true") {
                 $("#inviteFriend").hide();
             }
-            if (data.eligableTeams.length === 0) {
+            if (data.invitableTeams.length === 0) {
                 $("#inviteTeam").hide();
             }
         }

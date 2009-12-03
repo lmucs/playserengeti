@@ -204,7 +204,8 @@ public class UserController extends MultiActionController {
         Collection<Team> teams = teamService.getUsersTeams(userId);
         Collection<User> friendInvites = userService.getFriendInvites(userId);
         Collection<Team> teamInvites = teamService.getTeamInvites(userId);
-
+        Collection<Visit> activity = visitService.getUsersRecentActivity(userId);
+        
         Collection<Team> invitableTeams = new HashSet<Team>();
         boolean alreadyFriends = true;
         if (session.isLoggedIn()) {
@@ -224,9 +225,10 @@ public class UserController extends MultiActionController {
         String result = "{\"user\" : " + user.asJSON() + ", \"friends\" : " + userService.asJSON(friends) +
             ", \"teams\" : " + teamService.asJSON(teams) + ", \"invites\" : {\"friendInvites\" : " + 
             userService.asJSON(friendInvites) + ", \"teamInvites\" : " + 
-            teamService.asJSON(teamInvites) + "}, \"eligableTeams\" : " + 
-            teamService.asJSON(invitableTeams) + ", \"alreadyFriends\" : \"" + alreadyFriends +
-            "\", \"sessionId\" : \"" + sessionId + "\"}";
+            teamService.asJSON(teamInvites) + "}, \"invitableTeams\" : " + 
+            teamService.asJSON(invitableTeams) + ", \"activity\" : " + 
+            visitService.asJSON(activity) + ", \"alreadyFriends\" : \"" + 
+            alreadyFriends + "\", \"sessionId\" : \"" + sessionId + "\"}";
         
     	return result;
     }
