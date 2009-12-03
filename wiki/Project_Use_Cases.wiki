@@ -1,5 +1,7 @@
 The primary use cases for Serengeti are listed below.
 
+==User==
+----
 ===U1 Sign Up User===
 
   * *Description*: An end user registers as a new player.
@@ -13,44 +15,74 @@ The primary use cases for Serengeti are listed below.
   * *Postconditions*: A new player record has been inserted into the database.
   * *Handles Requirements*: R1, R2.6.
 
-===Delete User===
+===U2 Delete User===
 
-Description: Delete a user.
+  * *Description*: A user deletes their own account.
+  * *Actor*: 
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: 
+  * *Handles Requirements*: 
+
+<wiki:comment>
 
 URI: /user/delete[?user=user_id] -- The GET parameter is optional, is only available to admins, and if it is not supplied then the controller knows to delete the currently logged in user.
-
 Users: Self, Admin
-
 Security:
-
 Notes:
 
-===Manage User===
+</wiki:comment>
 
+===U3 Manage User===
+
+  * *Description*: 
+  * *Actor*: 
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: 
+  * *Handles Requirements*: 
+
+<wiki:comment>
 
 Description: Manage a user's data.  This data includes the user's password and associated teams, along with profile data, including name, email, etc.
-
 URI: /user/manage[?user=user_id] -- The GET parameter is optional, is only available to admins, and if it is not supplied then controller knows to manage the currently logged in user.
-
 Users: Self, Admin
-
 Security:
-
 Notes:
 
-===View User Profile===
+</wiki:comment>
+
+===U4 View User Profile===
+
+  * *Description*: 
+  * *Actor*: 
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: 
+  * *Handles Requirements*: 
+
+<wiki:comment>
 
 Description: Displays the profile of the specified user.
-
 URI: /user/viewprofile[?user=user_id] -- The GET parameter is optional, and if not supplied the controller displays the currently logged-in user's profile.
-
 Users: User, Admin
-
 Security:
-
 Notes:
 
-=Team=
+</wiki:comment>
+==Team==
 ----
 ===Create Team===
 
@@ -102,7 +134,7 @@ Security:
 
 Notes:
 
-=Business/Location=
+==Business/Location==
 ----
 
 Question: is a business different than a location? How do we define each? [[User:Gratrixl|Gratrixl]] 22:39, 8 September 2009 (UTC)
@@ -171,7 +203,7 @@ Security:
 
 Notes:
 
-=Status=
+==Status==
 ----
 
 ===Ping===
@@ -222,7 +254,7 @@ Security:
 
 Notes: Parameters for the game status should be defined once the team hierarchy issues have been hashed out, but should likely include which league/sub-league you want to show status for and if you want to show all teams in that league or just your team and their rivals.
 
-=Communication=
+==Communication==
 ----
 
 ===Invite To Game===
@@ -295,7 +327,7 @@ Security: Should be limited to users friends/team members
 
 Notes:
 
-=Query=
+==Query==
 ----
 
 ===Find Locations of Businesses===
