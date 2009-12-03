@@ -1,0 +1,7 @@
+IN PROGRESS
+
+<wiki:comment>
+To contain:
+  * WAR file
+  * Database
+</wiki:comment>
