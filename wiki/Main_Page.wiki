@@ -25,19 +25,3 @@ This is the main wiki page for the CMSI 401 Software Engineering Laboratory cour
 
 == Who We Are ==
 
-
-== Table of Contents ==
-  # [Main_Page Main Page]
-  # [Project_Summary Project Summary]
-  # [Project_Use_Cases Use Cases]
-  # [DatabaseSchema Database Schema]
-  # [Webapp_Architecture Webapp Architecture]
-  # [Server_Architecture Server Architecture]
-  # [Client_Architecture Client Architecture]
-  # [Testing]
-  # [Deployment]
-  # [Meeting_Notes Meeting Notes]
-  # Design Pages
-    * [LocationOwnershipScoring Location Ownership]
-    * [TeamHierarchyRules Team Hierarchy]
-    * [Qb_Services Qb Services]
