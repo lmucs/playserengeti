@@ -1,0 +1,10 @@
+IN PROGRESS
+
+<wiki:comment>
+To contain:
+  * Tiles
+    * See sketches (maybe scan some and include inline)
+  * Scripts
+  * Styles
+  * Images
+</wiki:comment>
