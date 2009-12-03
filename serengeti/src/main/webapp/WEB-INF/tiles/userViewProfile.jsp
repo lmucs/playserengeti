@@ -212,7 +212,7 @@
     };
     
     var getNearbyLocations = function() {
-        var request = $.get("getNearbyLocations", {latitude : userLoc.latitude, 
+        var request = $.get("../location/getNearbyLocations", {latitude : userLoc.latitude, 
             longitude : userLoc.longitude}, function(data) {
                 var jsonData = JSON.parse(request.responseText);
                 populateLocations(jsonData.locations);

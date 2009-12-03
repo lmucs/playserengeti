@@ -182,19 +182,6 @@ public class UserController extends MultiActionController {
         Integer userId = Integer.valueOf(request.getParameter("userId"));
 
         if (!userId.equals(-1)) teamService.rejectTeamInvite(teamId, userId);
-    }
-
-    public void getNearbyLocations(HttpServletRequest request, HttpServletResponse response) {
-    	Double latitude = Double.valueOf(request.getParameter("latitude"));
-        Double longitude = Double.valueOf(request.getParameter("longitude"));
-
-        try {
-  		    PrintWriter out = response.getWriter();
-   		    out.println("{\"locations\" : " + 
-   		    		locationService.asJSON(locationService.getNearbyLocations(latitude, longitude)) + 
-   		    		"}");	
-        }
-   	    catch(IOException e) {}
     }	
     
     private String generateProfileData(Integer userId) {

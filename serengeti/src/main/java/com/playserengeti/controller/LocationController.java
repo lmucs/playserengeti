@@ -89,6 +89,19 @@ public class LocationController extends MultiActionController {
         return mav;
     }
     
+    public void getNearbyLocations(HttpServletRequest request, HttpServletResponse response) {
+    	Double latitude = Double.valueOf(request.getParameter("latitude"));
+        Double longitude = Double.valueOf(request.getParameter("longitude"));
+
+        try {
+  		    PrintWriter out = response.getWriter();
+   		    out.println("{\"locations\" : " + 
+   		    		locationService.asJSON(locationService.getNearbyLocations(latitude, longitude)) + 
+   		    		"}");	
+        }
+   	    catch(IOException e) {}
+    }
+    
     public void handleResult(HttpServletRequest request, HttpServletResponse response) {
         String name = request.getParameter("name");
         Double lat = Double.valueOf(request.getParameter("lat"));
