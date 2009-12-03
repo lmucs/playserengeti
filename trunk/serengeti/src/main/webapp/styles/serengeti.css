@@ -412,6 +412,7 @@ word-wrap:break-word;
 .teamImage {
     height: 150px;
     width: auto;	
+    margin-bottom: 80px;
 }
 #teamName{
 	font-size: 160%;
