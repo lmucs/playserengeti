@@ -1,0 +1,10 @@
+IN PROGRESS
+
+<wiki:comment>
+To contain:
+  * List of domain classes
+    * Include UML diagram
+  * List of controllers and URIs
+  * List of services
+  * List of daos
+</wiki:comment>
