@@ -43,6 +43,24 @@
                 <div class="grid_8 round_Box_Container">
                     <td><c:out value="${teamCommand.description}"/></td>
                 </div>
+                
+                <div class="clear">&nbsp;</div>
+	                
+	            <div class="grid_2">
+                    <td><strong>Activity:</td>
+                </div>	
+                
+                <div class="clear">&nbsp;</div>
+                
+                <div class="grid_8 round_Box_Container">
+                    <ul>
+                    <c:forEach var="visit" items="${activity}">
+                        <li><c:out value="${visit.user.firstName} ${visit.user.lastName}"/> checked in to 
+                          <c:out value="${visit.location.name}"/> (${visit.date})</li>
+                    </c:forEach>
+                    </ul>
+                </div>
+                
 	            <div class="grid_4 round_Box_Container">
 	                <div class="grid_2">
 	                    <strong>Team Members:</strong>

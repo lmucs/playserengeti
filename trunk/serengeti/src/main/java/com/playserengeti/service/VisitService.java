@@ -9,6 +9,7 @@ import com.playserengeti.dao.TeamDao;
 import com.playserengeti.dao.UserDao;
 import com.playserengeti.dao.VisitDao;
 import com.playserengeti.domain.Team;
+import com.playserengeti.domain.User;
 import com.playserengeti.domain.Visit;
 
 
@@ -140,4 +141,19 @@ public class VisitService {
 	public Collection<Visit> getTeamsRecentActivity(Integer teamId) {
 		return visitDao.getTeamsRecentActivity(teamId);
 	}
+	
+	public String asJSON(Collection<Visit> visits) {
+    	String result = "[";
+    	int count = visits.size();
+    	
+    	for (Visit v : visits) {
+    		result += v.asJSON();
+    	    if (count > 1) {
+    	    	result += ", ";
+    	    }
+    	    count--;
+    	}
+    	result += "]";
+    	return result;
+    }
 }

@@ -195,6 +195,7 @@
         </property>
         <property name="session" ref="userSession"/>
         <constructor-arg ref="teamService"/>
+        <constructor-arg ref="visitService"/>
      </bean>
 
      <bean id="teamCreateController"

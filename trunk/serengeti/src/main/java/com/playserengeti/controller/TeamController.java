@@ -1,7 +1,6 @@
 package com.playserengeti.controller;
 
 import java.util.Collection;
-import java.util.HashSet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,8 +11,9 @@ import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 import com.playserengeti.domain.Team;
 import com.playserengeti.domain.User;
+import com.playserengeti.domain.Visit;
 import com.playserengeti.service.TeamService;
-import com.playserengeti.service.UserService;
+import com.playserengeti.service.VisitService;
 import com.playserengeti.session.UserSession;
 
 /**
@@ -23,10 +23,12 @@ public class TeamController extends MultiActionController {
     private Logger logger = Logger.getLogger(getClass());
 
     private TeamService teamService;
+    private VisitService visitService;
     private UserSession session;
 
-    public TeamController(TeamService teamService) {
+    public TeamController(TeamService teamService, VisitService visitService) {
         this.teamService = teamService;
+        this.visitService = visitService;
     }
 
     public ModelAndView team(HttpServletRequest request, HttpServletResponse response) {
@@ -87,6 +89,7 @@ public class TeamController extends MultiActionController {
         }
 
         Collection<User> members = teamService.getTeamMembers(teamId);
+        Collection<Visit> activity = visitService.getTeamsRecentActivity(teamId);
 
         String view = "teamViewProfile";
         if ("xml".equals(request.getParameter("format"))) {
@@ -100,6 +103,7 @@ public class TeamController extends MultiActionController {
         mav.addObject("session", session);
         mav.addObject("teamCommand", command);
         mav.addObject("members", members);
+        mav.addObject("activity", activity);
 
         return mav;
     }

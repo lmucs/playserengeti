@@ -70,8 +70,8 @@ public class Visit {
 	}
 
 	public String asJSON() {
-		return "{\"id\" : " + this.id + ", \"user\" : " + this.user.asJSON() + ", \"team\" : " + this.team.asJSON() + 
-		    ", \"location\" : " + this.location.asJSON() + "}";
+		return "{\"id\" : \"" + this.id + "\", \"user\" : " + this.user.asMinimalJSON() + ", \"team\" : " + this.team.asMinimalJSON() + 
+		    ", \"location\" : " + this.location.asMinimalJSON() + ", \"date\" : \"" + this.date.toString() + "\"}";
 	}
 	
 	@Override
