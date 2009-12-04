@@ -1,6 +1,4 @@
-== Sample log4j.xml =
-
-The following log4j.xml is fairly useful for serengeti development.  Drop the file into your tomcat/lib directory.
+#summary Place the following `log4j.xml` file into your `tomcat/lib` directory.  Feel free to tweak as necessary.
 
 {{{
   <?xml version="1.0" encoding="UTF-8" ?>
