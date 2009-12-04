@@ -3,14 +3,15 @@
   # [Requirements]
   # [Project_Use_Cases Use Cases]
   # [DatabaseSchema Database Schema]
-  # [Webapp_Architecture Webapp Architecture]
+  # [Project_Architecture Project Architecture]
   # [Server_Architecture Server Architecture]
   # [Client_Architecture Client Architecture]
+  # [Mobile_Architecture Mobile Architecture]
   # [Testing]
   # [Deployment]
   # Appendices
     * Administration and Planning
-      * {Schedule_and_Milestones Project Scheduling]
+      * [Schedule_and_Milestones Project Scheduling]
       * [Meeting_Notes Meeting Notes]
       * [QuestionsRequiringGroupDiscussion Questions Requiring Group Discussion]
     * Design Pages
@@ -18,5 +19,5 @@
       * [LocationOwnershipScoring Location Ownership]
       * [TeamHierarchyRules Team Hierarchy]
       * [SampleLog4JConfiguration Sample Log4j Configuration]
-    * Q6
+    * Future Work
       * [ServicesForQ6 Services for Q6]
