@@ -1,27 +1,20 @@
-<wiki:comment>= Welcome =
+This is the official wiki for the CMSI 401 Software Engineering Laboratory course for 2009.  
 
-This is the main wiki page for the CMSI 401 Software Engineering Laboratory course for 2009.  
+The wiki also functions as the traditional project notebook.  All design notes, documents, reports, discussion, and other artifacts related to the course are kept here.  They've even been thoughtfully organized and indexed; guests can browse the project artifacts in the order they appear in the table of contents to the left.
 
-== About this wiki ==
+For information about the course for which this project was written, including the syllabus and the course notes, see the  [http://www.cs.lmu.edu/~ray/classes/se LMU course web page].  This wiki is strictly for the coursework and collaboration, not for dissemination of course announcements and requirements.
 
-Students should use this wiki for design notes, documents, reports, discussion, and other artifacts related to the course.
+=== The Team ===
 
-The [http://www.cs.lmu.edu/~ray/classes/se course web page] has links to the syllabus and course notes.  This wiki is intended for your coursework and collaboration, not for dissemination of course announcements and requirements.
+The Serengeti Team consists of
+  * Loren (Durnew) Abrams
+  * James (Paris) Coleman
+  * Lita (Aerialist) Gratrix
+  * Edgardo (Malevolent Man) Ineguez
+  * Mark (Chick Magnet) Miscavage
+  * Chris (Anquan) Mueller
+  * Don (Scythe) Murphy
 
+Some professors and alumni are also registered as committers.
 
-== Quick Links ==
-
-  * [http://code.google.com/p/playserengeti/wiki/Project_Summary Project Summary]
-  * [Requirements]
-  * [http://code.google.com/p/playserengeti/wiki/Project_Use_Cases Project Use Cases]
-  * [http://code.google.com/p/playserengeti/wiki/Project_Architecture Project Architecture]
-  * [http://code.google.com/p/playserengeti/wiki/Meeting_Notes Meeting Notes]
-  * [http://code.google.com/p/playserengeti/wiki/Schedule_and_Milestones Project Schedule and Milestones]
-</wiki:comment>
-
-= Welcome to Serengeti =
-This is the main wiki page for the CMSI 401 Software Engineering Laboratory course for 2009.
 <wiki:comment>Add logo/picture.</wiki:comment>
-
-== Who We Are ==
-
