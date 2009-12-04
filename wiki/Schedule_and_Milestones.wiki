@@ -1,11 +1,4 @@
-#summary Schedule and Milestones.
-
-= Introduction =
-
-This should list the iterations to be generated (currently listed at being on a two week cycle) and the functionality expected at each iteration. Subject to modification based on status.
-
-
-= Details =
+Development will take place in two week sprints.  This page will record targets expected for each iteration. 
 
 ==Iteration 1 - October 1st==
   * webapp scaffolding in place 
@@ -22,11 +15,16 @@ This should list the iterations to be generated (currently listed at being on a 
   * iPhone interface established
 
 ==Iteration 5 - November 19th==
-  *
+  * All mock daos replaced with database daos
+  * JQuery-based UI for web site (partial implementation)
+  * Most XML and JSON views ready
 
 ==Iteration 6 - December 3rd==
-  *
+  * All features in place and working
+  * Dry run presentation on Dec 3 or Dec 8
 
 ==December 18th - Presentation of Serengeti (Last of day of Finals)==
-  * Full functionality established (define)
-  * User documentation created
+  * All features implemented, tested, and (mostly) tuned
+  * UI is pristine
+  * Wiki in perfect shape
+  * Documentation complete
