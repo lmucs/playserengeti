@@ -125,11 +125,17 @@ This page summarizes the activities for each class meeting, as well as informal 
 
 == October 13 (Class) ==
 
-  * Forgot to record notes. Does anyone remember what happened this day?
+  * Stand up reports.
+  * Lecture on the Tiles Framework.
+  * Discussion of some CSS concepts.
+  * Demo of making images transparent with GIMP.
 
 == October 15 (Class) ==
 
-  * Forgot to record notes. Does anyone remember what happened this day?
+  * Standups.
+  * More group discussion on UI issues.
+  * Plans for mobile clients began.
+  * Decided to have Lita and Don start with basic apps created from tutorials to bring in next class.
 
 == October 20 (Class) ==
 
@@ -147,7 +153,11 @@ This page summarizes the activities for each class meeting, as well as informal 
 
 == October 27 (Class) ==
 
-  * Forgot to record notes. Does anyone remember what happened this day?
+  * Inidividual reports.
+  * Report and review of schema from database team.
+  * Design work on web site user interaction for geocoding.
+    * Doing the geocoding on submit is tricky or impossible because Google's geocoder is asynchronous.
+    * Settled on a UI involving the page changing its look through DHTML, exposing a submit button only after a successful geocoding.
 
 == October 29 (Class) ==
 
@@ -157,7 +167,8 @@ This page summarizes the activities for each class meeting, as well as informal 
 
 == November 3 (Class) ==
 
-  * Andres walked the class through setting up a server to host the web application.
+  * Dr. Toal was out of town, at a conference.
+  * Andres gave the class a hands-on tutorial setting up a server to host the web application.
 
 == November 5 (Class) ==
 
@@ -185,33 +196,51 @@ This page summarizes the activities for each class meeting, as well as informal 
 
 == November 17 (Class) ==
 
-* Backend and database report was that things were on track.
-* Talked about the role of select_key in iBATIS.
-* Discussion regarding whether JSON could be returned directly form a controller or could be generated in a view.
-* A long discussion about the UI getting up to snuff.
-** We looked at foursquare.com in some detail
-** How can we be more like foursquare?  Their site looks professional....
-** Made decision to go with fixed-width, centered layout.
+  * Backend and database report was that things were on track.
+  * Talked about the role of `select_key` in iBATIS.
+  * Discussion regarding whether JSON could be returned directly form a controller or could be generated in a view.
+  * A long discussion about the UI getting up to snuff.
+    * We looked at foursquare.com in some detail
+    * How can we be more like foursquare?  Their site looks professional....
+    * Made decision to go with fixed-width, centered layout.
 
 == November 19 (Class) ==
 
-* Started class with the usual oral reports.
-* Most groups feeling comfortable, but iPhone development not quite to the point where it can coast for the rest of the project.
-** Basic problem is getting the Spring controllers that accept POST queries to accept parameters from iPhone requests.
-** Several people were working on this.
-* Class broke into small teams for development work.
+  * Started class with the usual oral reports.
+  * Most groups feeling comfortable, but iPhone development not quite to the point where it can coast for the rest of the project.
+    * Basic problem is getting the Spring controllers that accept POST queries to accept parameters from iPhone requests.
+    * Several people were working on this.
+  * Class broke into small teams for development work.
 
 == November 24 (Class) ==
 
-* Derek Smith came by to assist with iPhone development.
-* Lab session.
-* Progress made on help page.
-* Database daos fleshed out.
-* Backend completed (for the most part).
+  * Derek Smith came by to assist with iPhone development.
+  * Lab session.
+  * Progress made on help page.
+  * Database daos fleshed out.
+  * Backend completed (for the most part).
 
 == December 1 (Class) ==
 
+  * Initial oral reports.
+  * UI discussion among whole group.
+  * Discussion surrounding scope of mobile apps.
+  * In class development.
+  * Started preparations for final presentation.
+    * Argument over possible dates (Don to start Google Calendar page).
+    * Outlined the final "project notebook" documentation structure (will be kept in the wiki, but the orgranization is still crucial).
+    * Initial outline of slides.
+
 == December 3 (Class) ==
+
+  * Class agreed to have the entire feature suite implemented by December 8.
+  * Any student that has feature implementation tasks still not finished by that date will be docked one full grade.
+  * Guest Speaker from Kaiser Permanente
+    * Presentation on KP's transitioning from legacy to modern systems
+    * Excellent overview of new technologies and possible applications for health care
+    * Lots of good Q and A.
+    * KP reps explained internship and programs to hire recent grads.
+    * LinkedIn profiles and contact information exchanged.
 
 == December 8 (Class) ==
 
