@@ -27,7 +27,7 @@ Development will take place in two week sprints.  This page will record targets 
   * All features in place and working
   * Dry run presentation on Dec 3 or Dec 8
 
-==December 18th - Presentation of Serengeti (Last of day of Finals)==
+==Iteration 7 (Final Presentation): December 18==
   * All features implemented, tested, and (mostly) tuned
   * UI is pristine
   * Wiki in perfect shape
