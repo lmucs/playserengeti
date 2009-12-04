@@ -9,15 +9,14 @@
   # [Mobile_Architecture Mobile Architecture]
   # [Testing]
   # [Deployment]
-  # Appendices
-    * Administration and Planning
-      * [Schedule_and_Milestones Project Scheduling]
-      * [Meeting_Notes Meeting Notes]
-      * [QuestionsRequiringGroupDiscussion Questions Requiring Group Discussion]
-    * Design Pages
-      * [Mock_Serengeti_Website Initial Webapp Mocks]
-      * [LocationOwnershipScoring Location Ownership]
-      * [TeamHierarchyRules Team Hierarchy]
-      * [SampleLog4JConfiguration Sample Log4j Configuration]
-    * Future Work
-      * [ServicesForQ6 Services for Q6]
+  # Appendix: Administration and Planning
+    * [Schedule_and_Milestones Project Scheduling]
+    * [Meeting_Notes Meeting Notes]
+    * [QuestionsRequiringGroupDiscussion Questions Requiring Group Discussion]
+  # Appendix: Design Skecthes, Prototypes, and Whitepapers
+    * [Mock_Serengeti_Website Initial Webapp Mocks]
+    * [LocationOwnershipScoring Location Ownership]
+    * [TeamHierarchyRules Team Hierarchy]
+    * [SampleLog4JConfiguration Sample Log4j Configuration]
+  # Appendix: Future Work
+    * [ServicesForQ6 Services for Q6]
