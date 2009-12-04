@@ -1,5 +1,6 @@
   # [Main_Page Main Page]
   # [Project_Summary Project Summary]
+  # [Requirements]
   # [Project_Use_Cases Use Cases]
   # [DatabaseSchema Database Schema]
   # [Webapp_Architecture Webapp Architecture]
@@ -7,8 +8,15 @@
   # [Client_Architecture Client Architecture]
   # [Testing]
   # [Deployment]
-  # [Meeting_Notes Meeting Notes]
-  # Design Pages
-    * [LocationOwnershipScoring Location Ownership]
-    * [TeamHierarchyRules Team Hierarchy]
-    * [Qb_Services Qb Services]
+  # Appendices
+    * Administration and Planning
+      * {Schedule_and_Milestones Project Scheduling]
+      * [Meeting_Notes Meeting Notes]
+      * [QuestionsRequiringGroupDiscussion Questions Requiring Group Discussion]
+    * Design Pages
+      * [Mock_Serengeti_Website Initial Webapp Mocks]
+      * [LocationOwnershipScoring Location Ownership]
+      * [TeamHierarchyRules Team Hierarchy]
+      * [SampleLog4JConfiguration Sample Log4j Configuration]
+    * Q6
+      * [ServicesForQ6 Services for Q6]
