@@ -1,119 +1,133 @@
 The class will create a Serengeti server and at least two clients - a web client and a mobile client.  Serengeti is a multi-player social web app in which players join teams and mark off territories.
 
-* User Interaction Requirements*    
+*User Interaction Requirements*    
 
-    * Requirements for the web application
-      ** Upon loading playserengeti.com, the user will be presented with the welcome screen.  This will contain information about the application, a login area, and a registration area.
-      ** When logged in, the user will be presented with a screen that contains options for:
-        * Account Management
-        * Team Management
-        * View World Map
-        * Location Management
-        * Communitate
-      ** For the "Account Management" option:
-        * The user will be presented with two options:
-          ** Modify Account
-          ** Delete Account
-        * For the "Modify Account" option:
-          ** The user can update their user information such as:
-            * Username
-            * Home location
-            * Contact information
-            * Profile Picture
-          ** The user can add and remove friends by searching for users.
-        * The "Delete Account" option will remove the user from the database.
-      ** For the "Team Management" option:
-        * The user will be presented with three options:
-          ** Create Team
-          ** Modify Team
-          ** Delete Team
-        * For the "Create Team" option:
-          ** The user will be able to select information about the team such as:
-            * Team Name
-            * Preferred Color (for the map overlay)
-            * Team Picture
-          ** After the team is created, the user will be able to select people to invite to their team.
-          ** The creator of the team is automatically set as the team leader.
-        * For the "Modify Team" option:
-          ** If the user will be presented with a list of teams to which they are a member.
-          ** The user, if they are the team leader, will be able to modify the team name, preferred color, team picture, and team home location.
-          ** If the user is the team leader, they may appoint another user to be the leader.
-          ** The user will be able to invite people to the team and, if they are the leader, remove people from the team.
-        * The "Delete Team" option will remove the team from the database, as long as the user is the team leader.
-      ** For the "View World Map" option:
-        * The user will be presented with a large map centered around their home location, search bars for both locations and people, and a text area at the bottom (this will initially be hidden).
-        * The map will contain mechanisms to zoom in/out and to move in all directions.
-        * The map will show a colored overlay to show which teams own which areas.
-        * The map will show any friends and team members that are currently checked in as green circles.
-        * The map will contain any locations that are controlled by the user, their teams, and any locations under contention with another team as squares.
-        * Locations controlled by a user's group will be colored that of the teams color and locations under contention will be colored gray.
-        * When a person or location is selected from the map, the text area will show information about that person/location.
-        * The user may search for people and locations using the search bars.
-        * When a search for a person or location is successful, the map will update to be centered around that person or location and the text area will show information about that person or location.
-      ** For the Location Management Option
-        * The user will be presented with options to
-          **Add a location/business 
-          **Manage a location/business
-          **Delete a location/business  
-          **For the purposes of serengeti a business is a location that has additional information stored for it (i.e., proprietor) 
-      **For the "Communicate" option
-        * The user will be presented with options to: 
-        * Invite to Game - a user can enter an email address and a message will be sent to that address inviting the recipient to sign up to Serengeti
-        * Send friend request - invite a user to be added to a users friends list, allowing them to see each other's location
-        * Accept a friend request - allows a user to accept a friend request that has been received
-        * Invite to team - allows a user to invite another user to join a team
-        * Invite to Location - allows a user to invite another user to meet them at their current location. 
+  # Requirements for the web application
+    # Upon loading playserengeti.com, the user will be presented with the welcome screen.  This will contain information about the application, a login area, and a registration area.
+    # When logged in, the user will be presented with a screen that contains options for:
+      # Account Management
+      # Team Management
+      # View World Map
+      # Location Management
+      # Communitate
+    # For the "Account Management" option:
+      # The user will be presented with two options:
+        # Modify Account
+        # Delete Account
+      # For the "Modify Account" option:
+        # The user can update their user information such as:
+          # Username
+          # Home location
+          # Contact information
+          # Profile Picture
+        # The user can add and remove friends by searching for users.
+      # The "Delete Account" option will remove the user from the database.
+    # For the "Team Management" option:
+      # The user will be presented with three options:
+        # Create Team
+        # Modify Team
+        # Delete Team
+      # For the "Create Team" option:
+        # The user will be able to select information about the team such as:
+          # Team Name
+          # Preferred Color (for the map overlay)
+          # Team Picture
+        # After the team is created, the user will be able to select people to invite to their team.
+        # The creator of the team is automatically set as the team leader.
+      # For the "Modify Team" option:
+        # If the user will be presented with a list of teams to which they are a member.
+        # The user, if they are the team leader, will be able to modify the team name, preferred color, team picture, and team home location.
+        # If the user is the team leader, they may appoint another user to be the leader.
+        # The user will be able to invite people to the team and, if they are the leader, remove people from the team.
+      # The "Delete Team" option will remove the team from the database, as long as the user is the team leader.
+    # For the "View World Map" option:
+      # The user will be presented with a large map centered around their home location, search bars for both locations and people, and a text area at the bottom (this will initially be hidden).
+      # The map will contain mechanisms to zoom in/out and to move in all directions.
+      # The map will show a colored overlay to show which teams own which areas.
+      # The map will show any friends and team members that are currently checked in as green circles.
+      # The map will contain any locations that are controlled by the user, their teams, and any locations under contention with another team as squares.
+      # Locations controlled by a user's group will be colored that of the teams color and locations under contention will be colored gray.
+      # When a person or location is selected from the map, the text area will show information about that person/location.
+      # The user may search for people and locations using the search bars.
+      # When a search for a person or location is successful, the map will update to be centered around that person or location and the text area will show information about that person or location.
+    # For the Location Management Option
+      # The user will be presented with options to
+        # Add a location/business 
+        # Manage a location/business
+        # Delete a location/business  
+        # For the purposes of serengeti a business is a location that has additional information stored for it (i.e., proprietor) 
+    # For the "Communicate" option
+      # The user will be presented with options to: 
+      # Invite to Game - a user can enter an email address and a message will be sent to that address inviting the recipient to sign up to Serengeti
+      # Send friend request - invite a user to be added to a users friends list, allowing them to see each other's location
+      # Accept a friend request - allows a user to accept a friend request that has been received
+      # Invite to team - allows a user to invite another user to join a team
+      # Invite to Location - allows a user to invite another user to meet them at their current location.
+  # Requirements for iPhone application
+      # When the user opens the application they are presented with a screen containing several button options.  This approach is used to ease initial loading time and to better separate a user's actions.  
+      # The options that will be provided to the user are as follows:
+        # Check In
+        # Find People
+        # Find Places
+        # View World Map
+        # Settings/Options
+      # For the "Check In" option:
+        # When selected, the application will record where the user is currently located.
+        # When checking in, if the server detects that any of the user's friends and/or team members are checked in to the same location, a message is displayed stating that those people are in the same location. 
+        # After the user has checked in, the user can select whether to automatically update their position or to check them out after a set period of time.
+      # For the "Find People" option:
+        # When selected, the user is presented with a new page that contains a search bar at the top, a map below it that includes a check box to "Show Territories (Regions?)", and a text area at the bottom (this will initially be hidden). 
+        # The map will contain mechanisms to zoom in/out and to move in all directions.
+        # The map shows an area of 10 miles in any direction centered around the current location of the user with the user represented as a blue circle.  
+        # On the map, any friends or team members of the user that have recently checked in and are within the view area are represented as green circles.
+        # When the "Show Territories (Regions?)" option is enabled, the map will display a colored overlay to represent which teams own which areas.  A key will be provided to differentiate regions.
+        # Players can be searched for by first and/or last name or by username.
+        # If a search is successful, the resulting users will be displayed in a scrolling list.
+        # When the user selects one of the results the text area below the map will display that person's profile.
+        # If the person searched for is currently checked in to a location, the map will update to show the location of that person.
+        # If a search is unsuccessful, a message will appear which states that the person cannot be found.
+      # For the Find Places option:
+        # When "Find Places" is selected, the user is presented with a new page that contains a search bar at the top, a map below it that includes a check box to "Show Territories (Regions?)", and a text area at the bottom (this will initially be hidden).
+        # The map will contain mechanisms to zoom in/out and to move in all directions.
+        # The map shows an area of 10 miles in any direction centered around the current location of the user with the user represented as a blue circle. 
+        # When the "Show Territories" option is enabled, the map will display a colored overlay to represent which teams own which areas.  A key will be provided to differentiate regions.
+        # Locations can be searched by name.
+        # If the search is successful, the results will be displayed in a scrolling list.
+        # When a location is selected, the map is updated to show that location, represented as a square on the map and the text area below the map will display the location's profile.
+      # For the View World Map option:
+        # The user will be presented a screen with a map and a text area below it (this will initially be hidden).
+        # The map will contain mechanisms to zoom in/out and to move in all directions.
+        # The map will be centered around the user's current location.
+        # The map will show a colored overlay to show which teams own which areas.
+        # The map will show the locations of all friends and team members.
+        # The map will show locations of interest that are near to the user, locations owned by the user's teams, and locations that are under contention.
+        # When people/locations are selected from the map, the text area below the map will display that person or location's profile.
+      # For the Settings/Options option:
+        # //TODO
+      # For the Location Management Option
+        # The user will be presented with options to
+          # Add a location/business 
+          # Manage a location/business
+          # Delete a location/business  
+          # For the purposes of serengeti a business is a location that has additional information stored for it (i.e., proprietor)
 
-  * Requirements for iPhone application
-      ** When the user opens the application they are presented with a screen containing several button options.  This approach is used to ease initial loading time and to better separate a user's actions.  
-      ** The options that will be provided to the user are as follows:
-        * Check In
-        * Find People
-        * Find Places
-        * View World Map
-        * Settings/Options
-      ** For the "Check In" option:
-        * When selected, the application will record where the user is currently located.
-        * When checking in, if the server detects that any of the user's friends and/or team members are checked in to the same location, a message is displayed stating that those people are in the same location. 
-        * After the user has checked in, the user can select whether to automatically update their position or to check them out after a set period of time.
-      ** For the "Find People" option:
-        * When selected, the user is presented with a new page that contains a search bar at the top, a map below it that includes a check box to "Show Territories (Regions?)", and a text area at the bottom (this will initially be hidden). 
-        * The map will contain mechanisms to zoom in/out and to move in all directions.
-        * The map shows an area of 10 miles in any direction centered around the current location of the user with the user represented as a blue circle.  
-        * On the map, any friends or team members of the user that have recently checked in and are within the view area are represented as green circles.
-        * When the "Show Territories (Regions?)" option is enabled, the map will display a colored overlay to represent which teams own which areas.  A key will be provided to differentiate regions.
-        * Players can be searched for by first and/or last name or by username.
-        * If a search is successful, the resulting users will be displayed in a scrolling list.
-        * When the user selects one of the results the text area below the map will display that person's profile.
-        * If the person searched for is currently checked in to a location, the map will update to show the location of that person.
-        * If a search is unsuccessful, a message will appear which states that the person cannot be found.
-      ** For the Find Places option:
-        * When "Find Places" is selected, the user is presented with a new page that contains a search bar at the top, a map below it that includes a check box to "Show Territories (Regions?)", and a text area at the bottom (this will initially be hidden).
-        * The map will contain mechanisms to zoom in/out and to move in all directions.
-        * The map shows an area of 10 miles in any direction centered around the current location of the user with the user represented as a blue circle. 
-        * When the "Show Territories" option is enabled, the map will display a colored overlay to represent which teams own which areas.  A key will be provided to differentiate regions.
-        * Locations can be searched by name.
-        * If the search is successful, the results will be displayed in a scrolling list.
-        * When a location is selected, the map is updated to show that location, represented as a square on the map and the text area below the map will display the location's profile.
-      ** For the View World Map option:
-        * The user will be presented a screen with a map and a text area below it (this will initially be hidden).
-        * The map will contain mechanisms to zoom in/out and to move in all directions.
-        * The map will be centered around the user's current location.
-        * The map will show a colored overlay to show which teams own which areas.
-        * The map will show the locations of all friends and team members.
-        * The map will show locations of interest that are near to the user, locations owned by the user's teams, and locations that are under contention.
-        * When people/locations are selected from the map, the text area below the map will display that person or location's profile.
-      ** For the Settings/Options option:
-         *//TODO
-      ** For the Location Management Option
-        * The user will be presented with options to
-          **Add a location/business 
-          **Manage a location/business
-          **Delete a location/business  
-          **For the purposes of serengeti a business is a location that has additional information stored for it (i.e., proprietor) 
-    
+*Technical Requirements*
+  # Teams
+    # Users are part of one or more teams.
+  # Checking In
+    # Users can check in to a location through either the mobile web app or the iPhone app.
+      # Location is derived from a search of existing locations based upon tags, address, or GPS coordinates. (GPS Coordinates found automatically on iPhone app.)
+      # Users must indicate a team when they check in by selecting one from a drop-down menu of teams they are a part of.
+  # Scoring
+    # Score is calculated based upon the total number of visits attributed to a team as well as the number of unique visitors on the team.
+      # The score from an individual visit decays over a set period of time.
+        # //TODO
+  # Locations
+    # Locations are identified by name, street address, GPS coordinates, and tags identifying the type of location. (i.e.: bar, bookstore, etc.)
+  # Format Output
+    # //TODO
 
-
+<wiki:comment>
 The following questions are regarding the technical requirements.  Above are the user interaction requirements (i.e. how it should function for the user, not how it accomplishes the tasks).  Technical requirements are to be specified below.
 
 Questions from Kelly
@@ -128,19 +142,4 @@ These are questions that shall be answered by the requirements.
   # Who can change data about a venue?
   # What will the database schema look like? (This is a design question.)
   # What happens when the server receives a bad request?
-
-*Technical Requirements*
- * Teams
-  ** Users are part of one or more teams.
- * Checking In
-  ** Users can check in to a location through either the mobile web app or the iPhone app.
-   * Location is derived from a search of existing locations based upon tags, address, or GPS coordinates. (GPS Coordinates found automatically on iPhone app.)
-   * Users must indicate a team when they check in by selecting one from a drop-down menu of teams they are a part of.
- * Scoring
-  ** Score is calculated based upon the total number of visits attributed to a team as well as the number of unique visitors on the team.
-   * The score from an individual visit decays over a set period of time.
-  ** //TODO
- * Locations
-  ** Locations are identified by name, street address, GPS coordinates, and tags identifying the type of location. (i.e.: bar, bookstore, etc.)
- * Format Output
- ** //TODO
+</wiki:comment>
