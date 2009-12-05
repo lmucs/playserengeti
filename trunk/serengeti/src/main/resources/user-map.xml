@@ -128,4 +128,11 @@
       WHERE (first_id = #firstId# AND second_id = #secondId#) OR 
         (first_id = #secondId# AND second_id = #firstId#)
   </delete>
+  
+  <select id="searchUsers" resultMap="userMap">
+      SELECT *
+      FROM player
+      LIMIT 10
+  </select>
+  
 </sqlMap>

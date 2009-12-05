@@ -150,4 +150,16 @@
       FROM membership
       WHERE team_id = #teamId# AND player_id = #userId#
   </delete>
+  
+  <select id="getTeamsLedByUser" resultMap="teamMap">
+      SELECT * 
+      FROM team
+      WHERE team_leader_id = #value#
+  </select>
+  
+  <select id="searchTeams" resultMap="teamMap">
+      SELECT *
+      FROM team
+      LIMIT 10
+  </select>
 </sqlMap>

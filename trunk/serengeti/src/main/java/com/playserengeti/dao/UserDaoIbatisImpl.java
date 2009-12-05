@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
+import com.playserengeti.domain.Location;
 import com.playserengeti.domain.User;
 
 public class UserDaoIbatisImpl extends SqlMapClientDaoSupport implements UserDao {
@@ -115,5 +116,10 @@ public class UserDaoIbatisImpl extends SqlMapClientDaoSupport implements UserDao
 		parameterMap.put("firstId", firstId);
 		parameterMap.put("secondId", secondId);
 		return getSqlMapClientTemplate().delete("removeFriend", parameterMap) > 0;
+	}
+	
+	@Override
+	public Collection<User> searchUsers(String query) {
+		return (Collection<User>)getSqlMapClientTemplate().queryForList("searchUsers", query);
 	}
 }

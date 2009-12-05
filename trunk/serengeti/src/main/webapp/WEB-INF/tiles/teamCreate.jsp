@@ -68,7 +68,7 @@
 		        <label for="invitees">Invite people to team:</label>
 		    </div>
 		    <div class="grid_5">
-				<form:checkboxes path="teamCommand.invitees" items="${teamCommand.candidates}" /><br/>
+				<form:checkboxes path="teamCommand.invitees" items="${teamCommand.candidates}" itemValue="id" itemLabel="fullName"/><br/>
 		    </div>
 		    
 		    <div class="clear">&nbsp;</div>

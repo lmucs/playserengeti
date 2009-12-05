@@ -19,12 +19,7 @@
             <map>
                 <entry key="/" value-ref="welcomeController" />
                 <entry key="/index.html" value-ref="welcomeController" />
-
-                <!--
-                <entry key="/login" value-ref="loginController" />
-                <entry key="/logout" value-ref="logoutController" />
-                <entry key="/error/*" value-ref="errorController" />
-                -->
+                <entry key="/search" value-ref="searchController" />
 
                 <entry key="/user/create" value-ref="userCreateController" />
                 <entry key="/user/update" value-ref="userUpdateController" />
@@ -82,6 +77,17 @@
         <property name="session" ref="userSession"/>
     </bean>
 
+    <bean id="searchController"
+        class="com.playserengeti.controller.SearchController">
+        <property name="commandClass"
+            value="com.playserengeti.controller.UserCommand"
+        />
+        <property name="session" ref="userSession"/>
+        <constructor-arg ref="userService"/>
+        <constructor-arg ref="teamService"/>
+        <constructor-arg ref="locationService"/>
+    </bean>
+    
     <!--
         User Controllers and Such
     -->

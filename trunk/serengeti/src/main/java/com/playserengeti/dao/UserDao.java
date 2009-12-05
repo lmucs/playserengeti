@@ -67,4 +67,6 @@ public interface UserDao {
 	public void sendFriendInvite(Integer firstId, Integer secondId);
 	
 	public boolean removeFriend(Integer firstId, Integer secondId);
+	
+	public Collection<User> searchUsers(String query);
 }

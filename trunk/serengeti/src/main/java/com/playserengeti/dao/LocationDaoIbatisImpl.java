@@ -68,4 +68,9 @@ public class LocationDaoIbatisImpl extends SqlMapClientDaoSupport implements
 	public Collection<Location> getControlledTerritory(Integer teamId) {
 		return (Collection<Location>)getSqlMapClientTemplate().queryForList("getControlledTerritory", teamId);
 	}
+	
+	@Override
+	public Collection<Location> searchLocations(String query) {
+		return (Collection<Location>)getSqlMapClientTemplate().queryForList("searchLocations", query);
+	}
 }

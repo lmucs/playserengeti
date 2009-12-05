@@ -33,7 +33,7 @@
     </div>
     <div class="grid_2">
         <form:select path="teamCommand.leader.id">
-    	    <form:options items="${teamCommand.candidates}" />
+    	    <form:options items="${teamCommand.candidates}" itemValue="id" itemLabel="fullName" />
 	    </form:select>
 	</div> 
 
@@ -61,7 +61,7 @@
         <label for="removals">Remove selected users:</label>
     </div>
     <div class="grid_5">
-	    <form:checkboxes path="teamCommand.removals" items="${teamCommand.candidates}" /><br/>
+	    <form:checkboxes path="teamCommand.removals" items="${teamCommand.candidates}" itemValue="id" itemLabel="fullName"/><br/>
     </div>
     
     <div class="clear">&nbsp;</div>

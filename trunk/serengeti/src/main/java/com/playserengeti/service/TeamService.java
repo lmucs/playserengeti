@@ -73,17 +73,6 @@ public class TeamService {
     	return teamDao.getTeamMembers(teamId);
     }
     
-    public Map<Integer, String> getTeamsMap(Integer userId) {
-    	Map<Integer, String> result = new HashMap<Integer, String>();
-    	Collection<Team> teams = getUsersTeams(userId);
-    	
-    	for (Team t : teams) {
-    		result.put(t.getId(), t.getName());
-    	}
-    	
-    	return result;
-    }
-    
     public String getTeamsJSON(Integer userId) {
     	return asJSON(getUsersTeams(userId));
     }
@@ -141,5 +130,13 @@ public class TeamService {
     
     public void rejectTeamInvite(Integer teamId, Integer userId) {
         teamDao.rejectTeamInvite(teamId, userId);
+    }
+    
+    public Collection<Team> getTeamsLedByUser(Integer userId) {
+    	return teamDao.getTeamsLedByUser(userId);
+    }
+    
+    public Collection<Team> searchTeams(String query) {
+    	return teamDao.searchTeams(query);
     }
 }

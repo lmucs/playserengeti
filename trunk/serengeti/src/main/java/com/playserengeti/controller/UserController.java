@@ -133,25 +133,25 @@ public class UserController extends MultiActionController {
     }
 
     public void acceptFriendInvite(HttpServletRequest request, HttpServletResponse response) {
-        Integer pUserId = Integer.valueOf(request.getParameter("pUserId"));
-        Integer sUserId = Integer.valueOf(request.getParameter("sUserId"));
+        Integer firstId = Integer.valueOf(request.getParameter("firstId"));
+        Integer secondId = Integer.valueOf(request.getParameter("secondId"));
 
-        if (!sUserId.equals(-1)) {
-        	userService.acceptFriendInvite(pUserId, sUserId);
+        if (!secondId.equals(-1)) {
+        	userService.acceptFriendInvite(firstId, secondId);
         
             try {
     		    PrintWriter out = response.getWriter();
-    		    out.println(userService.getUserById(pUserId).asMinimalJSON());	
+    		    out.println(userService.getUserById(firstId).asMinimalJSON());	
             }
     	    catch(IOException e) {}
         }
     }
 
     public void rejectFriendInvite(HttpServletRequest request, HttpServletResponse response) {
-        Integer pUserId = Integer.valueOf(request.getParameter("pUserId"));
-        Integer sUserId = Integer.valueOf(request.getParameter("sUserId"));
+        Integer firstId = Integer.valueOf(request.getParameter("firstId"));
+        Integer secondId = Integer.valueOf(request.getParameter("secondId"));
 
-        if (!sUserId.equals(-1)) userService.rejectFriendInvite(pUserId, sUserId);
+        if (!secondId.equals(-1)) userService.rejectFriendInvite(firstId, secondId);
     }
 
     public void sendTeamInvite(HttpServletRequest request, HttpServletResponse response) {
