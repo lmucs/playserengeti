@@ -85,8 +85,19 @@ Notes:
 </wiki:comment>
 ==Team==
 ----
-===Create Team===
+===U5 Create Team===
 
+  * *Description*: A user creates a team as a team leader.
+  * *Actor*: End user
+  * *Preconditions*: The user is already registered as a player.
+  * *Flow of Events for Main Scenario*:
+    # Not yet implemented in web interface.
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: 
+  * *Handles Requirements*: 
+
+<wiki:comment>
 Description: Create a team.
 
 URI: /team/create
@@ -96,10 +107,22 @@ Users: User
 Security:
 
 Notes:
+</wiki:comment>
+===U6 Delete Team===
 
-===Delete Team=== 
+  * *Description*: A team leader deletes a team that they lead.
+  * *Actor*: Team leader user.
+  * *Preconditions*: The user is already registered as a player and is the leader of a team.
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: 
+  * *Handles Requirements*: 
 
-Description: Delete a team.
+<wiki:comment> 
+
+Description: A team leader deletes one of their teams.
 
 URI: /team/delete?team=team_id
 
@@ -108,6 +131,7 @@ Users: Team Lead, Admin
 Security:
 
 Notes: Where do we define Team Lead role?  It should be specified in the team's profile page.  Parameter?
+</wiki:comment>
 
 ===Manage Team Hierarchy===
 
