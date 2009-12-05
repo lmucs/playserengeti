@@ -20,6 +20,18 @@ import com.playserengeti.domain.User;
 public class UserDaoMockImpl implements UserDao {
 
 	@Override
+	public boolean removeFriend(Integer firstId, Integer secondId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void sendFriendInvite(Integer firstId, Integer secondId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
 	public boolean acceptFriendInvite(Integer firstId, Integer secondId) {
 		// TODO Auto-generated method stub
 		return false;

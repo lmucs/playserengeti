@@ -41,7 +41,6 @@ public class LocationCreateController extends SimpleFormController {
         location.setCity(command.getCity());
         location.setState(command.getState());
         location.setZipcode(command.getZipcode());
-        location.setDescription(command.getDescription());
         location.setPhoneNumber(command.getPhoneNumber());
 
         locationService.saveLocation(location);

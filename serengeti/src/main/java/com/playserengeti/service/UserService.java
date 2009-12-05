@@ -22,11 +22,9 @@ import com.playserengeti.domain.User;
 public class UserService {
 
 	private UserDao userDao;
-	private FriendshipDao friendshipDao;
 
-	public UserService(UserDao userDao, FriendshipDao friendshipDao) {
+	public UserService(UserDao userDao) {
 	    this.userDao = userDao;
-	    this.friendshipDao = friendshipDao;
 	}
 
 	public User getUserById(Integer id) {
@@ -83,31 +81,6 @@ public class UserService {
 		}
 		return result;
 	}
-	
-    public void saveFriendship(Friendship f) {
-    	if(f.getFriendshipId() == null) {
-    		friendshipDao.insertFriendship(f);
-    	}
-    	else {
-    		friendshipDao.updateFriendship(f);
-    	}
-    }
-    
-    public void deleteFriendship(Integer id) {
-    	friendshipDao.deleteFriendship(id);
-    }
-    
-    public Collection<Friendship> getAllFriendships() {
-    	return friendshipDao.getAllFriendships();
-    }
-    
-    public Friendship getFriendshipById(Integer id) {
-    	return friendshipDao.getFriendshipById(id);
-    }
-    
-    public Collection<Friendship> getFriendshipsByUser(Integer userId) {
-    	return friendshipDao.getFriendshipsByUser(userId);
-    }
    
     /**
      * Returns a map of the given users friends.
@@ -122,24 +95,9 @@ public class UserService {
     	}
     	return result;
     }
-    
-    public String getFriendsJSON(Integer userId) {
-    	return asJSON(getFriends(userId));
-    }
-    
-    public void removeFriendship(Integer primaryId, Integer secondaryId) {
-    	Collection<Friendship> friendships = getFriendshipsByUser(primaryId);
-    	
-    	for(Friendship f : friendships) {
-    		if(secondaryId.equals(f.getSecondaryUserId()) 
-    				|| secondaryId.equals(f.getPrimaryUserId())) {
-    		    deleteFriendship(f.getFriendshipId());
-    		}
-    	}
-    }
-    
-    public void inviteFriend(Integer pUserId, Integer sUserId) {
-    	saveFriendship(new Friendship(null, pUserId, sUserId));
+
+    public void removeFriend(Integer firstId, Integer secondId) {
+    	userDao.removeFriend(firstId, secondId);
     }
 
     public String asJSON(Collection<User> users) {
@@ -179,5 +137,9 @@ public class UserService {
     
     public void rejectFriendInvite(Integer firstId, Integer secondId) {
     	userDao.rejectFriendInvite(firstId, secondId);
+    }
+    
+    public void sendFriendInvite(Integer firstId, Integer secondId) {
+    	userDao.sendFriendInvite(firstId, secondId);
     }
 }

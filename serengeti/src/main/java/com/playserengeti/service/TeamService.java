@@ -18,15 +18,13 @@ import com.playserengeti.domain.User;
 public class TeamService {
 
     private TeamDao teamDao;
-    private MembershipDao membershipDao;
 
     /**
      * Constructor.  Sets the dao.
      * @param TeamDao
      */
-    public TeamService(TeamDao TeamDao, MembershipDao membershipDao) {
+    public TeamService(TeamDao TeamDao) {
         this.teamDao = TeamDao;
-        this.membershipDao = membershipDao;
     }
 
     /**
@@ -71,25 +69,6 @@ public class TeamService {
     	return teamDao.getAllTeams();
     }
     
-    public void saveMembership(Membership m) {
-    	if(m.getMembershipId() == null) {
-    		membershipDao.insertMembership(m);
-    	}
-    	else {
-    		membershipDao.updateMembership(m);
-    	}
-    }
-
-    public Membership getMembershipByTeamAndUser(Integer teamId, Integer userId) {
-    	Collection<Membership> mem = membershipDao.getMembershipsByTeam(teamId);
-    	
-    	for(Membership m : mem) {
-    		if(m.getUserId().equals(userId)) return m;
-    	}
-    	
-    	return null;
-    }
-    
     public Collection<User> getTeamMembers(Integer teamId) {
     	return teamDao.getTeamMembers(teamId);
     }
@@ -113,19 +92,12 @@ public class TeamService {
     	return teamDao.getTeamInvites(userId);
     }
     
-    public void addToTeam(Integer teamId, Integer userId) {
-    	Membership m = new Membership(null, teamId, userId);
-    	m.setStatus("accepted");
-    	saveMembership(m);
-    }
-    
-    public void inviteToTeam(Integer teamId, Integer userId) {
-        saveMembership(new Membership(null, teamId, userId));        
+    public void sendTeamInvite(Integer teamId, Integer userId) {
+        teamDao.sendTeamInvite(teamId, userId);        
     }
 
     public void removeFromTeam(Integer teamId, Integer userId) {
-    	Membership m = getMembershipByTeamAndUser(teamId, userId);
-    	membershipDao.deleteMembership(m.getMembershipId());
+    	teamDao.removeMember(teamId, userId);
     }
     
     public String asJSON(Collection<Team> teams) {

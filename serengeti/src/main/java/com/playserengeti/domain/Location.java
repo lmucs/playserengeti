@@ -7,7 +7,6 @@ public class Location {
     private double latitude;
     private double longitude;
     private Team owner;
-    private String description;
     private String phoneNumber;
     private String street;
     private String city;
@@ -27,7 +26,6 @@ public class Location {
     public Location(Location b) {
     	this(b.id, b.name, b.latitude, b.longitude);
     	this.owner = b.owner;
-    	this.description = b.description;
     	this.phoneNumber = b.phoneNumber;
     	this.street = b.street;
     	this.city = b.city;
@@ -75,14 +73,6 @@ public class Location {
 		this.owner = owner;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -125,15 +115,15 @@ public class Location {
 
 	public String asJSON() {
 		String owner = this.owner != null ? this.owner.asMinimalJSON() : "{\"id\" : \"\", \"name\" : \"In Conflict\"}";
-		return "{\"id\" : " + this.id + ", \"name\" : \"" + this.name + "\", \"latitude\" : \"" + 
+		return "{\"id\" : " + this.id + ", \"name\" : \"" + this.name.replace("\"", "&#34") + "\", \"latitude\" : \"" + 
 		    this.latitude + "\", \"longitude\" : \"" + this.longitude + "\", \"street\" : \"" + this.street + 
 		    "\", \"city\" : \"" + this.city + "\", \"state\" : \"" + this.state + "\", \"zipcode\" : \"" + this.zipcode + 
 		    "\", \"owner\" : " + owner + ", \"phoneNumber\" : \"" + this.phoneNumber + 
-		    "\", \"description\" : \"" + this.description + "\"}";
+		    "\"}";
 	}
 	
 	public String asMinimalJSON() {
-		return "{\"id\" : " + this.id + ", \"name\" : \"" + this.name + "\", \"latitude\" : \"" + 
+		return "{\"id\" : " + this.id + ", \"name\" : \"" + this.name.replace("\"", "&#34") + "\", \"latitude\" : \"" + 
 	    this.latitude + "\", \"longitude\" : \"" + this.longitude + "\"}";
 	}
 	

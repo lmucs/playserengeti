@@ -92,13 +92,13 @@ public class Team {
 	}
 	
 	public String asJSON() {
-		return "{\"id\" : \"" + this.id + "\", \"name\" : \"" + this.name + "\", \"color\" : \"" + this.color + 
-		    "\", \"leaderId\" : \"" + this.leader.getId() + "\", \"description\" : \"" + this.description + 
-		    "\", \"homeBase\" : \"" + this.homeBase + "\"}";
+		return "{\"id\" : \"" + this.id + "\", \"name\" : \"" + this.name.replace("\"", "&#34") + "\", \"color\" : \"" + this.color + 
+		    "\", \"leader\" : " + this.leader.asJSON() + ", \"description\" : \"" + this.description.replace("\"", "&#34") + 
+		    "\", \"homeBase\" : \"" + this.homeBase.replace("\"", "&#34") + "\"}";
 	}
 	
 	public String asMinimalJSON() {
-		return "{\"id\" : " + this.id + ", \"name\" : \"" + this.name + "\"}";
+		return "{\"id\" : " + this.id + ", \"name\" : \"" + this.name.replace("\"", "&#34") + "\"}";
 	}
 
 	public boolean equals(Team team) {

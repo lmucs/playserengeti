@@ -73,8 +73,7 @@ public class UserController extends MultiActionController {
         User user = userService.getUserById(userId);
 
         command.setUserId(user.getId());
-                
-        String profileData = generateProfileData(userId);
+        String profileData = generateProfileData(userId).replace("'", "&#39");
         
         String view = "userViewProfile";
         if ("xml".equals(request.getParameter("format"))) {
@@ -113,10 +112,10 @@ public class UserController extends MultiActionController {
     }
 
     public void removeFriend(HttpServletRequest request, HttpServletResponse response) {
-        Integer primaryId = Integer.valueOf(request.getParameter("pUserId"));
-        Integer secondaryId = Integer.valueOf(request.getParameter("sUserId"));
+        Integer firstId = Integer.valueOf(request.getParameter("firstId"));
+        Integer secondId = Integer.valueOf(request.getParameter("secondId"));
 
-        userService.removeFriendship(primaryId, secondaryId);
+        userService.removeFriend(firstId, secondId);
     }
 
     public void removeTeam(HttpServletRequest request, HttpServletResponse response) {
@@ -127,10 +126,10 @@ public class UserController extends MultiActionController {
     }
 
     public void sendFriendInvite(HttpServletRequest request, HttpServletResponse response) {
-        Integer pUserId = Integer.valueOf(request.getParameter("pUserId"));
-        Integer sUserId = Integer.valueOf(request.getParameter("sUserId"));
+        Integer firstId = Integer.valueOf(request.getParameter("firstId"));
+        Integer secondId = Integer.valueOf(request.getParameter("secondId"));
 
-        if (!pUserId.equals(-1)) userService.inviteFriend(pUserId, sUserId);
+        if (!firstId.equals(-1)) userService.sendFriendInvite(firstId, secondId);
     }
 
     public void acceptFriendInvite(HttpServletRequest request, HttpServletResponse response) {
@@ -159,7 +158,7 @@ public class UserController extends MultiActionController {
         Integer teamId = Integer.valueOf(request.getParameter("teamId"));
         Integer userId = Integer.valueOf(request.getParameter("userId"));
 
-        teamService.inviteToTeam(teamId, userId);
+        teamService.sendTeamInvite(teamId, userId);
     }
 
     public void acceptTeamInvite(HttpServletRequest request, HttpServletResponse response) {

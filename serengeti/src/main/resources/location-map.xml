@@ -12,7 +12,6 @@
         <result property="city" column="location_city"/>
         <result property="state" column="location_state"/>
         <result property="zipcode" column="location_zipcode"/>
-        <result property="description" column="location_description"/>
         <result property="phoneNumber" column="location_phone_number"/>
         <result property="owner" column="team_owner_id" select="getTeamById"/>
     </resultMap>
@@ -27,7 +26,6 @@
 	       location_city,
 	       location_state,
 	       location_zipcode,
-	       location_description,
 	       location_phone_number,
 	       team_owner_id
 	    )
@@ -39,7 +37,6 @@
 	       #city#,
 	       #state#,
 	       #zipcode#,
-	       #description#,
 	       #phoneNumber#,
 	       #owner.id#
 	    )
@@ -58,7 +55,6 @@
             location_city = #city#,
             location_state = #state#,
             location_zipcode = #zipcode#,
-            location_description = #description#,
             location_phone_number = #phoneNumber#,
             team_owner_id = #owner.id#
         WHERE location_id = #id#
@@ -89,8 +85,8 @@
     <select id="getNearbyLocations" resultMap="locationMap">
         SELECT * 
         FROM location
-        WHERE ABS(#latitude# - location_latitude) <![CDATA[ < ]]> 0.033333 
-          AND ABS(#longitude# - location_longitude) <![CDATA[ < ]]> 0.03333
+        WHERE ABS(#latitude# - location_latitude) <![CDATA[ < ]]> 0.01666 
+          AND ABS(#longitude# - location_longitude) <![CDATA[ < ]]> 0.01666
     </select>
     
     <select id="getControlledTerritory" resultMap="locationMap">

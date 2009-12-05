@@ -39,9 +39,13 @@ public class TeamDaoIbatisImpl extends SqlMapClientDaoSupport implements
 
 	@Override
 	public Integer insertTeam(Team team) {
-		getSqlMapClientTemplate().insert(
-				"insertTeam",
-				team);
+		getSqlMapClientTemplate().insert("insertTeam", team);
+		
+		Map<String, Integer> parameterMap = new HashMap<String, Integer>();
+		parameterMap.put("teamId", team.getId());
+		parameterMap.put("userId", team.getLeader().getId());
+		getSqlMapClientTemplate().insert("addToTeam", parameterMap);
+		
 		return team.getId();
 	}
 
@@ -102,5 +106,21 @@ public class TeamDaoIbatisImpl extends SqlMapClientDaoSupport implements
 		parameterMap.put("teamId", teamId);
 		parameterMap.put("userId", userId);
 		return getSqlMapClientTemplate().update("rejectTeamInvite", parameterMap) > 0;
+	}
+	
+	@Override
+	public void sendTeamInvite(Integer teamId, Integer userId) {
+		Map<String, Integer> parameterMap = new HashMap<String, Integer>();
+		parameterMap.put("teamId", teamId);
+		parameterMap.put("userId", userId);
+	    getSqlMapClientTemplate().insert("sendTeamInvite", parameterMap);
+	}
+	
+	@Override
+	public boolean removeMember(Integer teamId, Integer userId) {
+		Map<String, Integer> parameterMap = new HashMap<String, Integer>();
+		parameterMap.put("teamId", teamId);
+		parameterMap.put("userId", userId);
+		return getSqlMapClientTemplate().delete("removeMember", parameterMap) > 0;
 	}
 }
