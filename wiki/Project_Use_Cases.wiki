@@ -21,9 +21,9 @@ The primary use cases for Serengeti are listed below.
   * *Actor*: End user
   * *Preconditions*: The user is already registered as a player.
   * *Flow of Events for Main Scenario*:
-    # From their Edit Profile page, user clicks the Delete Profile link.
-    # A new page is displayed, warning the user that deleting their account will remove all their data from their profile, as well as offering a button to delete their account.
-    # If the user clicks the button, their player account is deleted and they are taken to the home page.
+    # User attempts to delete account.
+    # System sends user warning of attempted account deletion and asks for confirmation
+    # If the user confirms, their player account is deleted and they are taken to the home page.
   * *Alternative Scenarios*:
     # If the user is a team leader, their team is deleted from the database as well.
   * *Postconditions*: The user's player record is removed from the database.
@@ -40,15 +40,15 @@ Notes:
 
 ===U3 Manage User===
 
-  * *Description*: A user modifies their n
-  * *Actor*: 
-  * *Preconditions*: 
+  * *Description*: A user modifies their profile.
+  * *Actor*: End user
+  * *Preconditions*: The user is already registered as a player.
   * *Flow of Events for Main Scenario*:
-    # TO_DO
-    # TO_DO
+    # User sends new password, first name, and last name to system.
+    # System changes password, first name, and last name as directed
   * *Alternative Scenarios*:
-    # TO_DO
-  * *Postconditions*: 
+    # If no new password is provided, an error alert is sent to the user, directing them to enter a new password.
+  * *Postconditions*: The first name, last name, and password in the user's player record are replaced.
   * *Handles Requirements*: 
 
 <wiki:comment>
@@ -63,15 +63,15 @@ Notes:
 
 ===U4 View User Profile===
 
-  * *Description*: 
-  * *Actor*: 
-  * *Preconditions*: 
+  * *Description*: A user views the profile of a user.
+  * *Actor*: End user
+  * *Preconditions*: The user is already registered as a player.
   * *Flow of Events for Main Scenario*:
-    # TO_DO
-    # TO_DO
+    # User sends user id of a user to the system.
+    # System displays profile of user associated with sent user id.
   * *Alternative Scenarios*:
-    # TO_DO
-  * *Postconditions*: 
+    # If the user views their own profile, they are able to modify it or check in from it.
+  * *Postconditions*: None.
   * *Handles Requirements*: 
 
 <wiki:comment>
