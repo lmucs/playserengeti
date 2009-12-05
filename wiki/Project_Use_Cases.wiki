@@ -13,7 +13,7 @@
   * *Alternative Scenarios*:
     # If the email address is invalid or already exists, or the password is missing, the action is cancelled. 
   * *Postconditions*: A new player record has been inserted into the database.
-  * *Handles Requirements*: 1, 2.6.
+  * *Handles Requirements*: UI.1.1
 
 ===U2 Delete User===
 
@@ -27,7 +27,7 @@
   * *Alternative Scenarios*:
     # If the user is a team leader, their team is deleted from the database as well.
   * *Postconditions*: The user's player record is removed from the database.
-  * *Handles Requirements*: 
+  * *Handles Requirements*: UI.1.3.1.2, UI.1.3.3
 
 <wiki:comment>
 
@@ -49,7 +49,7 @@ Notes:
   * *Alternative Scenarios*:
     # If no new password is provided, an error alert is sent to the user, directing them to enter a new password.
   * *Postconditions*: The first name, last name, and password in the user's player record are replaced.
-  * *Handles Requirements*: 
+  * *Handles Requirements*: UI.1.3.1.1, UI.1.3.2
 
 <wiki:comment>
 
@@ -134,8 +134,18 @@ Security:
 
 Notes: Where do we define Team Lead role?  It should be specified in the team's profile page.  Parameter?
 </wiki:comment>
+===U7 Manage Team===
+  * *Description*: A team leader manages the membership of their team.
+  * *Actor*: Team leader user.
+  * *Preconditions*: The user is already registered as a player and is the leader of a team.
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: TO_DO
+  * *Handles Requirements*: TO_DO 
 
-<wiki:comment> Team Hierachy has been completely scrapped, right?
+<wiki:comment> Team Hierachy has been changed to just team management, right?
 ===Manage Team Hierarchy===
 
 DON'T KNOW IF THIS USE CASE REALLY BELONGS UNDER TEAM
@@ -150,7 +160,7 @@ Security:
 
 Notes: We need to determine what exactly will determine the hierarchy on a global scale. Suggestions for [[Team Hierarchy Rules & Definition]].
 </wiki:comment>
-===U7 Get Team Profile===
+===U8 Get Team Profile===
   * *Description*: A user views the profile of a team.
   * *Actor*: End user.
   * *Preconditions*: None.
