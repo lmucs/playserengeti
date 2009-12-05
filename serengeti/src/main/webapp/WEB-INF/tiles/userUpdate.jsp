@@ -36,7 +36,7 @@
         <label for="friendRemovals">Friends: </label>
         <ul>
             <c:forEach var="user" items="${userCommand.friends}">
-                <li id="user_${user.key}"><c:out value="${user.value}"/><input type="button" value="Remove" onClick="removeFriend(${user.key}, 'user_${user.key}')" /></li>
+                <li id="user_${user.id}"><c:out value="${user.firstName} ${user.lastName}"/><input type="button" value="Remove" onClick="removeFriend(${user.id}, 'user_${user.id}')" /></li>
             </c:forEach>
         </ul>	
     </div>
@@ -44,7 +44,7 @@
         <label for="teamRemovals">Teams: </label>
         <ul>
             <c:forEach var="team" items="${userCommand.teams}">
-                <li id="team_${team.key}"><c:out value="${team.value}"/><input type="button" value="Remove" onClick="removeTeam(${team.key}, 'team_${team.key}')" /></li>
+                <li id="team_${team.id}"><c:out value="${team.name}"/><input type="button" value="Remove" onClick="removeTeam(${team.id}, 'team_${team.id}')" /></li>
             </c:forEach>
         </ul>	
     </div>

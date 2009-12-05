@@ -99,5 +99,9 @@ public interface TeamDao {
 	public void sendTeamInvite(Integer teamId, Integer userId);
 	
 	public boolean removeMember(Integer teamId, Integer userId);
+	
+	public Collection<Team> getTeamsLedByUser(Integer userId);
+	
+	public Collection<Team> searchTeams(String query);
 }
 

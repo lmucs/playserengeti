@@ -32,7 +32,7 @@ public class TeamCreateController extends SimpleFormController {
      */
     protected Object formBackingObject(HttpServletRequest request) throws Exception {
         TeamCommand teamCommand = new TeamCommand();
-        teamCommand.setCandidates(userService.getFriendsMap(session.getUser().getId()));
+        teamCommand.setCandidates(userService.getFriends(session.getUser().getId()));
         setSessionForm(true);
         return teamCommand;
     }

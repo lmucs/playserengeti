@@ -24,6 +24,11 @@
         <put-attribute name="body" value="/WEB-INF/tiles/help.jsp"/>
     </definition>
 
+    <definition name="results" extends="template">
+        <put-attribute name="title" value="Search Results"/>
+        <put-attribute name="body" value="/WEB-INF/tiles/searchResults.jsp"/>
+    </definition>
+    
     <definition name="locationCentral" extends="template">
         <put-attribute name="title" value="Location Central"/>
         <put-attribute name="login" value="/WEB-INF/tiles/layout/login.jsp"/>

@@ -42,7 +42,8 @@ public class UserDeleteController extends SimpleFormController {
         userCommand.setEmail(user.getEmail());
         userCommand.setFirstName(user.getFirstName());
         userCommand.setLastName(user.getLastName());
-
+        userCommand.setTeams(teamService.getTeamsLedByUser(userId));
+        
         setSessionForm(true);
         return userCommand;
     }

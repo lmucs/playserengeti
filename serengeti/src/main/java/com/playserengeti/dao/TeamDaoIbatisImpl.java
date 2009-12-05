@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
+import com.playserengeti.domain.Location;
 import com.playserengeti.domain.Team;
 import com.playserengeti.domain.User;
 
@@ -122,5 +123,15 @@ public class TeamDaoIbatisImpl extends SqlMapClientDaoSupport implements
 		parameterMap.put("teamId", teamId);
 		parameterMap.put("userId", userId);
 		return getSqlMapClientTemplate().delete("removeMember", parameterMap) > 0;
+	}
+	
+	@Override
+	public Collection<Team> getTeamsLedByUser(Integer userId) {
+		return (List<Team>)getSqlMapClientTemplate().queryForList("getTeamsLedByUser", userId);
+	}
+	
+	@Override
+	public Collection<Team> searchTeams(String query) {
+		return (Collection<Team>)getSqlMapClientTemplate().queryForList("searchTeams", query);
 	}
 }

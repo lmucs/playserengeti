@@ -82,5 +82,9 @@ public class LocationService {
     	result += "]";
     	return result;
     }
+    
+    public Collection<Location> searchLocations(String query) {
+    	return locationDao.searchLocations(query);
+    }
 }
 

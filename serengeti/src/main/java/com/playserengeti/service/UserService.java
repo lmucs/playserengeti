@@ -81,20 +81,6 @@ public class UserService {
 		}
 		return result;
 	}
-   
-    /**
-     * Returns a map of the given users friends.
-     * Key is the friend's userId and value is their username.
-     * @param userId
-     * @return
-     */
-    public Map<Integer, String> getFriendsMap(Integer userId) {
-    	Map<Integer, String> result = new HashMap<Integer, String>();
-    	for(User u : getFriends(userId)) {
-    		result.put(u.getId(), u.getFirstName() + " " + u.getLastName());
-    	}
-    	return result;
-    }
 
     public void removeFriend(Integer firstId, Integer secondId) {
     	userDao.removeFriend(firstId, secondId);
@@ -141,5 +127,9 @@ public class UserService {
     
     public void sendFriendInvite(Integer firstId, Integer secondId) {
     	userDao.sendFriendInvite(firstId, secondId);
+    }
+    
+    public Collection<User> searchUsers(String query) {
+    	return userDao.searchUsers(query);
     }
 }

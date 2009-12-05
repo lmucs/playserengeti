@@ -230,7 +230,7 @@
     };
     
     var acceptFriendInvite = function (userId) {
-        var request = $.get("acceptFriendInvite", {pUserId : userId, sUserId : uData.sessionId},
+        var request = $.get("acceptFriendInvite", {firstId : userId, secondId : uData.sessionId},
             function(data) {
                 var jsonData = JSON.parse(request.responseText);
                 $("#friends").append("<li><a href=" + jsonData.id + ">" + jsonData.name + "</a></li>");
@@ -239,7 +239,7 @@
     };
     
     var rejectFriendInvite = function (userId) {
-        $.get("rejectFriendInvite", {pUserId : userId, sUserId : uData.sessionId});
+        $.get("rejectFriendInvite", {firstId : userId, secondId : uData.sessionId});
         $("#friendInvite_" + userId).fadeOut("slow");
     };
     

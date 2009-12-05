@@ -14,6 +14,18 @@ import com.playserengeti.domain.User;
 public class TeamDaoMockImpl implements TeamDao {
 
 	@Override
+	public Collection<Team> searchTeams(String query) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<Team> getTeamsLedByUser(Integer userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public boolean removeMember(Integer teamId, Integer userId) {
 		// TODO Auto-generated method stub
 		return false;

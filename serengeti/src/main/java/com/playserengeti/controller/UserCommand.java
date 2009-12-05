@@ -1,9 +1,12 @@
 package com.playserengeti.controller;
 
-import java.util.Map;
+import java.util.Collection;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
+
+import com.playserengeti.domain.Team;
+import com.playserengeti.domain.User;
 
 public class UserCommand {
 
@@ -12,8 +15,8 @@ public class UserCommand {
     private String firstName;
     private String lastName;
     private String password;
-    private Map<Integer, String> friends;
-    private Map<Integer, String> teams;
+    private Collection<User> friends;
+    private Collection<Team> teams;
     private String format;
 
     public Integer getUserId() {
@@ -56,19 +59,19 @@ public class UserCommand {
         this.email = email;
     }
 
-    public Map<Integer, String> getFriends() {
+    public Collection<User> getFriends() {
         return friends;
     }
 
-    public void setFriends(Map<Integer, String> friends) {
+    public void setFriends(Collection<User> friends) {
         this.friends = friends;
     }
 
-    public Map<Integer, String> getTeams() {
+    public Collection<Team> getTeams() {
         return teams;
     }
 
-    public void setTeams(Map<Integer, String> teams) {
+    public void setTeams(Collection<Team> teams) {
         this.teams = teams;
     }
 

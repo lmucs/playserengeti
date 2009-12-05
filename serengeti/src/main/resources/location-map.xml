@@ -94,4 +94,10 @@
         FROM location
         WHERE team_owner_id = #value#
     </select>
+    
+    <select id="searchLocations" resultMap="locationMap">
+        SELECT *
+        FROM location
+        LIMIT 10
+    </select>
 </sqlMap>

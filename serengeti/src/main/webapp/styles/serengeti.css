@@ -59,6 +59,12 @@ div#navbar2 {
 	color: white;
 }
 
+div.searchbar {
+        position: absolute;
+        right: 40px;
+        top: 45px;
+}
+
 #loginEmail,#loginPassword {
 	width: 110;
 	height: 25;

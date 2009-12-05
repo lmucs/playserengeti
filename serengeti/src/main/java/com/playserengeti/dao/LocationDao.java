@@ -57,4 +57,6 @@ public interface LocationDao {
 	public Collection<Location> getNearbyLocations(Double latitude, Double longitude);
 
 	public Collection<Location> getControlledTerritory(Integer teamId);
+	
+	public Collection<Location> searchLocations(String query);
 }

@@ -1,5 +1,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <html>
     <head>
@@ -51,6 +53,12 @@
                   <li><a href="${pageContext.request.contextPath}/user/logout">Log Out</a></li>
               </c:if>
           </ul>
+        </div>
+        <div class="searchbar">
+            <form action="${pageContext.request.contextPath}/search" method="POST">
+                <input type="text" path="query" value="Search for people, places, or teams"/>
+                <input type="submit" value="Go"/>
+            </form>
         </div>
         </div>
         </div>

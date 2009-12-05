@@ -2,50 +2,28 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
-<form id="userDeleteForm" method="POST" action="${pageContext.request.contextPath}/user/delete">
-    <p>Are you sure you want to remove yourself from Serengeti?  By continuing, you will lose all 
-        data associated with your profile.  This cannot be recovered.</p>
+<c:choose>
+    <c:when test="${!empty userCommand.teams}">
+        <p>Not so fast.  You are still the leader of these teams.  You can't just bail on them without 
+        appointing another leader.</p>
+        <ul>
+        <c:forEach var="team" items="${userCommand.teams}">
+            <li><a href="../../team/update/${team.id}"><c:out value="${team.name}"/></a></li>
+        </c:forEach>
+        </ul>
+    </c:when>
+    <c:otherwise>
+        <form id="userDeleteForm" method="POST" action="${pageContext.request.contextPath}/user/delete">
+            <p>Are you sure you want to remove yourself from Serengeti?  By continuing, you will lose all 
+            data associated with your profile.  This cannot be recovered.</p>
 
-    <p><c:out value="${userCommand.firstName} ${userCommand.lastName}"/></p>
+            <p><c:out value="${userCommand.firstName} ${userCommand.lastName}"/></p>
 
-    <div class="formRow">
-        <input type="submit" value="Delete Profile" />
-    </div>
-</form>
+            <div class="formRow">
+                <input type="submit" value="Delete Profile" />
+            </div>
+        </form>
+    </c:otherwise>
+</c:choose>
 
-<!--
-<c:if test="${ !empty message }">
-    <p class="error"><c:out value="${message}"/></p>
-</c:if>
 
-<p>Select the user that you'd like to delete!</p>
-
-<ul>
-    <c:forEach var="user" items="${allUsers}">
-        <li>
-            <a href="javascript:void(0);" onclick="deleteUser(${user.id});"><c:out value="${user.email}"/></a>
-        </li>
-    </c:forEach>
-</ul>
-
-<script type="text/javascript">
-    function deleteUser(id) {
-        var bodies = document.getElementsByTagName("body");
-        var form = document.createElement("form");
-        var input = document.createElement("input");
-
-        form.action = "delete";
-        form.method = "POST";
-
-        input.type = "hidden";
-        input.name = "userId";
-        input.value = id;
-
-        form.appendChild(input);
-
-        bodies[0].appendChild(form);
-
-        form.submit();
-    }
-</script>
--->
