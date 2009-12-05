@@ -26,8 +26,8 @@
 <ul class="hor_menu">
 	<c:forEach var="visit" items="${recent}">
 		<li><a href="${visit.user.id}"><img
-			src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user"
-			title="${visit.user.email}" /></a> <span><c:out value="${visit.user.email}" />
+			src="${pageContext.request.contextPath}/images/default_user.png" alt="user"
+			title="${visit.user.email}" width="50" height="50"/></a> <span><c:out value="${visit.user.email}" />
 		</span><a href="${visit.user.id}" ><c:out value="${visit.user.firstName}"/></a></li>
 	</c:forEach>
 </ul>
@@ -80,8 +80,8 @@
 <ul class="hor_menu">
 	<c:forEach var="user" items="${mostActive}">
 		<li><a href="${user.id}"><img
-			src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user"
-			title="${user.email}" /></a> <span><c:out value="${user.email}" />
+			src="${pageContext.request.contextPath}/images/default_user.png" alt="user"
+			title="${user.email}" width="50" height="50"/></a> <span><c:out value="${user.email}" />
 		</span><a href="${user.id}" ><c:out value="${user.firstName}"/></a></li>
 	</c:forEach>
 </ul>
@@ -132,8 +132,8 @@
 <ul class="hor_menu">
 	<c:forEach var="user" items="${newest}">
 		<li><a href="${user.id}"><img
-			src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user"
-			title="${user.email}" /></a> <span><c:out value="${user.email}" />
+			src="${pageContext.request.contextPath}/images/default_user.png" alt="user"
+			title="${user.email}" width="50" height="50"/></a> <span><c:out value="${user.email}" />
 		</span><a href="${user.id}" ><c:out value="${user.firstName}"/></a></li>
 	</c:forEach>
 </ul>

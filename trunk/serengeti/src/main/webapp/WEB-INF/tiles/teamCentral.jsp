@@ -26,8 +26,8 @@
 <ul class="hor_menu">
 	<c:forEach var="team" items="${leaders}">
 		<li><a href="${team.id}"><img
-			src="${pageContext.request.contextPath}/images/avatar.jpg" alt="team"
-			title="${team.name}" /></a> <span><c:out value="${team.name}" />
+			src="${pageContext.request.contextPath}/images/default_team.png" alt="team"
+			title="${team.name}" width="50" height="50"/></a> <span><c:out value="${team.name}" />
 		</span><a href="${team.id}" ><c:out value="${team.name}"/></a></li>
 	</c:forEach>
 </ul>
@@ -72,8 +72,8 @@
 <ul class="hor_menu">
 	<c:forEach var="team" items="${mostActive}">
 		<li><a href="${team.id}"><img
-			src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user"
-			title="${team.name}" /></a> <span><c:out value="${team.name}" />
+			src="${pageContext.request.contextPath}/images/default_team.png" alt="user"
+			title="${team.name}" width="50" height="50"/></a> <span><c:out value="${team.name}" />
 		</span><a href="${team.id}" ><c:out value="${team.name}"/></a></li>
 	</c:forEach>
 </ul>
@@ -117,8 +117,8 @@
 <ul class="hor_menu">
 	<c:forEach var="team" items="${newest}">
 		<li><a href="${team.id}"><img
-			src="${pageContext.request.contextPath}/images/avatar.jpg" alt="user"
-			title="${team.name}" /></a> <span><c:out value="${team.name}" />
+			src="${pageContext.request.contextPath}/images/default_team.png" alt="user"
+			title="${team.name}" width="50" height="50"/></a> <span><c:out value="${team.name}" />
 		</span><a href="${team.id}" ><c:out value="${team.name}"/></a></li>
 	</c:forEach>
 </ul>

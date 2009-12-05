@@ -8,7 +8,7 @@
                 <div class="clear">&nbsp;</div>
                 
             	<div class="grid_3 teamImage">
-            	    <img src="${pageContext.request.contextPath}/images/koala.jpg" alt="teamImage"
+            	    <img src="${pageContext.request.contextPath}/images/default_team.png" alt="teamImage"
 		            title="teamImage"/>               
 		        </div>
 		        <div class="grid_3">

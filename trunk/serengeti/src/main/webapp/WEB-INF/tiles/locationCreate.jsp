@@ -60,16 +60,6 @@
                 <input id="zipcode" type="text" name="zipcode" />
             </div>
 
-			<div class="clear">&nbsp;</div>
-    
-
-            <div class="grid_2">
-                <label for="description">Description:</label>
-            </div>
-            <div class="grid_2">
-                <form:textarea path="locationCommand.description" rows="4" cols="40" />
-            </div>
-
        		<div class="clear">&nbsp;</div>
 
             <div class="grid_2">

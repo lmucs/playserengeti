@@ -95,5 +95,9 @@ public interface TeamDao {
 	public boolean rejectTeamInvite(Integer teamId, Integer userId);
 	
 	public Collection<Team> getInvitableTeams(Integer sourceId, Integer targetId);
+	
+	public void sendTeamInvite(Integer teamId, Integer userId);
+	
+	public boolean removeMember(Integer teamId, Integer userId);
 }
 

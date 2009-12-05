@@ -102,4 +102,18 @@ public class UserDaoIbatisImpl extends SqlMapClientDaoSupport implements UserDao
 		parameterMap.put("secondId", secondId);
 		return getSqlMapClientTemplate().update("rejectFriendInvite", parameterMap) > 0;
 	}
+	
+	public void sendFriendInvite(Integer firstId, Integer secondId) {
+		Map<String, Integer> parameterMap = new HashMap<String, Integer>();
+		parameterMap.put("firstId", firstId);
+		parameterMap.put("secondId", secondId);
+		getSqlMapClientTemplate().insert("sendFriendInvite", parameterMap);
+	}
+	
+	public boolean removeFriend(Integer firstId, Integer secondId) {
+		Map<String, Integer> parameterMap = new HashMap<String, Integer>();
+		parameterMap.put("firstId", firstId);
+		parameterMap.put("secondId", secondId);
+		return getSqlMapClientTemplate().delete("removeFriend", parameterMap) > 0;
+	}
 }

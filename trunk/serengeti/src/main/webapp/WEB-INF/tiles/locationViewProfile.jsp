@@ -27,14 +27,6 @@
                        	<td><strong>Phone Number:</strong></td>
                        	<td><c:out value="${locationCommand.phoneNumber}"/></td>
                     </div>
-                    	
-                    <div class="clear">&nbsp;</div>
-                    	
-                    <div class = "grid_4">
-                       	<td><strong>Description:</strong></td>
-                       	<td><c:out value="${locationCommand.description}"/></td>
-                    </div>
-                    	
 
 					<div class="clear">&nbsp;</div>
 

@@ -26,14 +26,14 @@
         player_email = #email#,
         player_first_name = #firstName#,
         player_last_name = #lastName#
-    WHERE id = #id#
+    WHERE player_id = #id#
   </update>
   
   <update id="updateUserPassword">
     UPDATE player
     SET
         player_password_hash = md5(#password#)
-    WHERE id = #id#
+    WHERE player_id = #id#
   </update>
   
   <delete id="deleteUser">
@@ -115,4 +115,17 @@
       WHERE #firstId# = first_id 
         AND #secondId# = second_id 
   </update>
+  
+  <insert id="sendFriendInvite">
+      INSERT
+      INTO friendship (first_id, second_id, status)
+      VALUES (#firstId#, #secondId#, 'pending')      
+  </insert>
+  
+  <delete id="removeFriend">
+      DELETE
+      FROM friendship
+      WHERE (first_id = #firstId# AND second_id = #secondId#) OR 
+        (first_id = #secondId# AND second_id = #firstId#)
+  </delete>
 </sqlMap>

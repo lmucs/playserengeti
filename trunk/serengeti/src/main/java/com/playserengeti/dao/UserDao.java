@@ -63,4 +63,8 @@ public interface UserDao {
 	public boolean acceptFriendInvite(Integer firstId, Integer secondId);
 
 	public boolean rejectFriendInvite(Integer firstId, Integer secondId);
+	
+	public void sendFriendInvite(Integer firstId, Integer secondId);
+	
+	public boolean removeFriend(Integer firstId, Integer secondId);
 }

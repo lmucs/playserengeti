@@ -69,8 +69,8 @@
         return false;
     }
     
-    var removeFriend = function (sUserId, elementId) {
-        $.get("../removeFriend", {pUserId : ${userCommand.userId}, sUserId : sUserId});
+    var removeFriend = function (uId, elementId) {
+        $.get("../removeFriend", {firstId : ${userCommand.userId}, secondId : uId});
         $("#" + elementId).fadeOut("slow");
     }
     

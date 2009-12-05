@@ -112,14 +112,20 @@
         FROM membership
         JOIN team
         ON membership.team_id = team.team_id
-        WHERE membership.player_id = 4 AND status = 'accepted') temp
+        WHERE membership.player_id = #sourceId# AND status = 'accepted') temp
       WHERE team_id NOT IN (
         SELECT team.team_id 
         FROM membership
         JOIN team
         ON membership.team_id = team.team_id
-        WHERE membership.player_id = 6 AND status != 'rejected')  
+        WHERE membership.player_id = #targetId# AND status != 'rejected')  
   </select>
+  
+  <insert id="addToTeam">
+      INSERT
+      INTO membership (team_id, player_id, status)
+      VALUES (#teamId#, #userId#, 'accepted')
+  </insert>
   
   <update id="acceptTeamInvite">
       UPDATE membership
@@ -132,4 +138,16 @@
       SET status = 'rejected'
       WHERE team_id = #teamId# AND player_id = #userId#
   </update>
+  
+  <insert id="sendTeamInvite">
+      INSERT 
+      INTO membership (team_id, player_id, status)
+      VALUES (#teamId#, #userId#, 'pending')
+  </insert>
+  
+  <delete id="removeMember">
+      DELETE
+      FROM membership
+      WHERE team_id = #teamId# AND player_id = #userId#
+  </delete>
 </sqlMap>

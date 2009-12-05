@@ -165,22 +165,11 @@
     <bean id="userService"
         class="com.playserengeti.service.UserService">
         <constructor-arg ref="userDao"/>
-        <constructor-arg ref="friendshipDao"/>
     </bean>
-
-<!--
-    <bean id="userDao"
-        class="com.playserengeti.dao.UserDaoMockImpl">
-    </bean>
--->
 
     <bean id="userDao"
         class="com.playserengeti.dao.UserDaoIbatisImpl">
         <property name="sqlMapClient" ref="sqlMapClient"/>
-    </bean>
-
-    <bean id="friendshipDao"
-        class="com.playserengeti.dao.FriendshipDaoMockImpl">
     </bean>
 
  <!--
@@ -235,16 +224,11 @@
     <bean id="teamService"
         class="com.playserengeti.service.TeamService">
         <constructor-arg ref="teamDao"/>
-        <constructor-arg ref="membershipDao"/>
     </bean>
 
     <bean id="teamDao"
         class="com.playserengeti.dao.TeamDaoIbatisImpl">
         <property name="sqlMapClient" ref="sqlMapClient"/>
-    </bean>
-
-    <bean id="membershipDao"
-        class="com.playserengeti.dao.MembershipDaoMockImpl">
     </bean>
 
     <!--
@@ -282,12 +266,6 @@
     <bean id="locationCreateValidator"
         class="com.playserengeti.controller.LocationCreateValidator">
     </bean>
-
-<!-- 
-    <bean id="locationDao"
-        class="com.playserengeti.dao.LocationDaoMockImpl">
-    </bean>
--->
     
     <bean id="locationDao"
         class="com.playserengeti.dao.LocationDaoIbatisImpl">
@@ -305,12 +283,6 @@
         <constructor-arg ref="locationDao"/>
         <constructor-arg ref="teamDao"/>
     </bean>
-
-<!-- 
-    <bean id="visitDao"
-        class="com.playserengeti.dao.VisitDaoMockImpl">
-    </bean>
--->
 
     <bean id="visitDao"
         class="com.playserengeti.dao.VisitDaoIbatisImpl">

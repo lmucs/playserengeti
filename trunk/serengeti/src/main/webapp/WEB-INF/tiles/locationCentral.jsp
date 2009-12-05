@@ -81,6 +81,9 @@
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">
     onload = function () {
+        
+        
+            
         var latlng = new google.maps.LatLng(google.loader.ClientLocation.latitude,
             google.loader.ClientLocation.longitude);
         var location = "Your ip-based location: " + google.loader.ClientLocation.address.city;
@@ -92,5 +95,14 @@
         var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
         document.getElementById("location").innerHTML = location;
         
-    }
+        var request = $.get("../location/getNearbyLocations", {latitude : google.loader.ClientLocation.latitude, 
+            longitude : google.loader.ClientLocation.longitude}, function(data) {
+                var jsonData = JSON.parse(request.responseText);
+                handleLocations(jsonData.locations);
+            }); 
+    };
+    
+    var handleLocations = function(data) {
+        jQuery.each(data, function(i, val) {});
+    };
 </script>

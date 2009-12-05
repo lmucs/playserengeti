@@ -165,7 +165,6 @@
                 $("#inviteTeam").hide();
             }
         }
-
     };
     
     var showSearch = function(){
@@ -226,7 +225,7 @@
     };
     
     var sendFriendInvite = function () {
-        $.get("sendFriendInvite", {pUserId : uData.sessionId, sUserId : uData.user.id});
+        $.get("sendFriendInvite", {firstId : uData.sessionId, secondId : uData.user.id});
         $("#inviteFriend").fadeOut("slow");
     };
     
