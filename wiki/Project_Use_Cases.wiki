@@ -70,6 +70,7 @@ Notes:
     # User sends user id of a user to the system.
     # System displays profile of user associated with sent user id.
   * *Alternative Scenarios*:
+    # If the sent user id is not associated with any existing user, an exception is thrown.
     # If the user views their own profile, they are able to modify it or check in from it.
   * *Postconditions*: None.
   * *Handles Requirements*: 
@@ -83,6 +84,7 @@ Security:
 Notes:
 
 </wiki:comment>
+----
 ==Team==
 ----
 ===U5 Create Team===
@@ -117,7 +119,7 @@ Notes:
     # TO_DO
   * *Alternative Scenarios*:
     # TO_DO
-  * *Postconditions*: 
+  * *Postconditions*: The selected team is removed from the database.
   * *Handles Requirements*: 
 
 <wiki:comment> 
@@ -133,6 +135,7 @@ Security:
 Notes: Where do we define Team Lead role?  It should be specified in the team's profile page.  Parameter?
 </wiki:comment>
 
+<wiki:comment> Team Hierachy has been completely scrapped, right?
 ===Manage Team Hierarchy===
 
 DON'T KNOW IF THIS USE CASE REALLY BELONGS UNDER TEAM
@@ -146,9 +149,20 @@ Users: Admin
 Security:
 
 Notes: We need to determine what exactly will determine the hierarchy on a global scale. Suggestions for [[Team Hierarchy Rules & Definition]].
+</wiki:comment>
+===U7 Get Team Profile===
+  * *Description*: A user views the profile of a team.
+  * *Actor*: End user.
+  * *Preconditions*: None.
+  * *Flow of Events for Main Scenario*:
+    # User sends team id of a existing team to the system.
+    # System displays profile of team associated with sent team id.
+  * *Alternative Scenarios*:
+    # If the sent team id is not associated with any existing team, an exception is thrown.
+  * *Postconditions*: None.
+  * *Handles Requirements*: 
 
-===Get Team Profile===
-
+<wiki:comment>
 Description: Display a team's profile.
 
 URI: /team/getprofile?team=team_id
@@ -158,7 +172,8 @@ Users: Anyone
 Security:
 
 Notes:
-
+</wiki:comment>
+----
 ==Business/Location==
 ----
 
@@ -228,6 +243,7 @@ Security:
 
 Notes:
 
+----
 ==Status==
 ----
 
@@ -279,6 +295,7 @@ Security:
 
 Notes: Parameters for the game status should be defined once the team hierarchy issues have been hashed out, but should likely include which league/sub-league you want to show status for and if you want to show all teams in that league or just your team and their rivals.
 
+----
 ==Communication==
 ----
 
@@ -352,6 +369,7 @@ Security: Should be limited to users friends/team members
 
 Notes:
 
+----
 ==Query==
 ----
 
