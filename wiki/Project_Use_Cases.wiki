@@ -1,3 +1,5 @@
+#summary List of primary use cases
+
 The primary use cases for Serengeti are listed below.
 
 ==User==
