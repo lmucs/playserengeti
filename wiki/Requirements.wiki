@@ -113,9 +113,9 @@ The class will create a Serengeti server and at least two clients - a web client
 
 *Technical Requirements*
   # Teams
-    # Users are part of one or more teams.
+    # Users are part of one or more teams, or can belong to no teams.
   # Checking In
-    # Users can check in to a location through either the mobile web app or the iPhone app.
+    # Users can check in to a location through either the web app or the iPhone app.
       # Location is derived from a search of existing locations based upon tags, address, or GPS coordinates. (GPS Coordinates found automatically on iPhone app.)
       # Users must indicate a team when they check in by selecting one from a drop-down menu of teams they are a part of.
   # Scoring
