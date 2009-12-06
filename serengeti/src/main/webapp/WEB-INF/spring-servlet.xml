@@ -42,6 +42,13 @@
         </property>
     </bean>
 
+    <bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+        <!-- Set the max upload size to 100k -->
+        <property name="maxUploadSize" value="100000"/>
+    </bean>
+
     <!--
         Resource Bundles
     -->
