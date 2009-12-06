@@ -9,9 +9,11 @@ import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
+import com.playserengeti.domain.Location;
 import com.playserengeti.domain.Team;
 import com.playserengeti.domain.User;
 import com.playserengeti.domain.Visit;
+import com.playserengeti.service.LocationService;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.VisitService;
 import com.playserengeti.session.UserSession;
@@ -23,11 +25,13 @@ public class TeamController extends MultiActionController {
     private Logger logger = Logger.getLogger(getClass());
 
     private TeamService teamService;
+    private LocationService locationService;
     private VisitService visitService;
     private UserSession session;
 
-    public TeamController(TeamService teamService, VisitService visitService) {
+    public TeamController(TeamService teamService, LocationService locationService, VisitService visitService) {
         this.teamService = teamService;
+        this.locationService = locationService;
         this.visitService = visitService;
     }
 
@@ -90,6 +94,8 @@ public class TeamController extends MultiActionController {
 
         Collection<User> members = teamService.getTeamMembers(teamId);
         Collection<Visit> activity = visitService.getTeamsRecentActivity(teamId);
+        Collection<Location> territory = locationService.getControlledTerritory(teamId);
+        
 
         String view = "teamViewProfile";
         if ("xml".equals(request.getParameter("format"))) {
@@ -104,6 +110,7 @@ public class TeamController extends MultiActionController {
         mav.addObject("teamCommand", command);
         mav.addObject("members", members);
         mav.addObject("activity", activity);
+        mav.addObject("territory", territory);
 
         return mav;
     }
