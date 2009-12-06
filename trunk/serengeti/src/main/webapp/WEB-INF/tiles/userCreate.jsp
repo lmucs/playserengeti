@@ -37,6 +37,13 @@
             <form:errors path="password"/>
         </div>
         <div class="clear">&nbsp;</div>
+        <div class="grid_2">
+            <label for="image">Profile Picture:</label>
+        </div>
+        <div class="grid_3">
+            <input type="file" path="image"/>
+        </div>
+        <div class="clear">&nbsp;</div>
         <div class="grid_2">&nbsp;</div>
         <div class="grid_3">
             <input type="submit" value="Sign up"/>

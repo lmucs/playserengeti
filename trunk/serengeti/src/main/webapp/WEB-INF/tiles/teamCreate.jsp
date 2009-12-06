@@ -37,10 +37,10 @@
 	        
 	
 		    <div class="grid_2">
-		        <label for="image">Team Image URL: </label>
+		        <label for="image">Team Profile Picture: </label>
 		    </div>
 		    <div class="grid_2">
-		        <input type="text" name="image" />
+		        <input type="file" path="image" />
 		    </div>
 		    
 		    <div class="clear">&nbsp;</div>

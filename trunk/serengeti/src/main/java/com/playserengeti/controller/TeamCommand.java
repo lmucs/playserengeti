@@ -10,6 +10,7 @@ public class TeamCommand {
     Integer teamId;
     String name;
     String color;
+    String image;
     User leader;
     String description;
     String homeBase;
@@ -40,6 +41,14 @@ public class TeamCommand {
 
     public void setColor(String color) {
         this.color = color;
+    }
+    
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public User getLeader() {
