@@ -15,6 +15,7 @@ public class UserCommand {
     private String firstName;
     private String lastName;
     private String password;
+    private String image;
     private Collection<User> friends;
     private Collection<Team> teams;
     private String format;
@@ -53,6 +54,14 @@ public class UserCommand {
 
     public String getLastName() {
         return lastName;
+    }
+    
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public void setEmail(String email) {

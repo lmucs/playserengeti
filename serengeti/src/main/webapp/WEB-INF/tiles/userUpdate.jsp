@@ -33,6 +33,17 @@
     </div>
 
     <div>
+        <div class="formLabel">
+            <label for="image">Profile Picture:</label>
+        </div>
+    </div>
+    <div>
+        <div class="spaceInputBox">
+            <input type="file" path="userCommand.image"/>
+        </div>
+    </div>
+
+     <div>
         <label for="friendRemovals">Friends: </label>
         <ul>
             <c:forEach var="user" items="${userCommand.friends}">

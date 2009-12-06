@@ -108,7 +108,9 @@ public class UserController extends MultiActionController {
         Integer teamId = Integer.valueOf(request.getParameter("teamId"));
         Integer locationId = Integer.valueOf(request.getParameter("locationId"));
 
-        if (!userId.equals(-1)) visitService.checkIn(userId, teamId, locationId);
+        if (!userId.equals(-1)) {
+        	visitService.checkIn(userId, teamId, locationId);
+        }
     }
 
     public void removeFriend(HttpServletRequest request, HttpServletResponse response) {

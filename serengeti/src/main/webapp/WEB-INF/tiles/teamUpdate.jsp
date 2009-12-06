@@ -40,6 +40,15 @@
     <div class="clear">&nbsp;</div>
 
     <div class="grid_2">
+        <label for="image">Team Profile Picture:</label>
+    </div>
+    <div class="grid_2">
+        <input type="file" path="teamCommand.image" />
+    </div>
+    
+    <div class="clear">&nbsp;</div>
+
+    <div class="grid_2">
         <label for="description">Team Description:</label>
     </div>
     <div class="grid_2">
