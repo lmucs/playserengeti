@@ -9,7 +9,7 @@ The class will create a Serengeti server and at least two clients - a web client
       # Team Management
       # View World Map
       # Location Management
-      # Communitate
+      # Communicate
     # For the "Account Management" option:
       # The user will be presented with two options:
         # Modify Account
