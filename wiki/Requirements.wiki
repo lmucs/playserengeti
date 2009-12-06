@@ -1,28 +1,33 @@
-The class will create a Serengeti server and at least two clients - a web client and a mobile client.  Serengeti is a multi-player social web app in which players join teams and mark off territories.
-
-*User Interaction Requirements*    
-
-  # Requirements for the web application
-    # Upon loading playserengeti.com, the user will be presented with the welcome screen.  This will contain information about the application, a login area, and a registration area.
-    # When logged in, the user will be presented with a screen that contains options for:
-      # Account Management
-      # Team Management
-      # View World Map
-      # Location Management
-      # Communicate
-    # For the "Account Management" option:
-      # The user will be presented with two options:
-        # Modify Account
-        # Delete Account
-      # For the "Modify Account" option:
-        # The user can update their user information such as:
+     
+  # A web application *shall* serve as a serengeti game server and administration portal.
+    # Resources in the web application *should* deliver content in four forms
+      # HTML for desktop and laptop browsers 
+      # Minimal HTML for mobile web browsers
+      # XML
+      # JSON
+    # HTML resources *shall* validate as XTHML 1.1 Strict
+    # The root url of the webapp *shall* map to a welcome screen displaying information about the application, a login area, and a registration area.
+    # Each page of the webapp *shall* contain a header and a footer
+      # The header *shall* contain a menu with the following options:
+        # Navigating to the home page
+        # Signing up (creating a new account)
+        # Viewing and managing teams
+        # Viewing and managing players
+        # Viewing and managing locations
+        # Logging in (if not already logged on) or logging out (if logged in)
+        # Obtaining help
+    # A player *shall* be able to manage his or her own account (profile):
+      # A player *shall* be given the following options:
+        # Deactivate his or her account
+        # Modify the following attributes of the account:
           # Username
           # Home location
           # Contact information
           # Profile Picture
-        # The user can add and remove friends by searching for users.
-      # The "Delete Account" option will remove the user from the database.
-    # For the "Team Management" option:
+        # Invite other players to become friends
+        # Remove friends
+      # Players *shall* be given a search feature to find potential friends to invite
+    # Users *shall* be able to manage teams
       # The user will be presented with three options:
         # Create Team
         # Modify Team
@@ -111,6 +116,7 @@ The class will create a Serengeti server and at least two clients - a web client
           # Delete a location/business  
           # For the purposes of serengeti a business is a location that has additional information stored for it (i.e., proprietor)
 
+  # An 
 *Technical Requirements*
   # Teams
     # Users are part of one or more teams, or can belong to no teams.
