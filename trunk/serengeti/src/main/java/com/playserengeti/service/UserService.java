@@ -43,6 +43,7 @@ public class UserService {
 	@Transactional(readOnly = false, propagation=Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     public Integer insertUserWithPassword(User user, String password) {
 		Integer id = userDao.insertUserWithPassword(user, password);
+		
 		User storedUser = userDao.getUserById(id);
 		user.setDateCreated(storedUser.getDateCreated());
 		return id;

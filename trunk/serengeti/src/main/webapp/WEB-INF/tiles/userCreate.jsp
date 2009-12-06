@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-<form:form method="POST" action="${pageContext.request.contextPath}/user/create">
+<form:form method="POST" action="${pageContext.request.contextPath}/user/create" enctype="multipart/form-data">
     <div class="round_Box_Container extraPadding round_Box_Width">
         <div class="grid_2">
             <label for="email">Email Address:</label>
@@ -38,10 +38,10 @@
         </div>
         <div class="clear">&nbsp;</div>
         <div class="grid_2">
-            <label for="image">Profile Picture:</label>
+            <label for="imageFile">Profile Picture:</label>
         </div>
         <div class="grid_3">
-            <input type="file" path="image"/>
+            <input type="file" name="imageFile" id="imageFile"/>
         </div>
         <div class="clear">&nbsp;</div>
         <div class="grid_2">&nbsp;</div>

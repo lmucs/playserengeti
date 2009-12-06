@@ -54,9 +54,7 @@ public class UserDaoIbatisImpl extends SqlMapClientDaoSupport implements UserDao
 		getSqlMapClientTemplate().insert(
 				"insertUserWithPassword",
 				parameterMap);
-		Integer id = (Integer)parameterMap.get("id");
-		user.setId(id);
-		return id;
+		return user.getId();
 	}
 
 	@Override

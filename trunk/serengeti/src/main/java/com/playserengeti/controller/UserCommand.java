@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.playserengeti.domain.Team;
 import com.playserengeti.domain.User;
@@ -15,7 +16,7 @@ public class UserCommand {
     private String firstName;
     private String lastName;
     private String password;
-    private String image;
+    private MultipartFile imageFile;
     private Collection<User> friends;
     private Collection<Team> teams;
     private String format;
@@ -56,12 +57,12 @@ public class UserCommand {
         return lastName;
     }
     
-    public void setImage(String image) {
-        this.image = image;
+    public void setImageFile(MultipartFile file) {
+    	this.imageFile = file;
     }
 
-    public String getImage() {
-        return image;
+    public MultipartFile getImageFile() {
+        return imageFile;
     }
 
     public void setEmail(String email) {

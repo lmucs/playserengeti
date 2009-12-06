@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <form id="teamUpdateForm" method="POST" action="${pageContext.request.contextPath}/user/update"
-        onsubmit="return validateUpdateForm();">
+        enctype="multipart/form-data" onsubmit="return validateUpdateForm();">
 
     <div>    
         <div class="formLabel">
@@ -39,7 +39,7 @@
     </div>
     <div>
         <div class="spaceInputBox">
-            <input type="file" path="userCommand.image"/>
+            <input type="file" path="userCommand.imageBytes"/>
         </div>
     </div>
 
