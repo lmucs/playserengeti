@@ -33,13 +33,23 @@
                     
                     <div class="clear">&nbsp;</div>
                     
-                    <div class = "grid_4">
-                        <a href="${locationCommand.owner.name}"><img
+                    <c:choose>
+            			<c:when test='${ !empty locationCommand.owner }'>
+                    
+                    <div class = "grid_4 round_Box_Container">
+                        <a href="../team/${locationCommand.owner.id}"><img
 			src="${pageContext.request.contextPath}/images/default_team.png" alt="team"
-			title="${tlocationCommand.owner.name}" width="50" height="50"/></a>
-		    <a href="${locationCommand.owner.name}"><c:out value="${locationCommand.owner.name}"/></a>
+			title="${locationCommand.owner.name}" width="50" height="50"/></a>
+		    <a href="../team/${locationCommand.owner.id}"><c:out value="${locationCommand.owner.name}"/></a>
                     </div>
                     
+                        </c:when>
+                        <c:otherwise>
+                        	<div class = "grid_4 round_Box_Container">
+                        	<p>NOT OWNED</p>
+                        	</div>
+                        </c:otherwise>
+                    </c:choose>
                     <div class="clear">&nbsp;</div>
                     
                     
