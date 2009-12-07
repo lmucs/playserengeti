@@ -5,12 +5,25 @@
 
 <c:choose>
     <c:when test='${!empty userCommand}'>
+        <div id="othersProfile">
+            <c:if test="${session.loggedIn}">
+                <div id="sendInvites">
+                    <div id="inviteFriend">
+                        <input type="button" value="Send friend request" onClick="sendFriendInvite()"/>
+                    </div>   
+                    <div id="inviteTeam">
+                        <select id="teamInviteSelect"></select>
+                        <input type="button" value="Send Team Invitation" onClick="sendTeamInvite()"/>
+                    </div>
+                </div>                        
+            </c:if>
+        </div>
         <div class="grid_10">
 	        <div class="grid_2"></div>
 	        <div class="clear">&nbsp</div>
 	        <div class="grid_3 userImage">
-			    <img src="${pageContext.request.contextPath}/images/default_team.png" alt="teamImage"
-		        title="teamImage"/>               
+			    <img src="${pageContext.request.contextPath}/images/default_user.png" alt="Profile Picture"
+		        title="Profile Picture"/>               
 			</div>
 			<div class="grid_4">
 			    <div class="grid_4" id="userName">
@@ -50,52 +63,45 @@
                         <input type="button" value="Check In" onClick="checkIn()"/> 
                     </div>          
                 </div>
-                
-                <div class="grid_3 prefix_1">
-				    <div class="grid_2">
-				    	<strong>Friends: </strong>
-				    </div>
-				    <div class="grid_3">
-				        <ul id="friends"></ul>
-				    </div>  
-				</div>
-				<div class="grid_3 prefix_1"> 
-				    <div class="grid_2">
-				        <strong>Teams: </strong>
-				    </div>
-				    <div class="grid_3">
-				        <ul id="teams"></ul> 
-				    </div>
-				</div>
-                
-                <div class="clear">&nbsp</div>
-                <div class="grid_6 round_Box_Container">
-	                <div class="grid_6">
-	                    <p>These people want to be your friend.</p>
-	                    <ul id="friendInvites"></ul>
-	                </div>
+            </div>    
+        </c:if>     
+        <div class="grid_3 prefix_1">
+			<div class="grid_2">
+			    <strong>Friends: </strong>
+			</div>
+			<div class="grid_3">
+				<ul id="friends"></ul>
+			</div>  
+		</div>
+		<div class="grid_3 prefix_1"> 
+			<div class="grid_2">
+			    <strong>Teams: </strong>
+			</div>
+			<div class="grid_3">
+				<ul id="teams"></ul> 
+			</div>
+		</div>
+        <div id="ownProfile">       
+            <div class="clear">&nbsp</div>
+            <div class="grid_6 round_Box_Container">
+	            <div class="grid_6" id="friendRequests">
+	                <p>These people want to be your friend.</p>
+	                <ul id="friendRequestList"></ul>
+	            </div>
 	            
-	                <div class="grid_6">
-	                    <p>You have been invited to the following teams.</p>
-	                    <ul id="teamInvites"></ul>
-	                </div>
-	            </div>       
-            </div>
-            <div id="othersProfile">
-                <c:if test="${session.loggedIn}">
-                    <div id="sendInvites">
-                        <div id="inviteFriend">
-                            <input type="button" value="Send friend request" onClick="sendFriendInvite()"/>
-                        </div>   
-                        <div id="inviteTeam">
-                            <select id="teamInviteSelect"></select>
-                            <input type="button" value="Send Team Invitation" onClick="sendTeamInvite()"/>
-                        </div>
-                    </div>                        
-                </c:if>
-            </div>
-        </c:if>
-	
+    	        <div class="grid_6" id="teamRequests">
+	                <p>You have been invited to the following teams.</p>
+	                <ul id="teamRequestList"></ul>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="clear">&nbsp</div>
+        <div class="grid_6 round_Box_Container">
+	        <div class="grid_6">
+	            <p>Recent Activity</p>
+	            <ul id="activity"></ul>
+	        </div>
+	    </div>
     </c:when>
     <c:otherwise>
         <p>The user you requested does not exist.</p>
@@ -144,17 +150,17 @@
             teamSelect.append("<option value=" + val.id + ">" + val.name + "</option>");
             });
             
-        var friendInvites = $("#friendInvites");
+        var friendRequestList = $("#friendRequestList");
         jQuery.each(data.invites.friendInvites, function(i, val) {
-            friendInvites.append("<li id=friendInvite_" + val.id + 
+            friendRequestList.append("<li id=friendInvite_" + val.id + 
                 "><a href=" + val.id + ">" + val.name + "</a><button onClick=acceptFriendInvite(" + 
                 val.id + ")>" + "I\'ll allow it" + "</button><button onClick=rejectFriendInvite(" +
                 val.id + ")>" + "Not Interested" + "</button></li>");
             });
             
-        var teamInvites = $("#teamInvites");
+        var teamRequestList = $("#teamRequestList");
         jQuery.each(data.invites.teamInvites, function(i, val) {
-            teamInvites.append("<li id=teamInvite_" + val.id + 
+            teamRequestList.append("<li id=teamInvite_" + val.id + 
                 "><a href=../team/" + val.id + ">" + val.name + "</a><button onClick=acceptTeamInvite(" + 
                 val.id + ")>" + "I\'ll allow it" + "</button><button onClick=rejectTeamInvite(" +
                 val.id + ")>" + "Not Interested" + "</button></li>");
@@ -163,6 +169,12 @@
         var teamInviteSelect = $("#teamInviteSelect");
         jQuery.each(data.invitableTeams, function(i, val) {
             teamInviteSelect.append("<option value=" + val.id + ">" + val.name + "</option>");
+            });
+            
+        var activity = $("#activity");
+        jQuery.each(data.activity, function(i, val) {
+            activity.append("<li>Checked in to " + 
+              val.location.name + " (" + val.date + ")</li>");
             });
         $("#email").append(data.user.email);
         $("#name").append(data.user.name);
