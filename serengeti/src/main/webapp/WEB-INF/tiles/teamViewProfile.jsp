@@ -44,6 +44,19 @@
                     <td><c:out value="${teamCommand.description}"/></td>
                 </div>
                 
+                <div class="grid_4 round_Box_Container">
+	                <div class="grid_3">
+	                    <strong>Team Members:</strong>
+	                </div>
+	                <div class="grid_4">
+	                    <ul>
+	                      <c:forEach var="user" items="${members}">
+	                          <li><a href="../user/${user.id}"><c:out value="${user.firstName} ${user.lastName}"/></a></li>
+	                      </c:forEach>
+	                    </ul>	
+	                </div>
+	            </div>
+                
                 <div class="clear">&nbsp;</div>
 	                
 	            <div class="grid_2">
@@ -60,19 +73,14 @@
                     </c:forEach>
                     </ul>
                 </div>
-                
-	            <div class="grid_4 round_Box_Container">
-	                <div class="grid_2">
-	                    <strong>Team Members:</strong>
-	                </div>
-	                <div class="grid_4">
-	                    <ul>
-	                      <c:forEach var="user" items="${members}">
-	                          <li><a href="../user/${user.id}"><c:out value="${user.firstName} ${user.lastName}"/></a></li>
-	                      </c:forEach>
-	                    </ul>	
-	                </div>
-	            </div>
+                <div class="grid_4 round_Box_Container">
+                    <ul>
+                    <c:forEach var="territory" items="${territory}">
+                        <li><a href="../location/${location.id}"><c:out value="${location.name}"/></a></li>
+                          <c:out value="${visit.location.name}"/> <c:out value="${visit.location.getFormattedAddress}"/>
+                    </c:forEach>
+                    </ul>
+                </div>
                 <hr>
                 <c:if test="${session.loggedIn && (session.user.id == teamCommand.leader.id)}">
                     <a href="update/${teamCommand.teamId}">Modify Team</a><br/>
