@@ -426,6 +426,9 @@ word-wrap:break-word;
 #teamInfo{
 	font-size: 70%;
 }
+#territoryAddress{
+	font-size: 70%;
+}
 .userImage {
     height: 150px;
     width: auto;	

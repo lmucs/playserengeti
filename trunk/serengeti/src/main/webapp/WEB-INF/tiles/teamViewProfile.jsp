@@ -13,13 +13,13 @@
 		        </div>
 		        <div class="grid_3">
 	                <div class="grid_3" id="teamName">
-	                    <td><strong><c:out value="${teamCommand.name}"/></td>
+	                    <td><strong><c:out value="${teamCommand.name}"/></strong></td>
 	                </div>
 	                
 	                <div class="clear">&nbsp;</div>
 	                <div id="teamInfo">
 		                <div class="grid_4">
-		                	<td><strong>Home Base:</td>
+		                	<td><strong>Home Base:</strong></td>
 		                	<td><c:out value="${teamCommand.homeBase}"/></td>
 		                </div>
 		            
@@ -35,7 +35,7 @@
 	            <div class="clear">&nbsp;</div>
 	                
 	            <div class="grid_2">
-                    <td><strong>Description:</td>
+                    <td><strong>Description:</strong></td>
                 </div>	
                 
                 <div class="clear">&nbsp;</div>
@@ -60,7 +60,7 @@
                 <div class="clear">&nbsp;</div>
 	                
 	            <div class="grid_2">
-                    <td><strong>Activity:</td>
+                    <td><strong>Activity:</strong></td>
                 </div>	
                 
                 <div class="clear">&nbsp;</div>
@@ -75,9 +75,12 @@
                 </div>
                 <div class="grid_4 round_Box_Container">
                     <ul>
-                    <c:forEach var="territory" items="${territory}">
-                        <li><a href="../location/${location.id}"><c:out value="${location.name}"/></a></li>
-                          <c:out value="${visit.location.name}"/> <c:out value="${visit.location.getFormattedAddress}"/>
+                    <c:forEach var="loc" items="${territory}">
+                        <li><a href="../location/${loc.id}"><c:out value="${loc.name}"/></a>
+                            <div id="territoryAddress">
+                                <c:out value="${loc.street}"/><br/><c:out value="${loc.city}, ${loc.state} ${loc.zipcode}"/>
+                            </div>
+                        </li>
                     </c:forEach>
                     </ul>
                 </div>
