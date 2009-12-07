@@ -36,7 +36,7 @@
                     <c:choose>
             			<c:when test='${ !empty locationCommand.owner }'>
                     
-                    <div class = "grid_4 round_Box_Container">
+                    <div class = "grid_3 prefix_1 round_Box_Container">
                         <a href="../team/${locationCommand.owner.id}"><img
 			src="${pageContext.request.contextPath}/images/default_team.png" alt="team"
 			title="${locationCommand.owner.name}" width="50" height="50"/></a>
@@ -45,7 +45,7 @@
                     
                         </c:when>
                         <c:otherwise>
-                        	<div class = "grid_4 round_Box_Container">
+                        	<div class = "grid_3 prefix_1 round_Box_Container">
                         	<p>NOT OWNED</p>
                         	</div>
                         </c:otherwise>
