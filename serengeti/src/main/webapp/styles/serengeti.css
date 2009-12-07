@@ -420,6 +420,17 @@ word-wrap:break-word;
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+
+.activityBoxContainer {
+	-webkit-border-radius: 10px; /* Safari prototype */
+	-moz-border-radius: 10px; /* Gecko browsers */
+	border-radius: 10px;
+	/* Everything else - limited support at the moment */
+	background-color: #BBAA88;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 20px;
+}
 .teamImage {
     height: 150px;
     width: auto;	
@@ -574,3 +585,5 @@ position:absolute;
 margin-left:80px;
 width:600px;
 }
+
+ul

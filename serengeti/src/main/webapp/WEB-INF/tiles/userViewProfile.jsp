@@ -79,7 +79,7 @@
 	            </div>    
 	        </c:if>
 	        <div class="clear">&nbsp</div>
-            <div class="grid_6 round_Box_Container">
+            <div class="grid_6 activityBoxContainer">
 		        <div class="grid_6">
 		            <p>Recent Activity</p>
 		            <ul id="activity"></ul>
