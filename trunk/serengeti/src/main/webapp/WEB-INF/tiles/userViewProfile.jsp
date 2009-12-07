@@ -5,19 +5,38 @@
 
 <c:choose>
     <c:when test='${!empty userCommand}'>
+        <div class="grid_10">
+	        <div class="grid_2"></div>
+	        <div class="clear">&nbsp</div>
+	        <div class="grid_3 userImage">
+			    <img src="${pageContext.request.contextPath}/images/default_team.png" alt="teamImage"
+		        title="teamImage"/>               
+			</div>
+			<div class="grid_4">
+			    <div class="grid_4" id="userName">
+		            <strong><p id="name"></p></strong>
+		        </div>
+		        <div class="clear">&nbsp</div>
+		        <div class="grid_4" id="userInfo">
+		            <strong><p id="email"></p></strong>
+		        </div>
+	        </div>
+	    </div>
+	    <div class="clear">&nbsp</div>
         <c:if test="${session.loggedIn}">
             <div id="ownProfile"> 
-                <div class="grid_10 prefix_1" id="thanks">
+                <div class="grid_4 prefix_1" id="thanks">
                     <p>Thank you for checking in.</p>
                 </div>
                     
-                <div class="grid_10 prefix_1" id="checkIn">
+                <div class="grid_6" id="checkIn">
                     <div class="grid_4" id="locList">
                         <p>Checkin from:</p>
                         <select id="locSelect">
                         </select>
                         <input id="notHere" type="button" value="Not Here?" onClick="showSearch()"/>
                     </div>
+                    <div class="clear">&nbsp</div>
                     <div class="grid_4" id="locSearch">
                         <input id="searchText" type="text" value="Where are you?">
                         <input type="button" value="Search" onClick="searchLoc()"/>
@@ -26,18 +45,37 @@
                         <p>As team:</p>
                         <select id="teamSelect"></select>
                     </div>
-                    <div id="checkinButton">
+                    <div class="clear">&nbsp</div>
+                    <div class="grid_1" id="checkinButton">
                         <input type="button" value="Check In" onClick="checkIn()"/> 
                     </div>          
                 </div>
+                
+                <div class="grid_3 prefix_1">
+				    <div class="grid_2">
+				    	<strong>Friends: </strong>
+				    </div>
+				    <div class="grid_3">
+				        <ul id="friends"></ul>
+				    </div>  
+				</div>
+				<div class="grid_3 prefix_1"> 
+				    <div class="grid_2">
+				        <strong>Teams: </strong>
+				    </div>
+				    <div class="grid_3">
+				        <ul id="teams"></ul> 
+				    </div>
+				</div>
+                
                 <div class="clear">&nbsp</div>
-                <div id="requestContainer"
-	                <div class="width500 round_Box_Container">
+                <div class="grid_6 round_Box_Container">
+	                <div class="grid_6">
 	                    <p>These people want to be your friend.</p>
 	                    <ul id="friendInvites"></ul>
 	                </div>
 	            
-	                <div class="width500 round_Box_Container">
+	                <div class="grid_6">
 	                    <p>You have been invited to the following teams.</p>
 	                    <ul id="teamInvites"></ul>
 	                </div>
@@ -57,42 +95,12 @@
                 </c:if>
             </div>
         </c:if>
-            
-        <div class="width300 round_Box_Container" id="info">
-            <div class="grid_2">
-	          	<strong>Email Address: </strong>
-	        </div>
-	        <div class="grid_3">
-	            <p id="email"></p>
-	        </div>
-	        <div class="clear">&nbsp</div>
-	        <div class="grid_2">
-	            <strong>Name: </strong>
-	        </div>
-	        <div class="grid_3">
-	            <p id="name"></p>
-	        </div>
-	        <div class="clear">&nbsp</div>
-	        <div class="grid_2">
-	            <strong>Friends: </strong>
-	        </div>
-	        <div class="grid_3">
-	            <ul id="friends"></ul>
-	        </div>
-	        <div class="clear">&nbsp</div>     
-	        <div class="grid_2">
-	            <strong>Teams: </strong>
-	        </div>
-	        <div class="grid_3">
-	            <ul id="teams"></ul> 
-	        </div>
-	        <div id="edit"></div>
-        </div>
-        
+	
     </c:when>
     <c:otherwise>
         <p>The user you requested does not exist.</p>
     </c:otherwise>
+    
 </c:choose>
 <div id="popupContent">
     <a id="popupContentClose">X</a>
@@ -124,39 +132,28 @@
     });
         
     var populate = function(data) {
-        var friends = $("#friends");
         jQuery.each(data.friends, function(i, val) {
-            friends.append("<li><a href=" + val.id + ">" + val.name + "</a></li>");
+            $("#friends").append("<li><a href=" + val.id + ">" + val.name + "</a></li>");
             });
-            
-        var teams = $("#teams");
-        var teamSelect = $("#teamSelect");
         jQuery.each(data.teams, function(i, val) {
-            teams.append("<li><a href=../team/" + val.id + ">" + val.name + "</a></li>");
-            teamSelect.append("<option value=" + val.id + ">" + val.name + "</option>");
+            $("#teams").append("<li><a href=../team/" + val.id + ">" + val.name + "</a></li>");
+            $("#teamSelect").append("<option value=" + val.id + ">" + val.name + "</option>");
             });
-            
-        var friendInvites = $("#friendInvites");
         jQuery.each(data.invites.friendInvites, function(i, val) {
-            friendInvites.append("<li id=friendInvite_" + val.id + 
+            $("#friendInvites").append("<li id=friendInvite_" + val.id + 
                 "><a href=" + val.id + ">" + val.name + "</a><button onClick=acceptFriendInvite(" + 
                 val.id + ")>" + "I\'ll allow it" + "</button><button onClick=rejectFriendInvite(" +
                 val.id + ")>" + "Not Interested" + "</button></li>");
             });
-            
-        var teamInvites = $("#teamInvites");
         jQuery.each(data.invites.teamInvites, function(i, val) {
-            teamInvites.append("<li id=teamInvite_" + val.id + 
+            $("#teamInvites").append("<li id=teamInvite_" + val.id + 
                 "><a href=../team/" + val.id + ">" + val.name + "</a><button onClick=acceptTeamInvite(" + 
                 val.id + ")>" + "I\'ll allow it" + "</button><button onClick=rejectTeamInvite(" +
                 val.id + ")>" + "Not Interested" + "</button></li>");
             });
-            
-        var teamInviteSelect = $("#teamInviteSelect");
         jQuery.each(data.invitableTeams, function(i, val) {
-            teamInviteSelect.append("<option value=" + val.id + ">" + val.name + "</option>");
+            $("#teamInviteSelect").append("<option value=" + val.id + ">" + val.name + "</option>");
             });
-            
         $("#email").append(data.user.email);
         $("#name").append(data.user.name);
         
@@ -201,9 +198,8 @@
     };
     
     var searchComplete = function() {
-        var locSelect = $("#locSelect");
         if (lSearch.results && lSearch.results.length > 0) {
-            var results = lSearch.results;    
+            var results = lSearch.results;
             jQuery.each(results, function(i, val) {
                  var number = "";
                  if (val.phoneNumbers) {
@@ -214,12 +210,12 @@
                     state : val.region, phone : number}, 
                         function(data) {
                             var jsonData = JSON.parse(request.responseText);
-                            locSelect.append("<option value=" + jsonData.id + ">" + jsonData.name + "</option>");
+                            $("#locSelect").append("<option value=" + jsonData.id + ">" + jsonData.name + "</option>");
                         });
             });
         }
         else {
-            locSelect.replaceWith("<p>We couldn't find any locations by that name.</p>");
+            $("#locSelect").replaceWith("<p>We couldn't find any locations by that name.</p>");
         }
     };
     
@@ -288,6 +284,63 @@
         $.get("rejectTeamInvite", {teamId : teamId, userId : uData.sessionId});
         $("#teamInvite_" + teamId).fadeOut("slow");
     };
+
+    </script>
+<script>
+    var popupStatus = 0;
+    
+    $(function() {      
+        disablePopup();  
+        $("#popupContentClose").click(function() {  
+            disablePopup();  
+        });  
+
+        $("#popupBackground").click(function() {  
+            disablePopup();  
+        });
+    });
+    
+
+    var showPopup = function() {
+        centerPopup();
+        loadPopup();
+    };
+     var loadPopup = function() {
+        if (popupStatus == 0) {
+            $("#popupBackground").css({
+                "opacity": "0.7"
+            });  
+            $("#popupBackground").fadeIn("slow");  
+            $("#popupContent").fadeIn("slow");  
+            popupStatus = 1;
+        }
+    };
+    
+    var disablePopup = function() {
+        if(popupStatus == 1){  
+            $("#popupBackground").fadeOut("slow");  
+            $("#popupContent").fadeOut("slow");  
+            popupStatus = 0;  
+        }  
+    };
+    
+    var centerPopup = function() {
+        var windowWidth = document.documentElement.clientWidth;  
+        var windowHeight = document.documentElement.clientHeight;  
+        var popupHeight = $("#popupContent").height();  
+        var popupWidth = $("#popupContent").width();  
+
+        $("#popupContent").css({  
+            "position": "absolute",  
+            "top": windowHeight/2 - popupHeight/2,  
+            "left": windowWidth/2 - popupWidth/2  
+        });  
+         
+        $("#popupBackground").css({  
+            "height": windowHeight  
+        });  
+    }
+</script>
 </script>
 <script>
     var popupStatus = 0;
