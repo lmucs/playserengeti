@@ -18,6 +18,27 @@
 	</div>
 	
 	<div class="clear">&nbsp;</div>
+	
+	
+	<div class="shadowText">
+<p>Locations Near You</p>
+</div>
+
+<div class="verticalMenu">
+	<c:forEach var="location" items="${nearbyLocations}">
+		<div class="miniProfile">
+		<span class="miniProfilePicHidden">
+			<a href="${location.id}"><img src="${pageContext.request.contextPath}/images/default_team.png" alt="location"
+			title="${location.id}" width="50" height="50"/></a> </span>
+		<span class="miniProfileName">	
+			<a href="${location.id}" ><c:out value="${location.name}"/></a></span>
+		
+		</div>
+	</c:forEach>
+</div>
+	
+	
+	<!--
  
  <div class="shadowText">
 <p>Locations Near You</p>
@@ -38,19 +59,19 @@
 
 
 <div id="nscontainer" width=300 height=160 clip="0,0,300,160">
-<div id="nscontent" width=300 height=160 visibility=hidden><!--INSERT CONTENT HERE-->
+<div id="nscontent" width=300 height=160 visibility=hidden>INSERT CONTENT HERE
 
 <ul class="hor_menu">
 	<c:forEach var="location" items="${nearbyLocations}">
-		<li><!-- <a href="${location.id}"><img
+		<li> <a href="${location.id}"><img
 			src="${pageContext.request.contextPath}/images/avatar.jpg" alt="location"
-			title="${location.name}" /></a> --> <span><c:out value="${location.name}" />
+			title="${location.name}" /></a>  <span><c:out value="${location.name}" />
 		</span><a href="${location.id}" ><c:out value="${location.name}"/></a></li>
 		
 	</c:forEach>
 </ul>
 
-<!--END CONTENT--></div>
+END CONTENT</div>
 </div>
 </div>
 </div>
@@ -68,7 +89,7 @@
 	scrollbar(["leftArrow1"],['nearbyLocations'],["rightArrow1"]);
 </script>
          
-        <c:if test="${session.loggedIn}">
+        --><c:if test="${session.loggedIn}">
             <p>Don't see your current location?  <a href="create">Add it.</a></p>
         </c:if>
         

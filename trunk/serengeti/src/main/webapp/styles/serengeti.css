@@ -549,3 +549,28 @@ word-wrap:break-word;
     font-weight:700;  
     display:block;  
 }  
+
+.miniProfile {
+border-bottom:1px #445544 dashed;
+}
+
+.miniProfilePic {
+	
+}
+
+.miniProfilePicHidden {
+	visibility: hidden;
+}
+
+.miniProfileName {
+	margin-left:30px;
+position:absolute;
+}
+
+.miniProfileInfo {
+	
+}
+.verticalMenu {
+margin-left:80px;
+width:600px;
+}

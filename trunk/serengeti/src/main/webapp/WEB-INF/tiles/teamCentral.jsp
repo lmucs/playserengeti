@@ -1,8 +1,81 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
- 
  <div class="shadowText">
+<p>Teams with most territory</p>
+</div>
+
+<div class="verticalMenu">
+	<c:forEach var="team" items="${leaders}">
+		<div class="miniProfile">
+		<span class="miniProfilePic">
+			<a href="${team.id}"><img src="${pageContext.request.contextPath}/images/default_team.png" alt="team"
+			title="${visit.user.email}" width="50" height="50"/></a> </span>
+		<span class="miniProfileName">	
+			<a href="${team.id}" ><c:out value="${team.name}"/></a></span>
+		</div>
+	</c:forEach>
+</div>
+
+<div class="shadowText">
+<p>Most Active Teams</p>
+</div>
+
+<div class="verticalMenu">
+<c:forEach var="team" items="${mostActive}">
+		<div class="miniProfile">
+			<span class="miniProfilePic"><a href="${user.id}"><img
+			src="${pageContext.request.contextPath}/images/default_user.png" alt="team"
+			title="${team.id}" width="50" height="50"/></a></span> 
+			
+			<span class="miniProfileName">
+			<a href="${team.id}" ><c:out value="${team.name}"/></a></span>
+		</div>
+	</c:forEach>
+</div>
+
+<div class="shadowText">
+<p>Newest Teams</p>
+</div>
+
+
+<div class="verticalMenu">
+	<c:forEach var="team" items="${newest}">
+		<div class="miniProfile">
+			<span class="miniProfilePic"><a href="${user.id}"><img
+			src="${pageContext.request.contextPath}/images/default_user.png" alt="user"
+			title="${team.id}" width="50" height="50"/></a></span>
+			
+			<span class="miniProfileName"> 
+			<a href="${team.id}" ><c:out value="${team.name}"/></a></span>
+		</div>
+	</c:forEach>
+</div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <!--<div class="shadowText">
 <p>Teams With Most Territory</p>
 </div>
 
@@ -21,7 +94,7 @@
 
 
 <div id="nscontainer" width=300 height=160 clip="0,0,300,160">
-<div id="nscontent" width=300 height=160 visibility=hidden><!--INSERT CONTENT HERE-->
+<div id="nscontent" width=300 height=160 visibility=hidden>INSERT CONTENT HERE
 
 <ul class="hor_menu">
 	<c:forEach var="team" items="${leaders}">
@@ -32,7 +105,7 @@
 	</c:forEach>
 </ul>
 
-<!--END CONTENT--></div>
+END CONTENT</div>
 </div>
 </div>
 </div>
@@ -68,7 +141,7 @@
 	style="position: absolute; width: 400px; left: 0; top: 0;">
 
 <div id="nscontainer" width=300 height=160 clip="0,0,300,160">
-<div id="nscontent" width=300 height=160 visibility=hidden><!--INSERT CONTENT HERE-->
+<div id="nscontent" width=300 height=160 visibility=hidden>INSERT CONTENT HERE
 <ul class="hor_menu">
 	<c:forEach var="team" items="${mostActive}">
 		<li><a href="${team.id}"><img
@@ -79,7 +152,7 @@
 </ul>
 
 
-<!--END CONTENT--></div>
+END CONTENT</div>
 </div>
 </div>
 </div>
@@ -113,7 +186,7 @@
 	style="position: absolute; width: 400px; left: 0; top: 0;">
 
 <div id="nscontainer" width=300 height=160 clip="0,0,300,160">
-<div id="nscontent" width=300 height=160 visibility=hidden><!--INSERT CONTENT HERE-->
+<div id="nscontent" width=300 height=160 visibility=hidden>INSERT CONTENT HERE
 <ul class="hor_menu">
 	<c:forEach var="team" items="${newest}">
 		<li><a href="${team.id}"><img
@@ -124,7 +197,7 @@
 </ul>
 
 
-<!--END CONTENT--></div>
+END CONTENT</div>
 </div>
 </div>
 </div>
@@ -146,4 +219,4 @@
  
  
  
- 
+ -->
