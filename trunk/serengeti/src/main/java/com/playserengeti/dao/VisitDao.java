@@ -58,4 +58,5 @@ public interface VisitDao {
 	
 	public Collection<Visit> getTeamsRecentActivity(Integer teamId);
 
+	public Visit getUsersMostRecentCheckin(Integer userId);
 }

@@ -100,4 +100,40 @@
         FROM location
         LIMIT 10
     </select>
+    
+    <update id="updateOwningTeam">
+        UPDATE location
+        SET team_owner_id = ( 
+          SELECT visit_team_id
+          FROM (
+            SELECT visit_team_id, SUM(points) as total
+            FROM (
+              SELECT visit_team_id, (7 - (extract(day FROM now()) - extract(day FROM visit_timestamp))) as points
+              FROM visit
+              WHERE visit_location_id = #value#
+                AND (extract(day FROM now()) - extract(day FROM visit_timestamp)) <![CDATA[ < ]]> 7
+            ) getpoints
+            GROUP BY visit_team_id
+          ) gettotals
+          ORDER BY total DESC
+          LIMIT 1
+        )
+        WHERE location_id = #value#
+          AND (team_owner_id IS NULL 
+          OR team_owner_id != (
+            SELECT visit_team_id
+            FROM (
+              SELECT visit_team_id, SUM(points) as total
+              FROM (
+                SELECT visit_team_id, (7 - (extract(day FROM now()) - extract(day FROM visit_timestamp))) as points
+                FROM visit
+                WHERE visit_location_id = #value#
+                  AND (extract(day FROM now()) - extract(day FROM visit_timestamp)) <![CDATA[ < ]]> 7
+              ) getpoints
+              GROUP BY visit_team_id
+            ) gettotals
+            ORDER BY total DESC
+            LIMIT 1
+          ))
+    </update>
 </sqlMap>
