@@ -127,15 +127,7 @@ public class Location {
 	    this.latitude + "\", \"longitude\" : \"" + this.longitude + "\"}";
 	}
 	
-	/**
-	 * Gets the full address of the location.
-	 * Had to do it like this because the .jsp pages wouldn't
-	 * render a newline character.
-	 * @return
-	 */
-	public String[] getFormattedAddress() {
-		return new String[]{street, city + ", " + state + " " + zipcode};
-	}
+
 	
     // TODO: equals, hashCode, toString
 
