@@ -7,14 +7,12 @@
 				
 				<div class = "grid_5">
                    	<div class = "grid_4"> 
-                       	<td><strong>Location Name:</strong></td>
-                       	<td><c:out value="${locationCommand.name}"/></td>
+                       	<td><strong><c:out value="${locationCommand.name}"/></strong></td>
                     </div>
                     	
                     <div class="clear">&nbsp;</div>
 
                     <div class = "grid_4" >
-                       	<td><strong>Address:</strong></td>
                        	<td><c:out value="${locationCommand.street}"/><br/>
                            	<c:out value="${locationCommand.city}"/>
                            	<c:out value="${locationCommand.state}"/>
@@ -24,7 +22,6 @@
                     <div class="clear">&nbsp;</div>
                     	
                     <div class = "grid_4">
-                       	<td><strong>Phone Number:</strong></td>
                        	<td><c:out value="${locationCommand.phoneNumber}"/></td>
                     </div>
 
@@ -32,28 +29,38 @@
 
                     <div class = "grid_4">
                         <td><strong>Owned by Team:</strong></td>
-                        <td><c:out value="${locationCommand.owner.name}"/>
-                        </td>
                     </div>
                     
                     <div class="clear">&nbsp;</div>
                     
                     <div class = "grid_4">
-                    	<strong>Competing Teams:</strong>
-                    	<ul>
-                       		<c:forEach var="team" items="${competingTeams}">
-                           		<li><a href="../team/${team.id}"><c:out value="${team.name}"/></a></li>
-                       		</c:forEach>
-                    	</ul>
-                    </div>                
+                        <a href="${locationCommand.owner.name}"><img
+			src="${pageContext.request.contextPath}/images/default_team.png" alt="team"
+			title="${tlocationCommand.owner.name}" width="50" height="50"/></a>
+		    <a href="${locationCommand.owner.name}"><c:out value="${locationCommand.owner.name}"/></a>
+                    </div>
+                    
+                    <div class="clear">&nbsp;</div>
+                    
+                    
 				</div>
             </c:when>
             <c:otherwise>
                 <p>The location you requested does not exist.</p>
             </c:otherwise>
         </c:choose>
+<div class="clear">&nbsp;</div>
+<div class="grid_2" id="map_canvas"></div>
 
-<div id="map_canvas"></div>
+<div class = "grid_4">
+   	<strong>Competing Teams:</strong>
+  	<ul>
+   		<c:forEach var="team" items="${competingTeams}">
+       		<li><a href="../team/${team.id}"><c:out value="${team.name}"/></a></li>
+   		</c:forEach>
+   	</ul>
+</div>                
+
 
 <!--  meta name="viewport" content="initial-scale=0.5, user-scalable=no"/  -->
 
