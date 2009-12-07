@@ -6,7 +6,7 @@
 
 ==Services==
 
-Services implement the majority of the business logic in our web application.  They interface with the underlying data storage via data access objects, and are interfaced with primarily by controllers and other services.  Serengeti's service classes are: UserService, TeamService, LocationService and VisitService.  The categories of functionality provided by each service is evident in their names.
+Services implement the majority of the business logic in our web application.  They interface with the underlying data storage via data access objects, and are interfaced with primarily by controllers and other services.  Serengeti's service classes are: [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/service/UserService.java UserService], [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/service/TeamService.java TeamService], [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/service/LocationService.java LocationService] and [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/service/VisitService.java VisitService].  The categories of functionality provided by each service is evident in their names.
   _-Loren Abrams_
 
 ==DAOs==
