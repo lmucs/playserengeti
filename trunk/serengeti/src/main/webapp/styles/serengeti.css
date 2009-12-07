@@ -426,19 +426,21 @@ word-wrap:break-word;
 #teamInfo{
 	font-size: 70%;
 }
-#requestContainer {
-	float: left;
-	margin-left: 10px;
+.userImage {
+    height: 150px;
+    width: auto;	
+    margin-bottom: 80px;
+}
+#userName{
+	font-size: 160%;
+}
+#userInfo{
+	font-size: 70%;
 }
 
 #info {
 	float: right;
 	margin-right: 10px;
-}
-
-#edit {
-	float: right;
-	margin-right: 5px;
 }
 
 #checkinButton {
