@@ -95,4 +95,9 @@ public class VisitDaoIbatisImpl extends SqlMapClientDaoSupport implements
 	public Collection<Visit> getTeamsRecentActivity(Integer teamId) {
 		return (Collection<Visit>)getSqlMapClientTemplate().queryForList("getTeamsRecentActivity", teamId);
 	}
+	
+	@Override
+	public Visit getUsersMostRecentCheckin(Integer userId) {
+		return (Visit)getSqlMapClientTemplate().queryForObject("getUsersMostRecentCheckin", userId);
+	}
 }

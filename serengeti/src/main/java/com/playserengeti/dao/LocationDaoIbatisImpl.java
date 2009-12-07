@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
 import com.playserengeti.domain.Location;
+import com.playserengeti.domain.Team;
 
 public class LocationDaoIbatisImpl extends SqlMapClientDaoSupport implements
 		LocationDao {
@@ -72,5 +73,10 @@ public class LocationDaoIbatisImpl extends SqlMapClientDaoSupport implements
 	@Override
 	public Collection<Location> searchLocations(String query) {
 		return (Collection<Location>)getSqlMapClientTemplate().queryForList("searchLocations", query);
+	}
+	
+	@Override
+	public boolean updateOwningTeam(Integer locationId) {
+		return getSqlMapClientTemplate().update("updateOwningTeam", locationId) > 0;
 	}
 }

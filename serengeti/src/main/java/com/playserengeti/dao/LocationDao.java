@@ -3,6 +3,7 @@ package com.playserengeti.dao;
 import java.util.Collection;
 
 import com.playserengeti.domain.Location;
+import com.playserengeti.domain.Team;
 
 public interface LocationDao {
 
@@ -59,4 +60,6 @@ public interface LocationDao {
 	public Collection<Location> getControlledTerritory(Integer teamId);
 	
 	public Collection<Location> searchLocations(String query);
+	
+	public boolean updateOwningTeam(Integer locationId);
 }

@@ -118,4 +118,12 @@
       LIMIT 10
   </select>
   
+  <select id="getUsersMostRecentCheckin" resultMap="visitMap">
+      SELECT *
+      FROM visit
+      WHERE visit_user_id = #value#
+      ORDER BY visit_timestamp DESC
+      LIMIT 1   
+  </select>
+  
 </sqlMap>

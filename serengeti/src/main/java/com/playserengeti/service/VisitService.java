@@ -72,8 +72,10 @@ public class VisitService {
 	    visitDao.deleteVisit(visitId);
 	}
 	
-	public void checkIn(Integer userId, Integer teamId, Integer locationId) {
+	public String checkIn(Integer userId, Integer teamId, Integer locationId) {
 		visitDao.insertVisit(userId, teamId, locationId);
+		return "{\"visit\" : " + visitDao.getUsersMostRecentCheckin(userId).asJSON() + 
+		    ", \"overtaken\" : \"" + locationDao.updateOwningTeam(locationId) + "\"}";
 	}
 
 	/**
@@ -108,22 +110,6 @@ public class VisitService {
 	
 	public Collection<Team> getCompetingTeams(Integer locationId) {
 		return visitDao.getTeamsThatVisitedLocationByLocationId(locationId);
-	}
-	
-	public Team getLeadingTeam(Integer locationId) {
-		Collection<Team> teams = getCompetingTeams(locationId);
-	    Team result = null;
-	    for(Team t : teams) {
-	    	if (result == null) result = t;
-	    	else {
-	    		if (getVisitsByTeamAndLocation(t.getId(), locationId).size() > 
-	    			getVisitsByTeamAndLocation(result.getId(), locationId).size()) {
-	    			result = t;
-	    		}
-	    	}
-	    }
-	    
-	    return result;
 	}
 	
 	public Collection<Visit> getRecentCheckIns() {

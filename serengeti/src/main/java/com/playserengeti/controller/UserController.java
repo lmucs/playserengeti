@@ -109,7 +109,11 @@ public class UserController extends MultiActionController {
         Integer locationId = Integer.valueOf(request.getParameter("locationId"));
 
         if (!userId.equals(-1)) {
-        	visitService.checkIn(userId, teamId, locationId);
+        	try {
+    		    PrintWriter out = response.getWriter();
+    		    out.println(visitService.checkIn(userId, teamId, locationId));	
+            }
+    	    catch(IOException e) {}
         }
     }
 

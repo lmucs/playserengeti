@@ -14,6 +14,12 @@ import com.playserengeti.domain.Location;
 public class LocationDaoMockImpl implements LocationDao {
 
     @Override
+	public boolean updateOwningTeam(Integer locationId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
 	public Collection<Location> searchLocations(String query) {
 		// TODO Auto-generated method stub
 		return null;

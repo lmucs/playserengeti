@@ -2,6 +2,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+
 <c:choose>
     <c:when test='${!empty userCommand}'>
         <c:if test="${session.loggedIn}">
@@ -93,7 +94,15 @@
         <p>The user you requested does not exist.</p>
     </c:otherwise>
 </c:choose>
-
+<div id="popupContent">
+    <a id="popupContentClose">X</a>
+    <h1>Contratulations!</h1>
+    <p>You just claimed a territory for your team.</p>
+    <p>I bet your team will be really proud of you.  I know I am.</p>
+    <input type="button" value="Sweet! GO ME!" onClick="disablePopup()"/>
+</div>
+<div id="popupBackground"></div>
+        
 <!--  for www.playserengeti.com/ -->
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
 
@@ -203,9 +212,14 @@
     };
     
     var checkIn = function() {
-        $.get("checkIn", {userId : uData.sessionId, teamId : $("select#teamSelect").val(), 
-            locationId : $("select#locSelect").val()}
-        );
+        var request = $.get("checkIn", {userId : uData.sessionId, teamId : $("select#teamSelect").val(), 
+            locationId : $("select#locSelect").val()}, function(data) {
+                var jsonData = JSON.parse(request.responseText);
+                if (jsonData.overtaken == "true") {
+                    showPopup();
+                } 
+                $("#thanks").append("Your current location: "  + jsonData.visit.location.name);
+            });
         $("#checkIn").fadeOut("slow");
         $("#thanks").fadeIn("slow"); 
     };
@@ -262,5 +276,61 @@
         $.get("rejectTeamInvite", {teamId : teamId, userId : uData.sessionId});
         $("#teamInvite_" + teamId).fadeOut("slow");
     };
+</script>
+<script>
+    var popupStatus = 0;
+    
+    $(function() {      
+        disablePopup();  
+        $("#popupContentClose").click(function() {  
+            disablePopup();  
+        });  
+
+        $("#popupBackground").click(function() {  
+            disablePopup();  
+        });
+    });
+    
+    var showPopup = function() {
+        centerPopup();
+        loadPopup();
+    };
+    
+    var loadPopup = function() {
+        if (popupStatus == 0) {
+            $("#popupBackground").css({
+                "opacity": "0.7"
+            });  
+            $("#popupBackground").fadeIn("slow");  
+            $("#popupContent").fadeIn("slow");  
+            popupStatus = 1;
+        }
+    };
+    
+    var disablePopup = function() {
+        if(popupStatus == 1){  
+            $("#popupBackground").fadeOut("slow");  
+            $("#popupContent").fadeOut("slow");  
+            popupStatus = 0;  
+        }  
+    };
+    
+    var centerPopup = function() {
+        var windowWidth = document.documentElement.clientWidth;  
+        var windowHeight = document.documentElement.clientHeight;  
+        var popupHeight = $("#popupContent").height();  
+        var popupWidth = $("#popupContent").width();  
+
+        $("#popupContent").css({  
+            "position": "absolute",  
+            "top": windowHeight/2 - popupHeight/2,  
+            "left": windowWidth/2 - popupWidth/2  
+        });  
+         
+        $("#popupBackground").css({  
+            "height": windowHeight  
+        });  
+    }
+    
     
 </script>
