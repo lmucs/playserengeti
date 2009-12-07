@@ -36,72 +36,76 @@
 	        </div>
 	    </div>
 	    <div class="clear">&nbsp</div>
-        <c:if test="${session.loggedIn}">
-            <div id="ownProfile"> 
-                <div class="grid_4 prefix_1" id="thanks">
-                    <p>Thank you for checking in.</p>
-                </div>
-                    
-                <div class="grid_6" id="checkIn">
-                    <div class="grid_4" id="locList">
-                        <p>Checkin from:</p>
-                        <select id="locSelect">
-                        </select>
-                        <input id="notHere" type="button" value="Not Here?" onClick="showSearch()"/>
-                    </div>
-                    <div class="clear">&nbsp</div>
-                    <div class="grid_4" id="locSearch">
-                        <input id="searchText" type="text" value="Where are you?">
-                        <input type="button" value="Search" onClick="searchLoc()"/>
-                    </div>
-                    <div class="grid_4"  id="teamList">
-                        <p>As team:</p>
-                        <select id="teamSelect"></select>
-                    </div>
-                    <div class="clear">&nbsp</div>
-                    <div class="grid_1" id="checkinButton">
-                        <input type="button" value="Check In" onClick="checkIn()"/> 
-                    </div>          
-                </div>
-            </div>    
-        </c:if>     
-        <div class="grid_3 prefix_1">
-			<div class="grid_2">
-			    <strong>Friends: </strong>
-			</div>
-			<div class="grid_3">
-				<ul id="friends"></ul>
-			</div>  
-		</div>
-		<div class="grid_3 prefix_1"> 
-			<div class="grid_2">
-			    <strong>Teams: </strong>
-			</div>
-			<div class="grid_3">
-				<ul id="teams"></ul> 
-			</div>
-		</div>
-        <div id="ownProfile">       
-            <div class="clear">&nbsp</div>
+	    <div class="grid_7">
+	        <c:if test="${session.loggedIn}">
+	            <div id="ownProfile"> 
+	                <div class="grid_4 prefix_1" id="thanks">
+	                    <p>Thank you for checking in.</p>
+	                </div>
+	                    
+	                <div class="grid_6" id="checkIn">
+	                    <div class="grid_4" id="locList">
+	                        <p>Checkin from:</p>
+	                        <select id="locSelect">
+	                        </select>
+	                        <input id="notHere" type="button" value="Not Here?" onClick="showSearch()"/>
+	                    </div>
+	                    <div class="clear">&nbsp</div>
+	                    <div class="grid_4" id="locSearch">
+	                        <input id="searchText" type="text" value="Where are you?">
+	                        <input type="button" value="Search" onClick="searchLoc()"/>
+	                    </div>
+	                    <div class="grid_4"  id="teamList">
+	                        <p>As team:</p>
+	                        <select id="teamSelect"></select>
+	                    </div>
+	                    <div class="clear">&nbsp</div>
+	                    <div class="grid_1" id="checkinButton">
+	                        <input type="button" value="Check In" onClick="checkIn()"/> 
+	                    </div>          
+	                </div>
+	                <div class="clear">&nbsp</div>
+		            <div class="grid_6 round_Box_Container">
+			            <div class="grid_6" id="friendRequests">
+			                <p>These people want to be your friend.</p>
+			                <ul id="friendRequestList"></ul>
+			            </div>
+			            
+		    	        <div class="grid_6" id="teamRequests">
+			                <p>You have been invited to the following teams.</p>
+			                <ul id="teamRequestList"></ul>
+			            </div>
+	        		</div>
+	            </div>    
+	        </c:if>
+	        <div class="clear">&nbsp</div>
             <div class="grid_6 round_Box_Container">
-	            <div class="grid_6" id="friendRequests">
-	                <p>These people want to be your friend.</p>
-	                <ul id="friendRequestList"></ul>
-	            </div>
-	            
-    	        <div class="grid_6" id="teamRequests">
-	                <p>You have been invited to the following teams.</p>
-	                <ul id="teamRequestList"></ul>
-	            </div>
+		        <div class="grid_6">
+		            <p>Recent Activity</p>
+		            <ul id="activity"></ul>
+		        </div>
 	        </div>
-	    </div>
-	    <div class="clear">&nbsp</div>
-        <div class="grid_6 round_Box_Container">
-	        <div class="grid_6">
-	            <p>Recent Activity</p>
-	            <ul id="activity"></ul>
-	        </div>
-	    </div>
+	    </div>  
+        <div class="grid_3">
+		    <div class="grid_3 prefix_1">
+				<div class="grid_2">
+				    <strong>Friends: </strong>
+				</div>
+				<div class="grid_3">
+					<ul id="friends"></ul>
+				</div>  
+			</div>
+			<div class="grid_3 prefix_1"> 
+				<div class="grid_2">
+				    <strong>Teams: </strong>
+				</div>
+				<div class="grid_3">
+					<ul id="teams"></ul> 
+				</div>
+			</div>
+		</div>
+       
+
     </c:when>
     <c:otherwise>
         <p>The user you requested does not exist.</p>

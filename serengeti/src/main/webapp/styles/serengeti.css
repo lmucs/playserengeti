@@ -405,6 +405,11 @@ word-wrap:break-word;
 	font-size: 13px;
 	margin-bottom: 10px;
 }
+#sendInvites{
+	top: 180px;
+	right: 200px;
+	position: absolute;
+}
 
 .round_Box_Container {
 	-webkit-border-radius: 10px; /* Safari prototype */
