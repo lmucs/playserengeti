@@ -132,27 +132,37 @@
     });
         
     var populate = function(data) {
+    	var friends = $("#friends");
         jQuery.each(data.friends, function(i, val) {
-            $("#friends").append("<li><a href=" + val.id + ">" + val.name + "</a></li>");
+            friends.append("<li><a href=" + val.id + ">" + val.name + "</a></li>");
             });
+            
+        var teams = $("#teams");
+        var teamSelect = $("#teamSelect");
         jQuery.each(data.teams, function(i, val) {
-            $("#teams").append("<li><a href=../team/" + val.id + ">" + val.name + "</a></li>");
-            $("#teamSelect").append("<option value=" + val.id + ">" + val.name + "</option>");
+            teams.append("<li><a href=../team/" + val.id + ">" + val.name + "</a></li>");
+            teamSelect.append("<option value=" + val.id + ">" + val.name + "</option>");
             });
+            
+        var friendInvites = $("#friendInvites");
         jQuery.each(data.invites.friendInvites, function(i, val) {
-            $("#friendInvites").append("<li id=friendInvite_" + val.id + 
+            friendInvites.append("<li id=friendInvite_" + val.id + 
                 "><a href=" + val.id + ">" + val.name + "</a><button onClick=acceptFriendInvite(" + 
                 val.id + ")>" + "I\'ll allow it" + "</button><button onClick=rejectFriendInvite(" +
                 val.id + ")>" + "Not Interested" + "</button></li>");
             });
+            
+        var teamInvites = $("#teamInvites");
         jQuery.each(data.invites.teamInvites, function(i, val) {
-            $("#teamInvites").append("<li id=teamInvite_" + val.id + 
+            teamInvites.append("<li id=teamInvite_" + val.id + 
                 "><a href=../team/" + val.id + ">" + val.name + "</a><button onClick=acceptTeamInvite(" + 
                 val.id + ")>" + "I\'ll allow it" + "</button><button onClick=rejectTeamInvite(" +
                 val.id + ")>" + "Not Interested" + "</button></li>");
             });
+            
+        var teamInviteSelect = $("#teamInviteSelect");
         jQuery.each(data.invitableTeams, function(i, val) {
-            $("#teamInviteSelect").append("<option value=" + val.id + ">" + val.name + "</option>");
+            teamInviteSelect.append("<option value=" + val.id + ">" + val.name + "</option>");
             });
         $("#email").append(data.user.email);
         $("#name").append(data.user.name);
@@ -198,6 +208,7 @@
     };
     
     var searchComplete = function() {
+        var locSelect = $("#locSelect");
         if (lSearch.results && lSearch.results.length > 0) {
             var results = lSearch.results;
             jQuery.each(results, function(i, val) {
@@ -210,12 +221,12 @@
                     state : val.region, phone : number}, 
                         function(data) {
                             var jsonData = JSON.parse(request.responseText);
-                            $("#locSelect").append("<option value=" + jsonData.id + ">" + jsonData.name + "</option>");
+                            locSelect.append("<option value=" + jsonData.id + ">" + jsonData.name + "</option>");
                         });
             });
         }
         else {
-            $("#locSelect").replaceWith("<p>We couldn't find any locations by that name.</p>");
+            locSelect.replaceWith("<p>We couldn't find any locations by that name.</p>");
         }
     };
     
@@ -241,8 +252,9 @@
     };
     
     var populateLocations = function(nearby) {
+        var locSelect = $("#locSelect");
         jQuery.each(nearby, function(i, val) {
-            $("#locSelect").append("<option value=" + val.id + ">" + val.name + "</option>");
+            locSelect.append("<option value=" + val.id + ">" + val.name + "</option>");
             });
     };
     
@@ -285,7 +297,7 @@
         $("#teamInvite_" + teamId).fadeOut("slow");
     };
 
-    </script>
+</script>
 <script>
     var popupStatus = 0;
     
@@ -340,62 +352,4 @@
             "height": windowHeight  
         });  
     }
-</script>
-</script>
-<script>
-    var popupStatus = 0;
-    
-    $(function() {      
-        disablePopup();  
-        $("#popupContentClose").click(function() {  
-            disablePopup();  
-        });  
-
-        $("#popupBackground").click(function() {  
-            disablePopup();  
-        });
-    });
-    
-    var showPopup = function() {
-        centerPopup();
-        loadPopup();
-    };
-    
-    var loadPopup = function() {
-        if (popupStatus == 0) {
-            $("#popupBackground").css({
-                "opacity": "0.7"
-            });  
-            $("#popupBackground").fadeIn("slow");  
-            $("#popupContent").fadeIn("slow");  
-            popupStatus = 1;
-        }
-    };
-    
-    var disablePopup = function() {
-        if(popupStatus == 1){  
-            $("#popupBackground").fadeOut("slow");  
-            $("#popupContent").fadeOut("slow");  
-            popupStatus = 0;  
-        }  
-    };
-    
-    var centerPopup = function() {
-        var windowWidth = document.documentElement.clientWidth;  
-        var windowHeight = document.documentElement.clientHeight;  
-        var popupHeight = $("#popupContent").height();  
-        var popupWidth = $("#popupContent").width();  
-
-        $("#popupContent").css({  
-            "position": "absolute",  
-            "top": windowHeight/2 - popupHeight/2,  
-            "left": windowWidth/2 - popupWidth/2  
-        });  
-         
-        $("#popupBackground").css({  
-            "height": windowHeight  
-        });  
-    }
-    
-    
 </script>
