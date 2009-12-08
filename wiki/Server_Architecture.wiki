@@ -4,6 +4,305 @@
 
 ==Controllers and URIs==
 
+Controllers are an intermediate layer in between the front-end Java Service Pages and the services themselves.  Controllers gather the information together and pass it to the .jsps to be rendered by the client.  It is important for the controllers to stay away from implementing business logic and to rely on the Services to perform such operations.  The controller classes are: [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/AvatarController.java AvatarController], [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/HelpController.java HelpController], [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/LocationController.java LocationController], [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/LocationCreateController.java LocationCreateController], [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/SearchController.java SearchController], [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/TeamController.java TeamController], [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/TeamCreateController.java TeamCreateController], [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/TeamUpdateController.java TeamUpdateController], [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/UserController.java UserController], [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/UserCreateController.java UserCreateController], [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/UserDeleteController.java UserDeleteController], [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/UserLoginController.java UserLoginController], [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/UserUpdateController.java UserUpdateController], [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/WelcomeController.java WelcomeController]
+
+URIs are the way that clients communicate with the application.  Serengeti is capable of returning data in the form of XML and JSON, as well as a Java Server Page based on the "format" parameter.  A brief description of each follows.
+
+
+Note:  Root URL is http://www.playserengeti.com
+
+URL: / 
+	Description:
+		Gets the playserengeti.com home page.
+	Parameters:
+		none
+        Return Type:
+		ModelAndView
+	Controller:
+		WelcomeController
+
+URL: /user OR /user/central 
+	Description:
+		Gets the user central page. Contains interesting information about users.
+	Parameters:
+		format (optional) → Specify the format of the response.  Either “xml” or “json”.
+        Return Type:
+		ModelAndView
+	Controller:
+		UserController    
+
+URL: /user/$id$
+	Description:
+		Gets the given user's profile page.  Uses a url rewrite so the url can be specified as “/user/2/xml” and is routed to “/user/view?userId=2&format=xml”.
+	Parameters:
+		userId (required) → The id of the requested user.
+		format (optional) → Specify the format of the response.  Either “xml” or  “json”.
+        Return Type:
+		ModelAndView – if json is requested, the profile information is written as a json string to the response
+	Controller:
+		UserController
+
+URL: /user/logout
+	Description:
+		Logs out the current user.  A user must first be logged in.
+	Parameters:
+		none
+        Return Type:
+		ModelAndView
+	Controller:
+		UserController
+
+URL: /user/checkIn
+	Description:
+		Creates a visit for a given user, as a member of a given team, at a given location.  A user 		must be currently logged in.
+	Parameters:
+		userId (required) → The id of the user who is checking in.  Must equal the current 				                      session's userId.
+		teamId (required) → The id of the team the user is choosing to check-in as a member of.
+		locationId (required) → The id of the location the user is checking-in to.
+        Return Type:
+		void
+	Controller:
+		UserController
+
+URL: /user/removeFriend
+	Description:
+		Removes the friendship between the two given users.  A user must be logged in and one of the userIds given must equal the current session's userId.
+	Parameters:
+		firstId (required) → The id of one of the users in the friendship to be removed.
+		secondId (required) → The id of the other user in the friendship.
+        Return Type:
+		void
+	Controller:
+		UserController
+
+URL: /user/removeTeam
+	Description:
+		Removes the given user from the given team.  A user must be currently logged in.
+	Parameters:
+		userId (required) → The id of the user who is removing the given team.  Must equal the current session's userId.
+		teamId (required) →  The id of the team the user is removing.
+        Return Type:
+		void
+	Controller:
+		UserController
+
+URL: /user/sendFriendInvite
+	Description:
+		Sends a friend request from the primary user to the secondary user.  A user must be currently logged in.
+	Parameters:
+		firstId (required) → The id of the user who is doing the inviting.  Must equal the current session's userId.
+ 		second (required) → The id of the user who will be receiving the invite.
+        Return Type:
+		void
+	Controller:
+		UserController
+
+URL: /user/acceptFriendInvite
+	Description:
+		Accepts a friend invite.  A user must be currently logged in.
+	Parameters:
+		firstId (required) → The id of the user who initiated the friend request.
+		secondId (required) → The id of the user who is the recipient of the request.
+        Return Type:
+		void – writes the user whose friendship was accepted as a json string to the response.
+	Controller:
+		UserController
+
+URL: /user/rejectFriendInvite
+	Description:
+		Rejects a friend invite.  A user must be currently logged in.
+	Parameters:
+		firstId (required) → The id of the user who initiated the friend request.
+		secondId (required) → The id of the user who is the recipient of the request.
+        Return Type:
+		void 
+	Controller:
+		UserController
+
+URL: /user/sendTeamInvite
+	Description:
+		Sends an invitation for the given user to join the given team.
+	Parameters:
+		userId (required) → The id of the user who will be receiving the invite.
+ 		teamId (required) → The id of the team the user is being invited to.
+        Return Type:
+		void
+	Controller:
+		UserController
+
+URL: /user/acceptTeamInvite
+	Description:
+		Accepts a team invite.  A user must be currently logged in.
+	Parameters:
+		userId (required) → The id of the user who is receiving the invite.
+		teamId (required) → The id of the team the user is being invited to.
+        Return Type:
+		void – writes the team that the user has been invited to as a json string to the response.
+	Controller:
+		UserController
+
+URL: /user/rejectTeamInvite
+	Description:
+		Rejects a team invite.  A user must be currently logged in.
+	Parameters:
+		userId (required) → The id of the user who is receiving the invite.
+		teamId (required) → The id of the team the user is being invited to.
+        Return Type:
+		void 
+	Controller:
+		UserController
+
+URL: /user/create
+	Description:
+		Gets the user creation form.  Logs the user on successful submission.
+	Parameters:
+		none
+        Return Type:
+		ModelAndView
+	Controller:
+		UserCreateController
+
+URL: /user/delete
+	Description:
+		Deletes the given user.  A user must be currently logged in.
+	Parameters:
+		userId (required) → The id of the user to be deleted.  Must equal the current session's userId.
+        Return Type:
+		ModelAndView
+	Controller:
+		UserDeleteController
+
+URL: /user/login
+	Description:
+		Gets the user login page.
+	Parameters:
+		none
+        Return Type:
+		ModelAndView
+	Controller:
+ 		UserLoginController
+
+URL: /user/update
+	Description:
+		Gets the update form for the given user.  A user must be currently logged in.  Uses a url rewrite so the url can be specified as “/user/update/2” and is routed to “/user/update?userId=2”.
+	Parameters:
+		userId (required) → The id of the user who is being updated.  Must equal the current 					          session's userId.
+        Return Type:
+		ModelAndView
+	Controller:
+		UserUpdateController
+
+URL: /team OR /team/central
+	Description:
+		Gets the team central page.  Contains interesting information about teams.
+	Parameters:
+		format (optional) →  Specify the format of the response.  Either “xml” or  “json”.
+        Return Type:
+		ModelAndView
+	Controller:
+		TeamController
+
+URL: /team/$id$
+	Description:
+		Gets the profile of the given team.  Uses a url rewrite so the url can be specified as “/team/2/xml” and is routed to “/team/view?teamId=2&format=xml”.
+	Parameters:
+		teamId (required) → The id of the requested team.
+		format (optional) → Specify the format of the response.  Either “xml” or  “json”.
+        Return Type:
+		ModelAndView
+	Controller:
+		TeamController
+  
+URL: /team/create
+	Description:
+		Gets the team creation profile.  A user must be currently logged in.
+	Parameters:
+		none
+        Return Type:
+		ModelAndView
+	Controller:
+		TeamCreateController
+
+URL: /team/update
+	Description:
+		Gets the update form for the given team.  A user must be currently logged in.  The current session's userId must equal that of the team leader's.  Uses a url rewrite so the url can be specified as “/team/update/2” and is routed to “/team/update?teamId=2”.
+	Parameters:
+		teamId (required) → The id of the team to be updated.
+        Return Type:
+		ModelAndView
+	Controller:
+		TeamUpdateController
+
+URL: /location OR /location/central
+	Description:
+		Gets the location central page.  Displays nearby locations based on the user's current location.
+	Parameters:
+		format (optional) → Specify the format of the response.  Either “xml” or  “json”.
+        Return Type:
+		ModelAndView
+	Controller:
+		LocationController
+
+URL: /location/$id$
+	Description:
+		Gets the profile of the given location.  Uses a url rewrite so the url can be specified as “/location/2/xml” and is routed to “/location/view?teamId=2&format=xml”.
+	Parameters:
+		locationId (required) → The id of the requested location.
+		format (optional) → Specify the format of the response.  Either “xml” or  “json”.
+        Return Type:
+		ModelAndView
+	Controller:
+		LocationController
+
+URL: /location/create
+	Description:
+		Gets the location create form.  A user must be currently logged in.
+	Parameters:
+		none
+        Return Type:
+		ModelAndView
+	Controller:
+		LocationCreateController
+
+URL: /location/getNearbyLocations
+	Description:
+		Gets locations that are within ~2 miles of the given locations.
+	Parameters:
+		latitude (required) → The latitude of the user's current location.
+		longitude (required) → The longitude of the user's current location.
+	Return Type:
+		void – Writes the locations to the response as a JSON object with the property “locations” having a value of an array containing location objects.  
+	Controller:
+		LocationController
+
+URL: /location/handleResult
+	Description:
+		Takes in information about a location, adds it to Serengeti and returns a json object containing the location's information.
+	Parameters:
+		name (required) → The name of the location.
+		lat (required) → The latitude of the location.
+		lng (required) → The longitude of the location.
+		street (required) → The street address of the location.
+		city (required) → The city of the location.
+		state (required) → The state of the location.
+		phone (required) → The phone number of the location.
+	Return Type:
+		void – Writes the resulting location object as a JSON object to the response.
+	Controller:
+		LocationController
+
+URL: /search
+	Description:
+		Searches users, teams, and locations for the given string.
+	Parameters:
+		query (required) → The string to search the database against.
+	Return Type:
+		ModelAndView
+	Controller:
+		SearchController
+
+ _-Chris Mueller_
+
 ==Services==
 
 Services implement the majority of the business logic in our web application.  They interface with the underlying data storage via data access objects, and are interfaced with primarily by controllers and other services.  Serengeti's service classes are: [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/service/UserService.java UserService], [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/service/TeamService.java TeamService], [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/service/LocationService.java LocationService] and [http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/service/VisitService.java VisitService].  The categories of functionality provided by each service is evident in their names.
