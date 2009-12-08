@@ -98,6 +98,8 @@
     <select id="searchLocations" resultMap="locationMap">
         SELECT *
         FROM location
+        WHERE LOWER(location_name) LIKE '%' || LOWER(#value#) || '%'
+          OR LOWER(location_street) LIKE '%' || LOWER(#value#) || '%'
         LIMIT 10
     </select>
     

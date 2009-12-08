@@ -56,7 +56,7 @@
         </div>
         <div class="searchbar">
             <form action="${pageContext.request.contextPath}/search" method="POST">
-                <input type="text" path="query" value="Search for people, places, or teams"/>
+                <input type="text" name="query" id="query" value="Search for people, places, or teams"/>
                 <input type="submit" value="Go"/>
             </form>
         </div>

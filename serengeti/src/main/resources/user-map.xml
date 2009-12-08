@@ -132,6 +132,8 @@
   <select id="searchUsers" resultMap="userMap">
       SELECT *
       FROM player
+      WHERE LOWER(player_first_name) LIKE '%' || LOWER(#value#) || '%'
+        OR LOWER(player_last_name) LIKE '%' || LOWER(#value#) || '%'
       LIMIT 10
   </select>
   

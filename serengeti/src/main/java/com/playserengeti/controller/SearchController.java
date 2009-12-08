@@ -29,7 +29,8 @@ public class SearchController extends SimpleFormController{
 	@Override
 	protected ModelAndView onSubmit(HttpServletRequest request,
 			HttpServletResponse response, Object _command, BindException errors) {
-		String query = request.getParameter("query");
+		SearchCommand command = (SearchCommand)_command;
+		String query = command.getQuery();
         ModelAndView mav = new ModelAndView("results");
         mav.addObject("session", session);
         mav.addObject("users", userService.searchUsers(query));

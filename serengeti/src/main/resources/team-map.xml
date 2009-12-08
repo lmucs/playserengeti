@@ -160,6 +160,7 @@
   <select id="searchTeams" resultMap="teamMap">
       SELECT *
       FROM team
+      WHERE LOWER(team_name) LIKE '%' || LOWER(#value#) || '%'
       LIMIT 10
   </select>
 </sqlMap>
