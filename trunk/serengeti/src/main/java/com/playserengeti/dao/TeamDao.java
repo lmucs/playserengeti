@@ -2,6 +2,7 @@ package com.playserengeti.dao;
 
 import java.util.Collection;
 
+import com.playserengeti.domain.Avatar;
 import com.playserengeti.domain.Team;
 import com.playserengeti.domain.User;
 
@@ -89,6 +90,8 @@ public interface TeamDao {
 	 * @return
 	 */
 	public Collection<Team> getLeadingTeams();
+	
+	public Avatar getTeamAvatarByTeamId(Integer teamId);
 	
 	public boolean acceptTeamInvite(Integer teamId, Integer userId);
 	

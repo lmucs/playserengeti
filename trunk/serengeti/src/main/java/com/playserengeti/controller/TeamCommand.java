@@ -3,21 +3,23 @@ package com.playserengeti.controller;
 import java.util.Collection;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.playserengeti.domain.User;
 
 public class TeamCommand {
 
-    Integer teamId;
-    String name;
-    String color;
-    String image;
-    User leader;
-    String description;
-    String homeBase;
-    Map<Integer, String> members;
-    Integer[] invitees;
-    Integer[] removals;
-    Collection<User> candidates;
+    private Integer teamId;
+    private String name;
+    private String color;
+    private MultipartFile imageFile;
+    private User leader;
+    private String description;
+    private String homeBase;
+    private Map<Integer, String> members;
+    private Integer[] invitees;
+    private Integer[] removals;
+    private Collection<User> candidates;
 
     public Integer getTeamId() {
         return teamId;
@@ -43,12 +45,12 @@ public class TeamCommand {
         this.color = color;
     }
     
-    public String getImage() {
-        return image;
+    public MultipartFile getImageFile() {
+        return imageFile;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImageFile(MultipartFile imageFile) {
+        this.imageFile = imageFile;
     }
 
     public User getLeader() {

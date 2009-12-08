@@ -10,7 +10,8 @@ import java.util.Date;
 public class Team {
 
     private Integer id;
-    private String name;
+    private Integer avatarId;
+	private String name;
     private Date dateCreated;
     private String color;
     private User leader;
@@ -89,6 +90,14 @@ public class Team {
 
 	public void setHomeBase(String homeBase) {
 		this.homeBase = homeBase;
+	}
+	
+    public Integer getAvatarId() {
+		return avatarId;
+	}
+
+	public void setAvatarId(Integer avatarId) {
+		this.avatarId = avatarId;
 	}
 	
 	public String asJSON() {
