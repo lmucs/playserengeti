@@ -35,8 +35,7 @@ public class LocationController extends MultiActionController {
 
     public ModelAndView central(HttpServletRequest request,
             HttpServletResponse response) {
-        Collection<Location> nearbyLocations = locationService.getAllLocations();
-
+    	
         String view = "locationCentral";
         if ("xml".equals(request.getParameter("format"))) {
             view = "locationCentralXML";
@@ -47,8 +46,7 @@ public class LocationController extends MultiActionController {
 
         ModelAndView mav = new ModelAndView(view);
         mav.addObject("session", session);
-        mav.addObject("nearbyLocations", nearbyLocations);
-
+        
         return mav;
     }
 

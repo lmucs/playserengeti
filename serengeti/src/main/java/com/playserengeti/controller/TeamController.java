@@ -111,6 +111,7 @@ public class TeamController extends MultiActionController {
         mav.addObject("members", members);
         mav.addObject("activity", activity);
         mav.addObject("territory", territory);
+        mav.addObject("jsonData", "{\"territory\" : " + locationService.asJSON(territory) + "}");
 
         return mav;
     }

@@ -25,7 +25,7 @@
 <c:forEach var="team" items="${mostActive}">
 		<div class="miniProfile">
 			<span class="miniProfilePic"><a href="${user.id}"><img
-			src="${pageContext.request.contextPath}/images/default_user.png" alt="team"
+			src="${pageContext.request.contextPath}/images/default_team.png" alt="team"
 			title="${team.id}" width="50" height="50"/></a></span> 
 			
 			<span class="miniProfileName">
@@ -43,7 +43,7 @@
 	<c:forEach var="team" items="${newest}">
 		<div class="miniProfile">
 			<span class="miniProfilePic"><a href="${user.id}"><img
-			src="${pageContext.request.contextPath}/images/default_user.png" alt="user"
+			src="${pageContext.request.contextPath}/images/default_team.png" alt="user"
 			title="${team.id}" width="50" height="50"/></a></span>
 			
 			<span class="miniProfileName"> 

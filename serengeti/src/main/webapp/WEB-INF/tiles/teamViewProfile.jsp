@@ -74,6 +74,9 @@
                     </ul>
                 </div>
                 <div class="grid_4 round_Box_Container">
+                    <div class="grid_3">
+	                    <strong>Controlled Territory:</strong>
+	                </div>
                     <ul>
                     <c:forEach var="loc" items="${territory}">
                         <li><a href="../location/${loc.id}"><c:out value="${loc.name}"/></a>
@@ -93,4 +96,46 @@
                 <p>The team you requested does not exist.</p>
             </c:otherwise>
         </c:choose>
-
+        <div class="grid_8 round_Box_Container" id="map_canvas"></div>
+        
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script>
+    $(function() {
+        var latlng = new google.maps.LatLng(google.loader.ClientLocation.latitude,
+            google.loader.ClientLocation.longitude);
+        var myOptions = {
+            zoom: 10,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+       
+        var data = JSON.parse('${jsonData}');
+        var paths = new Array(data.territory.length);
+       
+        for (var i = 0; i < data.territory.length; i++) {
+            var pos = new google.maps.LatLng(data.territory[i].latitude, data.territory[i].longitude);
+            paths[i] = pos;
+            var marker = new google.maps.Marker({
+                position: pos,
+                map: map, 
+                title: data.territory[i].name
+            });
+        };
+        var polygon = new google.maps.Polygon({
+            paths: paths,
+            strokeColor: "#FF0000",
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: "#FF0000",
+            fillOpacity: 0.35
+        });
+        polygon.setMap(map)
+        
+    });
+    
+    
+    
+    
+</script>
