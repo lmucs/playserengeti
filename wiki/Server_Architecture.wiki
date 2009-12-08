@@ -160,7 +160,7 @@ URL: /user/create
         Return Type:
 		!ModelAndView
 	Controller:
-		UserCreateController
+		[http://code.google.com/p/playserengeti/source/browse/#svn/trunk/serengeti/src/main/java/com/playserengeti/controller/UserCreateController.java UserCreateController]
 
 URL: /user/delete
 	Description:
@@ -170,7 +170,7 @@ URL: /user/delete
         Return Type:
 		!ModelAndView
 	Controller:
-		UserDeleteController
+		[http://code.google.com/p/playserengeti/source/browse/#svn/trunk/serengeti/src/main/java/com/playserengeti/controller/UserDeleteController.java UserDeleteController]
 
 URL: /user/login
 	Description:
@@ -180,7 +180,7 @@ URL: /user/login
         Return Type:
 		!ModelAndView
 	Controller:
- 		UserLoginController
+ 		[http://code.google.com/p/playserengeti/source/browse/#svn/trunk/serengeti/src/main/java/com/playserengeti/controller/UserLoginController.java UserLoginController]
 
 URL: /user/update
 	Description:
@@ -190,7 +190,7 @@ URL: /user/update
         Return Type:
 		!ModelAndView
 	Controller:
-		UserUpdateController
+		[http://code.google.com/p/playserengeti/source/browse/#svn/trunk/serengeti/src/main/java/com/playserengeti/controller/UserUpdateController.java UserUpdateController]
 
 URL: /team OR /team/central
 	Description:
@@ -200,7 +200,7 @@ URL: /team OR /team/central
         Return Type:
 		!ModelAndView
 	Controller:
-		TeamController
+		[http://code.google.com/p/playserengeti/source/browse/#svn/trunk/serengeti/src/main/java/com/playserengeti/controller/TeamController.java TeamController]
 
 URL: /team/$id$
 	Description:
@@ -211,7 +211,7 @@ URL: /team/$id$
         Return Type:
 		!ModelAndView
 	Controller:
-		TeamController
+		[http://code.google.com/p/playserengeti/source/browse/#svn/trunk/serengeti/src/main/java/com/playserengeti/controller/TeamController.java TeamController]
   
 URL: /team/create
 	Description:
@@ -221,7 +221,7 @@ URL: /team/create
         Return Type:
 		!ModelAndView
 	Controller:
-		TeamCreateController
+		[http://code.google.com/p/playserengeti/source/browse/#svn/trunk/serengeti/src/main/java/com/playserengeti/controller/TeamCreateController.java TeamCreateController]
 
 URL: /team/update
 	Description:
@@ -231,7 +231,7 @@ URL: /team/update
         Return Type:
 		!ModelAndView
 	Controller:
-		TeamUpdateController
+		[http://code.google.com/p/playserengeti/source/browse/#svn/trunk/serengeti/src/main/java/com/playserengeti/controller/TeamUpdateController.java TeamUpdateController]
 
 URL: /location OR /location/central
 	Description:
@@ -241,7 +241,7 @@ URL: /location OR /location/central
         Return Type:
 		!ModelAndView
 	Controller:
-		LocationController
+		[http://code.google.com/p/playserengeti/source/browse/#svn/trunk/serengeti/src/main/java/com/playserengeti/controller/LocationController.java LocationController]
 
 URL: /location/$id$
 	Description:
@@ -252,7 +252,7 @@ URL: /location/$id$
         Return Type:
 		!ModelAndView
 	Controller:
-		LocationController
+		[http://code.google.com/p/playserengeti/source/browse/#svn/trunk/serengeti/src/main/java/com/playserengeti/controller/LocationController.java LocationController]
 
 URL: /location/create
 	Description:
@@ -262,7 +262,7 @@ URL: /location/create
         Return Type:
 		!ModelAndView
 	Controller:
-		LocationCreateController
+		[http://code.google.com/p/playserengeti/source/browse/#svn/trunk/serengeti/src/main/java/com/playserengeti/controller/LocationCreateController.java LocationCreateController]
 
 URL: /location/getNearbyLocations
 	Description:
@@ -273,7 +273,7 @@ URL: /location/getNearbyLocations
 	Return Type:
 		void – Writes the locations to the response as a JSON object with the property “locations” having a value of an array containing location objects.  
 	Controller:
-		LocationController
+		[http://code.google.com/p/playserengeti/source/browse/#svn/trunk/serengeti/src/main/java/com/playserengeti/controller/LocationController.java LocationController]
 
 URL: /location/handleResult
 	Description:
@@ -289,7 +289,7 @@ URL: /location/handleResult
 	Return Type:
 		void – Writes the resulting location object as a JSON object to the response.
 	Controller:
-		LocationController
+		[http://code.google.com/p/playserengeti/source/browse/#svn/trunk/serengeti/src/main/java/com/playserengeti/controller/LocationController.java LocationController]
 
 URL: /search
 	Description:
@@ -299,7 +299,7 @@ URL: /search
 	Return Type:
 		!ModelAndView
 	Controller:
-		SearchController
+		[http://code.google.com/p/playserengeti/source/browse/#svn/trunk/serengeti/src/main/java/com/playserengeti/controller/SearchController.java SearchController]
 
  _-Chris Mueller_
 
