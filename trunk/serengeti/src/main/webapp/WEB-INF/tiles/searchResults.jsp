@@ -9,12 +9,12 @@
 	<c:forEach var="user" items="${users}">
 		<div class="miniProfile">
 			<span class="miniProfilePic">
-			<a href="${user.id}"><img
+			<a href="user/${user.id}"><img
 			src="${pageContext.request.contextPath}/images/default_user.png" alt="user"
 			title="${user.email}" width="50" height="50"/></a> </span>
 			
 			<span class="miniProfileName">	
-			<a href="../user/${user.id}" ><c:out value="${user.firstName}"/></a></span>
+			<a href="user/${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></span>
 			
 				
 		</div>
@@ -29,12 +29,12 @@
 <div class="verticalMenu">
 <c:forEach var="team" items="${teams}">
 		<div class="miniProfile">
-			<span class="miniProfilePic"><a href="${user.id}"><img
-			src="${pageContext.request.contextPath}/images/default_user.png" alt="team"
+			<span class="miniProfilePic"><a href="team/${team.id}"><img
+			src="${pageContext.request.contextPath}/images/default_team.png" alt="team"
 			title="${team.id}" width="50" height="50"/></a></span> 
 			
 			<span class="miniProfileName">
-			<a href="${team.id}" ><c:out value="${team.name}"/></a></span>
+			<a href="team/${team.id}" ><c:out value="${team.name}"/></a></span>
 		</div>
 	</c:forEach>
 </div>
@@ -47,10 +47,10 @@
 	<c:forEach var="location" items="${locations}">
 		<div class="miniProfile">
 		<span class="miniProfilePicHidden">
-			<a href="${location.id}"><img src="${pageContext.request.contextPath}/images/default_team.png" alt="location"
+			<a href="location/${location.id}"><img src="${pageContext.request.contextPath}/images/default_team.png" alt="location"
 			title="${location.id}" width="50" height="50"/></a> </span>
 		<span class="miniProfileName">	
-			<a href="${location.id}" ><c:out value="${location.name}"/></a></span>
+			<a href="location/${location.id}" ><c:out value="${location.name}"/></a></span>
 		
 		</div>
 	</c:forEach>

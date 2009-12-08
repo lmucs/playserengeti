@@ -89,7 +89,7 @@
     <bean id="searchController"
         class="com.playserengeti.controller.SearchController">
         <property name="commandClass"
-            value="com.playserengeti.controller.UserCommand"
+            value="com.playserengeti.controller.SearchCommand"
         />
         <property name="session" ref="userSession"/>
         <constructor-arg ref="userService"/>
