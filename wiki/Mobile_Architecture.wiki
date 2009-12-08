@@ -1,3 +1,4 @@
+IN PROGRESS
 =Overview=
 The iPhone mobile client is planned to be a lightweight implementation written in objective C. The primary intent is to communicate with the backend via http post and get requests, with the back end providing JSON responses. These responses will be parsed and displayed to the user. 
 
