@@ -28,58 +28,7 @@
 </div>
 	
 	
-	<!--
- 
- <div class="shadowText">
-<p>Locations Near You</p>
-</div>
-
-<div class="arrowsAndScroll">
-
-<span class="allLeftArrows"> <a id="leftArrow1" href="#"
-	onmouseout="clearInterval(moveLeftVar)"><img
-	src="../images/leftArrow.png" height="160px" width="80px"></a> 
-</span>
-
-<span class="centralScrollSpan">
-
-<div id="scrollContainer">
-<div id="nearbyLocations"
-	style="position: absolute; width: 400px; left: 0; top: 0;">
-
-
-<div id="nscontainer" width=300 height=160 clip="0,0,300,160">
-<div id="nscontent" width=300 height=160 visibility=hidden>INSERT CONTENT HERE
-
-<ul class="hor_menu">
-	<c:forEach var="location" items="${nearbyLocations}">
-		<li> <a href="${location.id}"><img
-			src="${pageContext.request.contextPath}/images/avatar.jpg" alt="location"
-			title="${location.name}" /></a>  <span><c:out value="${location.name}" />
-		</span><a href="${location.id}" ><c:out value="${location.name}"/></a></li>
-		
-	</c:forEach>
-</ul>
-
-END CONTENT</div>
-</div>
-</div>
-</div>
-
-</span>
-
-<span class="allRightArrows"><a
-	id="rightArrow1" href="#" onmouseout="clearInterval(moveRightVar)"><img
-	src="../images/rightArrow.png" height="160px" width="80px"></a>
-</span>
-</div>
-
-<script type="text/javascript">
-	scrollbar(["leftArrow1"],['nearbyLocations'],["rightArrow1"]);
-	scrollbar(["leftArrow1"],['nearbyLocations'],["rightArrow1"]);
-</script>
-         
-        --><c:if test="${session.loggedIn}">
+	<c:if test="${session.loggedIn}">
             <p>Don't see your current location?  <a href="create">Add it.</a></p>
         </c:if>
         
@@ -110,37 +59,43 @@ END CONTENT</div>
                 handleLocations(jsonData.locations);
             }); 
             
-        var data = JSON.parse('${nearbyLocations}');
-        var paths = new Array(data.nearbyLocations.length);
-        
-        for (var i = 0; i < data.nearbyLocations.length; i++) {
-            var locs = new google.maps.LatLng(data.nearbyLocations[i].latitude, data.nearbyLocations[i].longitude);
-            paths[i] = locs;
-            var marker = new google.maps.Marker({
-                position: locs,
-                map: map, 
-                title: data.nearbyLocations[i].name
-            });
-        };
     };
     
     var handleLocations = function(data) {
         var verticalMenu = $(".verticalMenu");
+        
+        var latlng = new google.maps.LatLng(google.loader.ClientLocation.latitude,
+            google.loader.ClientLocation.longitude);
+        var myOptions = {
+            zoom: 13,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
         jQuery.each(data, function(i, val) {
+            var locs = new google.maps.LatLng(val.latitude, val.longitude);
+        	var marker = new google.maps.Marker({
+                position: locs,
+                map: map, 
+                title: val.name
+            });
+        
+        
             verticalMenu.append("<div class=miniProfile>" +
 		            "<span class=miniProfilePicHidden>" +
 			            "<a href=" + val.id + "><img src=${pageContext.request.contextPath}" + 
 			                "/images/default_team.png alt=location title=" + val.id + " width=50 height=50/></a>" +
 			        "</span>" +
 		            "<span class=miniProfileName>" +	
-			            "<a href=" + val.id + ">" + val.name + "</a>" +
-			            "</br>" +
-			            "<a>" + val.street + "</a>" +
-			            "</br>" +
-			            "<a>" + val.city + "</a>" + "<a>" +  " " + val.state + "</a>" +
+			            "<a href=" + val.id + ">" + val.name + "</a><br/>" +
+			        "</span>" +
+			        "<span class=miniProfileInfo>" +
+			        	"<a>" + val.street + "</a><br/>" +
+			            "<a>" + val.city + "</a><a>" +  " " + val.state + "</a>" +
 			        "</span>" +
         		"</div>"
         	);
+
         });
     };
     
