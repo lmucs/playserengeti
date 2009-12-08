@@ -10,14 +10,17 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractCommandController;
 
 import com.playserengeti.domain.Avatar;
+import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
 
 public class AvatarController extends AbstractCommandController {
 
 	private UserService userService;
+	private TeamService teamService;
 	
-	public AvatarController(UserService userService) {
+	public AvatarController(UserService userService, TeamService teamService) {
 		this.userService = userService;
+		this.teamService = teamService;
 	}
 	
 	@Override
@@ -35,7 +38,7 @@ public class AvatarController extends AbstractCommandController {
 			avatar = userService.getUserAvatarByUserId(entityId);
 		} else if (entityType.equals("team")){
 			// TODO avatar = teamService.getTeamAvatarByTeamId(entity);
-			avatar = null; // XXX NPE
+			avatar = teamService.getTeamAvatarByTeamId(entityId); // XXX NPE
 		} else {
 			// TODO Critical.
 			avatar = null; // XXX GONNA RESULT IN AN NPE! Should probably be prevented in validation.

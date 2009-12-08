@@ -13,5 +13,16 @@
      ON player.player_avatar_id = player_avatar.player_avatar_id
      WHERE player.player_id = #value#
   </select>
+  
+  <select id="getTeamAvatarByTeamId"
+        resultClass="com.playserengeti.domain.Avatar">
+     SELECT
+         avatar_bytes AS bytes,
+         avatar_mime AS mimeType
+     FROM team
+     JOIN team_avatar
+     ON team.team_avatar_id = team_avatar.team_avatar_id
+     WHERE team.team_id = #value#
+  </select>
 
 </sqlMap>

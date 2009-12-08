@@ -1,7 +1,16 @@
 package com.playserengeti.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.validation.BindException;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
@@ -40,7 +49,8 @@ public class TeamCreateController extends SimpleFormController {
     /**
      * Handles the submit functionality of the controller.
      */
-    public ModelAndView onSubmit(Object _command) {
+    public ModelAndView onSubmit(HttpServletRequest request,
+    		HttpServletResponse response, Object _command, BindException errors) {
         TeamCommand command = (TeamCommand) _command;
         String name = command.getName();
         String color = command.getColor();
@@ -49,8 +59,38 @@ public class TeamCreateController extends SimpleFormController {
         team.setDescription(command.getDescription());
         team.setHomeBase(command.getHomeBase());
         team.setLeader(session.getUser());
-        teamService.saveTeam(team);
-
+        MultipartFile multipartFile = command.getImageFile();
+        
+        try {
+            teamService.saveTeam(team);
+            
+            if (multipartFile != null) {
+            	// TODO: THIS IS NOT SECURE
+            	// TODO: Veryfiy image type.
+            	// TODO: Save image with suffix, etc.
+            	// This is essentially a hack/beginning.
+            	// Consider saving image in DB.
+            	try {
+    	        	String path = request.getRealPath("/avatar") + File.separator
+    	        		+ team.getId() + "-" + multipartFile.getOriginalFilename();
+    	        	FileOutputStream fileOut = new FileOutputStream(path);
+    	        	fileOut.write(multipartFile.getBytes());
+    	       		fileOut.close();
+    	        		
+    	        	logger.debug("Saved image " + path + ".");
+            	} catch (IOException e) {
+            		logger.warn("Unable to save image for team", e);
+            	}
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            // On service error, try again
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("command", command);
+            model.put("message", e.getMessage());
+            return new ModelAndView(getFormView(), model);
+        }
+        
         Integer teamId = team.getId();
         Integer[] invitees = command.getInvitees();
         for (Integer id : invitees) {

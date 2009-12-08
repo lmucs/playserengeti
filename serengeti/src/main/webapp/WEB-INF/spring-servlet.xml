@@ -309,6 +309,7 @@
     <bean id="avatarController"
         class="com.playserengeti.controller.AvatarController">
         <constructor-arg ref="userService" />
+        <constructor-arg ref="teamService" />
         <property name="supportedMethods" value="GET"/>
     </bean>
 
