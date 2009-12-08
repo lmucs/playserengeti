@@ -17,9 +17,9 @@ URL: /
 	Parameters:
 		none
         Return Type:
-		ModelAndView
+		!ModelAndView
 	Controller:
-		WelcomeController
+		[http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/WelcomeController.java WelcomeController]
 
 URL: /user OR /user/central 
 	Description:
@@ -27,9 +27,9 @@ URL: /user OR /user/central
 	Parameters:
 		format (optional) → Specify the format of the response.  Either “xml” or “json”.
         Return Type:
-		ModelAndView
+		!ModelAndView
 	Controller:
-		UserController    
+		[http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/UserController.java UserController]   
 
 URL: /user/$id$
 	Description:
@@ -38,9 +38,9 @@ URL: /user/$id$
 		userId (required) → The id of the requested user.
 		format (optional) → Specify the format of the response.  Either “xml” or  “json”.
         Return Type:
-		ModelAndView – if json is requested, the profile information is written as a json string to the response
+		!ModelAndView – if json is requested, the profile information is written as a json string to the response
 	Controller:
-		UserController
+		[http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/UserController.java UserController]
 
 URL: /user/logout
 	Description:
@@ -48,9 +48,9 @@ URL: /user/logout
 	Parameters:
 		none
         Return Type:
-		ModelAndView
+		!ModelAndView
 	Controller:
-		UserController
+		[http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/UserController.java UserController]
 
 URL: /user/checkIn
 	Description:
@@ -62,7 +62,7 @@ URL: /user/checkIn
         Return Type:
 		void
 	Controller:
-		UserController
+		[http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/UserController.java UserController]
 
 URL: /user/removeFriend
 	Description:
@@ -73,7 +73,7 @@ URL: /user/removeFriend
         Return Type:
 		void
 	Controller:
-		UserController
+		[http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/UserController.java UserController]
 
 URL: /user/removeTeam
 	Description:
@@ -84,7 +84,7 @@ URL: /user/removeTeam
         Return Type:
 		void
 	Controller:
-		UserController
+		[http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/UserController.java UserController]
 
 URL: /user/sendFriendInvite
 	Description:
@@ -95,7 +95,7 @@ URL: /user/sendFriendInvite
         Return Type:
 		void
 	Controller:
-		UserController
+		[http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/UserController.java UserController]
 
 URL: /user/acceptFriendInvite
 	Description:
@@ -106,7 +106,7 @@ URL: /user/acceptFriendInvite
         Return Type:
 		void – writes the user whose friendship was accepted as a json string to the response.
 	Controller:
-		UserController
+		[http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/UserController.java UserController]
 
 URL: /user/rejectFriendInvite
 	Description:
@@ -117,7 +117,7 @@ URL: /user/rejectFriendInvite
         Return Type:
 		void 
 	Controller:
-		UserController
+		[http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/UserController.java UserController]
 
 URL: /user/sendTeamInvite
 	Description:
@@ -128,7 +128,7 @@ URL: /user/sendTeamInvite
         Return Type:
 		void
 	Controller:
-		UserController
+		[http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/UserController.java UserController]
 
 URL: /user/acceptTeamInvite
 	Description:
@@ -139,7 +139,7 @@ URL: /user/acceptTeamInvite
         Return Type:
 		void – writes the team that the user has been invited to as a json string to the response.
 	Controller:
-		UserController
+		[http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/UserController.java UserController]
 
 URL: /user/rejectTeamInvite
 	Description:
@@ -150,7 +150,7 @@ URL: /user/rejectTeamInvite
         Return Type:
 		void 
 	Controller:
-		UserController
+		[http://code.google.com/p/playserengeti/source/browse/trunk/serengeti/src/main/java/com/playserengeti/controller/UserController.java UserController]
 
 URL: /user/create
 	Description:
@@ -158,7 +158,7 @@ URL: /user/create
 	Parameters:
 		none
         Return Type:
-		ModelAndView
+		!ModelAndView
 	Controller:
 		UserCreateController
 
@@ -168,7 +168,7 @@ URL: /user/delete
 	Parameters:
 		userId (required) → The id of the user to be deleted.  Must equal the current session's userId.
         Return Type:
-		ModelAndView
+		!ModelAndView
 	Controller:
 		UserDeleteController
 
@@ -178,7 +178,7 @@ URL: /user/login
 	Parameters:
 		none
         Return Type:
-		ModelAndView
+		!ModelAndView
 	Controller:
  		UserLoginController
 
@@ -188,7 +188,7 @@ URL: /user/update
 	Parameters:
 		userId (required) → The id of the user who is being updated.  Must equal the current 					          session's userId.
         Return Type:
-		ModelAndView
+		!ModelAndView
 	Controller:
 		UserUpdateController
 
@@ -198,7 +198,7 @@ URL: /team OR /team/central
 	Parameters:
 		format (optional) →  Specify the format of the response.  Either “xml” or  “json”.
         Return Type:
-		ModelAndView
+		!ModelAndView
 	Controller:
 		TeamController
 
@@ -209,7 +209,7 @@ URL: /team/$id$
 		teamId (required) → The id of the requested team.
 		format (optional) → Specify the format of the response.  Either “xml” or  “json”.
         Return Type:
-		ModelAndView
+		!ModelAndView
 	Controller:
 		TeamController
   
@@ -219,7 +219,7 @@ URL: /team/create
 	Parameters:
 		none
         Return Type:
-		ModelAndView
+		!ModelAndView
 	Controller:
 		TeamCreateController
 
@@ -229,7 +229,7 @@ URL: /team/update
 	Parameters:
 		teamId (required) → The id of the team to be updated.
         Return Type:
-		ModelAndView
+		!ModelAndView
 	Controller:
 		TeamUpdateController
 
@@ -239,7 +239,7 @@ URL: /location OR /location/central
 	Parameters:
 		format (optional) → Specify the format of the response.  Either “xml” or  “json”.
         Return Type:
-		ModelAndView
+		!ModelAndView
 	Controller:
 		LocationController
 
@@ -250,7 +250,7 @@ URL: /location/$id$
 		locationId (required) → The id of the requested location.
 		format (optional) → Specify the format of the response.  Either “xml” or  “json”.
         Return Type:
-		ModelAndView
+		!ModelAndView
 	Controller:
 		LocationController
 
@@ -260,7 +260,7 @@ URL: /location/create
 	Parameters:
 		none
         Return Type:
-		ModelAndView
+		!ModelAndView
 	Controller:
 		LocationCreateController
 
@@ -297,7 +297,7 @@ URL: /search
 	Parameters:
 		query (required) → The string to search the database against.
 	Return Type:
-		ModelAndView
+		!ModelAndView
 	Controller:
 		SearchController
 
