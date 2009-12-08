@@ -598,4 +598,7 @@ ul.hor_menu {
 	margin-left: 80px;
 	width: 600px;
 }
-ul
+
+#query {
+	color: #CCCCCC;
+}
