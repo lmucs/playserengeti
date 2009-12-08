@@ -28,7 +28,7 @@
     
     <rule match-type="regex">
         <from>^/avatar/(.*)/(.*)$</from>
-        <to>/avatar?entity=$1&id=$2</to>
+        <to>/avatar?entity=$1%23id=$2</to>
     </rule>
     
 </urlrewrite>
