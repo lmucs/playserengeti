@@ -2,18 +2,14 @@ package com.playserengeti.service;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.playserengeti.dao.FriendshipDao;
 import com.playserengeti.dao.UserDao;
-import com.playserengeti.domain.Friendship;
-import com.playserengeti.domain.Team;
+import com.playserengeti.domain.Avatar;
 import com.playserengeti.domain.User;
 
 /**
@@ -132,5 +128,9 @@ public class UserService {
     
     public Collection<User> searchUsers(String query) {
     	return userDao.searchUsers(query);
+    }
+    
+    public Avatar getUserAvatarByUserId(Integer userId) {
+    	return userDao.getUserAvatarByUserId(userId);
     }
 }

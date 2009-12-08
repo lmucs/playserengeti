@@ -37,6 +37,8 @@
                 <entry key="/location" value-ref="locationController" />
                 <entry key="/location/*" value-ref="locationController" />
 
+                <entry key="/avatar" value-ref="avatarController" />
+
                 <entry key="/help" value-ref="helpController" />
             </map>
         </property>
@@ -301,6 +303,13 @@
     <bean id="visitDao"
         class="com.playserengeti.dao.VisitDaoIbatisImpl">
         <property name="sqlMapClient" ref="sqlMapClient"/>
+    </bean>
+
+    <!-- Controller for serving avatars. -->
+    <bean id="avatarController"
+        class="com.playserengeti.controller.AvatarController">
+        <constructor-arg ref="userService" />
+        <property name="supportedMethods" value="GET"/>
     </bean>
 
     <!--

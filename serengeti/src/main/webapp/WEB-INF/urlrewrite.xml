@@ -26,4 +26,9 @@
        <to>/$1?format=$2</to>
     </rule>
     
+    <rule match-type="regex">
+        <from>^/avatar/(.*)/(.*)$</from>
+        <to>/avatar?entity=$1&id=$2</to>
+    </rule>
+    
 </urlrewrite>

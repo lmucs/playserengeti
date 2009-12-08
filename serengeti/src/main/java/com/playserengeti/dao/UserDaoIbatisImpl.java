@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
+import com.playserengeti.domain.Avatar;
 import com.playserengeti.domain.Location;
 import com.playserengeti.domain.User;
 
@@ -119,5 +120,10 @@ public class UserDaoIbatisImpl extends SqlMapClientDaoSupport implements UserDao
 	@Override
 	public Collection<User> searchUsers(String query) {
 		return (Collection<User>)getSqlMapClientTemplate().queryForList("searchUsers", query);
+	}
+
+	@Override
+	public Avatar getUserAvatarByUserId(Integer userId) {
+		return (Avatar)getSqlMapClientTemplate().queryForObject("getUserAvatarByUserId", userId);
 	}
 }
