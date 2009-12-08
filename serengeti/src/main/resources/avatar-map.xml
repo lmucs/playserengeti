@@ -2,8 +2,16 @@
    PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
    "http://www.ibatis.com/dtd/sql-map-2.dtd">
 <sqlMap namespace="Avatar">
-  <resultMap class="com.playserengeti.domain.Avatar" id="avatarMap">
-    <result property="mimeType" column="avatar_mime"/>
-    <result property="bytes" column="avatar_bytes"/>
-  </resultMap>
+
+  <select id="getUserAvatarByUserId"
+        resultClass="com.playserengeti.domain.Avatar">
+     SELECT
+        avatar_bytes AS bytes,
+        avatar_mime AS mimeType
+     FROM player
+     JOIN player_avatar
+     ON player.player_avatar_id = player_avatar.player_avatar_id
+     WHERE player.player_id = #value#
+  </select>
+
 </sqlMap>
