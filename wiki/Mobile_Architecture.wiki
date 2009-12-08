@@ -8,32 +8,32 @@ playSerengetiMobile1AppDelegate
 
 =Domain Objects=
 The mobile client includes Domain Objects for 
-  User
-  Team
-  Location
+  * User
+  * Team
+  * Location
 
 =Controllers=
 The mobile client currently includes View Controllers for
-  LogonView
-  MainView 
-  UserHome
-  UserProfile
-  TeamCentral (stub controller)
-  LocationCentral (stub controller)
-  CheckInView
-  LogoutView (stub controller)
+  * !LogonView
+  * !MainView 
+  * !UserHome
+  * !UserProfile
+  * !TeamCentral (stub controller)
+  * !LocationCentral (stub controller)
+  * !CheckInView
+  * !LogoutView (stub controller)
 
 =Views=
 The mobile client currently includes the following .xib files, which manage the veiws
-  LogonView
-  MainView
-  UserHome
-  UserProfile
-  TeamCentral
-  LocationCentral
-  CheckInView
-  LogoutView
-  MainWindow
+  * !LogonView
+  * !MainView
+  * !UserHome
+  * !UserProfile
+  * !TeamCentral
+  * !LocationCentral
+  * !CheckInView
+  * !LogoutView
+  * !MainWindow
 
 
 <wiki:comment>
