@@ -60,9 +60,9 @@ div#navbar2 {
 }
 
 div.searchbar {
-        position: absolute;
-        right: 40px;
-        top: 45px;
+	position: absolute;
+	right: 40px;
+	top: 45px;
 }
 
 #loginEmail,#loginPassword {
@@ -97,7 +97,7 @@ div.searchbar {
 .mainContentArea {
 	background-color: #FFFFFF;
 	margin-left: 0 auto 0 auto;
-	overflow: hidden;	
+	overflow: hidden;
 	width: 960px;
 	padding: 1em 0 2em;
 	-moz-border-radius-bottomleft: 8px;
@@ -307,11 +307,11 @@ ul.hor_menu {
 }
 
 .hor_menu a {
-display:block;
-text-align:center;
-text-decoration:none;
-width:50px;
-word-wrap:break-word;
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	width: 50px;
+	word-wrap: break-word;
 }
 
 .hor_menu span {
@@ -405,7 +405,8 @@ word-wrap:break-word;
 	font-size: 13px;
 	margin-bottom: 10px;
 }
-#sendInvites{
+
+#sendInvites {
 	top: 180px;
 	right: 200px;
 	position: absolute;
@@ -431,29 +432,36 @@ word-wrap:break-word;
 	padding-bottom: 5px;
 	padding-right: 20px;
 }
+
 .teamImage {
-    height: 150px;
-    width: auto;	
-    margin-bottom: 80px;
+	height: 150px;
+	width: auto;
+	margin-bottom: 80px;
 }
-#teamName{
+
+#teamName {
 	font-size: 160%;
 }
-#teamInfo{
+
+#teamInfo {
 	font-size: 70%;
 }
-#territoryAddress{
+
+#territoryAddress {
 	font-size: 70%;
 }
+
 .userImage {
-    height: 150px;
-    width: auto;	
-    margin-bottom: 80px;
+	height: 150px;
+	width: auto;
+	margin-bottom: 80px;
 }
-#userName{
+
+#userName {
 	font-size: 160%;
 }
-#userInfo{
+
+#userInfo {
 	font-size: 70%;
 }
 
@@ -514,55 +522,56 @@ word-wrap:break-word;
 	width: 300px;
 }
 
-#popupBackground{  
-    display:none;  
-    position:fixed;  
-    _position:absolute; /* hack for internet explorer 6*/  
-    height:100%;  
-    width:100%;  
-    top:0;  
-    left:0;  
-    background:#000000;  
-    border:1px solid #cecece;  
-    z-index:1;  
-}  
+#popupBackground {
+	display: none;
+	position: fixed;
+	_position: absolute; /* hack for internet explorer 6*/
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background: #000000;
+	border: 1px solid #cecece;
+	z-index: 1;
+}
 
-#popupContent{  
-    display:none;  
-    position:fixed;  
-    _position:absolute; /* hack for internet explorer 6*/  
-    height:384px;  
-    width:408px;  
-    background:#FFFFFF;  
-    border:2px solid #cecece;  
-    z-index:2;  
-    padding:12px;  
-    font-size:13px;  
-}  
+#popupContent {
+	display: none;
+	position: fixed;
+	_position: absolute; /* hack for internet explorer 6*/
+	height: 384px;
+	width: 408px;
+	background: #FFFFFF;
+	border: 2px solid #cecece;
+	z-index: 2;
+	padding: 12px;
+	font-size: 13px;
+}
 
-#popupContent h1{  
-    text-align:left;  
-    color:#6FA5FD;  
-    font-size:22px;  
-    font-weight:700;  
-    border-bottom:1px dotted #D3D3D3;  
-    padding-bottom:2px;  
-    margin-bottom:20px;  
-}  
+#popupContent h1 {
+	text-align: left;
+	color: #6FA5FD;
+	font-size: 22px;
+	font-weight: 700;
+	border-bottom: 1px dotted #D3D3D3;
+	padding-bottom: 2px;
+	margin-bottom: 20px;
+}
 
-#popupContentClose{  
-    font-size:14px;  
-    line-height:14px;  
-    right:6px;  
-    top:4px;  
-    position:absolute;  
-    color:#6fa5fd;  
-    font-weight:700;  
-    display:block;  
-}  
+#popupContentClose {
+	font-size: 14px;
+	line-height: 14px;
+	right: 6px;
+	top: 4px;
+	position: absolute;
+	color: #6fa5fd;
+	font-weight: 700;
+	display: block;
+}
 
 .miniProfile {
-border-bottom:1px #445544 dashed;
+	border-bottom: 1px #445544 dashed;
+	height: 55px;
 }
 
 .miniProfilePic {
@@ -574,19 +583,18 @@ border-bottom:1px #445544 dashed;
 }
 
 .miniProfileName {
-	margin-left:30px;
-    position:absolute;
+	margin-left: 30px;
+	position: absolute;
 }
 
 .miniProfileInfo {
-    position:absolute;
-    margin-left:30px;
-    margin-top:18;
-	
-}
-.verticalMenu {
-    margin-left:80px;
-    width:600px;
+	position: absolute;
+	margin-left: 30px;
+	margin-top: 18;
 }
 
+.verticalMenu {
+	margin-left: 80px;
+	width: 600px;
+}
 ul
