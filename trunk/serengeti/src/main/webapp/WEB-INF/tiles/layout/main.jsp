@@ -56,7 +56,8 @@
         </div>
         <div class="searchbar">
             <form action="${pageContext.request.contextPath}/search" method="POST">
-                <input type="text" name="query" id="query" value="Search for people, places, or teams"/>
+                <input type="text" name="query" id="query" value="Search for people, places, or teams" 
+                	onclick="makeBlank()"/>
                 <input type="submit" value="Go"/>
             </form>
         </div>
@@ -70,6 +71,11 @@
             </div>
             <tiles:insertAttribute name="body"/>
         </div>
+ <script>
+ 	function makeBlank() {
+		document.getElementById("query").value = "";
+ 	}
+ </script>       
 
         <tiles:insertAttribute name="footer"/>
     </body>
