@@ -575,15 +575,18 @@ border-bottom:1px #445544 dashed;
 
 .miniProfileName {
 	margin-left:30px;
-position:absolute;
+    position:absolute;
 }
 
 .miniProfileInfo {
+    position:absolute;
+    margin-left:30px;
+    margin-top:18;
 	
 }
 .verticalMenu {
-margin-left:80px;
-width:600px;
+    margin-left:80px;
+    width:600px;
 }
 
 ul
