@@ -109,6 +109,19 @@ END CONTENT</div>
                 var jsonData = JSON.parse(request.responseText);
                 handleLocations(jsonData.locations);
             }); 
+            
+        var data = JSON.parse('${nearbyLocations}');
+        var paths = new Array(data.nearbyLocations.length);
+        
+        for (var i = 0; i < data.nearbyLocations.length; i++) {
+            var locs = new google.maps.LatLng(data.nearbyLocations[i].latitude, data.nearbyLocations[i].longitude);
+            paths[i] = locs;
+            var marker = new google.maps.Marker({
+                position: locs,
+                map: map, 
+                title: data.nearbyLocations[i].name
+            });
+        };
     };
     
     var handleLocations = function(data) {
@@ -121,9 +134,16 @@ END CONTENT</div>
 			        "</span>" +
 		            "<span class=miniProfileName>" +	
 			            "<a href=" + val.id + ">" + val.name + "</a>" +
+			            "</br>" +
+			            "<a>" + val.street + "</a>" +
+			            "</br>" +
+			            "<a>" + val.city + "</a>" + "<a>" +  " " + val.state + "</a>" +
 			        "</span>" +
         		"</div>"
         	);
         });
     };
+    
+    
+    
 </script>
