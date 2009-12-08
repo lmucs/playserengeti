@@ -6,4 +6,5 @@
    <sqlMap resource="team-map.xml" />
    <sqlMap resource="location-map.xml" />
    <sqlMap resource="visit-map.xml" />
+   <sqlMap resource="avatar-map.xml" />
 </sqlMapConfig>

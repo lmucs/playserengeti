@@ -1,7 +1,5 @@
 package com.playserengeti.domain;
 
-import static com.playserengeti.util.ArgumentChecker.assertArgument;
-
 import java.util.Date;
 
 /**
@@ -10,6 +8,7 @@ import java.util.Date;
 public class User {
 
 	private Integer id;
+	private Integer avatarId;
     private String email;
     private String firstName;
     private String lastName;
@@ -39,6 +38,14 @@ public class User {
 		return id;
 	}
 
+	public Integer getAvatarId() {
+		return avatarId;
+	}
+	
+	public void setAvatarId(Integer avatarId) {
+		this.avatarId = avatarId;
+	}
+	
 	public String getEmail() {
 		return email;
 	}

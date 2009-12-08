@@ -2,6 +2,7 @@ package com.playserengeti.dao;
 
 import java.util.Collection;
 
+import com.playserengeti.domain.Avatar;
 import com.playserengeti.domain.User;
 
 public interface UserDao {
@@ -51,6 +52,8 @@ public interface UserDao {
 	 * Authenticate a user by email and password.
 	 */
 	public User authenticateUserByEmailAndPassword(String email, String password);
+	
+	public Avatar getUserAvatarByUserId(Integer userId);
 	
 	public Collection<User> getFriends(Integer userId);
 	

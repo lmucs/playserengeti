@@ -10,6 +10,7 @@ import java.util.Set;
 
 import org.springframework.dao.DataIntegrityViolationException;
 
+import com.playserengeti.domain.Avatar;
 import com.playserengeti.domain.User;
 
 // TODO: More argument checks/assertions!!
@@ -204,5 +205,11 @@ public class UserDaoMockImpl implements UserDao {
 		public DBEntry(User u, String pw) { this.user = u; this.password = pw; }
 		@Override public int hashCode() { return user.hashCode(); }
 		@Override public boolean equals(Object o) { return user.equals(o); }
+	}
+
+	@Override
+	public Avatar getUserAvatarByUserId(Integer userId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

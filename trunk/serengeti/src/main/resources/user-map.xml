@@ -135,4 +135,12 @@
       LIMIT 10
   </select>
   
+  <select id="getUserAvatarByUserId" resultMap="Avatar.avatarMap">
+     SELECT avatar_bytes, avatar_mime
+     FROM player
+     JOIN player_avatar
+     ON player.player_avatar_id = player_avatar.player_avatar_id
+     WHERE player.player_id = #value#
+  </select>
+  
 </sqlMap>
