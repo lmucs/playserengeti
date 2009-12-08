@@ -580,6 +580,7 @@ ul.hor_menu {
 
 .miniProfilePicHidden {
 	visibility: hidden;
+	margin-left: -80;
 }
 
 .miniProfileName {
