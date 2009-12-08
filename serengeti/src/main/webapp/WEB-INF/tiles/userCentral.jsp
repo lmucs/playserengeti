@@ -33,7 +33,7 @@
 			title="${user.email}" width="50" height="50"/></a></span> 
 			
 			<span class="miniProfileName">
-			<a href="${user.id}" ><c:out value="${user.firstName} ${visit.user.lastName}"/></a></span>
+			<a href="${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></span>
 		</div>
 	</c:forEach>
 </div>
@@ -51,7 +51,7 @@
 			title="${user.email}" width="50" height="50"/></a></span>
 			
 			<span class="miniProfileName"> 
-			<a href="${user.id}" ><c:out value="${user.firstName} ${visit.user.lastName}"/></a></span>
+			<a href="${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></span>
 		</div>
 	</c:forEach>
 </div>
