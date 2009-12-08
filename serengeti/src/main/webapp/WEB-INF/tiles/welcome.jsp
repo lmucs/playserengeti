@@ -17,3 +17,21 @@
   <p>Already a member? <a href="user/login">Log in</a>.
   If not, <a href="user/create">sign up</a> to play today.</p>
 </div>
+
+<div class="shadowText">
+<p>Newest Users</p>
+</div>
+
+
+<div class="verticalMenu">
+	<c:forEach var="user" items="${newest}">
+		<div class="miniProfile">
+			<span class="miniProfilePic"><a href="${user.id}"><img
+			src="${pageContext.request.contextPath}/images/default_user.png" alt="user"
+			title="${user.email}" width="50" height="50"/></a></span>
+			
+			<span class="miniProfileName"> 
+			<a href="${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></span>
+		</div>
+	</c:forEach>
+</div>
