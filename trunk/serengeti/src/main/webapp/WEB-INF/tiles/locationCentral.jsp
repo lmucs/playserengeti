@@ -25,16 +25,6 @@
 </div>
 
 <div class="verticalMenu">
-	<c:forEach var="location" items="${nearbyLocations}">
-		<div class="miniProfile">
-		<span class="miniProfilePicHidden">
-			<a href="${location.id}"><img src="${pageContext.request.contextPath}/images/default_team.png" alt="location"
-			title="${location.id}" width="50" height="50"/></a> </span>
-		<span class="miniProfileName">	
-			<a href="${location.id}" ><c:out value="${location.name}"/></a></span>
-		
-		</div>
-	</c:forEach>
 </div>
 	
 	
@@ -102,9 +92,7 @@ END CONTENT</div>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">
     onload = function () {
-        
-        
-            
+
         var latlng = new google.maps.LatLng(google.loader.ClientLocation.latitude,
             google.loader.ClientLocation.longitude);
         var location = "Your ip-based location: " + google.loader.ClientLocation.address.city;
@@ -124,6 +112,18 @@ END CONTENT</div>
     };
     
     var handleLocations = function(data) {
-        jQuery.each(data, function(i, val) {});
+        var verticalMenu = $(".verticalMenu");
+        jQuery.each(data, function(i, val) {
+            verticalMenu.append("<div class=miniProfile>" +
+		            "<span class=miniProfilePicHidden>" +
+			            "<a href=" + val.id + "><img src=${pageContext.request.contextPath}" + 
+			                "/images/default_team.png alt=location title=" + val.id + " width=50 height=50/></a>" +
+			        "</span>" +
+		            "<span class=miniProfileName>" +	
+			            "<a href=" + val.id + ">" + val.name + "</a>" +
+			        "</span>" +
+        		"</div>"
+        	);
+        });
     };
 </script>

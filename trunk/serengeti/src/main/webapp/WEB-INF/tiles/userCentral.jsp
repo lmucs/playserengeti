@@ -13,7 +13,7 @@
 			title="${visit.user.email}" width="50" height="50"/></a> </span>
 			
 			<span class="miniProfileName">	
-			<a href="${visit.user.id}" ><c:out value="${visit.user.firstName}"/></a></span>
+			<a href="${visit.user.id}" ><c:out value="${visit.user.firstName} ${visit.user.lastName}"/></a></span>
 			
 				
 		</div>
@@ -33,7 +33,7 @@
 			title="${user.email}" width="50" height="50"/></a></span> 
 			
 			<span class="miniProfileName">
-			<a href="${user.id}" ><c:out value="${user.firstName}"/></a></span>
+			<a href="${user.id}" ><c:out value="${user.firstName} ${visit.user.lastName}"/></a></span>
 		</div>
 	</c:forEach>
 </div>
@@ -51,7 +51,7 @@
 			title="${user.email}" width="50" height="50"/></a></span>
 			
 			<span class="miniProfileName"> 
-			<a href="${user.id}" ><c:out value="${user.firstName}"/></a></span>
+			<a href="${user.id}" ><c:out value="${user.firstName} ${visit.user.lastName}"/></a></span>
 		</div>
 	</c:forEach>
 </div>
@@ -134,7 +134,7 @@ END CONTENT</div>
 		<a href="${user.id}"><img
 			src="${pageContext.request.contextPath}/images/default_user.png" alt="user"
 			title="${user.email}" width="50" height="50"/></a> 
-			<a href="${user.id}" ><c:out value="${user.firstName}"/></a>
+			<a href="${user.id}" ><c:out value="${user.firstName} "/></a>
 	</c:forEach>
 </ul>
 
