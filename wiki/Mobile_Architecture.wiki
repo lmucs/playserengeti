@@ -12,7 +12,7 @@ The mobile client includes Domain Objects for
   Team
   Location
 
-==Controllers==
+=Controllers=
 The mobile client currently includes View Controllers for
   LogonView
   MainView 
@@ -23,7 +23,7 @@ The mobile client currently includes View Controllers for
   CheckInView
   LogoutView (stub controller)
 
-==Views==
+=Views=
 The mobile client currently includes the following .xib files, which manage the veiws
   LogonView
   MainView
