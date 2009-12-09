@@ -1,11 +1,11 @@
 #summary Mark Your Slides
 
-  # Title: 
-  # Outline: 
-  # Serengeti is...: 
-  # Goals and Objectives: 
-  # Technologies Used: 
-  # CMSI 401 vs. Real World: 
+  # Title: Mark
+  # Outline: Mark
+  # Serengeti is...: Mark
+  # Goals and Objectives: Mark?
+  # Technologies Used: Mark? (Since 1 and 2 aren't much?)
+  # CMSI 401 vs. Real World: Toal?
   # More CMSI 401 vs. Real World: 
   # Architecture: 
   # Database Schema: 
