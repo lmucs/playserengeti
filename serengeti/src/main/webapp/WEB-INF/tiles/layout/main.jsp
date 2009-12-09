@@ -66,7 +66,7 @@
         <div class="searchbar">
             <form action="${pageContext.request.contextPath}/search" method="POST">
                 <input type="text" name="query" id="query" value="Search for people, places, or teams" 
-                	onclick="makeBlank()"/>
+                	onfocus="makeBlank()" onblur="returnValue()"/>
                 <input type="submit" value="Go"/>
             </form>
         </div>
@@ -83,7 +83,13 @@
  <script>
  	function makeBlank() {
 		document.getElementById("query").value = "";
+		document.getElementById("query").style.color = "black";
  	}
+
+ 	function returnValue() {
+ 		document.getElementById("query").style.color = "#CCCCCC";
+ 		document.getElementById("query").value = "Search for people, places, or teams";
+	}
  </script>       
 
         <tiles:insertAttribute name="footer"/>
