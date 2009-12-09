@@ -1,0 +1,27 @@
+#summary Mark Your Slides
+
+  # Title: 
+  # Outline: 
+  # Serengeti is...: 
+  # Goals and Objectives: 
+  # Technologies Used: 
+  # CMSI 401 vs. Real World: 
+  # More CMSI 401 vs. Real World: 
+  # Architecture: 
+  # Database Schema: 
+  # Web Application: 
+  # Domain Objects: 
+  # Services: 
+  # Daos: 
+  # Tiles: 
+  # Styles: 
+  # Scripts: 
+  # Maps Example: 
+  # Mobile: 
+  # iPhone App (1 of 2): 
+  # iPhone App (2 of 2): 
+  # Demos: 
+  # We're on the Web: 
+  # Experiences: 
+  # Summary: 
+  # Questions: 
