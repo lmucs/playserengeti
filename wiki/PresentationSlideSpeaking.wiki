@@ -10,9 +10,9 @@
   # Architecture: 
   # Database Schema: 
   # Web Application: 
-  # Domain Objects: 
-  # Services: 
-  # Daos: 
+  # Domain Objects: Loren
+  # Services: Loren
+  # Daos: Loren
   # Tiles: 
   # Styles: 
   # Scripts: 
