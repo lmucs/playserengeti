@@ -13,9 +13,9 @@
   # Domain Objects: Loren
   # Services: Loren
   # Daos: Loren
-  # Tiles: 
-  # Styles: 
-  # Scripts:
+  # Tiles: James
+  # Styles: James
+  # Scripts: James
   # Maps Example: 
   # Mobile: 
   # iPhone App (1 of 2): 
