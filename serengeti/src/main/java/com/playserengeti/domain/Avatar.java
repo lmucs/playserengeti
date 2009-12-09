@@ -7,6 +7,11 @@ public class Avatar {
 	
 	public Avatar() {
 	}
+	
+	public Avatar(String mimeType, byte[] bytes) {
+		this.mimeType = mimeType;
+		this.bytes = bytes;
+	}
 
 	public String getMimeType() {
 		return mimeType;

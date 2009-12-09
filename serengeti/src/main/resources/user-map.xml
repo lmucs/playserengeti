@@ -137,4 +137,19 @@
       LIMIT 10
   </select>
   
+  <insert id="insertAvatarForUserId">
+        INSERT
+        INTO player_avatar (player_id, avatar_mime, avatar_bytes)
+        VALUES (#userId#, #avatar.mimeType#, #avatar.bytes#)
+        <selectKey keyProperty="avatarId" resultClass="int">
+            SELECT currval('player_avatar_id_seq')
+        </selectKey>
+  </insert>
+  
+  <update id="activateAvatarIdForUserId">
+        UPDATE player
+        SET player_avatar_id = #avatarId#
+        WHERE player_id = #userId#
+  </update>
+  
 </sqlMap>

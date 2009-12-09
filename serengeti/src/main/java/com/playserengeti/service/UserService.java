@@ -133,4 +133,12 @@ public class UserService {
     public Avatar getUserAvatarByUserId(Integer userId) {
     	return userDao.getUserAvatarByUserId(userId);
     }
+    
+    public void setAvatarForUserId(Integer userId, Avatar avatar) {
+    	Map<String, Object> properties = new HashMap<String, Object>();
+    	properties.put("userId", userId);
+    	properties.put("avatar", avatar);
+    	userDao.insertAvatarForUserId(properties);
+    	userDao.activateAvatarIdForUserId(userId, (Integer)properties.get("avatarId"));
+    }
 }

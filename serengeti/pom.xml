@@ -121,7 +121,7 @@
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
             <version>1.2.1</version>
-        </dependency> 
+        </dependency>
         <dependency>
             <groupId>it.cnr.isti.domoware</groupId>
             <artifactId>org.postgresql.jdbc4</artifactId>

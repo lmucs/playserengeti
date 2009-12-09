@@ -8,7 +8,6 @@ import java.util.Map;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
 import com.playserengeti.domain.Avatar;
-import com.playserengeti.domain.Location;
 import com.playserengeti.domain.User;
 
 public class UserDaoIbatisImpl extends SqlMapClientDaoSupport implements UserDao {
@@ -125,5 +124,18 @@ public class UserDaoIbatisImpl extends SqlMapClientDaoSupport implements UserDao
 	@Override
 	public Avatar getUserAvatarByUserId(Integer userId) {
 		return (Avatar)getSqlMapClientTemplate().queryForObject("getUserAvatarByUserId", userId);
+	}
+
+	@Override
+	public void activateAvatarIdForUserId(Integer userId, Integer avatarId) {
+		Map<String, Object> propMap = new HashMap<String, Object>();
+    	propMap.put("userId", userId);
+    	propMap.put("avatarId", avatarId);
+		getSqlMapClientTemplate().update("activateAvatarIdForUserId", propMap);
+	}
+
+	@Override
+	public void insertAvatarForUserId(Map<String, Object> properties) {
+		getSqlMapClientTemplate().insert("insertAvatarForUserId", properties);
 	}
 }

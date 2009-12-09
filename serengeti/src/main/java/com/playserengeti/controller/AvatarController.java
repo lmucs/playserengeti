@@ -36,12 +36,8 @@ public class AvatarController extends AbstractCommandController {
 		
 		if (entityType.equals("user")) {
 			avatar = userService.getUserAvatarByUserId(entityId);
-		} else if (entityType.equals("team")){
-			// TODO avatar = teamService.getTeamAvatarByTeamId(entity);
-			avatar = teamService.getTeamAvatarByTeamId(entityId); // XXX NPE
 		} else {
-			// TODO Critical.
-			avatar = null; // XXX GONNA RESULT IN AN NPE! Should probably be prevented in validation.
+			avatar = teamService.getTeamAvatarByTeamId(entityId);
 		}
 		
 		response.setCharacterEncoding(avatar.getMimeType());

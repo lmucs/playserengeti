@@ -1,8 +1,5 @@
 package com.playserengeti.controller;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
+import com.playserengeti.domain.Avatar;
 import com.playserengeti.domain.User;
 import com.playserengeti.service.UserService;
 import com.playserengeti.session.UserSession;
@@ -53,23 +51,14 @@ public class UserCreateController extends SimpleFormController {
             userId = userService.insertUserWithPassword(user, password);
             session.setUser(userService.getUserById(userId));
 
+            // Handle uploaded image.
             if (multipartFile != null) {
-            	// TODO: THIS IS NOT SECURE
-            	// TODO: Veryfiy image type.
-            	// TODO: Save image with suffix, etc.
-            	// This is essentially a hack/beginning.
-            	// Consider saving image in DB.
-            	try {
-    	        	String path = request.getRealPath("/avatar") + File.separator
-    	        		+ userId + "-" + multipartFile.getOriginalFilename();
-    	        	FileOutputStream fileOut = new FileOutputStream(path);
-    	        	fileOut.write(multipartFile.getBytes());
-    	       		fileOut.close();
-    	        		
-    	        	logger.debug("Saved image " + path + ".");
-            	} catch (IOException e) {
-            		logger.warn("Unable to save image for user", e);
-            	}
+            	// TODO Validate image time in validator.
+            	userService.setAvatarForUserId(
+            			userId,
+            			new Avatar(
+            					multipartFile.getContentType(),
+            					multipartFile.getBytes()));
             }
             
             ModelAndView mav = new ModelAndView("redirect:view");

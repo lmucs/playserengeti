@@ -311,6 +311,7 @@
         <constructor-arg ref="userService" />
         <constructor-arg ref="teamService" />
         <property name="supportedMethods" value="GET"/>
+        <property name="commandClass" value="com.playserengeti.controller.AvatarCommand"/>
     </bean>
 
     <!--
