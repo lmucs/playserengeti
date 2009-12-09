@@ -83,6 +83,14 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>spring</servlet-name>
+        <url-pattern>/avatar/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/avatar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
         <url-pattern>/user/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>

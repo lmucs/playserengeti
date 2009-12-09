@@ -212,4 +212,15 @@ public class UserDaoMockImpl implements UserDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void activateAvatarIdForUserId(Integer userId, Integer avatarId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void insertAvatarForUserId(Map<String, Object> properties) {
+		// TODO Auto-generated method stub
+	}
 }

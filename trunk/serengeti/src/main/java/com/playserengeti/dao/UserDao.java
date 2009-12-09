@@ -1,6 +1,7 @@
 package com.playserengeti.dao;
 
 import java.util.Collection;
+import java.util.Map;
 
 import com.playserengeti.domain.Avatar;
 import com.playserengeti.domain.User;
@@ -72,4 +73,8 @@ public interface UserDao {
 	public boolean removeFriend(Integer firstId, Integer secondId);
 	
 	public Collection<User> searchUsers(String query);
+	
+	public void insertAvatarForUserId(Map<String, Object> properties);
+	
+	public void activateAvatarIdForUserId(Integer userId, Integer avatarId);
 }

@@ -7,6 +7,11 @@
 <urlrewrite>
 
     <rule match-type="regex">
+        <from>^/avatar/(team|user)/([0-9]+)$</from>
+        <to>/avatar?entity=$1&amp;id=$2</to>
+    </rule>
+
+    <rule match-type="regex">
        <from>^/(location|team|user)/([0-9]+)$</from>
        <to>/$1/view?$1Id=$2</to>
     </rule>
@@ -24,11 +29,6 @@
     <rule match-type="regex">
        <from>^/(.*)/(xml|json)$</from>
        <to>/$1?format=$2</to>
-    </rule>
-    
-    <rule match-type="regex">
-        <from>^/avatar/(.*)/(.*)$</from>
-        <to>/avatar?entity=$1%23id=$2</to>
     </rule>
     
 </urlrewrite>
