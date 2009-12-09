@@ -14,6 +14,8 @@
 		<span class="miniProfileName">	
 			<a href="${team.id}" ><c:out value="${team.name}"/></a></span>
 		</div>
+		
+		<span class="miniProfileInfo">    </span>
 	</c:forEach>
 </div>
 
@@ -31,6 +33,9 @@
 			<span class="miniProfileName">
 			<a href="${team.id}" ><c:out value="${team.name}"/></a></span>
 		</div>
+		
+		<span class="miniProfileInfo">    </span>
+		
 	</c:forEach>
 </div>
 
@@ -49,6 +54,8 @@
 			<span class="miniProfileName"> 
 			<a href="${team.id}" ><c:out value="${team.name}"/></a></span>
 		</div>
+		
+		<span class="miniProfileInfo">    </span>
 	</c:forEach>
 </div>
  

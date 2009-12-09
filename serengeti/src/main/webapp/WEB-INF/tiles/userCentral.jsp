@@ -15,7 +15,7 @@
 			<span class="miniProfileName">	
 			<a href="${visit.user.id}" ><c:out value="${visit.user.firstName} ${visit.user.lastName}"/></a></span>
 			
-				
+				<span class="miniProfileInfo">    </span>
 		</div>
 	
 	</c:forEach>
@@ -34,6 +34,8 @@
 			
 			<span class="miniProfileName">
 			<a href="${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></span>
+			
+			<span class="miniProfileInfo"> </span>
 		</div>
 	</c:forEach>
 </div>
@@ -53,6 +55,8 @@
 			<span class="miniProfileName"> 
 			<a href="${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></span>
 		</div>
+		
+		<span class="miniProfileInfo">    </span>
 	</c:forEach>
 </div>
 
