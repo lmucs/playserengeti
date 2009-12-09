@@ -87,8 +87,10 @@
  	}
 
  	function returnValue() {
+ 	 	if (document.getElementById("query").value == ""){
  		document.getElementById("query").style.color = "#CCCCCC";
  		document.getElementById("query").value = "Search for people, places, or teams";
+ 	 	}
 	}
  </script>       
 
