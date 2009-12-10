@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-<form:form method="POST" action="${pageContext.request.contextPath}/user/create" enctype="multipart/form-data">
+<form:form method="post" action="${pageContext.request.contextPath}/user/create" enctype="multipart/form-data">
     <div class="round_Box_Container extraPadding round_Box_Width">
         <div class="grid_2">
             <label for="email">Email Address:</label>
