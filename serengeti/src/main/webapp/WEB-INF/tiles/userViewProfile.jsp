@@ -215,7 +215,7 @@
         lSearch.execute($("#searchText").val() + " " + userLoc.address.city);
         $("#locSelect").empty();
         $("#locSearch").fadeOut("slow");
-        $("#locList").append("<a href=../location/create>Add Location</a>");
+        $("#locList").append("<br/><a href=../location/create>Add Location</a>");
     };
     
     var searchComplete = function() {
