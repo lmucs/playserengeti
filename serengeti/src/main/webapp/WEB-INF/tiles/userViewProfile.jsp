@@ -23,9 +23,11 @@
 			    <img src="${pageContext.request.contextPath}/images/default_user.png" alt="Profile Picture"
 		        title="Profile Picture"/>               
 			</div>
-	        <div id="userInfo" class="grid_4">
+	        <div id="userInfo" class="grid_6">
 	        	<h3 id="name"></h3>
-	        	<p id="email"></p>
+	        	<div id="userViewEmail">
+	        		<p id="email"></p>
+	        	</div>
 	        </div>
 	    </div>
 	    <div class="clear">&nbsp</div>
