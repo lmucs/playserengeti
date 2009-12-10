@@ -1,11 +1,13 @@
 package com.playserengeti.domain;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * A Serengeti user (player).
  */
 public class User {
+    private static SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy hh:mma");
 
 	private Integer id;
 	private Integer avatarId;
@@ -81,11 +83,11 @@ public class User {
 	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
-	
+
 	public String asJSON() {
 		return "{\"id\" : \"" + this.id + "\", \"email\" : \"" + this.email.replace("\"", "&#34") + 
 		  "\", \"name\" : \"" + this.firstName.replace("\"", "&#34") + " " + 
-		  this.lastName.replace("\"", "&#34") + "\"}";
+		  this.lastName.replace("\"", "&#34") + "\", \"dateCreated\" : \"" + sdf.format(this.dateCreated) + "\"}";
 	}
 	
 	public String asMinimalJSON() {

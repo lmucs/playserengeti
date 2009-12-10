@@ -1,10 +1,11 @@
 package com.playserengeti.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import com.playserengeti.dao.LocationDao;
 import com.playserengeti.domain.Location;
-import com.playserengeti.domain.Team;
 
 /**
  * Service for operations related to location.
@@ -85,6 +86,50 @@ public class LocationService {
     
     public Collection<Location> searchLocations(String query) {
     	return locationDao.searchLocations(query);
+    }
+    
+    public List<Double[]> convexHull(Collection<Location> locations) {
+    	List<Double[]> result = new ArrayList<Double[]>();
+    	List<Double[]> points = new ArrayList<Double[]>();
+    	for (Location l : locations) {
+    		points.add(new Double[]{l.getLatitude(), l.getLongitude()});
+    	}
+
+    	Double[] pointOnHull = (getLeftMost(points));
+    	Double[] endPoint = null;
+    	while (endPoint != result.get(0)) {
+    		result.add(pointOnHull);
+    		endPoint = points.get(0);
+    		for (int i = 0; i < points.size(); i++) {
+    			List<Double[]> line = new ArrayList<Double[]>();
+    			line.add(result.get(result.size() - 1));
+    			line.add(endPoint);
+    			//if (onLeftOfLine(points.get(i), line)) {
+    				//endPoint = points.get(i);
+    			//}
+    		}
+    		pointOnHull = endPoint;
+    	}
+    	return result;
+    }
+    
+    public boolean angleBetweenLines(Double[] a, Double[] b, Double[] c) {
+    	
+    	
+    	
+    	return false;
+    }
+    
+    
+    public Double[] getLeftMost(List<Double[]> points) {
+    	Double[] result = points.get(0);
+    
+    	for (Double[] point : points) {
+    		if (point[0] < result[0]) {
+    			result = point;
+    		}
+    	}
+    	return result;
     }
 }
 

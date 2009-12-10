@@ -95,8 +95,8 @@
   <select id="getRecentFriendCheckIns" resultMap="visitMap">
       SELECT *
       FROM visit, friendship
-      WHERE ((first_id = 4 AND visit_user_id = second_id) OR 
-        (first_id = visit_user_id AND second_id = 4)) AND
+      WHERE ((first_id = #value# AND visit_user_id = second_id) OR 
+        (first_id = visit_user_id AND second_id = #value#)) AND
         status = 'accepted'
       ORDER BY visit_timestamp DESC
       LIMIT 10

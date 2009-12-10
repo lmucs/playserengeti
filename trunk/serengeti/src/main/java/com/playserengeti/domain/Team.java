@@ -1,5 +1,6 @@
 package com.playserengeti.domain;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -8,6 +9,7 @@ import java.util.Date;
  * A Serengeti team.
  */
 public class Team {
+    private static SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy hh:mma");
 
     private Integer id;
     private Integer avatarId;
@@ -103,7 +105,8 @@ public class Team {
 	public String asJSON() {
 		return "{\"id\" : \"" + this.id + "\", \"name\" : \"" + this.name.replace("\"", "&#34") + "\", \"color\" : \"" + this.color + 
 		    "\", \"leader\" : " + this.leader.asJSON() + ", \"description\" : \"" + this.description.replace("\"", "&#34") + 
-		    "\", \"homeBase\" : \"" + this.homeBase.replace("\"", "&#34") + "\"}";
+		    "\", \"homeBase\" : \"" + this.homeBase.replace("\"", "&#34") + 
+		    "\", \"dateCreated\" : \"" +sdf.format(this.dateCreated) + "\"}";
 	}
 	
 	public String asMinimalJSON() {
