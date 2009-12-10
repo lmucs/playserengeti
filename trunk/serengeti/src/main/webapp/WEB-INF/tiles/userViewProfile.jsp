@@ -74,7 +74,7 @@
 	        <div class="clear">&nbsp</div>
             <div class="grid_7 activityBoxContainer">
 		        <div class="grid_6">
-		            <p>Recent Activity</p>
+		            <div class="shadowText">Recent Activity</div>
 		            <ul id="activity"></ul>
 		        </div>
 	        </div>
@@ -82,7 +82,7 @@
         <div class="grid_3 prefix_1">
 		    <div class="grid_3 round_Box_Container">
 				<div class="grid_2">
-				    <strong>Friends: </strong>
+				     <div class="shadowText">Friends: </div>
 				</div>
 				<div class="grid_3">
 					<ul id="friends"></ul>
@@ -90,7 +90,7 @@
 			</div>
 			<div class="grid_3 round_Box_Container"> 
 				<div class="grid_2">
-				    <strong>Teams: </strong>
+				    <div class="shadowText">Teams: </div>
 				</div>
 				<div class="grid_3">
 					<ul id="teams"></ul> 

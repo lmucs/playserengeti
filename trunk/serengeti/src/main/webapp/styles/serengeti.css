@@ -392,8 +392,13 @@ ul.hor_menu {
 
 .shadowText {
 	text-shadow: 5px 5px 5px #445544;
-	margin-left: 80px;
 	font-size: 18px;
+}
+
+.shadowTextMargin {
+	text-shadow: 5px 5px 5px #445544;
+	font-size: 18px;
+	margin-left: 80px;
 }
 
 #checkin {
