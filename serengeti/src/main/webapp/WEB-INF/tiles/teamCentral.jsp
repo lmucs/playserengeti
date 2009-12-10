@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
- <div class="shadowText">
+ <div class="shadowTextMargin">
 <p>Teams With The Most Territory</p>
 </div>
 
@@ -21,7 +21,7 @@
 	</c:forEach>
 </div>
 
-<div class="shadowText">
+<div class="shadowTextMargin">
 <p>Most Active Teams</p>
 </div>
 
@@ -41,7 +41,7 @@
 	</c:forEach>
 </div>
 
-<div class="shadowText">
+<div class="shadowTextMargin">
 <p>Newest Teams</p>
 </div>
 

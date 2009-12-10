@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
-<div class="shadowText">
+<div class="shadowTextMargin">
 <p>Recently Checked In</p>
 </div>
 
@@ -23,7 +23,7 @@
 	</c:forEach>
 </div>
 
-<div class="shadowText">
+<div class="shadowTextMargin">
 <p>Most Active Users</p>
 </div>
 
@@ -42,7 +42,7 @@
 	</c:forEach>
 </div>
 
-<div class="shadowText">
+<div class="shadowTextMargin">
 <p>Newest Users</p>
 </div>
 

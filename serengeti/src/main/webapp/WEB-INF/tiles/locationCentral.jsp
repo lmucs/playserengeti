@@ -20,7 +20,7 @@
 	<div class="clear">&nbsp;</div>
 	
 	
-	<div class="shadowText">
+	<div class="shadowTextMargin">
 <p>Locations Near You</p>
 </div>
 
