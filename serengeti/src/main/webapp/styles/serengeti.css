@@ -401,9 +401,10 @@ ul.hor_menu {
 	-moz-border-radius: 10px; /* Gecko browsers */
 	border-radius: 10px;
 	/* Everything else - limited support at the moment */
-	background-color: #BBAA88;
+	border: 1px solid;
+	border-color: CDCDCD;
 	font-size: 13px;
-	margin-bottom: 10px;
+	padding-bottom: 5px;
 }
 
 #sendInvites {
@@ -417,9 +418,12 @@ ul.hor_menu {
 	-moz-border-radius: 10px; /* Gecko browsers */
 	border-radius: 10px;
 	/* Everything else - limited support at the moment */
-	background-color: #BBAA88;
+	border: 1px solid;
+	border-color: CDCDCD;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .activityBoxContainer {
@@ -427,10 +431,10 @@ ul.hor_menu {
 	-moz-border-radius: 10px; /* Gecko browsers */
 	border-radius: 10px;
 	/* Everything else - limited support at the moment */
-	background-color: #BBAA88;
+	border: 1px solid;
+	border-color: CDCDCD;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	padding-right: 20px;
 }
 
 .teamImage {
@@ -441,10 +445,12 @@ ul.hor_menu {
 
 #teamName {
 	font-size: 160%;
+	font-weight: bold;
 }
 
 #teamInfo {
 	font-size: 70%;
+	font-weight: bold;
 }
 
 #territoryAddress {
@@ -457,12 +463,17 @@ ul.hor_menu {
 	margin-bottom: 80px;
 }
 
-#userName {
-	font-size: 160%;
+#userInfo h2{
+	font-size:3.4 em;
+	font-weight: bold;
+	line-height: 0.4 em;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
 }
 
-#userInfo {
-	font-size: 70%;
+#userInfo p{
+	line-heignt: 0.4 em;
+	font-weight: bold;
 }
 
 #info {
@@ -606,7 +617,6 @@ ul.hor_menu {
 	margin-left: 80px;
 	width: 600px;
 }
-
 #query {
 	color: #CCCCCC;
 }

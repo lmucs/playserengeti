@@ -19,20 +19,13 @@
             </c:if>
         </div>
         <div class="grid_10">
-	        <div class="grid_2"></div>
-	        <div class="clear">&nbsp</div>
 	        <div class="grid_3 userImage">
 			    <img src="${pageContext.request.contextPath}/images/default_user.png" alt="Profile Picture"
 		        title="Profile Picture"/>               
 			</div>
-			<div class="grid_4">
-			    <div class="grid_4" id="userName">
-		            <strong><p id="name"></p></strong>
-		        </div>
-		        <div class="clear">&nbsp</div>
-		        <div class="grid_4" id="userInfo">
-		            <strong><p id="email"></p></strong>
-		        </div>
+	        <div id="userInfo" class="grid_4">
+	        	<h3 id="name"></h3>
+	        	<p id="email"></p>
 	        </div>
 	    </div>
 	    <div class="clear">&nbsp</div>
@@ -43,7 +36,7 @@
 	                    <p>Thank you for checking in.</p>
 	                </div>
 	                    
-	                <div class="grid_6" id="checkIn">
+	                <div class="grid_7" id="checkIn">
 	                    <div class="grid_4" id="locList">
 	                        <p>Checkin from:</p>
 	                        <select id="locSelect">
@@ -65,13 +58,13 @@
 	                    </div>          
 	                </div>
 	                <div class="clear">&nbsp</div>
-		            <div class="grid_6 round_Box_Container">
+		            <div class="grid_7 round_Box_Container">
 			            <div class="grid_6" id="friendRequests">
 			                <p>These people want to be your friend.</p>
 			                <ul id="friendRequestList"></ul>
 			            </div>
 			            
-		    	        <div class="grid_6" id="teamRequests">
+		    	        <div class="grid_7" id="teamRequests">
 			                <p>You have been invited to the following teams.</p>
 			                <ul id="teamRequestList"></ul>
 			            </div>
@@ -79,15 +72,15 @@
 	            </div>    
 	        </c:if>
 	        <div class="clear">&nbsp</div>
-            <div class="grid_6 activityBoxContainer">
+            <div class="grid_7 activityBoxContainer">
 		        <div class="grid_6">
 		            <p>Recent Activity</p>
 		            <ul id="activity"></ul>
 		        </div>
 	        </div>
 	    </div>  
-        <div class="grid_3">
-		    <div class="grid_3 prefix_1">
+        <div class="grid_3 prefix_1">
+		    <div class="grid_3 round_Box_Container">
 				<div class="grid_2">
 				    <strong>Friends: </strong>
 				</div>
@@ -95,7 +88,7 @@
 					<ul id="friends"></ul>
 				</div>  
 			</div>
-			<div class="grid_3 prefix_1"> 
+			<div class="grid_3 round_Box_Container"> 
 				<div class="grid_2">
 				    <strong>Teams: </strong>
 				</div>
