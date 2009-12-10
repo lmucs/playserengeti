@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 
  <div class="shadowText">
 <p>Teams with most territory</p>
@@ -55,7 +57,8 @@
 			<a href="${team.id}" ><c:out value="${team.name}"/></a></span>
 		</div>
 		
-		<span class="miniProfileInfo">    </span>
+		<span class="miniProfileInfo">Created on <fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${team.dateCreated}"/> 
+		by <a href="../user/${team.leader.id}"><c:out value="${team.leader.firstName} ${team.leader.lastName}"/></a></span>
 	</c:forEach>
 </div>
  

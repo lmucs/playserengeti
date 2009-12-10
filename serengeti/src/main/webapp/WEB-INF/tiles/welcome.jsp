@@ -1,3 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <div class="home-page-introduction">
   <div class="signup-button">
     <a href="user/create">Sign up now</a>
@@ -22,16 +26,17 @@
 <p>Newest Users</p>
 </div>
 
-
 <div class="verticalMenu">
 	<c:forEach var="user" items="${newest}">
 		<div class="miniProfile">
-			<span class="miniProfilePic"><a href="${user.id}"><img
+			<span class="miniProfilePic"><a href="user/${user.id}"><img
 			src="${pageContext.request.contextPath}/images/default_user.png" alt="user"
 			title="${user.email}" width="50" height="50"/></a></span>
 			
 			<span class="miniProfileName"> 
-			<a href="${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></span>
+			<a href="user/${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></span>
 		</div>
+		
+		<span class="miniProfileInfo">Joined Serengeti on <fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${user.dateCreated}"/></span>
 	</c:forEach>
 </div>

@@ -177,8 +177,8 @@
             
         var activity = $("#activity");
         jQuery.each(data.activity, function(i, val) {
-            activity.append("<li>Checked in to " + 
-              val.location.name + " (" + val.date + ")</li>");
+            activity.append("<li>@ <a href=../location/" + val.location.id + ">" + 
+              val.location.name + "</a> (" + val.date + ")</li>");
             });
         $("#email").append(data.user.email);
         $("#name").append(data.user.name);

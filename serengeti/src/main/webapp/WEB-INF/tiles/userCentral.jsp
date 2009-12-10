@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 
 <div class="shadowText">
 <p>Recently Checked In</p>
@@ -15,7 +17,7 @@
 			<span class="miniProfileName">	
 			<a href="${visit.user.id}" ><c:out value="${visit.user.firstName} ${visit.user.lastName}"/></a></span>
 			
-				<span class="miniProfileInfo">    </span>
+		    <span class="miniProfileInfo">@ <a href=../location/${visit.location.id}>${visit.location.name}</a> (${visit.date})</span>
 		</div>
 	
 	</c:forEach>
@@ -56,7 +58,7 @@
 			<a href="${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></span>
 		</div>
 		
-		<span class="miniProfileInfo">    </span>
+		<span class="miniProfileInfo">Joined Serengeti on <fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${user.dateCreated}"/></span>
 	</c:forEach>
 </div>
 

@@ -68,8 +68,8 @@
                 <div class="grid_8 round_Box_Container">
                     <ul>
                     <c:forEach var="visit" items="${activity}">
-                        <li><c:out value="${visit.user.firstName} ${visit.user.lastName}"/> checked in to 
-                          <c:out value="${visit.location.name}"/> (${visit.date})</li>
+                        <li><a href="../user/${visit.user.id}"><c:out value="${visit.user.firstName} ${visit.user.lastName}"/></a> @ 
+                          <a href="../location/${visit.location.id}"><c:out value="${visit.location.name}"/></a> (${visit.date})</li>
                     </c:forEach>
                     </ul>
                 </div>
