@@ -45,7 +45,7 @@
                     
                         </c:when>
                         <c:otherwise>
-                        	<div class = "grid_3 prefix_1 round_Box_Container">
+                        	<div class = "grid_3 round_Box_Container">
                         	<p>NOT OWNED</p>
                         	</div>
                         </c:otherwise>

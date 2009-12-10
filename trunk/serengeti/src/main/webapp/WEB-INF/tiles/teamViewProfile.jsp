@@ -87,7 +87,6 @@
                     </c:forEach>
                     </ul>
                 </div>
-                <hr>
                 <c:if test="${session.loggedIn && (session.user.id == teamCommand.leader.id)}">
                     <a href="update/${teamCommand.teamId}">Modify Team</a><br/>
                 </c:if>

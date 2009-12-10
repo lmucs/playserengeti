@@ -463,7 +463,7 @@ ul.hor_menu {
 	margin-bottom: 80px;
 }
 
-#userInfo h2{
+#userInfo h3{
 	font-size:3.4 em;
 	font-weight: bold;
 	line-height: 0.4 em;
@@ -483,15 +483,6 @@ ul.hor_menu {
 
 #checkinButton {
 	margin-top: 20px;
-}
-
-.round_Box_Width {
-	width: 550px;
-}
-
-.extraPadding {
-	padding-top: 5px;
-	padding-bottom: 5px;
 }
 
 .allLeftArrows {
