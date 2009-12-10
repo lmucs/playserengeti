@@ -55,10 +55,11 @@
 			
 			<span class="miniProfileName"> 
 			<a href="${team.id}" ><c:out value="${team.name}"/></a></span>
-		</div>
+		
 		
 		<span class="miniProfileInfoJoined">Created on <fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${team.dateCreated}"/> 
 		by <a href="../user/${team.leader.id}"><c:out value="${team.leader.firstName} ${team.leader.lastName}"/></a></span>
+		</div>
 	</c:forEach>
 </div>
  
