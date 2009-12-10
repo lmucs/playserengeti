@@ -17,7 +17,7 @@
 			<span class="miniProfileName">	
 			<a href="${visit.user.id}" ><c:out value="${visit.user.firstName} ${visit.user.lastName}"/></a></span>
 			
-		    <span class="miniProfileInfoCheckin">@ <a href=../location/${visit.location.id}>${visit.location.name}</a> (${visit.date})</span>
+		    <span class="miniProfileInfoCheckin">@ <a href="../location/${visit.location.id}">${visit.location.name}</a> (${visit.date})</span>
 		</div>
 	
 	</c:forEach>
