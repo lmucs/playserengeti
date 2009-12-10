@@ -35,8 +35,9 @@
 			
 			<span class="miniProfileName"> 
 			<a href="user/${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></span>
-		</div>
+		
 		
 		<span class="miniProfileInfoJoined">Joined Serengeti on <fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${user.dateCreated}"/></span>
+		</div>
 	</c:forEach>
 </div>
