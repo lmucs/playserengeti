@@ -35,7 +35,7 @@
 	            <div class="clear">&nbsp;</div>
 	                
 	            <div class="grid_2">
-                    <td><strong>Description:</strong></td>
+                    <td><div class="shadowText">Description:</div></td>
                 </div>	
                 
                 <div class="clear">&nbsp;</div>
@@ -46,7 +46,7 @@
                 
                 <div class="grid_4 round_Box_Container">
 	                <div class="grid_3">
-	                    <strong>Team Members:</strong>
+	                    <div class="shadowText">Team Members:</div>
 	                </div>
 	                <div class="grid_4">
 	                    <ul>
@@ -60,7 +60,7 @@
                 <div class="clear">&nbsp;</div>
 	                
 	            <div class="grid_2">
-                    <td><strong>Activity:</strong></td>
+                    <td><div class="shadowText">Activity:</div></td>
                 </div>	
                 
                 <div class="clear">&nbsp;</div>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="grid_4 round_Box_Container">
                     <div class="grid_3">
-	                    <strong>Controlled Territory:</strong>
+	                    <div class="shadowText">Controlled Territory:</div>
 	                </div>
                     <ul>
                     <c:forEach var="loc" items="${territory}">
