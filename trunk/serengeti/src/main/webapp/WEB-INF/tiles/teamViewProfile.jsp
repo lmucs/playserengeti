@@ -11,21 +11,21 @@
             	    <img src="${pageContext.request.contextPath}/images/default_team.png" alt="teamImage"
 		            title="teamImage"/>               
 		        </div>
-		        <div class="grid_3">
+		        <div class="grid_9">
 	                <div class="grid_3" id="teamName">
 	                    <td><strong><c:out value="${teamCommand.name}"/></strong></td>
 	                </div>
 	                
 	                <div class="clear">&nbsp;</div>
 	                <div id="teamInfo">
-		                <div class="grid_4">
+		                <div class="grid_8">
 		                	<td><strong>Home Base:</strong></td>
 		                	<td><c:out value="${teamCommand.homeBase}"/></td>
 		                </div>
 		            
 		                <div class="clear">&nbsp;</div>
 		                
-		                <div class="grid_4">
+		                <div class="grid_8">
 		                    <td><strong>Team Leader:</strong></td>
 		                    <td><c:out value="${teamCommand.leader.firstName} ${teamCommand.leader.lastName}"/></td>
 		                </div>

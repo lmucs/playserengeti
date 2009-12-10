@@ -395,13 +395,7 @@ ul.hor_menu {
 	font-size: 18px;
 }
 
-.shadowTextMargin {
-	text-shadow: 5px 5px 5px #445544;
-	font-size: 18px;
-	margin-left: 80px;
-}
-
-#checkin {
+#checkIn {
 	-webkit-border-radius: 10px; /* Safari prototype */
 	-moz-border-radius: 10px; /* Gecko browsers */
 	border-radius: 10px;
@@ -456,6 +450,7 @@ ul.hor_menu {
 #teamInfo {
 	font-size: 70%;
 	font-weight: bold;
+	margin-left: 12px;
 }
 
 #territoryAddress {
@@ -469,15 +464,19 @@ ul.hor_menu {
 }
 
 #userInfo h3{
-	font-size:3.4 em;
+	font-size:1.5em;
 	font-weight: bold;
-	line-height: 0.4 em;
+	line-height: 0.5em;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
 }
+#userViewEmail{
+	margin-left: 12px;
+}
 
 #userInfo p{
-	line-heignt: 0.4 em;
+	font-size: 0.65em;
+	line-height: 0.4em;
 	font-weight: bold;
 }
 

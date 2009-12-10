@@ -5,14 +5,14 @@
             <c:when test='${ !empty locationCommand }'>
 
 				
-				<div class = "grid_5">
-                   	<div class = "grid_4"> 
+				<div class = "grid_12">
+                   	<div class = "grid_12"> 
                        	<td><strong><c:out value="${locationCommand.name}"/></strong></td>
                     </div>
                     	
                     <div class="clear">&nbsp;</div>
 
-                    <div class = "grid_4" >
+                    <div class = "grid_12" >
                        	<td><c:out value="${locationCommand.street}"/><br/>
                            	<c:out value="${locationCommand.city}"/>
                            	<c:out value="${locationCommand.state}"/>
@@ -21,7 +21,7 @@
                     	
                     <div class="clear">&nbsp;</div>
                     	
-                    <div class = "grid_4">
+                    <div class = "grid_6">
                        	<td><c:out value="${locationCommand.phoneNumber}"/></td>
                     </div>
 
@@ -36,7 +36,7 @@
                     <c:choose>
             			<c:when test='${ !empty locationCommand.owner }'>
                     
-                    <div class = "grid_3 prefix_1 round_Box_Container">
+                    <div class = "grid_3 round_Box_Container">
                         <a href="../team/${locationCommand.owner.id}"><img
 			src="${pageContext.request.contextPath}/images/default_team.png" alt="team"
 			title="${locationCommand.owner.name}" width="50" height="50"/></a>
