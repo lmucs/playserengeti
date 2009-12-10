@@ -41,10 +41,7 @@
 
         <div id="container">
         <div id="header">
-        <img src="${pageContext.request.contextPath}/images/banner.jpg"/>
-        <map id="hmap" name ="hmap">
-            <area href="${pageContext.request.contextPath}/" shape="rect" coords="18,0,356,129"/>
-        </map>
+        <div><img alt="banner" src="${pageContext.request.contextPath}/images/banner.jpg"/></div>
         <div id="navbar2">
           <ul>
               <li><a href="${pageContext.request.contextPath}/">Home</a></li>
@@ -64,10 +61,9 @@
           </ul>
         </div>
         <div class="searchbar">
-            <form action="${pageContext.request.contextPath}/search" method="POST">
-                <input type="text" name="query" id="query" value="Search for people, places, or teams" 
-                	onfocus="makeBlank()" onblur="returnValue()"/>
-                <input type="submit" value="Go"/>
+            <form action="${pageContext.request.contextPath}/search" method="post">
+                <input type="text" name="query" id="query" value="Search for people, places, or teams" onfocus="makeBlank()" onblur="returnValue()" />
+                <input type="submit" value="Go" />
             </form>
         </div>
         </div>
@@ -80,7 +76,7 @@
             </div>
             <tiles:insertAttribute name="body"/>
         </div>
- <script>
+ <script type="text/javascript">
  	function makeBlank() {
 		document.getElementById("query").value = "";
 		document.getElementById("query").style.color = "black";
