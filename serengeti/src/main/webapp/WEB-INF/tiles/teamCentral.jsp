@@ -4,7 +4,7 @@
 
 
  <div class="shadowText">
-<p>Teams with most territory</p>
+<p>Teams With The Most Territory</p>
 </div>
 
 <div class="verticalMenu">
