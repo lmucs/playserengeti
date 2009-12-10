@@ -3,24 +3,24 @@
   # Title: Mark
   # Outline: Mark
   # Serengeti is...: Mark
-  # Goals and Objectives: Mark?
-  # Technologies Used: Mark? (Since 1 and 2 aren't much?)
-  # CMSI 401 vs. Real World: Toal?
-  # More CMSI 401 vs. Real World: 
+  # Goals and Objectives: Edgardo
+  # Technologies Used: Edgardo
+  # CMSI 401 vs. Real World: Edgardo
+  # More CMSI 401 vs. Real World: Edgardo
   # Architecture: Chris
   # Database Schema: Chris
-  # Web Application: Chris
+  # Web Application: Loren
   # Domain Objects: Loren
   # Services: Loren
   # Daos: Loren
   # Tiles: James
   # Styles: James
-  # Scripts: James
-  # Maps Example: 
-  # Mobile: 
-  # iPhone App (1 of 2): 
-  # iPhone App (2 of 2): 
-  # Demos: 
+  # Scripts: Chris
+  # Maps Example: Chris
+  # Mobile: Lita
+  # iPhone App (1 of 2): Lita
+  # iPhone App (2 of 2): Lita
+  # Demos: James
   # We're on the Web: Don
   # Experiences: Don
   # Summary: Don
