@@ -11,23 +11,23 @@
             	    <img src="${pageContext.request.contextPath}/images/default_team.png" alt="teamImage"
 		            title="teamImage"/>               
 		        </div>
-		        <div class="grid_9">
+		        <div class="grid_3">
 	                <div class="grid_3" id="teamName">
-	                    <td><strong><c:out value="${teamCommand.name}"/></strong></td>
+	                    <strong><c:out value="${teamCommand.name}"/></strong>
 	                </div>
 	                
 	                <div class="clear">&nbsp;</div>
 	                <div id="teamInfo">
-		                <div class="grid_8">
-		                	<td><strong>Home Base:</strong></td>
-		                	<td><c:out value="${teamCommand.homeBase}"/></td>
+		                <div class="grid_4">
+		                	<strong>Home Base:</strong>
+		                	<c:out value="${teamCommand.homeBase}"/>
 		                </div>
 		            
 		                <div class="clear">&nbsp;</div>
 		                
-		                <div class="grid_8">
-		                    <td><strong>Team Leader:</strong></td>
-		                    <td><c:out value="${teamCommand.leader.firstName} ${teamCommand.leader.lastName}"/></td>
+		                <div class="grid_4">
+		                    <strong>Team Leader:</strong>
+		                    <c:out value="${teamCommand.leader.firstName} ${teamCommand.leader.lastName}"/>
 		                </div>
 		            </div>
 	            </div>
@@ -35,18 +35,18 @@
 	            <div class="clear">&nbsp;</div>
 	                
 	            <div class="grid_2">
-                    <td><div class="shadowText">Description:</div></td>
+                    <strong>Description:</strong>
                 </div>	
                 
                 <div class="clear">&nbsp;</div>
                 
                 <div class="grid_8 round_Box_Container">
-                    <td><c:out value="${teamCommand.description}"/></td>
+                    <c:out value="${teamCommand.description}"/>
                 </div>
                 
                 <div class="grid_4 round_Box_Container">
 	                <div class="grid_3">
-	                    <div class="shadowText">Team Members:</div>
+	                    <strong>Team Members:</strong>
 	                </div>
 	                <div class="grid_4">
 	                    <ul>
@@ -60,7 +60,7 @@
                 <div class="clear">&nbsp;</div>
 	                
 	            <div class="grid_2">
-                    <td><div class="shadowText">Activity:</div></td>
+                    <strong>Activity:</strong>
                 </div>	
                 
                 <div class="clear">&nbsp;</div>
@@ -75,12 +75,12 @@
                 </div>
                 <div class="grid_4 round_Box_Container">
                     <div class="grid_3">
-	                    <div class="shadowText">Controlled Territory:</div>
+	                    <strong>Controlled Territory:</strong>
 	                </div>
                     <ul>
                     <c:forEach var="loc" items="${territory}">
                         <li><a href="../location/${loc.id}"><c:out value="${loc.name}"/></a>
-                            <div id="territoryAddress">
+                            <div class="territoryAddress">
                                 <c:out value="${loc.street}"/><br/><c:out value="${loc.city}, ${loc.state} ${loc.zipcode}"/>
                             </div>
                         </li>
@@ -99,7 +99,7 @@
         
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script>
+<script type="text/javascript">
     $(function() {
         var latlng = new google.maps.LatLng(google.loader.ClientLocation.latitude,
             google.loader.ClientLocation.longitude);
