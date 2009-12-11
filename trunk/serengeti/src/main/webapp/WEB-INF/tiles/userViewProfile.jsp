@@ -9,11 +9,11 @@
             <c:if test="${session.loggedIn}">
                 <div id="sendInvites">
                     <div id="inviteFriend">
-                        <input type="button" value="Send friend request" onClick="sendFriendInvite()"/>
+                        <input type="button" value="Send friend request" onclick="sendFriendInvite()"/>
                     </div>   
                     <div id="inviteTeam">
                         <select id="teamInviteSelect"></select>
-                        <input type="button" value="Send Team Invitation" onClick="sendTeamInvite()"/>
+                        <input type="button" value="Send Team Invitation" onclick="sendTeamInvite()"/>
                     </div>
                 </div>                        
             </c:if>
@@ -30,7 +30,7 @@
 	        	</div>
 	        </div>
 	    </div>
-	    <div class="clear">&nbsp</div>
+	    <div class="clear">&nbsp;</div>
 	    <div class="grid_7">
 	        <c:if test="${session.loggedIn}">
 	            <div id="ownProfile"> 
@@ -43,23 +43,23 @@
 	                        <p>Checkin from:</p>
 	                        <select id="locSelect">
 	                        </select>
-	                        <input id="notHere" type="button" value="Not Here?" onClick="showSearch()"/>
+	                        <input id="notHere" type="button" value="Not Here?" onclick="showSearch()"/>
 	                    </div>
-	                    <div class="clear">&nbsp</div>
+	                    <div class="clear">&nbsp;</div>
 	                    <div class="grid_4" id="locSearch">
 	                        <input id="searchText" type="text" value="Where are you?">
-	                        <input type="button" value="Search" onClick="searchLoc()"/>
+	                        <input type="button" value="Search" onclick="searchLoc()"/>
 	                    </div>
 	                    <div class="grid_4"  id="teamList">
 	                        <p>As team:</p>
 	                        <select id="teamSelect"></select>
 	                    </div>
-	                    <div class="clear">&nbsp</div>
+	                    <div class="clear">&nbsp;</div>
 	                    <div class="grid_1" id="checkinButton">
-	                        <input type="button" value="Check In" onClick="checkIn()"/> 
+	                        <input type="button" value="Check In" onclick="checkIn()"/> 
 	                    </div>          
 	                </div>
-	                <div class="clear">&nbsp</div>
+	                <div class="clear">&nbsp;</div>
 		            <div class="grid_7 round_Box_Container">
 			            <div class="grid_6" id="friendRequests">
 			                <p>These people want to be your friend.</p>
@@ -73,7 +73,7 @@
 	        		</div>
 	            </div>    
 	        </c:if>
-	        <div class="clear">&nbsp</div>
+	        <div class="clear">&nbsp;</div>
             <div class="grid_7 activityBoxContainer">
 		        <div class="grid_6">
 		            <div class="shadowText">Recent Activity</div>
@@ -109,17 +109,17 @@
 </c:choose>
 <div id="popupContent">
     <a id="popupContentClose">X</a>
-    <h1>Contratulations!</h1>
+    <h1>Congratulations!</h1>
     <p>You just claimed a territory for your team.</p>
     <p>I bet your team will be really proud of you.  I know I am.</p>
-    <input type="button" value="Sweet! GO ME!" onClick="disablePopup()"/>
+    <input type="button" value="Sweet! GO ME!" onclick="disablePopup()"/>
 </div>
 <div id="popupBackground"></div>
         
 <!--  for www.playserengeti.com/ -->
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
 
-<script>
+<script type="text/javascript">
     google.load('search', '1');
 
     var uData;
@@ -152,16 +152,16 @@
         var friendRequestList = $("#friendRequestList");
         jQuery.each(data.invites.friendInvites, function(i, val) {
             friendRequestList.append("<li id=friendInvite_" + val.id + 
-                "><a href=" + val.id + ">" + val.name + "</a><button onClick=acceptFriendInvite(" + 
-                val.id + ")>" + "I\'ll allow it" + "</button><button onClick=rejectFriendInvite(" +
+                "><a href=" + val.id + ">" + val.name + "</a><button onclick=acceptFriendInvite(" + 
+                val.id + ")>" + "I\'ll allow it" + "</button><button onclick=rejectFriendInvite(" +
                 val.id + ")>" + "Not Interested" + "</button></li>");
             });
             
         var teamRequestList = $("#teamRequestList");
         jQuery.each(data.invites.teamInvites, function(i, val) {
             teamRequestList.append("<li id=teamInvite_" + val.id + 
-                "><a href=../team/" + val.id + ">" + val.name + "</a><button onClick=acceptTeamInvite(" + 
-                val.id + ")>" + "I\'ll allow it" + "</button><button onClick=rejectTeamInvite(" +
+                "><a href=../team/" + val.id + ">" + val.name + "</a><button onclick=acceptTeamInvite(" + 
+                val.id + ")>" + "I\'ll allow it" + "</button><button onclick=rejectTeamInvite(" +
                 val.id + ")>" + "Not Interested" + "</button></li>");
             });
             
