@@ -7,28 +7,28 @@
 				
 				<div class = "grid_12">
                    	<div class = "grid_12"> 
-                       	<td><strong><c:out value="${locationCommand.name}"/></strong></td>
+                       	<strong><c:out value="${locationCommand.name}"/></strong>
                     </div>
                     	
                     <div class="clear">&nbsp;</div>
 
                     <div class = "grid_12" >
-                       	<td><c:out value="${locationCommand.street}"/><br/>
-                           	<c:out value="${locationCommand.city}"/>
-                           	<c:out value="${locationCommand.state}"/>
-                           	<c:out value="${locationCommand.zipcode}"/></td>
+                       	<c:out value="${locationCommand.street}"/><br/>
+                        <c:out value="${locationCommand.city}"/>
+                        <c:out value="${locationCommand.state}"/>
+                        <c:out value="${locationCommand.zipcode}"/>
                     </div>
                     	
                     <div class="clear">&nbsp;</div>
                     	
                     <div class = "grid_6">
-                       	<td><c:out value="${locationCommand.phoneNumber}"/></td>
+                       	<c:out value="${locationCommand.phoneNumber}"/>
                     </div>
 
 					<div class="clear">&nbsp;</div>
 
                     <div class = "grid_4">
-                        <td><strong>Owned by Team:</strong></td>
+                        <strong>Owned by Team:</strong>
                     </div>
                     
                     <div class="clear">&nbsp;</div>
