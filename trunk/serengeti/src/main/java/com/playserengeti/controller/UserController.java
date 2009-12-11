@@ -73,26 +73,48 @@ public class UserController extends MultiActionController {
         User user = userService.getUserById(userId);
 
         command.setUserId(user.getId());
+        command.setEmail(user.getEmail());
+        command.setFirstName(user.getFirstName());
+        command.setLastName(user.getLastName());
+        
         String profileData = generateProfileData(userId).replace("'", "&#39");
+            	
+    	Collection<User> friends = userService.getFriends(userId);
+        Collection<Team> teams = teamService.getUsersTeams(userId);
+        Collection<User> friendInvites = userService.getFriendInvites(userId);
+        Collection<Team> teamInvites = teamService.getTeamInvites(userId);
+        Collection<Visit> activity = visitService.getUsersRecentActivity(userId);
+        
+        Collection<Team> invitableTeams = new HashSet<Team>();
+        boolean alreadyFriends = true;
+        if (session.isLoggedIn()) {
+            alreadyFriends = friends.contains(session.getUser())
+            || friendInvites.contains(session.getUser())
+            || userService.getFriendInvites(session.getUser().getId())
+                    .contains(user);
+
+            invitableTeams = teamService.getInvitableTeams(session.getUser().getId(), userId);
+        }
         
         String view = "userViewProfile";
         if ("xml".equals(request.getParameter("format"))) {
             view = "userViewProfileXML";
         }
         if ("json".equals(request.getParameter("format"))) {
-        	try {
-        		response.getWriter().print(profileData);
-             	response.getWriter().flush();
-            	return null;
-        	}
-        	catch(IOException e){
-        		view = "redirect:error";
-        	}
+       		view = "userViewProfileJSON";
         }
+        
+        command.setFriends(friends);
+        command.setTeams(teams);
         
         ModelAndView mav = new ModelAndView(view);
         mav.addObject("userCommand", command);
         mav.addObject("session", session);
+        mav.addObject("friendInvites", friendInvites);
+        mav.addObject("teamInvites", teamInvites);
+        mav.addObject("activity", activity);
+        mav.addObject("invitableTeams", invitableTeams);
+        mav.addObject("alreadyFriends", alreadyFriends);
         mav.addObject("profileData", profileData);
 
         return mav;
