@@ -395,6 +395,12 @@ ul.hor_menu {
 	font-size: 18px;
 }
 
+.shadowTextMargin {
+	text-shadow: 5px 5px 5px #445544;
+	font-size: 18px;
+	margin-left: 80px;
+}
+
 #checkIn {
 	-webkit-border-radius: 10px; /* Safari prototype */
 	-moz-border-radius: 10px; /* Gecko browsers */
