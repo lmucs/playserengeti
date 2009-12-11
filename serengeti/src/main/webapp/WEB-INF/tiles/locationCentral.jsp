@@ -90,7 +90,7 @@
                 "<span class='miniProfileName'>" +
                   "<a href=" + val.id + ">" + val.name + "</a><br/>" +
               "</span>" +
-              "<span class='miniProfileInfo'>" +
+              "<span class='miniProfileInfoAddress'>" +
                 "<a>" + val.street + "</a><br/>" +
                   "<a>" + val.city + "</a><a>" +  " " + val.state + "</a>" +
               "</span>" +

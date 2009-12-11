@@ -469,18 +469,19 @@ ul.hor_menu {
 	margin-bottom: 80px;
 }
 
-#userInfo h3{
-	font-size:1.5em;
+#userInfo h3 {
+	font-size: 1.5em;
 	font-weight: bold;
 	line-height: 0.5em;
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
 }
-#userViewEmail{
+
+#userViewEmail {
 	margin-left: 12px;
 }
 
-#userInfo p{
+#userInfo p {
 	font-size: 0.65em;
 	line-height: 0.4em;
 	font-weight: bold;
@@ -614,10 +615,17 @@ ul.hor_menu {
 	margin-top: 30px;
 }
 
+.miniProfileInfoAddress {
+	position: absolute;
+	margin-left: 30px;
+	margin-top: 20px;
+	}
+
 .verticalMenu {
 	margin-left: 80px;
 	width: 600px;
 }
-#query{
+
+#query {
 	color: #CCCCCC;
 }
