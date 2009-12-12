@@ -183,8 +183,9 @@ h2.tablecaption {
   width: 56px;
 }
 
-.userprofile-join-date {
+.userprofile-joindate {
   text-align: right;
+  padding-right: 0.2em;
 }
 
 #signUpArea {
