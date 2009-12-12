@@ -21,12 +21,10 @@
         <title>
             <tiles:insertAttribute name="title" value="${title}"/>
         </title>
-        <!--
-        <link rel="stylesheet" type="text/css" media="screen"
+        <link rel="stylesheet" type="text/css" media="screen and (min-device-width: 481px)"
             href="${pageContext.request.contextPath}/styles/serengeti.css"/>
-        <link rel="stylesheet" type="text/css" media="screen"
+        <link rel="stylesheet" type="text/css" media="screen screen and (min-device-width: 481px)"
             href="${pageContext.request.contextPath}/styles/960.css"/>
-        -->
         <link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)"
             href="${pageContext.request.contextPath}/styles/serengeti-mobile.css"/>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"
