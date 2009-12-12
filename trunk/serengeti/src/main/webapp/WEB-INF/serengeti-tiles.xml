@@ -15,7 +15,6 @@
 
     <definition name="welcome" extends="template">
         <put-attribute name="title" value="Welcome to Serengeti"/>
-        <put-attribute name="login" value="/WEB-INF/tiles/layout/login.jsp"/>
         <put-attribute name="body" value="/WEB-INF/tiles/welcome.jsp"/>
     </definition>
 
@@ -28,10 +27,9 @@
         <put-attribute name="title" value="Search Results"/>
         <put-attribute name="body" value="/WEB-INF/tiles/searchResults.jsp"/>
     </definition>
-    
+
     <definition name="locationCentral" extends="template">
         <put-attribute name="title" value="Location Central"/>
-        <put-attribute name="login" value="/WEB-INF/tiles/layout/login.jsp"/>
         <put-attribute name="body" value="/WEB-INF/tiles/locationCentral.jsp"/>
     </definition>
 
@@ -46,7 +44,6 @@
 
     <definition name="locationViewProfile" extends="template">
         <put-attribute name="title" value="Location Profile"/>
-        <put-attribute name="login" value="/WEB-INF/tiles/layout/login.jsp"/>
         <put-attribute name="body" value="/WEB-INF/tiles/locationViewProfile.jsp"/>
     </definition>
 
@@ -56,7 +53,6 @@
 
     <definition name="userCentral" extends="template">
         <put-attribute name="title" value="User Central"/>
-        <put-attribute name="login" value="/WEB-INF/tiles/layout/login.jsp"/>
         <put-attribute name="body" value="/WEB-INF/tiles/userCentral.jsp"/>
     </definition>
 
@@ -86,7 +82,6 @@
 
     <definition name="userViewProfile" extends="template">
         <put-attribute name="title" value="View Profile"/>
-        <put-attribute name="login" value="/WEB-INF/tiles/layout/login.jsp"/>
         <put-attribute name="body" value="/WEB-INF/tiles/userViewProfile.jsp"/>
     </definition>
 
@@ -101,7 +96,6 @@
 
     <definition name="teamCentral" extends="template">
         <put-attribute name="title" value="Team Central"/>
-        <put-attribute name="login" value="/WEB-INF/tiles/layout/login.jsp"/>
         <put-attribute name="body" value="/WEB-INF/tiles/teamCentral.jsp"/>
     </definition>
 
@@ -116,7 +110,6 @@
 
     <definition name="teamViewProfile" extends="template">
         <put-attribute name="title" value="Team Profile"/>
-        <put-attribute name="login" value="/WEB-INF/tiles/layout/login.jsp"/>
         <put-attribute name="body" value="/WEB-INF/tiles/teamViewProfile.jsp"/>
     </definition>
 

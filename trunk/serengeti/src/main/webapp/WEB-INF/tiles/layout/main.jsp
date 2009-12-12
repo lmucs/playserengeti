@@ -21,68 +21,26 @@
       media="only screen and (max-device-width: 480px)"
       href="${pageContext.request.contextPath}/styles/serengeti-mobile.css"
     />
-    <script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js">
-    </script>
-    <script	src="${pageContext.request.contextPath}/scripts/jquery-1.3.2.min.js">
-    </script>
-    <script src="${pageContext.request.contextPath}/scripts/serengeti.js">
-    </script>
-    <script src="${pageContext.request.contextPath}/scripts/scrollbar.js">
-    </script>
-    <script src="${pageContext.request.contextPath}/scripts/json2.js">
-    </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/scripts/jquery-1.3.2.min.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/scripts/serengeti.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/scripts/scrollbar.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/scripts/json2.js" type="text/javascript"></script>
   </head>
 
   <body>
+    <tiles:insertAttribute name="header" />
+
     <div id="container">
-      <div id="header">
-        <div><img id="logo" alt="banner"
-          src="${pageContext.request.contextPath}/images/banner.jpg" />
-        </div>
-        <div id="navbar2">
-          <ul>
-            <li><a href="${pageContext.request.contextPath}/">Home</a></li>
-            <c:if test="${session.loggedIn}">
-              <li><a href="${pageContext.request.contextPath}/user/${session.user.id}">Profile</a></li>
-            </c:if>
-            <c:if test="${not session.loggedIn}">
-              <li><a href="${pageContext.request.contextPath}/user/login">Log In</a></li>
-            </c:if>
-            <li><a href="${pageContext.request.contextPath}/user">Users</a></li>
-            <li><a href="${pageContext.request.contextPath}/team">Teams</a></li>
-            <li><a href="${pageContext.request.contextPath}/location">Locations</a></li>
-            <li><a href="${pageContext.request.contextPath}/help">Help</a></li>
-            <c:if test="${session.loggedIn}">
-              <li><a href="${pageContext.request.contextPath}/user/logout">Log Out</a></li>
-            </c:if>
-          </ul>
-        </div>
-        <div class="searchbar">
-          <form action="${pageContext.request.contextPath}/search" method="post">
-            <div>
-              <input type="text" name="query" id="query"
-                value="Search for people, places, or teams"
-                onfocus="makeBlank(this)"
-                onblur="returnValue(this)"
-              />
-              <input type="submit" value="Go" />
-            </div>
-          </form>
-        </div>
+      <div class="mainContentArea container_12">
+        <h1 class="pagetitle">
+          <tiles:insertAttribute name="title" value="${title}"/>
+        </h1>
+        <tiles:insertAttribute name="body"/>
       </div>
     </div>
 
-    <tiles:insertAttribute name="header" />
-
-    <div class="mainContentArea container_12">
-      <h1 class="pagetitle">
-        <tiles:insertAttribute name="title" value="${title}"/>
-      </h1>
-      <tiles:insertAttribute name="body"/>
-    </div>
-
-    <script src="${pageContext.request.contextPath}/scripts/inputbox.js">
-    </script>
+    <script src="${pageContext.request.contextPath}/scripts/inputbox.js" type="text/javascript"></script>
 
     <tiles:insertAttribute name="footer" />
   </body>
