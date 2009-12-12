@@ -12,6 +12,7 @@
   <json:array name="members" var="user" items="${members}">
     <json:object>
       <json:property name="id" value="${user.id}"/>
+      <json:property name="name" value="${user.firstName} ${user.lastName}"/>
       <json:property name="email" value="${user.email}" />
     </json:object>
   </json:array>
