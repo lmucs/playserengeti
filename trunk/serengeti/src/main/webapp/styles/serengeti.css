@@ -171,10 +171,16 @@ h2.tablecaption {
 #userprofile {
   margin: 0 auto;
   width: 90%;
+  table-layout: fixed;
+}
+
+#userprofile .top-row {
+  display: none;
 }
 
 .userprofile-picture {
   text-align: center;
+  width: 56px;
 }
 
 #signUpArea {

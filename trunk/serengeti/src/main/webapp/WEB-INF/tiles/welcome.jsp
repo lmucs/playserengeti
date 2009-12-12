@@ -32,7 +32,11 @@
     </div>
 
     <table id="userprofile">
-      <tr><th>photo</th><th>name</th><th>join date</th></tr>
+      <tr class="top-row">
+        <th class="userprofile-picture">photo</th>
+        <th>name</th>
+        <th>join date</th>
+      </tr>
       <c:forEach var="user" items="${newest}">
         <tr>
           <td class="userprofile-picture">
