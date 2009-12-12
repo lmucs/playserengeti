@@ -24,7 +24,7 @@ input {
     width: 26em;
 }
 
-#logo, .signup-button {
+#banner, .signup-button {
     display: none;
 }
 
@@ -114,4 +114,12 @@ h2 {
 
 #userprofile img {
     border-color: black;
+}
+
+#help dt {
+  font-style: italic;
+}
+
+#help dd {
+  margin: 0.25em 2em 1.25em 2em;
 }
