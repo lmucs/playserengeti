@@ -9,7 +9,7 @@ import org.springframework.web.servlet.mvc.AbstractController;
 import com.playserengeti.session.UserSession;
 
 /**
- * Controller for producing the help page for Serengeti.
+ * Controller for handling help requests.
  */
 public class HelpController extends AbstractController {
 

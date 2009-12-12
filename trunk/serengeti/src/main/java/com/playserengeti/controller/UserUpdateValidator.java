@@ -5,6 +5,7 @@ import org.springframework.validation.Validator;
 
 public class UserUpdateValidator implements Validator {
 
+    @SuppressWarnings("unchecked")
     @Override
     public boolean supports(Class c) {
         return UserCommand.class.equals(c);
@@ -12,6 +13,7 @@ public class UserUpdateValidator implements Validator {
 
     @Override
     public void validate(Object object, Errors errors) {
-        UserCommand c = UserCommand.class.cast(object);
+
+        // TODO
     }
 }

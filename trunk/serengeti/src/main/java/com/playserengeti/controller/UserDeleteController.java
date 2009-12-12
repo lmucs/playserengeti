@@ -1,6 +1,5 @@
 package com.playserengeti.controller;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,8 +10,6 @@ import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
-import com.playserengeti.domain.Friendship;
-import com.playserengeti.domain.Membership;
 import com.playserengeti.domain.User;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
@@ -43,7 +40,7 @@ public class UserDeleteController extends SimpleFormController {
         userCommand.setFirstName(user.getFirstName());
         userCommand.setLastName(user.getLastName());
         userCommand.setTeams(teamService.getTeamsLedByUser(userId));
-        
+
         setSessionForm(true);
         return userCommand;
     }
