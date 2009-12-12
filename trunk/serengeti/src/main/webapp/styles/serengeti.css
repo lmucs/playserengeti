@@ -106,16 +106,25 @@ div.searchbar {
   -webkit-border-bottom-right-radius: 8px;
 }
 
-div.home-page-introduction {
+#home-page-welcome {
   text-align: justify;
-  margin: 0.5em 3em;
-  font-size: 120%;
+  float: left;
+  width: 40%;
+  margin: 0.5em 0 0.5em 0.5em;
+  font-size: 110%;
   line-height: 1.4em;
 }
 
-div.signup-button {
+#home-page-extras {
+  width: 55%;
   float: right;
-  margin: 0.5em 0 1em 1em;
+  text-align: center;
+  margin: 0.5em 0 0 0;
+}
+
+div.signup-button {
+  text-align: center;
+  margin: 0 auto 2.5em auto;
 }
 
 div.signup-button a {
@@ -152,6 +161,20 @@ div.signup-button a {
   -webkit-border-bottom-left-radius: 4px;
   -webkit-border-bottom-right-radius: 4px;
   -webkit-box-shadow: rgba(66, 140, 0, 0.5) 0px 10px 16px;
+}
+
+h2.tablecaption {
+  text-align: center;
+  margin: 0 auto 0.5em 0;
+}
+
+#userprofile {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.userprofile-picture {
+  text-align: center;
 }
 
 #signUpArea {
