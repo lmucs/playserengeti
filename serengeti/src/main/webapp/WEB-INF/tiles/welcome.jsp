@@ -18,26 +18,33 @@
   competitions or fund-raisers to support their favorite
   charities.</p>
 
-  <p>Already a member? <a href="user/login">Log in</a>.
+  <p id="memberad">Already a member? <a href="user/login">Log in</a>.
   If not, <a href="user/create">sign up</a> to play today.</p>
 </div>
 
 <div class="shadowTextMargin">
-<p>Newest Users</p>
+<h2>Newest Users</h2>
 </div>
 
 <div class="verticalMenu">
+    <table id="userprofile">
+        <tr><th>photo</th><th>name</th><th>join date</th></tr>
 	<c:forEach var="user" items="${newest}">
-		<div class="miniProfile">
-			<span class="miniProfilePic"><a href="user/${user.id}"><img
-			src="${pageContext.request.contextPath}/images/default_user.png" alt="user"
-			title="${user.email}" width="50" height="50"/></a></span>
-			
-			<span class="miniProfileName"> 
-			<a href="user/${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></span>
-		
-		
-		<span class="miniProfileInfoJoined">Joined Serengeti on <fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${user.dateCreated}"/></span>
-		</div>
+	   <tr>
+	       <td class="userprofile-picture">
+	           <div>
+	           <a href="user/${user.id}">
+                  <img src="${pageContext.request.contextPath}/images/default_user.png" alt="user" title="${user.email}" width="50" height="50"/>
+			   </a>
+			   </div>
+	       </td>
+	       <td class="userprofile-name">
+	           <p><a href="user/${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></p>
+	       </td>
+	       <td class="userprofile-joindate">
+               <p><fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${user.dateCreated}"/></p>
+           </td>
+       </tr>
 	</c:forEach>
+	</table>
 </div>
