@@ -183,6 +183,10 @@ h2.tablecaption {
   width: 56px;
 }
 
+.userprofile-join-date {
+  text-align: right;
+}
+
 #signUpArea {
   border: 1px solid #888877;
   margin: 1em;
@@ -202,18 +206,13 @@ h2.tablecaption {
 }
 
 table {
-  border: 1px solid #228811;
   border-collapse: collapse;
 }
 
 td,th {
   background-color: #FFEEEE;
-  border-left: 1px solid #228811;
-  padding: 0.1em 0.5em;
-}
-
-th {
   border-bottom: 1px solid #228811;
+  padding: 0.4em 0.2em;
 }
 
 .error {
