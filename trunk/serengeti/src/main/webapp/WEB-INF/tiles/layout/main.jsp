@@ -21,9 +21,14 @@
         <title>
             <tiles:insertAttribute name="title" value="${title}"/>
         </title>
-        <link rel="stylesheet" type="text/css"
+        <!--
+        <link rel="stylesheet" type="text/css" media="screen"
             href="${pageContext.request.contextPath}/styles/serengeti.css"/>
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/960.css"/>
+        <link rel="stylesheet" type="text/css" media="screen"
+            href="${pageContext.request.contextPath}/styles/960.css"/>
+        -->
+        <link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)"
+            href="${pageContext.request.contextPath}/styles/serengeti-mobile.css"/>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"
             type="text/javascript">
         </script>
@@ -45,7 +50,7 @@
 
         <div id="container">
         <div id="header">
-        <div><img alt="banner" src="${pageContext.request.contextPath}/images/banner.jpg"/></div>
+        <div><img id="logo" alt="banner" src="${pageContext.request.contextPath}/images/banner.jpg"/></div>
         <div id="navbar2">
           <ul>
               <li><a href="${pageContext.request.contextPath}/">Home</a></li>
@@ -66,8 +71,8 @@
         </div>
         <div class="searchbar">
             <form action="${pageContext.request.contextPath}/search" method="post">
-                <p><input type="text" name="query" id="query" value="Search for people, places, or teams" onfocus="makeBlank()" onblur="returnValue()" />
-                <input type="submit" value="Go" /></p>
+                <p><input type="text" name="query" id="query" value="Search for people, places, or teams" onfocus="makeBlank()" onblur="returnValue()" /></p>
+                <p><input type="submit" value="Go" /></p>
             </form>
         </div>
         </div>
@@ -75,9 +80,9 @@
         <tiles:insertAttribute name="header"/>
 
         <div class="mainContentArea container_12">
-            <div class="pagetitle">
+            <h1 class="pagetitle">
                 <tiles:insertAttribute name="title" value="${title}"/>
-            </div>
+            </h1>
             <tiles:insertAttribute name="body"/>
         </div>
  <script type="text/javascript">

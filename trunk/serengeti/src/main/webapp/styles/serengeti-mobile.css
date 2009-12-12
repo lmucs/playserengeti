@@ -1,0 +1,117 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #EEEEEE;
+}
+
+body, td, th, input {
+    font-family: sans-serif;
+    font-size: 150%;
+}
+
+#navbar2, td, th {
+    font-size: 160%;
+}
+
+input {
+    font-size: 140%;
+}
+
+#query {
+    width: 26em;
+}
+
+#logo, .signup-button {
+    display: none;
+}
+
+#navbar2 {
+    background-color: #CCCCCC;
+    padding: 0.5em;
+}
+
+#navbar2 ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#navbar2 ul li {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar2 ul li a {
+    font-size: 110%;
+    padding-right: 0.5em;
+    margin: 0;
+}
+
+.searchbar {
+    background: #DDDDDD;
+    margin: 0;
+    padding: 0.5em;
+    clear: both;
+}
+
+.searchbar form {
+    margin: 0;
+    padding: 0;
+}
+
+.searchbar p {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+.searchbar input {
+    padding: 0.5em;
+}
+
+.mainContentArea {
+    padding: 0.5em;
+}
+
+h1 {
+    font-size: 160%;
+}
+
+#memberad {
+    font-style: italic;
+}
+
+h2 {
+    font-size: 110%;
+}
+
+#footer {
+    padding: 0.5em;
+    font-size: 85%;
+    color: #666666;
+}
+
+#userprofile {
+    width: 100%;
+}
+
+#userprofile th, td {
+    padding: 0.5em;
+    margin: 0.1em;
+}
+
+#userprofile th {
+    background-color: #888888;
+}
+
+#userprofile td {
+    background-color: #AAAAAA;
+}
+
+#userprofile img {
+    border-color: black;
+}
