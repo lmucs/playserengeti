@@ -380,8 +380,8 @@ ul.hor_menu {
 }
 
 #map_canvas {
-  height: 50%;
-  width: 50%;
+  height: 300px;
+  width: 500px;
 }
 
 #banner {
