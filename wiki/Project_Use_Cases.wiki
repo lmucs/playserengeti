@@ -194,8 +194,18 @@ Answer(somewhat)/Expanding on Question: They should probably be considered diffe
 
 My vote is to separate them. Let locations be user-submitted content, but businesses by validated somehow. [[User:Gratrixl|Gratrixl]] 06:16, 9 September 2009 (UTC)
 
-===Create Location/Business===
-
+===U9 Create Location/Business===
+  * *Description*: 
+  * *Actor*:
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: None.
+  * *Handles Requirements*: 
+<wiki:comment>
 Description: Create a business profile.
 
 URI: /biz/create
@@ -205,9 +215,19 @@ Users: User (business representative), Admin
 Security:
 
 Notes: Separate Location from Business?
-
-===Delete Location/Business===
-
+</wiki:comment>
+===U10 Delete Location/Business===
+  * *Description*: 
+  * *Actor*:
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: None.
+  * *Handles Requirements*: 
+<wiki:comment>
 Description:
 
 URI: /biz/delete?biz=business_id
@@ -217,9 +237,19 @@ Users: User (business representative), Admin
 Security:
 
 Notes: Separate Location from Business? If a location is different than a business, who is a location owner?[[User:Gratrixl|Gratrixl]] 23:04, 8 September 2009 (UTC)
-
-===Manage Location/Business===
-
+</wiki:comment>
+===U11 Manage Location/Business===
+  * *Description*: 
+  * *Actor*:
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: None.
+  * *Handles Requirements*: 
+<wiki:comment>
 Description: Manage the business's profile.
 
 URI: /biz/manage
@@ -229,9 +259,19 @@ Users: User (business representative), Admin
 Security:
 
 Notes: Separate Location from Business?
-
-===Add Location===
-
+</wiki:comment>
+===U12 Add Location===
+  * *Description*: 
+  * *Actor*:
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: None.
+  * *Handles Requirements*: 
+<wiki:comment>
 Description: Add a location to a business.
 
 URI: /biz/loc/add?biz=business_id
@@ -241,9 +281,19 @@ Users: User (business representative), Admin
 Security:
 
 Notes: Define how this differs from create business
-
-===Remove Location===
-
+</wiki:comment>
+===U13 Remove Location===
+  * *Description*: 
+  * *Actor*:
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: None.
+  * *Handles Requirements*: 
+<wiki:comment>
 Description: Remove a location of a business.
 
 URI: /biz/loc/remove?biz=business_id&loc=location_id
@@ -253,13 +303,23 @@ Users: User (business representative), Admin
 Security:
 
 Notes:
-
+</wiki:comment>
 ----
 ==Status==
 ----
 
-===Ping===
-
+===U14 Ping===
+  * *Description*: 
+  * *Actor*:
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: None.
+  * *Handles Requirements*: 
+<wiki:comment>
 Description: Send notification of (lat/long) of a user to database.
 
 URI: /status/ping?lat=number&long=number
@@ -269,9 +329,19 @@ Users: Self
 Security:
 
 Notes:Internal case not directly accessible by user (See show below)
-
-===Show===
-
+</wiki:comment>
+===U15 Show===
+  * *Description*: 
+  * *Actor*:
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: None.
+  * *Handles Requirements*: 
+<wiki:comment>
 Description: Show yourself.  This action triggers a ping immediately, and then additional pings at specific time intervals.
 
 URI: /status/show
@@ -281,9 +351,19 @@ Users: Self
 Security:
 
 Notes:
-
-===Hide===
-
+</wiki:comment>
+===U16 Hide===
+  * *Description*: 
+  * *Actor*:
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: None.
+  * *Handles Requirements*: 
+<wiki:comment>
 Description: Hide yourself.  This action disables the intermittent pings.
 
 URI: /status/hide
@@ -293,9 +373,19 @@ Users: Self, Admin
 Security:
 
 Notes:
-
-===View World Map===
-
+</wiki:comment>
+===U17 View World Map===
+  * *Description*: 
+  * *Actor*:
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: None.
+  * *Handles Requirements*: 
+<wiki:comment>
 Description: Display the current status of the game. 
 
 URL: /status/game?league=league_id&rivalsOnly=showOnlyRivals
@@ -305,13 +395,23 @@ Users: User
 Security: 
 
 Notes: Parameters for the game status should be defined once the team hierarchy issues have been hashed out, but should likely include which league/sub-league you want to show status for and if you want to show all teams in that league or just your team and their rivals.
-
+</wiki:comment>
 ----
 ==Communication==
 ----
 
-===Invite To Game===
-
+===U18 Invite To Game===
+  * *Description*: 
+  * *Actor*:
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: None.
+  * *Handles Requirements*: 
+<wiki:comment>
 Description: Invite a person to Play Serengeti!!!!
 
 URL: /invite/game
@@ -321,8 +421,19 @@ Users: User
 Security:
 
 Notes: How does this work? Does the form ask for an email address and send a link to that address?
-
-===Invite To be Friend===
+</wiki:comment>
+===U19 Invite To be Friend===
+  * *Description*: 
+  * *Actor*:
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: None.
+  * *Handles Requirements*: 
+<wiki:comment>
 Description: Invite a person to be your friend
 
 URI: /invite/friend
@@ -332,8 +443,19 @@ Users: User
 Security:
 
 Notes:
-
-===Accept Friend Request===
+</wiki:comment>
+===U20 Accept Friend Request===
+  * *Description*: 
+  * *Actor*:
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: None.
+  * *Handles Requirements*: 
+<wiki:comment>
 Description: Accept a request to be a friend
 
 URI: /invite/accept
@@ -343,9 +465,19 @@ Users: Users who have received a friend request
 Security:
 
 Notes:
-
-===Invite To Team===
-
+</wiki:comment>
+===U21 Invite To Team===
+  * *Description*: 
+  * *Actor*:
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: None.
+  * *Handles Requirements*: 
+<wiki:comment>
 Description: Invite a user (or soon-to-be-user) to a team
 
 URL: /invite/team
@@ -355,9 +487,19 @@ Users: Team Member
 Security:
 
 Notes: Does this assume a person is already signed up for the game? or is this a special version of invite to game? Or Both? If Both, do we need two versions?[[User:Gratrixl|Gratrixl]] 17:47, 10 September 2009 (UTC)
-
-===Invite To Location (subset of message user)===
-
+</wiki:comment>
+===U22 Invite To Location (subset of message user)===
+  * *Description*: 
+  * *Actor*:
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: None.
+  * *Handles Requirements*: 
+<wiki:comment>
 Description: Invite a person to a location
 
 URL: /message/location
@@ -367,9 +509,19 @@ Users: User
 Security: Should be limited to users friends/team members
 
 Notes: could this be something like and "event" in facebook, where you can set it up in advance? If so, then this really isn't a subset of message user. Perhaps we add (eventually) an "event" function?[[User:Gratrixl|Gratrixl]] 17:47, 10 September 2009 (UTC)
-
-===Message User===
-
+</wiki:comment>
+===U23 Message User===
+  * *Description*: 
+  * *Actor*:
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: None.
+  * *Handles Requirements*: 
+<wiki:comment>
 Description: Send a user a message
 
 URL: /message/user
@@ -379,13 +531,23 @@ Users: User
 Security: Should be limited to users friends/team members
 
 Notes:
-
+</wiki:comment>
 ----
 ==Query==
 ----
 
-===Find Locations of Businesses===
-
+===U24 Find Locations of Businesses===
+  * *Description*: 
+  * *Actor*:
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: None.
+  * *Handles Requirements*: 
+<wiki:comment>
 Description: Find locations of businesses.
 
 URI: /find/biz?q=term[&lat=number&lon=number] -- The latitude and longitude GET parameters are optional.  If they're omitted then locations of businesses near the user's current position are returned.
@@ -395,9 +557,19 @@ Users: User
 Security:
 
 Notes: Other parameters may be possible.  Including radius around lat/long that business can be located in, category of business, how many results to return, etc.
-
-===Find User===
-
+</wiki:comment>
+===U25 Find User===
+  * *Description*: 
+  * *Actor*:
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: None.
+  * *Handles Requirements*: 
+<wiki:comment>
 Description: Find a user.
 
 URI: /find/user?...
@@ -407,9 +579,19 @@ Users: User
 Security:
 
 Notes: Parameters can allow users to be found by name, email address, screename, etc.
-
-===Find Team===
-
+</wiki:comment>
+===U26 Find Team===
+  * *Description*: 
+  * *Actor*:
+  * *Preconditions*: 
+  * *Flow of Events for Main Scenario*:
+    # T-O_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: None.
+  * *Handles Requirements*: 
+<wiki:comment>
 Description: Find a team.
 
 URI: /search/team?...
@@ -419,3 +601,4 @@ Users: User
 Security:
 
 Notes: Parameters can allow teams to be found by name, location, parent team, etc.
+</wiki:comment>
