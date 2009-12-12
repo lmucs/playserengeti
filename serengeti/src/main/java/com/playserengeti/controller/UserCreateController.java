@@ -6,7 +6,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
 import org.springframework.validation.BindException;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,8 +20,7 @@ import com.playserengeti.session.UserSession;
  * Controller for creating a user.
  */
 public class UserCreateController extends SimpleFormController {
-	private Logger logger = Logger.getLogger(getClass());
-	
+
     private UserService userService;
     private UserSession session;
 
@@ -35,7 +33,7 @@ public class UserCreateController extends SimpleFormController {
 
     @Override
     public ModelAndView onSubmit(HttpServletRequest request,
-    		HttpServletResponse response, Object _command, BindException errors) {
+            HttpServletResponse response, Object _command, BindException errors) {
         UserCommand command = (UserCommand) _command;
         Integer userId;
         String email = command.getEmail();
@@ -53,14 +51,14 @@ public class UserCreateController extends SimpleFormController {
 
             // Handle uploaded image.
             if (multipartFile != null) {
-            	// TODO Validate image time in validator.
-            	userService.setAvatarForUserId(
-            			userId,
-            			new Avatar(
-            					multipartFile.getContentType(),
-            					multipartFile.getBytes()));
+                // TODO Validate image time in validator.
+                userService.setAvatarForUserId(
+                        userId,
+                        new Avatar(
+                                multipartFile.getContentType(),
+                                multipartFile.getBytes()));
             }
-            
+
             ModelAndView mav = new ModelAndView("redirect:view");
             mav.addObject("userId", userId);
 
@@ -76,7 +74,6 @@ public class UserCreateController extends SimpleFormController {
         }
     }
 
-    
     public UserSession getSession() {
         return session;
     }

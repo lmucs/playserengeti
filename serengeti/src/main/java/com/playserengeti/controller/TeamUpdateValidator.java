@@ -8,6 +8,7 @@ import org.springframework.validation.Validator;
  */
 public class TeamUpdateValidator implements Validator {
 
+    @SuppressWarnings("unchecked")
     @Override
     public boolean supports(Class c) {
         return TeamCommand.class.equals(c);
@@ -15,8 +16,7 @@ public class TeamUpdateValidator implements Validator {
 
     @Override
     public void validate(Object object, Errors errors) {
-        TeamCommand c = TeamCommand.class.cast(object);
 
-        /* Doesn't do anything. */
+        // TODO
     }
 }

@@ -4,7 +4,12 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+/**
+ * Validator for requests to create locations.
+ */
 public class LocationCreateValidator implements Validator {
+
+    @SuppressWarnings("unchecked")
     @Override
     public boolean supports(Class c) {
         return LocationCommand.class.equals(c);

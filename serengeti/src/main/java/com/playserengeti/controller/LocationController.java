@@ -2,7 +2,6 @@ package com.playserengeti.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +12,6 @@ import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 import com.playserengeti.domain.Location;
 import com.playserengeti.service.LocationService;
-import com.playserengeti.service.TeamService;
 import com.playserengeti.service.VisitService;
 import com.playserengeti.session.UserSession;
 
@@ -35,7 +33,7 @@ public class LocationController extends MultiActionController {
 
     public ModelAndView central(HttpServletRequest request,
             HttpServletResponse response) {
-    	
+
         String view = "locationCentral";
         if ("xml".equals(request.getParameter("format"))) {
             view = "locationCentralXML";
@@ -46,7 +44,7 @@ public class LocationController extends MultiActionController {
 
         ModelAndView mav = new ModelAndView(view);
         mav.addObject("session", session);
-        
+
         return mav;
     }
 
@@ -85,20 +83,20 @@ public class LocationController extends MultiActionController {
         mav.addObject("competingTeams", visitService.getCompetingTeams(locationId));
         return mav;
     }
-    
+
     public void getNearbyLocations(HttpServletRequest request, HttpServletResponse response) {
-    	Double latitude = Double.valueOf(request.getParameter("latitude"));
+        Double latitude = Double.valueOf(request.getParameter("latitude"));
         Double longitude = Double.valueOf(request.getParameter("longitude"));
 
         try {
-  		    PrintWriter out = response.getWriter();
-   		    out.println("{\"locations\" : " + 
-   		    		locationService.asJSON(locationService.getNearbyLocations(latitude, longitude)) + 
-   		    		"}");	
+              PrintWriter out = response.getWriter();
+               out.println("{\"locations\" : " +
+                       locationService.asJSON(locationService.getNearbyLocations(latitude, longitude)) +
+                       "}");
         }
-   	    catch(IOException e) {}
+           catch(IOException e) {}
     }
-    
+
     public void handleResult(HttpServletRequest request, HttpServletResponse response) {
         String name = request.getParameter("name");
         Double lat = Double.valueOf(request.getParameter("lat"));
@@ -107,24 +105,24 @@ public class LocationController extends MultiActionController {
         String city = request.getParameter("city");
         String state = request.getParameter("state");
         String phone = request.getParameter("phone");
-        
+
         Location l = new Location(null, name, lat, lng);
         l.setStreet(street);
         l.setCity(city);
         l.setState(state);
         l.setPhoneNumber(phone);
-        
+
         try {
             locationService.saveLocation(l);
         }
         catch(DataIntegrityViolationException e){
-        	l = locationService.getLocationByName(name);
+            l = locationService.getLocationByName(name);
         }
         try {
-    		PrintWriter out = response.getWriter();
-    		out.println(l.asMinimalJSON());	
+            PrintWriter out = response.getWriter();
+            out.println(l.asMinimalJSON());
         }
-    	catch(IOException e) {}
+        catch(IOException e) {}
     }
 
     public UserSession getSession() {

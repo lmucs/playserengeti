@@ -1,6 +1,7 @@
 package com.playserengeti.controller;
 
 import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 /**
@@ -8,6 +9,7 @@ import org.springframework.validation.Validator;
  */
 public class TeamCreateValidator implements Validator {
 
+    @SuppressWarnings("unchecked")
     @Override
     public boolean supports(Class c) {
         return TeamCommand.class.equals(c);
@@ -17,6 +19,7 @@ public class TeamCreateValidator implements Validator {
     public void validate(Object object, Errors errors) {
         TeamCommand c = TeamCommand.class.cast(object);
 
-        /* Doesn't do anything. */
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name",
+                "teamName.blank", "The team name can not be blank");
     }
 }
