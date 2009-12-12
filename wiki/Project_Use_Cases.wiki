@@ -260,6 +260,7 @@ Security:
 
 Notes: Separate Location from Business?
 </wiki:comment>
+<wiki:comment>
 ===U12 Add Location===
   * *Description*: 
   * *Actor*:
@@ -272,7 +273,7 @@ Notes: Separate Location from Business?
   * *Postconditions*: None.
   * *Handles Requirements*: 
 _Note: Is this different enough from U9 to warrant its own use case?_
-<wiki:comment>
+
 Description: Add a location to a business.
 
 URI: /biz/loc/add?biz=business_id
@@ -282,7 +283,7 @@ Users: User (business representative), Admin
 Security:
 
 Notes: Define how this differs from create business
-</wiki:comment>
+
 ===U13 Remove Location===
   * *Description*: 
   * *Actor*:
@@ -294,7 +295,7 @@ Notes: Define how this differs from create business
     # TO_DO
   * *Postconditions*: None.
   * *Handles Requirements*: 
-<wiki:comment>
+
 Description: Remove a location of a business.
 
 URI: /biz/loc/remove?biz=business_id&loc=location_id
@@ -308,7 +309,8 @@ Notes:
 ----
 ==Status==
 ----
-
+===U# Check-In===
+<wiki:comment>
 ===U14 Ping===
   * *Description*: 
   * *Actor*:
@@ -320,7 +322,7 @@ Notes:
     # TO_DO
   * *Postconditions*: None.
   * *Handles Requirements*: 
-<wiki:comment>
+
 Description: Send notification of (lat/long) of a user to database.
 
 URI: /status/ping?lat=number&long=number
@@ -330,7 +332,7 @@ Users: Self
 Security:
 
 Notes:Internal case not directly accessible by user (See show below)
-</wiki:comment>
+
 ===U15 Show===
   * *Description*: 
   * *Actor*:
@@ -342,7 +344,7 @@ Notes:Internal case not directly accessible by user (See show below)
     # TO_DO
   * *Postconditions*: None.
   * *Handles Requirements*: 
-<wiki:comment>
+
 Description: Show yourself.  This action triggers a ping immediately, and then additional pings at specific time intervals.
 
 URI: /status/show
@@ -352,7 +354,7 @@ Users: Self
 Security:
 
 Notes:
-</wiki:comment>
+
 ===U16 Hide===
   * *Description*: 
   * *Actor*:
@@ -364,7 +366,7 @@ Notes:
     # TO_DO
   * *Postconditions*: None.
   * *Handles Requirements*: 
-<wiki:comment>
+
 Description: Hide yourself.  This action disables the intermittent pings.
 
 URI: /status/hide
@@ -400,7 +402,7 @@ Notes: Parameters for the game status should be defined once the team hierarchy 
 ----
 ==Communication==
 ----
-
+<wiki:comment>
 ===U18 Invite To Game===
   * *Description*: 
   * *Actor*:
@@ -413,7 +415,7 @@ Notes: Parameters for the game status should be defined once the team hierarchy 
   * *Postconditions*: None.
   * *Handles Requirements*:
 _Note: Not to be included before Wednesday?_ 
-<wiki:comment>
+
 Description: Invite a person to Play Serengeti!!!!
 
 URL: /invite/game
@@ -490,6 +492,7 @@ Security:
 
 Notes: Does this assume a person is already signed up for the game? or is this a special version of invite to game? Or Both? If Both, do we need two versions?[[User:Gratrixl|Gratrixl]] 17:47, 10 September 2009 (UTC)
 </wiki:comment>
+<wiki:comment>
 ===U22 Invite To Location (subset of message user)===
   * *Description*: 
   * *Actor*:
@@ -502,7 +505,7 @@ Notes: Does this assume a person is already signed up for the game? or is this a
   * *Postconditions*: None.
   * *Handles Requirements*: 
 _Note: Not to be included before Wednesday?_
-<wiki:comment>
+
 Description: Invite a person to a location
 
 URL: /message/location
@@ -512,7 +515,7 @@ Users: User
 Security: Should be limited to users friends/team members
 
 Notes: could this be something like and "event" in facebook, where you can set it up in advance? If so, then this really isn't a subset of message user. Perhaps we add (eventually) an "event" function?[[User:Gratrixl|Gratrixl]] 17:47, 10 September 2009 (UTC)
-</wiki:comment>
+
 ===U23 Message User===
   * *Description*: 
   * *Actor*:
@@ -525,7 +528,7 @@ Notes: could this be something like and "event" in facebook, where you can set i
   * *Postconditions*: None.
   * *Handles Requirements*: 
 _Note: Not to be included before Wednesday?_
-<wiki:comment>
+
 Description: Send a user a message
 
 URL: /message/user
@@ -539,7 +542,7 @@ Notes:
 ----
 ==Query==
 ----
-
+<wiki:comment>
 ===U24 Find Locations of Businesses===
   * *Description*: 
   * *Actor*:
@@ -551,7 +554,7 @@ Notes:
     # TO_DO
   * *Postconditions*: None.
   * *Handles Requirements*: 
-<wiki:comment>
+
 Description: Find locations of businesses.
 
 URI: /find/biz?q=term[&lat=number&lon=number] -- The latitude and longitude GET parameters are optional.  If they're omitted then locations of businesses near the user's current position are returned.
