@@ -18,7 +18,7 @@
       href="${pageContext.request.contextPath}/styles/960.css"
     />
     <link rel="stylesheet" type="text/css"
-      media="screen"
+      media="only screen and (max-device-width: 480px)"
       href="${pageContext.request.contextPath}/styles/serengeti-mobile.css"
     />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js" type="text/javascript"></script>
