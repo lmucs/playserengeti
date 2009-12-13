@@ -147,7 +147,7 @@ Notes: Where do we define Team Lead role?  It should be specified in the team's 
   * *Handles Requirements*: TO_DO 
 
 <wiki:comment> Team Hierachy has been changed to just team management, right?
-===Manage Team Hierarchy===
+Manage Team Hierarchy
 
 DON'T KNOW IF THIS USE CASE REALLY BELONGS UNDER TEAM
 
@@ -261,7 +261,7 @@ Security:
 Notes: Separate Location from Business?
 </wiki:comment>
 <wiki:comment>
-===U12 Add Location===
+U12 Add Location
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
@@ -284,7 +284,7 @@ Security:
 
 Notes: Define how this differs from create business
 
-===U13 Remove Location===
+U13 Remove Location
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
@@ -311,7 +311,7 @@ Notes:
 ----
 ===U# Check-In===
 <wiki:comment>
-===U14 Ping===
+U14 Ping
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
@@ -333,7 +333,7 @@ Security:
 
 Notes:Internal case not directly accessible by user (See show below)
 
-===U15 Show===
+U15 Show
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
@@ -355,7 +355,7 @@ Security:
 
 Notes:
 
-===U16 Hide===
+U16 Hide
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
@@ -403,7 +403,7 @@ Notes: Parameters for the game status should be defined once the team hierarchy 
 ==Communication==
 ----
 <wiki:comment>
-===U18 Invite To Game===
+U18 Invite To Game
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
@@ -493,7 +493,7 @@ Security:
 Notes: Does this assume a person is already signed up for the game? or is this a special version of invite to game? Or Both? If Both, do we need two versions?[[User:Gratrixl|Gratrixl]] 17:47, 10 September 2009 (UTC)
 </wiki:comment>
 <wiki:comment>
-===U22 Invite To Location (subset of message user)===
+U22 Invite To Location (subset of message user)
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
@@ -516,7 +516,7 @@ Security: Should be limited to users friends/team members
 
 Notes: could this be something like and "event" in facebook, where you can set it up in advance? If so, then this really isn't a subset of message user. Perhaps we add (eventually) an "event" function?[[User:Gratrixl|Gratrixl]] 17:47, 10 September 2009 (UTC)
 
-===U23 Message User===
+U23 Message User
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
@@ -543,7 +543,7 @@ Notes:
 ==Query==
 ----
 <wiki:comment>
-===U24 Find Locations of Businesses===
+U24 Find Locations of Businesses
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
