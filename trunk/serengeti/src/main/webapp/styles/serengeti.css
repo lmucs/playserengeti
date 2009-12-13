@@ -437,6 +437,7 @@ ul.hor_menu {
   border-color: CDCDCD;
   font-size: 13px;
   padding-bottom: 5px;
+  margin-top: 10px;
 }
 
 #sendInvites {
@@ -484,6 +485,9 @@ ul.hor_menu {
   font-size: 70%;
   font-weight: bold;
   margin-left: 12px;
+}
+#teamDescriptionTitle{
+    margin-left: 20px;
 }
 
 .territoryAddress {
