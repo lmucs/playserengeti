@@ -233,7 +233,7 @@
     };
 </script>
 <c:if test="${session.loggedIn}">
-<script>
+<script type="text/javascript">
     var checkIn = function() {
         var request = $.get("checkIn", {userId : ${session.user.id}, teamId : $("select#teamSelect").val(),
             locationId : $("select#locSelect").val()}, function(data) {
@@ -247,7 +247,7 @@
         $("#thanks").fadeIn("slow");
     ;}
 </script>
-<script>
+<script type="text/javascript">
 var sendFriendInvite = function() {
     $.get("sendFriendInvite", {firstId : uData.sessionId, secondId : ${userCommand.userId}});
     $("#inviteFriend").fadeOut("slow");
