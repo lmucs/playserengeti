@@ -4,65 +4,90 @@
 
 
 <div class="shadowTextMargin">
-<p>Recently Checked In</p>
+<h2>Recently Checked In</h2>
 </div>
 
-<div class="verticalMenu">
-	<c:forEach var="visit" items="${recent}">
-		<div class="miniProfile">
-			<span class="miniProfilePic">
-			<a href="${visit.user.id}"><img src="${pageContext.request.contextPath}/images/default_user.png" alt="user"
-			title="${visit.user.email}" width="50" height="50"/></a> </span>
-			
-			<span class="miniProfileName">	
-			<a href="${visit.user.id}" ><c:out value="${visit.user.firstName} ${visit.user.lastName}"/></a></span>
-			
-		    <span class="miniProfileInfoCheckin">@ <a href="../location/${visit.location.id}">${visit.location.name}</a> (${visit.date})</span>
-		</div>
-	
+<table class="userprofile">
+    <tr class="top-row">
+        <th class="userprofile-picture">photo</th>
+        <th>user</th>
+        <th>location</th>
+        <th>check-in date and time</th>
+    </tr>
+    <c:forEach var="visit" items="${recent}">
+        <tr>
+            <td class="userprofile-picture">
+                <div>
+                    <a href="${visit.user.id}"><img src="${pageContext.request.contextPath}/images/default_user.png" alt="user"
+                        title="${visit.user.email}" width="50" height="50"/></a>
+                </div>
+            </td>
+			<td class="userprofile-name">
+                <p><a href="${visit.user.id}" ><c:out value="${visit.user.firstName} ${visit.user.lastName}"/></a></p>
+            </td>
+			<td class="userprofile-location">
+                <p><a href="../location/${visit.location.id}">${visit.location.name}</a></p>
+			</td>
+			<td class="userprofile-date">
+                <p>${visit.date}</p>
+            </td>
+		</tr>
 	</c:forEach>
-</div>
+</table>
 
 <div class="shadowTextMargin">
-<p>Most Active Users</p>
+    <h2>Most Active Users</h2>
 </div>
 
-<div class="verticalMenu">
-<c:forEach var="user" items="${mostActive}">
-		<div class="miniProfile">
-			<span class="miniProfilePic"><a href="${user.id}"><img
-			src="${pageContext.request.contextPath}/images/default_user.png" alt="user"
-			title="${user.email}" width="50" height="50"/></a></span> 
-			
-			<span class="miniProfileName">
-			<a href="${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></span>
-			
-			<span class="miniProfileInfoCheckin"> </span>
-		</div>
+<table class="userprofile">
+    <tr class="top-row">
+        <th class="userprofile-picture">photo</th>
+        <th>user</th>
+    </tr>
+    <c:forEach var="user" items="${mostActive}">
+		<tr>
+            <td class="userprofile-picture">
+                <div>
+                    <a href="${user.id}"><img src="${pageContext.request.contextPath}/images/default_user.png"
+                        alt="user" title="${user.email}" width="50" height="50"/></a>
+                </div> 
+			</td>
+			<td class="userprofile-name">
+                <p><a href="${user.id}"><c:out value="${user.firstName} ${user.lastName}"/></a></p>
+            </td>
+        </tr>
 	</c:forEach>
-</div>
+</table>
 
 <div class="shadowTextMargin">
-<p>Newest Users</p>
+    <h2>Newest Users</h2>
 </div>
 
 
-<div class="verticalMenu">
-	<c:forEach var="user" items="${newest}">
-		<div class="miniProfile">
-			<span class="miniProfilePic"><a href="${user.id}"><img
-			src="${pageContext.request.contextPath}/images/default_user.png" alt="user"
-			title="${user.email}" width="50" height="50"/></a></span>
-			
-			<span class="miniProfileName"> 
-			<a href="${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></span>
-		
-		
-		<span class="miniProfileInfoJoined">Joined Serengeti on <fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${user.dateCreated}"/></span>
-		
-		</div>
-	</c:forEach>
-</div>
+<table class="userprofile">
+      <tr class="top-row">
+        <th class="userprofile-picture">photo</th>
+        <th>name</th>
+        <th>join date</th>
+      </tr>
+      <c:forEach var="user" items="${newest}">
+        <tr>
+          <td class="userprofile-picture">
+            <div>
+              <a href="user/${user.id}">
+                <img src="${pageContext.request.contextPath}/images/default_user.png" alt="user" title="${user.email}" width="50" height="50"/>
+              </a>
+            </div>
+          </td>
+          <td class="userprofile-name">
+            <p><a href="user/${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></p>
+          </td>
+          <td class="userprofile-date">
+             <fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${user.dateCreated}"/>
+          </td>
+        </tr>
+      </c:forEach>
+</table>
 
 
 
