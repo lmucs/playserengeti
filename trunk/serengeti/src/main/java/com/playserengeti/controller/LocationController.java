@@ -98,7 +98,9 @@ public class LocationController extends MultiActionController {
     }
 
     public void handleResult(HttpServletRequest request, HttpServletResponse response) {
-        String name = request.getParameter("name");
+        double bound = .03;
+    	
+    	String name = request.getParameter("name");
         Double lat = Double.valueOf(request.getParameter("lat"));
         Double lng = Double.valueOf(request.getParameter("lng"));
         String street = request.getParameter("street");
@@ -119,8 +121,10 @@ public class LocationController extends MultiActionController {
             l = locationService.getLocationByName(name);
         }
         try {
-            PrintWriter out = response.getWriter();
-            out.println(l.asMinimalJSON());
+        	if (Math.abs(l.getLatitude() - lat) < bound && Math.abs((l.getLongitude() - lng)) < bound) {
+                PrintWriter out = response.getWriter();
+                out.println(l.asMinimalJSON());
+        	}
         }
         catch(IOException e) {}
     }
