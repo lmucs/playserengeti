@@ -8,8 +8,13 @@ import java.util.Map;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
 import com.playserengeti.domain.Location;
-import com.playserengeti.domain.Team;
 
+/**
+ * An ibatis implementation of the location dao. Calls upon sql queries.
+ * 
+ * @author Chris
+ * 
+ */
 public class LocationDaoIbatisImpl extends SqlMapClientDaoSupport implements
 		LocationDao {
 
@@ -20,29 +25,25 @@ public class LocationDaoIbatisImpl extends SqlMapClientDaoSupport implements
 
 	@Override
 	public Collection<Location> getAllLocations() {
-		return (Collection<Location>)
-			getSqlMapClientTemplate().queryForList("getAllLocations");
+		return (Collection<Location>) getSqlMapClientTemplate().queryForList(
+				"getAllLocations");
 	}
 
 	@Override
 	public Location getLocationById(Integer id) {
-		return (Location)getSqlMapClientTemplate().queryForObject(
-				"getLocationById",
-				id);
+		return (Location) getSqlMapClientTemplate().queryForObject(
+				"getLocationById", id);
 	}
 
 	@Override
 	public Location getLocationByName(String display) {
-		return (Location)getSqlMapClientTemplate().queryForObject(
-				"getLocationByName",
-				display);
+		return (Location) getSqlMapClientTemplate().queryForObject(
+				"getLocationByName", display);
 	}
 
 	@Override
 	public Integer insertLocation(Location location) {
-		getSqlMapClientTemplate().insert(
-				"insertLocation",
-				location);
+		getSqlMapClientTemplate().insert("insertLocation", location);
 		return location.getId();
 	}
 
@@ -56,25 +57,29 @@ public class LocationDaoIbatisImpl extends SqlMapClientDaoSupport implements
 	public void updateLocation(Location location) {
 		getSqlMapClientTemplate().update("updateLocation", location);
 	}
-	
+
 	@Override
-	public Collection<Location> getNearbyLocations(Double latitude, Double longitude) {
-	    Map<String, Double> parameterMap = new HashMap<String, Double>();
-	    parameterMap.put("latitude", latitude);
-	    parameterMap.put("longitude", longitude);
-		return (List<Location>)getSqlMapClientTemplate().queryForList("getNearbyLocations", parameterMap);
+	public Collection<Location> getNearbyLocations(Double latitude,
+			Double longitude) {
+		Map<String, Double> parameterMap = new HashMap<String, Double>();
+		parameterMap.put("latitude", latitude);
+		parameterMap.put("longitude", longitude);
+		return (List<Location>) getSqlMapClientTemplate().queryForList(
+				"getNearbyLocations", parameterMap);
 	}
-	
+
 	@Override
 	public Collection<Location> getControlledTerritory(Integer teamId) {
-		return (Collection<Location>)getSqlMapClientTemplate().queryForList("getControlledTerritory", teamId);
+		return (Collection<Location>) getSqlMapClientTemplate().queryForList(
+				"getControlledTerritory", teamId);
 	}
-	
+
 	@Override
 	public Collection<Location> searchLocations(String query) {
-		return (Collection<Location>)getSqlMapClientTemplate().queryForList("searchLocations", query);
+		return (Collection<Location>) getSqlMapClientTemplate().queryForList(
+				"searchLocations", query);
 	}
-	
+
 	@Override
 	public boolean updateOwningTeam(Integer locationId) {
 		return getSqlMapClientTemplate().update("updateOwningTeam", locationId) > 0;

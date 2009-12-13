@@ -15,7 +15,6 @@ import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 import com.playserengeti.domain.Team;
 import com.playserengeti.domain.User;
 import com.playserengeti.domain.Visit;
-import com.playserengeti.service.LocationService;
 import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
 import com.playserengeti.service.VisitService;
@@ -33,15 +32,13 @@ public class UserController extends MultiActionController {
 
 	private UserService userService;
 	private TeamService teamService;
-	private LocationService locationService;
 	private VisitService visitService;
 	private UserSession session;
 
 	public UserController(UserService userService, TeamService teamService,
-			LocationService locationService, VisitService visitService) {
+			VisitService visitService) {
 		this.userService = userService;
 		this.teamService = teamService;
-		this.locationService = locationService;
 		this.visitService = visitService;
 	}
 

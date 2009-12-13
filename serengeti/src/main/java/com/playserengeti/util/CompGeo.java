@@ -4,28 +4,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CompGeo {
-	
+
+	/**
+	 * The bound to determine how far away locations can be and remain in a
+	 * cluster.
+	 */
 	private double bound = .03;
 
 	/**
-	 * Returns a List of Lists containing the convex hull of each 
-	 * cluster in the given List of points.
+	 * Returns a List of Lists containing the convex hull of each cluster in the
+	 * given List of points.
+	 * 
 	 * @param points
 	 * @return
 	 */
 	public List<List<Double[]>> getRegions(List<Double[]> points) {
 		List<List<Double[]>> result = cluster(points);
-		
+
 		for (int i = 0; i < result.size(); i++) {
 			result.set(i, findConvexHull(result.get(i)));
 		}
 		return result;
 	}
-	
+
 	/**
-	 * A variation of the QT clustering algorithm.  Separates 
-	 * the List of points into clusters based on the "bound" 
-	 * property.
+	 * A variation of the QT clustering algorithm. Separates the List of points
+	 * into clusters based on the "bound" property.
+	 * 
 	 * @param points
 	 * @return
 	 */
@@ -48,15 +53,18 @@ public class CompGeo {
 			}
 		}
 
-		if (cluster.size() > 2) result.add(cluster);
+		if (cluster.size() > 2)
+			result.add(cluster);
 		points.remove(cluster);
-		if (points.size() != 0) result.addAll(cluster(points));
+		if (points.size() != 0)
+			result.addAll(cluster(points));
 		return result;
 	}
 
 	/**
-	 * An implementation of the Graham scan algorithm for computing 
-	 * the convex hull of a set of points.
+	 * An implementation of the Graham scan algorithm for computing the convex
+	 * hull of a set of points.
+	 * 
 	 * @param points
 	 * @return
 	 */
@@ -86,8 +94,9 @@ public class CompGeo {
 	}
 
 	/**
-	 * Returns whether or not the point c is on the left of the 
-	 * line from point a to b.
+	 * Returns whether or not the point c is on the left of the line from point
+	 * a to b.
+	 * 
 	 * @param a
 	 * @param b
 	 * @param c
@@ -98,8 +107,9 @@ public class CompGeo {
 	}
 
 	/**
-	 * Sorts the given List of points based on the polar angle formed 
-	 * by the x axis and the line from the given center to that point.
+	 * Sorts the given List of points based on the polar angle formed by the x
+	 * axis and the line from the given center to that point.
+	 * 
 	 * @param points
 	 * @param center
 	 * @return
@@ -120,9 +130,9 @@ public class CompGeo {
 	}
 
 	/**
-	 * Returns the bottom point in the given List of points. 
-	 * If two points have the same y value, it returns the 
-	 * right-most point.
+	 * Returns the bottom point in the given List of points. If two points have
+	 * the same y value, it returns the right-most point.
+	 * 
 	 * @param points
 	 * @return
 	 */
@@ -140,9 +150,10 @@ public class CompGeo {
 		}
 		return candidate;
 	}
-	
+
 	/**
 	 * Returns the distance from point a to b.
+	 * 
 	 * @param a
 	 * @param b
 	 * @return
