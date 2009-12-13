@@ -31,7 +31,7 @@
       <h2 class="tablecaption">Newest Users</h2>
     </div>
 
-    <table id="userprofile">
+    <table class="userprofile">
       <tr class="top-row">
         <th class="userprofile-picture">photo</th>
         <th>name</th>
@@ -49,7 +49,7 @@
           <td class="userprofile-name">
             <p><a href="user/${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></p>
           </td>
-          <td class="userprofile-joindate">
+          <td class="userprofile-date">
              <fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${user.dateCreated}"/>
           </td>
         </tr>

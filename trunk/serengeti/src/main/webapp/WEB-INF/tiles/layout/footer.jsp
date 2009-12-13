@@ -2,8 +2,8 @@
 
 <div id="footer">
 
-  <div id="footerLeft">&copy; 2009 Serengeti</div>
+  <p id="footerLeft">&copy; 2009 Serengeti</p>
 
-  <div id="footerRight">about | privacy | terms | contact</div>
+  <p id="footerRight">about | privacy | terms | contact</p>
 
 </div>
