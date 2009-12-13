@@ -2,7 +2,7 @@ IN PROGRESS
 ===Tiles===
 
 ===Scripts===
-
+Scripting  Scripts are used in HTML to allow dynamic web pages that can have different and changing content.  The scripts used in  serengeti mainly controlled what information was displayed on the maps on the various location  team pages. In the location pages, they were used to show the location, nearby locations, and addresses of locations. In the team pages, they were used to show the area that a team owned and have a colored overlay that displayed this area. JQuery was also used in the development of the client. JQuery is a lightweight JS library that is used to emphasize interaction between JS and HTML. We used it for accessing data and displaying data about locations, users, and teams.
 ===Styles===
 
 ===Images===
