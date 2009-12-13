@@ -1,9 +1,5 @@
+#summary A narrative description of Serengeti
 #labels Featured,Phase-Design
-=== Short Description ===
-
-Serengeti is a social networking application and game where players join teams that compete for "ownership" of locations (businesses, parks, beaches, and so on) by recording their visits to these locations. Visits are recorded by "checking in" via a mobile browser or iPhone app. Players can track their teams' conquests through the playserengeti website. 
-
-=== Narrative Description ===
 
 Serengeti is a location-aware, social networking application and game where participants join teams, record visits to real world locations (beaches, parks, business establishments), and assist their team in "taking ownership" of locations. Users can be part of multiple teams, but their visits can only be attributed to one team of the user's choice at a time. To record visits, users _check in_ at their location, either by a web application accessible to mobile devices or a specially developed application for major mobile platforms, such as the iPhone. Points for a location and team are given for each visit, and the team with the highest point total for a location is considered the "owner" of the location.
 
