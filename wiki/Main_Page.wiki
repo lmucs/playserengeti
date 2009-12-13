@@ -1,5 +1,5 @@
 #labels Featured
-<img src="http://playserengeti.googlegroups.com/web/serengeti_logo_full.png?gda=Vxt98koAAACzkuANwHavp4lFM1CeOrgoJuesK8jA0Cv-1pjIxRuD-2_1sGJvXCt9jVUnr6By-QYLFhim5d1LJsoAMKqscxTI_e3Wg0GnqfdKOwDqUih1tA" align=right>
+<img src="http://playserengeti.googlegroups.com/web/serengeti_logo_full.png?gda=Vxt98koAAACzkuANwHavp4lFM1CeOrgoJuesK8jA0Cv-1pjIxRuD-2_1sGJvXCt9jVUnr6By-QYLFhim5d1LJsoAMKqscxTI_e3Wg0GnqfdKOwDqUih1tA" align=right height=40% width=40%>
 
 This is the official wiki for the CMSI 401 Software Engineering Laboratory course for 2009.  
 
