@@ -1,4 +1,11 @@
 IN PROGRESS
+===Tiles===
+
+===Scripts===
+
+===Styles===
+
+===Images===
 
 <wiki:comment>
 To contain:
