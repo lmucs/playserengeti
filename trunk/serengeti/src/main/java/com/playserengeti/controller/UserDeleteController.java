@@ -15,66 +15,76 @@ import com.playserengeti.service.TeamService;
 import com.playserengeti.service.UserService;
 import com.playserengeti.session.UserSession;
 
+/**
+ * Controller for deleting users.
+ * 
+ * @author Chris
+ * 
+ */
 public class UserDeleteController extends SimpleFormController {
 
-    private UserService userService;
-    private TeamService teamService;
-    private UserSession session;
+	private UserService userService;
+	private TeamService teamService;
+	private UserSession session;
 
-    public UserDeleteController(UserService userService, TeamService teamService) {
-        this.userService = userService;
-        this.teamService = teamService;
-    }
+	public UserDeleteController(UserService userService, TeamService teamService) {
+		this.userService = userService;
+		this.teamService = teamService;
+	}
 
-    /**
-     * Provides the list of all users to the form view.
-     */
-    protected Object formBackingObject(HttpServletRequest request)
-            throws Exception {
-        Integer userId = Integer.valueOf(request.getParameter("userId"));
-        UserCommand userCommand = new UserCommand();
-        User user = userService.getUserById(userId);
+	/**
+	 * Sets the backing object to contain information about the user to be
+	 * deleted.
+	 */
+	protected Object formBackingObject(HttpServletRequest request)
+			throws Exception {
+		Integer userId = Integer.valueOf(request.getParameter("userId"));
+		UserCommand userCommand = new UserCommand();
+		User user = userService.getUserById(userId);
 
-        userCommand.setUserId(userId);
-        userCommand.setEmail(user.getEmail());
-        userCommand.setFirstName(user.getFirstName());
-        userCommand.setLastName(user.getLastName());
-        userCommand.setTeams(teamService.getTeamsLedByUser(userId));
+		userCommand.setUserId(userId);
+		userCommand.setEmail(user.getEmail());
+		userCommand.setFirstName(user.getFirstName());
+		userCommand.setLastName(user.getLastName());
+		userCommand.setTeams(teamService.getTeamsLedByUser(userId));
 
-        setSessionForm(true);
-        return userCommand;
-    }
+		setSessionForm(true);
+		return userCommand;
+	}
 
-    @Override
-    protected ModelAndView onSubmit(HttpServletRequest request,
-            HttpServletResponse response, Object _command, BindException errors)
-            throws Exception {
-        UserCommand command = (UserCommand) _command;
-        Integer userId = command.getUserId();
+	/**
+	 * Performs the deletion of a user.
+	 */
+	@Override
+	protected ModelAndView onSubmit(HttpServletRequest request,
+			HttpServletResponse response, Object _command, BindException errors)
+			throws Exception {
+		UserCommand command = (UserCommand) _command;
+		Integer userId = command.getUserId();
 
-        try {
-            session.setUser(null);
+		try {
+			session.setUser(null);
 
-            // Deletes the user from the database.
-            userService.deleteUser(userId);
+			// Deletes the user from the database.
+			userService.deleteUser(userId);
 
-            return new ModelAndView("redirect:/");
-        }
+			return new ModelAndView("redirect:/");
+		}
 
-        catch (Exception e) {
-            e.printStackTrace();
-            Map<String, Object> model = new HashMap<String, Object>();
-            model.put("command", command);
-            model.put("message", e.getMessage());
-            return showForm(request, response, errors, model);
-        }
-    }
+		catch (Exception e) {
+			e.printStackTrace();
+			Map<String, Object> model = new HashMap<String, Object>();
+			model.put("command", command);
+			model.put("message", e.getMessage());
+			return showForm(request, response, errors, model);
+		}
+	}
 
-    public UserSession getSession() {
-        return session;
-    }
+	public UserSession getSession() {
+		return session;
+	}
 
-    public void setSession(UserSession session) {
-        this.session = session;
-    }
+	public void setSession(UserSession session) {
+		this.session = session;
+	}
 }

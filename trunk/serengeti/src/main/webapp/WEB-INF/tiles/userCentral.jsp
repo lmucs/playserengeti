@@ -80,7 +80,7 @@
             </div>
           </td>
           <td class="userprofile-name">
-            <p><a href="user/${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></p>
+            <p><a href="${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></p>
           </td>
           <td class="userprofile-date">
              <fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${user.dateCreated}"/>

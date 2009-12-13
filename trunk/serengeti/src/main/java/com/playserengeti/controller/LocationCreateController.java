@@ -9,53 +9,56 @@ import com.playserengeti.domain.Location;
 import com.playserengeti.service.LocationService;
 import com.playserengeti.session.UserSession;
 
-/*
+/**
  * Controller for creating a Location.
  */
 public class LocationCreateController extends SimpleFormController {
 
-    private LocationService locationService;
-    private UserSession session;
+	private LocationService locationService;
+	private UserSession session;
 
-    public LocationCreateController(LocationService locationService) {
-        this.locationService = locationService;
-    }
+	public LocationCreateController(LocationService locationService) {
+		this.locationService = locationService;
+	}
 
-    /**
-     * Don't think this is even needed.
-     */
-    protected Object formBackingObject(HttpServletRequest request)
-            throws Exception {
-        LocationCommand locationCommand = new LocationCommand();
+	/**
+	 * Don't think this is even needed.
+	 */
+	protected Object formBackingObject(HttpServletRequest request)
+			throws Exception {
+		LocationCommand locationCommand = new LocationCommand();
 
-        setSessionForm(true);
-        return locationCommand;
-    }
+		setSessionForm(true);
+		return locationCommand;
+	}
 
-    public ModelAndView onSubmit(Object _command) {
-        LocationCommand command = (LocationCommand) _command;
-        
-        Location location = new Location(null, command.getName(),
-                command.getLatitude(), command.getLongitude());
-        location.setStreet(command.getStreet());
-        location.setCity(command.getCity());
-        location.setState(command.getState());
-        location.setZipcode(command.getZipcode());
-        location.setPhoneNumber(command.getPhoneNumber());
+	/**
+	 * Creates a location based on the information on the form.
+	 */
+	public ModelAndView onSubmit(Object _command) {
+		LocationCommand command = (LocationCommand) _command;
 
-        locationService.saveLocation(location);
+		Location location = new Location(null, command.getName(), command
+				.getLatitude(), command.getLongitude());
+		location.setStreet(command.getStreet());
+		location.setCity(command.getCity());
+		location.setState(command.getState());
+		location.setZipcode(command.getZipcode());
+		location.setPhoneNumber(command.getPhoneNumber());
 
-        ModelAndView mav = new ModelAndView("redirect:view");
-        mav.addObject("locationId", location.getId());
+		locationService.saveLocation(location);
 
-        return mav;
-    }
+		ModelAndView mav = new ModelAndView("redirect:view");
+		mav.addObject("locationId", location.getId());
 
-    public UserSession getSession() {
-        return session;
-    }
+		return mav;
+	}
 
-    public void setSession(UserSession session) {
-        this.session = session;
-    }
+	public UserSession getSession() {
+		return session;
+	}
+
+	public void setSession(UserSession session) {
+		this.session = session;
+	}
 }

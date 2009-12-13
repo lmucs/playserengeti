@@ -14,27 +14,30 @@ import com.playserengeti.session.UserSession;
  */
 public class WelcomeController extends AbstractController {
 
-    private UserSession session;
-    private UserService userService;
-    
-    public WelcomeController(UserService userService) {
-    	this.userService = userService;
-    }
-    
-    @Override
-    protected ModelAndView handleRequestInternal(HttpServletRequest request,
-            HttpServletResponse response) throws Exception {
-        ModelAndView mav = new ModelAndView("welcome");
-        mav.addObject("session", session);
-        mav.addObject("newest", userService.getNewestUsers());
-        return mav;
-    }
+	private UserSession session;
+	private UserService userService;
 
-    public UserSession getSession() {
-        return session;
-    }
+	public WelcomeController(UserService userService) {
+		this.userService = userService;
+	}
 
-    public void setSession(UserSession session) {
-        this.session = session;
-    }
+	/**
+	 * Displays the welcome screen along with a list of newly created users.
+	 */
+	@Override
+	protected ModelAndView handleRequestInternal(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView("welcome");
+		mav.addObject("session", session);
+		mav.addObject("newest", userService.getNewestUsers());
+		return mav;
+	}
+
+	public UserSession getSession() {
+		return session;
+	}
+
+	public void setSession(UserSession session) {
+		this.session = session;
+	}
 }
