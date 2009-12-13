@@ -20,7 +20,6 @@ public class CompGeo {
 	 */
 	public List<List<Double[]>> getRegions(List<Double[]> points) {
 		List<List<Double[]>> result = cluster(points);
-
 		for (int i = 0; i < result.size(); i++) {
 			result.set(i, findConvexHull(result.get(i)));
 		}
@@ -36,7 +35,7 @@ public class CompGeo {
 	 */
 	public List<List<Double[]>> cluster(List<Double[]> points) {
 		List<List<Double[]>> result = new ArrayList<List<Double[]>>();
-		if (points.size() == 1) {
+		if (points.size() <= 1) {
 			result.add(points);
 			return result;
 		}
