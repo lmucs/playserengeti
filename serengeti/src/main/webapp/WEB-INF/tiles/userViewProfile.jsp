@@ -29,7 +29,7 @@
         </c:if>
         <div class="grid_10">
           <div class="grid_3 userImage">
-          <img src="${pageContext.request.contextPath}/images/default_user.png" alt="Profile Picture"
+          <img src="${pageContext.request.contextPath}/images/default_user.png" height="150" width="150" alt="Profile Picture"
             title="Profile Picture"/>
       </div>
           <div id="userInfo" class="grid_6">
@@ -157,11 +157,12 @@
 </div>
 <div id="popupBackground"></div>
 
-<script src="${pageContext.request.contextPath}/scripts/popup.js" type="text/javascript"></script>
-<c:if test="${session.loggedIn && (session.user.id == userCommand.userId)}">
-  <script src="http://www.google.com/jsapi" type="text/javascript"></script>
-  <script src="${pageContext.request.contextPath}/scripts/checkIn.js" type="text/javascript"></script>
-</c:if>
+<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/popup.js"></script>
 <c:if test="${session.loggedIn}">
-  <script src="${pageContext.request.contextPath}/scripts/invite.js" type="text/javascript"></script>
+  <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/invite.js"></script>
+  <c:if test="${session.user.id == userCommand.userId}">
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/checkIn.js"></script>
+  </c:if>
 </c:if>
+

@@ -61,7 +61,7 @@ function searchComplete() {
             });
         }
         else {
-            locSelect.replaceWith("<p>We couldn't find any locations by that name.</p>");
+            locSelect.replaceWith("<p>Either we couldn't find any locations by that name or you couldn't possibly be there....cheater.</p>");
         }
 }
 
