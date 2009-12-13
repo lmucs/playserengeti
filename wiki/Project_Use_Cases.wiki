@@ -22,7 +22,7 @@
   * *Preconditions*: The user is already registered as a player.
   * *Flow of Events for Main Scenario*:
     # User attempts to delete account.
-    # System sends user warning of attempted account deletion and asks for confirmation
+    # System sends user warning of attempted account deletion and asks for confirmation.
     # If the user confirms, their player account is deleted and they are taken to the home page.
   * *Alternative Scenarios*:
     # If the user is a team leader, their team is deleted from the database as well.
@@ -310,6 +310,17 @@ Notes:
 ==Status==
 ----
 ===U12 Check-In===
+  * *Description*: A user checks in at a location for a team they belong to.
+  * *Actor*: End user.
+  * *Preconditions*: The user must be a registered player and belong to at least one team.
+  * *Flow of Events for Main Scenario*:
+    # User sends their user id, the id of a location, and the id of a team they are part of to the system.
+    # The system notes the time the user sent the ids, and adds a visit to the system based upon the user id, the team id, the location id, and the time sent.
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: A visit is added to the database based upon the recieved ids and recorded time.
+  * *Handles Requirements*: 
+
 <wiki:comment>
 U14 Ping
   * *Description*: 
@@ -378,8 +389,8 @@ Security:
 Notes:
 </wiki:comment>
 ===U13 View World Map===
-  * *Description*: 
-  * *Actor*:
+  * *Description*:
+  * *Actor*: End user.
   * *Preconditions*: 
   * *Flow of Events for Main Scenario*:
     # TO_DO
