@@ -16,6 +16,6 @@ The Serengeti Team consists of
   * Chris (Anquan) Mueller
   * Don (Scythe) Murphy
 
-Some professors and alumni are also registered as committers.
+Some professors and alumni registered as committers, or provided insight, help, advice, or harrassment. Thanks to Dondi Dionisio, Kelly Sutton, B.J. Johnson, and Derek Smith.
 
 <wiki:comment>Add logo/picture.</wiki:comment>
