@@ -1,4 +1,16 @@
-#summary IN PROGRESS
+#summary A description of the Serengeti webapplicaiton (IN PROGRESS)
+
+The Serengeti server is a Java web application with the following components
+  * Configuration
+    * web.xml
+    * spring-servlet.xml (MVC)
+    * application-context.xml (data source, transactions)
+    * IBATIS sql maps, Tiles defs, UrlRewrite rules
+  * Domain Objects – just POJOs (thx Spring)!
+  * Controllers, commands, validators
+  * Services
+  * Daos
+  * UI: JSP, JSTL, Tiles, CSS, Scripts
 
 ==Domain Classes==
 
