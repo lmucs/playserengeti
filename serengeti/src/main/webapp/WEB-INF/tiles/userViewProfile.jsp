@@ -57,11 +57,19 @@
                       </div>
                       <div class="grid_4"  id="teamList">
                           <p>As team:</p>
-                          <select id="teamSelect">
-                              <c:forEach var="team" items="${userCommand.teams}">
-                                  <option value="${team.id}"><c:out value="${team.name}"/></option>
-                              </c:forEach>
-                          </select>
+                          <c:choose>
+                              <c:when test="${!empty userCommand.teams}">
+                                  <select id="teamSelect">
+                                      <c:forEach var="team" items="${userCommand.teams}">
+                                          <option value="${team.id}"><c:out value="${team.name}"/></option>
+                                      </c:forEach>
+                                  </select>
+                              </c:when>
+                              <c:otherwise>
+                                  <p>You aren't a member of any teams yet.  Ask a friend to invite you to one
+                                  or <a href="../team/create">make your own.</a></p>
+                              </c:otherwise>
+                          </c:choose>
                       </div>
                       <div class="clear">&nbsp;</div>
                       <div class="grid_1" id="checkinButton">
