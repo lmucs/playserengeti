@@ -445,6 +445,15 @@ ul.hor_menu {
   margin-top: 10px;
 }
 
+#loader {
+  padding-bottom: 5px;
+  margin-top: 50px;
+  margin-left: 120px;
+  position: absolute;
+  z-index:5000;
+}
+
+
 #sendInvites {
   top: 180px;
   right: 200px;
