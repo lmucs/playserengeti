@@ -1,3 +1,4 @@
+#labels Featured
 This is the official wiki for the CMSI 401 Software Engineering Laboratory course for 2009.  
 
 The wiki also functions as the traditional project notebook.  All design notes, documents, reports, discussion, and other artifacts related to the course are kept here.  They've even been thoughtfully organized and indexed; guests can browse the project artifacts in the order they appear in the table of contents to the left.
