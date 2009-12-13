@@ -14,7 +14,7 @@ import com.playserengeti.util.CompGeo;
 public class LocationService {
 
 	private LocationDao locationDao;
-	private CompGeo geography = new CompGeo();
+	private CompGeo geometry = new CompGeo();
 
     // TODO: private LocationDao LocationDao;
 
@@ -121,7 +121,7 @@ public class LocationService {
        for (Location l : locations) {
     	   points.add(new Double[]{l.getLatitude(), l.getLongitude()});
        }
-       return geography.getRegions(points);
+       return geometry.getRegions(points);
     }
     
 
