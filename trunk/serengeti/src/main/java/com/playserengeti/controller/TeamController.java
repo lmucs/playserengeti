@@ -1,6 +1,7 @@
 package com.playserengeti.controller;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -95,7 +96,7 @@ public class TeamController extends MultiActionController {
         Collection<User> members = teamService.getTeamMembers(teamId);
         Collection<Visit> activity = visitService.getTeamsRecentActivity(teamId);
         Collection<Location> territory = locationService.getControlledTerritory(teamId);
-        
+        List<List<Double[]>> hull = locationService.getRegions(territory);
 
         String view = "teamViewProfile";
         if ("xml".equals(request.getParameter("format"))) {
@@ -104,6 +105,9 @@ public class TeamController extends MultiActionController {
         if ("json".equals(request.getParameter("format"))) {
             view = "teamViewProfileJSON";
         }
+        
+        String jsonData = "{\"locations\" : " + locationService.asJSON(territory) + 
+                         ", \"regions\" : " + locationService.regionsAsJSON(hull) + "}";
 
         ModelAndView mav = new ModelAndView(view);
         mav.addObject("session", session);
@@ -111,7 +115,7 @@ public class TeamController extends MultiActionController {
         mav.addObject("members", members);
         mav.addObject("activity", activity);
         mav.addObject("territory", territory);
-        mav.addObject("jsonData", "{\"territory\" : " + locationService.asJSON(territory) + "}");
+        mav.addObject("jsonData", jsonData.replace("'", "&#39"));
 
         return mav;
     }
