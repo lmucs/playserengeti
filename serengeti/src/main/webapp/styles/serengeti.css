@@ -106,6 +106,10 @@ div.searchbar {
   -webkit-border-bottom-right-radius: 8px;
 }
 
+#home-page-body{
+	margin-left: 7px;
+}
+
 #home-page-welcome {
   text-align: justify;
   float: left;
