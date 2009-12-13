@@ -1,36 +1,42 @@
 package com.playserengeti.domain;
 
+/**
+ * A representation of a location within Serengeti.
+ * 
+ * @author Chris
+ * 
+ */
 public class Location {
 
-    private Integer id;
-    private String name;
-    private double latitude;
-    private double longitude;
-    private Team owner;
-    private String phoneNumber;
-    private String street;
-    private String city;
-    private String state;
-    private String zipcode;
+	private Integer id;
+	private String name;
+	private double latitude;
+	private double longitude;
+	private Team owner;
+	private String phoneNumber;
+	private String street;
+	private String city;
+	private String state;
+	private String zipcode;
 
-    public Location() {
-    }
-    
-    public Location(Integer id, String name, double latitude, double longitude) {
-        this.id = id;
-        this.name = name;
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
+	public Location() {
+	}
 
-    public Location(Location b) {
-    	this(b.id, b.name, b.latitude, b.longitude);
-    	this.owner = b.owner;
-    	this.phoneNumber = b.phoneNumber;
-    	this.street = b.street;
-    	this.city = b.city;
-    	this.state = b.state;
-    	this.zipcode = b.zipcode;
+	public Location(Integer id, String name, double latitude, double longitude) {
+		this.id = id;
+		this.name = name;
+		this.latitude = latitude;
+		this.longitude = longitude;
+	}
+
+	public Location(Location b) {
+		this(b.id, b.name, b.latitude, b.longitude);
+		this.owner = b.owner;
+		this.phoneNumber = b.phoneNumber;
+		this.street = b.street;
+		this.city = b.city;
+		this.state = b.state;
+		this.zipcode = b.zipcode;
 	}
 
 	public Integer getId() {
@@ -113,22 +119,40 @@ public class Location {
 		this.zipcode = zipcode;
 	}
 
+	/**
+	 * Returns the location as a JSON string with all properties.
+	 * Escapes quotations to prevent parse errors.
+	 * 
+	 * @return
+	 */
 	public String asJSON() {
-		String owner = this.owner != null ? this.owner.asMinimalJSON() : "{\"id\" : \"\", \"name\" : \"In Conflict\"}";
-		return "{\"id\" : " + this.id + ", \"name\" : \"" + this.name.replace("\"", "&#34") + "\", \"latitude\" : \"" + 
-		    this.latitude + "\", \"longitude\" : \"" + this.longitude + "\", \"street\" : \"" + this.street + 
-		    "\", \"city\" : \"" + this.city + "\", \"state\" : \"" + this.state + "\", \"zipcode\" : \"" + this.zipcode + 
-		    "\", \"owner\" : " + owner + ", \"phoneNumber\" : \"" + this.phoneNumber + 
-		    "\"}";
+		String owner = this.owner != null ? this.owner.asMinimalJSON()
+				: "{\"id\" : \"\", \"name\" : \"In Conflict\"}";
+		return "{\"id\" : " + this.id 
+		        + ", \"name\" : \"" + this.name.replace("\"", "&#34") 
+		        + "\", \"latitude\" : \"" + this.latitude 
+		        + "\", \"longitude\" : \"" + this.longitude
+				+ "\", \"street\" : \"" + this.street 
+				+ "\", \"city\" : \"" + this.city 
+				+ "\", \"state\" : \"" + this.state
+				+ "\", \"zipcode\" : \"" + this.zipcode 
+				+ "\", \"owner\" : " + owner 
+				+ ", \"phoneNumber\" : \"" + this.phoneNumber + "\"}";
 	}
-	
-	public String asMinimalJSON() {
-		return "{\"id\" : " + this.id + ", \"name\" : \"" + this.name.replace("\"", "&#34") + "\", \"latitude\" : \"" + 
-	    this.latitude + "\", \"longitude\" : \"" + this.longitude + "\"}";
-	}
-	
 
-	
-    // TODO: equals, hashCode, toString
+	/**
+	 * Returns the location as a JSON string with minimal information.
+	 * Escapes quotations to prevent parse errors.
+	 * 
+	 * @return
+	 */
+	public String asMinimalJSON() {
+		return "{\"id\" : " + this.id 
+		        + ", \"name\" : \"" + this.name.replace("\"", "&#34") 
+		        + "\", \"latitude\" : \"" + this.latitude 
+		        + "\", \"longitude\" : \"" + this.longitude	+ "\"}";
+	}
+
+	// TODO: equals, hashCode, toString
 
 }

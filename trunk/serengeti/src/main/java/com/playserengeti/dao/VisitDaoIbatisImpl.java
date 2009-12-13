@@ -9,6 +9,12 @@ import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 import com.playserengeti.domain.Team;
 import com.playserengeti.domain.Visit;
 
+/**
+ * An ibatis implementation of visit dao. Calls upon sql queries.
+ * 
+ * @author Chris
+ * 
+ */
 public class VisitDaoIbatisImpl extends SqlMapClientDaoSupport implements
 		VisitDao {
 
@@ -19,36 +25,36 @@ public class VisitDaoIbatisImpl extends SqlMapClientDaoSupport implements
 
 	@Override
 	public Collection<Visit> getAllVisits() {
-		return (Collection<Visit>)
-			getSqlMapClientTemplate().queryForList("getAllVisits");
+		return (Collection<Visit>) getSqlMapClientTemplate().queryForList(
+				"getAllVisits");
 	}
 
 	@Override
 	public Visit getVisitById(Integer visitId) {
-		return (Visit)getSqlMapClientTemplate().queryForObject("getVisitById", visitId);
+		return (Visit) getSqlMapClientTemplate().queryForObject("getVisitById",
+				visitId);
 	}
 
 	@Override
 	public Collection<Visit> getVisitByLocationId(Integer locationId) {
-		return (Collection<Visit>)
-			getSqlMapClientTemplate().queryForList("getVisitsByLocationId", locationId);
+		return (Collection<Visit>) getSqlMapClientTemplate().queryForList(
+				"getVisitsByLocationId", locationId);
 	}
 
 	@Override
 	public Collection<Visit> getVisitsByTeamId(Integer teamId) {
-		return (Collection<Visit>)
-			getSqlMapClientTemplate().queryForList("getVisitsByTeamId", teamId);
+		return (Collection<Visit>) getSqlMapClientTemplate().queryForList(
+				"getVisitsByTeamId", teamId);
 	}
 
 	@Override
 	public Collection<Visit> getVisitsByUserId(Integer userId) {
-		return (Collection<Visit>)
-			getSqlMapClientTemplate().queryForList("getVisitsByUserId", userId);
+		return (Collection<Visit>) getSqlMapClientTemplate().queryForList(
+				"getVisitsByUserId", userId);
 	}
 
 	@Override
-	public void insertVisit(Integer userId, Integer teamId,
-			Integer locationId) {
+	public void insertVisit(Integer userId, Integer teamId, Integer locationId) {
 		Map<String, Object> pmap = new HashMap<String, Object>();
 		pmap.put("userId", userId);
 		pmap.put("teamId", teamId);
@@ -58,9 +64,10 @@ public class VisitDaoIbatisImpl extends SqlMapClientDaoSupport implements
 
 	@Override
 	public Integer insertVisit(Visit visit) {
-		Integer id = (Integer)getSqlMapClientTemplate().insert("insertVisit", visit);
-		visit.setDate(
-				((Visit)getSqlMapClientTemplate().queryForObject("getLocationById", visit.getId())).getDate());
+		Integer id = (Integer) getSqlMapClientTemplate().insert("insertVisit",
+				visit);
+		visit.setDate(((Visit) getSqlMapClientTemplate().queryForObject(
+				"getLocationById", visit.getId())).getDate());
 		return id;
 	}
 
@@ -72,32 +79,37 @@ public class VisitDaoIbatisImpl extends SqlMapClientDaoSupport implements
 	@Override
 	public Collection<Team> getTeamsThatVisitedLocationByLocationId(
 			Integer locationId) {
-		return (Collection<Team>)
-			getSqlMapClientTemplate().queryForList("getTeamsThatVisitedLocationByLocationId", locationId);
+		return (Collection<Team>) getSqlMapClientTemplate().queryForList(
+				"getTeamsThatVisitedLocationByLocationId", locationId);
 	}
-	
+
 	@Override
 	public Collection<Visit> getRecentCheckIns() {
-		return (Collection<Visit>)getSqlMapClientTemplate().queryForList("getRecentCheckIns");
+		return (Collection<Visit>) getSqlMapClientTemplate().queryForList(
+				"getRecentCheckIns");
 	}
-	
+
 	@Override
 	public Collection<Visit> getRecentFriendCheckIns(Integer userId) {
-		return (Collection<Visit>)getSqlMapClientTemplate().queryForList("getRecentFriendCheckIns", userId);
+		return (Collection<Visit>) getSqlMapClientTemplate().queryForList(
+				"getRecentFriendCheckIns", userId);
 	}
 
 	@Override
 	public Collection<Visit> getUsersRecentActivity(Integer userId) {
-		return (Collection<Visit>)getSqlMapClientTemplate().queryForList("getUsersRecentActivity", userId);
+		return (Collection<Visit>) getSqlMapClientTemplate().queryForList(
+				"getUsersRecentActivity", userId);
 	}
-	
+
 	@Override
 	public Collection<Visit> getTeamsRecentActivity(Integer teamId) {
-		return (Collection<Visit>)getSqlMapClientTemplate().queryForList("getTeamsRecentActivity", teamId);
+		return (Collection<Visit>) getSqlMapClientTemplate().queryForList(
+				"getTeamsRecentActivity", teamId);
 	}
-	
+
 	@Override
 	public Visit getUsersMostRecentCheckin(Integer userId) {
-		return (Visit)getSqlMapClientTemplate().queryForObject("getUsersMostRecentCheckin", userId);
+		return (Visit) getSqlMapClientTemplate().queryForObject(
+				"getUsersMostRecentCheckin", userId);
 	}
 }
