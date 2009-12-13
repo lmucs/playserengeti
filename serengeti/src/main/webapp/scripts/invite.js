@@ -1,10 +1,10 @@
-function sendFriendInvite() {
-    $.get("sendFriendInvite", {firstId : uData.sessionId, secondId : ${userCommand.userId}});
+function sendFriendInvite(targetId, sourceId) {
+    $.get("sendFriendInvite", {firstId : sourceId, secondId : targetId});
     $("#inviteFriend").fadeOut("slow");
 }
  
-function acceptFriendInvite(userId) {
-    var request = $.get("acceptFriendInvite", {firstId : userId, secondId : ${session.user.id}},
+function acceptFriendInvite(userId, sessionId) {
+    var request = $.get("acceptFriendInvite", {firstId : userId, secondId : sessionId},
         function(data) {
             var jsonData = JSON.parse(request.responseText);
             $("#friends").append("<li><a href=" + jsonData.id + ">" + jsonData.name + "</a></li>");
@@ -12,18 +12,18 @@ function acceptFriendInvite(userId) {
     $("#friendInvite_" + userId).fadeOut("slow");
 }
     
-function rejectFriendInvite(userId) {
-    $.get("rejectFriendInvite", {firstId : userId, secondId : ${session.user.id}});
+function rejectFriendInvite(userId, sessionId) {
+    $.get("rejectFriendInvite", {firstId : userId, secondId : sessionId});
     $("#friendInvite_" + userId).fadeOut("slow");
 }
     
-function sendTeamInvite() {
-    $.get("sendTeamInvite", {teamId : $("select#teamInviteSelect").val(), userId : ${userCommand.userId}});
+function sendTeamInvite(targetId) {
+    $.get("sendTeamInvite", {teamId : $("select#teamInviteSelect").val(), userId : targetId});
     $("#inviteTeam").fadeOut("slow");
 }
     
-function acceptTeamInvite(teamId) {
-    var request = $.get("acceptTeamInvite", {teamId : teamId, userId : ${session.user.id}}, 
+function acceptTeamInvite(teamId, sessionId) {
+    var request = $.get("acceptTeamInvite", {teamId : teamId, userId : sessionId}, 
         function(data){
             var jsonData = JSON.parse(request.responseText);
             $("#teams").append("<li><a href=../team/" + jsonData.id + ">" + jsonData.name + "</a></li>");
@@ -32,7 +32,7 @@ function acceptTeamInvite(teamId) {
     $("#teamInvite_" + teamId).fadeOut("slow");
 }
  
-function rejectTeamInvite(teamId) {
-    $.get("rejectTeamInvite", {teamId : teamId, userId : ${session.user.id}});
+function rejectTeamInvite(teamId, sessionId) {
+    $.get("rejectTeamInvite", {teamId : teamId, userId : sessionId});
     $("#teamInvite_" + teamId).fadeOut("slow");
 }
