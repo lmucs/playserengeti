@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.playserengeti.dao.LocationDao;
 import com.playserengeti.domain.Location;
+import com.playserengeti.util.CompGeo;
 
 /**
  * Service for operations related to location.
@@ -13,6 +14,7 @@ import com.playserengeti.domain.Location;
 public class LocationService {
 
 	private LocationDao locationDao;
+	private CompGeo geography = new CompGeo();
 
     // TODO: private LocationDao LocationDao;
 
@@ -84,52 +86,44 @@ public class LocationService {
     	return result;
     }
     
+    public String regionsAsJSON(List<List<Double[]>> regions) {
+    	String result = "[";
+    	int arrayCount = regions.size();
+    	int pointCount;
+    	
+    	for (List<Double[]> hull : regions) {
+    		result += "[";
+    		pointCount = hull.size();
+    		for (Double[] point : hull) {
+    			result += "{\"x\" : \"" + point[0] + "\", \"y\" : \""  + point[1] + "\"}";
+    			if (pointCount > 1) {
+        	    	result += ", ";
+        	    }
+    			pointCount--;
+    		}
+    		
+    		result += "]";
+    	    if (arrayCount > 1) {
+    	    	result += ", ";
+    	    }
+    	    arrayCount--;
+    	}
+    	result += "]";
+    	
+    	return result;
+    }
     public Collection<Location> searchLocations(String query) {
     	return locationDao.searchLocations(query);
     }
     
-    public List<Double[]> convexHull(Collection<Location> locations) {
-    	List<Double[]> result = new ArrayList<Double[]>();
-    	List<Double[]> points = new ArrayList<Double[]>();
-    	for (Location l : locations) {
-    		points.add(new Double[]{l.getLatitude(), l.getLongitude()});
-    	}
+    public List<List<Double[]>> getRegions(Collection<Location> locations) { 
+       List<Double[]> points = new ArrayList<Double[]>();
+       for (Location l : locations) {
+    	   points.add(new Double[]{l.getLatitude(), l.getLongitude()});
+       }
+       return geography.getRegions(points);
+    }
+    
 
-    	Double[] pointOnHull = (getLeftMost(points));
-    	Double[] endPoint = null;
-    	while (endPoint != result.get(0)) {
-    		result.add(pointOnHull);
-    		endPoint = points.get(0);
-    		for (int i = 0; i < points.size(); i++) {
-    			List<Double[]> line = new ArrayList<Double[]>();
-    			line.add(result.get(result.size() - 1));
-    			line.add(endPoint);
-    			//if (onLeftOfLine(points.get(i), line)) {
-    				//endPoint = points.get(i);
-    			//}
-    		}
-    		pointOnHull = endPoint;
-    	}
-    	return result;
-    }
-    
-    public boolean angleBetweenLines(Double[] a, Double[] b, Double[] c) {
-    	
-    	
-    	
-    	return false;
-    }
-    
-    
-    public Double[] getLeftMost(List<Double[]> points) {
-    	Double[] result = points.get(0);
-    
-    	for (Double[] point : points) {
-    		if (point[0] < result[0]) {
-    			result = point;
-    		}
-    	}
-    	return result;
-    }
 }
 
