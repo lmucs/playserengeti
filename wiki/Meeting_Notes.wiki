@@ -1,6 +1,7 @@
-This page summarizes the activities for each class meeting, as well as informal meetings held outside class where problems were discussed or important architectural decisions were made.
+#summary activity log for each class meeting
+#labels Featured
 
-== September 1 (Class) ==
+== September 1 ==
 
   * Went over [http://www.cs.lmu.edu/~ray/classes/se/syllabus/ syllabus] in detail.
   * Talked a bit about craftsmanship vs. engineering.
@@ -10,7 +11,7 @@ This page summarizes the activities for each class meeting, as well as informal 
   * Want an app that runs on some server, with multiple interfaces (Web, !JavaScript, Flash, iPhone, Java Mobile, thick client, ...).
   * Possible idea: a [http://playfoursquare.com/ Foursquare]-like application, possibly restricted to LMU. Possible codename: Serengeti.
 
-== September 3 (Class) ==
+== September 3 ==
 
   * Went over usefulness of !McConell's text.
   * Looked at the requirements checklist.
@@ -24,7 +25,7 @@ This page summarizes the activities for each class meeting, as well as informal 
   * Assigned readings from !McConnell, Chapters 1, 33, 34, 2, 3, 4.
   * Asked students to all get wiki accounts.
 
-== September 8 (Class) ==
+== September 8 ==
   * Created the Use Cases.
   * Went over finer points of how the program will work (Check in/Check out as apposed to ping).
   * Checked our progress against the Requirements Checklist in !McConnell.
@@ -32,14 +33,14 @@ This page summarizes the activities for each class meeting, as well as informal 
   * Started the creation of the architecture page on the wiki.
   * Asked students to continue to update the wiki.
 
-== September 10 (Class) ==
+== September 10 ==
 
   * Lecture on Computing, Software Architecture and Development (with emphasis on the phases, workflows and iterations of modern software methods).
   * Lecture on the history and use of UML.
   * Lecture on the construction of large-scale Java applications, focusing both on project orientation and classpath/classloader issues.
   * Demonstration of the construction, from scratch, of a Java application using Maven .and Eclipse, and placing it into a new CVS module.  Unit testing was included in the demo as well.
 
-== September 15 (Class) ==
+== September 15 ==
 
   * Lecture on building Java webapps with Spring MVC and Maven.
   * Defined controllers, commands, services.
@@ -48,18 +49,18 @@ This page summarizes the activities for each class meeting, as well as informal 
   * Made a calculator application (k41k) on Google Code.
   * Told students to do Homework 1 by next class.
 
-== September 17 (Class) ==
+== September 17 ==
 
   * Worked with students who were unable to get their own laptops set up.
   * Discovered Macs don't have Java SE 6 ready to run.
   * Pretty much a wasted day.  Was hoping everyone would be ready to work.  Oh well.
   * Two of the students were ready to go; they implemented a login page and refined project requirements.
 
-== September 22 (Class) ==
+== September 22 ==
 
   * Guest lecture: Andres Buritica on Postgres.
 
-== September 24 (Class) ==
+== September 24 ==
 
   * (Technical problems with the projection system shortened the class)
   * Lecture and demo on JSTL and JSP
@@ -70,7 +71,7 @@ This page summarizes the activities for each class meeting, as well as informal 
     * `c:choose`, `c:if`, `fn:length`
   * Pointers to more information about JSP
   
-== September 29 (Class) ==
+== September 29 ==
 
   * Announcement: Daily standups start next class
   * Reminder: Don't worry about databases yet.... Use mock data
@@ -91,7 +92,7 @@ This page summarizes the activities for each class meeting, as well as informal 
   * Demo of creating a new url, new controller, and new view
   * Review of JSTL, with more examples
 
-== October 1 (Class) ==
+== October 1 ==
 
   * Held first daily standup -- everyone was able to report on what they did, but no one really had a sense of the goals for the next meeting
   * Reviewed project summary
@@ -105,7 +106,7 @@ This page summarizes the activities for each class meeting, as well as informal 
   * Created a Google Groups thread for questions-requiring-whole-team-discussion.
     * Agreed that each class would begin with a discussion of questions on this thread.
 
-== October 6 (Class) ==
+== October 6 ==
 
   * Began with a much more successful stand-up.
   * Class has started partitioning into teams -- Mark, Edgardo, and James on the UI; Loren, Lita, and Chris on the back end, with Don roving.
@@ -115,7 +116,7 @@ This page summarizes the activities for each class meeting, as well as informal 
   * Talked a bit about web layer vs. service layer.
   * Looked at the !SimpleFormController workflow and dabbled a bit in the code.
 
-== October 8 (Class) ==
+== October 8 ==
 
   * David Arnerich, Director of Consumer Product from Citysearch, Inc. ran today's class.
   * It was informal Q and A about both the state of the industry (especially mobile), what he looks for in resumes and cover letters, skills that students should develop, mobile web vs. apps, iPhone vs. Android, the pros and cons of working at large vs. small companies, etc.
@@ -123,26 +124,26 @@ This page summarizes the activities for each class meeting, as well as informal 
   * Possibility of getting Citysearch to be a data provider for Serengeti.
   * Students were advised to get on !LinkedIn and link to Mr. Arnerich.
 
-== October 13 (Class) ==
+== October 13 ==
 
   * Stand up reports.
   * Lecture on the Tiles Framework.
   * Discussion of some CSS concepts.
   * Demo of making images transparent with GIMP.
 
-== October 15 (Class) ==
+== October 15 ==
 
   * Standups.
   * More group discussion on UI issues.
   * Plans for mobile clients began.
   * Decided to have Lita and Don start with basic apps created from tutorials to bring in next class.
 
-== October 20 (Class) ==
+== October 20 ==
 
   * Mellow class, not much official discussion (two students skipped class to take a midterm in CMSI 370).
   * The mobile team came in with sample iPhone apps.
 
-== October 22 (Class) ==
+== October 22 ==
 
   * Started with standups.
   * Mobile team had some nice demos.
@@ -151,26 +152,26 @@ This page summarizes the activities for each class meeting, as well as informal 
   * Very good discussion about the main navigation (top menu).
   * Separate discussion with the backend team about creating database initialization scripts.
 
-== October 27 (Class) ==
+== October 27 ==
 
-  * Inidividual reports.
+  * Individual reports.
   * Report and review of schema from database team.
   * Design work on web site user interaction for geocoding.
     * Doing the geocoding on submit is tricky or impossible because Google's geocoder is asynchronous.
     * Settled on a UI involving the page changing its look through DHTML, exposing a submit button only after a successful geocoding.
 
-== October 29 (Class) ==
+== October 29 ==
 
   * Lecture and demos on the use of log4j.
   * Lecture on cross cutting concerns in general.
   * Individual reports and discussions.
 
-== November 3 (Class) ==
+== November 3 ==
 
   * Dr. Toal was out of town, at a conference.
   * Andres gave the class a hands-on tutorial setting up a server to host the web application.
 
-== November 5 (Class) ==
+== November 5 ==
 
   * Report on the Software Engineering conference.
   * Brief talk about the conference tutorial on requirements engineering for large and very large projects.
@@ -181,20 +182,20 @@ This page summarizes the activities for each class meeting, as well as informal 
   * Mobile team expressed concern about the time remaining to complete a fully featured iPhone client.  A discussion ensued in which the point was brought up that it was necessary to do what it took to learn and master the new technologies.
   * One of the backend developers offered to help out with iPhone development.
 
-== November 10 (Class) ==
+== November 10 ==
 
   * Lecture on [http://en.wikipedia.org/wiki/Agile_software_development agile methods] and [http://en.wikipedia.org/wiki/Scrum_%28development%29 Scrum].
   * Went over the [http://agilemanifesto.org/ Agile Manifesto].
   * Worked on the application in class and discussed progress.
 
-== November 12 (Class) ==
+== November 12 ==
 
   * All groups expressed confidence that their goals for next week would be met.
   * Lecture on [http://ibatis.apache.org/ iBATIS].
   * Class moved into groups for development.
   * Issue with obtaining JSON from iPhone came up; partial fix applied by changing the content type in one of the controller.  Still not quite fixed.
 
-== November 17 (Class) ==
+== November 17 ==
 
   * Backend and database report was that things were on track.
   * Talked about the role of `select_key` in iBATIS.
@@ -204,7 +205,7 @@ This page summarizes the activities for each class meeting, as well as informal 
     * How can we be more like foursquare?  Their site looks professional....
     * Made decision to go with fixed-width, centered layout.
 
-== November 19 (Class) ==
+== November 19 ==
 
   * Started class with the usual oral reports.
   * Most groups feeling comfortable, but iPhone development not quite to the point where it can coast for the rest of the project.
@@ -212,7 +213,7 @@ This page summarizes the activities for each class meeting, as well as informal 
     * Several people were working on this.
   * Class broke into small teams for development work.
 
-== November 24 (Class) ==
+== November 24 ==
 
   * Derek Smith came by to assist with iPhone development.
   * Lab session.
@@ -220,7 +221,7 @@ This page summarizes the activities for each class meeting, as well as informal 
   * Database daos fleshed out.
   * Backend completed (for the most part).
 
-== December 1 (Class) ==
+== December 1 ==
 
   * Initial oral reports.
   * UI discussion among whole group.
@@ -228,10 +229,10 @@ This page summarizes the activities for each class meeting, as well as informal 
   * In class development.
   * Started preparations for final presentation.
     * Argument over possible dates (Don to start Google Calendar page).
-    * Outlined the final "project notebook" documentation structure (will be kept in the wiki, but the orgranization is still crucial).
+    * Outlined the final "project notebook" documentation structure (will be kept in the wiki, but the organization is still crucial).
     * Initial outline of slides.
 
-== December 3 (Class) ==
+== December 3 ==
 
   * Class agreed to have the entire feature suite implemented by December 8.
   * Any student that has feature implementation tasks still not finished by that date will be docked one full grade.
@@ -240,8 +241,19 @@ This page summarizes the activities for each class meeting, as well as informal 
     * Excellent overview of new technologies and possible applications for health care
     * Lots of good Q and A.
     * KP reps explained internship and programs to hire recent grads.
-    * LinkedIn profiles and contact information exchanged.
+    * !LinkedIn profiles and contact information exchanged.
 
-== December 8 (Class) ==
+== December 8 ==
 
-== December 10 (Class) ==
+  * Planning for final presentation
+  * Discuss (online) project notebook final organization
+  * Code spot checking
+  ** UI commentary
+  ** Attempted HTML validation --- some pages still failing
+  * Discussion of mobile site and the need for the server-produced HTML to validate perfectly before a mobile version can even hope to work
+
+== December 10 ==
+
+  * Dry run of presentation in Doolan 114.
+  ** Several changes made to the presentation during the run.
+  ** Excellent analysis and critique by Kelly Sutton.
