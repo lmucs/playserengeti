@@ -309,7 +309,7 @@ Notes:
 ----
 ==Status==
 ----
-===U# Check-In===
+===U12 Check-In===
 <wiki:comment>
 U14 Ping
   * *Description*: 
@@ -377,7 +377,7 @@ Security:
 
 Notes:
 </wiki:comment>
-===U17 View World Map===
+===U13 View World Map===
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
@@ -426,7 +426,7 @@ Security:
 
 Notes: How does this work? Does the form ask for an email address and send a link to that address?
 </wiki:comment>
-===U19 Invite To be Friend===
+===U14 Invite To be Friend===
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
@@ -448,7 +448,7 @@ Security:
 
 Notes:
 </wiki:comment>
-===U20 Accept Friend Request===
+===U15 Accept Friend Request===
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
@@ -470,7 +470,7 @@ Security:
 
 Notes:
 </wiki:comment>
-===U21 Invite To Team===
+===U16 Invite To Team===
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
@@ -565,7 +565,7 @@ Security:
 
 Notes: Other parameters may be possible.  Including radius around lat/long that business can be located in, category of business, how many results to return, etc.
 </wiki:comment>
-===U25 Find User===
+===U17 Find User===
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
@@ -587,7 +587,7 @@ Security:
 
 Notes: Parameters can allow users to be found by name, email address, screename, etc.
 </wiki:comment>
-===U26 Find Team===
+===U18 Find Team===
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
