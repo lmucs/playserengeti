@@ -387,8 +387,8 @@ Users: Self, Admin
 Security:
 
 Notes:
-</wiki:comment>
-===U13 View World Map===
+
+U13 View World Map
   * *Description*:
   * *Actor*: End user.
   * *Preconditions*: 
@@ -399,7 +399,7 @@ Notes:
     # TO_DO
   * *Postconditions*: None.
   * *Handles Requirements*: 
-<wiki:comment>
+
 Description: Display the current status of the game. 
 
 URL: /status/game?league=league_id&rivalsOnly=showOnlyRivals
@@ -437,7 +437,7 @@ Security:
 
 Notes: How does this work? Does the form ask for an email address and send a link to that address?
 </wiki:comment>
-===U14 Invite To be Friend===
+===U13 Invite To be Friend===
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
@@ -459,7 +459,7 @@ Security:
 
 Notes:
 </wiki:comment>
-===U15 Accept Friend Request===
+===U14 Accept Friend Request===
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
@@ -481,7 +481,7 @@ Security:
 
 Notes:
 </wiki:comment>
-===U16 Invite To Team===
+===U15 Invite To Team===
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
@@ -576,7 +576,7 @@ Security:
 
 Notes: Other parameters may be possible.  Including radius around lat/long that business can be located in, category of business, how many results to return, etc.
 </wiki:comment>
-===U17 Find User===
+===U16 Find User===
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
@@ -598,7 +598,7 @@ Security:
 
 Notes: Parameters can allow users to be found by name, email address, screename, etc.
 </wiki:comment>
-===U18 Find Team===
+===U17 Find Team===
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
