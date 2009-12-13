@@ -7,105 +7,112 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.playserengeti.domain.User;
 
+/**
+ * The command class for controllers/pages dealing with teams. Contains
+ * information about the team in questions.
+ * 
+ * @author Chris
+ * 
+ */
 public class TeamCommand {
 
-    private Integer teamId;
-    private String name;
-    private String color;
-    private MultipartFile imageFile;
-    private User leader;
-    private String description;
-    private String homeBase;
-    private Map<Integer, String> members;
-    private Integer[] invitees;
-    private Integer[] removals;
-    private Collection<User> candidates;
+	private Integer teamId;
+	private String name;
+	private String color;
+	private MultipartFile imageFile;
+	private User leader;
+	private String description;
+	private String homeBase;
+	private Map<Integer, String> members;
+	private Integer[] invitees;
+	private Integer[] removals;
+	private Collection<User> candidates;
 
-    public Integer getTeamId() {
-        return teamId;
-    }
+	public Integer getTeamId() {
+		return teamId;
+	}
 
-    public void setTeamId(Integer teamId) {
-        this.teamId = teamId;
-    }
+	public void setTeamId(Integer teamId) {
+		this.teamId = teamId;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getColor() {
-        return color;
-    }
+	public String getColor() {
+		return color;
+	}
 
-    public void setColor(String color) {
-        this.color = color;
-    }
-    
-    public MultipartFile getImageFile() {
-        return imageFile;
-    }
+	public void setColor(String color) {
+		this.color = color;
+	}
 
-    public void setImageFile(MultipartFile imageFile) {
-        this.imageFile = imageFile;
-    }
+	public MultipartFile getImageFile() {
+		return imageFile;
+	}
 
-    public User getLeader() {
-        return leader;
-    }
+	public void setImageFile(MultipartFile imageFile) {
+		this.imageFile = imageFile;
+	}
 
-    public void setLeader(User leader) {
-        this.leader = leader;
-    }
+	public User getLeader() {
+		return leader;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setLeader(User leader) {
+		this.leader = leader;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public String getHomeBase() {
-        return homeBase;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public void setHomeBase(String homeBase) {
-        this.homeBase = homeBase;
-    }
+	public String getHomeBase() {
+		return homeBase;
+	}
 
-    public Map<Integer, String> getMembers() {
-        return members;
-    }
+	public void setHomeBase(String homeBase) {
+		this.homeBase = homeBase;
+	}
 
-    public void setMembers(Map<Integer, String> members) {
-        this.members = members;
-    }
+	public Map<Integer, String> getMembers() {
+		return members;
+	}
 
-    public Integer[] getInvitees() {
-        return invitees;
-    }
+	public void setMembers(Map<Integer, String> members) {
+		this.members = members;
+	}
 
-    public void setInvitees(Integer[] invitees) {
-        this.invitees = invitees;
-    }
+	public Integer[] getInvitees() {
+		return invitees;
+	}
 
-    public Integer[] getRemovals() {
-        return removals;
-    }
+	public void setInvitees(Integer[] invitees) {
+		this.invitees = invitees;
+	}
 
-    public void setRemovals(Integer[] removals) {
-        this.removals = removals;
-    }
+	public Integer[] getRemovals() {
+		return removals;
+	}
 
-    public Collection<User> getCandidates() {
-        return candidates;
-    }
+	public void setRemovals(Integer[] removals) {
+		this.removals = removals;
+	}
 
-    public void setCandidates(Collection<User> candidates) {
-        this.candidates = candidates;
-    }
+	public Collection<User> getCandidates() {
+		return candidates;
+	}
+
+	public void setCandidates(Collection<User> candidates) {
+		this.candidates = candidates;
+	}
 }

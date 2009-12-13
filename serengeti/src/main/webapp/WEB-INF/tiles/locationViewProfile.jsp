@@ -7,7 +7,7 @@
 				
 				<div class = "grid_12">
                    	<div class = "grid_12"> 
-                       	<strong><c:out value="${locationCommand.name}"/></strong>o
+                       	<strong><c:out value="${locationCommand.name}"/></strong>
                     </div>
                     	
                     <div class="clear">&nbsp;</div>

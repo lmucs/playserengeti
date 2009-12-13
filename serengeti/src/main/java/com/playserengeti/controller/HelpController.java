@@ -13,19 +13,22 @@ import com.playserengeti.session.UserSession;
  */
 public class HelpController extends AbstractController {
 
-    private UserSession session;
+	private UserSession session;
 
-    @Override
-    protected ModelAndView handleRequestInternal(HttpServletRequest request,
-            HttpServletResponse response) throws Exception {
-        return new ModelAndView("help", "session", session);
-    }
+	/**
+	 * Displays the help screen.
+	 */
+	@Override
+	protected ModelAndView handleRequestInternal(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		return new ModelAndView("help", "session", session);
+	}
 
-    public UserSession getSession() {
-        return session;
-    }
+	public UserSession getSession() {
+		return session;
+	}
 
-    public void setSession(UserSession session) {
-        this.session = session;
-    }
+	public void setSession(UserSession session) {
+		this.session = session;
+	}
 }
