@@ -23,7 +23,7 @@
 
   <div id="home-page-extras">
 
-    <div class="signup-button">
+    <div class="graphic-button" id="signup-button">
       <a href="user/create">Sign up now</a>
     </div>
 
