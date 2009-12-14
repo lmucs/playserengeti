@@ -25,7 +25,7 @@
     # System sends user warning of attempted account deletion and asks for confirmation.
     # If the user confirms, their player account is deleted and they are taken to the home page.
   * *Alternative Scenarios*:
-    # If the user is a team leader, their team is deleted from the database as well.
+    # If the user is a team leader, an error is sent, indicating teams the user is leading.
   * *Postconditions*: The user's player record is removed from the database.
   * *Handles Requirements*: UI.1.3.1.2, UI.1.3.3
 
@@ -146,7 +146,6 @@ Notes: Where do we define Team Lead role?  It should be specified in the team's 
   * *Flow of Events for Main Scenario*:
     # TO_DO
   * *Alternative Scenarios*:
-    # TO_DO
   * *Postconditions*: TO_DO
   * *Handles Requirements*: TO_DO 
 
