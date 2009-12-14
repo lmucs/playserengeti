@@ -111,9 +111,9 @@ public class UserController extends MultiActionController {
 		Collection<Team> teams = teamService.getUsersTeams(userId);
 		Collection<User> friendInvites = userService.getFriendInvites(userId);
 		Collection<Team> teamInvites = teamService.getTeamInvites(userId);
-		Collection<Visit> activity = visitService
-				.getUsersRecentActivity(userId);
-
+		Collection<Visit> activity = visitService.getUsersRecentActivity(userId);
+        Collection<Visit> friendActivity = visitService.getFriendsRecentActivity(userId);
+		
 		Collection<Team> invitableTeams = new HashSet<Team>();
 		boolean alreadyFriends = true;
 		if (session.isLoggedIn()) {
@@ -143,6 +143,7 @@ public class UserController extends MultiActionController {
 		mav.addObject("friendInvites", friendInvites);
 		mav.addObject("teamInvites", teamInvites);
 		mav.addObject("activity", activity);
+		mav.addObject("friendActivity", friendActivity);
 		mav.addObject("invitableTeams", invitableTeams);
 		mav.addObject("alreadyFriends", alreadyFriends);
 

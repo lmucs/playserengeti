@@ -103,8 +103,8 @@ public class TeamController extends MultiActionController {
 		if (team.getLeader() != null) {
 			command.setLeader(team.getLeader());
 		}
+		command.setMembers(teamService.getTeamMembers(teamId));
 
-		Collection<User> members = teamService.getTeamMembers(teamId);
 		Collection<Visit> activity = visitService
 				.getTeamsRecentActivity(teamId);
 		Collection<Location> territory = locationService
@@ -126,12 +126,25 @@ public class TeamController extends MultiActionController {
 		ModelAndView mav = new ModelAndView(view);
 		mav.addObject("session", session);
 		mav.addObject("teamCommand", command);
-		mav.addObject("members", members);
 		mav.addObject("activity", activity);
 		mav.addObject("territory", territory);
 		mav.addObject("jsonData", jsonData.replace("'", "&#39"));
 
 		return mav;
+	}
+	
+	/**
+	 * Removes the membership between the given user and team.
+	 * 
+	 * @param request
+	 * @param response
+	 */
+	public void removeMember(HttpServletRequest request,
+			HttpServletResponse response) {
+		Integer userId = Integer.valueOf(request.getParameter("userId"));
+		Integer teamId = Integer.valueOf(request.getParameter("teamId"));
+
+		teamService.removeFromTeam(teamId, userId);
 	}
 
 	public UserSession getSession() {

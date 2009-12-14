@@ -8,7 +8,7 @@
         appointing another leader.</p>
         <ul>
         <c:forEach var="team" items="${userCommand.teams}">
-            <li><a href="../../team/update/${team.id}"><c:out value="${team.name}"/></a></li>
+            <li><a href="../../team/${team.id}"><c:out value="${team.name}"/></a>  (<a href="../../team/update/${team.id}">Modify</a>)</li>
         </c:forEach>
         </ul>
     </c:when>

@@ -23,10 +23,9 @@ public class TeamCommand {
 	private User leader;
 	private String description;
 	private String homeBase;
-	private Map<Integer, String> members;
-	private Integer[] invitees;
-	private Integer[] removals;
+	private Collection<User> members;
 	private Collection<User> candidates;
+	private Integer[] invitees;
 
 	public Integer getTeamId() {
 		return teamId;
@@ -84,11 +83,11 @@ public class TeamCommand {
 		this.homeBase = homeBase;
 	}
 
-	public Map<Integer, String> getMembers() {
+	public Collection<User> getMembers() {
 		return members;
 	}
 
-	public void setMembers(Map<Integer, String> members) {
+	public void setMembers(Collection<User> members) {
 		this.members = members;
 	}
 
@@ -98,14 +97,6 @@ public class TeamCommand {
 
 	public void setInvitees(Integer[] invitees) {
 		this.invitees = invitees;
-	}
-
-	public Integer[] getRemovals() {
-		return removals;
-	}
-
-	public void setRemovals(Integer[] removals) {
-		this.removals = removals;
 	}
 
 	public Collection<User> getCandidates() {

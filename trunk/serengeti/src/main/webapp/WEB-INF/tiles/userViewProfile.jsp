@@ -38,15 +38,15 @@
                   <p id="email"><c:out value="${userCommand.email}"/></p>
               </div>
           </div>
-          <div class="clear">&nbsp;</div>
-          <div class="graphic-button" id="user-modify-button">
-              <a href="update/${userCommand.userId}">Modify your profile</a>
-          </div>
       </div>
       <div class="clear">&nbsp;</div>
       <div class="grid_7">
           <c:if test="${session.loggedIn && (session.user.id == userCommand.userId)}">
-              <div id="ownProfile">                  
+              <div id="ownProfile"> 
+                  <div class="clear">&nbsp;</div>
+                      <div class="graphic-button" id="user-modify-button">
+                      <a href="update/${userCommand.userId}">Modify your profile</a>
+                  </div>             
                   <div class="grid_7" id="checkIn">
                       <div id="loader"><img src="${pageContext.request.contextPath}/images/loader.gif"></div>
                       <div class="grid_4" id="locList">
@@ -114,17 +114,30 @@
               </div>
           </c:if>
           <div class="clear">&nbsp;</div>
-            <div class="grid_7 activityBoxContainer">
-            <div class="grid_6">
-                <div class="shadowText">Recent Activity</div>
-                <ul id="activity">
-                    <c:forEach var="visit" items="${activity}">
-                        <li>@ <a href="../location/${visit.location.id}"><c:out value="${visit.location.name}"/></a>
-                        (<fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${visit.date}"/>)</li>
-                    </c:forEach>
-                </ul>
-            </div>
+          <div class="grid_7 activityBoxContainer">
+              <div class="grid_6">
+                  <div class="shadowText">Recent Activity</div>
+                  <ul id="activity">
+                      <c:forEach var="visit" items="${activity}">
+                          <li>@ <a href="../location/${visit.location.id}"><c:out value="${visit.location.name}"/></a>
+                          (<fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${visit.date}"/>)</li>
+                      </c:forEach>
+                  </ul>
+              </div>
           </div>
+          <div class="clear">&nbsp;</div>
+          <div class="grid_7 activityBoxContainer">
+              <div class="grid_6">
+                  <div class="shadowText">Friend Activity</div>
+                  <ul id="activity">
+                      <c:forEach var="visit" items="${friendActivity}">
+                          <li><a href="${visit.user.id}"><c:out value="${visit.user.fullName}"/></a> @ <a href="../location/${visit.location.id}"><c:out value="${visit.location.name}"/></a>
+                          (<fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${visit.date}"/>)</li>
+                      </c:forEach>
+                  </ul>
+              </div>
+          </div>
+
       </div>
         <div class="grid_3 prefix_1">
         <div class="grid_3 round_Box_Container">

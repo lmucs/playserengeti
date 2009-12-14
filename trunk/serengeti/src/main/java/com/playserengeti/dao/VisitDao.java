@@ -76,7 +76,7 @@ public interface VisitDao {
 	 * @param userId
 	 * @return
 	 */
-	public Collection<Visit> getRecentFriendCheckIns(Integer userId);
+	public Collection<Visit> getFriendsRecentActivity(Integer userId);
 
 	/**
 	 * Gets the recent checkins of a given user.
