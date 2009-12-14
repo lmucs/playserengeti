@@ -107,7 +107,7 @@ div.searchbar {
 }
 
 #home-page-body{
-	margin-left: 7px;
+  margin-left: 7px;
 }
 
 #home-page-welcome {
@@ -129,7 +129,7 @@ div.searchbar {
 #signup-button {
   text-align: center;
   font-size: 30px;
-  margin: 0 auto 2.5em auto;
+  margin: 0 auto 1em auto;
 }
 
 #user-modify-button {
@@ -137,7 +137,7 @@ div.searchbar {
   float: left;
   font-size: 12px;
   margin: 0 auto 2.5em auto;
-}	
+}
 
 #team-create-button{
   text-align: center;
@@ -183,7 +183,7 @@ div.graphic-button a {
 
 h2.tablecaption {
   text-align: center;
-  margin: 0 auto 0.5em 0;
+  margin: 2em auto 0.5em 0;
 }
 
 .profile {
