@@ -29,14 +29,18 @@
         </c:if>
         <div class="grid_10">
           <div class="grid_3 userImage">
-          <img src="${pageContext.request.contextPath}/images/default_user.png" height="150" width="150" alt="Profile Picture"
-            title="Profile Picture"/>
-      </div>
+	          <img src="${pageContext.request.contextPath}/images/default_user.png" height="150" width="150" alt="Profile Picture"
+	            title="Profile Picture"/>
+          </div>
           <div id="userInfo" class="grid_6">
-            <h3 id="name"><c:out value="${userCommand.firstName} ${userCommand.lastName}"/></h3>
-            <div id="userViewEmail">
-              <p id="email"><c:out value="${userCommand.email}"/></p>
-            </div>
+              <h3 id="name"><c:out value="${userCommand.firstName} ${userCommand.lastName}"/></h3>
+              <div id="userViewEmail">
+                  <p id="email"><c:out value="${userCommand.email}"/></p>
+              </div>
+          </div>
+          <div class="clear">&nbsp;</div>
+          <div class="graphic-button" id="user-modify-button">
+              <a href="update/${userCommand.userId}">Modify your profile</a>
           </div>
       </div>
       <div class="clear">&nbsp;</div>
