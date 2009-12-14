@@ -117,10 +117,14 @@ Notes:
   * *Actor*: Team leader user.
   * *Preconditions*: The user is already registered as a player and is the leader of a team.
   * *Flow of Events for Main Scenario*:
-    # TO_DO
+    # User sends the id of a team they own to the system.
+    # System validates user's ownership of designated team, and, if accepted, sends confirmation request to user.
+    # User sends approval of deletion.
+    # System deletes the team of the designated id.
   * *Alternative Scenarios*:
-    # TO_DO
-  * *Postconditions*: The selected team is removed from the database.
+    # If the user does not own the team of the selected id, no confirmation requests are sent and no teams are deleted.
+    # If the user does no confirm the deletion, no teams are deleted.
+  * *Postconditions*: The selected team is removed from the database, the team is removed from all the user profiles of team members, and the visits attributed to the team are deleted.
   * *Handles Requirements*: 
 
 <wiki:comment> 
@@ -187,13 +191,13 @@ Notes:
 ----
 ==Business/Location==
 ----
-
+<wiki:comment>
 Question: is a business different than a location? How do we define each? [[User:Gratrixl|Gratrixl]] 22:39, 8 September 2009 (UTC)
 
 Answer(somewhat)/Expanding on Question: They should probably be considered different entities.  That way, we can include things like a local park or monument that will not actually have business deals but still be a place to control.  Or we could just keep them the same and never allow those locations to have deals/offers.--[[User:Cmueller|Cmueller]] 00:00, 9 September 2009 (UTC)
 
 My vote is to separate them. Let locations be user-submitted content, but businesses by validated somehow. [[User:Gratrixl|Gratrixl]] 06:16, 9 September 2009 (UTC)
-
+</wiki:comment>
 ===U9 Create Location/Business===
   * *Description*: Create a location profile.
   * *Actor*: End user.
@@ -219,7 +223,7 @@ Notes: Separate Location from Business?
 ===U10 Delete Location/Business===
   * *Description*: An admin deletes a location.
   * *Actor*: Admin.
-  * *Preconditions*: 
+  * *Preconditions*: None.
   * *Flow of Events for Main Scenario*:
     # Admin sends location id number to system.
     # System deletes location associated with id number.
