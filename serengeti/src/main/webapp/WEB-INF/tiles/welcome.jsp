@@ -50,7 +50,7 @@
             <p><a href="user/${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></p>
           </td>
           <td class="profile-date">
-             <fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${user.dateCreated}"/>
+             <fmt:formatDate pattern="MMM d, yyyy'<br />'h:mma" value="${user.dateCreated}"/>
           </td>
         </tr>
       </c:forEach>
