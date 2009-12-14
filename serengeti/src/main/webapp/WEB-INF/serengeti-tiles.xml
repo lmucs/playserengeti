@@ -14,7 +14,7 @@
     </definition>
 
     <definition name="welcome" extends="template">
-        <put-attribute name="title" value="Welcome to Serengeti"/>
+        <put-attribute name="title" value="Welcome"/>
         <put-attribute name="body" value="/WEB-INF/tiles/welcome.jsp"/>
     </definition>
 
@@ -33,9 +33,9 @@
         <put-attribute name="body" value="/WEB-INF/tiles/locationCentral.jsp"/>
     </definition>
 
-    <definition name="locationCentralXML" template="/WEB-INF/tiles/locationCentralXML.jspx"> </definition>
+    <definition name="locationCentralXML" template="/WEB-INF/tiles/locationCentralXML.jspx"/>
 
-    <definition name="locationCentralJSON" template="/WEB-INF/tiles/locationCentralJSON.jsp"> </definition>
+    <definition name="locationCentralJSON" template="/WEB-INF/tiles/locationCentralJSON.jsp"/>
 
     <definition name="locationCreate" extends="template">
         <put-attribute name="title" value="Add a Location"/>
@@ -47,21 +47,21 @@
         <put-attribute name="body" value="/WEB-INF/tiles/locationViewProfile.jsp"/>
     </definition>
 
-    <definition name="locationViewProfileXML" template="/WEB-INF/tiles/locationViewProfileXML.jspx"> </definition>
+    <definition name="locationViewProfileXML" template="/WEB-INF/tiles/locationViewProfileXML.jspx"/>
 
-    <definition name="locationViewProfileJSON" template="/WEB-INF/tiles/locationViewProfileJSON.jsp"> </definition>
+    <definition name="locationViewProfileJSON" template="/WEB-INF/tiles/locationViewProfileJSON.jsp"/>
 
     <definition name="userCentral" extends="template">
         <put-attribute name="title" value="User Central"/>
         <put-attribute name="body" value="/WEB-INF/tiles/userCentral.jsp"/>
     </definition>
 
-    <definition name="userCentralXML" template="/WEB-INF/tiles/userCentralXML.jspx"></definition>
+    <definition name="userCentralXML" template="/WEB-INF/tiles/userCentralXML.jspx"/>
 
-    <definition name="userCentralJSON" template="/WEB-INF/tiles/userCentralJSON.jsp"> </definition>
+    <definition name="userCentralJSON" template="/WEB-INF/tiles/userCentralJSON.jsp"/>
 
     <definition name="userCreate" extends="template">
-        <put-attribute name="title" value="Signup for Serengeti"/>
+        <put-attribute name="title" value="Signup"/>
         <put-attribute name="body" value="/WEB-INF/tiles/userCreate.jsp"/>
     </definition>
 
@@ -71,7 +71,7 @@
     </definition>
 
     <definition name="userLogin" extends="template">
-        <put-attribute name="title" value="Login to Serengeti"/>
+        <put-attribute name="title" value="Login"/>
         <put-attribute name="body" value="/WEB-INF/tiles/userLogin.jsp"/>
     </definition>
 
@@ -85,9 +85,9 @@
         <put-attribute name="body" value="/WEB-INF/tiles/userViewProfile.jsp"/>
     </definition>
 
-    <definition name="userViewProfileXML" template="/WEB-INF/tiles/userViewProfileXML.jspx"> </definition>
+    <definition name="userViewProfileXML" template="/WEB-INF/tiles/userViewProfileXML.jspx"/>
 
-    <definition name="userViewProfileJSON" template="/WEB-INF/tiles/userViewProfileJSON.jsp"> </definition>
+    <definition name="userViewProfileJSON" template="/WEB-INF/tiles/userViewProfileJSON.jsp"/>
 
     <definition name="teamCreate" extends="template">
         <put-attribute name="title" value="Create a Team"/>
@@ -99,9 +99,9 @@
         <put-attribute name="body" value="/WEB-INF/tiles/teamCentral.jsp"/>
     </definition>
 
-    <definition name="teamCentralXML" template="/WEB-INF/tiles/teamCentralXML.jspx"> </definition>
+    <definition name="teamCentralXML" template="/WEB-INF/tiles/teamCentralXML.jspx"/>
 
-    <definition name="teamCentralJSON" template="/WEB-INF/tiles/teamCentralJSON.jsp"> </definition>
+    <definition name="teamCentralJSON" template="/WEB-INF/tiles/teamCentralJSON.jsp"/>
 
     <definition name="teamUpdate" extends="template">
         <put-attribute name="title" value="Edit Team"/>
@@ -113,8 +113,8 @@
         <put-attribute name="body" value="/WEB-INF/tiles/teamViewProfile.jsp"/>
     </definition>
 
-    <definition name="teamViewProfileXML" template="/WEB-INF/tiles/teamViewProfileXML.jspx"> </definition>
+    <definition name="teamViewProfileXML" template="/WEB-INF/tiles/teamViewProfileXML.jspx"/>
 
-    <definition name="teamViewProfileJSON" template="/WEB-INF/tiles/teamViewProfileJSON.jsp"> </definition>
+    <definition name="teamViewProfileJSON" template="/WEB-INF/tiles/teamViewProfileJSON.jsp"/>
 
 </tiles-definitions>

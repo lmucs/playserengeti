@@ -8,7 +8,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title><tiles:insertAttribute name="title" value="${title}"/></title>
+    <title><tiles:insertAttribute name="title" value="${title}"/> - Serengeti</title>
     <link rel="stylesheet" type="text/css"
       media="screen and (min-device-width: 481px)"
       href="${pageContext.request.contextPath}/styles/serengeti.css"
@@ -29,7 +29,7 @@
   </head>
 
   <body>
-    <tiles:insertAttribute name="header" />
+    <tiles:insertAttribute name="header"/>
 
     <div id="container">
       <div class="mainContentArea container_12">
@@ -42,6 +42,6 @@
 
     <script src="${pageContext.request.contextPath}/scripts/inputbox.js" type="text/javascript"></script>
 
-    <tiles:insertAttribute name="footer" />
+    <tiles:insertAttribute name="footer"/>
   </body>
 </html>

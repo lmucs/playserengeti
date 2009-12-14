@@ -106,7 +106,7 @@ div.searchbar {
   -webkit-border-bottom-right-radius: 8px;
 }
 
-#home-page-body{
+#home-page-body {
   margin-left: 7px;
 }
 
@@ -196,7 +196,7 @@ h2.tablecaption {
   display: none;
 }
 
-.userprofile-picture {
+.profile-picture {
   text-align: center;
   width: 56px;
   max-width: 56px;
