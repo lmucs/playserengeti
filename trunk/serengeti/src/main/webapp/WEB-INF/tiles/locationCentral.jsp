@@ -1,36 +1,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-
-
-  <div class = "grid_10 prefix_3">
-
-        <div class="grid_3">
-          <p id="location"></p>
-        </div>
-
-      <div class="clear">&nbsp;</div>
-
-    <div class="grid_6" id="map_canvas"></div>
-
-        <div class="clear">&nbsp;</div>
-
+<div class = "grid_10 prefix_3">
+  <div class="grid_3">
+    <p id="location"></p>
   </div>
-
   <div class="clear">&nbsp;</div>
-
-
+    <div class="grid_6" id="map_canvas"></div>
+      <div class="clear">&nbsp;</div>
+    </div>
+    <div class="clear">&nbsp;</div>
   <div class="shadowTextMargin">
-<p>Locations Near You</p>
+</div>
+
+<div class="shadowText">
+  <h2 class="tablecaption">Locations Near You</h2>
 </div>
 
 <div class="verticalMenu">
 </div>
 
-
-  <c:if test="${session.loggedIn}">
-            <p>Don't see your current location?  <a href="create">Add it.</a></p>
-        </c:if>
+<c:if test="${session.loggedIn}">
+  <p>Don't see your current location?  <a href="create">Add it.</a></p>
+</c:if>
 
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
@@ -39,21 +31,25 @@
 
         var latlng = new google.maps.LatLng(google.loader.ClientLocation.latitude,
             google.loader.ClientLocation.longitude);
-        var location = "Your ip-based location: " + google.loader.ClientLocation.address.city;
+        var location = "You appear to be in " + google.loader.ClientLocation.address.city;
         var myOptions = {
             zoom: 13,
             center: latlng,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
         document.getElementById("location").innerHTML = location;
 
-        var request = $.get("../location/getNearbyLocations", {latitude : google.loader.ClientLocation.latitude,
-            longitude : google.loader.ClientLocation.longitude}, function(data) {
+        var request = $.get("../location/getNearbyLocations",
+            {
+                latitude : google.loader.ClientLocation.latitude,
+                longitude : google.loader.ClientLocation.longitude
+            },
+            function(data) {
                 var jsonData = JSON.parse(request.responseText);
                 handleLocations(jsonData.locations);
             });
-
     };
 
     var handleLocations = function(data) {
@@ -66,6 +62,7 @@
             center: latlng,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
+
         var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
         jQuery.each(data, function(i, val) {
             var locs = new google.maps.LatLng(val.latitude, val.longitude);
@@ -74,7 +71,6 @@
                 map: map,
                 title: val.name
             });
-
 
             verticalMenu.append("<div class='miniProfile'>" +
                 "<span class='miniProfilePicHidden'>" +
@@ -90,10 +86,6 @@
               "</span>" +
             "</div>"
           );
-
         });
     };
-
-
-
 </script>

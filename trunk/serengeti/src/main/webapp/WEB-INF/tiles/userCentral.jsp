@@ -17,8 +17,8 @@
     <tr>
       <td class="profile-picture">
         <p>
-          <a href="${visit.user.id}"><img src="${pageContext.request.contextPath}/images/default_user.png" alt="user"
-          title="${visit.user.email}" width="50" height="50"/></a>
+          <a href="${visit.user.id}"><img src="${pageContext.request.contextPath}/images/default_user.png"
+          alt="user" title="${visit.user.email}" width="50" height="50"/></a>
         </p>
       </td>
       <td class="profile-name">
@@ -28,7 +28,7 @@
         <p><a href="../location/${visit.location.id}">${visit.location.name}</a></p>
       </td>
       <td class="profile-date">
-        <fmt:formatDate pattern="MMM dd, yyyy'<br />'hh:mma"
+        <fmt:formatDate pattern="MMM d, yyyy'<br />'h:mma"
         value="${visit.date}"/>
       </td>
     </tr>
@@ -49,7 +49,7 @@
       <td class="profile-picture">
         <p>
           <a href="${user.id}"><img src="${pageContext.request.contextPath}/images/default_user.png"
-          alt="user" title="${user.email}" width="50" height="50"/></a>
+          alt="user" title="${user.email}" width="50" height="50" /></a>
         </p>
       </td>
       <td class="profile-name">
@@ -73,16 +73,16 @@
     <tr>
       <td class="profile-picture">
         <p>
-          <a href="user/${user.id}">
-            <img src="${pageContext.request.contextPath}/images/default_user.png" alt="user" title="${user.email}" width="50" height="50"/>
+          <a href="user/${user.id}"><img src="${pageContext.request.contextPath}/images/default_user.png"
+            alt="user" title="${user.email}" width="50" height="50" />
           </a>
         </p>
       </td>
       <td class="profile-name">
-        <p><a href="${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></p>
+        <p><a href="${user.id}"><c:out value="${user.firstName} ${user.lastName}"/></a></p>
       </td>
       <td class="profile-date">
-        <fmt:formatDate pattern="MMM dd, yyyy'<br />'hh:mma"
+        <fmt:formatDate pattern="MMM d, yyyy'<br />'h:mma"
         value="${user.dateCreated}"/>
       </td>
     </tr>
