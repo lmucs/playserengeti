@@ -95,30 +95,30 @@ h2 {
     color: #666666;
 }
 
-.userprofile {
+.profile {
     width: 100%;
 }
 
-.userprofile th, .userprofile td {
+.profile th, .profile td {
     padding: 0.5em;
     margin: 0.1em;
 }
 
-.userprofile th {
+.profile th {
     background-color: #888888;
 }
 
-.userprofile td {
+.profile td {
     background-color: #AAAAAA;
 }
 
-.userprofile img {
+.profile img {
     border-color: black;
     display: block;
     margin: 0 auto;
 }
 
-.userprofile-picture {
+.profile-picture {
     width: 6em;
     max-width: 6em;
 }

@@ -7,28 +7,28 @@
 <h2>Recently Checked In</h2>
 </div>
 
-<table class="userprofile">
+<table class="profile">
     <tr class="top-row">
-        <th class="userprofile-picture">photo</th>
+        <th class="profile-picture">photo</th>
         <th>user</th>
         <th>location</th>
         <th>check-in date and time</th>
     </tr>
     <c:forEach var="visit" items="${recent}">
         <tr>
-            <td class="userprofile-picture">
-                <div>
+            <td class="profile-picture">
+                <p>
                     <a href="${visit.user.id}"><img src="${pageContext.request.contextPath}/images/default_user.png" alt="user"
                         title="${visit.user.email}" width="50" height="50"/></a>
-                </div>
+                </p>
             </td>
-			<td class="userprofile-name">
+			<td class="profile-name">
                 <p><a href="${visit.user.id}" ><c:out value="${visit.user.firstName} ${visit.user.lastName}"/></a></p>
             </td>
-			<td class="userprofile-location">
+			<td class="profile-location">
                 <p><a href="../location/${visit.location.id}">${visit.location.name}</a></p>
 			</td>
-			<td class="userprofile-date">
+			<td class="profile-date">
                 <p>${visit.date}</p>
             </td>
 		</tr>
@@ -39,20 +39,20 @@
     <h2>Most Active Users</h2>
 </div>
 
-<table class="userprofile">
+<table class="profile">
     <tr class="top-row">
-        <th class="userprofile-picture">photo</th>
+        <th class="profile-picture">photo</th>
         <th>user</th>
     </tr>
     <c:forEach var="user" items="${mostActive}">
 		<tr>
-            <td class="userprofile-picture">
-                <div>
+            <td class="profile-picture">
+                <p>
                     <a href="${user.id}"><img src="${pageContext.request.contextPath}/images/default_user.png"
                         alt="user" title="${user.email}" width="50" height="50"/></a>
-                </div> 
+                </p> 
 			</td>
-			<td class="userprofile-name">
+			<td class="profile-name">
                 <p><a href="${user.id}"><c:out value="${user.firstName} ${user.lastName}"/></a></p>
             </td>
         </tr>
@@ -64,25 +64,25 @@
 </div>
 
 
-<table class="userprofile">
+<table class="profile">
       <tr class="top-row">
-        <th class="userprofile-picture">photo</th>
+        <th class="profile-picture">photo</th>
         <th>name</th>
         <th>join date</th>
       </tr>
       <c:forEach var="user" items="${newest}">
         <tr>
-          <td class="userprofile-picture">
-            <div>
+          <td class="profile-picture">
+            <p>
               <a href="user/${user.id}">
                 <img src="${pageContext.request.contextPath}/images/default_user.png" alt="user" title="${user.email}" width="50" height="50"/>
               </a>
-            </div>
+            </p>
           </td>
-          <td class="userprofile-name">
+          <td class="profile-name">
             <p><a href="${user.id}" ><c:out value="${user.firstName} ${user.lastName}"/></a></p>
           </td>
-          <td class="userprofile-date">
+          <td class="profile-date">
              <fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${user.dateCreated}"/>
           </td>
         </tr>

@@ -172,23 +172,23 @@ h2.tablecaption {
   margin: 0 auto 0.5em 0;
 }
 
-.userprofile {
+.profile {
   margin: 0 auto;
   width: 90%;
   table-layout: fixed;
 }
 
-.userprofile .top-row {
+.profile .top-row {
   display: none;
 }
 
-.userprofile-picture {
+.profile-picture {
   text-align: center;
   width: 56px;
   max-width: 56px;
 }
 
-.userprofile-date {
+.profile-date {
   text-align: right;
   padding-right: 0.2em;
 }
