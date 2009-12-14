@@ -13,6 +13,7 @@ The Serengeti server is a Java web application with the following components
   * UI: JSP, JSTL, Tiles, CSS, Scripts
 
 ==Domain Classes==
+<img src="http://playserengeti.googlecode.com/files/DomainsUMLwtrans.png">
 
 ==Controllers and URIs==
 
