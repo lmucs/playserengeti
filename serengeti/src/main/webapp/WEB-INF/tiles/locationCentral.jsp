@@ -32,12 +32,6 @@
             <p>Don't see your current location?  <a href="create">Add it.</a></p>
         </c:if>
 
-<!--
-<p id="location"></p>
--->
-
-<!--  meta name="viewport" content="initial-scale=0.5, user-scalable=no"/  -->
-
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">
