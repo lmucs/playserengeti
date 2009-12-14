@@ -6,18 +6,21 @@
   <json:array name="recent" var="user" items="${recent}">
     <json:object>
       <json:property name="id" value="${user.id}"/>
+      <json:property name="name" value="${user.firstName} ${user.lastName}"/>
       <json:property name="email" value="${user.email}"/>
     </json:object>
   </json:array>
   <json:array name="mostActive" var="user" items="${mostActive}">
     <json:object>
       <json:property name="id" value="${user.id}"/>
+      <json:property name="name" value="${user.firstName} ${user.lastName}"/>
       <json:property name="email" value="${user.email}"/>
     </json:object>
   </json:array>
   <json:array name="newest" var="user" items="${newest}">
     <json:object>
       <json:property name="id" value="${user.id}"/>
+      <json:property name="name" value="${user.firstName} ${user.lastName}"/>
       <json:property name="email" value="${user.email}"/>
     </json:object>
   </json:array>

@@ -59,12 +59,6 @@ public class LocationController extends MultiActionController {
 			HttpServletResponse response) {
 
 		String view = "locationCentral";
-		if ("xml".equals(request.getParameter("format"))) {
-			view = "locationCentralXML";
-		}
-		if ("json".equals(request.getParameter("format"))) {
-			view = "locationCentralJSON";
-		}
 
 		ModelAndView mav = new ModelAndView(view);
 		mav.addObject("session", session);

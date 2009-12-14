@@ -45,6 +45,7 @@ public class TeamCreateController extends SimpleFormController {
 		teamCommand.setCandidates(userService.getFriends(session.getUser()
 				.getId()));
 		setSessionForm(true);
+
 		return teamCommand;
 	}
 
