@@ -1,9 +1,16 @@
-IN PROGRESS
+#summary IN PROGRESS
 ===Tiles===
+We used tiles in order to break our .jsp files into seperate snippets that will perform seperate functions, such as header, footer, and body. This will allow us to easily put our web pages together with the least amount of code. We created a main.jsp file which holds insert tags for our header, title, body, and footer jsp tags. The inserts are picked up dynamically at run-time which allows us to easily change which tiles get put into the body and title while keeping the same header and footer as we move from page to page.
+  _-James Coleman_
+<img src="http://playserengeti.googlecode.com/files/mainjspdiagramwtrans.png" align=middle>
 
 ===Scripts===
 Scripting  Scripts are used in HTML to allow dynamic web pages that can have different and changing content.  The scripts used in  serengeti mainly controlled what information was displayed on the maps on the various location  team pages. In the location pages, they were used to show the location, nearby locations, and addresses of locations. In the team pages, they were used to show the area that a team owned and have a colored overlay that displayed this area. JQuery was also used in the development of the client. JQuery is a lightweight JS library that is used to emphasize interaction between JS and HTML. We used it for accessing data and displaying data about locations, users, and teams.
+  _-Edgardo Ineguez_
+
 ===Styles===
+The web app is styled using separate cascading style sheets or CSS. We used an existing style sheet known as the 960 grid system to maintain consistent layout throughout all the pages. We also created our own CSS document to deal with things such as font, color, borders, padding, as well as more minor layout adjustments. In our CSS document we take advantage of CSS3, for gradients, box rounding, and shadows, which is available to Webkit (Safari) and Mozilla (Firefox) browsers but not Internet Explorer. The website does nicely degenerate for IE users when necessary. There is also an alternate CSS file available to mobile browsers that provides only the slimmest user interface necessary to access the site. 
+  _-Mark Miscavage_
 
 ===Images===
 
