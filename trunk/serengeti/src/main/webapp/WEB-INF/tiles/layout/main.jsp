@@ -14,7 +14,7 @@
       href="${pageContext.request.contextPath}/styles/serengeti.css"
     />
     <link rel="stylesheet" type="text/css"
-      media="screen screen and (min-device-width: 481px)"
+      media="screen and (min-device-width: 481px)"
       href="${pageContext.request.contextPath}/styles/960.css"
     />
     <link rel="stylesheet" type="text/css"
