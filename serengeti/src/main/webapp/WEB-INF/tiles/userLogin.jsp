@@ -25,3 +25,5 @@
         <input type="submit" value="Login"/>
     </div>
 </form:form>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/login.js"></script>

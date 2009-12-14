@@ -33,7 +33,7 @@
     </div>
     <div class="grid_2">
         <form:select path="teamCommand.leader.id">
-    	    <form:options items="${teamCommand.candidates}" itemValue="id" itemLabel="fullName" />
+    	    <form:options items="${teamCommand.members}" itemValue="id" itemLabel="fullName" />
 	    </form:select>
 	</div> 
 
@@ -70,8 +70,10 @@
         <label for="removals">Remove selected users:</label>
     </div>
     <div class="grid_5">
-	    <form:checkboxes path="teamCommand.removals" items="${teamCommand.candidates}" itemValue="id" itemLabel="fullName"/><br/>
-    </div>
+        <c:forEach var="user" items="${teamCommand.members}">
+	        <li id="user_${user.id}"><c:out value="${user.firstName} ${user.lastName}"/><input type="button" value="Remove" onClick="removeMember(${user.id}, ${teamCommand.teamId}, 'user_${user.id}')" /></li>
+	    </c:forEach>    
+	</div>
     
     <div class="clear">&nbsp;</div>
     
@@ -80,7 +82,7 @@
     </div>
 
 </form>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/remove.js"></script>
 <script>
     var validateUpdateForm = function () {
         var name = document.getElementById("name");

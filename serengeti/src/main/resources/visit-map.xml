@@ -92,7 +92,7 @@
       LIMIT 10
   </select>
 
-  <select id="getRecentFriendCheckIns" resultMap="visitMap">
+  <select id="getFriendsRecentActivity" resultMap="visitMap">
       SELECT *
       FROM visit, friendship
       WHERE ((first_id = #value# AND visit_user_id = second_id) OR 

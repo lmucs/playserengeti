@@ -48,7 +48,7 @@
 	        <label for="friendRemovals">Friends: </label>
 	        <ul>
 	            <c:forEach var="user" items="${userCommand.friends}">
-	                <li id="user_${user.id}"><c:out value="${user.firstName} ${user.lastName}"/><input type="button" value="Remove" onClick="removeFriend(${user.id}, 'user_${user.id}')" /></li>
+	                <li id="user_${user.id}"><c:out value="${user.firstName} ${user.lastName}"/><input type="button" value="Remove" onClick="removeFriend(${userCommand.userId}, ${user.id}, 'user_${user.id}')" /></li>
 	            </c:forEach>
 	        </ul>	
 	    </div>
@@ -59,7 +59,7 @@
 	        <label for="teamRemovals">Teams: </label>
 	        <ul>
 	            <c:forEach var="team" items="${userCommand.teams}">
-	                <li id="team_${team.id}"><c:out value="${team.name}"/><input type="button" value="Remove" onClick="removeTeam(${team.id}, 'team_${team.id}')" /></li>
+	                <li id="team_${team.id}"><c:out value="${team.name}"/><input type="button" value="Remove" onClick="removeTeam(${userCommand.userId}, ${team.id}, 'team_${team.id}')" /></li>
 	            </c:forEach>
 	        </ul>	
 	    </div>
@@ -77,26 +77,15 @@
 </form>
 
 
+<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/remove.js"></script>
 <script>
-    
-    var validateUpdateForm = function () {
+function validateUpdateForm() {
         var name = document.getElementById("password");
         if (name && name.value !== '') {
             return true;
         }
         alert("The password cannot be blank");
         return false;
-    }
-    
-    var removeFriend = function (uId, elementId) {
-        $.get("../removeFriend", {firstId : ${userCommand.userId}, secondId : uId});
-        $("#" + elementId).fadeOut("slow");
-    }
-    
-    var removeTeam = function (teamId, elementId) {
-        $.get("../removeTeam", {userId : ${userCommand.userId}, teamId : teamId});
-        $("#" + elementId).fadeOut("slow");
-    }
-    
+}    
 </script>
 

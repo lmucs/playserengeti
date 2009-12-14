@@ -121,8 +121,8 @@ public class VisitService {
 		return visitDao.getRecentCheckIns();
 	}
 
-	public Collection<Visit> getRecentFriendCheckIns(Integer userId) {
-		return visitDao.getRecentFriendCheckIns(userId);
+	public Collection<Visit> getFriendsRecentActivity(Integer userId) {
+		return visitDao.getFriendsRecentActivity(userId);
 	}
 
 	public Collection<Visit> getUsersRecentActivity(Integer userId) {

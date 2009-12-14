@@ -9,7 +9,7 @@
   <json:property name="description" value="${teamCommand.description}" />
   <json:property name="homeBase" value="${teamCommand.homeBase}" />
   <json:property name="leaderId" value="${teamCommand.leader.id}" />
-  <json:array name="members" var="user" items="${members}">
+  <json:array name="members" var="user" items="${teamCommand.members}">
     <json:object>
       <json:property name="id" value="${user.id}"/>
       <json:property name="name" value="${user.firstName} ${user.lastName}"/>

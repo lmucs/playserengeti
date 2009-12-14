@@ -90,9 +90,9 @@ public class VisitDaoIbatisImpl extends SqlMapClientDaoSupport implements
 	}
 
 	@Override
-	public Collection<Visit> getRecentFriendCheckIns(Integer userId) {
+	public Collection<Visit> getFriendsRecentActivity(Integer userId) {
 		return (Collection<Visit>) getSqlMapClientTemplate().queryForList(
-				"getRecentFriendCheckIns", userId);
+				"getFriendsRecentActivity", userId);
 	}
 
 	@Override

@@ -28,7 +28,12 @@
 		                </div>
 		            </div>
 	            </div>
-                
+	            <c:if test="${session.user.id == teamCommand.leader.id}">
+                    <div class="clear">&nbsp;</div>
+                        <div class="graphic-button" id="team-modify-button">
+                        <a href="update/${teamCommand.teamId}">Modify team's profile</a>
+                    </div> 
+                </c:if>
                 <div class="clear">&nbsp;</div>
 
 				<div class="grid_2" id="teamDescriptionTitle">
@@ -49,7 +54,7 @@
 		                </div>
 		                <div class="grid_4">
 		                    <ul>
-		                      <c:forEach var="user" items="${members}">
+		                      <c:forEach var="user" items="${teamCommand.members}">
 		                          <li><a href="../user/${user.id}"><c:out value="${user.firstName} ${user.lastName}"/></a></li>
 		                      </c:forEach>
 		                    </ul>	
@@ -75,7 +80,7 @@
             </div>
             <div class="grid_4 round_Box_Container">
                 <div class="grid_3">
-                    <strong>Controlled Territory:</strong>
+                    <p><strong>Controlled Territory</strong> (${fn:length(territory)}) <strong>:</strong></p>
                 </div>
                 <div class="clear">$nbsp;</div>
                 <ul>
