@@ -7,15 +7,15 @@
   <div id="home-page-welcome">
 
     <p class="intro-message">Serengeti is a social networking
-    application and game where players join teams that compete
-    for ownership of locations (businesses, parks, beaches, and
-    so on.) Players can check in from a mobile device and track
-    their teams' conquests on the playserengeti.com website.
-    Teams can organize competitions for fun or as
+    application where players join teams that compete
+    for ownership of real locations, such as businesses, parks,
+    and beaches. Players can check in from a mobile device and track
+    their teams' conquests on the web.
+    Teams can organize competitions for fun, or as
     fund-raisers to support their favorite
     charities. Teams that frequent and conquer
-    certain businesses might even convince proprietors
-    to offer discounts as a way to keep checking in.</p>
+    certain businesses might try to convince proprietors
+    to offer discounts as a way to keep them checking in.</p>
 
     <p id="memberad">Already a member? <a href="user/login">Log in</a>.
     If not, <a href="user/create">sign up</a> to play today.</p>
