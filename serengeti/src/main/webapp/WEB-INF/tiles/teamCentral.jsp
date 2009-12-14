@@ -4,64 +4,92 @@
 
 
  <div class="shadowTextMargin">
-<p>Teams With The Most Territory</p>
+<h2>Teams With The Most Territory</h2>
 </div>
 
-<div class="verticalMenu">
+<table class="profile">
+    <tr class="top-row">
+        <th class="profile-picture">photo</th>
+        <th>team</th>
+        <th>info or something?</th>
+    </tr>
 	<c:forEach var="team" items="${leaders}">
-		<div class="miniProfile">
-		<span class="miniProfilePic">
-			<a href="${team.id}"><img src="${pageContext.request.contextPath}/images/default_team.png" alt="team"
-			title="${visit.user.email}" width="50" height="50"/></a> </span>
-		<span class="miniProfileName">	
-			<a href="${team.id}" ><c:out value="${team.name}"/></a></span>
-		</div>
-		
-		<span class="miniProfileInfoCheckin">    </span>
+		<tr>
+            <td class="profile-picture">
+                <p>
+                    <a href="${team.id}"><img src="${pageContext.request.contextPath}/images/default_team.png" alt="team"
+			         title="${visit.user.email}" width="50" height="50"/></a>
+			    </p>
+			</td>
+		    <td class="profile-name">	
+                <p><a href="${team.id}" ><c:out value="${team.name}"/></a></p>
+            </td>
+            <td class="profile-info">
+                <%-- <span class="miniProfileInfoCheckin">    </span> --%>
+            </td>
+		</tr>
 	</c:forEach>
-</div>
+</table>
 
 <div class="shadowTextMargin">
-<p>Most Active Teams</p>
+<h2>Most Active Teams</h2>
 </div>
 
-<div class="verticalMenu">
-<c:forEach var="team" items="${mostActive}">
-		<div class="miniProfile">
-			<span class="miniProfilePic"><a href="${user.id}"><img
-			src="${pageContext.request.contextPath}/images/default_team.png" alt="team"
-			title="${team.id}" width="50" height="50"/></a></span> 
-			
-			<span class="miniProfileName">
-			<a href="${team.id}" ><c:out value="${team.name}"/></a></span>
-		</div>
-		
-		<span class="miniProfileInfoCheckin">    </span>
+<table class="profile">
+    <tr class="top-row">
+        <th class="profile-picture">photo</th>
+        <th>team</th>
+        <th>info or something?</th>
+    </tr>
+    <c:forEach var="team" items="${mostActive}">
+		<tr>
+            <td class="profile-picture">
+                <p>
+                    <a href="${user.id}"><img src="${pageContext.request.contextPath}/images/default_team.png"
+                     alt="team" title="${team.id}" width="50" height="50"/></a>
+                </p>
+            </td> 
+			<td class="profile-name">
+                <p><a href="${team.id}" ><c:out value="${team.name}"/></a></p>
+            </td>
+            <td class="profile-info">
+                <%-- <span class="miniProfileInfoCheckin">    </span> --%>
+            </td>
+		</tr>
 		
 	</c:forEach>
-</div>
+</table>
 
 <div class="shadowTextMargin">
-<p>Newest Teams</p>
+<h2>Newest Teams</h2>
 </div>
 
 
-<div class="verticalMenu">
+<table class="profile">
+    <tr class="top-row">
+        <th class="profile-picture">photo</th>
+        <th>team</th>
+        <th>date</th>
+    </tr>
 	<c:forEach var="team" items="${newest}">
-		<div class="miniProfile">
-			<span class="miniProfilePic"><a href="${user.id}"><img
-			src="${pageContext.request.contextPath}/images/default_team.png" alt="user"
-			title="${team.id}" width="50" height="50"/></a></span>
-			
-			<span class="miniProfileName"> 
-			<a href="${team.id}" ><c:out value="${team.name}"/></a></span>
-		
-		
-		<span class="miniProfileInfoJoined">Created on <fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${team.dateCreated}"/> 
-		by <a href="../user/${team.leader.id}"><c:out value="${team.leader.firstName} ${team.leader.lastName}"/></a></span>
-		</div>
+		<tr>
+            <td class="profile-picture">
+                <p>
+                    <a href="${user.id}"><img src="${pageContext.request.contextPath}/images/default_team.png"
+                     alt="user" title="${team.id}" width="50" height="50"/></a>
+                </p>
+            </td>
+			<td class="profile-name"> 
+                <p><a href="${team.id}" ><c:out value="${team.name}"/></a></p>
+            </td>
+            <td class="profile-date">
+                <p>
+                    <fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${team.dateCreated}"/>
+		        </p>
+		    </td>
+		</tr>
 	</c:forEach>
-</div>
+</table>
  
  
  
