@@ -6,7 +6,7 @@
 == PLAYER ==
 
 || *Row name* || *Type* || *Notes* ||  
-|| player_id || int, primary key || ||
+|| player_id || integer, primary key || ||
 || player_email || varchar(200), not null, unique || index ||
 || player_password_hash || char(32), not null ||  ||
 || player_first_name || varchar(200) || ||
