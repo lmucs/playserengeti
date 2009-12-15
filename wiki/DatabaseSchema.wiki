@@ -3,62 +3,57 @@
 
 = Database Schema =
 
-== LOCATION ==
-
-|| *Row name* || *Type* || *Notes*||  
-|| id || int, primary key || ||
-|| name || string || ||
-|| latitude || double || ||
-|| longitude || double || ||
-|| owner_team_id || int, foreign key => `team` || ||
-|| street || string || ||
-|| city || string || ||
-|| state || string || state, province, department, etc.||
-|| zip || string || postal code ||
-|| phone || int || ||
-|| description || string || ||
-|| image || string || ||
-
-== USER ==
+== PLAYER ==
 
 || *Row name* || *Type* || *Notes* ||  
-|| id || int, primary key || ||
-|| passwordHash || string ||  ||
-|| display_name || string, Required || ||
-|| email_address || string, Required || ||
-|| phone_number || int/string, Required for mobile app || ||
-|| image || string || ||
-|| creation_date || date || ||
-
+|| player_id || int, primary key || ||
+|| player_email || varchar(200), not null, unique || index ||
+|| player_password_hash || char(32), not null ||  ||
+|| player_first_name || varchar(200) || ||
+|| player_last_name || varchar(200) || || 
+|| player_creation_timestamp || timestamp || ||
+|| player_avatar_id || integer, foreign key => player_avatar(player_avatar_id) || on delete restrict || 
 
 == TEAM ==
 || *Row name* || *Type* || *Notes* ||
-|| id || int, primary key || ||
-|| team_name || string || ||
-|| team_leader_id || int, foreign key => 'user' || ||
-|| color || (string, enum?) || (could be a string as name or hex code, or enum from set of colors) ||
-|| image || string || (team logo/icon) ||
-|| description || string || ||
-|| home_base || string || ||
-|| creation_date || date || ||
+|| team_id || integer, primary key, unique || ||
+|| team_name || varchar(200), not null || index ||
+|| team_description || char(400) || ||
+|| team_home_base || varchar(200) || ||
+|| team_leader_id || integer, foreign key => player(player_id), not null || on delete cascade ||
+|| team_creation_timestamp || timestamp || ||
+|| team_color || varchar(200) || || 
+|| team_avatar_id || integer, foreign key => team_avatar(team_avatar_id) || on delete restrict|| 
 
+== LOCATION ==
 
+|| *Row name* || *Type* || *Notes*||  
+|| location_id || integer, primary key || ||
+|| location_name || varchar(200), not null || part of unique, part of index ||
+|| location_latitude || numeric(9,6), not null || part of unique, part of index ||
+|| location_longitude || numeric(9,6), not null || part of unique, part of index ||
+|| location_street || varchar(200), not null || ||
+|| location_city || varchar(200), not null || ||
+|| location_state || char(2), not null || state, province, department, etc.||
+|| location_zipcode || integer || postal code ||
+|| location_phone_number || char(16)|| ||
+|| team_owner_id || integer, foreign key team(team_id) || ||
 
-== MEMBER ==
+== MEMBERSHIP ==
 || *Row name* || *Type* || *Notes* ||
-||  id || int, primary key || ||
-||  user_id || int, foreign key => `user` || ||
-||  team_id || int, foreign key => `team` || || 
+|| team_id || integer, foreign key => team(team_id), not null || part of primary key, on delete cascade ||
+|| player_id || integer, foreign key => player(player_id), not null || part of primary key, on delete cascade ||
+|| status || char(10) || || 
 
-== FRIEND ==
+== FRIENDSHIP ==
 || *Row name* || *Type* || *Notes* ||
-|| id || int, primary key || ||
-|| primary_user_id || int, foreign key => `user` || ||
-|| secondary_user_id || int, foreign key => `user` || || 
-|| status || enum{'Pending', 'Accepted', 'Rejected'} || ||
+|| first_id || integer, foreign key => player(player_id), not null || part of primary key, on delete cascade ||
+|| second_id || integer, foreign key => player(player_id), not null || part of primary key, on delete casecade || 
+|| status || char(10) || ||
 
 == VISIT ==
-|| id || (int, primary key) || ||
-|| user_id || int, foreign key => `user` || ||
-|| team_id || int, foreign key => `team` || ||
-|| location_id  || int, foreign key => `location` || || 
+|| visit_id || integer, primary key || ||
+|| visit_user_id || integer, foreign key => player(player_id), not null || on delete cascade ||
+|| visit_team_id || integer, foreign key => team(team_id), not null || on delete cascade ||
+|| visit_location_id  || integer, foreign key => location(location_id), not null || on delete cascade || 
+|| visit_timestamp || timestamp || ||
