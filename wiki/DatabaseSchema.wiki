@@ -1,11 +1,9 @@
-#summary - Database schema of the user, location, team, and other tables.
+#summary - Basic description of the tables in the Serengeti relational data model.  Includes column and key specifications, as well as basic constraints, but omits index and other tuning-related values.
 #labels Phase-Design,Phase-Requirements
-
-= Database Schema =
 
 == PLAYER ==
 
-|| *Row name* || *Type* || *Notes* ||  
+|| *Column name* || *Type* || *Notes* ||  
 || player_id || integer, primary key || ||
 || player_email || varchar(200), not null, unique || index ||
 || player_password_hash || char(32), not null ||  ||
@@ -15,7 +13,8 @@
 || player_avatar_id || integer, foreign key => player_avatar(player_avatar_id) || on delete restrict || 
 
 == TEAM ==
-|| *Row name* || *Type* || *Notes* ||
+
+|| *Column name* || *Type* || *Notes* ||  
 || team_id || integer, primary key, unique || ||
 || team_name || varchar(200), not null || index ||
 || team_description || char(400) || ||
@@ -27,7 +26,7 @@
 
 == LOCATION ==
 
-|| *Row name* || *Type* || *Notes*||  
+|| *Column name* || *Type* || *Notes* ||  
 || location_id || integer, primary key || ||
 || location_name || varchar(200), not null || part of unique, part of index ||
 || location_latitude || numeric(9,6), not null || part of unique, part of index ||
@@ -40,18 +39,22 @@
 || team_owner_id || integer, foreign key team(team_id) || ||
 
 == MEMBERSHIP ==
-|| *Row name* || *Type* || *Notes* ||
+
+|| *Column name* || *Type* || *Notes* ||  
 || team_id || integer, foreign key => team(team_id), not null || part of primary key, on delete cascade ||
 || player_id || integer, foreign key => player(player_id), not null || part of primary key, on delete cascade ||
 || status || char(10) || || 
 
 == FRIENDSHIP ==
-|| *Row name* || *Type* || *Notes* ||
+
+|| *Column name* || *Type* || *Notes* ||  
 || first_id || integer, foreign key => player(player_id), not null || part of primary key, on delete cascade ||
 || second_id || integer, foreign key => player(player_id), not null || part of primary key, on delete casecade || 
 || status || char(10) || ||
 
 == VISIT ==
+
+|| *Column name* || *Type* || *Notes* ||  
 || visit_id || integer, primary key || ||
 || visit_user_id || integer, foreign key => player(player_id), not null || on delete cascade ||
 || visit_team_id || integer, foreign key => team(team_id), not null || on delete cascade ||
@@ -59,13 +62,17 @@
 || visit_timestamp || timestamp || ||
 
 == PLAYER_AVATAR ==
-|| player_avatar_id || integer, primayr key || || 
+
+|| *Column name* || *Type* || *Notes* ||  
+|| player_avatar_id || integer, primary key || || 
 || player_id || integer, foreign key => player(player_id), not null || on delete cascade || 
-|| avatar_bytes || bytea, not null || ||
+|| avatar_bytes || bytes, not null || ||
 || avatar_mime || varchar(20), not null || || 
 
 == TEAM_AVATAR == 
+
+|| *Column name* || *Type* || *Notes* ||  
 || team_avatar_id || integer, primary key || ||
 || team_id || integer, foreign key => team(team_id), not null || on delete cascade ||
-|| avatar_bytes || bytea, not null || ||
+|| avatar_bytes || bytes, not null || ||
 || avatar_mime || varchar(20), not null || ||
