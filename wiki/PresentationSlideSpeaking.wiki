@@ -3,27 +3,27 @@
   # Title: Mark
   # Problem: Mark
   # Serengeti is...: Mark
-  # Playing Serengeti:
-  # Hello Serengeti(image):
-  # Player Profiles(image)(in progress):
-  # Team Profiles(image)(in progress):
-  # Location Profiles(image):
-  # Checking In(image)(in progress):
-  # Project Environment
+  # Playing Serengeti: Mark
+  # Hello Serengeti(image): Mark
+  # Player Profiles(image)(in progress): Mark
+  # Team Profiles(image)(in progress): Mark
+  # Location Profiles(image): Mark
+  # Checking In(image)(in progress): Mark
+  # Project Environment: Edgardo
   # Technologies Used: Edgardo
   # CMSI 401 vs. Real World: Edgardo
   # Serengeti Architecture: Chris
   # Database Schema: Chris
-  # Server:
-  # Web App Layers: 
+  # Server: Loren
+  # Web App Layers: Loren
   # Domain Objects: Loren
-  # Rendering: 
+  # Rendering: James
   # Styles: James
   # Scripts: Chris
   # Mapping: Chris
   # Mobile Website: Lita
   # iPhone App: Lita
-  # Demos: James
+  # Demos: Mark
   # We're on the Web: Don
   # Summary: Don
-  # Questions: 
+  # Questions: Don
