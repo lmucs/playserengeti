@@ -57,3 +57,15 @@
 || visit_team_id || integer, foreign key => team(team_id), not null || on delete cascade ||
 || visit_location_id  || integer, foreign key => location(location_id), not null || on delete cascade || 
 || visit_timestamp || timestamp || ||
+
+== PLAYER_AVATAR ==
+|| player_avatar_id || integer, primayr key || || 
+|| player_id || integer, foreign key => player(player_id), not null || on delete cascade || 
+|| avatar_bytes || bytea, not null || ||
+|| avatar_mime || varchar(20), not null || || 
+
+== TEAM_AVATAR == 
+|| team_avatar_id || integer, primary key || ||
+|| team_id || integer, foreign key => team(team_id), not null || on delete cascade ||
+|| avatar_bytes || bytea, not null || ||
+|| avatar_mime || varchar(20), not null || ||
