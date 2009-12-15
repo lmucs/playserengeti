@@ -3,7 +3,7 @@ function makeBlank(textfield) {
     textfield.style.color = "black";
 }
 
-function returnValue(id) {
+function returnValue(textfield) {
     if (textfield.value == "") {
         textfield.style.color = "#CCCCCC";
         textfield.value = "Search for people, places, or teams";
