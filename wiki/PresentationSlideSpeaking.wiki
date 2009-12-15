@@ -1,25 +1,28 @@
 #summary Mark Your Slides
 
   # Title: Mark
-  # Outline: Mark
+  # Problem: Mark
   # Serengeti is...: Mark
-  # Goals and Objectives: Edgardo
+  # Playing Serengeti:
+  # Hello Serengeti(image):
+  # Player Profiles(image)(in progress):
+  # Team Profiles(image)(in progress):
+  # Location Profiles(image):
+  # Checking In(image)(in progress):
+  # Project Environment
   # Technologies Used: Edgardo
   # CMSI 401 vs. Real World: Edgardo
-  # More CMSI 401 vs. Real World: Edgardo
-  # Architecture: Chris
+  # Serengeti Architecture: Chris
   # Database Schema: Chris
-  # Web Application: Loren
+  # Server:
+  # Web App Layers: 
   # Domain Objects: Loren
-  # Services: Loren
-  # Daos: Loren
-  # Tiles: James
+  # Rendering: 
   # Styles: James
   # Scripts: Chris
-  # Maps Example: Chris
-  # Mobile: Lita
-  # iPhone App (1 of 2): Lita
-  # iPhone App (2 of 2): Lita
+  # Mapping: Chris
+  # Mobile Website: Lita
+  # iPhone App: Lita
   # Demos: James
   # We're on the Web: Don
   # Summary: Don
