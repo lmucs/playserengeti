@@ -109,6 +109,9 @@ div.searchbar {
 #home-page-body {
   margin-left: 7px;
 }
+#footerRight a{
+    color: black;
+}
 
 #home-page-welcome {
   text-align: justify;
