@@ -39,7 +39,11 @@
 
                 <entry key="/avatar" value-ref="avatarController" />
 
-                <entry key="/help" value-ref="helpController" />
+                <entry key="/help" value-ref="infoController" />
+                <entry key="/about" value-ref="infoController" />
+                <entry key="/contact" value-ref="infoController" />
+                <entry key="/terms" value-ref="infoController" />
+                <entry key="/privacy" value-ref="infoController" />
             </map>
         </property>
     </bean>
@@ -80,9 +84,13 @@
         <property name="session" ref="userSession"/>
         <constructor-arg ref="userService"/>
     </bean>
-
-    <bean id="helpController"
-        class="com.playserengeti.controller.HelpController">
+    
+    <bean id="infoController"
+        class="com.playserengeti.controller.InfoController">
+        <property name="methodNameResolver">
+          <bean class="com.playserengeti.controller.SerengetiMultipartResolver">
+          </bean>
+        </property>
         <property name="session" ref="userSession"/>
     </bean>
 

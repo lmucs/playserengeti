@@ -12,7 +12,6 @@ import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 import com.playserengeti.domain.Location;
 import com.playserengeti.domain.Team;
-import com.playserengeti.domain.User;
 import com.playserengeti.domain.Visit;
 import com.playserengeti.service.LocationService;
 import com.playserengeti.service.TeamService;
