@@ -97,6 +97,22 @@
         <servlet-name>spring</servlet-name>
         <url-pattern>/search/*</url-pattern>
     </servlet-mapping>
+        <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/about/*</url-pattern>
+    </servlet-mapping>
+        <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/contact/*</url-pattern>
+    </servlet-mapping>
+        <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/privacy/*</url-pattern>
+    </servlet-mapping>
+        <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/terms/*</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>spring</servlet-name>
         <url-pattern>/team/*</url-pattern>

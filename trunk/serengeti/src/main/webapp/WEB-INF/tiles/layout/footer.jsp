@@ -4,6 +4,9 @@
 
   <p id="footerLeft">&copy; 2009 Serengeti</p>
 
-  <p id="footerRight">about | privacy | terms | contact</p>
+  <p id="footerRight"><a href="${pageContext.request.contextPath}/about">about</a> 
+  | <a href="${pageContext.request.contextPath}/privacy">privacy</a> 
+  | <a href="${pageContext.request.contextPath}/terms">terms</a> 
+  | <a href="${pageContext.request.contextPath}/contact">contact</a></p>
 
 </div>
