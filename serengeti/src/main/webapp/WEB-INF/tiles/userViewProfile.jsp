@@ -81,7 +81,7 @@
                       </div>
                   </div>
                   <div class="clear">&nbsp;</div>
-                  <c:if test="${!empty friendInvites && !empty teamInvites}">
+                  <c:if test="${!empty friendInvites || !empty teamInvites}">
                      <div class="grid_7 round_Box_Container">
                         <c:if test="${!empty friendInvites}">
                              <div class="grid_6" id="friendRequests">
