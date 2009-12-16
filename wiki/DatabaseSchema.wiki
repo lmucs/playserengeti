@@ -34,7 +34,7 @@
 || location_street || varchar(200), not null || ||
 || location_city || varchar(200), not null || ||
 || location_state || char(2), not null || state, province, department, etc.||
-|| location_zipcode || integer || postal code ||
+|| location_zipcode || char(10)|| postal code ||
 || location_phone_number || char(16)|| ||
 || team_owner_id || integer, foreign key team(team_id) || ||
 
