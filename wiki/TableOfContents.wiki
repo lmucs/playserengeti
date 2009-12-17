@@ -7,7 +7,6 @@
   # [Server_Architecture Server Architecture]
   # [Client_Architecture Client Architecture]
   # [Mobile_Architecture Mobile Architecture]
-  # [Testing]
   # [Deployment]
   # Appendix: Administration and Planning
     * [Schedule_and_Milestones Project Scheduling]
