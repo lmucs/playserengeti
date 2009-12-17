@@ -40,21 +40,24 @@ public class TeamUpdateController extends SimpleFormController {
 		TeamCommand teamCommand = new TeamCommand();
 		Team team;
 
-		if (teamId != null) {
-			team = teamService.getTeamById(teamId);
-			teamCommand.setTeamId(team.getId());
-			teamCommand.setName(team.getName());
-			teamCommand.setColor(team.getColor());
-			teamCommand.setDescription(team.getDescription());
-			teamCommand.setHomeBase(team.getHomeBase());
-			if (team.getLeader() != null) {
-				teamCommand.setLeader(team.getLeader());
-			}			
-			Collection<User> members = teamService.getTeamMembers(teamId);
-			members.remove(team.getLeader());
-			teamCommand.setMembers(members);
+		if (session.isLoggedIn()) {
+			teamCommand.setSessionId(session.getUser().getId());
+			if (teamId != null) {
+				team = teamService.getTeamById(teamId);
+				if (team.getLeader() != null
+						&& team.getLeader().getId().equals(session.getUser().getId())) {
+					teamCommand.setTeamId(team.getId());
+					teamCommand.setName(team.getName());
+					teamCommand.setColor(team.getColor());
+					teamCommand.setDescription(team.getDescription());
+					teamCommand.setHomeBase(team.getHomeBase());
+					teamCommand.setLeader(team.getLeader());
+					Collection<User> members = teamService.getTeamMembers(teamId);
+					members.remove(team.getLeader());
+					teamCommand.setMembers(members);
+				}
+			}
 		}
-
 		setSessionForm(true);
 		return teamCommand;
 	}
@@ -67,22 +70,26 @@ public class TeamUpdateController extends SimpleFormController {
 		TeamCommand command = (TeamCommand) _command;
 		Integer teamId = command.getTeamId();
 
-		// Modify the entry in the database.
-		Team team = teamService.getTeamById(teamId);
-		team.setName(command.getName());
-		team.setColor(command.getColor());
-		if (command.getLeader() != null) {
-			team
-					.setLeader(userService.getUserById(command.getLeader()
+		if (session.isLoggedIn() && teamId != null) {
+			// Modify the entry in the database.
+			Team team = teamService.getTeamById(teamId);
+			if (team.getLeader() != null
+					&& team.getLeader().getId().equals(
+							session.getUser().getId())) {
+				team.setName(command.getName());
+				team.setColor(command.getColor());
+				if (command.getLeader() != null) {
+					team.setLeader(userService.getUserById(command.getLeader()
 							.getId()));
-		}
-		team.setDescription(command.getDescription());
-		team.setHomeBase(command.getHomeBase());
+				}
+				team.setDescription(command.getDescription());
+				team.setHomeBase(command.getHomeBase());
 
-		teamService.saveTeam(team);
+				teamService.saveTeam(team);
+			}
+		}
 
 		ModelAndView mav = new ModelAndView("redirect:/team/" + teamId);
-
 		return mav;
 	}
 

@@ -21,5 +21,9 @@ public class UserCreateValidator implements Validator {
                 "email.blank", "The email address can not be blank");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password",
                 "password.blank", "The password can not be blank");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName",
+                "firstName.blank", "Your first name can not be blank");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastName",
+                "lastName.blank", "Your last name can not be blank");
     }
 }

@@ -52,11 +52,9 @@ public class CompGeo {
 			}
 		}
 
-		if (cluster.size() > 2)
-			result.add(cluster);
+		if (cluster.size() > 2) result.add(cluster);
 		points.remove(cluster);
-		if (points.size() != 0)
-			result.addAll(cluster(points));
+		if (points.size() != 0) result.addAll(cluster(points));
 		return result;
 	}
 
@@ -159,5 +157,13 @@ public class CompGeo {
 	 */
 	public Double distanceFromPoints(Double[] a, Double[] b) {
 		return Math.sqrt(Math.pow(a[0] - b[0], 2) + Math.pow(a[1] - b[1], 2));
+	}
+	
+	/**
+	 * Sets the bound of determining clusters.
+	 * @param bound
+	 */
+	public void setBound(double bound) {
+		this.bound = bound;
 	}
 }

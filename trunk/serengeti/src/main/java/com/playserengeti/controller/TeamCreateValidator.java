@@ -20,6 +20,6 @@ public class TeamCreateValidator implements Validator {
         TeamCommand c = TeamCommand.class.cast(object);
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name",
-                "teamName.blank", "The team name can not be blank");
+                "name.blank", "The team name can not be blank");
     }
 }

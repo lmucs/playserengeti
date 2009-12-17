@@ -40,14 +40,17 @@ public class UserDeleteController extends SimpleFormController {
 			throws Exception {
 		Integer userId = Integer.valueOf(request.getParameter("userId"));
 		UserCommand userCommand = new UserCommand();
-		User user = userService.getUserById(userId);
-
-		userCommand.setUserId(userId);
-		userCommand.setEmail(user.getEmail());
-		userCommand.setFirstName(user.getFirstName());
-		userCommand.setLastName(user.getLastName());
-		userCommand.setTeams(teamService.getTeamsLedByUser(userId));
-
+		if (session.isLoggedIn()) {
+			userCommand.setSessionId(session.getUser().getId());		
+		    if (userId != null && session.getUser().getId().equals(userId)) {
+		    	User user = userService.getUserById(userId);
+		    	userCommand.setUserId(userId);
+		    	userCommand.setEmail(user.getEmail());
+			    userCommand.setFirstName(user.getFirstName());
+			    userCommand.setLastName(user.getLastName());
+			    userCommand.setTeams(teamService.getTeamsLedByUser(userId));
+		    }
+		}
 		setSessionForm(true);
 		return userCommand;
 	}
@@ -63,11 +66,13 @@ public class UserDeleteController extends SimpleFormController {
 		Integer userId = command.getUserId();
 
 		try {
-			session.setUser(null);
+			if (session.isLoggedIn() && userId != null
+			  && session.getUser().getId().equals(userId)) {
+				session.setUser(null);
+				// Deletes the user from the database.
+				userService.deleteUser(userId);
 
-			// Deletes the user from the database.
-			userService.deleteUser(userId);
-
+			}
 			return new ModelAndView("redirect:/");
 		}
 

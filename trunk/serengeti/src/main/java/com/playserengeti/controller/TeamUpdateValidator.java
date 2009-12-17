@@ -1,6 +1,7 @@
 package com.playserengeti.controller;
 
 import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 /**
@@ -17,6 +18,10 @@ public class TeamUpdateValidator implements Validator {
     @Override
     public void validate(Object object, Errors errors) {
 
-        // TODO
+    	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name",
+                "name.blank", "The team name can not be blank");
+
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "leader",
+                "leader.blank", "The team must have a leader");
     }
 }

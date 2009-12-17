@@ -142,7 +142,7 @@ public class LocationController extends MultiActionController {
 	 */
 	public void handleResult(HttpServletRequest request,
 			HttpServletResponse response) {
-		double bound = .03;
+		double bound = .015;
 
 		String name = request.getParameter("name");
 		Double lat = Double.valueOf(request.getParameter("lat"));

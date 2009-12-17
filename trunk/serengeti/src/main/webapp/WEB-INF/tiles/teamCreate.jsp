@@ -3,7 +3,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-
+<c:choose>
+<c:when test="${!empty teamCommand}">
     <p>Create your own team and start marking your territory.
        Just fill in the information below.</p>
 
@@ -15,6 +16,7 @@
 		    </div>
 		    <div class="grid_2">
 		        <input type="text" id="name" name="name" />
+		        <form:errors path="name"/>
 		    </div>
 		    
 		    <div class="clear">&nbsp;</div>
@@ -62,14 +64,16 @@
 		        <input type="text" name="homeBase" />
 		    </div>
 		    
-		    <div class="clear">&nbsp;</div>
-		    	
-		    <div class="grid_2">
-		        <label for="invitees">Invite people to team:</label>
-		    </div>
-		    <div class="grid_5">
-				<form:checkboxes path="teamCommand.invitees" items="${teamCommand.candidates}" itemValue="id" itemLabel="fullName"/><br/>
-		    </div>
+		    <c:if test="${!empty teamCommand.candidates}">
+    		    <div class="clear">&nbsp;</div>
+	 	    	
+	    	    <div class="grid_2">
+		            <label for="invitees">Invite people to team:</label>
+		        </div>
+    		    <div class="grid_5">
+	    			<form:checkboxes path="teamCommand.invitees" items="${teamCommand.candidates}" itemValue="id" itemLabel="fullName"/><br/>
+		        </div>
+		    </c:if>
 		    
 		    <div class="clear">&nbsp;</div>
 		    
@@ -78,7 +82,11 @@
 		    </div>
         </div>
 	</form>
-
+</c:when>
+<c:otherwise>
+    <p>You must be logged in to create a team.</p>
+</c:otherwise>
+</c:choose>
 	<script>
 	    var validateCreateForm = function () {
 	        var name = document.getElementById("name");

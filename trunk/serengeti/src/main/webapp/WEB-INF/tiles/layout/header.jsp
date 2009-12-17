@@ -13,17 +13,20 @@
   <div id="navbar2">
     <ul>
       <li><a href="${pageContext.request.contextPath}/">Home</a></li>
-      <c:if test="${session.loggedIn}">
-        <li><a href="${pageContext.request.contextPath}/user/${session.user.id}">Profile</a></li>
+      <c:if test="${session.loggedIn || (!empty userCommand.sessionId) 
+        || (!empty teamCommand.sessionId) || (!empty locationCommand.sessionId)}">
+        <li><a href="${pageContext.request.contextPath}/user/${session.user.id}${userCommand.sessionId}${teamCommand.sessionId}${locationCommand.sessionId}">Profile</a></li>
       </c:if>
-      <c:if test="${not session.loggedIn}">
+      <c:if test="${not session.loggedIn && (empty userCommand.sessionId) 
+        && (empty teamCommand.sessionId) && (empty locationCommand.sessionId)}">
         <li><a href="${pageContext.request.contextPath}/user/login">Log In</a></li>
       </c:if>
       <li><a href="${pageContext.request.contextPath}/user">Users</a></li>
       <li><a href="${pageContext.request.contextPath}/team">Teams</a></li>
       <li><a href="${pageContext.request.contextPath}/location">Locations</a></li>
       <li><a href="${pageContext.request.contextPath}/help">Help</a></li>
-      <c:if test="${session.loggedIn}">
+      <c:if test="${session.loggedIn  || (!empty userCommand.sessionId) 
+        || (!empty teamCommand.sessionId) || (!empty locationCommand.sessionId)}">
         <li><a href="${pageContext.request.contextPath}/user/logout">Log Out</a></li>
       </c:if>
     </ul>

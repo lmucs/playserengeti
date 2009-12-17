@@ -25,6 +25,7 @@ public class TeamCommand {
 	private Collection<User> members;
 	private Collection<User> candidates;
 	private Integer[] invitees;
+	private Integer sessionId;
 
 	public Integer getTeamId() {
 		return teamId;
@@ -104,5 +105,13 @@ public class TeamCommand {
 
 	public void setCandidates(Collection<User> candidates) {
 		this.candidates = candidates;
+	}
+
+	public Integer getSessionId() {
+		return sessionId;
+	}
+
+	public void setSessionId(Integer sessionId) {
+		this.sessionId = sessionId;
 	}
 }

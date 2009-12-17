@@ -20,14 +20,16 @@ public class LocationCreateController extends SimpleFormController {
 	public LocationCreateController(LocationService locationService) {
 		this.locationService = locationService;
 	}
-
+	
 	/**
-	 * Don't think this is even needed.
+	 * Returns the backing object.
 	 */
 	protected Object formBackingObject(HttpServletRequest request)
 			throws Exception {
 		LocationCommand locationCommand = new LocationCommand();
-
+		if (session.isLoggedIn()) {
+			locationCommand.setSessionId(session.getUser().getId());
+		}
 		setSessionForm(true);
 		return locationCommand;
 	}
@@ -38,20 +40,22 @@ public class LocationCreateController extends SimpleFormController {
 	public ModelAndView onSubmit(Object _command) {
 		LocationCommand command = (LocationCommand) _command;
 
-		Location location = new Location(null, command.getName(), command
-				.getLatitude(), command.getLongitude());
-		location.setStreet(command.getStreet());
-		location.setCity(command.getCity());
-		location.setState(command.getState());
-		location.setZipcode(command.getZipcode());
-		location.setPhoneNumber(command.getPhoneNumber());
+		if (session.isLoggedIn()) {
+			Location location = new Location(null, command.getName(), 
+					command.getLatitude(), command.getLongitude());
+			location.setStreet(command.getStreet());
+			location.setCity(command.getCity());
+			location.setState(command.getState());
+			location.setZipcode(command.getZipcode());
+			location.setPhoneNumber(command.getPhoneNumber());
 
-		locationService.saveLocation(location);
+			locationService.saveLocation(location);
 
-		ModelAndView mav = new ModelAndView("redirect:view");
-		mav.addObject("locationId", location.getId());
-
-		return mav;
+			ModelAndView mav = new ModelAndView("redirect:view", "locationId",
+					location.getId());
+			return mav;
+		}
+		return new ModelAndView("redirect:location/");
 	}
 
 	public UserSession getSession() {
