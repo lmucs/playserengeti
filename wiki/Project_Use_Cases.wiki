@@ -445,16 +445,16 @@ Security:
 
 Notes: How does this work? Does the form ask for an email address and send a link to that address?
 </wiki:comment>
-===U13 Invite To be Friend===
-  * *Description*: 
-  * *Actor*:
-  * *Preconditions*: 
+===U13 Friend Request===
+  * *Description*: A user invites another user to be their friend.
+  * *Actor*: End user.
+  * *Preconditions*: The user is already registered as a player.
   * *Flow of Events for Main Scenario*:
-    # TO_DO
-    # TO_DO
+    # User sends the system the user id of another user they wish to make their friend.
+    # System adds the sending user's id to the friend requests of the user profile of the send user id.
   * *Alternative Scenarios*:
-    # TO_DO
-  * *Postconditions*: None.
+    # If the sent user id does not belong to an existing user, an exception is thrown.
+  * *Postconditions*: The sending user's id is added to the sent user's friend requests in the database.
   * *Handles Requirements*: 
 <wiki:comment>
 Description: Invite a person to be your friend
@@ -468,15 +468,16 @@ Security:
 Notes:
 </wiki:comment>
 ===U14 Accept Friend Request===
-  * *Description*: 
-  * *Actor*:
-  * *Preconditions*: 
+  * *Description*: A user accepts a friend request from another user
+  * *Actor*: End user.
+  * *Preconditions*: The user has had another user request their friendship.
   * *Flow of Events for Main Scenario*:
-    # TO_DO
-    # TO_DO
+    # System sends the user the id of a friend who has requested their friendship.
+    # User sends the system an acceptance or rejection notice.
+    # If an acceptance notice is received, system removes the friend request from the user's profile and creates a friendship between the two users in the database.
   * *Alternative Scenarios*:
-    # TO_DO
-  * *Postconditions*: None.
+    # If a rejection notice is recieved the system removes the friend request from the user's profile without creating a friendship between the two users in the database.
+  * *Postconditions*: A friendship of the two users is added to the database's friendship table.
   * *Handles Requirements*: 
 <wiki:comment>
 Description: Accept a request to be a friend
