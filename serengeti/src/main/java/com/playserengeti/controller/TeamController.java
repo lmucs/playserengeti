@@ -104,10 +104,8 @@ public class TeamController extends MultiActionController {
 		}
 		command.setMembers(teamService.getTeamMembers(teamId));
 
-		Collection<Visit> activity = visitService
-				.getTeamsRecentActivity(teamId);
-		Collection<Location> territory = locationService
-				.getControlledTerritory(teamId);
+		Collection<Visit> activity = visitService.getTeamsRecentActivity(teamId);
+		Collection<Location> territory = locationService.getControlledTerritory(teamId);
 		List<List<Double[]>> hull = locationService.getRegions(territory);
 
 		String view = "teamViewProfile";
@@ -142,8 +140,9 @@ public class TeamController extends MultiActionController {
 			HttpServletResponse response) {
 		Integer userId = Integer.valueOf(request.getParameter("userId"));
 		Integer teamId = Integer.valueOf(request.getParameter("teamId"));
-
-		teamService.removeFromTeam(teamId, userId);
+		if (session.isLoggedIn() && session.getUser().getId().equals(userId)) {
+    		teamService.removeFromTeam(teamId, userId);
+		}
 	}
 
 	public UserSession getSession() {

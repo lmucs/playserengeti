@@ -3,6 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<c:set var="lookingAtYourself">${session.loggedIn && (session.user.id == userCommand.userId)}</c:set>
 
 <c:choose>
     <c:when test='${!empty userCommand}'>
@@ -41,7 +42,7 @@
       </div>
       <div class="clear">&nbsp;</div>
       <div class="grid_7">
-          <c:if test="${session.loggedIn && (session.user.id == userCommand.userId)}">
+          <c:if test="${lookingAtYourself}">
               <div id="ownProfile"> 
                   <div class="clear">&nbsp;</div>
                       <div class="graphic-button" id="user-modify-button">
@@ -68,16 +69,16 @@
                                           <option value="${team.id}"><c:out value="${team.name}"/></option>
                                       </c:forEach>
                                   </select>
+                                  <div class="clear">&nbsp;</div>
+                                  <div class="grid_1" id="checkinButton">
+                                      <input type="button" value="Check In" onclick="checkIn(${session.user.id})"/>
+                                  </div>
                               </c:when>
                               <c:otherwise>
                                   <p>You aren't a member of any teams yet.  Ask a friend to invite you to one
                                   or <a href="../team/create">make your own.</a></p>
                               </c:otherwise>
                           </c:choose>
-                      </div>
-                      <div class="clear">&nbsp;</div>
-                      <div class="grid_1" id="checkinButton">
-                          <input type="button" value="Check In" onclick="checkIn(${session.user.id})"/>
                       </div>
                   </div>
                   <div class="clear">&nbsp;</div>
@@ -117,12 +118,26 @@
           <div class="grid_7 activityBoxContainer">
               <div class="grid_6">
                   <div class="shadowText">Recent Activity</div>
-                  <ul id="activity">
-                      <c:forEach var="visit" items="${activity}">
-                          <li>@ <a href="../location/${visit.location.id}"><c:out value="${visit.location.name}"/></a>
-                          (<fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${visit.date}"/>)</li>
-                      </c:forEach>
-                  </ul>
+                  <c:choose>
+                      <c:when test="${!empty activity}">
+                          <ul id="activity">
+                              <c:forEach var="visit" items="${activity}">
+                                  <li>@ <a href="../location/${visit.location.id}"><c:out value="${visit.location.name}"/></a>
+                                  (<fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${visit.date}"/>)</li>
+                              </c:forEach>
+                          </ul>
+                      </c:when>
+                      <c:otherwise>
+                          <c:choose>
+                              <c:when test="${lookingAtYourself}">
+                                  <p>You haven't done anything yet.</p>
+                              </c:when>
+                              <c:otherwise>
+                                  <p>${userCommand.firstName} hasn't done anything yet.</p>
+                              </c:otherwise>
+                          </c:choose>
+                      </c:otherwise>
+                  </c:choose>
               </div>
           </div>
           <div class="clear">&nbsp;</div>
@@ -130,10 +145,24 @@
               <div class="grid_6">
                   <div class="shadowText">Friend Activity</div>
                   <ul id="activity">
-                      <c:forEach var="visit" items="${friendActivity}">
-                          <li><a href="${visit.user.id}"><c:out value="${visit.user.fullName}"/></a> @ <a href="../location/${visit.location.id}"><c:out value="${visit.location.name}"/></a>
-                          (<fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${visit.date}"/>)</li>
-                      </c:forEach>
+                      <c:choose>
+                          <c:when test="${!empty friendActivity}">
+                              <c:forEach var="visit" items="${friendActivity}">
+                                  <li><a href="${visit.user.id}"><c:out value="${visit.user.fullName}"/></a> @ <a href="../location/${visit.location.id}"><c:out value="${visit.location.name}"/></a>
+                                  (<fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${visit.date}"/>)</li>
+                              </c:forEach>
+                          </c:when>
+                          <c:otherwise>
+                              <c:choose>
+                                  <c:when test="${lookingAtYourself}">
+                                      <p>Your friends haven't done anything yet.</p>
+                                  </c:when>
+                                  <c:otherwise>
+                                      <p>${userCommand.firstName}'s friends haven't done anything yet.</p>
+                                  </c:otherwise>
+                              </c:choose>
+                          </c:otherwise>
+                      </c:choose>
                   </ul>
               </div>
           </div>
@@ -146,9 +175,23 @@
         </div>
         <div class="grid_3">
             <ul id="friends">
-                <c:forEach var="user" items="${userCommand.friends}">
-                    <li><a href="${user.id}"><c:out value="${user.firstName} ${user.lastName}"/></a></li>
-                </c:forEach>
+                <c:choose>
+                    <c:when test="${!empty userCommand.friends}">
+                        <c:forEach var="user" items="${userCommand.friends}">
+                            <li><a href="${user.id}"><c:out value="${user.firstName} ${user.lastName}"/></a></li>
+                        </c:forEach>
+                    </c:when>
+                    <c:otherwise>
+                        <c:choose>
+                            <c:when test="${lookingAtYourself}">
+                                <p>You don't have any friends yet.</p>
+                            </c:when>
+                            <c:otherwise>
+                                <p>${userCommand.firstName} doesn't have any friends yet.</p>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:otherwise>
+                </c:choose>    
             </ul>
         </div>
       </div>
@@ -158,14 +201,27 @@
         </div>
         <div class="grid_3">
           <ul id="teams">
-              <c:forEach var="team" items="${userCommand.teams}">
-                  <li><a href="../team/${team.id}"><c:out value="${team.name}"/></a></li>
-              </c:forEach>
+              <c:choose>
+                  <c:when test="${!empty userCommand.teams}">
+                      <c:forEach var="team" items="${userCommand.teams}">
+                          <li><a href="../team/${team.id}"><c:out value="${team.name}"/></a></li>
+                      </c:forEach>
+                  </c:when>
+                  <c:otherwise>
+                      <c:choose>
+                          <c:when test="${lookingAtYourself}">
+                              <p>You aren't a member of any teams yet.</p>
+                          </c:when>
+                          <c:otherwise>
+                              <p>${userCommand.firstName} isn't a member of any teams yet.</p>
+                          </c:otherwise>
+                      </c:choose>
+                  </c:otherwise>
+              </c:choose>
           </ul>
         </div>
       </div>
     </div>
-
 
     </c:when>
     <c:otherwise>

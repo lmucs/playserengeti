@@ -10,8 +10,14 @@ function removeFriend(sessionId, userId, elementId) {
 function removeTeam(sessionId, teamId, elementId) {
         var answer = confirm("Are you sure you want to remove this team?  This will take effect immediately.");
         if (answer) {
-            $.get("../removeTeam", {userId : sessionId, teamId : teamId});
-            $("#" + elementId).fadeOut("slow");
+            var request = $.get("../removeTeam", {userId : sessionId, teamId : teamId}, function(data) {
+                if (request.responseText) {
+                    $("#" + elementId).replaceWith("<p>You can't leave that team until you appoint another leader.</p>");
+                }       
+                else {       
+                    $("#" + elementId).fadeOut("slow");
+                }
+            });
         }
         else {}
 }

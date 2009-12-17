@@ -5,6 +5,7 @@
 package com.playserengeti.controller;
 
 import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 public class UserDeleteValidator implements Validator {
@@ -18,6 +19,5 @@ public class UserDeleteValidator implements Validator {
     @Override
     public void validate(Object object, Errors errors) {
 
-        // TODO
     }
 }

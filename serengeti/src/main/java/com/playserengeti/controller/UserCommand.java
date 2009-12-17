@@ -27,6 +27,7 @@ public class UserCommand {
 	private Collection<User> friends;
 	private Collection<Team> teams;
 	private String format;
+	private Integer sessionId;
 
 	public Integer getUserId() {
 		return userId;
@@ -98,6 +99,14 @@ public class UserCommand {
 
 	public void setFormat(String format) {
 		this.format = format;
+	}
+
+	public Integer getSessionId() {
+		return sessionId;
+	}
+
+	public void setSessionId(Integer sessionId) {
+		this.sessionId = sessionId;
 	}
 
 	@Override

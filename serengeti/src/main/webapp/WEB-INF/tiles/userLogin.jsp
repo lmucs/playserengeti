@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-<form:form method="post">
+<form:form method="post" onsubmit="return validateUpdateForm();">
     <div class="grid_2">
         <label for="email">Email Address:</label>
     </div>
@@ -27,3 +27,19 @@
 </form:form>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/login.js"></script>
+<script>
+    var validateUpdateForm = function () {
+        var email = document.getElementById("email");
+        var password = document.getElementById("password");
+        
+        if (!email || email.value === '') {
+            alert("Email cannot be blank");
+            return false;
+        }
+        if (!password || password.value === '') {
+            alert("Password cannot be blank");
+            return false;
+        }
+        return true;
+    }
+</script>

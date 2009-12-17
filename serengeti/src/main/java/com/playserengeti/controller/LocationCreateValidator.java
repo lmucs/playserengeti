@@ -18,13 +18,13 @@ public class LocationCreateValidator implements Validator {
     @Override
     public void validate(Object object, Errors errors) {
         LocationCommand c = LocationCommand.class.cast(object);
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "locationName",
-                "locationName.blank", "The location name can not be blank");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name",
+                "name.blank", "The location name cannot be blank");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "latitude",
-                "latitude.blank", "The latitude can not be blank");
+                "latitude.blank", "The latitude cannot be blank");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "longitude",
-                "longitude.blank", "The longitude can not be blank");
-        if (c.getLatitude() < -90 || c.getLatitude() > 90) {
+                "longitude.blank", "The longitude cannot be blank");
+        if (c.getLatitude() < -180 || c.getLatitude() > 180) {
             errors.rejectValue("latitude", "invalid.latitude",
                     "latitudes must be between -180 and 180");
         }
@@ -32,5 +32,11 @@ public class LocationCreateValidator implements Validator {
             errors.rejectValue("longitude", "invalid.longitude",
                     "longitudes must be between -180 and 180");
         }
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "street",
+                "street.blank", "The street address cannot be blank");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "city",
+                "city.blank", "The city cannot be blank");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "state",
+                "state.blank", "The state cannot be blank");
     }
 }

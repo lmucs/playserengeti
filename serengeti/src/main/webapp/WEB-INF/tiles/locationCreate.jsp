@@ -3,7 +3,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-
+<c:choose>
+<c:when test="${!empty locationCommand.sessionId}"> 
     <p>Add a new location to Serengeti.</p>
 
     <form id="locationCreateForm" method="post" action="create"
@@ -14,6 +15,7 @@
 	            </div>
 	            <div class="grid_2">
 	                <input type="text" id="name" name="name" />
+	                <form:errors path="name"/>
 	            </div>
 	
 				<div class="clear">&nbsp;</div>
@@ -23,6 +25,7 @@
 	            </div>
 	            <div class="grid_2">
 	                <input type="text" name="phoneNumber" />
+	                <form:errors path="phoneNumber"/>
 	            </div>
 				
 				<div class="clear">&nbsp;</div>
@@ -32,6 +35,7 @@
 	            </div>
 	            <div class="grid_2">
 	                <input id="street" type="text" name="street" />
+	                <form:errors path="street"/>
 	            </div>
 	
 				<div class="clear">&nbsp;</div>
@@ -41,6 +45,7 @@
 	            </div>
 	            <div class="grid_2">
 	                <input id="city" type="text" name="city" />
+	                <form:errors path="city"/>
 	            </div>
 	
 				<div class="clear">&nbsp;</div>
@@ -50,6 +55,7 @@
 	            </div>
 	            <div class="grid_2">
 	                <input id="state" type="text" name="state" />
+	                <form:errors path="state"/>
 	            </div>
 	
 				<div class="clear">&nbsp;</div>
@@ -59,68 +65,62 @@
 	            </div>
 	            <div class="grid_2">
 	                <input id="zipcode" type="text" name="zipcode" />
+	                <form:errors path="zipcode"/>
 	            </div>
-	
-	       		<div class="clear">&nbsp;</div>
-	
-	            <div class="grid_2">
-	                <label for="image">Image</label>
-	            </div>
-	            <div class="grid_2">
-	                <input type="text" name="image" />
-	            </div>
-	            
-	            <div class="clear">&nbsp;</div>
-	        
-	        	<div class="grid_2">
-	                <label for="latitude">Latitude</label>
-	            </div>
+	            	        
 			    <div class="grid_2">
-			    	<input id="latitude" type="text" name="latitude" />
+			    	<input id="latitude" type="hidden" name="latitude" />
 			    </div>
-			    		    
-			    <div class="clear">&nbsp;</div>
 			    
 			    <div class="grid_2">
-	                <label for="longitude">Longitude</label>
-	            </div>
-			    <div class="grid_2">
-			    	<input id="longitude" type="text" name="longitude" />
-			    </div>
-			    		    
-			    <div class="clear">&nbsp;</div>
-			    
-			    <div class="grid_2">
-			        <input id="candidates" type="hidden" name="candidates" />
+			    	<input id="longitude" type="hidden" name="longitude" />
 			    </div>
 			    
 			    <div class="grid_1">
-			        <input type="submit" value="Create Location!"/>
+			        <input type="button" value="Create Location!" onclick="codeAddress()" />
 			    </div>
-			    
-			    <div class="clear">&nbsp;</div>
-			    
-			    <div class="grid_1">
-			    <input type="button" value="Encode" onclick="codeAddress()">
-				</div>
 		</div>
 	</div>
 </form>
-
+</c:when>
+<c:otherwise>
+    <p>You must be logged in to create a location.</p>
+</c:otherwise>
+</c:choose>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">
     
     var validateCreateForm = function () {
-        
         var name = document.getElementById("name");
+        var latitude = document.getElementById("latitude");
+        var longitude = document.getElementById("longitude");
         var street = document.getElementById("street");
-        if (name && name.value !== '') {
-            return true;
-        }
-        else {
+        var city = document.getElementById("city");
+        var state = document.getElementById("state");
+        
+        if (!name || name.value === '') {
             alert("The name cannot be blank");
+            return false;
         }
-        return false;
+        if (!street || street.value === '') {
+            alert("The street cannot be blank");
+            return false;
+        }
+        if (!city || city.value === '') {
+            alert("The city cannot be blank");
+            return false;
+        }
+        if (!state || state.value === '') {
+            alert("The state cannot be blank");
+            return false;
+        }
+        if (!latitude || latitude.value === '' || 
+          !longitude || longitude.value === '') {
+            alert("We couldn't find that address.  Make sure everything is entered correctly and try again");
+            return false;
+        }
+        document.forms["locationCreateForm"].submit();
+        return true; 
     }
     
     var codeAddress = function () {
@@ -130,12 +130,11 @@
         if (geocoder) {
             geocoder.geocode( { 'address': address}, function(results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
-                    document.getElementById("candidates").value = results;
                     document.getElementById("latitude").value = results[0].geometry.location.lat();
                     document.getElementById("longitude").value = results[0].geometry.location.lng();
-                    
+                    validateCreateForm();
                 } else {
-                    alert("Geocode was not successful for the following reason: " + status);
+                    alert("We couldn't find that location.  Make sure everything is entered correctly and try again.");
                 }
             });
         }

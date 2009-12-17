@@ -42,10 +42,11 @@ public class TeamCreateController extends SimpleFormController {
 	protected Object formBackingObject(HttpServletRequest request)
 			throws Exception {
 		TeamCommand teamCommand = new TeamCommand();
-		teamCommand.setCandidates(userService.getFriends(session.getUser()
-				.getId()));
+		if (session.isLoggedIn()) {
+			teamCommand.setSessionId(session.getUser().getId());
+			teamCommand.setCandidates(userService.getFriends(session.getUser().getId()));
+		}
 		setSessionForm(true);
-
 		return teamCommand;
 	}
 
@@ -55,56 +56,56 @@ public class TeamCreateController extends SimpleFormController {
 	public ModelAndView onSubmit(HttpServletRequest request,
 			HttpServletResponse response, Object _command, BindException errors) {
 		TeamCommand command = (TeamCommand) _command;
-		String name = command.getName();
-		String color = command.getColor();
+		if (session.isLoggedIn()) {
+			String name = command.getName();
+			String color = command.getColor();
 
-		Team team = new Team(null, name, color);
-		team.setDescription(command.getDescription());
-		team.setHomeBase(command.getHomeBase());
-		team.setLeader(session.getUser());
-		MultipartFile multipartFile = command.getImageFile();
+			Team team = new Team(null, name, color);
+			team.setDescription(command.getDescription());
+			team.setHomeBase(command.getHomeBase());
+			team.setLeader(session.getUser());
+			MultipartFile multipartFile = command.getImageFile();
 
-		try {
-			teamService.saveTeam(team);
+			try {
+				teamService.saveTeam(team);
+				if (multipartFile != null) {
+					// TODO: THIS IS NOT SECURE
+					// TODO: Veryfiy image type.
+					// TODO: Save image with suffix, etc.
+					// This is essentially a hack/beginning.
+					// Consider saving image in DB.
+					try {
+						String path = request.getRealPath("/avatar")
+								+ File.separator + team.getId() + "-"
+								+ multipartFile.getOriginalFilename();
+						FileOutputStream fileOut = new FileOutputStream(path);
+						fileOut.write(multipartFile.getBytes());
+						fileOut.close();
 
-			if (multipartFile != null) {
-				// TODO: THIS IS NOT SECURE
-				// TODO: Veryfiy image type.
-				// TODO: Save image with suffix, etc.
-				// This is essentially a hack/beginning.
-				// Consider saving image in DB.
-				try {
-					String path = request.getRealPath("/avatar")
-							+ File.separator + team.getId() + "-"
-							+ multipartFile.getOriginalFilename();
-					FileOutputStream fileOut = new FileOutputStream(path);
-					fileOut.write(multipartFile.getBytes());
-					fileOut.close();
-
-					logger.debug("Saved image " + path + ".");
-				} catch (IOException e) {
-					logger.warn("Unable to save image for team", e);
+						logger.debug("Saved image " + path + ".");
+					} catch (IOException e) {
+						logger.warn("Unable to save image for team", e);
+					}
 				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				// On service error, try again
+				Map<String, Object> model = new HashMap<String, Object>();
+				model.put("command", command);
+				model.put("message", e.getMessage());
+				return new ModelAndView(getFormView(), model);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			// On service error, try again
-			Map<String, Object> model = new HashMap<String, Object>();
-			model.put("command", command);
-			model.put("message", e.getMessage());
-			return new ModelAndView(getFormView(), model);
+
+			Integer teamId = team.getId();
+			Integer[] invitees = command.getInvitees();
+			for (Integer id : invitees) {
+				teamService.sendTeamInvite(teamId, id);
+			}
+
+			ModelAndView mav = new ModelAndView("redirect:view","teamId", team.getId());
+			return mav;
 		}
-
-		Integer teamId = team.getId();
-		Integer[] invitees = command.getInvitees();
-		for (Integer id : invitees) {
-			teamService.sendTeamInvite(teamId, id);
-		}
-
-		ModelAndView mav = new ModelAndView("redirect:view");
-		mav.addObject("teamId", team.getId());
-
-		return mav;
+		return new ModelAndView("redirect:team/");
 	}
 
 	public UserSession getSession() {

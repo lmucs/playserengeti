@@ -124,13 +124,21 @@ h2 {
 }
 
 #help dt {
-  font-style: italic;
+    font-style: italic;
 }
 
 #help dd {
-  margin: 0.25em 2em 1.25em 2em;
+    margin: 0.25em 2em 1.25em 2em;
 }
 
 #footerLeft, #footerRight {
     text-align: center;
+}
+
+#popupBackground {
+    display: none;
+}
+
+#popupContent {
+    display: none;
 }

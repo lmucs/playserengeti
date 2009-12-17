@@ -3,7 +3,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-<form:form method="post" action="${pageContext.request.contextPath}/user/create" enctype="multipart/form-data">
+<form:form method="post" action="${pageContext.request.contextPath}/user/create" enctype="multipart/form-data"
+    onsubmit="return validateUpdateForm();">
     <div class="round_Box_Container grid_8">
         <div class="grid_2">
             <label for="email">Email Address:</label>
@@ -50,3 +51,29 @@
         </div>
     </div>
 </form:form>
+<script>
+    var validateUpdateForm = function () {
+        var email = document.getElementById("email");
+        var password = document.getElementById("password");
+        var firstName = document.getElementById("firstName");
+        var lastName = document.getElementById("lastName");
+        
+        if (!email || email.value === '') {
+            alert("Email cannot be blank");
+            return false;
+        }
+        if (!password || password.value === '') {
+            alert("Password cannot be blank");
+            return false;
+        }
+        if (!firstName || firstName.value === '') {
+            alert("Your first name cannot be blank");
+            return false;
+        }
+        if (!lastName || lastName.value === '') {
+            alert("Your last name cannot be blank");
+            return false;
+        }
+        return true;
+    }
+</script>

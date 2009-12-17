@@ -3,6 +3,8 @@
 
 
 <c:choose>
+  <c:when test="${!empty userCommand.userId}">
+   <c:choose>
     <c:when test="${!empty userCommand.teams}">
         <p>Not so fast.  You are still the leader of these teams.  You can't just bail on them without 
         appointing another leader.</p>
@@ -24,6 +26,11 @@
             </div>
         </form>
     </c:otherwise>
+   </c:choose>
+  </c:when>
+  <c:otherwise>
+    <p>You don't have permission to delete this user.</p>
+  </c:otherwise>
 </c:choose>
 
 

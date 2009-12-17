@@ -11,17 +11,20 @@ import com.playserengeti.domain.Team;
  */
 public class LocationCommand {
 
-	Integer id;
-	String name;
-	Double longitude;
-	Double latitude;
-	Team owner;
-	String description;
-	String phoneNumber;
-	String street;
-	String city;
-	String state;
-	String zipcode;
+	private Integer id;
+	private String name;
+	private Double longitude;
+	private Double latitude;
+	private Team owner;
+	private String description;
+	private String phoneNumber;
+	private String street;
+	private String city;
+	private String state;
+	private String zipcode;
+	//Only used as hack to solve problem with 
+	//setting formBackingObject
+	private Integer sessionId;
 
 	public Integer getId() {
 		return id;
@@ -109,5 +112,13 @@ public class LocationCommand {
 
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
+	}
+
+	public Integer getSessionId() {
+		return sessionId;
+	}
+
+	public void setSessionId(Integer sessionId) {
+		this.sessionId = sessionId;
 	}
 }

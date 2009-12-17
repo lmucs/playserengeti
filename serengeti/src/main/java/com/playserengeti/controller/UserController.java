@@ -173,10 +173,9 @@ public class UserController extends MultiActionController {
 	public void checkIn(HttpServletRequest request, HttpServletResponse response) {
 		Integer userId = Integer.valueOf(request.getParameter("userId"));
 		Integer teamId = Integer.valueOf(request.getParameter("teamId"));
-		Integer locationId = Integer
-				.valueOf(request.getParameter("locationId"));
+		Integer locationId = Integer.valueOf(request.getParameter("locationId"));
 
-		if (!userId.equals(-1)) {
+		if (session.isLoggedIn() && session.getUser().getId().equals(userId)) {
 			try {
 				PrintWriter out = response.getWriter();
 				out.println(visitService.checkIn(userId, teamId, locationId));
@@ -195,8 +194,9 @@ public class UserController extends MultiActionController {
 			HttpServletResponse response) {
 		Integer firstId = Integer.valueOf(request.getParameter("firstId"));
 		Integer secondId = Integer.valueOf(request.getParameter("secondId"));
-
-		userService.removeFriend(firstId, secondId);
+		if (session.isLoggedIn() && session.getUser().getId().equals(firstId)) {
+    		userService.removeFriend(firstId, secondId);	
+		}
 	}
 
 	/**
@@ -209,8 +209,19 @@ public class UserController extends MultiActionController {
 			HttpServletResponse response) {
 		Integer userId = Integer.valueOf(request.getParameter("userId"));
 		Integer teamId = Integer.valueOf(request.getParameter("teamId"));
-
-		teamService.removeFromTeam(teamId, userId);
+		if (session.isLoggedIn() && session.getUser().getId().equals(userId)) {
+			Team team = teamService.getTeamById(teamId);
+			if (userId.equals(team.getLeader().getId())) {
+		    	try {
+			    	PrintWriter out = response.getWriter();
+				    out.println("leader");
+	    		} catch (IOException e) {
+		    	}
+			}
+			else {
+		        teamService.removeFromTeam(teamId, userId);
+			}
+		}
 	}
 
 	/**
@@ -224,8 +235,9 @@ public class UserController extends MultiActionController {
 			HttpServletResponse response) {
 		Integer firstId = Integer.valueOf(request.getParameter("firstId"));
 		Integer secondId = Integer.valueOf(request.getParameter("secondId"));
-
-		userService.sendFriendInvite(firstId, secondId);
+		if (session.isLoggedIn() && session.getUser().getId().equals(firstId)) {
+  		    userService.sendFriendInvite(firstId, secondId);
+		}
 	}
 
 	/**
@@ -241,13 +253,14 @@ public class UserController extends MultiActionController {
 		Integer firstId = Integer.valueOf(request.getParameter("firstId"));
 		Integer secondId = Integer.valueOf(request.getParameter("secondId"));
 
-		userService.acceptFriendInvite(firstId, secondId);
-		try {
-			PrintWriter out = response.getWriter();
-			out.println(userService.getUserById(firstId).asMinimalJSON());
-		} catch (IOException e) {
+		if (session.isLoggedIn() && session.getUser().getId().equals(secondId)) {
+    		userService.acceptFriendInvite(firstId, secondId);
+	    	try {
+		    	PrintWriter out = response.getWriter();
+			    out.println(userService.getUserById(firstId).asMinimalJSON());
+    		} catch (IOException e) {
+	    	}
 		}
-
 	}
 
 	/**
@@ -260,8 +273,9 @@ public class UserController extends MultiActionController {
 			HttpServletResponse response) {
 		Integer firstId = Integer.valueOf(request.getParameter("firstId"));
 		Integer secondId = Integer.valueOf(request.getParameter("secondId"));
-
-		userService.rejectFriendInvite(firstId, secondId);
+		if (session.isLoggedIn() && session.getUser().getId().equals(secondId)) {
+		    userService.rejectFriendInvite(firstId, secondId);
+		}
 	}
 
 	/**
@@ -274,8 +288,9 @@ public class UserController extends MultiActionController {
 			HttpServletResponse response) {
 		Integer teamId = Integer.valueOf(request.getParameter("teamId"));
 		Integer userId = Integer.valueOf(request.getParameter("userId"));
-
-		teamService.sendTeamInvite(teamId, userId);
+		if (session.isLoggedIn() && session.getUser().getId().equals(userId)) {
+		    teamService.sendTeamInvite(teamId, userId);
+		}
 	}
 
 	/**
@@ -288,15 +303,15 @@ public class UserController extends MultiActionController {
 			HttpServletResponse response) {
 		Integer teamId = Integer.valueOf(request.getParameter("teamId"));
 		Integer userId = Integer.valueOf(request.getParameter("userId"));
+		if (session.isLoggedIn() && session.getUser().getId().equals(userId)) {
+		    teamService.acceptTeamInvite(teamId, userId);
 
-		teamService.acceptTeamInvite(teamId, userId);
-
-		try {
-			PrintWriter out = response.getWriter();
-			out.println(teamService.getTeamById(teamId).asMinimalJSON());
-		} catch (IOException e) {
+		    try {
+			    PrintWriter out = response.getWriter();
+			    out.println(teamService.getTeamById(teamId).asMinimalJSON());
+		    } catch (IOException e) {
+		    }
 		}
-
 	}
 
 	/**
@@ -309,8 +324,9 @@ public class UserController extends MultiActionController {
 			HttpServletResponse response) {
 		Integer teamId = Integer.valueOf(request.getParameter("teamId"));
 		Integer userId = Integer.valueOf(request.getParameter("userId"));
-
-		teamService.rejectTeamInvite(teamId, userId);
+		if (session.isLoggedIn() && session.getUser().getId().equals(userId)) {
+		    teamService.rejectTeamInvite(teamId, userId);
+		}
 	}
 
 	public UserSession getSession() {
