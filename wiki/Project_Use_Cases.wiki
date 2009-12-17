@@ -9,7 +9,7 @@
   * *Preconditions*: None.
   * *Flow of Events for Main Scenario*:
     # User sends email address and desired password to system.
-    # The system validates the inputs and, if acceptable, creates a new player.
+    # The system validates the inputs and, if acceptable, creates a new player, assigning a user id to the new player.
   * *Alternative Scenarios*:
     # If the email address is invalid or already exists, or the password is missing, the action is cancelled. 
   * *Postconditions*: A new player record has been inserted into the database.
@@ -94,10 +94,11 @@ Notes:
   * *Actor*: End user
   * *Preconditions*: The user is already registered as a player.
   * *Flow of Events for Main Scenario*:
-    # Not yet implemented in web interface.
+    # User submits a name, a color (as a string), a image icon, a description, and a home base (as a string, not a location) for the team to the system.
+    # System validates the inputs and, if acceptable, creates a team, assigning a team id to the new team.
   * *Alternative Scenarios*:
-    # TO_DO
-  * *Postconditions*: 
+    # If the 
+  * *Postconditions*: A new team record is made in the database and the creating user is set as the team's leader.
   * *Handles Requirements*: 
 
 <wiki:comment>
@@ -144,9 +145,13 @@ Notes: Where do we define Team Lead role?  It should be specified in the team's 
   * *Actor*: Team leader user.
   * *Preconditions*: The user is already registered as a player and is the leader of a team.
   * *Flow of Events for Main Scenario*:
-    # TO_DO
+    # User sends the system the team id of team they lead, a name, a color (as a string), a image icon, a description, and a home base (as a string, not a location) for the team, as well as the user id for a new team leader from users currently in the team, and one or more ids of current team members for deletion.
+    # System changes the team name, color, image, description, and home base of the team, changes the team leader, and removed team members as directed
   * *Alternative Scenarios*:
-  * *Postconditions*: TO_DO
+    # If no id is provided for a new team leader, the leader is not changed.
+    # If no ids are provided for team members to be removed, no team members are removed from the system.
+    # If a team of the same name already exists, an exception is thrown.
+  * *Postconditions*: The team name, color, icon, description, home base are replaced for the team's profile, the team leader is changed as directed, and selected users are removed from the team.
   * *Handles Requirements*: TO_DO 
 
 <wiki:comment> Team Hierachy has been changed to just team management, right?
