@@ -1,6 +1,0 @@
-IN PROGRESS
-
-<wiki:comment>
-  * Test plan
-  * List of test cases
-</wiki:comment>
