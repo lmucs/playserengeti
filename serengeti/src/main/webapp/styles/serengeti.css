@@ -517,15 +517,28 @@ ul.hor_menu {
   margin-bottom: 80px;
 }
 
-#teamName {
-  font-size: 160%;
-  font-weight: bold;
+#teamName h3{
+  font-size:1.5em;
+  font-weight:bold;
+  line-height:0.5em;
+  margin:0;
+  padding:0;
+}
+
+#TeamLeader HomeBase{
+  margin-left: 12px;
 }
 
 #teamInfo {
   font-size: 70%;
   font-weight: bold;
   margin-left: 12px;
+}
+
+#teamName p{
+  font-size: 0.65em;
+  line-height: 0.4em;
+  font-weight: bold;
 }
 #teamDescriptionTitle{
     margin-left: 20px;
