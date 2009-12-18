@@ -5,25 +5,21 @@
 
 <c:choose>
     <c:when test='${ !empty teamCommand }'>
-        <div class="grid_3 teamImage">
+    <div class= "grid_10">
+    	<div class="grid_3">
+        <div id="teamImage">
     	    <img src="${pageContext.request.contextPath}/images/default_team.png" height="150" width="150" alt="teamImage"
             title="teamImage"/>               
         </div>
-		<div class="grid_9">
-	        <div class="grid_9" id="teamName">
-	            <td><strong><c:out value="${teamCommand.name}"/></strong></td>
+		</div>
+	        <div class="grid_6" id="teamName">
+	            <h3 id= "name"><c:out value="${teamCommand.name}"/></h3>
+	            <div id = "teamBaseAndLeader">
+	            	<p id = "HomeBase"> "Home Base: " <c:out value="${teamCommand.homeBase}"/></p>
+	            	<p id = "TeamLeader"> "Team Leader: " <c:out value="${teamCommand.leader.firstName} ${teamCommand.leader.lastName}"/><p>
+	        	</div>
 	        </div>
-            <div id="teamInfo">
-	            <div class="grid_8">
-	            	<strong>Home Base:</strong>
-	               	<c:out value="${teamCommand.homeBase}"/>
-	            </div>
-	            <div class="clear">&nbsp;</div>
-	            <div class="grid_8">
-	                <strong>Team Leader:</strong>
-	                <c:out value="${teamCommand.leader.firstName} ${teamCommand.leader.lastName}"/>
-	            </div>
-	        </div>
+        
         </div>
         <c:if test="${session.user.id == teamCommand.leader.id}">
             <div class="clear">&nbsp;</div>
