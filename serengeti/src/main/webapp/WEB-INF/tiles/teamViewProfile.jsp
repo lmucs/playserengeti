@@ -15,8 +15,8 @@
 	        <div class="grid_6" id="teamName">
 	            <h3 id= "name"><c:out value="${teamCommand.name}"/></h3>
 	            <div id = "teamBaseAndLeader">
-	            	<p id = "HomeBase"> "Home Base: " <c:out value="${teamCommand.homeBase}"/></p>
-	            	<p id = "TeamLeader"> "Team Leader: " <c:out value="${teamCommand.leader.firstName} ${teamCommand.leader.lastName}"/><p>
+	            	<p id = "HomeBase"> Home Base: <c:out value="${teamCommand.homeBase}"/></p>
+	            	<p id = "TeamLeader"> Team Leader:  <c:out value="${teamCommand.leader.firstName} ${teamCommand.leader.lastName}"/><p>
 	        	</div>
 	        </div>
         
