@@ -4,7 +4,6 @@ var lSearch;
 var userLoc;
 
 $(function() {
-        $("#locList").hide();
         $("#locSearch").hide();
         lSearch = new google.search.LocalSearch();
         lSearch.setSearchCompleteCallback(this, searchComplete);

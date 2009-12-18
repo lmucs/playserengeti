@@ -54,7 +54,6 @@
           <c:if test="${lookingAtYourself}">
               <div id="ownProfile">             
                   <div class="grid_7" id="checkIn">
-                      <div id="loader"><img src="${pageContext.request.contextPath}/images/loader.gif"></div>
                       <div class="grid_4" id="locList">
                           <p>Checkin from:</p>
                           <select id="locSelect" size="4"></select>
