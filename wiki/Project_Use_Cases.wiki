@@ -491,11 +491,11 @@ Security:
 Notes:
 </wiki:comment>
 ===U15 Invite To Team===
-  * *Description*: 
-  * *Actor*:
-  * *Preconditions*: 
+  * *Description*: A user invites another user to a team they are part of.
+  * *Actor*: End user.
+  * *Preconditions*: The user must be a registered player and belong to at least one team.
   * *Flow of Events for Main Scenario*:
-    # TO_DO
+    # 
     # TO_DO
   * *Alternative Scenarios*:
     # TO_DO
@@ -559,6 +559,17 @@ Security: Should be limited to users friends/team members
 
 Notes:
 </wiki:comment>
+===U16 Accept Team Invite===
+  * *Description*: A user invites another user to a team they are part of
+  * *Actor*: End user.
+  * *Preconditions*: The user must be a registered player and have a received a team invite from another player.
+  * *Flow of Events for Main Scenario*:
+    # TO_DO
+    # TO_DO
+  * *Alternative Scenarios*:
+    # TO_DO
+  * *Postconditions*: None.
+  * *Handles Requirements*: 
 ----
 ==Query==
 ----
@@ -585,7 +596,8 @@ Security:
 
 Notes: Other parameters may be possible.  Including radius around lat/long that business can be located in, category of business, how many results to return, etc.
 </wiki:comment>
-===U16 Find User===
+
+===U17 Find User===
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
@@ -607,7 +619,7 @@ Security:
 
 Notes: Parameters can allow users to be found by name, email address, screename, etc.
 </wiki:comment>
-===U17 Find Team===
+===U18 Find Team===
   * *Description*: 
   * *Actor*:
   * *Preconditions*: 
