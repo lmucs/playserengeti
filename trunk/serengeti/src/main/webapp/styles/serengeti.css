@@ -456,7 +456,9 @@ ul.hor_menu {
   position: absolute;
   z-index:5000;
 }
-
+#profileImage{
+  margin-left: 13px;
+}
 .userExtendingDiv{
   height: 200px;
   overflow: auto;

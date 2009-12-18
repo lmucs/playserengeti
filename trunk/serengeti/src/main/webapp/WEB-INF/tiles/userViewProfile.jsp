@@ -29,9 +29,18 @@
             </div>
         </c:if>
         <div class="grid_10">
-          <div class="grid_3 userImage">
-	          <img src="${pageContext.request.contextPath}/images/default_user.png" height="150" width="150" alt="Profile Picture"
-	            title="Profile Picture"/>
+          <div class="grid_3">
+              <div class="grid3" id="profileImage">
+		          <img src="${pageContext.request.contextPath}/images/default_user.png" height="150" width="150" alt="Profile Picture"
+		            title="Profile Picture"/>
+		      </div>
+	            
+	          <div class="clear">&nbsp;</div>
+	          <c:if test="${lookingAtYourself}">
+	              <div class="grid_3">
+	                  <a href="update/${userCommand.userId}">Modify your profile</a>
+	              </div> 
+	          </c:if>
           </div>
           <div id="userInfo" class="grid_6">
               <h3 id="name"><c:out value="${userCommand.firstName} ${userCommand.lastName}"/></h3>
@@ -43,11 +52,7 @@
       <div class="clear">&nbsp;</div>
       <div class="grid_7">
           <c:if test="${lookingAtYourself}">
-              <div id="ownProfile"> 
-                  <div class="clear">&nbsp;</div>
-                      <div class="graphic-button" id="user-modify-button">
-                      <a href="update/${userCommand.userId}">Modify your profile</a>
-                  </div>             
+              <div id="ownProfile">             
                   <div class="grid_7" id="checkIn">
                       <div id="loader"><img src="${pageContext.request.contextPath}/images/loader.gif"></div>
                       <div class="grid_4" id="locList">
@@ -115,33 +120,7 @@
               </div>
           </c:if>
           <div class="clear">&nbsp;</div>
-          <div class="grid_7 activityBoxContainer">
-              <div class="grid_6">
-                  <div class="shadowText">Recent Activity</div>
-                  <c:choose>
-                      <c:when test="${!empty activity}">
-                          <ul id="activity">
-                              <c:forEach var="visit" items="${activity}">
-                                  <li>@ <a href="../location/${visit.location.id}"><c:out value="${visit.location.name}"/></a>
-                                  (<fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${visit.date}"/>)</li>
-                              </c:forEach>
-                          </ul>
-                      </c:when>
-                      <c:otherwise>
-                          <c:choose>
-                              <c:when test="${lookingAtYourself}">
-                                  <p>You haven't done anything yet.</p>
-                              </c:when>
-                              <c:otherwise>
-                                  <p>${userCommand.firstName} hasn't done anything yet.</p>
-                              </c:otherwise>
-                          </c:choose>
-                      </c:otherwise>
-                  </c:choose>
-              </div>
-          </div>
-          <div class="clear">&nbsp;</div>
-          <div class="grid_7 activityBoxContainer">
+          <div class="grid_7 activityBoxContainer activityScroller">
               <div class="grid_6">
                   <div class="shadowText">Friend Activity</div>
                   <ul id="activity">
@@ -166,10 +145,37 @@
                   </ul>
               </div>
           </div>
+          <div class="clear">&nbsp;</div>
+          <div class="grid_7 activityBoxContainer activityScroller">
+              <div class="grid_6">
+                  <div class="shadowText">Recent Activity</div>
+                  <c:choose>
+                      <c:when test="${!empty activity}">
+                          <ul id="activity">
+                              <c:forEach var="visit" items="${activity}">
+                                  <li>@ <a href="../location/${visit.location.id}"><c:out value="${visit.location.name}"/></a>
+                                  (<fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${visit.date}"/>)</li>
+                              </c:forEach>
+                          </ul>
+                      </c:when>
+                      <c:otherwise>
+                          <c:choose>
+                              <c:when test="${lookingAtYourself}">
+                                  <p>You haven't done anything yet.</p>
+                              </c:when>
+                              <c:otherwise>
+                                  <p>${userCommand.firstName} hasn't done anything yet.</p>
+                              </c:otherwise>
+                          </c:choose>
+                      </c:otherwise>
+                  </c:choose>
+              </div>
+          </div>
+          
 
       </div>
         <div class="grid_3 prefix_1">
-        <div class="grid_3 round_Box_Container">
+        <div class="grid_3 round_Box_Container userExtendingDiv">
         <div class="grid_2">
              <div class="shadowText">Friends: </div>
         </div>
@@ -195,7 +201,7 @@
             </ul>
         </div>
       </div>
-      <div class="grid_3 round_Box_Container">
+      <div class="grid_3 round_Box_Container userExtendingDiv">
         <div class="grid_2">
             <div class="shadowText">Teams: </div>
         </div>
