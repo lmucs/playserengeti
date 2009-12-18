@@ -288,7 +288,7 @@ public class UserController extends MultiActionController {
 			HttpServletResponse response) {
 		Integer teamId = Integer.valueOf(request.getParameter("teamId"));
 		Integer userId = Integer.valueOf(request.getParameter("userId"));
-		if (session.isLoggedIn() && session.getUser().getId().equals(userId)) {
+		if (session.isLoggedIn()) {
 		    teamService.sendTeamInvite(teamId, userId);
 		}
 	}
