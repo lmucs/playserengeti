@@ -64,14 +64,14 @@
         # Add a location/business 
         # Manage a location/business
         # Delete a location/business  
-        # For the purposes of serengeti a business is a location that has additional information stored for it (i.e., proprietor) 
+        # For the purposes of serengeti a business is a location that has additional information stored for it (i.e., proprietor) <wiki:comment>
     # For the "Communicate" option
       # The user will be presented with options to: 
-      # Invite to Game - a user can enter an email address and a message will be sent to that address inviting the recipient to sign up to Serengeti <wiki:comment>No longer relevant or to be implemented - REMOVE</wiki:comment>
-      # Send friend request - invite a user to be added to a users friends list, allowing them to see each other's location <wiki:comment> Now part of profiles </wiki:comment>
-      # Accept a friend request - allows a user to accept a friend request that has been received <wiki:comment> Now part of profiles </wiki:comment>
-      # Invite to team - allows a user to invite another user to join a team <wiki:comment> Now part of profiles </wiki:comment>
-      # Invite to Location - allows a user to invite another user to meet them at their current location. <wiki:comment>No longer relevant or to be implemented - REMOVE</wiki:comment>
+      # Invite to Game - a user can enter an email address and a message will be sent to that address inviting the recipient to sign up to Serengeti wiki:commentNo longer relevant or to be implemented - REMOVE/wiki:comment
+      # Send friend request - invite a user to be added to a users friends list, allowing them to see each other's location wiki:comment Now part of profiles /wiki:comment
+      # Accept a friend request - allows a user to accept a friend request that has been received wiki:comment Now part of profiles /wiki:comment
+      # Invite to team - allows a user to invite another user to join a team wiki:comment Now part of profiles /wiki:comment
+      # Invite to Location - allows a user to invite another user to meet them at their current location. wiki:commentNo longer relevant or to be implemented - REMOVE</wiki:comment>
   # A native iPhone app *shall* be delivered to allow checking in
       # When the user opens the application they are presented with a screen containing several button options.  This approach is used to ease initial loading time and to better separate a user's actions.  
       # The options that will be provided to the user are as follows:
