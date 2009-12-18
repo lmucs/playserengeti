@@ -204,7 +204,7 @@ Notes:
     # User submits the name, phone number, street address, city, state, zip code, latitude, longitude, and profile image of a location.
     # The system validates the inputs and, if acceptable, creates a new location.
   * *Alternative Scenarios*:
-    # TO_DO
+    # If the name, latitude, and longitude of the location is the same as an existing location, the location is not added to the database.
   * *Postconditions*: A new location record has been inserted into the database.
   * *Handles Requirements*: TO_DO
 <wiki:comment>
@@ -241,7 +241,7 @@ Security:
 Notes: Separate Location from Business? If a location is different than a business, who is a location owner?[[User:Gratrixl|Gratrixl]] 23:04, 8 September 2009 (UTC)
 </wiki:comment>
 ===U11 Manage Location/Business===
-  * *Description*: 
+  * *Description*: An admin manages a location's information
   * *Actor*:
   * *Preconditions*: 
   * *Flow of Events for Main Scenario*:
