@@ -105,7 +105,7 @@ public class TeamCreateController extends SimpleFormController {
 			ModelAndView mav = new ModelAndView("redirect:view","teamId", team.getId());
 			return mav;
 		}
-		return new ModelAndView("redirect:team/");
+		return new ModelAndView("redirect:/team");
 	}
 
 	public UserSession getSession() {

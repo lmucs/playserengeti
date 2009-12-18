@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:choose>
     <c:when test='${ !empty teamCommand }'>
@@ -60,7 +61,8 @@
                 <ul>
                     <c:forEach var="visit" items="${activity}">
                         <li><a href="../user/${visit.user.id}"><c:out value="${visit.user.firstName} ${visit.user.lastName}"/></a> @ 
-                            <a href="../location/${visit.location.id}"><c:out value="${visit.location.name}"/></a> (${visit.date})</li>
+                            <a href="../location/${visit.location.id}"><c:out value="${visit.location.name}"/></a>
+                            (<fmt:formatDate pattern="MMM dd, yyyy hh:mma" value="${visit.date}"/>)</li>
                     </c:forEach>
                 </ul>
             </div>
