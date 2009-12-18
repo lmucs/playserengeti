@@ -1,5 +1,7 @@
-#summary - Basic description of the tables in the Serengeti relational data model.  Includes column and key specifications, as well as basic constraints, but omits index and other tuning-related values.
+#summary Basic description of the tables in the Serengeti relational data model.
 #labels Phase-Design,Phase-Requirements
+
+Following is the Serengeti relational data model.  We've included column and key specifications, as well as basic constraints, but omitted most of the indexing and other tuning-related information.
 
 == PLAYER ==
 
