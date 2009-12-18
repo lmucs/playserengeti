@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:choose>
-<c:when test="${!empty teamCommand}">
+<c:when test="${!empty teamCommand.sessionId}">
     <p>Create your own team and start marking your territory.
        Just fill in the information below.</p>
 

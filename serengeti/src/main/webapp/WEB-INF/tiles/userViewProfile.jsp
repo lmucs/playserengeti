@@ -127,7 +127,7 @@
                           <c:when test="${!empty friendActivity}">
                               <c:forEach var="visit" items="${friendActivity}">
                                   <li><a href="${visit.user.id}"><c:out value="${visit.user.fullName}"/></a> @ <a href="../location/${visit.location.id}"><c:out value="${visit.location.name}"/></a>
-                                  (<fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${visit.date}"/>)</li>
+                                  (<fmt:formatDate pattern="MMM dd, yyyy hh:mma" value="${visit.date}"/>)</li>
                               </c:forEach>
                           </c:when>
                           <c:otherwise>
@@ -153,7 +153,7 @@
                           <ul id="activity">
                               <c:forEach var="visit" items="${activity}">
                                   <li>@ <a href="../location/${visit.location.id}"><c:out value="${visit.location.name}"/></a>
-                                  (<fmt:formatDate pattern="MMM dd, yyyy @ hh:mma" value="${visit.date}"/>)</li>
+                                  (<fmt:formatDate pattern="MMM dd, yyyy hh:mma" value="${visit.date}"/>)</li>
                               </c:forEach>
                           </ul>
                       </c:when>
