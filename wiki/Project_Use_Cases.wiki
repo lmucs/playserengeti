@@ -487,9 +487,9 @@ Notes:
 ===U15 Invite To Team===
   * *Description*: A user invites another user to a team they are part of.
   * *Actor*: End user.
-  * *Preconditions*: The user must be a registered player and a team leader.
+  * *Preconditions*: The user must be a registered player and belong to a team.
   * *Flow of Events for Main Scenario*:
-    # User sends the system a user id and the team id of team they lead.
+    # User sends the system a user id and the team id of a team they belong to.
     # System adds the user to the team as a pending user.
   * *Alternative Scenarios*:
     # If the invited user already belongs to the team, their team status is not altered.
