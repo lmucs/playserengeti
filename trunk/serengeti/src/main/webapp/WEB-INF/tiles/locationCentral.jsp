@@ -17,6 +17,14 @@
   <h2 class="tablecaption">Locations Near You</h2>
 </div>
 
+<table class="profile">
+  <tr class="top-row">
+    <th class="profile-picture">photo</th>
+    <th>location</th>
+    <th>address</th>
+  </tr>
+</table>
+
 <div class="verticalMenu">
 </div>
 
@@ -53,7 +61,7 @@
     };
 
     var handleLocations = function(data) {
-        var verticalMenu = $(".verticalMenu");
+        var profile = $(".profile");
 
         var latlng = new google.maps.LatLng(google.loader.ClientLocation.latitude,
             google.loader.ClientLocation.longitude);
@@ -71,21 +79,22 @@
                 map: map,
                 title: val.name
             });
-
-            verticalMenu.append("<div class='miniProfile'>" +
-                "<span class='miniProfilePicHidden'>" +
+          
+          profile.append("<tr>" +
+            "<td class='profile-picture'>" +
+              "<span class='miniProfilePicHidden'>" +
                   "<a href=" + val.id + "><img src='${pageContext.request.contextPath}" +
                       "/images/default_team.png' alt='location' title='" + val.id + "' width='50' height='50' /></a>" +
               "</span>" +
-                "<span class='miniProfileName'>" +
-                  "<a href=" + val.id + ">" + val.name + "</a><br/>" +
-              "</span>" +
-              "<span class='miniProfileInfoAddress'>" +
+            "</td>" +
+            "<td class='profile-name'>" + 
+              "<p><a href=" + val.id + ">" + val.name + "</a></p>" +
+            "</td>" +
+            "<td class=profile-info>" +
                 "<a>" + val.street + "</a><br/>" +
                   "<a>" + val.city + "</a><a>" +  " " + val.state + "</a>" +
-              "</span>" +
-            "</div>"
-          );
+            "</td>" +
+          "</tr>");
         });
     };
 </script>
