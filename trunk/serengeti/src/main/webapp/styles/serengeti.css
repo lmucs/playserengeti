@@ -457,6 +457,27 @@ ul.hor_menu {
   z-index:5000;
 }
 
+.userExtendingDiv{
+  height: 200px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+#territoryScroller{
+  height: 530px;
+  overflow: auto;
+  overflow-x: hidden;	
+}
+.activityScroller{
+  height: 317px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+.teamMemberScroller{
+  height: 109px;
+  overflow: auto;
+  overflow-x: hidden;	
+}	
+
 
 #sendInvites {
   top: 180px;
