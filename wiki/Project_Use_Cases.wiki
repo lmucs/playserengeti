@@ -454,7 +454,7 @@ Notes: How does this work? Does the form ask for an email address and send a lin
     # System adds the sending user's id to the friend requests of the user profile of the send user id.
   * *Alternative Scenarios*:
     # If the sent user id does not belong to an existing user, an exception is thrown.
-  * *Postconditions*: The sending user's id is added to the sent user's friend requests in the database.
+  * *Postconditions*: The user ids of the inviter and invitee are added as a friendship with pending status for the invitee.
   * *Handles Requirements*: 
 <wiki:comment>
 Description: Invite a person to be your friend
@@ -474,10 +474,10 @@ Notes:
   * *Flow of Events for Main Scenario*:
     # System sends the user the id of a friend who has requested their friendship.
     # User sends the system an acceptance or rejection notice.
-    # If an acceptance notice is received, system removes the friend request from the user's profile and creates a friendship between the two users in the database.
+    # If an acceptance notice is received, system changes the status of the friendship of the two users to accepted.
   * *Alternative Scenarios*:
-    # If a rejection notice is recieved the system removes the friend request from the user's profile without creating a friendship between the two users in the database.
-  * *Postconditions*: A friendship of the two users is added to the database's friendship table.
+    # If a rejection notice is received, system removes the friendship between the two users from the database.
+  * *Postconditions*: The status of the friendship of the two users is changed to accepted in the database.
   * *Handles Requirements*: 
 <wiki:comment>
 Description: Accept a request to be a friend
@@ -493,13 +493,14 @@ Notes:
 ===U15 Invite To Team===
   * *Description*: A user invites another user to a team they are part of.
   * *Actor*: End user.
-  * *Preconditions*: The user must be a registered player and belong to at least one team.
+  * *Preconditions*: The user must be a registered player and a team leader.
   * *Flow of Events for Main Scenario*:
-    # 
-    # TO_DO
+    # User sends the system a user id and the team id of team they lead.
+    # System adds the user to the team as a pending user.
   * *Alternative Scenarios*:
-    # TO_DO
-  * *Postconditions*: None.
+    # If the invited user already belongs to the team, their team status is not altered.
+    # If the sent user id does not belong to an existing user, an exception is thrown.
+  * *Postconditions*: The user id and team id are associated in the database as a pending membership.
   * *Handles Requirements*: 
 <wiki:comment>
 Description: Invite a user (or soon-to-be-user) to a team
@@ -560,16 +561,17 @@ Security: Should be limited to users friends/team members
 Notes:
 </wiki:comment>
 ===U16 Accept Team Invite===
-  * *Description*: A user invites another user to a team they are part of
+  * *Description*: A user accepts a team invitation and is added to the team.
   * *Actor*: End user.
-  * *Preconditions*: The user must be a registered player and have a received a team invite from another player.
+  * *Preconditions*: The user must be a registered player and have pending membership with a team.
   * *Flow of Events for Main Scenario*:
-    # TO_DO
-    # TO_DO
+    # System sends the user a team invite notification and asks for confirmation.
+    # User sends the team a confirmation or rejection notice.
+    # If an acceptance notice is received, system changes the team membership status of the user's id to accepted.
   * *Alternative Scenarios*:
-    # TO_DO
-  * *Postconditions*: None.
-  * *Handles Requirements*: 
+    # If a rejection notice is received, system removes the team membership of the user for the team.
+  * *Postconditions*: 
+  * *Handles Requirements*: TO_DO
 ----
 ==Query==
 ----
