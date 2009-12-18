@@ -14,7 +14,17 @@
         
         <div class="grid_3">
             <form:password path="userCommand.password" />
-            <form:errors path="password"/>
+            <form:errors path="password" />
+        </div>
+        
+        <div class="clear"&nbsp;</div>
+        
+        <div class="grid_2">
+            <label for="confirm">Confirm Password: </label>
+        </div>
+        
+        <div class="grid_3">
+            <input type="password" id="confirm"/>
         </div>
    
    		<div class="clear"&nbsp;</div>
@@ -54,7 +64,7 @@
 	            <label for="friendRemovals">Friends: </label>
 	            <ul>
 	                <c:forEach var="user" items="${userCommand.friends}">
-	                    <li id="user_${user.id}"><c:out value="${user.firstName} ${user.lastName}"/><input type="button" value="Remove" onClick="removeFriend(${userCommand.userId}, ${user.id}, 'user_${user.id}')" /></li>
+	                    <li id="user_${user.id}"><c:out value="${user.firstName} ${user.lastName} "/><input type="button" value="Remove" onClick="removeFriend(${userCommand.userId}, ${user.id}, 'user_${user.id}')" /></li>
 	                </c:forEach>
 	            </ul>	
 	        </div>
@@ -66,7 +76,7 @@
 	            <label for="teamRemovals">Teams: </label>
 	            <ul>
 	                <c:forEach var="team" items="${userCommand.teams}">
-	                    <li id="team_${team.id}"><c:out value="${team.name}"/><input type="button" value="Remove" onClick="removeTeam(${userCommand.userId}, ${team.id}, 'team_${team.id}')" /></li>
+	                    <li id="team_${team.id}"><c:out value="${team.name} "/><input type="button" value="Remove" onClick="removeTeam(${userCommand.userId}, ${team.id}, 'team_${team.id}')" /></li>
 	                </c:forEach>
 	            </ul>	
 	        </div>
@@ -92,11 +102,20 @@
 <script>
     var validateUpdateForm = function () {
         var password = document.getElementById("password");
+        var confirm = document.getElementById("confirm");
         var firstName = document.getElementById("firstName");
         var lastName = document.getElementById("lastName");
 
         if (!password || password.value === '') {
             alert("Password cannot be blank");
+            return false;
+        }
+        if (!confirm || confirm.value === '') {
+            alert("You must confirm your password.");
+            return false;
+        }
+        if (password.value !== confirm.value) {
+            alert("Your password and password confirmation do not match.");
             return false;
         }
         if (!firstName || firstName.value === '') {

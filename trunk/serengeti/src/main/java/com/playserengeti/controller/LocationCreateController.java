@@ -1,5 +1,8 @@
 package com.playserengeti.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.servlet.ModelAndView;
@@ -49,8 +52,17 @@ public class LocationCreateController extends SimpleFormController {
 			location.setZipcode(command.getZipcode());
 			location.setPhoneNumber(command.getPhoneNumber());
 
-			locationService.saveLocation(location);
-
+			try {
+			    locationService.saveLocation(location);
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+				// On service error, try again
+				Map<String, Object> model = new HashMap<String, Object>();
+				model.put("locationCommand", command);
+				model.put("message", e.getMessage());
+				return new ModelAndView(getFormView(), model);
+			}
 			ModelAndView mav = new ModelAndView("redirect:view", "locationId",
 					location.getId());
 			return mav;

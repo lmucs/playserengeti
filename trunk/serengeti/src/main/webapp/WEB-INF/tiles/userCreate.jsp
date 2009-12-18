@@ -39,6 +39,13 @@
         </div>
         <div class="clear">&nbsp;</div>
         <div class="grid_2">
+            <label for="confirm">Confirm Password:</label>
+        </div>
+        <div class="grid_3">
+            <input type="password" id="confirm" />
+        </div>
+        <div class="clear">&nbsp;</div>
+        <div class="grid_2">
             <label for="imageFile">Profile Picture:</label>
         </div>
         <div class="grid_3">
@@ -55,11 +62,20 @@
     var validateUpdateForm = function () {
         var email = document.getElementById("email");
         var password = document.getElementById("password");
+        var confirm = document.getElementById("confirm");
         var firstName = document.getElementById("firstName");
         var lastName = document.getElementById("lastName");
         
         if (!email || email.value === '') {
             alert("Email cannot be blank");
+            return false;
+        }
+        if (!confirm || confirm.value === '') {
+            alert("You must confirm your password.");
+            return false;
+        }
+        if (password.value !== confirm.value) {
+            alert("Your password and password confirmation do not match.");
             return false;
         }
         if (!password || password.value === '') {
