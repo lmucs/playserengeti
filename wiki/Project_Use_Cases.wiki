@@ -195,13 +195,7 @@ Notes:
 ----
 ==Business/Location==
 ----
-<wiki:comment>
-Question: is a business different than a location? How do we define each? [[User:Gratrixl|Gratrixl]] 22:39, 8 September 2009 (UTC)
 
-Answer(somewhat)/Expanding on Question: They should probably be considered different entities.  That way, we can include things like a local park or monument that will not actually have business deals but still be a place to control.  Or we could just keep them the same and never allow those locations to have deals/offers.--[[User:Cmueller|Cmueller]] 00:00, 9 September 2009 (UTC)
-
-My vote is to separate them. Let locations be user-submitted content, but businesses by validated somehow. [[User:Gratrixl|Gratrixl]] 06:16, 9 September 2009 (UTC)
-</wiki:comment>
 ===U9 Create Location/Business===
   * *Description*: Create a location profile.
   * *Actor*: End user.
@@ -570,35 +564,11 @@ Notes:
     # If an acceptance notice is received, system changes the team membership status of the user's id to accepted.
   * *Alternative Scenarios*:
     # If a rejection notice is received, system removes the team membership of the user for the team.
-  * *Postconditions*: 
+  * *Postconditions*: The user's memberships status for the team is changed to accepted.
   * *Handles Requirements*: TO_DO
 ----
 ==Query==
 ----
-<wiki:comment>
-U24 Find Locations of Businesses
-  * *Description*: 
-  * *Actor*:
-  * *Preconditions*: 
-  * *Flow of Events for Main Scenario*:
-    # TO_DO
-    # TO_DO
-  * *Alternative Scenarios*:
-    # TO_DO
-  * *Postconditions*: None.
-  * *Handles Requirements*: 
-
-Description: Find locations of businesses.
-
-URI: /find/biz?q=term[&lat=number&lon=number] -- The latitude and longitude GET parameters are optional.  If they're omitted then locations of businesses near the user's current position are returned.
-
-Users: User
-
-Security:
-
-Notes: Other parameters may be possible.  Including radius around lat/long that business can be located in, category of business, how many results to return, etc.
-</wiki:comment>
-
 ===U17 Find User===
   * *Description*: 
   * *Actor*:
