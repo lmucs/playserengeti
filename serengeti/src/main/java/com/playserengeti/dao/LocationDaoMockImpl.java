@@ -14,6 +14,13 @@ import com.playserengeti.domain.Location;
 public class LocationDaoMockImpl implements LocationDao {
 
     @Override
+	public Location getLocationByLatLngAndName(String display, Double latitude,
+			Double longitude) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public boolean updateOwningTeam(Integer locationId) {
 		// TODO Auto-generated method stub
 		return false;

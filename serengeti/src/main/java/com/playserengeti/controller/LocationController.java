@@ -142,8 +142,6 @@ public class LocationController extends MultiActionController {
 	 */
 	public void handleResult(HttpServletRequest request,
 			HttpServletResponse response) {
-		double bound = .015;
-
 		String name = request.getParameter("name");
 		Double lat = Double.valueOf(request.getParameter("lat"));
 		Double lng = Double.valueOf(request.getParameter("lng"));
@@ -151,7 +149,7 @@ public class LocationController extends MultiActionController {
 		String city = request.getParameter("city");
 		String state = request.getParameter("state");
 		String phone = request.getParameter("phone");
-
+		
 		Location l = new Location(null, name, lat, lng);
 		l.setStreet(street);
 		l.setCity(city);
@@ -161,14 +159,11 @@ public class LocationController extends MultiActionController {
 		try {
 			locationService.saveLocation(l);
 		} catch (DataIntegrityViolationException e) {
-			l = locationService.getLocationByName(name);
+			l = locationService.getLocationByLatLngAndName(name, lat, lng);
 		}
 		try {
-			if (Math.abs(l.getLatitude() - lat) < bound
-					&& Math.abs((l.getLongitude() - lng)) < bound) {
-				PrintWriter out = response.getWriter();
-				out.println(l.asMinimalJSON());
-			}
+			PrintWriter out = response.getWriter();
+    		out.println(l.asMinimalJSON());
 		} catch (IOException e) {
 		}
 	}
