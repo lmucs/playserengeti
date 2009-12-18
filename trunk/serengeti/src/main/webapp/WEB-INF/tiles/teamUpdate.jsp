@@ -22,12 +22,12 @@
     </div>
     <div class="grid_2">
         <select name="color">
-            <option value="Red">Red</option>
-            <option value="Green">Green</option>
-            <option value="Blue">Blue</option>
-            <option value="Yellow">Yellow</option>
-            <option value="Magenta">Magenta</option>
-            <option value="Cyan">Cyan</option>
+            <option value="FF0000">Red</option>
+            <option value="00FF00">Green</option>
+            <option value="0000FF">Blue</option>
+            <option value="FFFF00">Yellow</option>
+            <option value="FF00FF">Magenta</option>
+            <option value="00FFFF">Cyan</option>
         </select>
     </div>
 

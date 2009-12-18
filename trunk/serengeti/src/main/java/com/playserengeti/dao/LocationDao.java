@@ -54,6 +54,15 @@ public interface LocationDao {
 	 */
 	public Location getLocationByName(String display);
 
+	/**
+	 * Gets a location based on it's name and lat long coordinates.
+	 * @param display
+	 * @param latitude
+	 * @param longitude
+	 * @return
+	 */
+	public Location getLocationByLatLngAndName (String display, Double latitude, Double longitude);
+
 	/*
 	 * Check the existence of a locaitionId
 	 */

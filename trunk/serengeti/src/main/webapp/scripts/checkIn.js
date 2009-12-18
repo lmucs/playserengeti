@@ -12,7 +12,6 @@ $(function() {
         userLoc = google.loader.ClientLocation;
 
         getNearbyLocations();
-        
 });
 
 function checkIn(sessionId) {
@@ -34,12 +33,10 @@ function showSearch(){
 }
 
 function searchLoc() {
-        showLoader();     
-        lSearch.execute($("#searchText").val() + " " + userLoc.address.city);
         $("#locSelect").empty();
+        lSearch.execute($("#searchText").val() + " " + userLoc.address.city);
         $("#locSearch").fadeOut("slow");
-        $("#locList").append("<a href=../location/create>Add Location</a>");
-        hideLoader();
+        $("#locList").append("<p>Still not here? <a href=../location/create>Add Location</a></p>");
 }
 
 function searchComplete() {
@@ -57,31 +54,26 @@ function searchComplete() {
                         function(data) {
                             var jsonData = JSON.parse(request.responseText);
                             locSelect.append("<option value=" + jsonData.id + ">" + jsonData.name + "</option>");
-                        });
+                        }
+                 );
             });
         }
         else {
-            locSelect.replaceWith("<p>Either we couldn't find any locations by that name or you couldn't possibly be there....cheater.</p>");
-        }
+            locSelect.replaceWith("<p>We couldn't find any locations by that name.</p>");
+        } 
 }
 
 function getNearbyLocations() {
         var request = $.get("../location/getNearbyLocations", {latitude : userLoc.latitude,
             longitude : userLoc.longitude}, function(data) {
-                var jsonData = JSON.parse(request.responseText);
-                populateLocations(jsonData.locations);
+                if (request.responseText) {
+                    var jsonData = JSON.parse(request.responseText);
+                    populateLocations(jsonData.locations);
+                }
+                else {
+                    $("#locSelect").replaceWith("<p>We couldn't find any locations near you.</p>");
+                }
             });
-        hideLoader();
-}
-
-function showLoader() {
-        $("#loader").show();
-        $("#locList").hide();  
-}
-    
-function hideLoader() {
-        $("#locList").show();
-        $("#loader").hide();
 }
     
 function populateLocations(nearby) {

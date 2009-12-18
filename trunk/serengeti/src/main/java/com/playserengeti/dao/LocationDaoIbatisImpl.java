@@ -40,7 +40,16 @@ public class LocationDaoIbatisImpl extends SqlMapClientDaoSupport implements
 		return (Location) getSqlMapClientTemplate().queryForObject(
 				"getLocationByName", display);
 	}
-
+	
+	@Override
+	public Location getLocationByLatLngAndName (String display, Double latitude, Double longitude) {
+		Map<String, String> parameterMap = new HashMap<String, String>();
+		parameterMap.put("name", display);
+		parameterMap.put("latitude", latitude.toString());
+		parameterMap.put("longitude", longitude.toString());
+		return (Location) getSqlMapClientTemplate().queryForObject("getLocationByLatLngAndName", parameterMap);
+	}
+	
 	@Override
 	public Integer insertLocation(Location location) {
 		getSqlMapClientTemplate().insert("insertLocation", location);

@@ -71,6 +71,14 @@
         WHERE location_id = #value#
     </select>
     
+    <select id="getLocationByLatLngAndName" resultMap="locationMap">
+        SELECT *
+        FROM location
+        WHERE location_name = #name# 
+          AND location_latitude = CAST(#latitude# AS numeric)
+          AND location_longitude = CAST(#longitude# AS numeric)
+    </select>
+    
     <select id="getAllLocations" resultMap="locationMap">
         SELECT *
         FROM location
@@ -87,6 +95,9 @@
         FROM location
         WHERE ABS(#latitude# - location_latitude) <![CDATA[ < ]]> 0.01666 
           AND ABS(#longitude# - location_longitude) <![CDATA[ < ]]> 0.01666
+        ORDER BY ABS(#latitude# - location_latitude) <![CDATA[ < ]]> 0.01666, 
+          ABS(#longitude# - location_longitude) <![CDATA[ < ]]> 0.01666
+        LIMIT 20
     </select>
     
     <select id="getControlledTerritory" resultMap="locationMap">

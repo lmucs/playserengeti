@@ -9,7 +9,7 @@ public class CompGeo {
 	 * The bound to determine how far away locations can be and remain in a
 	 * cluster.
 	 */
-	private double bound = .015;
+	private double bound = .01666;
 
 	/**
 	 * Returns a List of Lists containing the convex hull of each cluster in the

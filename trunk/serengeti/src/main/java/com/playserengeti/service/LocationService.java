@@ -30,6 +30,9 @@ public class LocationService {
 		return locationDao.getLocationByName(display);
 	}
 
+	public Location getLocationByLatLngAndName (String display, Double latitude, Double longitude) {
+		return locationDao.getLocationByLatLngAndName(display, latitude, longitude);
+	}
 	/**
 	 * Writes the given location to persistent storage. If the given location
 	 * has a null id, a location is created in persistent storage. If the id is

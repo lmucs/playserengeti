@@ -96,6 +96,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/teamMap.js"></script>
 <script type="text/javascript">
     $(function() {      
-        setup(JSON.parse('${jsonData}'));
+        setup(JSON.parse('${jsonData}'), "${teamCommand.color}");
     });
 </script>
