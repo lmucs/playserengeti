@@ -24,37 +24,41 @@
         <c:if test="${session.user.id == teamCommand.leader.id}">
             <div class="clear">&nbsp;</div>
             <div class="grid_3">
-                <a href="update/${teamCommand.teamId}">Modify team's profile</a>
+                <c:if test="${session.loggedIn && (session.user.id == teamCommand.leader.id)}">
+                    <a href="update/${teamCommand.teamId}">Modify team's profile</a>
+                </c:if>
             </div> 
         </c:if>
         <div class="clear">&nbsp;</div>
         <div class="clear">&nbsp;</div>
-        <div class="grid_7">    
-            <div class="grid_7 round_Box_Container">
-                <div class="grid_2" id="teamDescriptionTitle">
-                    <div class="shadowText">Description:</div>
-                </div>
-                <div class="clear">&nbsp;</div>
-                <c:out value="${teamCommand.description}"/>
-            </div>
-            <div class="clear">&nbsp;</div>
-	        <div class="grid_7 round_Box_Container">
-	            <div class="grid_2">
-                    <div class="shadowText">Activity:</div>
-                </div>	
-                <div class="clear">&nbsp;</div>
-                <ul>
-                    <c:forEach var="visit" items="${activity}">
-                        <li><a href="../user/${visit.user.id}"><c:out value="${visit.user.firstName} ${visit.user.lastName}"/></a> @ 
-                            <a href="../location/${visit.location.id}"><c:out value="${visit.location.name}"/></a>
-                            (<fmt:formatDate pattern="MMM dd, yyyy hh:mma" value="${visit.date}"/>)</li>
-                    </c:forEach>
-                </ul>
-            </div>
-            
-            <div class="grid_8 round_Box_Container" id="map_canvas"></div>
-        </div>
-        <div"grid_4">
+        <div class="grid_7">
+	        <div class="grid_7">    
+	            <div class="grid_7 round_Box_Container">
+	                <div class="grid_2" id="teamDescriptionTitle">
+	                    <div class="shadowText">Description:</div>
+	                </div>
+	                <div class="clear">&nbsp;</div>
+	                <c:out value="${teamCommand.description}"/>
+	            </div>
+	            <div class="clear">&nbsp;</div>
+		        <div class="grid_7 round_Box_Container">
+		            <div class="grid_2">
+	                    <div class="shadowText">Activity:</div>
+	                </div>	
+	                <div class="clear">&nbsp;</div>
+	                <ul>
+	                    <c:forEach var="visit" items="${activity}">
+	                        <li><a href="../user/${visit.user.id}"><c:out value="${visit.user.firstName} ${visit.user.lastName}"/></a> @ 
+	                            <a href="../location/${visit.location.id}"><c:out value="${visit.location.name}"/></a>
+	                            (<fmt:formatDate pattern="MMM dd, yyyy hh:mma" value="${visit.date}"/>)</li>
+	                    </c:forEach>
+	                </ul>
+	            </div>
+	            
+	            <div class="grid_8 round_Box_Container" id="map_canvas"></div>
+	        </div>
+	    </div>
+        <div class="grid_4">
 	        <div class="grid_4 round_Box_Container teamMemberScroller">
 	            <div class="grid_4">
 	                <div class="grid_3">
@@ -70,8 +74,8 @@
 	        </div>
 	        <div class="clear">nbsp;</div>
 	        <div class="grid_4 round_Box_Container" id="territoryScroller">
-	            <div class="grid_3">
-	                <div class="shadowText">Controlled Territory</div> (${fn:length(territory)}) <div class="shadowText">:</div>
+	            <div class="grid_3 shadowText">
+	                Controlled Territory(${fn:length(territory)}):
 	            </div>
 	            <div class="clear">$nbsp;</div>
 	            <ul>
@@ -85,9 +89,6 @@
 	            </ul>
 	        </div>
         </div>
-        <c:if test="${session.loggedIn && (session.user.id == teamCommand.leader.id)}">
-            <a href="update/${teamCommand.teamId}">Modify Team</a><br/>
-        </c:if>
     </c:when>
     <c:otherwise>
         <p>The team you requested does not exist.</p>
