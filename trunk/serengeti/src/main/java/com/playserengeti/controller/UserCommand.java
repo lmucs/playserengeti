@@ -28,6 +28,7 @@ public class UserCommand {
 	private Collection<Team> teams;
 	private String format;
 	private Integer sessionId;
+	private String avatarFileName;
 
 	public Integer getUserId() {
 		return userId;
@@ -107,6 +108,14 @@ public class UserCommand {
 
 	public void setSessionId(Integer sessionId) {
 		this.sessionId = sessionId;
+	}
+	
+	public void setAvatarFileName(String fileName) {
+		this.avatarFileName = fileName;
+	}
+	
+	public String getAvatarFileName() {
+		return avatarFileName;
 	}
 
 	@Override
