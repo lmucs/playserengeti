@@ -1,5 +1,4 @@
-#summary A description of the Serengeti webapplicaiton (IN PROGRESS)
-
+#summary A description of the Serengeti web applicaiton
 The Serengeti server is a Java web application with the following components
   * Configuration
     * web.xml
