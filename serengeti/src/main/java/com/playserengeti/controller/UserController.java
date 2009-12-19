@@ -101,11 +101,20 @@ public class UserController extends MultiActionController {
 		UserCommand command = new UserCommand();
 		Integer userId = Integer.valueOf(request.getParameter("userId"));
 		User user = userService.getUserById(userId);
+		String fileSuffix = user.getAvatarFileSuffix();
+		String fileName;
 
 		command.setUserId(user.getId());
 		command.setEmail(user.getEmail());
 		command.setFirstName(user.getFirstName());
 		command.setLastName(user.getLastName());
+		
+		fileName = "/avatar/user/";
+		if (fileSuffix != null) {
+			command.setAvatarFileName(fileName + userId + "." + fileSuffix);
+		} else {
+			command.setAvatarFileName(fileName + "default_user.png");
+		}
 
 		Collection<User> friends = userService.getFriends(userId);
 		Collection<Team> teams = teamService.getUsersTeams(userId);
