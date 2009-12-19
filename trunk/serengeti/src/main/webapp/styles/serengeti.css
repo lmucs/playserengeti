@@ -469,11 +469,6 @@ ul.hor_menu {
   overflow: auto;
   overflow-x: hidden;	
 }
-.activityScroller{
-  height: 317px;
-  overflow: auto;
-  overflow-x: hidden;
-}
 .teamMemberScroller{
   height: 109px;
   overflow: auto;

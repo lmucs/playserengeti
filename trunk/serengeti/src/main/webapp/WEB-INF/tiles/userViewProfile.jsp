@@ -119,7 +119,7 @@
               </div>
           </c:if>
           <div class="clear">&nbsp;</div>
-          <div class="grid_7 activityBoxContainer activityScroller">
+          <div class="grid_7 activityBoxContainer">
               <div class="grid_6">
                   <div class="shadowText">Friend Activity</div>
                   <ul id="activity">
@@ -145,7 +145,7 @@
               </div>
           </div>
           <div class="clear">&nbsp;</div>
-          <div class="grid_7 activityBoxContainer activityScroller">
+          <div class="grid_7 activityBoxContainer">
               <div class="grid_6">
                   <div class="shadowText">Recent Activity</div>
                   <c:choose>
