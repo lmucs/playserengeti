@@ -38,7 +38,9 @@
 	                    <div class="shadowText">Description:</div>
 	                </div>
 	                <div class="clear">&nbsp;</div>
-	                <c:out value="${teamCommand.description}"/>
+	                <div id="descriptionParagraph">
+	                    <c:out value="${teamCommand.description}"/>
+	                </div>
 	            </div>
 	            <div class="clear">&nbsp;</div>
 		        <div class="grid_7 round_Box_Container">

@@ -475,6 +475,13 @@ ul.hor_menu {
   overflow-x: hidden;	
 }	
 
+#teamBaseAndLeader{
+    margin-left: 12px;
+}
+
+#descriptionParagraph{
+  margin-left: 30px;
+}
 
 #sendInvites {
   top: 180px;
