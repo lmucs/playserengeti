@@ -31,7 +31,7 @@
         <div class="grid_10">
           <div class="grid_3">
               <div id="profileImage">
-		          <img src="${pageContext.request.contextPath}/images/default_user.png" height="150" width="150" alt="Profile Picture"
+		          <img src="${userCommand.avatarFileName}" height="150" width="150" alt="Profile Picture"
 		            title="Profile Picture"/>
 		      </div>
 	            
