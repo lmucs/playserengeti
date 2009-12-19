@@ -15,7 +15,7 @@
 	        <div class="grid_6" id="teamName">
 	            <h3 id= "name"><c:out value="${teamCommand.name}"/></h3>
 	            <div id = "teamBaseAndLeader">
-	            	<p id = "HomeBase"> Home Base: <c:out value="${teamCommand.homeBase}"/></p>
+	            	<p id = "HomeBase"> Home Base:  <c:out value="${teamCommand.homeBase}"/></p>
 	            	<p id = "TeamLeader"> Team Leader:  <c:out value="${teamCommand.leader.firstName} ${teamCommand.leader.lastName}"/><p>
 	        	</div>
 	        </div>
@@ -23,37 +23,26 @@
         </div>
         <c:if test="${session.user.id == teamCommand.leader.id}">
             <div class="clear">&nbsp;</div>
-            <div class="graphic-button" id="team-modify-button">
+            <div class="grid_3">
                 <a href="update/${teamCommand.teamId}">Modify team's profile</a>
             </div> 
         </c:if>
         <div class="clear">&nbsp;</div>
-		<div class="grid_2" id="teamDescriptionTitle">
-            <strong>Description:</strong>
-        </div>
         <div class="clear">&nbsp;</div>
         <div class="grid_7">    
             <div class="grid_7 round_Box_Container">
+                <div class="grid_2" id="teamDescriptionTitle">
+                    <div class="shadowText">Description:</div>
+                </div>
+                <div class="clear">&nbsp;</div>
                 <c:out value="${teamCommand.description}"/>
             </div>
-            <div class="grid_4 round_Box_Container">
-	            <div class="grid_3">
-	                <strong>Team Members:</strong>
-	            </div>
-	            <div class="grid_4 teamMemberScroller">
-	                <ul>
-	                    <c:forEach var="user" items="${teamCommand.members}">
-	                        <li><a href="../user/${user.id}"><c:out value="${user.firstName} ${user.lastName}"/></a></li>
-	                    </c:forEach>
-	                </ul>	
-	            </div>
-	        </div>
             <div class="clear">&nbsp;</div>
-	        <div class="grid_2">
-                <strong>Activity:</strong>
-            </div>	
-            <div class="clear">&nbsp;</div>
-            <div class="grid_7 round_Box_Container activityScroller">
+	        <div class="grid_7 round_Box_Container">
+	            <div class="grid_2">
+                    <div class="shadowText">Activity:</div>
+                </div>	
+                <div class="clear">&nbsp;</div>
                 <ul>
                     <c:forEach var="visit" items="${activity}">
                         <li><a href="../user/${visit.user.id}"><c:out value="${visit.user.firstName} ${visit.user.lastName}"/></a> @ 
@@ -62,23 +51,40 @@
                     </c:forEach>
                 </ul>
             </div>
+            
+            <div class="grid_8 round_Box_Container" id="map_canvas"></div>
         </div>
-        <div class="grid_4 round_Box_Container" id="territoryScroller">
-            <div class="grid_3">
-                <p><strong>Controlled Territory</strong> (${fn:length(territory)}) <strong>:</strong></p>
-            </div>
-            <div class="clear">$nbsp;</div>
-            <ul>
-                <c:forEach var="loc" items="${territory}">
-                    <li><a href="../location/${loc.id}"><c:out value="${loc.name}"/></a>
-                        <div class="territoryAddress">
-                            <c:out value="${loc.street}"/><br/><c:out value="${loc.city}, ${loc.state} ${loc.zipcode}"/>
-                        </div>
-                    </li>
-                </c:forEach>
-            </ul>
+        <div"grid_4">
+	        <div class="grid_4 round_Box_Container teamMemberScroller">
+	            <div class="grid_4">
+	                <div class="grid_3">
+	                    <div class="shadowText">Team Members:</div>
+	                </div>
+	                <div class="clear">&nbsp;</div>
+	                <ul>
+	                    <c:forEach var="user" items="${teamCommand.members}">
+	                        <li><a href="../user/${user.id}"><c:out value="${user.firstName} ${user.lastName}"/></a></li>
+	                    </c:forEach>
+	                </ul>	
+	            </div>
+	        </div>
+	        <div class="clear">nbsp;</div>
+	        <div class="grid_4 round_Box_Container" id="territoryScroller">
+	            <div class="grid_3">
+	                <div class="shadowText">Controlled Territory</div> (${fn:length(territory)}) <div class="shadowText">:</div>
+	            </div>
+	            <div class="clear">$nbsp;</div>
+	            <ul>
+	                <c:forEach var="loc" items="${territory}">
+	                    <li><a href="../location/${loc.id}"><c:out value="${loc.name}"/></a>
+	                        <div class="territoryAddress">
+	                            <c:out value="${loc.street}"/><br/><c:out value="${loc.city}, ${loc.state} ${loc.zipcode}"/>
+	                        </div>
+	                    </li>
+	                </c:forEach>
+	            </ul>
+	        </div>
         </div>
-        <div class="clear">$nbsp;</div>
         <c:if test="${session.loggedIn && (session.user.id == teamCommand.leader.id)}">
             <a href="update/${teamCommand.teamId}">Modify Team</a><br/>
         </c:if>
@@ -87,7 +93,7 @@
         <p>The team you requested does not exist.</p>
     </c:otherwise>
 </c:choose>
-<div class="grid_8 round_Box_Container" id="map_canvas"></div>
+
         
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
