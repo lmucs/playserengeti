@@ -109,7 +109,7 @@ public class UserController extends MultiActionController {
 		command.setFirstName(user.getFirstName());
 		command.setLastName(user.getLastName());
 		
-		fileName = "/avatar/user/";
+		fileName = "/avatars/user/";
 		if (fileSuffix != null) {
 			command.setAvatarFileName(fileName + userId + "." + fileSuffix);
 		} else {
