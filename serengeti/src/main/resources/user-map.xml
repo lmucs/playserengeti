@@ -36,7 +36,8 @@
     SET
         player_email = #email#,
         player_first_name = #firstName#,
-        player_last_name = #lastName#
+        player_last_name = #lastName#,
+        player_avatar_file_suffix = #avatarFileSuffix"
     WHERE player_id = #id#
   </update>
   
