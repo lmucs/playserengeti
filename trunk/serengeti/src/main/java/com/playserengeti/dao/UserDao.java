@@ -1,9 +1,7 @@
 package com.playserengeti.dao;
 
 import java.util.Collection;
-import java.util.Map;
 
-import com.playserengeti.domain.Avatar;
 import com.playserengeti.domain.User;
 
 public interface UserDao {
@@ -14,7 +12,7 @@ public interface UserDao {
 	 * with the user id and the user id will be returned.
 	 * 
 	 * NOTE: The creation date will NOT be populated in the user object. A
-	 * sepecate select is required for this.
+	 * separate select is required for this.
 	 */
 	public Integer insertUserWithPassword(User user, String password);
 
@@ -53,14 +51,6 @@ public interface UserDao {
 	 * Authenticate a user by email and password.
 	 */
 	public User authenticateUserByEmailAndPassword(String email, String password);
-
-	/**
-	 * Returns a user's avatar.
-	 * 
-	 * @param userId
-	 * @return
-	 */
-	public Avatar getUserAvatarByUserId(Integer userId);
 
 	/**
 	 * Gets all friends of a user.
@@ -134,19 +124,4 @@ public interface UserDao {
 	 * @return
 	 */
 	public Collection<User> searchUsers(String query);
-
-	/**
-	 * Enters an avatar for a user.
-	 * 
-	 * @param properties
-	 */
-	public void insertAvatarForUserId(Map<String, Object> properties);
-
-	/**
-	 * Activates a user's avatar for use.
-	 * 
-	 * @param userId
-	 * @param avatarId
-	 */
-	public void activateAvatarIdForUserId(Integer userId, Integer avatarId);
 }

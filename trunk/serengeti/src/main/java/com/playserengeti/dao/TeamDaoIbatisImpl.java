@@ -7,7 +7,6 @@ import java.util.Map;
 
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
-import com.playserengeti.domain.Avatar;
 import com.playserengeti.domain.Team;
 import com.playserengeti.domain.User;
 
@@ -94,12 +93,6 @@ public class TeamDaoIbatisImpl extends SqlMapClientDaoSupport implements
 	public Collection<Team> getLeadingTeams() {
 		return (List<Team>) getSqlMapClientTemplate().queryForList(
 				"getLeadingTeams");
-	}
-
-	@Override
-	public Avatar getTeamAvatarByTeamId(Integer teamId) {
-		return (Avatar) getSqlMapClientTemplate().queryForObject(
-				"getTeamAvatarByTeamId", teamId);
 	}
 
 	@Override

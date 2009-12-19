@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.playserengeti.domain.Avatar;
 import com.playserengeti.domain.Team;
 import com.playserengeti.domain.User;
 
@@ -13,12 +12,6 @@ import com.playserengeti.domain.User;
  * A mock implementation of the Team DAO that's backed by an id-keyed map.
  */
 public class TeamDaoMockImpl implements TeamDao {
-
-	@Override
-	public Avatar getTeamAvatarByTeamId(Integer teamId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public Collection<Team> searchTeams(String query) {

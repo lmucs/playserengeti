@@ -1,15 +1,21 @@
 package com.playserengeti.service;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import org.apache.log4j.Logger;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.playserengeti.dao.UserDao;
-import com.playserengeti.domain.Avatar;
 import com.playserengeti.domain.User;
 
 /**
@@ -17,12 +23,23 @@ import com.playserengeti.domain.User;
  */
 public class UserService {
 
+	private Logger log = Logger.getLogger(getClass());
+	
 	private UserDao userDao;
+	private String avatarDirectory;
 
 	public UserService(UserDao userDao) {
 		this.userDao = userDao;
 	}
 
+	public String getAvatarDirectory() {
+		return avatarDirectory;
+	}
+	
+	public void setAvatarDirectory(String directory) {
+		this.avatarDirectory = directory;
+	}
+	
 	public User getUserById(Integer id) {
 		return userDao.getUserById(id);
 	}
@@ -133,16 +150,36 @@ public class UserService {
 		return userDao.searchUsers(query);
 	}
 
-	public Avatar getUserAvatarByUserId(Integer userId) {
-		return userDao.getUserAvatarByUserId(userId);
-	}
-
-	public void setAvatarForUserId(Integer userId, Avatar avatar) {
-		Map<String, Object> properties = new HashMap<String, Object>();
-		properties.put("userId", userId);
-		properties.put("avatar", avatar);
-		userDao.insertAvatarForUserId(properties);
-		userDao.activateAvatarIdForUserId(userId, (Integer) properties
-				.get("avatarId"));
+	/**
+	 * Doesn't modify the database!
+	 */
+	// TODO: Revisit this method!
+	public void saveImageForUser(User user, MultipartFile inputFile) {
+		Pattern p = Pattern.compile(".*\\.([^.]*)$");
+		Matcher m = p.matcher(inputFile.getOriginalFilename());
+		String extension = null;
+		
+		if (m.matches()) {
+			extension = m.group(1);
+			
+			try {
+				String path =
+					avatarDirectory + File.separator + user.getId() + "." + extension;
+				
+				// Write file.
+				FileOutputStream out = new FileOutputStream(path);
+				out.write(inputFile.getBytes());
+				out.flush();
+				out.close();
+				
+				// Set the extension field.
+				user.setAvatarFileSuffix(extension);
+			} catch (IOException e) {
+				// TODO: Do something else here.
+				log.warn(e);
+			}
+		} else {
+			// TODO: File has no extension!  Throw exception or something.
+		}
 	}
 }

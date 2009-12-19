@@ -2,6 +2,7 @@ package com.playserengeti.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
@@ -60,12 +61,19 @@ public class UserUpdateController extends SimpleFormController {
 
 		if (session.isLoggedIn() && userId != null
 		  && session.getUser().getId().equals(userId)) {
+			MultipartFile file = command.getImageFile();
+			
 			// Modify the entry in the database
 			User user = userService.getUserById(userId);
 			user.setEmail(command.getEmail());
 			user.setFirstName(command.getFirstName());
 			user.setLastName(command.getLastName());
 
+			// Save the image to disk.  This method does not modify the DB!
+			if (file != null) {
+				userService.saveImageForUser(user, file);
+			}
+			
 			// Update the entry in the database.
 			userService.updateUser(user);
 			userService.updateUserPassword(userId, command.getPassword());

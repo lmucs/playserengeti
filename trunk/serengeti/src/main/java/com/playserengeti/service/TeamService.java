@@ -3,7 +3,6 @@ package com.playserengeti.service;
 import java.util.Collection;
 
 import com.playserengeti.dao.TeamDao;
-import com.playserengeti.domain.Avatar;
 import com.playserengeti.domain.Team;
 import com.playserengeti.domain.User;
 
@@ -142,9 +141,5 @@ public class TeamService {
 
 	public Collection<Team> searchTeams(String query) {
 		return teamDao.searchTeams(query);
-	}
-
-	public Avatar getTeamAvatarByTeamId(Integer teamId) {
-		return teamDao.getTeamAvatarByTeamId(teamId);
 	}
 }

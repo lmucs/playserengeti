@@ -11,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
-import com.playserengeti.domain.Avatar;
 import com.playserengeti.domain.User;
 import com.playserengeti.service.UserService;
 import com.playserengeti.session.UserSession;
@@ -52,11 +51,12 @@ public class UserCreateController extends SimpleFormController {
 			userId = userService.insertUserWithPassword(user, password);
 			session.setUser(userService.getUserById(userId));
 
+			System.out.println("\n\nGot here!!\n\n");
+			
 			// Handle uploaded image.
 			if (multipartFile != null) {
 				// TODO Validate image time in validator.
-				userService.setAvatarForUserId(userId, new Avatar(multipartFile
-						.getContentType(), multipartFile.getBytes()));
+				userService.saveImageForUser(user, multipartFile);
 			}
 
 			ModelAndView mav = new ModelAndView("redirect:view");
