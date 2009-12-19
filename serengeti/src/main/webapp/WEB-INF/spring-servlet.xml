@@ -37,8 +37,6 @@
                 <entry key="/location" value-ref="locationController" />
                 <entry key="/location/*" value-ref="locationController" />
 
-                <entry key="/avatar" value-ref="avatarController" />
-
                 <entry key="/help" value-ref="infoController" />
                 <entry key="/about" value-ref="infoController" />
                 <entry key="/contact" value-ref="infoController" />
@@ -52,7 +50,7 @@
         class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 
         <!-- Set the max upload size to 100k -->
-        <property name="maxUploadSize" value="100000"/>
+        <property name="maxUploadSize" value="500000"/>
     </bean>
 
     <!--
@@ -187,6 +185,7 @@
     <bean id="userService"
         class="com.playserengeti.service.UserService">
         <constructor-arg ref="userDao"/>
+        <property name="avatarDirectory" value="/usr/local/tomcat/serengeti_images/user"/>
     </bean>
 
     <bean id="userDao"
@@ -311,16 +310,7 @@
         class="com.playserengeti.dao.VisitDaoIbatisImpl">
         <property name="sqlMapClient" ref="sqlMapClient"/>
     </bean>
-
-    <!-- Controller for serving avatars. -->
-    <bean id="avatarController"
-        class="com.playserengeti.controller.AvatarController">
-        <constructor-arg ref="userService" />
-        <constructor-arg ref="teamService" />
-        <property name="supportedMethods" value="GET"/>
-        <property name="commandClass" value="com.playserengeti.controller.AvatarCommand"/>
-    </bean>
-
+    
     <!--
     This is the way to do it without tiles
     <bean id="viewResolver"

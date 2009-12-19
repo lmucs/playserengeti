@@ -11,10 +11,10 @@ public class User {
 			"MMM dd, yyyy hh:mma");
 
 	private Integer id;
-	private Integer avatarId;
 	private String email;
 	private String firstName;
 	private String lastName;
+	private String avatarFileSuffix;
 	private Date dateCreated;
 
 	public User() {
@@ -41,12 +41,12 @@ public class User {
 		return id;
 	}
 
-	public Integer getAvatarId() {
-		return avatarId;
+	public String getAvatarFileSuffix() {
+		return avatarFileSuffix;
 	}
 
-	public void setAvatarId(Integer avatarId) {
-		this.avatarId = avatarId;
+	public void setAvatarFileSuffix(String avatarFileSuffix) {
+		this.avatarFileSuffix = avatarFileSuffix;
 	}
 
 	public String getEmail() {

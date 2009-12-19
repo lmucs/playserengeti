@@ -9,12 +9,23 @@
     <result property="firstName" column="player_first_name"/>
     <result property="lastName" column="player_last_name"/>
     <result property="dateCreated" column="player_creation_timestamp"/>
+    <result property="avatarFileSuffix" column="player_avatar_file_suffix"/>
   </resultMap>
 
   <insert id="insertUserWithPassword">
     INSERT
-    INTO player (player_email, player_first_name, player_last_name, player_password_hash)
-    VALUES (#user.email#, #user.firstName#, #user.lastName#, md5(#password#))
+    INTO player (
+        player_email,
+        player_first_name,
+        player_last_name,
+        player_password_hash,
+        player_avatar_file_suffix)
+    VALUES (
+        #user.email#,
+        #user.firstName#,
+        #user.lastName#,
+        md5(#password#),
+        #user.avatarFileSuffix#)
     <selectKey keyProperty="user.id" resultClass="int">
       SELECT currval('player_id_seq')
     </selectKey>
@@ -136,20 +147,5 @@
         OR LOWER(player_last_name) LIKE '%' || LOWER(#value#) || '%'
       LIMIT 10
   </select>
-  
-  <insert id="insertAvatarForUserId">
-        INSERT
-        INTO player_avatar (player_id, avatar_mime, avatar_bytes)
-        VALUES (#userId#, #avatar.mimeType#, #avatar.bytes#)
-        <selectKey keyProperty="avatarId" resultClass="int">
-            SELECT currval('player_avatar_id_seq')
-        </selectKey>
-  </insert>
-  
-  <update id="activateAvatarIdForUserId">
-        UPDATE player
-        SET player_avatar_id = #avatarId#
-        WHERE player_id = #userId#
-  </update>
   
 </sqlMap>

@@ -54,7 +54,7 @@
         </div>
     
         <div class="grid_3">
-            <input type="file" path="userCommand.imageBytes"/>
+            <input type="file" name="imageFile" id="imageFile"/>
         </div>
         
         <c:if test="${!empty userCommand.friends}">
