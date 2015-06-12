@@ -1,0 +1,256 @@
+## September 1 ##
+
+  * Went over [syllabus](http://www.cs.lmu.edu/~ray/classes/se/syllabus/) in detail.
+  * Talked a bit about craftsmanship vs. engineering.
+  * Mentioned _Code Complete_ is an important book which needed to be read.
+  * Mentioned _Effective Java_ is also an important book to read.
+  * Discussed some project ideas.
+  * Want an app that runs on some server, with multiple interfaces (Web, JavaScript, Flash, iPhone, Java Mobile, thick client, ...).
+  * Possible idea: a [Foursquare](http://playfoursquare.com/)-like application, possibly restricted to LMU. Possible codename: Serengeti.
+
+## September 3 ##
+
+  * Went over usefulness of McConell's text.
+  * Looked at the requirements checklist.
+  * Discussed waterfall vs. iterative.
+  * Discussed ''staged delivery''.
+  * Much brainstorming about the project.
+  * Settled on name ''Serengeti''.
+  * Discussed how to use the wiki at cs.lmu.edu.
+  * Looked at augmented reality.
+  * Came up with project summary.
+  * Assigned readings from McConnell, Chapters 1, 33, 34, 2, 3, 4.
+  * Asked students to all get wiki accounts.
+
+## September 8 ##
+  * Created the Use Cases.
+  * Went over finer points of how the program will work (Check in/Check out as apposed to ping).
+  * Checked our progress against the Requirements Checklist in McConnell.
+  * Decided we would connect to the server via html
+  * Started the creation of the architecture page on the wiki.
+  * Asked students to continue to update the wiki.
+
+## September 10 ##
+
+  * Lecture on Computing, Software Architecture and Development (with emphasis on the phases, workflows and iterations of modern software methods).
+  * Lecture on the history and use of UML.
+  * Lecture on the construction of large-scale Java applications, focusing both on project orientation and classpath/classloader issues.
+  * Demonstration of the construction, from scratch, of a Java application using Maven .and Eclipse, and placing it into a new CVS module.  Unit testing was included in the demo as well.
+
+## September 15 ##
+
+  * Lecture on building Java webapps with Spring MVC and Maven.
+  * Defined controllers, commands, services.
+  * Discussed separation of web layer from service layer.
+  * Showed how to create projects on Google Code.  Pointed out its SVN repo and wiki.
+  * Made a calculator application (k41k) on Google Code.
+  * Told students to do Homework 1 by next class.
+
+## September 17 ##
+
+  * Worked with students who were unable to get their own laptops set up.
+  * Discovered Macs don't have Java SE 6 ready to run.
+  * Pretty much a wasted day.  Was hoping everyone would be ready to work.  Oh well.
+  * Two of the students were ready to go; they implemented a login page and refined project requirements.
+
+## September 22 ##
+
+  * Guest lecture: Andres Buritica on Postgres.
+
+## September 24 ##
+
+  * (Technical problems with the projection system shortened the class)
+  * Lecture and demo on JSTL and JSP
+    * Possibility of webapps with only JSP
+    * Tag libraries
+    * Demo using `core` and `functions` libraries
+    * Motivation for `c:out`
+    * `c:choose`, `c:if`, `fn:length`
+  * Pointers to more information about JSP
+
+## September 29 ##
+
+  * Announcement: Daily standups start next class
+  * Reminder: Don't worry about databases yet.... Use mock data
+  * Lecture on Spring
+    * How Spring kind of saved Java
+    * Dependency Injection, with motivating example
+    * Singletons
+    * Thread safety
+    * Where to get information
+  * Lecture on webapp architecture using Spring
+    * Controller, command, validator, service, dao
+    * In class demo of wiring
+    * Purpose of Controller-Service separation
+    * Purpose of Service-Dao separation
+    * Dao interfaces and multiple implementations
+  * How to write a good mock dao
+    * Defensive copies
+  * Demo of creating a new url, new controller, and new view
+  * Review of JSTL, with more examples
+
+## October 1 ##
+
+  * Held first daily standup -- everyone was able to report on what they did, but no one really had a sense of the goals for the next meeting
+  * Reviewed project summary
+  * Reviewed project requirements
+  * Drew the object model on the board
+  * Discussed user-team relationships
+  * Introduced the issues tab on Google Code
+  * Talked a bit about daos again
+  * Discussed what exactly the next steps should be
+  * Students were able to assign tasks to themselves
+  * Created a Google Groups thread for questions-requiring-whole-team-discussion.
+    * Agreed that each class would begin with a discussion of questions on this thread.
+
+## October 6 ##
+
+  * Began with a much more successful stand-up.
+  * Class has started partitioning into teams -- Mark, Edgardo, and James on the UI; Loren, Lita, and Chris on the back end, with Don roving.
+  * Mark passed out UI wireframes.
+  * Backend team presented questions about form controllers, etc.
+  * Went over some Spring docs again.
+  * Talked a bit about web layer vs. service layer.
+  * Looked at the SimpleFormController workflow and dabbled a bit in the code.
+
+## October 8 ##
+
+  * David Arnerich, Director of Consumer Product from Citysearch, Inc. ran today's class.
+  * It was informal Q and A about both the state of the industry (especially mobile), what he looks for in resumes and cover letters, skills that students should develop, mobile web vs. apps, iPhone vs. Android, the pros and cons of working at large vs. small companies, etc.
+  * Also discussed how possible relationships between Citysearch and the class.
+  * Possibility of getting Citysearch to be a data provider for Serengeti.
+  * Students were advised to get on LinkedIn and link to Mr. Arnerich.
+
+## October 13 ##
+
+  * Stand up reports.
+  * Lecture on the Tiles Framework.
+  * Discussion of some CSS concepts.
+  * Demo of making images transparent with GIMP.
+
+## October 15 ##
+
+  * Standups.
+  * More group discussion on UI issues.
+  * Plans for mobile clients began.
+  * Decided to have Lita and Don start with basic apps created from tutorials to bring in next class.
+
+## October 20 ##
+
+  * Mellow class, not much official discussion (two students skipped class to take a midterm in CMSI 370).
+  * The mobile team came in with sample iPhone apps.
+
+## October 22 ##
+
+  * Started with standups.
+  * Mobile team had some nice demos.
+  * The whole class reviewed the page flow (filled the entire huge whiteboard on the west wall).
+  * Further discussions of differences between the mobile and web clients.
+  * Very good discussion about the main navigation (top menu).
+  * Separate discussion with the backend team about creating database initialization scripts.
+
+## October 27 ##
+
+  * Individual reports.
+  * Report and review of schema from database team.
+  * Design work on web site user interaction for geocoding.
+    * Doing the geocoding on submit is tricky or impossible because Google's geocoder is asynchronous.
+    * Settled on a UI involving the page changing its look through DHTML, exposing a submit button only after a successful geocoding.
+
+## October 29 ##
+
+  * Lecture and demos on the use of log4j.
+  * Lecture on cross cutting concerns in general.
+  * Individual reports and discussions.
+
+## November 3 ##
+
+  * Dr. Toal was out of town, at a conference.
+  * Andres gave the class a hands-on tutorial setting up a server to host the web application.
+
+## November 5 ##
+
+  * Report on the Software Engineering conference.
+  * Brief talk about the conference tutorial on requirements engineering for large and very large projects.
+  * Handouts from the tutorial given to all students.
+  * Backend team reported completion of urlrewriting.
+  * Backend team also announced completion of the html and xml producing controllers.
+  * Frontend team gave a demo of their latest contributions, including the beginnings of some dhtml widgets.
+  * Mobile team expressed concern about the time remaining to complete a fully featured iPhone client.  A discussion ensued in which the point was brought up that it was necessary to do what it took to learn and master the new technologies.
+  * One of the backend developers offered to help out with iPhone development.
+
+## November 10 ##
+
+  * Lecture on [agile methods](http://en.wikipedia.org/wiki/Agile_software_development) and [Scrum](http://en.wikipedia.org/wiki/Scrum_%28development%29).
+  * Went over the [Agile Manifesto](http://agilemanifesto.org/).
+  * Worked on the application in class and discussed progress.
+
+## November 12 ##
+
+  * All groups expressed confidence that their goals for next week would be met.
+  * Lecture on [iBATIS](http://ibatis.apache.org/).
+  * Class moved into groups for development.
+  * Issue with obtaining JSON from iPhone came up; partial fix applied by changing the content type in one of the controller.  Still not quite fixed.
+
+## November 17 ##
+
+  * Backend and database report was that things were on track.
+  * Talked about the role of `select_key` in iBATIS.
+  * Discussion regarding whether JSON could be returned directly form a controller or could be generated in a view.
+  * A long discussion about the UI getting up to snuff.
+    * We looked at foursquare.com in some detail
+    * How can we be more like foursquare?  Their site looks professional....
+    * Made decision to go with fixed-width, centered layout.
+
+## November 19 ##
+
+  * Started class with the usual oral reports.
+  * Most groups feeling comfortable, but iPhone development not quite to the point where it can coast for the rest of the project.
+    * Basic problem is getting the Spring controllers that accept POST queries to accept parameters from iPhone requests.
+    * Several people were working on this.
+  * Class broke into small teams for development work.
+
+## November 24 ##
+
+  * Derek Smith came by to assist with iPhone development.
+  * Lab session.
+  * Progress made on help page.
+  * Database daos fleshed out.
+  * Backend completed (for the most part).
+
+## December 1 ##
+
+  * Initial oral reports.
+  * UI discussion among whole group.
+  * Discussion surrounding scope of mobile apps.
+  * In class development.
+  * Started preparations for final presentation.
+    * Argument over possible dates (Don to start Google Calendar page).
+    * Outlined the final "project notebook" documentation structure (will be kept in the wiki, but the organization is still crucial).
+    * Initial outline of slides.
+
+## December 3 ##
+
+  * Class agreed to have the entire feature suite implemented by December 8.
+  * Any student that has feature implementation tasks still not finished by that date will be docked one full grade.
+  * Guest Speaker from Kaiser Permanente
+    * Presentation on KP's transitioning from legacy to modern systems
+    * Excellent overview of new technologies and possible applications for health care
+    * Lots of good Q and A.
+    * KP reps explained internship and programs to hire recent grads.
+    * LinkedIn profiles and contact information exchanged.
+
+## December 8 ##
+
+  * Planning for final presentation
+  * Discuss (online) project notebook final organization
+  * Code spot checking
+  * UI commentary
+  * Attempted HTML validation --- some pages still failing
+  * Discussion of mobile site and the need for the server-produced HTML to validate perfectly before a mobile version can even hope to work
+
+## December 10 ##
+
+  * Dry run of presentation in Doolan 114.
+  * Several changes made to the presentation during the run.
+  * Excellent analysis and critique by Kelly Sutton.

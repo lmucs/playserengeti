@@ -1,0 +1,30 @@
+  * Should teams have a home/base location?
+
+  * Do team owners have to be stored with a location?  Or is this just derived data?
+
+  * How often can a user "check in"?
+
+  * What is the minimum amount of information required to create a user? What is the optional information associated with a user account?
+
+  * How does a person become the "owner" of a venue?
+
+  * How does a team become the "owner" of a venue?
+
+  * Will there be any limiting to the number of requests a client can make?
+
+  * Who can add a new venue?
+
+  * Who can change data about a venue?
+
+  * Choose a color palette
+    * [Choice 1](http://www.degraeve.com/color-palette/index.php?q=http://www.travel247.ie/images/regions/serengeti.jpg,3553b89c6e3fca9651aab7e0484455,4c426f0000efcb5400ff800097b9ff)
+    * [Choice 2](http://www.degraeve.com/color-palette/index.php?q=http://www.smallbagbigworld.com/images/tanzania/serengeti_leopard.jpg,373b35778ca5f7f5f2aea4a08e867d,434d3d5f94d7b9a48be2c9bfffffff) This one has been used for my mock ups and tentatively chosen ( I'll try to add some orange)
+    * [Choice 3](http://www.degraeve.com/color-palette/index.php?q=http://media-cdn.tripadvisor.com/media/photo-s/00/1d/9f/ed/lions-serengeti.jpg,5e5e2f56553171933e9ba45ca89469,706d107a7a0167bf00bdd61adba637)
+    * [Choice 4](http://www.degraeve.com/color-palette/index.php?q=http://newsimg.bbc.co.uk/media/images/41111000/jpg/_41111460_10beastafrica-fulton.jpg,2e170cbc6825e59335efb34af6f2c7,3c0000f41b00ff5400ff9a00ffffc5)
+    * [Choice 5](http://www.degraeve.com/color-palette/index.php?q=http://www.tanzaniaodyssey.com/images/serengeti_serengeti_top_60_4.jpg,4c4526579fd5428ac1b8dae7677874,635000006dfb0088ff709b92b4ffff)
+
+  * Scoring Decay (LocationOwnershipScoring)
+
+  * Go to this link and tell me what you think about the navigation bar that I have temporarily added to our serengeti page. http://yfrog.com/0cpicture1ivp
+
+  * Here are the pictures for the stuff I drew on the board regarding how the user pages will look. http://tinyurl.com/yl7sqlg

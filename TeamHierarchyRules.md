@@ -1,0 +1,24 @@
+# Introduction #
+
+Ideas for how to structure the team Hierarchy
+
+# Details (Version 1) #
+
+I have some ideas for Team Hierarchy Rules/Definition (please feel free to viciously savage, as these are merely passing thoughts):
+
+At the top level, there are "Leagues" (or "Biosphere" if we want to keep it all animal themed) that are managed by an Admin. These would be high level, like "Universities", "NFL Teams", "Political Parties", "Corporations" or what have you. Users could submit a request to have additional leagues added, but it would be at the discretion of the Admin.
+Within each League, there would be "Teams" (or "species" or whatnot) that are all rivals to each other. That is, all universities are playing against all other universities. A user can only be a member of one Team per League, but can be playing in multiple Leagues at the same time. That is, a user can be a member of team LMU and team Cardinals, but can't be a member of team LMU and team UCLA. I think some leagues would benefit from being Admin controlled (ie, NFL Teams are limited, so Admin control would make sense) but others can have users create their own teams (ie, corporations). In the Admin-limited Leagues, management and ownership of teams/team profile should be by Admin, while in the user-generated Leagues, the team leader would be the creator of the team and would have management/deletion rights.
+
+Within each Team, there can be sub-leagues and sub-teams (or "packs" or "herds") that can be user generated. For example, there could be a "Greek Org" sub-league with teams for each greek org. Again, each user could be a member of only one sub-group per sub-league, but could be a member of multiple sub-leagues. Joining a sub-team automatically makes you a member of the parent team. Owners of the parent Team should be able to specify if sub-leagues/sub-teams can be user generated or if they should be controlled. If controlled, the Team leader should have rights to create/manage sub-leagues/sub-teams.
+
+Within each league or sub-league, a particular team can declare another team a special "rival". Checking game status could then be done by league/sub-league, which would show all teams in the league, or by rivals only.
+
+# Details (Version 2) #
+
+Instead of leagues or categories, teams are independent. Users can belong to as many teams as they wish, even if they are opposing each other. However, when checking in to a location, a user must select one of their teams to attribute their check-in to. This selection can be made on the same page used to check-in, preferably by a drop-down box containing all teams the user belongs to.
+
+Teams are still run by one team leader user. Team leaders can send out invites to other users as e-mails for users not in the system and as in-system messages to users already in the system. Team leaders can also approve membership requests, change their team's color and icon, and change the team's base location.
+
+Only one team can be be used to check-in due to a potential problem caused when many users belong to similar teams and check-in as a member of each of their teams. The teams shared by most users would almost always be extremely close to each other as owner, leading to long periods of a location being neutral or in conflict instead of having either as an owner.
+
+<a href='Hidden comment: In progress, please edit/comment on.'></a>

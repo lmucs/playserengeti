@@ -1,0 +1,43 @@
+# Overview #
+The iPhone mobile client is planned to be a lightweight implementation written in objective C. The primary intent is to communicate with the backend via http post and get requests, with the back end providing JSON responses. These responses will be parsed and displayed to the user.
+
+# App Delegate #
+The mobile client's system events (application launch and termination, low-memory warnings, the opening of URL resources, changes in status-bar orientation, and other system events) are handled via
+playSerengetiMobile1AppDelegate
+
+# Domain Objects #
+The mobile client includes Domain Objects for
+  * User
+  * Team
+  * Location
+
+# Controllers #
+The mobile client currently includes View Controllers for
+  * LogonView
+  * MainView
+  * UserHome
+  * UserProfile
+  * TeamCentral (stub controller)
+  * LocationCentral (stub controller)
+  * CheckInView
+  * LogoutView (stub controller)
+
+# Views #
+The mobile client currently includes the following .xib files, which manage the veiws
+  * LogonView
+  * MainView
+  * UserHome
+  * UserProfile
+  * TeamCentral
+  * LocationCentral
+  * CheckInView
+  * LogoutView
+  * MainWindow
+
+
+<a href='Hidden comment: 
+To contain:
+* Views
+* Controllers
+* Anything else needed?
+'></a>

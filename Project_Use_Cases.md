@@ -1,0 +1,635 @@
+
+## User ##
+
+---
+
+### U1 Sign Up User ###
+
+  * **Description**: An end user registers as a new player.
+  * **Actor**: End user.
+  * **Preconditions**: None.
+  * **Flow of Events for Main Scenario**:
+    1. User sends email address and desired password to system.
+    1. The system validates the inputs and, if acceptable, creates a new player, assigning a user id to the new player.
+  * **Alternative Scenarios**:
+    1. If the email address is invalid or already exists, or the password is missing, the action is cancelled.
+  * **Postconditions**: A new player record has been inserted into the database.
+  * **Handles Requirements**: 1.5.1.2
+
+### U2 Delete User ###
+
+  * **Description**: A user deletes their own account.
+  * **Actor**: End user
+  * **Preconditions**: The user is already registered as a player.
+  * **Flow of Events for Main Scenario**:
+    1. User attempts to delete account.
+    1. System sends user warning of attempted account deletion and asks for confirmation.
+    1. If the user confirms, their player account is deleted and they are taken to the home page.
+  * **Alternative Scenarios**:
+    1. If the user is a team leader, an error is sent, indicating teams the user is leading.
+  * **Postconditions**: The user's player record is removed from the database.
+  * **Handles Requirements**: 1.6.1.1
+
+<a href='Hidden comment: 
+
+URI: /user/delete[?user=user_id]  The GET parameter is optional, is only available to admins, and if it is not supplied then the controller knows to delete the currently logged in user.
+Users: Self, Admin
+Security:
+Notes:
+
+'></a>
+
+### U3 Manage User ###
+
+  * **Description**: A user modifies their profile.
+  * **Actor**: End user
+  * **Preconditions**: The user is already registered as a player.
+  * **Flow of Events for Main Scenario**:
+    1. User sends new password, first name, user icon image, and last name to system.
+    1. System changes password, first name, user icon image, and last name as directed.
+  * **Alternative Scenarios**:
+    1. If no new password is provided, an error alert is sent to the user, directing them to enter a new password.
+    1. If no new user icon image is submitted, the user icon image is not changed.
+  * **Postconditions**: The first name, last name, user icon image, and password in the user's player record are replaced.
+  * **Handles Requirements**: 1.6.1.2
+<a href='Hidden comment: 
+
+Description: Manage a user"s data.  This data includes the user"s password and associated teams, along with profile data, including name, email, etc.
+URI: /user/manage[?user=user_id]  The GET parameter is optional, is only available to admins, and if it is not supplied then controller knows to manage the currently logged in user.
+Users: Self, Admin
+Security:
+Notes:
+
+'></a>
+
+### U4 View User Profile ###
+
+  * **Description**: A user views the profile of a user.
+  * **Actor**: End user
+  * **Preconditions**: The user is already registered as a player.
+  * **Flow of Events for Main Scenario**:
+    1. User sends user id of a user to the system.
+    1. System displays profile of user associated with sent user id.
+  * **Alternative Scenarios**:
+    1. If the sent user id is not associated with any existing user, an exception is thrown.
+    1. If the user views their own profile, they are able to modify it or check in from it.
+  * **Postconditions**: None.
+  * **Handles Requirements**: 1.5.1.4
+
+<a href='Hidden comment: 
+
+Description: Displays the profile of the specified user.
+URI: /user/viewprofile[?user=user_id]  The GET parameter is optional, and if not supplied the controller displays the currently logged-in user"s profile.
+Users: User, Admin
+Security:
+Notes:
+
+'></a>
+
+---
+
+## Team ##
+
+---
+
+### U5 Create Team ###
+
+  * **Description**: A user creates a team as a team leader.
+  * **Actor**: End user
+  * **Preconditions**: The user is already registered as a player.
+  * **Flow of Events for Main Scenario**:
+    1. User submits a name, a color (as a string), a image icon, a description, and a home base (as a string, not a location) for the team to the system.
+    1. System validates the inputs and, if acceptable, creates a team, assigning a team id to the new team.
+  * **Alternative Scenarios**:
+    1. If a team of the same name already exists, the action is canceled.
+  * **Postconditions**: A new team record is made in the database and the creating user is set as the team's leader.
+  * **Handles Requirements**: 1.7.1.1, 1.7.2
+
+<a href='Hidden comment: 
+Description: Create a team.
+
+URI: /team/create
+
+Users: User
+
+Security:
+
+Notes:
+'></a>
+### U6 Delete Team ###
+
+  * **Description**: A team leader deletes a team that they lead.
+  * **Actor**: Team leader user.
+  * **Preconditions**: The user is already registered as a player and is the leader of a team.
+  * **Flow of Events for Main Scenario**:
+    1. User sends the id of a team they own to the system.
+    1. System validates user's ownership of designated team, and, if accepted, sends confirmation request to user.
+    1. User sends approval of deletion.
+    1. System deletes the team of the designated id.
+  * **Alternative Scenarios**:
+    1. If the user does not own the team of the selected id, no confirmation requests are sent and no teams are deleted.
+    1. If the user does no confirm the deletion, no teams are deleted.
+  * **Postconditions**: The selected team is removed from the database, the team is removed from all the user profiles of team members, and the visits attributed to the team are deleted.
+  * **Handles Requirements**: 1.7.1.3, 1.7.4
+
+<a href='Hidden comment: 
+
+Description: A team leader deletes one of their teams.
+
+URI: /team/delete?team=team_id
+
+Users: Team Lead, Admin
+
+Security:
+
+Notes: Where do we define Team Lead role?  It should be specified in the team"s profile page.  Parameter?
+'></a>
+### U7 Manage Team ###
+  * **Description**: A team leader manages the membership of their team.
+  * **Actor**: Team leader user.
+  * **Preconditions**: The user is already registered as a player and is the leader of a team.
+  * **Flow of Events for Main Scenario**:
+    1. User sends the system the team id of team they lead, a name, a color (as a string), a image icon, a description, and a home base (as a string, not a location) for the team, as well as the user id for a new team leader from users currently in the team, and one or more ids of current team members for deletion.
+    1. System changes the team name, color, image, description, and home base of the team, changes the team leader, and removed team members as directed.
+  * **Alternative Scenarios**:
+    1. If no id is provided for a new team leader, the leader is not changed.
+    1. If no ids are provided for team members to be removed, no team members are removed from the system.
+    1. If a team of the same name already exists, an exception is thrown.
+  * **Postconditions**: The team name, color, icon, description, home base are replaced for the team's profile, the team leader is changed as directed, and selected users are removed from the team.
+  * **Handles Requirements**: 1.7.1.2, 1.7.3
+
+<a href='Hidden comment:  Team Hierachy has been changed to just team management, right?
+Manage Team Hierarchy
+
+DON"T KNOW IF THIS USE CASE REALLY BELONGS UNDER TEAM
+
+Description: Used to manage the hierarchy of created teams.
+
+URI: /team/manage
+
+Users: Admin
+
+Security:
+
+Notes: We need to determine what exactly will determine the hierarchy on a global scale. Suggestions for [[Team Hierarchy Rules & Definition]].
+'></a>
+### U8 Get Team Profile ###
+  * **Description**: A user views the profile of a team.
+  * **Actor**: End user.
+  * **Preconditions**: None.
+  * **Flow of Events for Main Scenario**:
+    1. User sends team id of a existing team to the system.
+    1. System displays profile of team associated with sent team id.
+  * **Alternative Scenarios**:
+    1. If the sent team id is not associated with any existing team, an exception is thrown.
+  * **Postconditions**: None.
+  * **Handles Requirements**: 1.5.1.3
+
+<a href='Hidden comment: 
+Description: Display a team"s profile.
+
+URI: /team/getprofile?team=team_id
+
+Users: Anyone
+
+Security:
+
+Notes:
+'></a>
+
+---
+
+## Business/Location ##
+
+---
+
+
+### U9 Create Location/Business ###
+  * **Description**: Create a location profile.
+  * **Actor**: End user.
+  * **Preconditions**: The user is already registered as a player.
+  * **Flow of Events for Main Scenario**:
+    1. User submits the name, phone number, street address, city, state, zip code, latitude, longitude, and profile image of a location.
+    1. The system validates the inputs and, if acceptable, creates a new location.
+  * **Alternative Scenarios**:
+    1. If the name, latitude, and longitude of the location is the same as an existing location, the location is not added to the database.
+  * **Postconditions**: A new location record has been inserted into the database.
+  * **Handles Requirements**: 1.9.1.1
+<a href='Hidden comment: 
+Description: Create a business profile.
+
+URI: /biz/create
+
+Users: User (business representative), Admin
+
+Security:
+
+Notes: Separate Location from Business?
+'></a>
+### U10 Delete Location/Business ###
+  * **Description**: An admin deletes a location.
+  * **Actor**: Admin.
+  * **Preconditions**: A location exists in the database.
+  * **Flow of Events for Main Scenario**:
+    1. Admin sends location id number to system.
+    1. System deletes location associated with id number.
+  * **Alternative Scenarios**:
+    1. If no location is associated with the sent id number, an exception is thrown.
+  * **Postconditions**: The selected location is removed from the database.
+  * **Handles Requirements**: 1.9.1.3
+<a href='Hidden comment: 
+Description:
+
+URI: /biz/delete?biz=business_id
+
+Users: User (business representative), Admin
+
+Security:
+
+Notes: Separate Location from Business? If a location is different than a business, who is a location owner?[[User:Gratrixl|Gratrixl]] 23:04, 8 September 2009 (UTC)
+'></a>
+### U11 Manage Location/Business ###
+  * **Description**: An admin manages a location's information
+  * **Actor**: Admin.
+  * **Preconditions**: A location exists in the database
+  * **Flow of Events for Main Scenario**:
+    1. User sends a location id, phone number, street address, city, state, zip code, latitude, longitude, and profile image to the system.
+    1. System changes the phone number, street address, city, state, zip code, latitude, longitude, and profile image of the location as directed.
+  * **Alternative Scenarios**:
+    1. If one or more of the attributes (phone number, street address, city, state, zip code, latitude, longitude, and profile image) is not sent, the attributes are not changed in the database.
+  * **Postconditions**: The phone number, street address, city, state, zip code, latitude, longitude, and profile image are replaced for the location's profile.
+  * **Handles Requirements**: 1.9.1.2
+<a href='Hidden comment: 
+Description: Manage the business"s profile.
+
+URI: /biz/manage
+
+Users: User (business representative), Admin
+
+Security:
+
+Notes: Separate Location from Business?
+'></a>
+<a href='Hidden comment: 
+U12 Add Location
+* *Description*:
+* *Actor*:
+* *Preconditions*:
+* *Flow of Events for Main Scenario*:
+# TO_DO
+# TO_DO
+* *Alternative Scenarios*:
+# TO_DO
+* *Postconditions*: None.
+* *Handles Requirements*:
+_Note: Is this different enough from U9 to warrant its own use case?_
+
+Description: Add a location to a business.
+
+URI: /biz/loc/add?biz=business_id
+
+Users: User (business representative), Admin
+
+Security:
+
+Notes: Define how this differs from create business
+
+U13 Remove Location
+* *Description*:
+* *Actor*:
+* *Preconditions*:
+* *Flow of Events for Main Scenario*:
+# TO_DO
+# TO_DO
+* *Alternative Scenarios*:
+# TO_DO
+* *Postconditions*: None.
+* *Handles Requirements*:
+
+Description: Remove a location of a business.
+
+URI: /biz/loc/remove?biz=business_id&loc=location_id
+
+Users: User (business representative), Admin
+
+Security:
+
+Notes:
+'></a>
+
+---
+
+## Status ##
+
+---
+
+### U12 Check-In ###
+  * **Description**: A user checks in at a location for a team they belong to.
+  * **Actor**: End user.
+  * **Preconditions**: The user must be a registered player and belong to at least one team, and a location exists in the database.
+  * **Flow of Events for Main Scenario**:
+    1. User sends their user id, the id of a location, and the id of a team they are part of to the system.
+    1. The system notes the time the user sent the ids, and adds a visit to the system based upon the user id, the team id, the location id, and the time sent.
+  * **Alternative Scenarios**:
+    1. None.
+  * **Postconditions**: A visit is added to the database based upon the recieved ids and recorded time.
+  * **Handles Requirements**:
+
+<a href='Hidden comment: 
+U14 Ping
+* *Description*:
+* *Actor*:
+* *Preconditions*:
+* *Flow of Events for Main Scenario*:
+# TO_DO
+# TO_DO
+* *Alternative Scenarios*:
+# TO_DO
+* *Postconditions*: None.
+* *Handles Requirements*:
+
+Description: Send notification of (lat/long) of a user to database.
+
+URI: /status/ping?lat=number&long=number
+
+Users: Self
+
+Security:
+
+Notes:Internal case not directly accessible by user (See show below)
+
+U15 Show
+* *Description*:
+* *Actor*:
+* *Preconditions*:
+* *Flow of Events for Main Scenario*:
+# TO_DO
+# TO_DO
+* *Alternative Scenarios*:
+# TO_DO
+* *Postconditions*: None.
+* *Handles Requirements*:
+
+Description: Show yourself.  This action triggers a ping immediately, and then additional pings at specific time intervals.
+
+URI: /status/show
+
+Users: Self
+
+Security:
+
+Notes:
+
+U16 Hide
+* *Description*:
+* *Actor*:
+* *Preconditions*:
+* *Flow of Events for Main Scenario*:
+# TO_DO
+# TO_DO
+* *Alternative Scenarios*:
+# TO_DO
+* *Postconditions*: None.
+* *Handles Requirements*:
+
+Description: Hide yourself.  This action disables the intermittent pings.
+
+URI: /status/hide
+
+Users: Self, Admin
+
+Security:
+
+Notes:
+
+U13 View World Map
+* *Description*:
+* *Actor*: End user.
+* *Preconditions*:
+* *Flow of Events for Main Scenario*:
+# TO_DO
+# TO_DO
+* *Alternative Scenarios*:
+# TO_DO
+* *Postconditions*: None.
+* *Handles Requirements*:
+
+Description: Display the current status of the game.
+
+URL: /status/game?league=league_id&rivalsOnly=showOnlyRivals
+
+Users: User
+
+Security:
+
+Notes: Parameters for the game status should be defined once the team hierarchy issues have been hashed out, but should likely include which league/sub-league you want to show status for and if you want to show all teams in that league or just your team and their rivals.
+'></a>
+
+---
+
+## Communication ##
+
+---
+
+<a href='Hidden comment: 
+U18 Invite To Game
+* *Description*:
+* *Actor*:
+* *Preconditions*:
+* *Flow of Events for Main Scenario*:
+# TO_DO
+# TO_DO
+* *Alternative Scenarios*:
+# TO_DO
+* *Postconditions*: None.
+* *Handles Requirements*:
+_Note: Not to be included before Wednesday?_
+
+Description: Invite a person to Play Serengeti!!!!
+
+URL: /invite/game
+
+Users: User
+
+Security:
+
+Notes: How does this work? Does the form ask for an email address and send a link to that address?
+'></a>
+### U13 Friend Request ###
+  * **Description**: A user invites another user to be their friend.
+  * **Actor**: End user.
+  * **Preconditions**: The user is already registered as a player.
+  * **Flow of Events for Main Scenario**:
+    1. User sends the system the user id of another user they wish to make their friend.
+    1. System adds the sending user's id to the friend requests of the user profile of the send user id.
+  * **Alternative Scenarios**:
+    1. If the sent user id does not belong to an existing user, an exception is thrown.
+  * **Postconditions**: The user ids of the inviter and invitee are added as a friendship with pending status for the invitee.
+  * **Handles Requirements**: 1.6.1.3
+<a href='Hidden comment: 
+Description: Invite a person to be your friend
+
+URI: /invite/friend
+
+Users: User
+
+Security:
+
+Notes:
+'></a>
+### U14 Accept Friend Request ###
+  * **Description**: A user accepts a friend request from another user
+  * **Actor**: End user.
+  * **Preconditions**: The user has had another user request their friendship.
+  * **Flow of Events for Main Scenario**:
+    1. System sends the user the id of a friend who has requested their friendship.
+    1. User sends the system an acceptance or rejection notice.
+    1. If an acceptance notice is received, system changes the status of the friendship of the two users to accepted.
+  * **Alternative Scenarios**:
+    1. If a rejection notice is received, system removes the friendship between the two users from the database.
+  * **Postconditions**: The status of the friendship of the two users is changed to accepted in the database.
+  * **Handles Requirements**: 1.6.1.3
+<a href='Hidden comment: 
+Description: Accept a request to be a friend
+
+URI: /invite/accept
+
+Users: Users who have received a friend request
+
+Security:
+
+Notes:
+'></a>
+### U15 Invite To Team ###
+  * **Description**: A user invites another user to a team they are part of.
+  * **Actor**: End user.
+  * **Preconditions**: The user must be a registered player and belong to a team.
+  * **Flow of Events for Main Scenario**:
+    1. User sends the system a user id and the team id of a team they belong to.
+    1. System adds the user to the team as a pending user.
+  * **Alternative Scenarios**:
+    1. If the invited user already belongs to the team, their team status is not altered.
+    1. If the sent user id does not belong to an existing user, an exception is thrown.
+  * **Postconditions**: The user id and team id are associated in the database as a pending membership.
+  * **Handles Requirements**: 1.7.2.2, 1.7.3.4
+<a href='Hidden comment: 
+Description: Invite a user (or soon-to-be-user) to a team
+
+URL: /invite/team
+
+Users: Team Member
+
+Security:
+
+Notes: Does this assume a person is already signed up for the game? or is this a special version of invite to game? Or Both? If Both, do we need two versions?[[User:Gratrixl|Gratrixl]] 17:47, 10 September 2009 (UTC)
+'></a>
+<a href='Hidden comment: 
+U22 Invite To Location (subset of message user)
+* *Description*:
+* *Actor*:
+* *Preconditions*:
+* *Flow of Events for Main Scenario*:
+# TO_DO
+# TO_DO
+* *Alternative Scenarios*:
+# TO_DO
+* *Postconditions*: None.
+* *Handles Requirements*:
+_Note: Not to be included before Wednesday?_
+
+Description: Invite a person to a location
+
+URL: /message/location
+
+Users: User
+
+Security: Should be limited to users friends/team members
+
+Notes: could this be something like and "event" in facebook, where you can set it up in advance? If so, then this really isn"t a subset of message user. Perhaps we add (eventually) an "event" function?[[User:Gratrixl|Gratrixl]] 17:47, 10 September 2009 (UTC)
+
+U23 Message User
+* *Description*:
+* *Actor*:
+* *Preconditions*:
+* *Flow of Events for Main Scenario*:
+# TO_DO
+# TO_DO
+* *Alternative Scenarios*:
+# TO_DO
+* *Postconditions*: None.
+* *Handles Requirements*:
+_Note: Not to be included before Wednesday?_
+
+Description: Send a user a message
+
+URL: /message/user
+
+Users: User
+
+Security: Should be limited to users friends/team members
+
+Notes:
+'></a>
+### U16 Accept Team Invite ###
+  * **Description**: A user accepts a team invitation and is added to the team.
+  * **Actor**: End user.
+  * **Preconditions**: The user must be a registered player and have pending membership with a team.
+  * **Flow of Events for Main Scenario**:
+    1. System sends the user a team invite notification and asks for confirmation.
+    1. User sends the team a confirmation or rejection notice.
+    1. If an acceptance notice is received, system changes the team membership status of the user's id to accepted.
+  * **Alternative Scenarios**:
+    1. If a rejection notice is received, system removes the team membership of the user for the team.
+  * **Postconditions**: The user's memberships status for the team is changed to accepted.
+  * **Handles Requirements**: 1.7.2.2, 1.7.3.4
+
+---
+
+## Query ##
+
+---
+
+### U17 Find User ###
+  * **Description**:
+  * **Actor**:
+  * **Preconditions**:
+  * **Flow of Events for Main Scenario**:
+    1. TO\_DO
+    1. TO\_DO
+  * **Alternative Scenarios**:
+    1. TO\_DO
+  * **Postconditions**: None.
+  * **Handles Requirements**:
+<a href='Hidden comment: 
+Description: Find a user.
+
+URI: /find/user?...
+
+Users: User
+
+Security:
+
+Notes: Parameters can allow users to be found by name, email address, screename, etc.
+'></a>
+### U18 Find Team ###
+  * **Description**:
+  * **Actor**:
+  * **Preconditions**:
+  * **Flow of Events for Main Scenario**:
+    1. T-O\_DO
+    1. TO\_DO
+  * **Alternative Scenarios**:
+    1. TO\_DO
+  * **Postconditions**: None.
+  * **Handles Requirements**:
+<a href='Hidden comment: 
+Description: Find a team.
+
+URI: /search/team?...
+
+Users: User
+
+Security:
+
+Notes: Parameters can allow teams to be found by name, location, parent team, etc.
+'></a>

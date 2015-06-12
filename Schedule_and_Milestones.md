@@ -1,0 +1,34 @@
+Development will take place in two week sprints.  This page will record targets expected for each iteration.
+
+## Iteration 1: October 1 ##
+  * Webapp scaffolding in place
+  * Mock database (hash table) data established
+  * Returns list of teams when queried, displayed in boring, unstyled HTML
+
+## Iteration 2: October 15 ##
+  * User and Team pages mostly complete
+  * Most links functional
+
+## Iteration 3: October 29 ##
+  * Logon/logout functional
+  * Google Maps integration
+
+## Iteration 4: November 12 ##
+  * iPhone interface established
+  * Geocoding
+  * Log4j
+
+## Iteration 5: November 19 ##
+  * All mock daos replaced with database daos
+  * JQuery-based UI for web site (partial implementation)
+  * Most XML and JSON views ready
+
+## Iteration 6: December 3 ##
+  * All features in place and working
+  * Dry run presentation on Dec 3 or Dec 8
+
+## Iteration 7 (Final Presentation): December 18 ##
+  * All features implemented, tested, and (mostly) tuned
+  * UI is pristine
+  * Wiki in perfect shape
+  * Documentation complete

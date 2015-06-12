@@ -1,0 +1,22 @@
+# First Iteration #
+
+  * Creating an account
+  * Logging in
+  * Logging out
+  * Changing profile information
+
+# Second Iteration #
+
+  * Checking in
+  * Scoring
+  * Creating locations
+
+# Third Iteration #
+
+  * iPhone
+    * Sign in
+    * Check in
+    * Change account
+    * Location Creation
+
+# Fourth Iteration #
