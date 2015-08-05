@@ -6,4 +6,3 @@ competitions, organize events to raise money for charity, or simply find out whe
 or enemies might be.
 
 Serengeti was developed as a course project at Loyola Marymount University from September-December, 2009.  
-The traditional [http://code.google.com/p/playserengeti/wiki/Main_Page project notebook] is on the course wiki.
